@@ -1,0 +1,8 @@
+/*这是控制全局的的一个CSS，所有的网页都会依赖此文件*/
+
+.good{
+    height: 100px;
+    width: 100px;
+    border: 1px #080808 solid;
+    background: #1b6d85;
+}
