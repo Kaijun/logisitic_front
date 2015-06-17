@@ -27,6 +27,113 @@ body {
   padding-right: 15px;
 }
 
+
+/* jpu添加参数 */
+// 添加宽带限制 -jpu
+
+.l-box{
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.pure-menu-link{
+  color: #ffffff;
+}
+
+
+
+// 新闻和登录注册框
+.news-box{
+  clear: both;
+  background: #ffffff;
+  padding: 0 10px 10px 10px;
+  height: 100%;
+  border-radius: 10px;
+  .red-flag{
+    text-align: center;
+    font: 12px;
+    line-height: 32px;
+    color: #ffffff;
+    width: 97px;
+    height: 32px;
+    background: #E84B4B;
+    clear: both;
+    margin: 0 auto;
+  }
+  .pr-header{
+    text-align: center;
+    clear: both;
+    font-size: 32px;
+    padding:10%;
+    width: 80%;
+  }
+  .pr-btn{
+    text-align:center;
+    clear: both;
+    border: 1px #E84B4B solid;
+    border-radius:17px;
+    height: 34px;
+    line-height: 34px;
+    width: 195px;
+    color: #E84B4B;
+    margin: 0 auto;
+  }
+
+
+}
+
+.custom-formheader{
+  margin: 20px 5% 0 5%;
+  clear: both;
+  height: 30px;
+  line-height: 30px;
+  h2{
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+}
+.custom-form{
+  text-align: center;
+  padding: 5%;
+  margin: 0 auto;
+  input{
+    padding-left: 10%;
+    height: 45px;
+    width: 90%;
+    border: 0;
+    margin: 10px 0 15px 0;
+    background:#f3f3f3;
+    clear: both;
+    border-radius: 5px;
+  }
+  .user{
+    background:url("../img/user-icon.png") no-repeat #f3f3f3 10px;
+  }
+  .pwd{
+    background:url("../img/pwd-icon.png") no-repeat #f3f3f3 10px;
+  }
+
+  button{
+    padding: 0 20px 0 20px;
+    clear: both;
+    width: 196px;
+    border-radius:20px;
+    height: 40px;
+    line-height: 40px;
+    color: #ffffff;
+    margin-top:10px;
+    background:#00ABD8;
+  }
+}
+
+.smalltext{
+  font-size:12px;
+}
+
+/* jpu添加参数结束*/
+
+
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
@@ -42,9 +149,14 @@ body {
 
 /* Custom page footer */
 .footer {
+  background: #f3f3f3;
+  margin-top:40px;
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+  span{
+    padding-left:10px;
+  }
 }
 
 .container-narrow > hr {
