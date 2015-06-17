@@ -1,4 +1,16 @@
-#Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
+test/bower_components
+
+
+
+# Created by https://www.gitignore.io
+
+### WebStorm ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
 *.iml
 
@@ -44,4 +56,3 @@ atlassian-ide-plugin.xml
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
-
