@@ -9,6 +9,7 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/pure/pure.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -19,99 +20,146 @@
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
+    
+    <!--[if lt IE 9]>
+        <script src="/bower_components/html5shiv/dist/html5shiv.min.js"></script>
+    <![endif]-->
+    
   </head>
   <body>
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <nav class="navbar">
+      <div class="logo">
+        大口袋转运
+      </div>
+      <ul>
+        <li>首页</li>
+        <li>价格</li>
+        <li>新闻</li>
+        <li>帮助</li>
+        <li>登陆</li>
+        <li class="color-light">注册</li>
+      </ul>
+    </nav>
 
-    <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 logo">this is the logo</div>
-        <div class = "col-xs-8 col-sm-8 col-md-8 col-lg-8 menu">
-            <ul>
-                <li>首页</li>
-                <li>价格</li>
-                <li>新闻</li>
-                <li>帮助</li>
-                <li>登陆</li>
-                <li class = "color-light">注册</li>
-            </ul>
-        </div>
-    </div>
     <!--可滚动的Slider-->
-    <div class="row">
+    <section>
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="height: 460px;width:100%;background: #EEE">
+        need add more pic here
+      </div>
+    </section>
 
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="height: 460px;width:100%;background: #333333">
-            need add more pic here
-        </div>
-
-    </div>
     <!--可滚动的Slider结束-->
     <!--动态新闻-->
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-          <div style="width: 300px;height: 300px;background: #255625">大图</div>
+    <section class="lp-section-bg bg1">
+      <div class="lp-section-wrapper">
+        <div class="pure-g">
+          <div class="lp-shopping-img pure-u-1 pure-u-md-1-2">
+            <img src="/images/bag-icon.png">
+          </div>
+          <div class="lp-shopping-intro pure-u-1 pure-u-md-1-2">
+            <h1>海外购物 轻松转运</h1>
+            <p>将您的海外订单运到大口袋的海外中心。轻松管理物流订单，在家坐等包裹。</p>
+            <a class="pure-button pure-button-primary" href="#">现在注册试用</a>
+          </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
+        <div class="pure-g l-box news-box">
+          <div class="pure-u-1 pure-u-md-1-2 ">
+            <div class="red-flag">最新活动</div>
+            <div class="pr-header">限时团购<br/>1200公斤免费送</div>
+            <div class="pr-btn">了解详细</div>
+          </div>
+          <div class="pure-u-1 pure-u-md-1-2 lg-shopping-notice">
+            <h1>重要通知</h1>
+            <ul>
+              <li>关于提交订单后，自行删除订单说明</li>
+              <li>关于药品类专线发货重要通知</li>
+              <li>关于严禁奶制品（奶粉除非）及刀具入关的重要通知</li>
+            </ul>
+            <h1>网友拼单</h1>
+            <ul>
+              <li>拼购物单说明</li>
+              <li>类专线发货重要通知</li>
+              <li>药品奶制品（奶粉除非）及刀具入关的重要通知</li>
+            </ul>
+          </div>
         </div>
+      </div>
 
-    </div>
 
+    </section>
+      
     <!--动态新闻结束-->
-    <!--段落文字介绍-->
-    <div class="pure-g" style="text-align: center;">
 
-        <div class="pure-u-1" style="text-align: center">
+    <!--段落文字介绍-->
+    <section class="lp-section-bg bg2">
+      <div class="lp-section-wrapper reverse">
+        <div>
           <h1>为什么选择大口袋</h1>
         </div>
-        <div class="pure-u-1 pure-u-md-1-3">
-          <h2>更快的转运线路</h2>
+        <div class="lp-section-grid-wrapper  pure-g">
+          <div class="lp-section-grid reverse pure-u-1 pure-u-md-1-3">
+            <img src="/images/logo.png">
+            <h3>更快的转运线路</h3>
+            <a class="pure-button button-success" href="#">了解我们的配送线路</a>
+          </div>
+          <div class="lp-section-grid reverse pure-u-1 pure-u-md-1-3">
+            <img src="/images/logo.png">
+            <h3>后台人性化操作</h3>
+            <a class="pure-button button-success" href="#">查看操作帮助</a>
+          </div>
+          <div class="lp-section-grid reverse pure-u-1 pure-u-md-1-3">
+            <img src="/images/logo.png">
+            <h3>更优惠的价格</h3>
+            <a class="pure-button button-success" href="#">了解我们的价格</a>
+          </div>
         </div>
-        <div class="pure-u-1 pure-u-md-1-3">
-            <h2>后台人性化操作</h2>
-        </div>
-        <div class="pure-u-1 pure-u-md-1-3">
-            <h2>更优惠的价格</h2>
-        </div>
-
-
-    </div>
+      </div>
+    </section>
     <!--段落文字介绍结束-->
 
     <!--联系分享-->
-    <div class="pure-g" style="text-align:center">
-
-        <div class="pure-u-1">
-            <h1>用心服务 与你常在</h1>
+    <section class="lp-section-bg">
+      <div class="lp-section-wrapper">
+        <div>
+          <h1>用心服务 与你常在</h1>
         </div>
-        <div class="pure-u-1 pure-u-md-1-3">
-            <h2>联系客服</h2>
+        <div class="lp-section-grid-wrapper  pure-g">
+          <div class="lp-section-grid pure-u-1 pure-u-md-1-3">
+            <img src="/images/logo.png">
+            <h3>联系客服</h3>
+          </div>
+          <div class="lp-section-grid pure-u-1 pure-u-md-1-3">
+            <img src="/images/logo.png">
+            <h3>微信关注</h3>
+          </div>
+          <div class="lp-section-grid pure-u-1 pure-u-md-1-3">
+            <img src="/images/logo.png">
+            <h3>分享给朋友</h3>
+          </div>
         </div>
-        <div class="pure-u-1 pure-u-md-1-3">
-            <h2>微信关注</h2>
-        </div>
-        <div class="pure-u-1 pure-u-md-1-3">
-            <h2>分享给朋友</h2>
-        </div>
-
+      </div>
+    </section>
     <!--联系分享结束-->
-    </div>
-    <!--段落文字介绍结束-->
 
     <!--Footer-->
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-          <p>关注大口袋</p>
-            <p>其他链接</p>
+    <footer class="footer">
+      <div class="pure-g  lp-section-wrapper">
+        <div class="pure-u-1 pure-u-md-1-2">
+          <p>关注大口袋<span><img src="img/wechat-icon.png"></span><span><img src="img/weibo-icon.png"></span></p>
+          <p class="smalltext">关于我们｜商业合作｜联系我们｜隐私说明</p>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <p>合作伙伴</p>
-            <p>备案信息</p>
+        <div class="pure-u-1 pure-u-md-1-2 pure-hidden-phone">
+            <p>合作伙伴 <span><img src="img/dhl-icon.png"></span><span><img src="img/boc-icon.png"></span></p>
+            <p class="smalltext">Copyright 2015 All Rights Reserved By FISE LIMITED<br/>浙ICP备14035639号-1</p>
         </div>
+      </div>
 
-    </div>
+    </footer>
     <!--Footr End-->
 
   
@@ -129,14 +177,16 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/normalize/normalize.js"></script>
+    <script src="/bower_components/html5shiv/dist/html5shiv.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js scripts/plugins.js -->
-        <!-- endbuild -->
+    <!-- build:js scripts/plugins.js -->
+    <!-- endbuild -->
 
-        <!-- build:js scripts/main.js -->
-        <script src="scripts/main.js"></script>
-        <!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
