@@ -109,6 +109,11 @@ $icon-font-path: '../fonts/';
     color: #E84B4B;
     margin: 0 auto;
   }
+  &.index{
+    border-radius: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 
 
 }
@@ -217,7 +222,7 @@ $main-button-color: #5579B9;
     margin: 9px 0 9px 30px; 
     background: url(/images/logo.png) no-repeat left center;
     background-size: contain; 
-    color: white;
+    color: rgba(255, 0, 0, 0);
     font-size: 22px;
   }
 
@@ -238,6 +243,20 @@ $main-button-color: #5579B9;
     }
   }
 }
+
+
+
+//JpBanner 图片
+.lp-banner{
+  max-height: 670px;
+  img{
+    width: 100%;
+  }
+}
+
+
+
+
 // 首页各种块
 .lp-section-bg{
   padding: 4.5em 0 0 0;
