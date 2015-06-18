@@ -5,7 +5,8 @@
     "bootstrap-sass-official": "~3.3.1",
     "modernizr": "~2.8.1",
     "pure": "~0.6.0",
-    "html5shiv": "~3.7.2"
+    "html5shiv": "~3.7.2",
+    "unslider": "~1.0.0"
   },
   "devDependencies": {
     "chai": "~3.0.0",
