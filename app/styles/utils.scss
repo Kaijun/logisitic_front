@@ -1,0 +1,50 @@
+//Utils
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+
+/* em pure-hidden values */
+
+@media (max-width:767px){
+    .pure-hidden-phone{display:none !important}
+    .pure-visible-desktop{display:none !important}
+}
+@media (min-width:768px) and (max-width:979px){
+    .pure-hidden-tablet{display:none !important}
+    .pure-visible-desktop{display:none !important}
+}
+
+@media (min-width:980px){
+    .pure-visible-phone{display:none !important}
+    .pure-visible-tablet{display:none !important}
+    .pure-hidden-desktop{display:none !important}
+}
+
+
+
+$phone-width: 568px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin phone {
+  @media (min-width: 0) and (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}

@@ -8,40 +8,100 @@ $main-button-color: #5579B9;
 // 首页顶栏
 .lp-navbar{
   $navbar-height: 50px;
-  height: $navbar-height;
+  // height: $navbar-height;
   background-color: #3F3F3F;
-  @include clearfix;
+  .lp-navbar-logo{
+      display: inline-block;
+      text-align: left;
 
-  .logo{
-    float: left;
-    line-height: 32px;
-    padding-left: 50px;
-    margin: 9px 0 9px 30px; 
-    background: url(/images/logo.png) no-repeat left center;
-    background-size: contain; 
-    color: rgba(255, 0, 0, 0);
-    font-size: 22px;
+      @include phone {
+        text-align: center;
+      }
+
+    .logo{
+      display: inline-block;
+      line-height: 32px;
+      padding-left: 50px;
+      margin: 9px 0 9px 30px; 
+      background: url(/images/logo.png) no-repeat left center;
+      background-size: contain; 
+      color: rgba(255, 0, 0, 0);
+      font-size: 22px;
+
+    }
   }
 
-  ul{
-    float: right;
-    line-height: $navbar-height;
-    margin: 0;
-    font-size: 14px;
-    color: white;
-  }
-  ul li{
-    height: $navbar-height;
+  .lp-navbar-list{
     display: inline-block;
-    padding: 0 1.5em;
+    text-align: right;
+    @include phone {
+      background-color: #3F3F3F; 
+      text-align: center;
+    }
+    ul{
+      line-height: $navbar-height;
+      margin: 0;
+      font-size: 14px;
+      color: white;
+    }
+    ul li{
+      height: $navbar-height;
+      display: inline-block;
+      padding: 0 1.5em;
 
-    &.color-light{
-      background-color: $main-button-color;
+      &.color-light{
+        background-color: $main-button-color;
+      }
     }
   }
 }
 
 
+.custom-toggle {
+    width: 32px;
+    height: 32px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 9px 0;
+}
+
+.custom-toggle .bar {
+    background-color: #777;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 100px;
+    position: absolute;
+    top: 18px;
+    right: 7px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.custom-toggle .bar:first-child {
+    -webkit-transform: translateY(-6px);
+    -moz-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+}
+
+.custom-toggle.x .bar {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.custom-toggle.x .bar:first-child {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
 
 //JpBanner 图片
 .lp-banner{
