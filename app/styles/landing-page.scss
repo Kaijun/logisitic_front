@@ -121,7 +121,7 @@ $main-button-color: #5579B9;
       margin: 2em 0;
     }
 
-    .lp-main-input{
+    .lp-main-search{
       margin-top: 5em;
       width: 90%;
       height: 3em;
@@ -129,8 +129,27 @@ $main-button-color: #5579B9;
       background-color: #1F1F1F;
       border-radius: 30px;
       border-color: white;
-      border:1px solid white;
+      border:thin solid white;
+      .lp-search-input{
+        float: left;
+        height: 2.9em;
+        background-color:#1F1F1F;
+        border: 0;
+        width: 80%;
+      }
+      .lp-search-btn{
+        float: right;
+        margin-top: 4px;
+        margin-right: 5px;
+        background-color:#536FB3;
+        height: 20px;
+        width: 20px;
+        padding:10px;
+        border-radius:20px;
+      }
     }
+   
+
   }
 }
 
@@ -191,6 +210,8 @@ $main-button-color: #5579B9;
     opacity: 1;
   }
 }
+
+
 
 
 // 首页各种块
@@ -266,7 +287,4 @@ $main-button-color: #5579B9;
     }
   }
 }
-// 首页底栏
-.lp-footer{
 
-}

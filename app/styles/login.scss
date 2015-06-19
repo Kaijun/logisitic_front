@@ -1,15 +1,35 @@
-/* jpu添加参数 */
-// 添加宽带限制 -jpu
+// 此CSS服务的页面为所有二级页面，域名空间为sp
 
-.l-box{
+.sp-box{
   max-width: 980px;
   margin: 0 auto;
 }
 
-.pure-menu-link{
-  color: #ffffff;
-}
+$navbar-height:50px;
 
+.sp-navbar{
+  margin: 20px 0;
+  .sp-navbar-list{
+  display: inline-block;
+  text-align: right;
+  ul{
+  line-height: $navbar-height;
+  margin: 0;
+  font-size: 14px;
+  color: white;
+  }
+  ul li{
+  height: $navbar-height;
+  display: inline-block;
+  padding: 0 1.5em;
+
+  &.color-light{
+    border-radius:5px;
+  background-color: $main-button-color;
+  }
+  }
+  }
+}
 
 
 // 新闻和登录注册框
@@ -57,20 +77,35 @@
 
 }
 
-.custom-formheader{
-  margin: 20px 5% 0 5%;
+.sp-formheader{
+  margin: 1em 2em 0 2em;
   clear: both;
   height: 30px;
   line-height: 30px;
-  h2{
-    font-size: 18px;
-    line-height: 30px;
+  .headline {
+    width: 40%;
+    float: left;
+    font-size:18px;
+    color: #666666;
+  }
+  .linktext {
+    text-align: right;
+    width: 40%;
+    float: right;
+    font-size:14px;
+    text-decoration: none;
+  }
+  .linktext a{
+    text-decoration: none;
+  }
+  .linktext a:hover{
+    text-decoration: underline;
   }
 
 }
-.custom-form{
+.sp-form{
   text-align: center;
-  padding: 5%;
+  padding: 0 2em;
   margin: 0 auto;
   input{
     padding-left: 10%;
@@ -83,10 +118,16 @@
     border-radius: 5px;
   }
   .user{
-    background:url("../img/user-icon.png") no-repeat #f3f3f3 10px;
+    background:url("/images/user-icon.png") no-repeat #f3f3f3 10px;
   }
   .pwd{
-    background:url("../img/pwd-icon.png") no-repeat #f3f3f3 10px;
+    background:url("/images/pwd-icon.png") no-repeat #f3f3f3 10px;
+  }
+  .f-pwd{
+    background:url("/images/first-pwd-icon.png") no-repeat #f3f3f3 10px;
+  }
+  .email{
+    background:url("/images/mail-icon.png") no-repeat #f3f3f3 10px;
   }
 
   button{
