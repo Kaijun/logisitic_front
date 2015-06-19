@@ -5,6 +5,7 @@
   },
   "devDependencies": {
     "autoprefixer-core": "^4.0.2",
+    "bower": "^1.4.1",
     "browser-sync": "^1.8.2",
     "del": "^1.1.1",
     "gulp": "^3.6.0",
@@ -25,5 +26,9 @@
     "main-bower-files": "^2.5.0",
     "opn": "^1.0.0",
     "wiredep": "^2.0.0"
+  },
+  "scripts": {
+    "gulp": "gulp",
+    "bower": "bower"
   }
 }
