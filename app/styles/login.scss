@@ -6,6 +6,7 @@
 }
 
 $navbar-height:50px;
+$pager-height:30px;
 
 .sp-navbar{
   margin: 20px 0;
@@ -24,10 +25,77 @@ $navbar-height:50px;
   padding: 0 1.5em;
 
   &.color-light{
-    border-radius:5px;
-  background-color: $main-button-color;
+    border-radius:50px;
+    background-color: #4DA1B0;
   }
   }
+  }
+}
+
+.sp-sider-nav{
+  text-align: center;
+  margin: 0 auto;
+  ul{
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    color: white;
+    font-size: 16px;
+  }
+  ul li{
+    margin: 20px 0;
+    padding:0 ;
+    list-style: none;
+    line-height: $navbar-height;
+   &.selected{
+    background: #4DA1B0;
+    border-radius: 30px;
+   }
+    img{
+      margin: -8px 15px;
+    }
+
+  }
+}
+
+.sp-article{
+  background-color:white;
+  border-radius:5px;
+  height: 400px;
+  padding:30px;
+  .sp-article-header{
+    line-height: 1.5em;
+    font-size: 1.5em;
+    color: #666666;
+  }
+  .sp-article-time{
+    text-align: right;
+    font-size: 14px;
+    color: #999999;
+    padding-top: 10px;
+    line-height: 1.5em;
+  }
+  .sp-article-divider{
+    line-height: 5px;
+    margin-top:10px; 
+    border-bottom: thin solid #999999;
+  }
+}
+
+
+.sp-pager{
+  text-align: right;
+  margin: 20px 0;
+  ul{
+    line-height: $pager-height;
+    margin: 0;
+    font-size:14px;
+    color: white;
+  }
+  ul li{
+    padding: 0 1.5em;
+    line-height: $pager-height;
+    display: inline-block;
   }
 }
 
