@@ -7,7 +7,7 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
 gulp.task('styles', function () {
-  return gulp.src('app/styles/main.scss')
+  return gulp.src('app/styles/**/*.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       outputStyle: 'nested', // libsass doesn't support expanded yet
@@ -34,13 +34,15 @@ gulp.task('jshint', function () {
 gulp.task('html', ['styles'], function () {
   var assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
 
-  return gulp.src('app/*.html')
+  return gulp.src(['app/*.html', 'app/home/**/*.html'], { base: 'app' })
+    .pipe($.sourcemaps.init())
     .pipe(assets)
-    .pipe($.if('*.js', $.uglify()))
+    .pipe($.if('*.js', $.uglify({ mangle: false })))
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('dist'));
 });
 
@@ -82,7 +84,8 @@ gulp.task('serve', ['styles', 'fonts'], function () {
     server: {
       baseDir: ['.tmp', 'app'],
       routes: {
-        '/bower_components': 'bower_components'
+        '/bower_components': 'bower_components',
+        '/scripts': 'app/scripts'
       }
     }
   });
