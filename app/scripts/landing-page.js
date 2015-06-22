@@ -5,7 +5,7 @@
 		$(this).toggleClass('x');
 	});
 
-	var bannerSlider = $('.lp-banner').unslider({
+	$('.lp-banner').unslider({
 		speed: 500,               //  The speed to animate each slide (in milliseconds)
 		delay: 3000,              //  The delay between slide animations (in milliseconds)
 		complete: function() {},  //  A function that gets called after every slide animation
@@ -14,4 +14,4 @@
 		fluid: true              //  Support responsive design. May break non-responsive designs
 	});
 
-})(this, jQuery);
+})(window, jQuery);
