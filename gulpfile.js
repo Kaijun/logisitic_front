@@ -41,7 +41,8 @@ gulp.task('html', ['styles'], function () {
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
     .pipe($.useref())
-    .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
+    //并不需要压缩Html
+    // .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('dist'));
 });
