@@ -1,6 +1,6 @@
 <!doctype html>
 <html ng-app="home" class="no-js" lang="">
-  <!-- <base href="/home-app/" /> -->
+  <base href="/home-app/" />
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -34,9 +34,7 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <p class="test">I'm a Angular App</p>
-    <div ui-view></div>
-
+    <div ng-include="'templates/shell.html'"></div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -61,6 +59,7 @@
     <!-- build:js /scripts/home-app/app.js -->
     <script src="/home-app/app.js"></script>
     <script src="/home-app/controllers/testCtrl.js"></script>
+    <script src="/home-app/controllers/Shell.js"></script>
     <!-- endbuild -->
 </body>
 </html>
