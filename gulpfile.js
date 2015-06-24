@@ -34,7 +34,7 @@ gulp.task('jshint', function () {
 gulp.task('html', ['styles'], function () {
   var assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
 
-  return gulp.src(['app/*.html', 'app/home/**/*.html'], { base: 'app' })
+  return gulp.src(['app/*.html', 'app/home-app/**/*.html'], { base: 'app' })
     .pipe($.sourcemaps.init())
     .pipe(assets)
     .pipe($.if('*.js', $.uglify({ mangle: false })))
