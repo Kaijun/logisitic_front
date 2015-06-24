@@ -6,6 +6,150 @@
 // @import "/bower_components/pure/grids-responsive-min.css";
 
 // endbower
+// 前缀uh user-home
+$topnavheight:30px;
+$navheight:50px;
+body{
+    height: 100%;
+    background: #0a2d58 no-repeat fixed;
+    background: linear-gradient(to bottom, #0a2d58 0%, #dafde2 100%) no-repeat fixed;
+}
+.uh-box{
+    width:980px;
+    margin:0 auto; 
+}
+// 顶部黑色导航条
+.uh-topnav{
+    background:#2c2c2c;
+    font-size: 12px;
+    color: white;
+    padding:0 1.5em;
+    line-height: $topnavheight;
+    text-align: left;
+    .uh-topnav-list{
+        text-align: right;
+    ul{
+        line-height: $topnavheight;
+        margin:0; 
+    }
+    ul li{
+        list-style: none;
+        padding: 0 1.5em;
+        display: inline-block;
+        height: $topnavheight;
+    }
+
+    }
+   
+}
+
+
+.uh-nav{
+    background:#3F4348;
+    line-height: $navheight;
+    color: white;
+    font-size: 18px;
+    img{
+        vertical-align: middle;
+        line-height: $navheight;
+        display: inline-block;
+        padding-right:1em;
+    }
+    .uh-nav-list{
+        text-align: right;
+    ul{
+        line-height: $navheight;
+        margin:0; 
+        font-size: 14px;
+    }
+    ul li{
+        list-style: none;
+        padding: 0 1.5em;
+        display: inline-block;
+        height: $navheight;
+        &.selected{
+            background:url('/images/uh-indicator.png') no-repeat bottom center; 
+        }
+    }
+
+
+    }
+}
+
+.uh-siderbar{
+    margin: 0 auto;
+    padding: 1.5em 0;
+    .uh-siderbar-avater{
+        width: 150px;
+        height: 150px;
+        background:white;
+        border-radius: 5px;
+        img{
+            margin: 0 auto;
+            padding:2px;
+        }
+    }
+    .uh-siderbar-info{
+        font-size: 16px;
+        color: white;
+        ul{
+            line-height: $topnavheight;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        ul li{
+            padding:0;
+            line-height: $topnavheight;
+            list-style:none;
+        }
+        .addmoney{
+                background:#FF8250;
+                line-height: 15px;
+                border-radius:5px;
+                font-size: 12px;
+                padding:5px 10px;
+                margin-left: 5px;
+        }
+        .addmoney:hover{
+            background:#F06127;
+        }
+    }
+    .uh-siderbar-fastopt{
+        margin-top:20px; 
+        ul{
+            line-height: 34px;
+            margin:0;
+            padding:0;
+            font-size: 14px;
+            color: white;
+        }
+        ul li{
+            width: 110px;
+            margin-top: 10px;
+            border-radius:17px;
+            background:#4A90E2;
+            padding-left:40px;
+            line-height: 34px;
+            list-style: none;
+            &.prestock{
+                background:url('/images/uh-btn-prestock.png') no-repeat #4A90E2 10% 50%;
+            }
+            &.movestock{
+                background:url('/images/uh-btn-movestock.png') no-repeat #4A90E2 10% 50%;
+            }
+            &.sendstock{
+                background:url('/images/uh-btn-sendstock.png') no-repeat #4A90E2 10% 50%;
+            }
+        }
+    }
+
+}
+
+.uh-main{
+    background:white;
+    height: 700px;
+}
 
 .test{
   color: red;
