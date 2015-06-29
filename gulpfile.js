@@ -34,7 +34,7 @@ gulp.task('jshint', function () {
 gulp.task('html', ['styles'], function () {
   var assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
 
-  return gulp.src(['app/*.html', 'app/home-app/**/*.html'], { base: 'app' })
+  return gulp.src(['app/*.html', 'app/home-app/**/*.html', 'app/admin-app/**/*.html'], { base: 'app' })
     .pipe($.sourcemaps.init())
     .pipe(assets)
     .pipe($.if('*.js', $.uglify({ mangle: false })))
@@ -93,8 +93,10 @@ gulp.task('serve', ['styles', 'fonts'], function () {
 
   // watch for changes
   gulp.watch([
-    'app/*.html',
-    'app/scripts/**/*.js',
+    // 'app/*.html',
+    // 'app/scripts/**/*.js',
+    'app/**/*.html',
+    'app/**/*.js',
     'app/images/**/*',
     '.tmp/fonts/**/*'
   ]).on('change', reload);

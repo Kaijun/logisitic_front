@@ -1,7 +1,7 @@
 'use strict';
 ;(function () {
-	angular.module('home', [
-        'home.controllers',
+	angular.module('admin', [
+        'admin.controllers',
         'ui.router',
     ])
 	.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {

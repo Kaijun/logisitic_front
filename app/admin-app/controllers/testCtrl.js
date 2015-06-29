@@ -1,7 +1,7 @@
 'use strict';
 ;(function () {
 	
-    angular.module('home.controllers')
+    angular.module('admin.controllers')
     .controller('TestCtrl', ['$scope', '$http', function($scope, $http) {
     	$scope.test = 'test';
     	console.log($scope.test);

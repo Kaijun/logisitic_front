@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('home.controllers')
+        .module('admin.controllers')
         .controller('Shell', Shell);
 
     Shell.$inject = [];
