@@ -1,6 +1,6 @@
 <!doctype html>
-<html ng-app="home" class="no-js" lang="">
-  <base href="/home-app/" />
+<html ng-app="admin" class="no-js" lang="">
+  <base href="/admin-app/" />
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -8,7 +8,7 @@
     <title>大口袋转运</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <!-- build:css /styles/home-app/vendor.css -->
+    <!-- build:css /styles/admin-app/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/normalize/normalize.min.css" />
     <link rel="stylesheet" href="/bower_components/pure/pure-min.css" />
@@ -16,8 +16,8 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:css /styles/home-app/main.css -->
-    <link rel="stylesheet" href="/styles/home-app/main.css">
+    <!-- build:css /styles/admin-app/main.css -->
+    <link rel="stylesheet" href="/styles/admin-app/main.css">
     <!-- endbuild -->
 
     <!-- build:js /scripts/vendor/modernizr.js -->
@@ -45,7 +45,7 @@
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
 
-    <!-- build:js /scripts/home-app/vendor.js -->
+    <!-- build:js /scripts/admin-app/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
@@ -53,30 +53,14 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-
-
-    <!-- Mock Service! Will be removed after build-->
-    <!-- build:remove -->
-    <script type="text/javascript" src="/bower_components/angular-mocks/angular-mocks.js"></script>
-    <script type="text/javascript" src="/home-app/mocks/mocks.module.js"></script>
-    <script type="text/javascript" src="/home-app/mocks/StockMock.js"></script>
+    <!-- build:js /scripts/admin-app/plugins.js -->
     <!-- endbuild -->
 
-
-
-
-    <!-- build:js /scripts/home-app/plugins.js -->
-    <!-- endbuild -->
-
-    <!-- build:js /scripts/home-app/app.js -->
-    <script src="/home-app/app.js"></script>
-    <script src="/home-app/controllers/controllers.module.js"></script>
-    <script src="/home-app/controllers/testCtrl.js"></script>
-    <script src="/home-app/controllers/Shell.js"></script>
-
-
-    <script src="/home-app/services/services.module.js"></script>
-    <script src="/home-app/services/StockService.js"></script>
+    <!-- build:js /scripts/admin-app/app.js -->
+    <script src="/admin-app/app.js"></script>
+    <script src="/admin-app/controllers/controllers.module.js"></script>
+    <script src="/admin-app/controllers/testCtrl.js"></script>
+    <script src="/admin-app/controllers/Shell.js"></script>
     <!-- endbuild -->
 </body>
 </html>

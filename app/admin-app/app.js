@@ -1,12 +1,9 @@
 'use strict';
 ;(function () {
-    
-    var moduleDependency = ['home.controllers','home.services', 'ui.router'];
-    if(angular.mock){
-        moduleDependency.push('home.mocks')
-    }
-
-	angular.module('home', moduleDependency)
+	angular.module('admin', [
+        'admin.controllers',
+        'ui.router',
+    ])
 	.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     
 	    $urlRouterProvider.otherwise('/');
@@ -17,12 +14,10 @@
             templateUrl: 'templates/test.html',
             controller: 'TestCtrl',
         })
+        
+        
 	}])
     .run(['$state', function($state){
         
     }]);
-
-    angular.module('home').constant('AppConfig', {
-        apiUrl: '/api',
-    })
 })();

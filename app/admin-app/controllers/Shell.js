@@ -2,18 +2,17 @@
     'use strict';
 
     angular
-        .module('home.controllers')
+        .module('admin.controllers')
         .controller('Shell', Shell);
 
-    Shell.$inject = ['StockService'];
+    Shell.$inject = [];
 
     /* @ngInject */
-    function Shell(StockService) {
+    function Shell() {
         var vm = this;
         vm.title = 'Controller';
         console.log('Shell initialized');
         activate();
-        StockService.getStocks();
 
         ////////////////
 
