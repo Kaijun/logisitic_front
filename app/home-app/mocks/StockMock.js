@@ -29,20 +29,20 @@
             status: "2",
             timestamp: "2015-03-25",
             items: [
-                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1kg", quantity: "5"}
-                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1kg", quantity: "5"}
-                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1kg", quantity: "5"}
-                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1kg", quantity: "5"}
+                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1kg", quantity: "5"},
+                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1kg", quantity: "5"},
+                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1kg", quantity: "5"},
+                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1kg", quantity: "5"},
             ],
             message: "我是包裹留言",
             attachment: "/image/xxx.jpg",
             extra_services: [],
         });        
 
-        $httpBackend.whenPOST(AppConfig.apiUrl + '/stocks/').respond({
+        $httpBackend.whenPOST(AppConfig.apiUrl + '/stocks/').respond(function(){
             return [200, {status: "success", message: "添加入库成功"}, {}];
         });       
-        $httpBackend.whenPUT(AppConfig.apiUrl + '/stocks/132').respond({
+        $httpBackend.whenPUT(AppConfig.apiUrl + '/stocks/132').respond(function(){
             return [200, {status: "success", message: "修改入库信息成功"}, {}];
         });
         
