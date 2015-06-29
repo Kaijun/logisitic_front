@@ -17,6 +17,14 @@
         ////////////////
 
         function activate() {
+            _setSidebarHeight();
+        }
+
+        function _setSidebarHeight(){
+            var $sidebar = $('.ah-sidebar');
+            var sidebarTopOffset = $sidebar.offset().top;
+            var height = $(window).height() - sidebarTopOffset;
+            if($sidebar.outerHeight()<height) $sidebar.outerHeight(height);
         }
     }
 })();

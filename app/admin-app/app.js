@@ -1,9 +1,12 @@
 'use strict';
 ;(function () {
-	angular.module('admin', [
-        'admin.controllers',
-        'ui.router',
-    ])
+
+    var moduleDependency = ['admin.controllers','admin.services', 'ui.router'];
+    if(angular.mock){
+        moduleDependency.push('admin.mocks')
+    }
+
+	angular.module('admin', moduleDependency)
 	.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     
 	    $urlRouterProvider.otherwise('/');
@@ -20,4 +23,9 @@
     .run(['$state', function($state){
         
     }]);
+
+    //Default Configuration of App 
+    angular.module('admin').constant('AppConfig', {
+        apiUrl: '/api/admin',
+    })
 })();

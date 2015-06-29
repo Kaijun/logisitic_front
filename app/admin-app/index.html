@@ -8,7 +8,7 @@
     <title>大口袋转运</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <!-- build:css /styles/admin-app/vendor.css -->
+    <!-- build:css /admin-app/styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/normalize/normalize.min.css" />
     <link rel="stylesheet" href="/bower_components/pure/pure-min.css" />
@@ -16,8 +16,8 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:css /styles/admin-app/main.css -->
-    <link rel="stylesheet" href="/styles/admin-app/main.css">
+    <!-- build:css /admin-app/styles/main.css -->
+    <link rel="stylesheet" href="/admin-app/styles/main.css">
     <!-- endbuild -->
 
     <!-- build:js /scripts/vendor/modernizr.js -->
@@ -45,7 +45,7 @@
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
 
-    <!-- build:js /scripts/admin-app/vendor.js -->
+    <!-- build:js /admin-app/scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
@@ -53,14 +53,32 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js /scripts/admin-app/plugins.js -->
+
+
+
+
+
+    <!-- Mock Service! Will be removed after build-->
+    <!-- build:remove -->
+    <script type="text/javascript" src="/bower_components/angular-mocks/angular-mocks.js"></script>
+    <script type="text/javascript" src="/admin-app/mocks/mocks.module.js"></script>
+    <script type="text/javascript" src="/admin-app/mocks/StockMock.js"></script>
     <!-- endbuild -->
 
-    <!-- build:js /scripts/admin-app/app.js -->
+
+
+
+    <!-- build:js /admin-app/scripts/plugins.js -->
+    <!-- endbuild -->
+
+    <!-- build:js /admin-app/scripts/app.js -->
     <script src="/admin-app/app.js"></script>
     <script src="/admin-app/controllers/controllers.module.js"></script>
     <script src="/admin-app/controllers/testCtrl.js"></script>
     <script src="/admin-app/controllers/Shell.js"></script>
+
+    <script src="/admin-app/services/services.module.js"></script>
+    <script src="/admin-app/services/StockService.js"></script>
     <!-- endbuild -->
 </body>
 </html>

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('home.services')
+        .module('admin.services')
         .factory('StockService', StockService);
 
     StockService.$inject = ['AppConfig', '$http'];

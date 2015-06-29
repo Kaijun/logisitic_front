@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('home.mocks', [
+        .module('admin.mocks', [
             'ngMockE2E',
         ]);
 })();

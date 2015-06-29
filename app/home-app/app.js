@@ -22,6 +22,7 @@
         
     }]);
 
+    //Default Configuration of App 
     angular.module('home').constant('AppConfig', {
         apiUrl: '/api',
     })

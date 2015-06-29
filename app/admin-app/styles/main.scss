@@ -1,0 +1,94 @@
+
+html,body { height:100%; position: relative; }
+
+.ah-body-wrapper{
+  min-width: 1280px;
+}
+
+// 前缀ah admin-home
+$navbar-height: 32px;
+.ah-nav{
+  height: $navbar-height;
+  background: black;
+  color: #E6E6E6;
+
+  .title{
+    line-height: $navbar-height;
+    margin-left: 24px;
+  }
+
+  .ah-nav-list{
+    display: inline-block;
+    text-align: right;
+    ul{
+      line-height: $navbar-height;
+      margin: 0;
+      font-size: 14px;
+
+      li{
+        height: $navbar-height;
+        display: inline-block;
+        padding: 0 1.5em;
+      }
+    }
+  }
+}
+$sub-navbar-height: 64px;
+.ah-sub-nav{
+  height: $sub-navbar-height;
+  background: #3F4348;
+  color: #FFFFFF;
+
+  .logo{
+    line-height: $sub-navbar-height;
+    margin-left: 32px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    span{
+      margin-left: 12px;
+    }
+  }
+
+  .ah-sub-nav-list{
+    display: inline-block;
+    text-align: right;
+    ul{
+      line-height: $sub-navbar-height;
+      margin: 0;
+      font-size: 16px;
+
+      li{
+        height: $navbar-height;
+        display: inline-block;
+        padding: 0 1.5em;
+      }
+    }
+  }
+}
+.main{
+
+}
+.ah-sidebar{
+  margin: 0 auto;
+  background-color: #6E6E6E;
+  color: #FDFDFD;
+  padding: 12px 42px ;
+
+  .list-wrapper{
+    margin-bottom: 32px;
+    .title{
+      font-size: 18px;
+      margin: 12px 0;
+    }
+    .list{
+      font-style: 14px;
+      list-style: none;
+      padding: 0;
+      li{
+        padding: 3px 0;
+      }
+
+    }
+  }
+}
