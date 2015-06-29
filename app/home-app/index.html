@@ -53,6 +53,18 @@
     <!-- endbower -->
     <!-- endbuild -->
 
+
+
+    <!-- Mock Service! Will be removed after build-->
+    <!-- build:remove -->
+    <script type="text/javascript" src="/bower_components/angular-mocks/angular-mocks.js"></script>
+    <script type="text/javascript" src="/home-app/mocks/mocks.module.js"></script>
+    <script type="text/javascript" src="/home-app/mocks/StockMock.js"></script>
+    <!-- endbuild -->
+
+
+
+
     <!-- build:js /scripts/home-app/plugins.js -->
     <!-- endbuild -->
 
@@ -61,6 +73,10 @@
     <script src="/home-app/controllers/controllers.module.js"></script>
     <script src="/home-app/controllers/testCtrl.js"></script>
     <script src="/home-app/controllers/Shell.js"></script>
+
+
+    <script src="/home-app/services/services.module.js"></script>
+    <script src="/home-app/services/StockService.js"></script>
     <!-- endbuild -->
 </body>
 </html>
