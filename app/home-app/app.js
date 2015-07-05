@@ -41,8 +41,11 @@
             controller: 'StockDetailCtrl',
         })
 	}])
-    .run(['$state', function($state){
-        
+    .run(['$state', '$injector', function($state, $injector){
+        var isUserInfoRendered = $injector.has('UserInfo');
+        if(isUserInfoRendered===false){
+            window.location.href = '/login/auth'
+        }
     }]);
 
     //Default Configuration of App 
