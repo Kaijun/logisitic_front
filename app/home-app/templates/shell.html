@@ -48,7 +48,7 @@
       </div>
       <div class="uh-siderbar-fastopt">
         <ul>
-        <li class="prestock">入库预报｜列表</li>
+        <li class="prestock"><a ui-sref="stockSubmit"> 入库预报 </a>｜<a ui-sref="stockList">列表</a></li>
         <li class="sendstock">提交发货｜列表</li>
         <li class="movestock">包裹移库｜列表</li>
 
@@ -58,10 +58,8 @@
 
 
     </div>
-    <div class="pure-u-4-5 uh-main">
-      我是主要内容
-      
-      <div ui-view></div>
+    <div class="pure-u-4-5">
+      <div class="uh-main" ui-view></div>
     </div>
   </div>
 </div>

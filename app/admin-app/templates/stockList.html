@@ -1,0 +1,57 @@
+
+<div class="ah-list">
+  <div class="ah-main-header">
+    <div class="left">
+      <span class="title">库存列表</span>
+    </div>
+
+    <div class="right">
+      <span>筛选: </span>
+      <span>按状态</span>
+      <span> | </span>
+      <span>按时间</span>
+    </div>
+  </div>
+
+  <div class="ah-list-body">
+    <div class="list">
+      <table class="pure-table pure-table-horizontal ah-custom-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox"></th>
+            <th>入库跟踪号</th>
+            <th>客户ID</th>
+            <th>入库码</th>
+            <th>库位号</th>
+            <th>联系</th>
+            <th>包裹描述</th>
+            <th>客户备注</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-click="goToDetail(stock.id)" ng-repeat="stock in stocks">
+            <td><input type="checkbox"></td>
+            <td>{{stock.ship_info}}</td>
+            <td>{{stock.owner_id}}</td>
+            <td>{{stock.warehouse_code}}</td>
+            <td>{{stock.position_number}}</td>
+            <td>QQ - Email</td>
+            <td>{{stock.desc}}</td>
+            <td>{{stock.message}}</td>
+            <td>已入库</td>
+            <td>动态生成操作</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="action-btns"> 
+    <div class="right">
+      <a  ng-click="" class="pure-button red">批量存档</a>
+      <a  ng-click="" class="pure-button blue">批量导出</a>
+    </div>
+  </div>
+  
+</div>

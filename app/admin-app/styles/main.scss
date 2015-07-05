@@ -1,3 +1,12 @@
+//Utils
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 
 html,body { height:100%; position: relative; }
 
@@ -66,9 +75,6 @@ $sub-navbar-height: 64px;
     }
   }
 }
-.main{
-
-}
 .ah-sidebar{
   margin: 0 auto;
   background-color: #6E6E6E;
@@ -86,9 +92,218 @@ $sub-navbar-height: 64px;
       list-style: none;
       padding: 0;
       li{
+        cursor: pointer;
         padding: 3px 0;
       }
 
     }
   }
+}
+
+
+
+
+
+.ah-main{
+    background:white;
+    padding: 24px;
+}
+
+
+.ah-main-header{
+    @include clearfix;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #D1D1D1;
+    .left{
+        float: left;
+        .title{
+            display: inline-block;
+            font-size: 18px;
+            padding: 12px;
+            border-left: solid 5px #E65F5F;
+            &.blue{
+                border-left: solid 5px #147DE0;
+            }
+        }
+    }
+    .right{
+        margin-top: 20px;
+        float: right;
+    }
+}
+
+.ah-main-body{
+    padding-top: 24px;
+}
+.ah-divider{
+    margin: 20px 0;
+    border-bottom: solid 1px #D1D1D1;
+    &.thick{
+        border-bottom: solid 3px #D1D1D1;
+    }
+}
+
+.ah-list{
+    .ah-list-body{
+        .tab{
+            padding: 20px 0;                
+            border-bottom: solid 3px #D1D1D1;
+            .pure-button{
+                &:hover{
+                    background-color: #91C1FA;
+                    color: white;
+                }
+                &.active{
+                    color: white;
+                    background-color: #91C1FA;
+                }
+                color: #4A7FB2;
+                background: transparent;
+                margin-right: 64px;
+            }
+        }
+        .list{
+            padding: 18px 0;
+
+
+        }
+    }
+
+    .action-btns{
+        @include clearfix;
+        .left{
+            float: left;
+        }
+        .right{
+            float: right;
+        }
+    }
+}
+
+.ah-custom-table{
+    table-layout: fixed;
+    width: 100%;
+    border: none;
+    thead{
+        background: none;
+        th{
+            display: table-cell !important;
+            padding: 8px 0;
+        }
+    }
+
+    tbody{
+        tr{
+            border-bottom: solid 1px #D1D1D1;
+        }
+        td{
+            padding: 16px 8px 16px 0;
+        }
+    }
+}
+
+
+
+
+.ah-stock-detail{
+    .pure-button.flag{
+      border: solid 2px #F54623;
+      color: #F54623;
+      border-radius: 3px;
+      background-color: none;
+      background: url(../images/flag_red.png) no-repeat 10px center;
+      padding: 10px 10px 10px 30px;
+
+    }
+    .ah-main-header .right{
+      margin-top: 0;
+    }
+    .item-list{
+        .uh-custom-table tbody tr{
+            border: none;
+        }
+        .uh-custom-table tbody td {
+          padding: 5px 8px 5px 0; 
+          border: none;
+        }
+        .options{  
+            margin-top: 12px;
+            text-align: center;
+        }
+        .item-delete-icon{
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: url(../images/uh-item-delete.png) no-repeat center center;
+            cursor: pointer;
+        }
+    }
+
+    .pic-upload{
+        padding: 16px 0;
+    }
+
+    .action-btns{
+        padding-top: 48px;
+        @include clearfix;
+        .left{
+            float: left;
+        }
+        .right{
+            float: right;
+        }
+    }
+
+    .entry{
+          margin: 16px 0;
+        .title{
+            line-height: 30px;
+            font-size: 16px;
+        }
+        .desc{
+            font-size: 12px;
+            color: #969696;
+            padding: 5px 0 5px 24px;
+            background: url(../images/uh-help-desc.png) no-repeat left center;
+        }
+    }
+
+    .radio-group{
+        margin-bottom: 8px;
+        input[type="radio"]{
+            margin-right: 5px;
+        }
+        label{
+            margin-right: 12px;
+        }
+    }
+}
+
+
+
+//Widgets
+
+.pure-button{
+    &.radius{
+        border-radius: 20px;
+    }
+
+    &.lightblue{
+        color: white;
+        background-color: #91C1FA
+    }
+    &.blue{
+        color: white;
+        background-color: #4A90E2;
+    }
+
+    &.green{
+        color: white;
+        background-color: #05B30C;
+    }
+
+    &.red{
+        color: white;
+        background-color: #E2574A;
+    }
 }

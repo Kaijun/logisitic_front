@@ -1,0 +1,129 @@
+<div class="uh-stock-submit">
+  <div class="uh-main-header">
+      <div class="left">
+        <span class="title blue">入库预报</span>
+      </div>
+  </div>
+  <div class="uh-main-body pure-form" >
+    <div>
+      <div class="entry pure-g">
+          <div class="title pure-u-1-4">选择收件仓库</div>
+          <div class="pure-u-3-4">
+            <select ng-model="stock.warehouse" class="pure-u-1">
+              <option value="1" default>
+                卡尔斯鲁尔仓库
+              </option>
+              <option value="2">
+                美国仓库
+              </option>
+            </select>
+            <div class="desc">请确认您的包裹填写的收获地址正确，保证我们仓库能收到你的货物。</div>
+          </div>
+
+      </div>
+      <div class="entry pure-g">
+          <div class="title pure-u-1-4">包裹备注</div>
+          <div class="pure-u-3-4">
+            <input ng-model="stock.desc" class="pure-u-1" type="text">
+          </div>
+      </div>
+      <div class="entry pure-g">
+          <div class="title pure-u-1-4">入库跟踪号</div>
+          <div class="pure-u-3-4">
+            <select ng-model="stock.ship_company" class="pure-u-1-5">
+              <option value="1">
+                DHL
+              </option>
+              <option value="2">
+                EMS
+              </option>
+            </select>
+            <input ng-model="stock.ship_tracknumber" class="pure-u-19-24" type="text">
+          </div>
+      </div>
+    </div>
+
+    <div class="uh-divider"></div>
+
+    <div class="entry">
+      <div class="title">添加物品进包裹</div>
+      <div class="desc">必须有一件物品；如需批量上传，请阅读帮助或下载模板</div>
+    </div>
+    <div class="uh-divider thick"></div>
+    <div class="item-list">
+      <table class="pure-table pure-table-horizontal uh-custom-table">
+        <thead>
+          <tr>
+            <th class="pure-u-1-4">物品名称</th>
+            <th class="pure-u-1-4">类型</th>
+            <th class="pure-u-1-8">数量</th>
+            <th class="pure-u-1-8">单价</th>
+            <th class="pure-u-1-8">单件重量</th>
+            <th class="pure-u-1-8">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in stock.items" >
+            <td><input ng-model="item.item_name" class="pure-u-1"  type="text"></td>
+            <td>
+              <select ng-model="item.type" class="pure-u-1" >
+                <option value="1">
+                  奶制品
+                </option>
+                <option value="2">
+                  纺织品
+                </option>
+                <option value="3">
+                  奢侈品
+                </option>
+                <option value="4">
+                  其他
+                </option>
+              </select>
+            </td>
+            <td><input ng-model="item.unit_price" class="pure-u-1" type="text"></td>
+            <td><input ng-model="item.unit_weight" class="pure-u-1" type="text"></td>
+            <td><input ng-model="item.quantity" class="pure-u-1" type="text"></td>
+            <td><a ng-click="deleteItem($index)" class="item-delete-icon"></a></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="options"> 
+        <a ng-click="addItem()" class="pure-button radius blue">新增一项</a>
+        <a class="pure-button radius blue">批量上传</a>
+      </div>
+    </div>
+
+    <div class="uh-divider thick"></div>
+    <div class="entry">
+      <div class="title">上传购物凭证</div>
+      <div class="desc">请根据需要上传相应购物凭证，最多3张，支持 jpg, gif, png 小于500 KB</div>
+      <div class="pure-g pic-upload">
+        <div class="pure-u-1-3"><input type="file" /></div>
+        <div class="pure-u-1-3"><input type="file" /></div>
+        <div class="pure-u-1-3"><input type="file" /></div>
+      </div>
+    </div>    
+
+    <div class="pure-g entry">
+      <div class="pure-u-1-4 title">运单留言</div>
+      <div class="pure-u-3-4"><textarea ng-model="stock.message" class="pure-u-1" ></textarea></div>
+    </div>
+    <div class="pure-g entry">
+      <div class="pure-u-1-4 title">入库清点</div>
+      <div class="pure-u-3-4">
+        <div class="radio-group">
+          <input type="radio" name="needCount" value="true" id="needCountTrue" checked><label for="needCountTrue">需要</label>
+          <input type="radio" name="needCount" value="false" id="needCountFalse"><label for="needCountFalse">不需要</label>
+        </div>
+
+        <div class="desc">入库清点产生相应费用  </div>
+      </div>
+    </div>
+    <div class="action-btns" >
+      <div class="right">
+        <a  ng-click="confirm()" class="pure-button blue">下一步</a>
+      </div>
+    </div>
+  </div>
+</div>

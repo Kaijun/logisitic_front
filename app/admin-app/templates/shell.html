@@ -30,10 +30,10 @@
         <div class="list-wrapper">
           <div class="title">库存</div>
           <ul class="list" >
-            <li>库存列表</li>
-            <li>批量入库</li>
-            <li>快速入库</li>
-            <li>移库列表</li>
+            <li ui-sref="stockList">库存列表</li>
+            <li ui-sref="stockQuick">批量入库</li>
+            <li ui-sref="stockBatch">快速入库</li>
+            <li >移库列表</li>
           </ul>
         </div>
         <div class="list-wrapper">
@@ -58,7 +58,7 @@
       
     </div>
     <div class="pure-u-5-6">
-      <div ui-view></div>
+      <div class="ah-main" ui-view></div>
     </div>
   </div>
 </div>

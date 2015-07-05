@@ -12,10 +12,25 @@
 	    $urlRouterProvider.otherwise('/');
 	    
 	    $stateProvider
-        .state('test', {
-            url: '/test',
-            templateUrl: 'templates/test.html',
-            controller: 'TestCtrl',
+        .state('stockList', {
+            url: '/stockList',
+            templateUrl: 'templates/stockList.html',
+            controller: 'StockListCtrl',
+        })
+        .state('stockDetail', {
+            url: '/stock/:stockId',
+            templateUrl: 'templates/stockDetail.html',
+            controller: 'StockDetailCtrl',
+        })
+        .state('stockQuick', {
+            url: '/stockQuick',
+            templateUrl: 'templates/stockQuick.html',
+            controller: 'StockQuickCtrl',
+        })
+        .state('stockBatch', {
+            url: '/stockBatch',
+            templateUrl: 'templates/stockBatch.html',
+            controller: 'stockBatch',
         })
         
         

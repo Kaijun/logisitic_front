@@ -6,7 +6,7 @@
 
         $httpBackend.whenGET(/templates\//).passThrough();
 
-        $httpBackend.whenGET(AppConfig.apiUrl + '/stocks').respond((function () {
+        $httpBackend.whenGET(AppConfig.apiUrl + '/stocks/').respond((function () {
             var stock = {
                 id: "132",
                 timestamp: "2015-03-25",
@@ -15,13 +15,15 @@
                 status: "2",
             }
             var stocks = [];
-            for(var i=0; i<20; i++){
-                stocks.push(stock);
+            for(var i=0; i<10; i++){
+                var copy = angular.copy(stock);
+                copy.id = i;
+                stocks.push(copy);
             }
             return stocks;
         })());
 
-        $httpBackend.whenGET(AppConfig.apiUrl + '/stocks/132').respond({
+        $httpBackend.whenGET(AppConfig.apiUrl + '/stocks/1').respond({
             warehouse: "柏林",
             desc: "我是包裹备注",
             ship_company: "DHL",
@@ -29,21 +31,25 @@
             status: "2",
             timestamp: "2015-03-25",
             items: [
-                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1kg", quantity: "5"},
-                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1kg", quantity: "5"},
-                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1kg", quantity: "5"},
-                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1kg", quantity: "5"},
+                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1", quantity: "5"},
+                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1", quantity: "5"},
+                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1", quantity: "5"},
+                {item_name: "奶粉", type: "乳制品", unit_price: "25", unit_weight: "1", quantity: "5"},
             ],
             message: "我是包裹留言",
             attachment: "/image/xxx.jpg",
             extra_services: [],
+        });  
+        $httpBackend.whenGET(AppConfig.apiUrl + '/stocks/11').respond(400, {
+            status: "failed",
+            message: "未找到预报",
         });        
 
         $httpBackend.whenPOST(AppConfig.apiUrl + '/stocks/').respond(function(){
-            return [200, {status: "success", message: "添加入库成功"}, {}];
+            return [200, {status: "success", message: "添加入库成功", stockId: "132"}, {}];
         });       
-        $httpBackend.whenPUT(AppConfig.apiUrl + '/stocks/132').respond(function(){
-            return [200, {status: "success", message: "修改入库信息成功"}, {}];
+        $httpBackend.whenPUT(AppConfig.apiUrl + '/stocks/1').respond(function(){
+            return [200, {status: "success", message: "修改入库信息成功", stockId: "132"}, {}];
         });
         
     });
