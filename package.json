@@ -27,8 +27,9 @@
     "opn": "^1.0.0",
     "wiredep": "^2.0.0"
   },
+
   "scripts": {
-    "gulp": "gulp",
-    "bower": "bower"
+    "gulp": "./node_modules/gulp/bin/gulp.js",
+    "bower": "./node_modules/bower/bin/bower"
   }
 }

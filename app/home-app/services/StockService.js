@@ -5,7 +5,7 @@
         .module('home.services')
         .factory('StockService', StockService);
 
-    StockService.$inject = ['AppConfig', '$http', '$httpParamSerializer'];
+    StockService.$inject = ['AppConfig', '$http'];
 
     /* @ngInject */
     function StockService(AppConfig, $http, $httpParamSerializer) {
@@ -37,7 +37,7 @@
             var promise =  $http({
                 url: AppConfig.apiUrl + '/stocks/',
                 method: 'POST',
-                data: $httpParamSerializer(stock),
+                data: stock,
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -50,7 +50,7 @@
             var promise =  $http({
                 url: AppConfig.apiUrl + '/stocks/' + stockId,
                 method: 'PUT',
-                data: $httpParamSerializer(stock),
+                data: stock,
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }
