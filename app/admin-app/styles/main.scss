@@ -136,7 +136,7 @@ $sub-navbar-height: 64px;
     padding-top: 24px;
 }
 .ah-divider{
-    margin: 20px 0;
+    margin: 20px 0 0 0;
     border-bottom: solid 1px #D1D1D1;
     &.thick{
         border-bottom: solid 2px #D1D1D1;
@@ -288,6 +288,7 @@ $sub-navbar-height: 64px;
   height: 40px;
   color: #666666;
   font-size: 18px;
+  padding: 10px 0;
   line-height: 40px;
   &.has-divider{
     margin-top:10px;
@@ -338,7 +339,11 @@ $sub-navbar-height: 64px;
     }
 
     &.red{
+        width: 140px;
+        border-radius: 2px;
         color: white;
+        padding: 10px 0;
+        text-align: center;
         background-color: #E2574A;
     }
     &.flag{
@@ -372,7 +377,7 @@ $sub-navbar-height: 64px;
       color: white; 
     }
     &.divide{
-      margin-top: 10px;
+      margin-top: 20px;
     }
 
 }

@@ -3,88 +3,70 @@
       <div class="left">
         <span class="title blue">库存列表 > 查看 </span>
       </div>
-      <div class="right">
-        <a class="pure-button flag">标记为问题件</a>
-      </div>
   </div>
   <div class="ah-main-body pure-form" >
     <div class="pure-g">
-      <div class="pure-u-3-5">
-        <div>基本信息</div>
-        <div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">收件仓库</div>
-              <div class="pure-u-3-4">
-                {{stock.warehouse}}
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">包裹备注</div>
-              <div class="pure-u-3-4">
-                {{stock.desc}}
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">快递信息</div>
-              <div class="pure-u-3-4">
-                {{stock.ship_company}} 运单号: {{stock.ship_tracknumber}}
-              </div>
-          </div>
-        </div>
-      </div>
-      <div class="pure-u-2-5">
-        <div>库存信息</div>
-        <div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">状态</div>
-              <div class="pure-u-3-4">
-                {{stock.status}}
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">库存位置</div>
-              <div class="pure-u-3-4">
-                {{stock.desc}}
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">预报时间</div>
-              <div class="pure-u-3-4">
-                {{stock.timestamp}}
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">入库时间</div>
-              <div class="pure-u-3-4">
-                -
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">出库时间</div>
-              <div class="pure-u-3-4">
-                -
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">入库重量</div>
-              <div class="pure-u-3-4">
-                -
-              </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      
-    </div>
+
+      <div class="pure-u-7-8">
+        <!-- 并列表格开始 -->
+    <div class="pure-g"> 
+        <div class="pure-u-1-2">
+          <table class="pure-table pure-table-horizontal ah-small-table">
+  <tr><th colspan="2">基本信息</th></tr>
+  <tr><td>客户ID</td><td>CPJSTUDIO</td></tr>
+  <tr>
+    <td style="width:30%">收件仓库</td>
+    <td>德国卡尔斯鲁尔仓库</td>
+
+  </tr>
+  <tr>
+    <td>包裹备注</td>
+    <td>【AJ备注】</td>
+
+  </tr>
+    <tr>
+    <td>库位码</td>
+    <td>NHDIWK</td>
+
+  </tr>
+  <tr>
+    <td>入库跟踪码</td>
+    <td>DHL1231321</td>
+
+  </tr>
+
+</table>
+</div>
+
+<div class="pure-u-1-2">
+<table class="pure-table pure-table-horizontal ah-small-table" > 
+    <th colspan="2">库存信息</th>
+    <tr>    
+    <td  style="width:30%">状态</td>
+    <td>未入库</td>
+    </tr>
+    <tr>
+    <td>库位号</td>
+    <td>1234</td>
+    </tr>
+    <tr>
+    <td>预报时间</td>
+    <td>12313</td>
+    </tr>
+    <tr>
+    <td>入库时间</td>
+    <td>--</td></tr>
+</table>
+</div>
 
 
-    <div class="ah-divider"></div>
 
-    <div class="entry">
-      <div class="title">包裹物品信息</div>
-    </div>
-    <div class="item-list">
-      <table class="pure-table pure-table-horizontal ah-custom-table">
+</div>  
+<!-- 并列表格结束 -->
+
+<div class="ah-section has-divider"> 包裹物品信息 </div>
+
+<table class="pure-table pure-table-horizontal ah-custom-table">
         <thead>
           <tr>
             <th class="pure-u-1-4">预报运单号</th>
@@ -105,37 +87,38 @@
             <td>{{item.quantity}}</td>
           </tr>
         </tbody>
-      </table>
-    </div>
+    </table>
 
-    <div class="entry">
-      <div class="title">附加信息</div>
-    </div>    
 
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 title">留言</div>
-      <div class="pure-u-3-4">{{stock.message}}</div>
-    </div>
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 title">管理员留言</div>
-      <div class="pure-u-3-4">***</div>
-    </div>
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 title">附件信息</div>
-      <div class="pure-u-3-4">已上传凭证....(TODO)</div>
-    </div>
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 title">入库清点</div>
-      <div class="pure-u-3-4"></div>
-    </div>
-    <div class="action-btns" >
-      <div class="left">
-        <a  ng-click="" class="pure-button blue">返回</a>
+<div class="ah-section">附加信息</div>
+    <table class="pure-table pure-table-horizontal ah-small-table">
+  <tr>
+    <td style="width:15%">留言</td>
+    <td>留什么</td>
+  </tr>
+    <tr>
+    <td>附件信息</td>
+    <td>$80</td>
+  </tr>
+  <tr>
+    <td>入库清单</td>
+    <td>$80</td>
+  </tr>
+</table>
+
+
       </div>
-      <div class="right">
-        <a  ng-click="" class="pure-button red">存档</a>
-        <a ng-if="stock.status!='4'" ng-click="enterStock()" class="pure-button green">入库</a>
-      </div>
-    </div>
-  </div>
+      <!-- 右侧功能键开始 -->
+      <div class="pure-u-1-8 right">
+           <div><a class="pure-button flag ">标记为问题件</a></div>
+           <div><a class="pure-button blue divide">入库</a></div>
+           <div><a class="pure-button red divide">存档</a></div>
+           <div><a class="pure-button back divide">返回</a></div>
+           
+           
+      </div> <!-- 右侧功能键结束 Div -->
+    </div><!-- 中部信息栏结束 Div -->
+
+
+  </div><!-- 主体部分结束 Div  -->
 </div>
