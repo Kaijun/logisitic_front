@@ -113,7 +113,7 @@ $sub-navbar-height: 64px;
 .ah-main-header{
     @include clearfix;
     padding-bottom: 10px;
-    border-bottom: solid 1px #D1D1D1;
+    border-bottom: solid 2px #D1D1D1;
     .left{
         float: left;
         .title{
@@ -136,10 +136,10 @@ $sub-navbar-height: 64px;
     padding-top: 24px;
 }
 .ah-divider{
-    margin: 20px 0;
+    margin: 20px 0 0 0;
     border-bottom: solid 1px #D1D1D1;
     &.thick{
-        border-bottom: solid 3px #D1D1D1;
+        border-bottom: solid 2px #D1D1D1;
     }
 }
 
@@ -188,7 +188,9 @@ $sub-navbar-height: 64px;
         background: none;
         th{
             display: table-cell !important;
-            padding: 8px 0;
+            line-height: 30px;
+            border-top: 1px solid #D1D1D1;
+            // padding: 8px 8px;
         }
     }
 
@@ -197,7 +199,8 @@ $sub-navbar-height: 64px;
             border-bottom: solid 1px #D1D1D1;
         }
         td{
-            padding: 16px 8px 16px 0;
+            // padding: 16px 8px 16px 8px;
+            line-height: 30px;
         }
     }
 }
@@ -206,15 +209,8 @@ $sub-navbar-height: 64px;
 
 
 .ah-stock-detail{
-    .pure-button.flag{
-      border: solid 2px #F54623;
-      color: #F54623;
-      border-radius: 3px;
-      background-color: none;
-      background: url(../images/flag_red.png) no-repeat 10px center;
-      padding: 10px 10px 10px 30px;
 
-    }
+
     .ah-main-header .right{
       margin-top: 0;
     }
@@ -283,6 +279,42 @@ $sub-navbar-height: 64px;
 
 //Widgets
 
+// 定义button的位置
+.right{
+  text-align: right;
+}
+//小段标题栏
+.ah-section{
+  height: 40px;
+  color: #666666;
+  font-size: 18px;
+  padding: 10px 0;
+  line-height: 40px;
+  &.has-divider{
+    margin-top:10px;
+    border-top:1px solid #D1D1D1; 
+  }
+
+}
+//自定义所有无边框的小表格
+.ah-small-table{
+  width: 100%;
+  border:0;
+  text-align: left;
+  th{
+    color: #666666;
+    border:0;
+  }
+  td{
+    border:0;
+  }
+  tr{
+    border:0;
+  }
+}
+
+
+
 .pure-button{
     &.radius{
         border-radius: 20px;
@@ -293,8 +325,12 @@ $sub-navbar-height: 64px;
         background-color: #91C1FA
     }
     &.blue{
+        width: 140px;
         color: white;
         background-color: #4A90E2;
+        text-align: center;
+        padding: 10px 0;
+        border-radius: 2px;
     }
 
     &.green{
@@ -303,7 +339,45 @@ $sub-navbar-height: 64px;
     }
 
     &.red{
+        width: 140px;
+        border-radius: 2px;
         color: white;
+        padding: 10px 0;
+        text-align: center;
         background-color: #E2574A;
     }
+    &.flag{
+      width: 140px;
+      border: solid 1px #F54623;
+      color: #F54623;
+      border-radius: 2px;
+      background-color: none;
+      background: url(../images/flag_red.png) no-repeat 10px center;
+      padding: 10px 10px 10px 30px;
+    }
+    &.enter{
+      width: 140px;
+      border-radius: 2px;
+      background: url(../images/btn_enter.png) no-repeat 10px center #4A90E2;
+      padding: 10px 16px 10px 40px;
+      color:white;
+    }
+    &.back{
+      width: 140px;
+      border-radius: 2px;
+      background: url(../images/btn-back.png) no-repeat 10px center #649047;
+      padding: 10px 16px 10px 40px;
+      color:white;
+    }
+    &.view{
+      width: 140px;
+      border-radius: 2px;
+      background: url(../images/btn-view.png) no-repeat 10px center #F5A623;
+      padding: 10px 16px 10px 40px;
+      color: white; 
+    }
+    &.divide{
+      margin-top: 20px;
+    }
+
 }

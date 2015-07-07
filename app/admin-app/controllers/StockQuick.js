@@ -3,20 +3,28 @@
 
     angular
         .module('admin.controllers')
-        .controller('StockBatchCtrl', StockBatchCtrl);
+        .controller('StockQuickCtrl', StockQuickCtrl);
 
-    StockBatchCtrl.$inject = [];
+    StockQuickCtrl.$inject = ['$scope', 'StockService', '$timeout'];
 
     /* @ngInject */
-    function StockBatchCtrl() {
-        var vm = this;
-        vm.title = 'StockBatchCtrl';
+    function StockQuickCtrl($scope, StockService, $timeout) {
+
+        $scope.stock = null;
+        $scope.stockId = 1;
 
         activate();
 
         ////////////////
 
         function activate() {
+            if($scope.stockId){
+                StockService.getStock($scope.stockId).then(function (data) {
+                    $timeout(function() {
+                        $scope.stock = data;
+                    });
+                });
+            }
         }
     }
 })();
