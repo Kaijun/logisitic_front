@@ -290,9 +290,9 @@ $sub-navbar-height: 64px;
   font-size: 18px;
   padding: 10px 0;
   line-height: 40px;
-  &.has-divider{
-    margin-top:10px;
-    border-top:1px solid #D1D1D1; 
+  &.first-child{
+    margin-top:0;
+    padding-top: 0;
   }
 
 }
