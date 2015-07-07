@@ -178,14 +178,15 @@ textarea{
 
 .uh-main-header{
     @include clearfix;
-    padding-bottom: 20px;
-    border-bottom: solid 1px #D1D1D1;
+    padding-bottom: 10px;
+    border-bottom: solid 3px #D1D1D1;
     .left{
         float: left;
         .title{
             display: inline-block;
             font-size: 18px;
-            padding: 12px;
+            line-height: 18px;
+            padding: 10px ;
             border-left: solid 5px #E65F5F;
             &.blue{
                 border-left: solid 5px #147DE0;
@@ -205,7 +206,7 @@ textarea{
     margin: 20px 0;
     border-bottom: solid 1px #D1D1D1;
     &.thick{
-        border-bottom: solid 3px #D1D1D1;
+        border-bottom: solid 2px #D1D1D1;
     }
 }
 
@@ -236,6 +237,7 @@ textarea{
     }
 }
 
+// 最好切换到uh-line-talbe
 .uh-custom-table{
     table-layout: fixed;
     width: 100%;
@@ -328,27 +330,121 @@ textarea{
 
 //Widgets
 
+// 此为每一个section的标题
+.uh-section{
+    line-height: 20px;
+    font-size: 18px;
+    color: #666666;
+    padding:10px 0;
+    margin-top: 10px;
+    &.first-child{
+        margin: 0;
+        padding-top: 0;
+    }
+
+}
+// 此定义无边框的表格
+.uh-small-table{
+    table-layout: fixed;
+    width: 100%;
+    border: none;
+    thead{
+        background: none;
+        th{
+            display: table-cell !important;
+        }
+    }
+
+    tbody{
+        tr{
+            border:0;
+        }
+        td{
+            border: 0;
+            font-size: 14px;
+            line-height: 18px;
+            padding-left: 8px;
+        }
+    }
+}
+
+// 重新写的表格样式，最好切换到此标签
+.uh-line-table{
+    font-size: 14px;
+    table-layout: fixed;
+    width: 100%;
+    border: none;
+    thead{
+        background: none;
+        th{
+            border-top: solid 1px #D1D1D1;
+            display: table-cell !important;
+            padding: 8px 0 8px 8px;
+        }
+    }
+
+    tbody{
+        tr{
+            border-bottom: 0;
+        }
+        td{
+            padding: 8px 0px 8px 8px;
+            border: 0;
+        }
+        tr:last-of-type{
+            border-bottom: solid 1px #D1D1D1;
+            &.sum{
+                  border-top:solid 1px #D1D1D1;
+                 font-weight: bold; 
+                }
+        }
+    }
+
+}
+
+
 .pure-button{
+    width: 80px;
+    font-size: 14px;
+    padding:10px 0 10px 10px;
     &.radius{
-        border-radius: 20px;
+        border-radius: 2px;
     }
 
     &.lightblue{
         color: white;
         background-color: #91C1FA
     }
-    &.blue{
+    &.back{
         color: white;
-        background-color: #4A90E2;
+        background: url(../images/btn-back.png) no-repeat 10px center #4A90E2;
     }
 
-    &.green{
+    &.edit{
         color: white;
-        background-color: #05B30C;
+        background: url(../images/btn-edit.png) no-repeat 10px center#05B30C;
     }
 
-    &.red{
+    &.delete{
         color: white;
-        background-color: #E2574A;
+        background: url(../images/btn-delete.png) no-repeat 10px center #E2574A;
     }
+    &.left{
+        margin-left:10px; 
+    }
+    &.left:first-of-type{
+        margin-left: 0;
+    }
+    &.right{
+        float:right;
+        margin-right:10px; 
+    }
+    &.right:first-of-type{
+        margin-right: 0;
+    }
+
+}
+.pure-button a{
+    color: white;
+    text-decoration: none;
 }
