@@ -4,7 +4,7 @@
   <div class="uh-main-header">
     <div class="left">
       <span class="title">库存列表</span>
-      <a class="pure-button radius lightblue">新增</a>
+      <a ui-sref="stockSubmit" class="pure-button radius lightblue">新增</a>
     </div>
 
     <div class="right">
@@ -19,6 +19,30 @@
       <a class="pure-button radius ">已入库</a>
     </div>
     <div class="list">
+
+      <table ng-table="tableParams" class="pure-table pure-table-horizontal uh-custom-table">
+          <tr ng-click="goToDetail(stock.id)" ng-repeat="stock in $data">
+              <td data-title="'预报日期'">
+                  {{stock.timestampStr}}
+              </td>
+              <td data-title="'包裹运单号'">
+                  {{stock.ship_info}}
+              </td>
+              <td data-title="'包裹备注'">
+                  {{stock.desc}}
+              </td>
+              <td data-title="'库存天数'">
+                  需要计算
+              </td>
+              <td data-title="'状态'">
+                  {{stock.statusStr}}
+              </td>
+              <td data-title="'操作'">
+                  动态生成操作
+              </td>
+          </tr>
+      </table>
+<!-- 
       <table class="pure-table pure-table-horizontal uh-custom-table">
         <thead>
           <tr>
@@ -40,7 +64,7 @@
             <td>动态生成操作</td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
     </div>
   </div>
   

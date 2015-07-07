@@ -5,7 +5,6 @@
         .module('admin.controllers')
         .controller('StockQuickCtrl', StockQuickCtrl);
 
-    StockQuickCtrl.$inject = ['$scope', 'StockService', '$timeout'];
 
     /* @ngInject */
     function StockQuickCtrl($scope, StockService, $timeout) {

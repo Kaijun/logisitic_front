@@ -14,18 +14,23 @@
             timestamp: null,
             weight: null,
             items: [],
+            pics:[],
             message: null,
             attachment: [],
             extra_services: [],
         }
         $scope.stock = null; 
+        $scope.warehouses = [];
+        $scope.logisticPaths = [];
 
         
 
         active();
 
         function active () {
-
+            StockService.getWarehouses().then(function (data){
+                 console.log(data);
+            });
             $timeout(function(){
                 if(!$stateParams.action){
                     // 非正常
@@ -65,12 +70,14 @@
                     // 非法
                     $state.go('index');
                 }
-            })
+            });
         }
         
 
         $scope.confirm = function(){
             // TODO: check if stock available!!!
+            console.log($scope.stock);
+            debugger;
             StockService.editingStock = $scope.stock;
             StockService.editingStockId = $stateParams.stockId ? $stateParams.stockId : null;
             $state.transitionTo('stockConfirm', {stock: $scope.stock});
