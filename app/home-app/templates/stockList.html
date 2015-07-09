@@ -8,15 +8,15 @@
     </div>
 
     <div class="right">
-      <input placeholder="搜索" />
+      <input placeholder="搜索" ng-model="searchText" />
     </div>
   </div>
 
   <div class="uh-list-body">
     <div class="tab">
-      <a class="pure-button radius active">所有记录</a>
-      <a class="pure-button radius ">未到货</a>
-      <a class="pure-button radius ">已入库</a>
+      <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="pure-button radius">所有记录</a>
+      <a ng-click="toggleStatusFilter(2)" ng-class="{active: toggleStatus===2}"  class="pure-button radius ">已预报</a>
+      <a ng-click="toggleStatusFilter(4)" ng-class="{active: toggleStatus===4}" class="pure-button radius ">已入库</a>
     </div>
     <div class="list">
 

@@ -15,7 +15,8 @@
     "angular-ui-router": "~0.2.13",
     "angular": "~1.4.2",
     "normalize.css": "~3.0.3",
-    "ng-table": "~0.5.4"
+    "ng-table": "~0.5.4",
+    "angular-loading-bar": "~0.8.0"
   },
   "devDependencies": {
     "chai": "~3.0.0",

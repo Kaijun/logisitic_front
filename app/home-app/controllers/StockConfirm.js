@@ -53,18 +53,18 @@
         function confirmSubmit () {
             if(StockService.editingStockId){
                 StockService.editStock(StockService.editingStockId, $scope.stock).then(function (data) {
-                    if(data.stockId){
+                    if(data.package_id && data.success==="true"){
                         clearEdittingStock()
-                        $state.go('stockDetail', {stockId: data.stockId});
+                        $state.go('stockDetail', {stockId: data.package_id});
                     }
                 });
 
             }
             else{
                 StockService.submitStock($scope.stock).then(function (data) {
-                    if(data.stockId){
+                    if(data.package_id && data.success==="true"){
                         clearEdittingStock()
-                        $state.go('stockDetail', {stockId: data.stockId});
+                        $state.go('stockDetail', {stockId: data.package_id});
                     }
                 });
             }

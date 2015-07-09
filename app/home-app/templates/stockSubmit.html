@@ -10,11 +10,8 @@
           <div class="title pure-u-1-4">选择收件仓库</div>
           <div class="pure-u-3-4">
             <select ng-model="stock.warehouse" class="pure-u-1">
-              <option value="1" default>
-                卡尔斯鲁尔仓库
-              </option>
-              <option value="2">
-                美国仓库
+              <option ng-repeat="warehouse in warehouses" value="{{warehouse.id}}">
+                {{warehouse.name}}
               </option>
             </select>
             <div class="desc">请确认您的包裹填写的收获地址正确，保证我们仓库能收到你的货物。</div>
@@ -31,11 +28,8 @@
           <div class="title pure-u-1-4">入库跟踪号</div>
           <div class="pure-u-3-4">
             <select ng-model="stock.ship_company" class="pure-u-1-5">
-              <option value="1">
-                DHL
-              </option>
-              <option value="2">
-                EMS
+              <option ng-repeat="path in logisticPaths" value="{{path.id}}">
+                {{path.name}}
               </option>
             </select>
             <input ng-model="stock.ship_tracknumber" class="pure-u-19-24" type="text">
@@ -67,16 +61,16 @@
             <td><input ng-model="item.item_name" class="pure-u-1"  type="text"></td>
             <td>
               <select ng-model="item.type" class="pure-u-1" >
-                <option value="1">
+                <option value="奶制品">
                   奶制品
                 </option>
-                <option value="2">
+                <option value="纺织品">
                   纺织品
                 </option>
-                <option value="3">
+                <option value="奢侈品">
                   奢侈品
                 </option>
-                <option value="4">
+                <option value="其他">
                   其他
                 </option>
               </select>
@@ -99,9 +93,9 @@
       <div class="title">上传购物凭证</div>
       <div class="desc">请根据需要上传相应购物凭证，最多3张，支持 jpg, gif, png 小于500 KB</div>
       <div class="pure-g pic-upload">
-        <div class="pure-u-1-3"><input ng-model="stock.pics[0]" type="file" /></div>
-        <div class="pure-u-1-3"><input ng-model="stock.pics[1]" type="file" /></div>
-        <div class="pure-u-1-3"><input ng-model="stock.pics[2]" type="file" /></div>
+        <div class="pure-u-1-3"><input file-model="imagesToUpload[0]" type="file" accept="image/*"/></div>
+        <div class="pure-u-1-3"><input file-model="imagesToUpload[1]" type="file" accept="image/*"/></div>
+        <div class="pure-u-1-3"><input file-model="imagesToUpload[3]" type="file" accept="image/*"/></div>
       </div>
     </div>    
 
@@ -109,15 +103,16 @@
       <div class="pure-u-1-4 title">运单留言</div>
       <div class="pure-u-3-4"><textarea ng-model="stock.message" class="pure-u-1" ></textarea></div>
     </div>
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 title">入库清点</div>
+    <!-- 特殊服务 -->
+    <div ng-repeat="service in extraServices" class="pure-g entry">
+      <div class="pure-u-1-4 title">{{service.service_name}}</div>
       <div class="pure-u-3-4">
         <div class="radio-group">
-          <input type="radio" name="needCount" value="true" id="needCountTrue" checked><label for="needCountTrue">需要</label>
-          <input type="radio" name="needCount" value="false" id="needCountFalse"><label for="needCountFalse">不需要</label>
+          <input type="radio" name="{{'extra_service'+service.id}}" value="true" id="{{service.id+'Need'}}" checked><label for="{{service.id+'Need'}}">需要</label>
+          <input type="radio" name="{{'extra_service'+service.id}}" value="false" id="{{service.id+'Noneed'}}"><label for="{{service.id+'Noneed'}}">不需要</label>
         </div>
 
-        <div class="desc">入库清点产生相应费用  </div>
+        <div class="desc">{{service.description}}  </div>
       </div>
     </div>
     <div class="action-btns" >

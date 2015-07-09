@@ -1,14 +1,11 @@
 'use strict';
 ;(function () {
 
-    var moduleDependency = ['admin.controllers','admin.services', 'ui.router'];
-    if(angular.mock){
-        moduleDependency.push('admin.mocks')
-    }
+	angular.module('admin', ['admin.controllers','admin.services', 'ui.router', 'angular-loading-bar'])
+	.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', 
+    function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.includeSpinner = true;
 
-	angular.module('admin', moduleDependency)
-	.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-    
 	    $urlRouterProvider.otherwise('/');
 	    
 	    $stateProvider

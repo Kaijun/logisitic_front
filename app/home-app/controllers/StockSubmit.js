@@ -6,7 +6,7 @@
     .controller('StockSubmitCtrl', ['$scope', 'StockService', '$state', '$stateParams', '$timeout', 
     function($scope, StockService, $state, $stateParams, $timeout) {
         var stockObj = {
-            warehouse: "1",
+            warehouse: null,
             desc: null,
             ship_company: null,
             ship_tracknumber: null,
@@ -22,14 +22,28 @@
         $scope.stock = null; 
         $scope.warehouses = [];
         $scope.logisticPaths = [];
-
+        $scope.extraServices = [];
+        $scope.imagesToUpload = [];
         
 
         active();
 
         function active () {
             StockService.getWarehouses().then(function (data){
-                 console.log(data);
+                 $scope.warehouses = data;
+                 $timeout(function () {
+                    $scope.stock.warehouse = $scope.warehouses[0].id.toString();
+                 });
+            });
+            StockService.getLogisticPaths(1).then(function (data){
+                 $scope.logisticPaths = data;
+                 $timeout(function () {
+                    $scope.stock.ship_company = $scope.logisticPaths[0].id.toString();
+                 });
+            });
+            // TODO: add user Group!!! from UserInfo
+            StockService.getExtraServices(1, 0).then(function (data){
+                 $scope.extraServices = data;
             });
             $timeout(function(){
                 if(!$stateParams.action){
@@ -77,10 +91,12 @@
         $scope.confirm = function(){
             // TODO: check if stock available!!!
             console.log($scope.stock);
-            debugger;
             StockService.editingStock = $scope.stock;
             StockService.editingStockId = $stateParams.stockId ? $stateParams.stockId : null;
-            $state.transitionTo('stockConfirm', {stock: $scope.stock});
+            StockService.uploadImage($scope.imagesToUpload[0]).then(function(data){
+                console.log(data);
+                $state.transitionTo('stockConfirm', {stock: $scope.stock});
+            })
         }
 
         $scope.addItem = function () {

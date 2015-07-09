@@ -18,10 +18,12 @@
             getStockStatusMapping: getStockStatusMapping,
             getWarehouses: getWarehouses,
             getLogisticPaths: getLogisticPaths,
+            getExtraServices: getExtraServices,
             getStock: getStock,
             getStocks: getStocks,
             submitStock: submitStock,
             editStock: editStock,
+            uploadImage: uploadImage,
         };
         return service;
 
@@ -44,14 +46,48 @@
             stockInfoCache.put('warehouses', promise)
             return promise;
         }
-        function getLogisticPaths() {
+        function getLogisticPaths(type) {
             if(stockInfoCache.get('logisticPaths')){
-                return stockInfoCache.get('logisticPaths');
+                return stockInfoCache.get('logisticPaths').then(function(data){
+                    var data = data.filter(function(value){
+                        return value.type === type;
+                    });
+                    return data;
+                });
             }
             var promise = $http.get(AppConfig.apiUrl + '/info/logistic-paths').then(function (response) {
                 return response.data;
             });
-            stockInfoCache.put('logisticPaths', promise)
+            stockInfoCache.put('logisticPaths', promise);
+
+            promise = promise.then(function(data) {
+                var data = data.filter(function(value){
+                    return value.type === type;
+                });
+                return data;
+            });
+            return promise;
+        }
+        function getExtraServices(type, userGroup) {
+            if(stockInfoCache.get('extraServices')){
+                return stockInfoCache.get('extraServices').then(function(data){
+                    var data = data.filter(function(value){
+                        return parseInt(value.type) === parseInt(type) && parseInt(value.user_group) === parseInt(userGroup) ;
+                    });
+                    return data;
+                });
+            }
+            var promise = $http.get(AppConfig.apiUrl + '/info/extra-services').then(function (response) {
+                return response.data;
+            });
+            stockInfoCache.put('extraServices', promise);
+
+            promise = promise.then(function(data) {
+                var data = data.filter(function(value){
+                    return parseInt(value.type) === parseInt(type) && parseInt(value.user_group) === parseInt(userGroup) ;
+                });
+                return data;
+            });
             return promise;
         }
 
@@ -64,10 +100,6 @@
         function getStocks() {
             var promise = $http.get(AppConfig.apiUrl + '/stocks/').then(function (response) {
                 var stocks = response.data;
-                // stocks.map(function (item) {
-                //     item.timestamp = (new Date(item.timestamp.date)).toISOString().substring(0, 10);;
-                //     return item;
-                // })
                 return stocks;
             });
             return promise;
@@ -93,6 +125,18 @@
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+
+        function uploadImage (image) {
+            var fd = new FormData();
+            fd.append('image', image);
+            var promise = $http.post(AppConfig.apiUrl + '/image/', fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
             }).then(function(response){
                 return response.data;
             });
