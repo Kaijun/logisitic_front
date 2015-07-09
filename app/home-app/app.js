@@ -1,14 +1,12 @@
 'use strict';
 ;(function () {
-    
-    var moduleDependency = ['home.controllers','home.services', 'ui.router'];
-    if(angular.mock){
-        moduleDependency.push('home.mocks')
-    }
 
-	angular.module('home', moduleDependency)
-	.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-    
+
+	angular.module('home',  ['home.controllers','home.services','home.directives' , 'ui.router', 'angular-loading-bar'])
+	.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', 
+        function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.includeSpinner = true;
+        
 	    $urlRouterProvider.otherwise('/');
 	    
 	    $stateProvider

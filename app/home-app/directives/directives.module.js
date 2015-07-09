@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('home.controllers', [
-            'ngTable'
+        .module('home.directives', [
+            
         ]);
 })();

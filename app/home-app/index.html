@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/bower_components/normalize.css/normalize.css" />
     <link rel="stylesheet" href="/bower_components/pure/pure-min.css" />
     <link rel="stylesheet" href="/bower_components/pure/grids-responsive-min.css" />
+    <link rel="stylesheet" href="/bower_components/angular-loading-bar/build/loading-bar.min.css">
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -50,19 +51,10 @@
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/bower_components/ng-table/dist/ng-table.min.js"></script>
+    <script src="/bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
-
-
-    <!-- Mock Service! Will be removed after build-->
-    <!-- build:remove -->
-    <script type="text/javascript" src="/bower_components/angular-mocks/angular-mocks.js"></script>
-    <script type="text/javascript" src="/home-app/mocks/mocks.module.js"></script>
-    <script type="text/javascript" src="/home-app/mocks/StockMock.js"></script>
-    <!-- endbuild -->
-
-
 
 
     <!-- build:js /home-app/scripts/plugins.js -->
@@ -76,13 +68,16 @@
     <script src="/home-app/controllers/StockSubmit.js"></script>
     <script src="/home-app/controllers/StockConfirm.js"></script>
     <script src="/home-app/controllers/StockDetail.js"></script>
-    <script src="/home-app/controllers/StockEdit.js"></script>
 
     <script src="/home-app/controllers/OrderDetail.js"></script>
 
 
     <script src="/home-app/services/services.module.js"></script>
     <script src="/home-app/services/StockService.js"></script>
+
+
+    <script src="/home-app/directives/directives.module.js"></script>
+    <script src="/home-app/directives/fileModel.js"></script>
     <!-- endbuild -->
 
     <!-- PHP Render UserInfo -->

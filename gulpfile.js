@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
+var proxyMiddleware = require('http-proxy-middleware');
 
 gulp.task('styles', function () {
   return gulp.src('app/**/*.scss')
@@ -81,6 +82,10 @@ gulp.task('extras', function () {
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', ['styles', 'fonts'], function () {
+  var proxyAuth = proxyMiddleware('/auth/', {target: 'http://0.0.0.0:8000'});
+  var proxyApi = proxyMiddleware('/api/', {target: 'http://0.0.0.0:8000'});
+  var proxyHome = proxyMiddleware('/home/', {target: 'http://0.0.0.0:8000'});
+
   browserSync({
     notify: false,
     port: 9000,
@@ -89,7 +94,8 @@ gulp.task('serve', ['styles', 'fonts'], function () {
       routes: {
         '/bower_components': 'bower_components',
         '/scripts': 'app/scripts'
-      }
+      },
+      middleware: [proxyAuth, proxyApi, proxyHome],
     }
   });
 

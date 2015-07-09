@@ -5,7 +5,6 @@
         .module('admin.controllers')
         .controller('StockQuickCtrl', StockQuickCtrl);
 
-    StockQuickCtrl.$inject = ['$scope', 'StockService', '$timeout'];
 
     /* @ngInject */
     function StockQuickCtrl($scope, StockService, $timeout) {
@@ -18,13 +17,19 @@
         ////////////////
 
         function activate() {
-            if($scope.stockId){
-                StockService.getStock($scope.stockId).then(function (data) {
-                    $timeout(function() {
-                        $scope.stock = data;
-                    });
-                });
-            }
+
+            StockService.getStockByTrackNr('testo').then(function (data) {
+                debugger;
+            })
+
+
+            // if($scope.stockId){
+            //     StockService.getStock($scope.stockId).then(function (data) {
+            //         $timeout(function() {
+            //             $scope.stock = data;
+            //         });
+            //     });
+            // }
         }
     }
 })();

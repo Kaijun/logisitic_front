@@ -21,9 +21,13 @@
         function activate() {
             if($scope.stockId){
                 StockService.getStock($scope.stockId).then(function (data) {
+                    data.timestampStr = (new Date(data.timestamp.date)).toISOString().substring(0, 10);
+                    data.status = parseInt(data.status);
+                    data.statusStr = StockService.getStockStatusMapping(data.status);
+                    
                     $timeout(function() {
                         $scope.stock = data;
-                    });
+                    }); 
                 }, function() {
                     $state.go('stockList');
                 });
@@ -36,9 +40,7 @@
         function enterStock () {
             if($scope.stockId){
                 StockService.enterStock($scope.stockId).then(function(data) {
-                    debugger;
                     $state.go('stockDetail', {stockId: data.stockId});
-                    debugger;
                 });
             }
         }
