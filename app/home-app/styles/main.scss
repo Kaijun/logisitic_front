@@ -179,7 +179,7 @@ textarea{
 .uh-main-header{
     @include clearfix;
     padding-bottom: 10px;
-    border-bottom: solid 3px #D1D1D1;
+    border-bottom: solid 2px #CCCCCC;
     .left{
         float: left;
         .title{
@@ -394,6 +394,37 @@ textarea{
     }
 }
 
+
+// 这个样式的表格用于单行需操作的地方，如管理地址，管理订单列表
+
+.uh-list-table{
+    font-size: 14px;
+    text-layout:fixed;
+    width: 100%;
+    border: none;
+    margin-bottom:20px;
+    thead{
+        background: none;
+        th{
+            display: table-cell !important;
+            padding: 12px 0 12px 8px;
+        }
+    }
+
+    tbody{
+        tr{
+            border-bottom: 1px solid #D1D1D1;
+        }
+        td{
+            color: #333333;
+            padding: 12px 0px 12px 8px;
+            border: 0;
+        }
+    }
+}
+
+
+
 // 重新写的表格样式，最好切换到此标签
 .uh-line-table{
     font-size: 14px;
@@ -426,6 +457,88 @@ textarea{
         }
     }
 
+}
+
+// 表单每行的设定
+.uh-form-section{
+    font-size:14px;
+    line-height: 40px;
+    padding:10px 0;
+    border-bottom: 1px solid #D1D1D1;
+    &:last-of-type{
+        border-bottom: 0;
+    }
+
+}
+// 表单的输入框，经过重新定义了
+.uh-form-section input{
+    -webkit-appearance: none;
+    width: 95%;
+    line-height: 20px;
+    background:#f6f6f6;
+    display: inline;
+    padding:5px 0 5px 8px;
+    color: #999999;
+    border:1px solid #D1D1D1;
+    border-radius:0; 
+}
+
+//表单选择框
+.uh-form-section select{
+    -webkit-appearance: none;
+    width: 98%;
+    line-height: 20px;
+    height: 30px;
+    padding-left:8px;
+    color: #333333;
+    border:1px solid #D1D1D1;
+    border-radius:0;
+    background:url(../images/form-dropdown.png) right 10px center no-repeat #f6f6f6;
+}
+
+//表单 checkbox 自定义样式
+.uh-form-section input[type="checkbox"] {
+    display:none;
+}
+
+.uh-form-section input[type="checkbox"] + label span {
+    display:inline-block;
+    width:22px;
+    height:22px;
+    margin: 8px 5px;
+    vertical-align:middle;
+    background:url(../images/form-checkbox-bg.png) left top no-repeat;
+    cursor:pointer;
+}
+.uh-form-section input[type="checkbox"]:checked + label span {
+    background:url(../images/form-checkbox-bg.png) left top -22px no-repeat;
+}
+
+.id-pic-uploader{
+        opacity: 0;
+        width: 96px;
+        height: 60px;
+}
+.ip-pic-front{
+    background: url(../images/id-front-pic.png) no-repeat;
+    width: 96px;
+    height: 60px;
+}
+
+.ip-pic-back{
+    margin-left:20px;
+    background: url(../images/id-back-pic.png) no-repeat;
+    width: 96px;
+    height: 60px;
+}
+
+.uh-form-desc{
+        font-size: 12px;
+        color: #666;
+        line-height: 20px;
+        &.inline-desc{
+            line-height: 40px;
+        }
 }
 
 
