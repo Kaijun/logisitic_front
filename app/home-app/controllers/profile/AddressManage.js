@@ -3,14 +3,14 @@
 
     angular
         .module('home.controllers')
-        .controller('AddressEditCtrl', AddressEditCtrl);
+        .controller('AddressManageCtrl', AddressManageCtrl);
 
-    AddressEditCtrl.$inject = [];
+    AddressManageCtrl.$inject = [];
 
     /* @ngInject */
-    function AddressEditCtrl() {
+    function AddressManageCtrl() {
         var vm = this;
-        vm.title = 'AddressEditCtrl';
+        vm.title = 'AddressManageCtrl';
 
         activate();
 

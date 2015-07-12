@@ -61,10 +61,10 @@
         })
 
 
-        .state('addressEdit', {
-            url: '/profile/addressEdit',
-            templateUrl: 'templates/profile/addressEdit.html',
-            controller: 'AddressEditCtrl',
+        .state('addressManage', {
+            url: '/profile/addressManage',
+            templateUrl: 'templates/profile/addressManage.html',
+            controller: 'AddressManageCtrl',
         })
 	}])
     .run(['$state', '$injector', function($state, $injector){
