@@ -6,8 +6,8 @@
 
 ### Deploy ###
 * `npm install`
-* `bower install`
-
+* `npm run bower`
+* `nom run gulp` 
 
 ### Run ###
-* `gulp serve`
+* `nom run gulp serve`
