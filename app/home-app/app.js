@@ -59,6 +59,13 @@
             templateUrl: 'templates/orderDetail.html',
             controller: 'OrderDetailCtrl',
         })
+
+
+        .state('addressEdit', {
+            url: '/profile/addressEdit',
+            templateUrl: 'templates/profile/addressEdit.html',
+            controller: 'AddressEditCtrl',
+        })
 	}])
     .run(['$state', '$injector', function($state, $injector){
         var isUserInfoRendered = $injector.has('UserInfo');
