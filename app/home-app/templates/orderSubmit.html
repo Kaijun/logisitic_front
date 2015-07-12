@@ -1,0 +1,290 @@
+<div class="uh-submit">
+  <div class="uh-main-header">
+      <div class="left">
+        <span class="title blue">提交发货</span>
+      </div>
+  </div>
+  <div class="uh-main-body pure-form" >
+    <div>
+      <div class="entry pure-g">
+          <div class="title pure-u-1-4">选择收货地址</div>
+          <div class="pure-u-3-4">
+            <select class="pure-u-18-24">
+              <!-- <option ng-repeat="warehouse in warehouses" value="{{warehouse.id}}">
+                {{warehouse.name}}
+              </option> -->
+              <option >
+                地址代号2
+              </option>
+              <option >
+                地址代号1
+              </option>
+            </select>
+            <a class="pure-button blue">管理国内地址</a>
+            <div class="desc">请确认您的包裹填写的收获地址正确，保证您能在国内收到货物。</div>
+          </div>
+
+      </div>
+      <div class="entry pure-g">
+          <div class="title pure-u-1-4">配送路线选择</div>
+          <div class="pure-u-3-4">
+            <select class="pure-u-1">
+              <!-- <option ng-repeat="warehouse in warehouses" value="{{warehouse.id}}">
+                {{warehouse.name}}
+              </option> -->
+              <option >
+                国内路线1
+              </option>
+              <option >
+                国内路线2
+              </option>
+            </select>
+          </div>
+      </div>
+      <div class="entry pure-g">
+          <div class="title pure-u-1-4">优惠码</div>
+          <div class="pure-u-3-4">
+            <input ng-model="" class="pure-u-1" placeholder="仅需要时填写" type="text">
+          </div>
+      </div>
+      <div class="entry pure-g">
+          <div class="title pure-u-1-4">选择所在仓库</div>
+          <div class="pure-u-3-4">
+            <select class="pure-u-1">
+              <!-- <option ng-repeat="warehouse in warehouses" value="{{warehouse.id}}">
+                {{warehouse.name}}
+              </option> -->
+              <option >
+                德国卡尔斯鲁厄仓库
+              </option>
+              <option >
+                美国加州仓库
+              </option>
+            </select>
+          </div>
+      </div>
+    </div>
+
+    <div class="uh-divider"></div>
+
+    <div class="entry">
+      <div class="title">请选择发货物品</div>
+      <div class="desc">请勾选你需要发往国内的物品，并确定数量</div>
+    </div>
+    <div class="uh-divider thick"></div>
+    <div class="item-list">
+      <div>
+        <div class="pure-g uh-order-item-package">
+          <div class="pure-u-1-3">D235554</div>
+          <div class="pure-u-1-3">12日亚马逊订单</div>
+          <div class="pure-u-1-3 toggle">关闭</div>
+        </div>
+        <table class="pure-table pure-table-horizontal uh-line-table uh-order-item-table">
+          <thead>
+            <tr>
+              <th class="pure-u-1-4"><input type="checkbox">物品名称</th>
+              <th class="pure-u-1-4">类型</th>
+              <th class="pure-u-1-8">数量</th>
+              <th class="pure-u-1-8">单价</th>
+              <th class="pure-u-1-8">单件重量</th>
+              <th class="pure-u-1-8">发货数量</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in stock.items" >
+              <td><input ng-model="item.item_name" class="pure-u-1"  type="text"></td>
+              <td>
+                <select ng-model="item.type" class="pure-u-1" >
+                  <option value="奶制品">
+                    奶制品
+                  </option>
+                  <option value="纺织品">
+                    纺织品
+                  </option>
+                  <option value="奢侈品">
+                    奢侈品
+                  </option>
+                  <option value="其他">
+                    其他
+                  </option>
+                </select>
+              </td>
+              <td><input ng-model="item.unit_price" class="pure-u-1" type="text"></td>
+              <td><input ng-model="item.unit_weight" class="pure-u-1" type="text"></td>
+              <td><input ng-model="item.quantity" class="pure-u-1" type="text"></td>
+              <td><a ng-click="deleteItem($index)" class="item-delete-icon"></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="uh-divider thick"></div>
+    <div class="entry pure-g">
+      <div class="title pure-u-1-4">增值服务</div>
+      <div class="pure-u-3-4">
+              xxx
+              <div class="desc">如有需要，请选择相应的增值服务，部分服务可能会产生费用。</div>
+      </div>
+
+      
+    </div>    
+    <div class="entry pure-g">
+      <div class="title pure-u-1-4">支付方式</div>
+      <div class="pure-u-3-4 uh-order-pay-method">
+        <div>
+          <input type="radio" name="payMethod" id="manualConfirm" ><label for="manualConfirm">客服手动确认后支付</label>
+        </div>
+        <div>
+          <input type="radio" name="payMethod" id="autoConfirm" ><label for="autoConfirm">称重后自动结算（需有足够余额)</label>
+        </div>
+      </div>
+
+    </div>    
+
+
+    <div class="action-btns" >
+      <div class="right">
+        <a  ng-click="confirm()" class="pure-button blue">下一步</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- 确认界面 -->
+
+
+
+
+<div class="uh-stock-submit">
+  <div class="uh-main-header">
+      <div class="left">
+        <span class="title blue">提交发货</span>
+      </div>
+  </div> 
+  <!-- 头部标题结束 -->
+  <!-- 主体开始 -->
+  <div class="uh-main-body" >
+    
+     <!-- section 1 基本信息 -->
+    <div class="pure-g pure-u-1"><div class="uh-section first-child">基本信息</div> </div>
+    <!-- section 1 表格开始 -->
+    <div class="pure-g">
+    <div class="pure-u-1-1">
+      <table class="pure-table pure-table-horizontal uh-small-table">
+       <tr>
+         <td style="width:25%">订单号</td>
+         <td>DKD123457</td></tr>
+         <tr>
+          <td>收件人</td>
+          <td>德国卡</td>
+        </tr>
+        <tr>
+          <td>联系电话</td>
+          <td>12345678901</td>
+        </tr>
+        <tr>
+          <td>收货地址</td>
+          <td>只是一个详细的地址</td>
+
+        </tr>
+        <tr>
+          <td>配送线路</td>
+          <td>转运的一个真正的线路</td>
+        </tr>
+        <tr>
+          <td>物品所在仓库</td>
+          <td>德国仓库</td>
+
+        </tr>
+
+      </table>
+    </div> <!-- 左边表格结束  -->
+
+  </div> <!-- pure-g 结束 -->
+
+
+<!-- section 2 开始 -->
+
+<div class="uh-section"> 包裹物品信息 </div>
+
+<table class="pure-table pure-table-horizontal uh-line-table">
+        <thead>
+          <tr>
+            <th class="pure-u-1-4">名称</th>
+            <th class="pure-u-1-8">分类</th>
+            <th class="pure-u-1-8">单价/总价</th>
+            <th class="pure-u-1-8">单重/总重</th>
+            <th class="pure-u-1-8">数量</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!-- TODO: 这里请使用AS生产动态数据 -->
+          <tr>
+            <td>WMF名称</td>
+            <td>厨具</td>
+            <td>123 / 123</td>
+            <td>1kg / 12kg</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td>WMF名称</td>
+            <td>厨具</td>
+            <td>123 / 123</td>
+            <td>1kg / 12kg</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td>WMF名称</td>
+            <td>厨具</td>
+            <td>123 / 123</td>
+            <td>1kg / 12kg</td>
+            <td>12</td>
+          </tr>
+        </tbody>
+</table>
+
+<!-- section 3 开始 -->
+
+<div class="uh-section">附加信息</div>
+<table class="pure-table pure-table-horizontal uh-small-table">
+  <tr>
+    <td style="width:15%">增值服务</td>
+    <td>拍照服务，加固服务</td>
+  </tr>
+  <tr>
+    <td style="width:15%">支付方式</td>
+    <td>客服手动确认后支付</td>
+  </tr>
+  <tr>
+    <td style="width:15%">发货备注</td>
+    <td>收货的是我妈妈，请直接确认签收！！</td>
+  </tr>
+</table>
+
+<div style="margin-top: 24px;">
+  <input type="checkbox" id="protocolConfirm"> <label for="protocolConfirm">以上信息无误，我已经阅读并且同意<a href="">大口袋转运服务条款</a>！</label>
+</div>
+
+<div class="uh-divider"></div>
+
+<!-- 底部操作按钮开始 -->
+<div class="pure-g">
+  <div class="pure-u-1-2 left">
+    <div class="pure-button edit left"><a href="">编辑</a></div>
+    <div class="pure-button delete left"><a href="">删除</a></div>
+  </div>
+  <div class="pure-u-1-2 right">
+    <div class="pure-button confirm right"><a href="">提交</a></div>
+  </div>
+
+</div>
+</div>
+
+
+
