@@ -471,6 +471,7 @@ textarea{
     }
 
 }
+// 表单的输入框，经过重新定义了
 .uh-form-section input{
     -webkit-appearance: none;
     width: 95%;
@@ -482,10 +483,13 @@ textarea{
     border:1px solid #D1D1D1;
     border-radius:0; 
 }
+
+//表单选择框
 .uh-form-section select{
     -webkit-appearance: none;
     width: 98%;
     line-height: 20px;
+    height: 30px;
     padding-left:8px;
     color: #333333;
     border:1px solid #D1D1D1;
@@ -493,6 +497,7 @@ textarea{
     background:url(../images/form-dropdown.png) right 10px center no-repeat #f6f6f6;
 }
 
+//表单 checkbox 自定义样式
 .uh-form-section input[type="checkbox"] {
     display:none;
 }
