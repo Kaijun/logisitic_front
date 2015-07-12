@@ -27,12 +27,6 @@
             templateUrl: 'templates/stockSubmit.html',
             controller: 'StockSubmitCtrl',
         })
-        .state('stockConfirm', {
-            params: { 'stock': null },
-            url: '/stock/submit/confirm',
-            templateUrl: 'templates/stockConfirm.html',
-            controller: 'StockConfirmCtrl',
-        })
         .state('stockDetail', {
             url: '/stock/:stockId',
             templateUrl: 'templates/stockDetail.html',

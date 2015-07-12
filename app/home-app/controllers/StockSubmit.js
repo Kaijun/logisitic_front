@@ -3,8 +3,8 @@
 ;(function () {
     
     angular.module('home.controllers')
-    .controller('StockSubmitCtrl', ['$scope', 'StockService', '$state', '$stateParams', '$timeout', 
-    function($scope, StockService, $state, $stateParams, $timeout) {
+    .controller('StockSubmitCtrl', ['$scope', 'StockService', '$state', '$stateParams', '$timeout', '$q', 
+    function($scope, StockService, $state, $stateParams, $timeout, $q) {
         var stockObj = {
             warehouse: null,
             desc: null,
@@ -14,9 +14,10 @@
             timestamp: null,
             weight: null,
             items: [],
-            pics:[],
+            image_1: null,
+            image_2: null,
+            image_3: null,
             message: null,
-            attachment: [],
             extra_services: [],
         }
         $scope.stock = null; 
@@ -24,79 +25,89 @@
         $scope.logisticPaths = [];
         $scope.extraServices = [];
         $scope.imagesToUpload = [];
-        
+        $scope.isConfirmShown = false;
+        $scope.confirmSubmit = confirmSubmit;
+        $scope.editSubmit = editSubmit;
+        $scope.deleteSubmit = deleteSubmit;
+
+        var isImagesChanged = false;
 
         active();
 
         function active () {
-            StockService.getWarehouses().then(function (data){
-                 $scope.warehouses = data;
-                 $timeout(function () {
-                    $scope.stock.warehouse = $scope.warehouses[0].id.toString();
-                 });
+            var warehousePromise = StockService.getWarehouses().then(function (data){
+                $scope.warehouses = data;
             });
-            StockService.getLogisticPaths(1).then(function (data){
-                 $scope.logisticPaths = data;
-                 $timeout(function () {
-                    $scope.stock.ship_company = $scope.logisticPaths[0].id.toString();
-                 });
+            var pathPromise = StockService.getLogisticPaths(1).then(function (data){
+                $scope.logisticPaths = data;
             });
             // TODO: add user Group!!! from UserInfo
-            StockService.getExtraServices(1, 0).then(function (data){
+            var extraSrvPromise = StockService.getExtraServices(1, 0).then(function (data){
                  $scope.extraServices = data;
             });
-            $timeout(function(){
-                if(!$stateParams.action){
-                    // 非正常
-                    if(StockService.editingStockId) {
-                        StockService.editingStockId = null;
-                        StockService.editingStock = null;
-                        $scope.stock = angular.copy(stockObj)
+            $q.all([warehousePromise, pathPromise, extraSrvPromise]).then(function () {
+                $timeout(function(){
+                    if(!$stateParams.action){
+                        $scope.stock = angular.copy(stockObj);
+                        $scope.stock.warehouse = $scope.warehouses[0].id.toString();
+                        $scope.stock.ship_company = $scope.logisticPaths[0].id.toString();
                     }
-                    else {
-                        $scope.stock = StockService.editingStock ? StockService.editingStock : angular.copy(stockObj)
-                    }
-                }
-                else if($stateParams.action==='edit'){
-                    if($stateParams.stockId){
-                        var stockId = $stateParams.stockId;
-                        if(StockService.editingStock && StockService.editingStockId){
-                            $scope.stock = StockService.editingStock
-                        }
-                        else{
-                            StockService.getStock(stockId).then(function(data){
-                                $timeout(function () {
-                                    $scope.stock = data;
-                                });
-                            },
-                            // 非法
-                            function(){
-                                $state.go('index');
-                            })
-                        }
+                    else if($stateParams.action==='edit'){
+                        StockService.getStock(stockId).then(function(data){
+                            $scope.stock = data;
+                            $scope.stock.warehouse = $scope.warehouses[0].id.toString();
+                            $scope.stock.ship_company = $scope.logisticPaths[0].id.toString();
+                        },
+                        // 非法
+                        function(){
+                            $state.go('index');
+                        })
                     }
                     else{
                         // 非法
                         $state.go('index');
                     }
-                }
-                else{
-                    // 非法
-                    $state.go('index');
-                }
+                });
             });
+
+            //监察Images是否改变...
+            $scope.$watch('imagesToUpload', function (newValue, oldValue) {
+                if(newValue === oldValue) return;
+                debugger;
+                isImagesChanged = true;
+            }, true);
+            
         }
         
 
         $scope.confirm = function(){
             // TODO: check if stock available!!!
             console.log($scope.stock);
-            StockService.editingStock = $scope.stock;
-            StockService.editingStockId = $stateParams.stockId ? $stateParams.stockId : null;
-            StockService.uploadImage($scope.imagesToUpload[0]).then(function(data){
-                console.log(data);
-                $state.transitionTo('stockConfirm', {stock: $scope.stock});
-            })
+
+            //upload Images
+            if(isImagesChanged){
+                var deferred = $q.defer();
+                var promises = []; 
+                $scope.imagesToUpload.forEach(function (image, index) {
+                    var promise = StockService.uploadImage(image).then(function(data){
+                        if(data.success=='true')
+                            $scope.stock['image_'+(index+1)] = data.file_name;
+                        debugger;
+                    });
+                    promises.push(promise);
+                });
+                $q.all(promises).then(function(){
+                    $timeout(function () {
+                        isImagesChanged = false;
+                        toggleConfirmView();
+                    });
+                });
+            }
+            else{
+                toggleConfirmView();
+            }
+            
+            
         }
 
         $scope.addItem = function () {
@@ -118,6 +129,27 @@
             // TODO: check if last item available!!!
             var index = $scope.stock.items.length();
             var lastItem = $scope.stock.items[index];
+        }
+
+        function toggleConfirmView(){
+            $scope.isConfirmShown = !$scope.isConfirmShown;
+        }
+
+        function confirmSubmit () {
+            console.log($scope.stock);
+            StockService.submitStock($scope.stock).then(function (data) {
+                if(data.package_id && data.success==="true"){
+                    $state.go('stockDetail', {stockId: data.package_id});
+                }
+            });
+        }
+
+        function editSubmit () {
+            $scope.isConfirmShown = false;
+        }
+
+        function deleteSubmit () {
+            $state.go('stockSubmit', {}, { reload: true });
         }
 
     }]);

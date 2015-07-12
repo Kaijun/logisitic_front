@@ -5,12 +5,11 @@
         .module('home.controllers')
         .controller('OrderSubmitCtrl', OrderSubmitCtrl);
 
-    OrderSubmitCtrl.$inject = [];
+    OrderSubmitCtrl.$inject = ['$scope'];
 
     /* @ngInject */
-    function OrderSubmitCtrl() {
-        var vm = this;
-        vm.title = 'OrderSubmitCtrl';
+    function OrderSubmitCtrl($scope) {
+        $scope.isConfirmShown = false;
 
         activate();
 

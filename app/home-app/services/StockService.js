@@ -13,8 +13,6 @@
         var stockInfoCache = $cacheFactory('stockInfo');
 
         var service = {
-            editingStock: null,
-            editingStockId: null,
             getStockStatusMapping: getStockStatusMapping,
             getWarehouses: getWarehouses,
             getLogisticPaths: getLogisticPaths,

@@ -1,4 +1,4 @@
-<div class="uh-submit">
+<div ng-hide="isConfirmShown" class="uh-submit">
   <div class="uh-main-header">
       <div class="left">
         <span class="title blue">入库预报</span>
@@ -95,7 +95,7 @@
       <div class="pure-g pic-upload">
         <div class="pure-u-1-3"><input file-model="imagesToUpload[0]" type="file" accept="image/*"/></div>
         <div class="pure-u-1-3"><input file-model="imagesToUpload[1]" type="file" accept="image/*"/></div>
-        <div class="pure-u-1-3"><input file-model="imagesToUpload[3]" type="file" accept="image/*"/></div>
+        <div class="pure-u-1-3"><input file-model="imagesToUpload[2]" type="file" accept="image/*"/></div>
       </div>
     </div>    
 
@@ -122,3 +122,98 @@
     </div>
   </div>
 </div>
+
+
+
+<!-- 预报确认页面 -->
+
+<div ng-show="isConfirmShown" class="uh-submit">
+  <div class="uh-main-header">
+      <div class="left">
+        <span class="title blue">入库预报</span>
+      </div>
+  </div>
+  <div class="uh-main-body" >
+    <div class="pure-g pure-u-1"><div class="uh-section first-child">基本信息</div> </div>
+    <div class="pure-g">
+    <div class="pure-u-1-1">
+      <table class="pure-table pure-table-horizontal uh-small-table">
+        <tr>
+         <td style="width: 25%;" >收件仓库</td>
+         <td>{{(warehouses | filter:{id: stock.warehouse})[0].name }}</td>
+        </tr>
+        <tr>
+          <td>包裹备注</td>
+          <td>{{stock.desc}}</td>
+        </tr>
+        <tr>
+          <td>快递信息</td>
+          <td>{{(logisticPaths | filter:{id: stock.ship_company})[0].name }} 运单号: {{stock.ship_tracknumber}}</td>
+        </tr>
+
+      </table>
+    </div> <!-- 左边表格结束  -->
+
+  </div> <!-- pure-g 结束 -->
+
+    <div class="uh-divider"></div>
+
+    <div class="uh-section">包裹物品信息</div>
+    <div class="uh-divider thick"></div>
+    <div class="item-list">
+      <table class="pure-table pure-table-horizontal uh-custom-table">
+        <thead>
+          <tr>
+            <th class="pure-u-1-4">物品名称</th>
+            <th class="pure-u-1-4">类型</th>
+            <th class="pure-u-1-8">数量</th>
+            <th class="pure-u-1-8">单价</th>
+            <th class="pure-u-1-4">单件重量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in stock.items" >
+            <td>{{item.item_name}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.unit_price}}</td>
+            <td>{{item.unit_weight}}</td>
+            <td>{{item.quantity}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="uh-divider thick"></div>
+
+    <div class="uh-section">附加信息</div>
+
+    <div class="pure-g entry">
+      <div class="pure-u-1-4 title">留言</div>
+      <div class="pure-u-3-4">{{stock.message}}</div>
+    </div>
+    <div class="pure-g entry">
+      <div class="pure-u-1-4 title">入库清点</div>
+      <div class="pure-u-3-4"></div>
+    </div>
+    <div class="pure-g entry">
+      <div class="pure-u-1-4 title">附件信息</div>
+      <div class="pure-u-3-4">已上传凭证....(TODO)</div>
+    </div>
+    <div class="action-btns" >
+      <div class="left">
+        <a  ng-click="editSubmit()" class="pure-button edit">编辑</a>
+        <a  ng-click="deleteSubmit()" class="pure-button delete">删除</a>
+      </div>
+      <div class="right">
+        <a  ng-click="confirmSubmit()" class="pure-button confirm">提交</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

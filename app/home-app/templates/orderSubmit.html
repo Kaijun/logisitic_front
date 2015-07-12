@@ -1,4 +1,4 @@
-<div class="uh-submit">
+<div class="uh-submit" ng-hide="isConfirmShown">
   <div class="uh-main-header">
       <div class="left">
         <span class="title blue">提交发货</span>
@@ -161,17 +161,17 @@
 
 
 
-<div class="uh-stock-submit">
+<div class="uh-stock-submit" ng-show="isConfirmShown">
   <div class="uh-main-header">
-      <div class="left">
-        <span class="title blue">提交发货</span>
-      </div>
+    <div class="left">
+      <span class="title blue">提交发货</span>
+    </div>
   </div> 
   <!-- 头部标题结束 -->
   <!-- 主体开始 -->
   <div class="uh-main-body" >
-    
-     <!-- section 1 基本信息 -->
+
+    <!-- section 1 基本信息 -->
     <div class="pure-g pure-u-1"><div class="uh-section first-child">基本信息</div> </div>
     <!-- section 1 表格开始 -->
     <div class="pure-g">
@@ -206,85 +206,86 @@
       </table>
     </div> <!-- 左边表格结束  -->
 
-  </div> <!-- pure-g 结束 -->
+    </div> <!-- pure-g 结束 -->
 
 
-<!-- section 2 开始 -->
+  <!-- section 2 开始 -->
 
-<div class="uh-section"> 包裹物品信息 </div>
+    <div class="uh-section"> 包裹物品信息 </div>
 
-<table class="pure-table pure-table-horizontal uh-line-table">
-        <thead>
-          <tr>
-            <th class="pure-u-1-4">名称</th>
-            <th class="pure-u-1-8">分类</th>
-            <th class="pure-u-1-8">单价/总价</th>
-            <th class="pure-u-1-8">单重/总重</th>
-            <th class="pure-u-1-8">数量</th>
-          </tr>
-        </thead>
-        <tbody>
+    <table class="pure-table pure-table-horizontal uh-line-table">
+      <thead>
+        <tr>
+          <th class="pure-u-1-4">名称</th>
+          <th class="pure-u-1-8">分类</th>
+          <th class="pure-u-1-8">单价/总价</th>
+          <th class="pure-u-1-8">单重/总重</th>
+          <th class="pure-u-1-8">数量</th>
+        </tr>
+      </thead>
+      <tbody>
         <!-- TODO: 这里请使用AS生产动态数据 -->
-          <tr>
-            <td>WMF名称</td>
-            <td>厨具</td>
-            <td>123 / 123</td>
-            <td>1kg / 12kg</td>
-            <td>12</td>
-          </tr>
-          <tr>
-            <td>WMF名称</td>
-            <td>厨具</td>
-            <td>123 / 123</td>
-            <td>1kg / 12kg</td>
-            <td>12</td>
-          </tr>
-          <tr>
-            <td>WMF名称</td>
-            <td>厨具</td>
-            <td>123 / 123</td>
-            <td>1kg / 12kg</td>
-            <td>12</td>
-          </tr>
-        </tbody>
-</table>
+        <tr>
+          <td>WMF名称</td>
+          <td>厨具</td>
+          <td>123 / 123</td>
+          <td>1kg / 12kg</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>WMF名称</td>
+          <td>厨具</td>
+          <td>123 / 123</td>
+          <td>1kg / 12kg</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>WMF名称</td>
+          <td>厨具</td>
+          <td>123 / 123</td>
+          <td>1kg / 12kg</td>
+          <td>12</td>
+        </tr>
+      </tbody>
+    </table>
 
-<!-- section 3 开始 -->
+    <!-- section 3 开始 -->
 
-<div class="uh-section">附加信息</div>
-<table class="pure-table pure-table-horizontal uh-small-table">
-  <tr>
-    <td style="width:15%">增值服务</td>
-    <td>拍照服务，加固服务</td>
-  </tr>
-  <tr>
-    <td style="width:15%">支付方式</td>
-    <td>客服手动确认后支付</td>
-  </tr>
-  <tr>
-    <td style="width:15%">发货备注</td>
-    <td>收货的是我妈妈，请直接确认签收！！</td>
-  </tr>
-</table>
+    <div class="uh-section">附加信息</div>
+    <table class="pure-table pure-table-horizontal uh-small-table">
+      <tr>
+        <td style="width:15%">增值服务</td>
+        <td>拍照服务，加固服务</td>
+      </tr>
+      <tr>
+        <td style="width:15%">支付方式</td>
+        <td>客服手动确认后支付</td>
+      </tr>
+      <tr>
+        <td style="width:15%">发货备注</td>
+        <td>收货的是我妈妈，请直接确认签收！！</td>
+      </tr>
+    </table>
 
-<div style="margin-top: 24px;">
-  <input type="checkbox" id="protocolConfirm"> <label for="protocolConfirm">以上信息无误，我已经阅读并且同意<a href="">大口袋转运服务条款</a>！</label>
-</div>
+    <div style="margin-top: 24px;">
+      <input type="checkbox" id="protocolConfirm"> <label for="protocolConfirm">以上信息无误，我已经阅读并且同意<a href="">大口袋转运服务条款</a>！</label>
+    </div>
 
-<div class="uh-divider"></div>
+    <div class="uh-divider"></div>
 
-<!-- 底部操作按钮开始 -->
-<div class="pure-g">
-  <div class="pure-u-1-2 left">
-    <div class="pure-button edit left"><a href="">编辑</a></div>
-    <div class="pure-button delete left"><a href="">删除</a></div>
+    <!-- 底部操作按钮开始 -->
+    <div class="pure-g">
+      <div class="pure-u-1-2 left">
+        <div class="pure-button edit left"><a href="">编辑</a></div>
+        <div class="pure-button delete left"><a href="">删除</a></div>
+      </div>
+      <div class="pure-u-1-2 right">
+        <div class="pure-button confirm right"><a href="">提交</a></div>
+      </div>
+
+    </div>
   </div>
-  <div class="pure-u-1-2 right">
-    <div class="pure-button confirm right"><a href="">提交</a></div>
-  </div>
 
 </div>
-</div>
-
 
 
