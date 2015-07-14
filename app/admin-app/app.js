@@ -29,6 +29,11 @@
             templateUrl: 'templates/stockBatch.html',
             controller: 'stockBatch',
         })
+        .state('orderDetail',{
+            url:'/orderDetail',
+            templateUrl: 'templates/orderDetail.html',
+            controller: '',
+        })
         
         
 	}])
