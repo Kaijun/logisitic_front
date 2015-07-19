@@ -16,7 +16,8 @@
     "angular": "~1.4.2",
     "normalize.css": "~3.0.3",
     "ng-table": "~0.5.4",
-    "angular-loading-bar": "~0.8.0"
+    "angular-loading-bar": "~0.8.0",
+    "angular-city-select": "*"
   },
   "devDependencies": {
     "chai": "~3.0.0",

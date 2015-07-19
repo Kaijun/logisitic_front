@@ -17,27 +17,27 @@
       <table class="pure-table pure-table-horizontal uh-small-table">
        <tr>
          <td style="width:30%">订单号</td>
-         <td>DKD123457</td></tr>
+         <td>{{order.id}}}</td></tr>
          <tr>
           <td>收件人</td>
-          <td>德国卡</td>
+          <td>{{order.post_info.receiver_name}}</td>
         </tr>
         <tr>
           <td>联系电话</td>
-          <td>12345678901</td>
+          <td>{{order.post_info.phone}}</td>
         </tr>
         <tr>
           <td>收货地址</td>
-          <td>只是一个详细的地址</td>
+          <td>{{order.post_info.province}} {{order.post_info.city}} {{order.post_info.town}} {{order.post_info.street}}</td>
 
         </tr>
         <tr>
           <td>配送线路</td>
-          <td>转运的一个真正的线路</td>
+          <td>--待完成--</td>
         </tr>
         <tr>
           <td>物品所在仓库</td>
-          <td>德国仓库</td>
+          <td>--待完成--</td>
 
         </tr>
 
@@ -48,27 +48,27 @@
     <table class="pure-table pure-table-horizontal uh-small-table" > 
       <tr>    
         <td style="width:30%">状态</td>
-        <td>已发货</td>
+        <td>--待完成--</td>
       </tr>
       <tr>
         <td>提交时间</td>
-        <td>2015-5-23</td>
+        <td>{{order.created_time.date}}</td>
       </tr>
       <tr>
-        <td>发货时间</td>
-        <td>2015-5-31</td>
+        <td>更新时间</td>
+        <td>{{order.updated_time.date}}</td>
       </tr>
       <tr>
-        <td>入库重量</td>
-        <td>14.00kg</td>
+        <td>{入库重量}</td>
+        <td>计算</td>
       </tr>
        <tr>
         <td>出库重量</td>
-        <td>15.00kg</td>
+        <td>{{order.weight}}kg</td>
       </tr>
       <tr>
         <td>运单号</td>
-        <td><a href="#">00323424232</a><br/><a href="#">CK032932432</a></td>
+        <td><a href="#">{{order.ship_tracknumber.International}} 需要跳转到快递公司页面</a><br/><a href="#">{{order.ship_tracknumber.China}}</a></td>
       </tr>
 
     </table>
@@ -93,26 +93,12 @@
         </thead>
         <tbody>
         <!-- TODO: 这里请使用AS生产动态数据 -->
-          <tr>
-            <td>WMF名称</td>
-            <td>厨具</td>
-            <td>123 / 123</td>
-            <td>1kg / 12kg</td>
-            <td>12</td>
-          </tr>
-          <tr>
-            <td>WMF名称</td>
-            <td>厨具</td>
-            <td>123 / 123</td>
-            <td>1kg / 12kg</td>
-            <td>12</td>
-          </tr>
-          <tr>
-            <td>WMF名称</td>
-            <td>厨具</td>
-            <td>123 / 123</td>
-            <td>1kg / 12kg</td>
-            <td>12</td>
+          <tr ng-repeat="item in order.items">
+            <td>{{item.item_name}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
+            <td>{{item.unit_weight}}kg / {{item.unit_weight*item.quantity}}kg</td>
+            <td>{{item.quantity}}</td>
           </tr>
         </tbody>
 </table>
@@ -160,7 +146,7 @@
 <table class="pure-table pure-table-horizontal uh-small-table">
   <tr>
     <td style="width:15%">发货备注</td>
-    <td>收货的是我妈妈，请直接确认签收！！</td>
+    <td>{{order.message}}</td>
 </table>
 
 <div class="uh-divider thick"></div>

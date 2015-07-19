@@ -1,4 +1,4 @@
-<div class="uh-stock-submit">
+<div class="uh-submit">
   <div class="uh-main-header">
       <div class="left">
         <span class="title blue">入库预报</span>
@@ -12,7 +12,7 @@
           <div class="entry pure-g">
               <div class="title pure-u-1-4">收件仓库</div>
               <div class="pure-u-3-4">
-                {{stock.warehouse}}
+                {{stock.warehouseStr}}
               </div>
           </div>
           <div class="entry pure-g">
@@ -24,7 +24,7 @@
           <div class="entry pure-g">
               <div class="title pure-u-1-4">快递信息</div>
               <div class="pure-u-3-4">
-                {{stock.ship_company}} 运单号: {{stock.ship_tracknumber}}
+                {{stock.shipCompanyStr}} 运单号: {{stock.ship_tracknumber}}
               </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
           <div class="entry pure-g">
               <div class="title pure-u-1-4">状态</div>
               <div class="pure-u-3-4">
-                {{stock.status}}
+                {{stock.statusStr}}
               </div>
           </div>
           <div class="entry pure-g">
@@ -47,7 +47,7 @@
           <div class="entry pure-g">
               <div class="title pure-u-1-4">预报时间</div>
               <div class="pure-u-3-4">
-                {{stock.timestamp}}
+                {{stock.timestampStr}}
               </div>
           </div>
           <div class="entry pure-g">
@@ -121,7 +121,7 @@
     </div>
     <div class="pure-g entry">
       <div class="pure-u-1-4 title">附件信息</div>
-      <div class="pure-u-3-4">已上传凭证....(TODO)</div>
+      <div class="pure-u-3-4"> <img ng-src="{{imageUrlPrefix + stock.image_1}}"></div>
     </div>
     <div class="pure-g entry">
       <div class="pure-u-1-4 title">入库清点</div>
@@ -132,8 +132,8 @@
         <a  ng-click="goBack()" class="pure-button blue">返回</a>
       </div>
       <div class="right">
-        <a  ng-click="deleteStock()" class="pure-button red">删除</a>
-        <a  ng-click="editStock()" class="pure-button green">编辑</a>
+        <a  ng-click="deleteStock()" class="pure-button delete">删除</a>
+        <a  ng-click="editStock()" class="pure-button edit">编辑</a>
       </div>
     </div>
   </div>

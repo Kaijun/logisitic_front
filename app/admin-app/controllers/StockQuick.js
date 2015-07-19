@@ -10,7 +10,8 @@
     function StockQuickCtrl($scope, StockService, $timeout) {
 
         $scope.stock = null;
-        $scope.stockId = 1;
+        $scope.search = search;
+        $scope.serachText = null;
 
         activate();
 
@@ -18,18 +19,17 @@
 
         function activate() {
 
-            StockService.getStockByTrackNr('testo').then(function (data) {
-                debugger;
-            })
+        }
 
-
-            // if($scope.stockId){
-            //     StockService.getStock($scope.stockId).then(function (data) {
-            //         $timeout(function() {
-            //             $scope.stock = data;
-            //         });
-            //     });
-            // }
+        function search() {
+            if($scope.serachText){
+                StockService.getStockByTrackNr($scope.serachText).then(function (data) {
+                    data.timeString = (new Date(data.timestamp.date)).toISOString().substring(0, 10);
+                    $timeout(function(){
+                        $scope.stock = data;
+                    });
+                })
+            }
         }
     }
 })();

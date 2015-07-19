@@ -3,8 +3,8 @@
 ;(function () {
     
     angular.module('home.controllers')
-    .controller('StockSubmitCtrl', ['$scope', 'StockService', '$state', '$stateParams', '$timeout', '$q', 
-    function($scope, StockService, $state, $stateParams, $timeout, $q) {
+    .controller('StockSubmitCtrl', ['$scope', 'StockService', 'InfoService', '$state', '$stateParams', '$timeout', '$q', 
+    function($scope, StockService, InfoService, $state, $stateParams, $timeout, $q) {
         var stockObj = {
             warehouse: null,
             desc: null,
@@ -35,14 +35,14 @@
         active();
 
         function active () {
-            var warehousePromise = StockService.getWarehouses().then(function (data){
+            var warehousePromise = InfoService.getWarehouses().then(function (data){
                 $scope.warehouses = data;
             });
-            var pathPromise = StockService.getLogisticPaths(1).then(function (data){
+            var pathPromise = InfoService.getLogisticPaths(1).then(function (data){
                 $scope.logisticPaths = data;
             });
             // TODO: add user Group!!! from UserInfo
-            var extraSrvPromise = StockService.getExtraServices(1, 0).then(function (data){
+            var extraSrvPromise = InfoService.getExtraServices(1, 0).then(function (data){
                  $scope.extraServices = data;
             });
             $q.all([warehousePromise, pathPromise, extraSrvPromise]).then(function () {
@@ -89,10 +89,9 @@
                 var deferred = $q.defer();
                 var promises = []; 
                 $scope.imagesToUpload.forEach(function (image, index) {
-                    var promise = StockService.uploadImage(image).then(function(data){
+                    var promise = InfoService.uploadImage(image).then(function(data){
                         if(data.success=='true')
                             $scope.stock['image_'+(index+1)] = data.file_name;
-                        debugger;
                     });
                     promises.push(promise);
                 });

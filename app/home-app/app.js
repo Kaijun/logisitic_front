@@ -27,6 +27,11 @@
             templateUrl: 'templates/stockSubmit.html',
             controller: 'StockSubmitCtrl',
         })
+        // .state('stockConfirm', {
+        //     url: '/stock/submit/confirm',
+        //     templateUrl: 'templates/stockSubmit.html',
+        //     controller: 'StockSubmitCtrl',
+        // })
         .state('stockDetail', {
             url: '/stock/:stockId',
             templateUrl: 'templates/stockDetail.html',
@@ -41,12 +46,6 @@
             url: '/order/submit?action?orderId',
             templateUrl: 'templates/orderSubmit.html',
             controller: 'OrderSubmitCtrl',
-        })
-        .state('orderConfirm', {
-            params: { 'order': null },
-            url: '/order/submit/confirm',
-            templateUrl: 'templates/orderConfirm.html',
-            controller: 'OrderConfirmCtrl',
         })
         .state('orderDetail', {
             url: '/order/:orderId',

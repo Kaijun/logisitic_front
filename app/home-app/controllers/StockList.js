@@ -4,8 +4,8 @@
 ;(function () {
 	
     angular.module('home.controllers')
-    .controller('StockListCtrl', ['$scope', '$state', '$filter', 'StockService', 'ngTableParams', 
-    function($scope, $state, $filter, StockService, ngTableParams) {
+    .controller('StockListCtrl', ['$scope', '$state', '$filter', 'StockService', 'InfoService', 'ngTableParams', 
+    function($scope, $state, $filter, StockService, InfoService, ngTableParams) {
         var filterStockList = [];
         $scope.stockList = [];
         $scope.goToDetail = goToDetail;
@@ -28,14 +28,13 @@
         function active () {
             StockService.getStocks().then(function (list) {
                 list.map(function (item) {
-                    item.timestampStr = (new Date(item.timestamp.date)).toISOString().substring(0, 10);;
-                    item.statusStr = StockService.getStockStatusMapping(parseInt(item.status));
+                    item.timestampStr = (new Date(item.timestamp.date)).toISOString().substring(0, 10);
+                    item.statusStr = InfoService.getStockStatusMapping(parseInt(item.status));
                     return item;
                 })
                 $scope.stockList = list;
                 filterStockList = list;
                 $scope.tableParams.reload();
-                console.log(list)
             });
 
             $scope.$watch('searchText', function (newValue, oldValue) {
