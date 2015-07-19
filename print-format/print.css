@@ -1,0 +1,80 @@
+.delivery-wapper{
+    margin: 2mm;
+    width: 8.5cm;
+    padding: 10px;
+    border-radius: 5px;
+    border:1px solid black;
+}
+.perpare-wapper{
+    margin: 2mm;
+    width: 18cm;
+    padding: 10px;
+
+}
+.ship-info{
+    text-align: center;
+}
+
+
+h1{
+    padding-left: 20px;
+    font-size: 18px;
+}
+h2{
+    padding-left: 20px;
+    line-height: 16px;
+    font-size: 14px;
+}
+
+
+table{
+    font-size: 12px;
+    table-layout: fixed;
+    width: 100%;
+    margin: 10px 0;
+border-spacing: 0;
+text-align: left;
+}
+
+th{
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    font-weight: bold;
+    padding: 8px 0px 8px 8px;
+}
+
+td{
+    border-bottom: 1px solid #000;
+     padding: 8px 0px 8px 8px;
+          
+}
+
+.info{
+    width: 60%;
+    line-height: 30px;
+    float: right;
+    text-align: right;
+}
+
+.code-left{
+    width: 50%;
+    float: left;
+}
+.code-right{
+    width: 50%;
+    float: right;
+    text-align: right;
+}
+        
+@page{ 
+    size: auto;
+    margin:0;
+}
+@media print {
+    header {
+        display: none;
+    }
+    footer {
+        page-break-after: always;
+    }
+}
