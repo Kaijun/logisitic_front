@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('home.services')
+        .module('admin.services')
         .service('InfoService', InfoService);
 
     InfoService.$inject = ['AppConfig', '$http', '$cacheFactory', '$q'];
@@ -18,7 +18,6 @@
             getLogisticPaths: getLogisticPaths,
             getLogisticPathById: getLogisticPathById,
             getExtraServices: getExtraServices,
-            uploadImage: uploadImage,
         };
         return service;
 
@@ -103,16 +102,5 @@
             return promise;
         }
 
-        function uploadImage (image) {
-            var fd = new FormData();
-            fd.append('image', image);
-            var promise = $http.post(AppConfig.apiUrl + '/image/', fd, {
-                transformRequest: angular.identity,
-                headers: {'Content-Type': undefined}
-            }).then(function(response){
-                return response.data;
-            });
-            return promise;
-        }
     }
 })();

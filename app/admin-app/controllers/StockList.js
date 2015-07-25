@@ -27,9 +27,8 @@
                 })
             })
         }
-        function goToDetail (stockId) {
-            debugger;
-            $state.go('stockDetail', {stockId: stockId});
+        function goToDetail (stock) {
+            $state.go('stockDetail', {stockId: stock.package_id});
         }
         function requestPage (url) {
             $http.get(url).then(function (response) {

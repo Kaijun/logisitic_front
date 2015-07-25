@@ -44,11 +44,6 @@
             templateUrl: 'templates/order/orderQuick.html',
             controller: 'OrderQuick',
         })
-        .state('orderDetail',{
-            url:'/orderDetail',
-            templateUrl: 'templates/orderDetail.html',
-            controller: '',
-        })
         
         
 	}])

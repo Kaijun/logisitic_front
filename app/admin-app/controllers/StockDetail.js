@@ -21,7 +21,8 @@
         function activate() {
             if($scope.stockId){
                 StockService.getStock($scope.stockId).then(function (data) {
-                    data.timestampStr = (new Date(data.timestamp.date)).toISOString().substring(0, 10);
+                    data.createTimeString = (new Date(data.created_time.date)).toISOString().substring(0, 10);
+                    data.updateTimeString = (new Date(data.updated_time.date)).toISOString().substring(0, 10);
                     data.status = parseInt(data.status);
                     data.statusStr = StockService.getStockStatusMapping(data.status);
                     
@@ -40,7 +41,7 @@
         function enterStock () {
             if($scope.stockId){
                 StockService.enterStock($scope.stockId).then(function(data) {
-                    $state.go('stockDetail', {stockId: data.stockId});
+                    $state.go('stockDetail', {stockId: data.package_id});
                 });
             }
         }

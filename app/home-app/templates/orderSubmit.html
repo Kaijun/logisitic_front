@@ -201,26 +201,12 @@
       </thead>
       <tbody>
         <!-- TODO: 这里请使用AS生产动态数据 -->
-        <tr>
-          <td>WMF名称</td>
-          <td>厨具</td>
-          <td>123 / 123</td>
-          <td>1kg / 12kg</td>
-          <td>12</td>
-        </tr>
-        <tr>
-          <td>WMF名称</td>
-          <td>厨具</td>
-          <td>123 / 123</td>
-          <td>1kg / 12kg</td>
-          <td>12</td>
-        </tr>
-        <tr>
-          <td>WMF名称</td>
-          <td>厨具</td>
-          <td>123 / 123</td>
-          <td>1kg / 12kg</td>
-          <td>12</td>
+        <tr ng-repeat="item in order.items">
+          <td>{{item.item_name}}</td>
+          <td>{{item.type}}</td>
+          <td>{{item.unit_price}} / {{item.quantity*item.unit_price}}</td>
+          <td>{{item.unit_weight}}KG / {{item.quantity*item.unit_weight}}KG</td>
+          <td>{{item.quantity}}</td>
         </tr>
       </tbody>
     </table>

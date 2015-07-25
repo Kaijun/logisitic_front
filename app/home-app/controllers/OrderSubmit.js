@@ -5,15 +5,15 @@
         .module('home.controllers')
         .controller('OrderSubmitCtrl', OrderSubmitCtrl);
 
-    OrderSubmitCtrl.$inject = ['$scope', 'OrderService', 'ProfileService', 'InfoService', '$q', '$timeout'];
+    OrderSubmitCtrl.$inject = ['$scope', 'OrderService', 'ProfileService', 'InfoService', '$q', '$timeout', '$state'];
 
     /* @ngInject */
-    function OrderSubmitCtrl($scope, OrderService, ProfileService, InfoService, $q, $timeout) {
+    function OrderSubmitCtrl($scope, OrderService, ProfileService, InfoService, $q, $timeout, $state) {
         var orderObj = {
             address: null,
             logistic_path: null,
             coupon_code: null,
-            items: [{id: 2, quantity: 1}],
+            items: [],
             extra_services: [],
             message: null,
             pay_method: null,
@@ -84,7 +84,6 @@
         }        
         function getWarehouseNameById (whId) {
             if(whId){
-                console.log(whId)
                 var wh = $scope.warehouses.filter(function (item) {
                    return item.id === parseInt(whId);
                 });
@@ -100,6 +99,7 @@
             var addr = $scope.addressList.filter(function (item) {
                 return item.id === parseInt($scope.order.address);
             });
+            $scope.order.items = assembleItems();
             $timeout(function () {
                 $scope.addrInfo = addr[0];
                 $scope.isConfirmShown = true;
@@ -110,9 +110,10 @@
         }
 
         function submitOrder(){
-            $scope.order.items = assembleItems();
             OrderService.submitOrder($scope.order).then(function (data) {
-                console.log(data);
+                if(data.package_id && data.success==="true"){
+                    $state.go('orderDetail', {orderId: data.ship_order_id});
+                }
             })
         }
 
@@ -129,6 +130,10 @@
                         items.push({
                             id: item.id,
                             quantity: item.quantityToSend,
+                            item_name: item.item_name,
+                            type: item.type,
+                            unit_price: item.unit_price,
+                            unit_weight: item.unit_weight
                         })
                     }
                 });
