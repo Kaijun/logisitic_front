@@ -2,7 +2,7 @@
 ;(function () {
 
 
-	angular.module('home',  ['home.controllers','home.services','home.directives' , 'ui.router', 'angular-loading-bar'])
+	angular.module('home',  ['home.controllers','home.services','home.directives' , 'ngAnimate', 'ui.router', 'angular-loading-bar'])
 	.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', 
         function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = true;

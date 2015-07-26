@@ -173,6 +173,12 @@ textarea{
 .uh-main{
     background:white;
     padding: 24px;
+    transition: all linear 2.5s;
+    -webkit-transition:all linear 2.5s;
+    opacity: 1;
+    &.ng-hide{
+        opacity: 0;
+    }
 }
 
 
