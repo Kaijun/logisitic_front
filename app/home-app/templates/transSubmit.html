@@ -1,0 +1,91 @@
+<div class="uh-main-header">
+      <div class="left">
+        <span class="title blue">包裹移库</span>
+      </div>
+</div> 
+
+
+<div class="uh-section"> 包裹物品信息 </div>
+
+<div class="uh-section desc">仅提供大口袋用户之间的移库，确认操作前请确认接收方信息。</div>
+
+<div class="pure-g uh-form-section">
+  <div class="pure-u-4-24">接收方Email</div>
+  <div class="pure-u-12-24"><input type="text"></input></div>
+</div>  
+
+<div class="pure-g uh-form-section">
+  <div class="pure-u-4-24">接收方库存码</div>
+  <div class="pure-u-12-24"><input type="text"></input></div>
+</div>
+
+<div class="pure-g uh-form-section">
+<div class="pure-u-4-24">选择包裹所在仓库</div>
+<div class="pure-u-12-24">
+    <select ng-model="order.logistic_path" class="pure-u-1">
+      <option ng-repeat="lp in logisticPaths" value="{{lp.id}}">
+        {{lp.name}}
+      </option>
+    </select> 
+</div>
+
+
+</div>
+
+<div class="uh-section"> 选择移库物品 </div>
+<div class="uh-section desc">请勾选你需要移库的物品，并确定数量</div>
+
+<div>
+<div class="uh-list-header pure-g active">
+  <div class="pure-u-8-24">DHL102432423</div>
+  <div class="pure-u-14-24">12日亚马逊订单</div>
+  <div class="pure-u-2-24">关闭</div>
+</div>
+<table class="pure-table pure-table-horizontal uh-list-table">
+        <thead>
+          <tr>
+            <th class="pure-u-1-8">选择</th>
+            <th class="pure-u-3-8">名称</th>
+            <th class="pure-u-1-8">分类</th>
+            <th class="pure-u-1-8">单价/总价</th>
+            <th class="pure-u-1-8">单重/总重</th>
+            <th class="pure-u-1-8">数量</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!-- TODO: 这里请使用AS生产动态数据 -->
+          <tr>
+            <td>选择</td>
+            <td>很神奇的民资</td>
+            <td>1</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+              <tr>
+            <td>选取</td>
+            <td>很神奇的民资</td>
+            <td>1</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+</table>
+<div class="uh-list-header pure-g">
+<div class="pure-u-8-24">DHL102432423</div>
+  <div class="pure-u-14-24">12日亚马逊订单</div>
+  <div class="pure-u-2-24">关闭</div>
+</div>
+</div>
+
+
+<!-- 底部操作栏 -->
+<div class="pure-g uh-btm-controller">
+  <div class="pure-u-1-2 left">
+    <div ng-click="cancle()" class="pure-button delete left"><a href="">取消</a></div>
+  </div>
+  <div class="pure-u-1-2 right">
+    <div ng-click="submit()" class="pure-button edit right"><a href="">添加</a></div>
+  </div>
+</div>
