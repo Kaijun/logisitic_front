@@ -53,6 +53,13 @@
             controller: 'OrderDetailCtrl',
         })
 
+        .state('transSubmit', {
+            url: '/trans/submit?action?orderId',
+            templateUrl: 'templates/transSubmit.html',
+            controller: function () {
+            
+            },
+        })
 
         .state('addressManage', {
             url: '/profile/addressManage',

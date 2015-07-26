@@ -154,7 +154,7 @@ textarea{
             &.prestock{
                 background:url('/images/uh-btn-prestock.png') no-repeat #4A90E2 10% 50%;
             }
-            &.movestock{
+            &.transstock{
                 background:url('/images/uh-btn-movestock.png') no-repeat #4A90E2 10% 50%;
             }
             &.sendstock{
@@ -185,7 +185,11 @@ textarea{
 .uh-main-header{
     @include clearfix;
     padding-bottom: 10px;
+    margin-top: 20px; 
     border-bottom: solid 2px #CCCCCC;
+    &:first-of-type{
+        margin-top:0;
+    }
     .left{
         float: left;
         .title{
@@ -374,12 +378,19 @@ textarea{
 .uh-section{
     line-height: 20px;
     font-size: 18px;
-    color: #666666;
+    color: #333333;
     padding:10px 0;
     margin-top: 10px;
     &.first-child{
         margin: 0;
         padding-top: 0;
+    }
+    &.desc{
+        color: #666;
+        margin: 0 0 5px 0;
+        font-size: 12px;
+        padding:0 24px;
+        background:url(../images/uh-help-desc.png) left center no-repeat;
     }
 
 }
@@ -411,12 +422,24 @@ textarea{
 
 // 这个样式的表格用于单行需操作的地方，如管理地址，管理订单列表
 
+.uh-list-header{
+    font-size:14px;
+    border-bottom: 1px solid #D1D1D1;
+    padding: 12px 0 12px 8px;
+    &:first-of-type{
+        border-top: 1px solid #D1D1D1;
+    }
+    &.active{
+        background:#f6f6f6;
+    }
+}
+
 .uh-list-table{
     font-size: 14px;
     text-layout:fixed;
     width: 100%;
     border: none;
-    margin-bottom:20px;
+    //margin-bottom:20px;
     thead{
         background: none;
         th{
@@ -466,7 +489,7 @@ textarea{
             border-bottom: solid 1px #D1D1D1;
             &.sum{
                   border-top:solid 1px #D1D1D1;
-                 font-weight: bold; 
+                  font-weight: bold; 
                 }
         }
     }
@@ -479,10 +502,6 @@ textarea{
     line-height: 30px;
     padding:10px 8px;
     border-bottom: 1px solid #D1D1D1;
-    &:last-of-type{
-        margin-bottom: 20px;
-    }
-
 }
 // 表单的输入框，经过重新定义了
 input{
@@ -584,6 +603,10 @@ select{
         }
 }
 
+//用于最底部控制栏的上下间距
+.uh-btm-controller{
+    margin-top: 20px;
+}
 .pure-button{
     font-size: 14px;
 
