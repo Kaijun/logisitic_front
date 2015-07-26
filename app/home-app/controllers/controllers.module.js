@@ -3,6 +3,8 @@
 
     angular
         .module('home.controllers', [
-            'ngTable'
+            'ngTable',
+            'angular.city.select',
+            
         ]);
 })();

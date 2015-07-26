@@ -3,7 +3,7 @@
   <!-- 标题栏开始 -->
   <div class="ah-main-header">
     <div class="left">
-      <span class="title blue">快速入库 </span>
+      <span class="title blue">快速打包</span>
     </div>
   </div>
   <!-- 标题栏结束 -->
@@ -62,7 +62,7 @@
               <th colspan="2">库存信息</th>
               <tr>    
                 <td  style="width:30%">状态</td>
-                <td>{{stock.statusStr}}</td>
+                <td>{{stock.status}}</td>
               </tr>
               <tr>
                 <td>库位号</td>
@@ -70,11 +70,11 @@
               </tr>
               <tr>
                 <td>预报时间</td>
-                <td>{{stock.createTimeString}}</td>
+                <td>{{stock.timeString}}</td>
               </tr>
               <tr>
                 <td>入库时间</td>
-                <td>{{stock.updateTimeStr}}</td></tr>
+                <td>--</td></tr>
               </table>
             </div>
 
@@ -130,8 +130,8 @@
         <!-- 右侧功能键开始 -->
         <div class="pure-u-1-8 right">
          <div><a class="pure-button flag divide">标记为问题件</a></div>
-         <div><a ng-click="goToDetail()" class="pure-button view divide">查看详情</a></div>
-         <div><a ng-click="enterStock()" class="pure-button blue divide">确认入库</a></div>
+         <div><a class="pure-button view divide">查看详情</a></div>
+         <div><a class="pure-button blue divide">确认入库</a></div>
          <div><a class="pure-button back divide">返回继续</a></div>
        </div> <!-- 右侧功能键结束 Div -->
      </div><!-- 中部信息栏结束 Div -->
@@ -139,16 +139,5 @@
 
    </div><!-- 主体部分结束 Div  -->
 
-   <!-- 未找到结果部分 -->
-   <div ng-if="!stock" > 
-      <p>未找到信息</p>
-      <p>
-        <span>入库码</span> <input ng-model="submitData.stock_number" type="text" >
-        <span>仓库ID</span> <input ng-model="submitData.warehouse" type="text" >
-        <span>运输公司ID</span> <input ng-model="submitData.ship_company" type="text" >
-        <span>包裹运单号</span> <input ng-model="submitData.ship_tracknumber" type="text" >
-      </p>
-      <div><a ng-click="submitStock()" class="pure-button blue divide">确认入库</a></div>
-   </div>
-
+   <div ng-if="!stock" > 未找到信息 - ...</div>
  </div>

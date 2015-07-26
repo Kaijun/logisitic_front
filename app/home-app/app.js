@@ -2,7 +2,7 @@
 ;(function () {
 
 
-	angular.module('home',  ['home.controllers','home.services','home.directives' , 'ui.router', 'angular-loading-bar'])
+	angular.module('home',  ['home.controllers','home.services','home.directives' , 'ngAnimate', 'ui.router', 'angular-loading-bar'])
 	.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', 
         function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = true;
@@ -27,6 +27,11 @@
             templateUrl: 'templates/stockSubmit.html',
             controller: 'StockSubmitCtrl',
         })
+        // .state('stockConfirm', {
+        //     url: '/stock/submit/confirm',
+        //     templateUrl: 'templates/stockSubmit.html',
+        //     controller: 'StockSubmitCtrl',
+        // })
         .state('stockDetail', {
             url: '/stock/:stockId',
             templateUrl: 'templates/stockDetail.html',
@@ -42,12 +47,6 @@
             templateUrl: 'templates/orderSubmit.html',
             controller: 'OrderSubmitCtrl',
         })
-        .state('orderConfirm', {
-            params: { 'order': null },
-            url: '/order/submit/confirm',
-            templateUrl: 'templates/orderConfirm.html',
-            controller: 'OrderConfirmCtrl',
-        })
         .state('orderDetail', {
             url: '/order/:orderId',
             templateUrl: 'templates/orderDetail.html',
@@ -59,6 +58,11 @@
             url: '/profile/addressManage',
             templateUrl: 'templates/profile/addressManage.html',
             controller: 'AddressManageCtrl',
+        })
+        .state('personalInfo', {
+            url: '/profile/personalInfo',
+            templateUrl: 'templates/profile/personalInfo.html',
+            controller: '',
         })
 	}])
     .run(['$state', '$injector', function($state, $injector){

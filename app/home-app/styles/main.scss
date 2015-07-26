@@ -24,10 +24,10 @@ body{
     background: linear-gradient(to bottom, #0a2d58 0%, #dafde2 100%) no-repeat fixed;
 }
 
-input[type="text"], select{
-    height: 30px !important;
-    background-color: #F8F8F8 !important;
-}
+// input[type="text"], select{
+//     height: 30px !important;
+//     background-color: #F8F8F8 !important;
+// }
 textarea{
     background-color: #F8F8F8 !important;
 }
@@ -173,6 +173,12 @@ textarea{
 .uh-main{
     background:white;
     padding: 24px;
+    transition: all linear 2.5s;
+    -webkit-transition:all linear 2.5s;
+    opacity: 1;
+    &.ng-hide{
+        opacity: 0;
+    }
 }
 
 
@@ -186,10 +192,13 @@ textarea{
             display: inline-block;
             font-size: 18px;
             line-height: 18px;
-            padding: 10px ;
+            padding: 5px 10px;
             border-left: solid 5px #E65F5F;
             &.blue{
                 border-left: solid 5px #147DE0;
+            }
+            &.green{
+                border-left: solid 5px #6CBB10;
             }
         }
     }
@@ -236,6 +245,8 @@ textarea{
         }
     }
 }
+
+
 
 // 最好切换到uh-line-talbe
 .uh-custom-table{
@@ -342,6 +353,9 @@ textarea{
         border: none;
     }
     th:first-child{
+        padding-left: 24px;
+    }
+    td:first-child{
         padding-left: 24px;
     }
 }
@@ -462,41 +476,42 @@ textarea{
 // 表单每行的设定
 .uh-form-section{
     font-size:14px;
-    line-height: 40px;
-    padding:10px 0;
+    line-height: 30px;
+    padding:10px 8px;
     border-bottom: 1px solid #D1D1D1;
     &:last-of-type{
-        border-bottom: 0;
+        margin-bottom: 20px;
     }
 
 }
 // 表单的输入框，经过重新定义了
-.uh-form-section input{
-    -webkit-appearance: none;
-    width: 95%;
-    line-height: 20px;
+input{
+    box-sizing: border-box;
+    width: 100%;
     background:#f6f6f6;
-    display: inline;
-    padding:5px 0 5px 8px;
-    color: #999999;
+    padding:5px 8px;
+    line-height: 20px;
+    color: #333;
     border:1px solid #D1D1D1;
     border-radius:0; 
 }
 
 //表单选择框
-.uh-form-section select{
+select{
+    box-sizing: border-box;
     -webkit-appearance: none;
-    width: 98%;
+    width: 100%;
     line-height: 20px;
-    height: 30px;
-    padding-left:8px;
-    color: #333333;
+    padding:5px 8px;
+    color: #333;
     border:1px solid #D1D1D1;
     border-radius:0;
     background:url(../images/form-dropdown.png) right 10px center no-repeat #f6f6f6;
 }
 
-//表单 checkbox 自定义样式
+
+
+/* 表单 checkbox 自定义样式
 .uh-form-section input[type="checkbox"] {
     display:none;
 }
@@ -512,7 +527,7 @@ textarea{
 }
 .uh-form-section input[type="checkbox"]:checked + label span {
     background:url(../images/form-checkbox-bg.png) left top -22px no-repeat;
-}
+}*/
 
 .id-pic-uploader{
         opacity: 0;
@@ -535,12 +550,39 @@ textarea{
 .uh-form-desc{
         font-size: 12px;
         color: #666;
+        padding: 5px 0;
         line-height: 20px;
         &.inline-desc{
-            line-height: 40px;
+            padding-left: 8px;
         }
 }
 
+
+
+/* List - Div */
+
+.uh-list-wapper{
+    margin-bottom:20px;
+
+}
+.uh-list-row{
+        line-height: 30px;
+        padding: 5px 8px;
+        border-bottom: 1px solid #D1D1D1;;
+}
+
+.uh-list-cell{
+        font-size: 14px;
+        &:first-of-type{
+            color: #666;
+        }
+        &.last{
+            text-align: right;
+        }
+        &.input-area{
+            line-height: 40px;
+        }
+}
 
 .pure-button{
     font-size: 14px;
@@ -628,3 +670,5 @@ textarea{
         }
     }
 }
+
+

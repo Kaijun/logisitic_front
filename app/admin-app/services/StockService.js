@@ -48,7 +48,13 @@
             return promise;
         }
         function enterStock(stockId) {
-            return putStock(stockId, {status: 4})
+            var promise = $http({
+                url: AppConfig.apiUrl + '/stocks_enter/' + stockId,
+                method: 'POST',
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
         }
 
         function putStock (stockId, stock) {

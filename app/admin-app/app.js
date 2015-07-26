@@ -27,7 +27,22 @@
         .state('stockBatch', {
             url: '/stockBatch',
             templateUrl: 'templates/stockBatch.html',
-            controller: 'stockBatch',
+            controller: 'StockBatch',
+        })
+        .state('orderList', {
+            url: '/orderList',
+            templateUrl: 'templates/order/orderList.html',
+            controller: 'OrderList',
+        })
+        .state('orderDetail', {
+            url: '/order/:orderId',
+            templateUrl: 'templates/order/orderDetail.html',
+            controller: 'OrderDetail',
+        })
+        .state('orderQuick', {
+            url: '/orderQuick',
+            templateUrl: 'templates/order/orderQuick.html',
+            controller: 'OrderQuick',
         })
         
         

@@ -3,13 +3,13 @@
 
     angular
         .module('admin.controllers')
-        .controller('StockListCtrl', StockListCtrl);
+        .controller('OrderList', OrderList);
 
-    StockListCtrl.$inject = ['$scope', '$state', '$http', '$timeout', 'StockService'];
+    OrderList.$inject = ['$scope', 'OrderService', '$timeout', '$state', '$http'];
 
     /* @ngInject */
-    function StockListCtrl($scope, $state, $http, $timeout, StockService) {
-        $scope.stocks = [];
+    function OrderList($scope, OrderService, $timeout, $state, $http) {
+        $scope.orders = [];
         $scope.goToDetail = goToDetail;
         $scope.pageInfo = null;
 
@@ -20,19 +20,19 @@
         ////////////////
 
         function activate() {
-            StockService.getStocks().then(function(data){
-                $scope.stocks = data.data;
+            OrderService.getOrders().then(function(data){
+                $scope.orders = data.data;
                 $timeout(function () {
                     $scope.pageInfo = data;
                 })
             })
         }
-        function goToDetail (stock) {
-            $state.go('stockDetail', {stockId: stock.package_id});
+        function goToDetail (orderId) {
+            $state.go('orderDetail', {orderId: orderId});
         }
         function requestPage (url) {
             $http.get(url).then(function (response) {
-                $scope.stocks = response.data.data;
+                $scope.orders = response.data.data;
                 $timeout(function () {
                     $scope.pageInfo = response.data;
                 })

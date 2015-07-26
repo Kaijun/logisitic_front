@@ -5,19 +5,29 @@
         .module('home.controllers')
         .controller('Shell', Shell);
 
-    Shell.$inject = ['StockService'];
+    Shell.$inject = ['StockService', '$scope', '$rootScope'];
 
     /* @ngInject */
-    function Shell(StockService) {
-        var vm = this;
-        vm.title = 'Controller';
-        console.log('Shell initialized');
+    function Shell(StockService, $scope, $rootScope) {
+
+        $scope.isLoadingCompleted = false;
+        var loadingFlag = false;
+
         activate();
-        StockService.getStocks();
 
         ////////////////
 
         function activate() {
+            $rootScope.$on('cfpLoadingBar:started', function () {
+                loadingFlag = true;
+                $scope.isLoadingCompleted = false;
+            });
+            $rootScope.$on('cfpLoadingBar:completed', function () {
+                if(loadingFlag){
+                    $scope.isLoadingCompleted = true;
+                    loadingFlag = false;
+                }
+            });
         }
     }
 })();

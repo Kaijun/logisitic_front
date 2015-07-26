@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('home.services')
+        .module('admin.services')
         .service('OrderService', OrderService);
 
     OrderService.$inject = ['$http', 'AppConfig'];
@@ -10,17 +10,17 @@
     /* @ngInject */
     function OrderService($http, AppConfig) {
         var service = {
-            getPackages: getPackages,
-            submitOrder: submitOrder,
+            getOrders: getOrders,
             getOrderById: getOrderById,
+            editOrder: editOrder,
         };
 
         return service;
 
         ////////////////
 
-        function getPackages(statusId, warehouseId) {
-            var promise = $http.get(AppConfig.apiUrl + '/packages?status=' + statusId + "&warehouse=" + warehouseId).then(function (response) {
+        function getOrders() {
+            var promise = $http.get(AppConfig.apiUrl + '/ship-order/').then(function (response) {
                 return response.data;
             });
             return promise;
@@ -31,11 +31,16 @@
             });
             return promise;
         }
-
-        function submitOrder(order) {
+        function getOrderById(orderId) {
+            var promise = $http.get(AppConfig.apiUrl + '/ship-order/' + orderId).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function editOrder(orderId, order) {
             var promise =  $http({
-                url: AppConfig.apiUrl + '/ship-order/',
-                method: 'POST',
+                url: AppConfig.apiUrl + '/ship-order/' + orderId,
+                method: 'PUT',
                 data: order,
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
@@ -45,5 +50,6 @@
             });
             return promise;
         }
+
     }
 })();

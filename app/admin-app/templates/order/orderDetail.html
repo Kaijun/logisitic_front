@@ -1,0 +1,148 @@
+<div class="ah-main-header">
+  <div class="left">
+    <span class="title blue">订单详情 > 查看</span>
+  </div>
+</div>
+
+<div ng-show="isWeightPopupShown" class="pop-up-wapper">
+  <div class="pop-up-title">
+    称重打包
+  </div>
+  <div class="pop-up-body">
+    <div class="pop-up-section">
+      <!-- <input type="text" placeholder="请填写入库重量"> -->
+      入库重量: {{weightSum}}
+    </div>
+    <div class="poo-up-section"><input type="text" ng-model="weight" placeholder="请填写出库重量"> </div>      
+  </div>
+  <div class="pop-up-opt pure-g">
+    <div class="pure-u-2-3 pop-up-tips">
+      <a>提示：更新重量后状态将变为等待付款</a>
+    </div>
+    <div class="pure-u-1-3">
+      <a ng-click="weightAndPackCancle()" class="pure-button red horizon-small">取消</a>
+      <a ng-click="weightAndPackConfirm()" class="pure-button blue horizon-small">确认</a>
+    </div>
+  </div>
+</div>
+
+<div class="ah-main-body pure-form" >
+  <div class="pure-g">
+    <div class="pure-u-18-24">
+      <div class="ah-section first-child"> 基本信息 </div>
+      <!-- 并列表格开始 -->
+      <div class="pure-g"> 
+
+
+        <div class="pure-u-1-2">
+          <table class="pure-table pure-table-horizontal ah-small-table">
+            <tr><td style="width:30%">订单号</td><td>{{order.ship_tracknumber.id}}</td></tr>
+            <tr><td>客户ID</td><td>{{order.owner_id}}</td></tr>
+            <tr><td>收件人</td><td>{{order.ship_info.receiver_name}}</td></tr>
+            <tr><td>收货地址</td><td>{{order.post_info.province}} {{order.post_info.city}} {{order.post_info.town}} {{order.post_info.street}} </td>
+              <tr><td>联系电话</td><td>{{order.post_info.phone}}</td></tr>
+              <tr><td>配送线路</td><td>生成名字!!!</td></tr>
+              <tr><td>物品所在仓库</td><td>生成名字!!!</td></tr>
+              <tr><td>入库重量</td><td>{{weightSum}}KG</td></tr>
+              <tr><td>按线路配重</td><td>{{order.weight}}KG</td></tr>
+            </table>
+          </div>
+
+          <div class="pure-u-1-2">
+           <table class="pure-table pure-table-horizontal ah-small-table">
+            <tr><td style="width:30%">订单状态</td><td>{{order.statusStr}}</td></tr>
+            <tr><td>提交时间</td><td>{{order.created_time.date}}</td></tr>
+            <tr><td>发货时间 还是更新时间???</td><td>{{order.updated_time.date}}</td></tr>
+            <tr><td>发货跟踪号</td><td>{{order.ship_tracknumber.International}} <br> {{order.ship_tracknumber.China}} <br> 要不要链接到官网呢? </td></tr>
+            <tr><td>发货跟踪状态</td><td>{{order.ship_status}}</td></tr>
+          </table>
+        </div>
+
+
+
+      </div>  
+      <!-- 并列表格结束 -->
+
+      <div class="ah-section"> 包裹物品信息 </div>
+
+      <table class="pure-table pure-table-horizontal ah-line-table">
+        <thead>
+          <tr>
+            <th class="pure-u-3-24">入库跟踪号</th>
+            <th class="pure-u-1-4">名称</th>
+            <th class="pure-u-1-8">分类</th>
+            <th class="pure-u-1-8">单价/总价</th>
+            <th class="pure-u-1-8">单重/总重</th>
+            <th class="pure-u-1-8">数量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in order.items">
+            <td>要不要加公司呢?{{order.ship_tracknumber.International}} 要不要链接到官网呢? </td>
+            <td>{{item.item_name}}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
+            <td>{{item.unit_weight}} / {{item.unit_weight*item.quantity}}</td>
+            <td>{{item.quantity}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 收费明细 -->
+
+      <div class="ah-section">收费明细</div>
+      <table class="pure-table pure-table-horizontal ah-line-table">
+        <thead>
+          <tr>
+            <th class="pure-u-1-4">项目</th>
+            <th class="pure-u-1-4">费用</th>
+            <th class="pure-u-2-4">说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- TODO: 这里请使用AS生产动态数据 -->
+          <tr>
+            <td>运费</td>
+            <td>149.00元</td>
+            <td>德国专线转运费用</td>
+          </tr>
+          <tr>
+            <td>保费</td>
+            <td>44.00元</td>
+            <td>按总价值1%收费</td>
+          </tr>
+          <tr>
+            <td>其他费用</td>
+            <td>12.00元</td>
+            <td>用户申请重新打包的费用</td>
+          </tr>
+          <tr class="sum">
+            <td>合计</td>
+            <td>175.00元</td>
+            <td>客服手动确认后付款</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <div class="ah-section">附加信息</div>
+      <table class="pure-table pure-table-horizontal ah-small-table">
+        <tr>
+          <td style="width:15%">发货备注</td>
+          <td>{{order.message}}</td>
+        </tr>
+      </table>
+    </div><!-- 左侧主题结束 -->
+    <div class="pure-u-6-24 right">
+     <div><a class="pure-button flag ">标记为问题件</a></div>
+     <div><a class="pure-button blue divide">打印配货单</a></div>
+     <div><a ng-click="weightAndPack()" class="pure-button blue divide">称重打包</a></div>
+     <div><a class="pure-button blue divide">打印面单</a></div>
+     <div><a class="pure-button blue divide">生成运单</a></div>
+     <div><a ng-click="confirmShip()" class="pure-button green divide">确认发货</a></div>
+     <div><a class="pure-button disable divide">更新运单状态</a></div>
+     <div><a class="pure-button red divide">修改订单</a></div>
+     <div><a class="pure-button back divide">返回列表</a></div>
+   </div> <!-- 右侧功能键结束 Div -->
+</div><!-- 中部信息栏结束 Div -->
+</div>
