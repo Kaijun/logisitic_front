@@ -56,10 +56,14 @@
         .state('transSubmit', {
             url: '/trans/submit?action?orderId',
             templateUrl: 'templates/transSubmit.html',
-            controller: function () {
-            
-            },
+            controller: 'TransSubmitCtrl',
         })
+        .state('transDetail', {
+            url: '/trans/:transId',
+            templateUrl: 'templates/transDetail.html',
+            controller: 'TransDetailCtrl',
+        })
+
 
         .state('addressManage', {
             url: '/profile/addressManage',

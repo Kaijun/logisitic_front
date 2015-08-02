@@ -52,7 +52,7 @@
             });
             var addressListPromise = ProfileService.getAddressList().then(function (data) {
                 $scope.addressList = data;
-            })
+            });
             $q.all([warehousePromise, pathPromise, extraSrvPromise, addressListPromise]).then(function () {
                 $scope.order = angular.copy(orderObj);
                 $scope.order.warehouse = $scope.warehouses[0].id.toString();
@@ -63,10 +63,11 @@
                     // 4 - 已入库
                     OrderService.getPackages(4, newValue).then(function (data) {
                         data.forEach(function (pkg) {
+                            pkg.toggle = false;
                             pkg.items.forEach(function (item) {
                                 item.isSelected = false;
                                 item.quantityToSend = 1;
-                            })
+                            });
                         });
                         $scope.packageList = data;
                     });
@@ -91,9 +92,6 @@
             }
         }
 
-        function addItemToOrder(id, quantity){
-            
-        }
 
         function confirmOrder(){
             var addr = $scope.addressList.filter(function (item) {

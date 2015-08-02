@@ -1,0 +1,114 @@
+<div class="ah-main-header">
+  <div class="left">
+    <span class="title blue">移库详情 > 查看</span>
+  </div>
+</div>
+
+<div class="ah-main-body pure-form" >
+  <div class="pure-g">
+    <div class="pure-u-18-24">
+      <div class="ah-section first-child"> 基本信息 </div>
+      <!-- 并列表格开始 -->
+      <div class="pure-g"> 
+
+        <div class="pure-u-1-2">
+          <table class="pure-table pure-table-horizontal ah-small-table">
+            <tr><td style="width:30%">发送方ID</td><td>{{trans.from_name}}</td></tr>
+            <tr><td>发送方库存码</td><td>{{trans.from_stock_number}}</td></tr>
+            <tr><td>发送方库位号</td><td>{{trans.from_stock_position}}</td></tr>
+
+            <tr><td>接收方ID</td><td>{{trans.to_name}}</td></tr>
+            <tr><td>接收方库存码</td><td>{{trans.to_stock_number}}</td></tr>
+            <tr><td>接收方库位号</td><td>{{trans.to_stock_position}}</td></tr>
+            <tr><td>物品所在仓库</td><td>{{trans.warehouse}} - 渲染成名字</td></tr>
+          </table>
+        </div>
+
+        <div class="pure-u-1-2">
+          <table class="pure-table pure-table-horizontal ah-small-table">
+            <tr><td style="width:30%">订单状态</td><td>{{trans.statusStr}}</td></tr>
+            <tr><td>提交时间</td><td>{{trans.created_time.date}}</td></tr>
+          </table>
+        </div>
+
+
+
+      </div>  
+      <!-- 并列表格结束 -->
+
+      <div class="ah-section"> 包裹物品信息 </div>
+
+      <table class="pure-table pure-table-horizontal ah-line-table">
+        <thead>
+          <tr>
+            <th class="pure-u-1-4">名称</th>
+            <th class="pure-u-1-8">分类</th>
+            <th class="pure-u-1-8">单价/总价</th>
+            <th class="pure-u-1-8">单重/总重</th>
+            <th class="pure-u-1-8">数量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in trans.items">
+            <td>{{item.item_name}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.unit_price}} / {{item.quantity*item.unit_price}}</td>
+            <td>{{item.unit_weight}}KG / {{item.quantity*item.unit_weight}}KG</td>
+            <td>{{item.quantity}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 收费明细 -->
+
+      <div class="ah-section">收费明细</div>
+      <table class="pure-table pure-table-horizontal ah-line-table">
+        <thead>
+          <tr>
+            <th class="pure-u-1-4">项目</th>
+            <th class="pure-u-1-4">费用</th>
+            <th class="pure-u-2-4">说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- TODO: 这里请使用AS生产动态数据 -->
+          <tr>
+            <td>运费</td>
+            <td>149.00元</td>
+            <td>德国专线转运费用</td>
+          </tr>
+          <tr>
+            <td>保费</td>
+            <td>44.00元</td>
+            <td>按总价值1%收费</td>
+          </tr>
+          <tr>
+            <td>其他费用</td>
+            <td>12.00元</td>
+            <td>用户申请重新打包的费用</td>
+          </tr>
+          <tr class="sum">
+            <td>合计</td>
+            <td>175.00元</td>
+            <td>客服手动确认后付款</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <div class="ah-section">附加信息</div>
+      <table class="pure-table pure-table-horizontal ah-small-table">
+        <tr>
+          <td style="width:15%">备注</td>
+          <td>{{trans.message}}</td>
+        </tr>
+      </table>
+    </div><!-- 左侧主题结束 -->
+    <div class="pure-u-6-24 right">
+     <div><a class="pure-button flag ">标记为问题件</a></div>
+     <div><a ng-click="submitTrans()" class="pure-button blue divide">打印</a></div>
+     <div><a ng-click="submitTrans()" class="pure-button blue divide">移库</a></div>
+     <div><a class="pure-button red divide">存档</a></div>
+   </div> <!-- 右侧功能键结束 Div -->
+</div><!-- 中部信息栏结束 Div -->
+</div>
