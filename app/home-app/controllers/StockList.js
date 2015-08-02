@@ -29,6 +29,7 @@
             StockService.getStocks().then(function (list) {
                 list.map(function (item) {
                     item.timestampStr = (new Date(item.timestamp.date)).toISOString().substring(0, 10);
+                    item.inStockTime = Math.floor((new Date() - new Date(item.timestamp.date)) / (1000*60*60*24)) + 1;
                     item.statusStr = InfoService.getStockStatusMapping(parseInt(item.status));
                     return item;
                 })

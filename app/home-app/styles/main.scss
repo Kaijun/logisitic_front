@@ -173,8 +173,7 @@ textarea{
 .uh-main{
     background:white;
     padding: 24px;
-    transition: all linear 2.5s;
-    -webkit-transition:all linear 2.5s;
+    transition: all linear 0.5s;
     opacity: 1;
     &.ng-hide{
         opacity: 0;
@@ -487,7 +486,6 @@ textarea{
 // 表单的输入框，经过重新定义了
 input{
     box-sizing: border-box;
-    width: 100%;
     background:#f6f6f6;
     padding:5px 8px;
     line-height: 20px;
@@ -586,6 +584,7 @@ select{
 
 .pure-button{
     font-size: 14px;
+    cursor: pointer;
 
     &.radius{
         border-radius: 2px;
@@ -634,8 +633,30 @@ select{
     &.right:first-of-type{
         margin-right: 0;
     }
-
 }
+.opt-radius-btn{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    &.delete{
+        background: url(../images/opt-delete-radius-btn.png) no-repeat center;
+    }
+    &.edit{
+        background: url(../images/opt-edit-radius-btn.png) no-repeat center;
+    }
+    &.trans-order{
+        background: url(../images/opt-transorder-radius-btn.png) no-repeat center;
+    }
+    &.ship-order{
+        background: url(../images/opt-shiporder-radius-btn.png) no-repeat center;
+    }
+    &.check{
+        background: url(../images/opt-check-radius-btn.png) no-repeat center;
+    }
+}
+
+
 .pure-button a{
     color: white;
     text-decoration: none;

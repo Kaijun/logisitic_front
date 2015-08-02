@@ -21,7 +21,7 @@
     <div class="list">
 
       <table ng-table="tableParams" class="pure-table pure-table-horizontal uh-custom-table">
-          <tr ng-click="goToDetail(stock.id)" ng-repeat="stock in $data">
+          <tr ng-repeat="stock in $data">
               <td data-title="'更新日期'">
                   {{stock.timestampStr}}
               </td>
@@ -32,39 +32,20 @@
                   {{stock.desc}}
               </td>
               <td data-title="'库存天数'">
-                  需要计算
+                  {{stock.inStockTime}}天
               </td>
               <td data-title="'状态'">
                   {{stock.statusStr}}
               </td>
               <td data-title="'操作'">
-                  动态生成操作
+                  <div ng-if="stock.status === 1 || stock.status === 2" class="opt-radius-btn edit" title="编辑"></div>
+                  <div ng-if="stock.status === 1 || stock.status === 2" class="opt-radius-btn delete" title="删除"></div>
+                  <div ng-if="stock.status === 4" ui-sref="orderSubmit" class="opt-radius-btn ship-order" title="出库"></div>
+                  <div ng-if="stock.status === 4" class="opt-radius-btn trans-order" title="移库"></div>
+                  <div class="opt-radius-btn check"  ng-click="goToDetail(stock.id)" title="查看详情"></div>
               </td>
           </tr>
       </table>
-<!-- 
-      <table class="pure-table pure-table-horizontal uh-custom-table">
-        <thead>
-          <tr>
-            <th>预报日期</th>
-            <th>包裹运单号</th>
-            <th>包裹备注</th>
-            <th>库存天数</th>
-            <th>状态</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-click="goToDetail(stock.id)" ng-repeat="stock in stockList">
-            <td>{{stock.timestamp}}</td>
-            <td>{{stock.ship_info}}</td>
-            <td>{{stock.desc}}</td>
-            <td>需要计算</td>
-            <td>已入库</td>
-            <td>动态生成操作</td>
-          </tr>
-        </tbody>
-      </table> -->
     </div>
   </div>
   
