@@ -25,7 +25,7 @@
                     OrderService.getOrderById(orderId).then(function (data) {
                         $timeout(function() {
                             $scope.order = data;
-                            $scope.order.statusStr = InfoService.getStockStatusMapping(data.ship_status);
+                            $scope.order.statusStr = InfoService.getOrderStatusMapping(data.ship_status);
                         });
                         return data;
                     },

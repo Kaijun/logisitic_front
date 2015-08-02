@@ -13,6 +13,7 @@
 
         var service = {
             getStockStatusMapping: getStockStatusMapping,
+            getOrderStatusMapping: getOrderStatusMapping,
             getWarehouses: getWarehouses,
             getWarehouseById: getWarehouseById,
             getLogisticPaths: getLogisticPaths,
@@ -23,13 +24,21 @@
         return service;
 
         function getStockStatusMapping (statusId) {
-            var statusMapping = ['未知','未预报','已预报','预报问题件','已入库','库存问题件','申请移库','移库处理中','移库问题件','申请发货','发货处理中','已发货']
+            statusId = statusId + 1;
+            var statusMapping = ['删除','未知','未预报','已预报','预报问题件','已入库','库存问题件','（对方）未确认','（对方）已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货']
             if(statusId<statusMapping.length){
                 return statusMapping[statusId];
             }
             return statusMapping[0];
         }
-
+        function getOrderStatusMapping (statusId) {
+            statusId = statusId + 1;
+            var statusMapping = ['删除','未知','发货处理中','待付款','已付款','已发货','订单问题件'];
+            if(statusId<statusMapping.length){
+                return statusMapping[statusId];
+            }
+            return statusMapping[0];
+        }
         function getWarehouses() {
             if(stockInfoCache.get('warehouses')){
                 return stockInfoCache.get('warehouses');
@@ -72,6 +81,7 @@
             return promise;
         }
 
+        // type: 1=入库，2=出库
         function getLogisticPathById (id, type) {
            return getLogisticPaths(type).then(function(lps) {
                 var lp = lps.filter(function (item) {
@@ -80,6 +90,9 @@
                 return angular.isArray(lp)&&lp.length>0 ? lp[0] : null;
            });
         }
+
+        // type: 1=入库, 2=出库, 3=入库+出库
+        // user_group: 0=all, 1=vip only
         function getExtraServices(type, userGroup) {
             if(stockInfoCache.get('extraServices')){
                 return stockInfoCache.get('extraServices').then(function(data){

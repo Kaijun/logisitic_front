@@ -75,9 +75,9 @@
                 </option>
               </select>
             </td>
+            <td><input ng-model="item.quantity" class="pure-u-1" type="text"></td>
             <td><input ng-model="item.unit_price" class="pure-u-1" type="text"></td>
             <td><input ng-model="item.unit_weight" class="pure-u-1" type="text"></td>
-            <td><input ng-model="item.quantity" class="pure-u-1" type="text"></td>
             <td><a ng-click="deleteItem($index)" class="item-delete-icon"></a></td>
           </tr>
         </tbody>
@@ -104,16 +104,13 @@
       <div class="pure-u-3-4"><textarea ng-model="stock.message" class="pure-u-1" ></textarea></div>
     </div>
     <!-- 特殊服务 -->
-    <div ng-repeat="service in extraServices" class="pure-g entry">
-      <div class="pure-u-1-4 title">{{service.service_name}}</div>
+        <div class="pure-g entry">
+      <div class="pure-u-1-4 title">附加服务</div>
       <div class="pure-u-3-4">
-        <div class="radio-group">
-          <input type="radio" name="{{'extra_service'+service.id}}" value="true" id="{{service.id+'Need'}}" checked><label for="{{service.id+'Need'}}">需要</label>
-          <input type="radio" name="{{'extra_service'+service.id}}" value="false" id="{{service.id+'Noneed'}}"><label for="{{service.id+'Noneed'}}">不需要</label>
-        </div>
-
-        <div class="desc">{{service.description}}  </div>
+        <div extra-service-list type="1" user-group="0"></div>
       </div>
+    </div>
+    
     </div>
     <div class="action-btns" >
       <div class="right">
@@ -175,9 +172,9 @@
           <tr ng-repeat="item in stock.items" >
             <td>{{item.item_name}}</td>
             <td>{{item.type}}</td>
+            <td>{{item.quantity}}</td>
             <td>{{item.unit_price}}</td>
             <td>{{item.unit_weight}}</td>
-            <td>{{item.quantity}}</td>
           </tr>
         </tbody>
       </table>

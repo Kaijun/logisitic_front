@@ -18,6 +18,8 @@
         $scope.weightAndPack = weightAndPack;
         $scope.weightAndPackConfirm = weightAndPackConfirm;
         $scope.weightAndPackCancle = weightAndPackCancle;
+        $scope.printPackListconfirm = printPackListconfirm;
+        $scope.printPostListconfirm = printPostListconfirm;
         $scope.confirmShip = confirmShip;
         activate();
 
@@ -35,9 +37,10 @@
             }
         }
 
+        //确认发货 - 已发货
         function confirmShip () {
             OrderService.editOrder($stateParams.orderId, {
-                ship_status: 11
+                ship_status: 5
             }).then(function() {
 
             })
@@ -46,10 +49,26 @@
         function weightAndPack () {
             $scope.isWeightPopupShown = true;
         }
+
+        //确认称重 - 代付款
         function weightAndPackConfirm () {
             OrderService.editOrder($stateParams.orderId, {
                 weight: $scope.weight,
-                ship_status: 9,
+                ship_status: 2,
+            }).then(function() {
+                weightAndPackCancle();
+            })
+        }
+
+        //打印配货单 - 不该状态 - 引导称重
+        function printPackListconfirm () {
+            //- 引导称重
+        }
+        //打印面单 后 - 代发货
+        function printPostListconfirm () {
+            OrderService.editOrder($stateParams.orderId, {
+                weight: $scope.weight,
+                ship_status: 4,
             }).then(function() {
                 weightAndPackCancle();
             })
