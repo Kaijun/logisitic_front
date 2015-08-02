@@ -20,7 +20,7 @@
 
         function activate() {
 
-               if($stateParams.orderId){
+                if($stateParams.orderId){
                     var orderId = $stateParams.orderId;
                     OrderService.getOrderById(orderId).then(function (data) {
                         $timeout(function() {

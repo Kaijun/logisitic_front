@@ -45,6 +45,16 @@
             controller: 'OrderQuick',
         })
         
+        .state('transList', {
+            url: '/transList',
+            templateUrl: 'templates/trans/transList.html',
+            controller: 'TransList',
+        })
+        .state('transDetail', {
+            url: '/trans/:transId',
+            templateUrl: 'templates/trans/transDetail.html',
+            controller: 'TransDetail',
+        })
         
 	}])
     .run(['$state', '$injector', function($state, $injector){

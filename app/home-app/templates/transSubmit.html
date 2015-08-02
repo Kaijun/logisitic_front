@@ -1,91 +1,169 @@
-<div class="uh-main-header">
-      <div class="left">
-        <span class="title blue">包裹移库</span>
-      </div>
-</div> 
+<div class="uh-submit" ng-hide="isConfirmShown">
+
+  <div class="uh-main-header">
+        <div class="left">
+          <span class="title blue">包裹移库</span>
+        </div>
+  </div> 
 
 
-<div class="uh-section"> 包裹物品信息 </div>
+  <div class="uh-section"> 包裹物品信息 </div>
 
-<div class="uh-section desc">仅提供大口袋用户之间的移库，确认操作前请确认接收方信息。</div>
+  <div class="uh-section desc">仅提供大口袋用户之间的移库，确认操作前请确认接收方信息。</div>
 
-<div class="pure-g uh-form-section">
-  <div class="pure-u-4-24">接收方Email</div>
-  <div class="pure-u-12-24"><input type="text"></input></div>
-</div>  
+  <div class="pure-g uh-form-section">
+    <div class="pure-u-4-24">接收方Email</div>
+    <div class="pure-u-12-24"><input ng-model="trans.to_email" type="text"></input></div>
+  </div>  
 
-<div class="pure-g uh-form-section">
-  <div class="pure-u-4-24">接收方库存码</div>
-  <div class="pure-u-12-24"><input type="text"></input></div>
-</div>
+  <div class="pure-g uh-form-section">
+    <div class="pure-u-4-24">接收方库存码</div>
+    <div class="pure-u-12-24"><input ng-model="trans.to_stock_number" type="text"></input></div>
+  </div>
 
-<div class="pure-g uh-form-section">
-<div class="pure-u-4-24">选择包裹所在仓库</div>
-<div class="pure-u-12-24">
-    <select ng-model="order.logistic_path" class="pure-u-1">
-      <option ng-repeat="lp in logisticPaths" value="{{lp.id}}">
-        {{lp.name}}
+  <div class="pure-g uh-form-section">
+  <div class="pure-u-4-24">选择包裹所在仓库</div>
+  <div class="pure-u-12-24">
+    <select ng-model="trans.warehouse" class="pure-u-1">
+      <option ng-repeat="warehouse in warehouses" value="{{warehouse.id}}">
+        {{warehouse.name}}
       </option>
-    </select> 
-</div>
+    </select>
+  </div>
 
 
-</div>
+  </div>
 
-<div class="uh-section"> 选择移库物品 </div>
-<div class="uh-section desc">请勾选你需要移库的物品，并确定数量</div>
+  <div class="uh-section"> 选择移库物品 </div>
+  <div class="uh-section desc">请勾选你需要移库的物品，并确定数量</div>
 
-<div>
-<div class="uh-list-header pure-g active">
-  <div class="pure-u-8-24">DHL102432423</div>
-  <div class="pure-u-14-24">12日亚马逊订单</div>
-  <div class="pure-u-2-24">关闭</div>
-</div>
-<table class="pure-table pure-table-horizontal uh-list-table">
+  <div class="item-list">
+    <div ng-repeat="package in packageList" ng-if="package.items.length!=0">
+
+      <div class="uh-list-header pure-g" ng-class="{active: package.toggle}" ng-click="package.toggle = !package.toggle">
+        <div class="pure-u-8-24">{{getLogisticPathNameById(package.ship_order.logistic_path_id)}} {{package.ship_order.track_code}}</div>
+        <div class="pure-u-14-24">{{package.desc}}</div>
+        <div ng-if="package.toggle" class="pure-u-2-24">关闭</div>
+      </div>
+
+      <table ng-show="package.toggle"  class="pure-table pure-table-horizontal uh-list-table">
         <thead>
           <tr>
-            <th class="pure-u-1-8">选择</th>
-            <th class="pure-u-3-8">名称</th>
-            <th class="pure-u-1-8">分类</th>
-            <th class="pure-u-1-8">单价/总价</th>
-            <th class="pure-u-1-8">单重/总重</th>
+            <th class="pure-u-1-4"><input type="checkbox">物品名称</th>
+            <th class="pure-u-1-8">类型</th>
             <th class="pure-u-1-8">数量</th>
+            <th class="pure-u-1-8">单价</th>
+            <th class="pure-u-1-8">单件重量</th>
+            <th class="pure-u-1-8">剩余数量</th>
+            <th class="pure-u-1-8">发货数量</th>
           </tr>
         </thead>
         <tbody>
-        <!-- TODO: 这里请使用AS生产动态数据 -->
-          <tr>
-            <td>选择</td>
-            <td>很神奇的民资</td>
-            <td>1</td>
-            <td>2</td>
-            <td>1</td>
-            <td>1</td>
-          </tr>
-              <tr>
-            <td>选取</td>
-            <td>很神奇的民资</td>
-            <td>1</td>
-            <td>2</td>
-            <td>1</td>
-            <td>1</td>
+          <tr ng-repeat="item in package.items" ng-if="item.remain>0">
+            <td><input ng-model="item.isSelected" type="checkbox">{{item.item_name}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.unit_price}}</td>
+            <td>{{item.unit_weight}}</td>
+            <td>{{item.remain}}</td>
+            <td><input ng-model="item.quantityToSend" type="number" min="1" max="{{item.remain}}"></td>
           </tr>
         </tbody>
-</table>
-<div class="uh-list-header pure-g">
-<div class="pure-u-8-24">DHL102432423</div>
-  <div class="pure-u-14-24">12日亚马逊订单</div>
-  <div class="pure-u-2-24">关闭</div>
+      </table>
+    </div>
+  </div>
+
+<div class="uh-section pure-g">
+  <div class="pure-u-3-24">发货备注</div>
+  <div class="pure-u-21-24 ">
+    <textarea ng-model="trans.message"></textarea>
+  </div>
 </div>
+  <!-- 底部操作栏 -->
+  <div class="pure-g uh-btm-controller">
+    <div class="pure-u-1-1 right">
+      <div ng-click="confirm()" class="pure-button edit right"><a href="">下一步</a></div>
+    </div>
+  </div>
+
 </div>
 
 
-<!-- 底部操作栏 -->
-<div class="pure-g uh-btm-controller">
-  <div class="pure-u-1-2 left">
-    <div ng-click="cancle()" class="pure-button delete left"><a href="">取消</a></div>
+
+<!-- 确认界面 -->
+
+<div class="uh-submit" ng-show="isConfirmShown">
+
+  <div class="uh-main-header">
+        <div class="left">
+          <span class="title blue">包裹移库</span>
+        </div>
+  </div> 
+
+
+  <div class="uh-section"> 包裹物品信息 </div>
+
+  <div class="uh-section desc">仅提供大口袋用户之间的移库，确认操作前请确认接收方信息。</div>
+
+  <div class="pure-g uh-form-section">
+    <div class="pure-u-4-24">接收方Email</div>
+    <div class="pure-u-12-24">{{trans.to_email}}</input></div>
+  </div>  
+
+  <div class="pure-g uh-form-section">
+    <div class="pure-u-4-24">接收方库存码</div>
+    <div class="pure-u-12-24">{{trans.to_stock_number}}</div>
   </div>
-  <div class="pure-u-1-2 right">
-    <div ng-click="submit()" class="pure-button edit right"><a href="">添加</a></div>
+
+  <div class="pure-g uh-form-section">
+  <div class="pure-u-4-24">选择包裹所在仓库</div>
+  <div class="pure-u-12-24">{{getWarehouseNameById(trans.warehouse)}}</div>
+
+
   </div>
+
+  <div class="uh-section"> 选择移库物品 </div>
+  <div class="uh-section desc">请勾选你需要移库的物品，并确定数量</div>
+
+  <div class="uh-section"> 包裹物品信息 </div>
+
+  <table class="pure-table pure-table-horizontal uh-line-table">
+    <thead>
+      <tr>
+        <th class="pure-u-1-4">名称</th>
+        <th class="pure-u-1-8">分类</th>
+        <th class="pure-u-1-8">单价/总价</th>
+        <th class="pure-u-1-8">单重/总重</th>
+        <th class="pure-u-1-8">数量</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in trans.items">
+        <td>{{item.item_name}}</td>
+        <td>{{item.type}}</td>
+        <td>{{item.unit_price}} / {{item.quantity*item.unit_price}}</td>
+        <td>{{item.unit_weight}}KG / {{item.quantity*item.unit_weight}}KG</td>
+        <td>{{item.quantity}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+<div class="uh-section pure-g">
+  <div class="pure-u-3-24">发货备注</div>
+  <div class="pure-u-21-24 ">
+        {{trans.message}}
+  </div>
+</div>
+  <!-- 底部操作栏 -->
+  <div class="pure-g uh-btm-controller">
+      <div class="pure-u-1-2 left">
+        <div ng-click="edit()" class="pure-button edit left"><a >编辑</a></div>
+        <div ng-click="delete()" class="pure-button delete left"><a >删除</a></div>
+      </div>
+      <div class="pure-u-1-2 right">
+        <div ng-click="submit()" class="pure-button confirm right"><a >提交</a></div>
+      </div>
+
+  </div>
+
 </div>
