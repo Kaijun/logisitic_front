@@ -53,6 +53,13 @@ $main-button-color: #5579B9;
         background-color: $main-button-color;
       }
     }
+    a{
+      color: white;
+      text-decoration: none;
+    }
+    a:hover{
+      opacity: 0.8;
+    }
   }
 }
 

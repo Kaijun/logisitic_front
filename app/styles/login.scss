@@ -25,9 +25,16 @@ $pager-height:30px;
   padding: 0 1.5em;
 
   &.color-light{
-    border-radius:50px;
-    background-color: #4DA1B0;
+    border-bottom: 4px solid #4DA1B0;
+    }
   }
+  a {
+    cursor: pointer;
+    text-decoration:none;
+    color: white;
+  }
+  a:hover{
+    opacity: 0.9;
   }
   }
 }
@@ -123,7 +130,7 @@ $pager-height:30px;
     clear: both;
     font-size: 32px;
     padding:10%;
-    width: 80%;
+    box-sizing: border-box;
   }
   .pr-btn{
     text-align:center;
@@ -172,31 +179,51 @@ $pager-height:30px;
 
 }
 .sp-form{
-  text-align: center;
+  box-sizing:border-box;
+  text-align: left;
   padding: 0 2em;
   margin: 0 auto;
-  input{
+.sp-input{
     padding-left: 10%;
     height: 45px;
-    width: 90%;
+    width: 100%;
     border: 0;
     margin: 10px 0 15px 0;
     background:#f3f3f3;
     clear: both;
     border-radius: 5px;
   }
-  .user{
+.user{
     background:url("/images/user-icon.png") no-repeat #f3f3f3 10px;
   }
-  .pwd{
+.pwd{
     background:url("/images/pwd-icon.png") no-repeat #f3f3f3 10px;
   }
-  .f-pwd{
+.f-pwd{
     background:url("/images/first-pwd-icon.png") no-repeat #f3f3f3 10px;
   }
-  .email{
+.email{
     background:url("/images/mail-icon.png") no-repeat #f3f3f3 10px;
+}
+
+.des{
+    width: 100%;
+    clear: both;
+    padding: 10px 0;
+    text-align: left;
   }
+  .left{
+      text-align: left !important;
+      float: left;
+    }
+  .right{
+      float: right;
+  }
+  .center{
+    text-align: center;
+  }
+
+}
 
   button{
     padding: 0 20px 0 20px;
