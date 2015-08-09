@@ -55,6 +55,18 @@
             templateUrl: 'templates/trans/transDetail.html',
             controller: 'TransDetail',
         })
+
+
+        .state('logisticList', {
+            url: '/logisticList',
+            templateUrl: 'templates/logistic/logisticList.html',
+            controller: 'LogisticList',
+        })
+        .state('logisticManage', {
+            url: '/logisticManage',
+            templateUrl: 'templates/logistic/logisticManage.html',
+            controller: 'LogisticManage',
+        })
         
 	}])
     .run(['$state', '$injector', function($state, $injector){
