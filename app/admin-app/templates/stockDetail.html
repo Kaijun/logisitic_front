@@ -6,12 +6,10 @@
   </div>
   <div class="ah-main-body pure-form" >
     <div class="pure-g">
-      <div class="pure-u-5-6">
-          <div class="ah-section first-child"> 基本信息 </div>
+    <div class="pure-u-5-6">
+  <div class="ah-section">基本信息</div>
         <!-- 并列表格开始 -->
     <div class="pure-g"> 
-
-
     <div class="pure-u-1-2">
       <table class="pure-table pure-table-horizontal ah-small-table">
         <tr><td>客户ID</td><td>CPJSTUDIO</td></tr>
@@ -58,15 +56,12 @@
           <td>{{stock.updateTimeString}}</td></tr>
       </table>
     </div>
-
-
-
-</div>  
+    </div>  
 <!-- 并列表格结束 -->
 
 <div class="ah-section"> 包裹物品信息 </div>
 
-<table class="pure-table pure-table-horizontal ah-custom-table">
+<table class="pure-table pure-table-horizontal ah-line-table">
         <thead>
           <tr>
             <th class="pure-u-1-4">名称</th>
@@ -109,9 +104,9 @@
       <!-- 右侧功能键开始 -->
       <div class="pure-u-1-6 right">
            <div><a class="pure-button flag ">标记为问题件</a></div>
-           <div><a ng-if="stock.status==2" ng-click="enterStock()" class="pure-button blue divide">入库</a></div>
-           <div><a class="pure-button red divide">存档</a></div>
-           <div><a class="pure-button back divide">返回</a></div>
+           <div><a ng-if="stock.status==2" ng-click="enterStock()" class="pure-button blue">入库</a></div>
+           <div><a class="pure-button red ">存档</a></div>
+           <div><a class="pure-button back ">返回</a></div>
            
            
       </div> <!-- 右侧功能键结束 Div -->
