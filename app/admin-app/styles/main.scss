@@ -118,7 +118,7 @@ $sub-navbar-height: 64px;
 .ah-main-header{
     @include clearfix;
     padding-bottom: 10px;
-    border-bottom: solid 2px #D1D1D1;
+    border-bottom:1px solid #ddd;
     .left{
         float: left;
         .title{
@@ -137,9 +137,6 @@ $sub-navbar-height: 64px;
     }
 }
 
-.ah-main-body{
-    padding-top: 24px;
-}
 .ah-divider{
     margin: 20px 0 0 0;
     border-bottom: solid 1px #D1D1D1;
@@ -168,9 +165,6 @@ $sub-navbar-height: 64px;
             }
         }
         .list{
-            padding: 18px 0;
-
-
         }
     }
 
@@ -290,14 +284,17 @@ $sub-navbar-height: 64px;
 }
 //小段标题栏
 .ah-section{
+  width: 100%;
+  float: left;
   height: 40px;
   color: #666666;
-  font-size: 18px;
+  font-size: 16px;
   padding: 8px 0;
+  clear: both;
   line-height: 40px;
-  &.first-child{
-    margin-top:0;
-    padding-top: 0;
+  .add{
+    text-align: right;
+    float: right;
   }
 
 }
@@ -356,6 +353,22 @@ $sub-navbar-height: 64px;
 
 }
 
+.ah-form-line{
+  margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 40px;
+  width: 100%;
+
+}
+
+.input-label{
+   text-align: center;
+   box-sizing:border-box;
+   line-height: 40px;
+   &:first-child{
+    text-align: left;
+   }
+}
 
 .pure-button{
     width: 140px;
@@ -448,7 +461,9 @@ select{
 
 
 /* pop-up Box */
-
+  .hide{
+    display: none; //pop－up默认hide
+  }
 .pop-up-wapper{
   position: absolute; 
   top: 50%; 
@@ -458,9 +473,11 @@ select{
   height: auto;
   font-size: 14px;
   border-radius:5px;
+  line-height: 40px;
   background: white;
   box-shadow: 0 0px 5px grey;
   box-sizing: border-box;
+
 }
 .pop-up-title{
   width: 100%;
