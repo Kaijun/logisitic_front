@@ -129,9 +129,16 @@ textarea{
                 font-size: 12px;
                 padding:5px 10px;
                 margin-left: 5px;
+                text-decoration: none;
+                color: white;
         }
         .addmoney:hover{
+            color: white;
             background:#F06127;
+        }
+        .addmoney a{
+            text-decoration: none;
+            color: white;
         }
     }
     .uh-siderbar-fastopt{
@@ -193,7 +200,7 @@ textarea{
         float: left;
         .title{
             display: inline-block;
-            font-size: 18px;
+            font-size: 16px;
             line-height: 18px;
             padding: 5px 10px;
             border-left: solid 5px #E65F5F;
@@ -376,7 +383,7 @@ textarea{
 // 此为每一个section的标题
 .uh-section{
     line-height: 20px;
-    font-size: 18px;
+    font-size: 16px;
     color: #333333;
     padding:10px 0;
     margin-top: 10px;
@@ -496,12 +503,7 @@ textarea{
 }
 
 // 表单每行的设定
-.uh-form-section{
-    font-size:14px;
-    line-height: 30px;
-    padding:10px 8px;
-    border-bottom: 1px solid #D1D1D1;
-}
+
 // 表单的输入框，经过重新定义了
 input{
     box-sizing: border-box;
@@ -573,8 +575,17 @@ select{
             padding-left: 8px;
         }
 }
-
-
+.uh-form-label{
+    font-size: 14px;
+    line-height: 30px;
+    padding:10px 8px;
+}
+.uh-form-section{
+    font-size:14px;
+    line-height: 30px;
+    padding:10px 8px;
+    border-bottom: 1px solid #D1D1D1;
+}
 
 /* List - Div */
 
@@ -615,6 +626,7 @@ select{
 
     &.blue{
         color: white;
+         padding:10px;
         background-color: #4A90E2
     }
     &.lightblue{

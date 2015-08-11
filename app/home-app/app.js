@@ -75,6 +75,13 @@
             templateUrl: 'templates/profile/personalInfo.html',
             controller: '',
         })
+        .state('refill', {
+            url: '/financial/refill',
+            templateUrl: 'templates/financial/refill.html',
+            controller: '',
+        })
+
+
 	}])
     .run(['$state', '$injector', function($state, $injector){
         var isUserInfoRendered = $injector.has('UserInfo');
