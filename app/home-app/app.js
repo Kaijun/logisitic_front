@@ -85,6 +85,11 @@
             templateUrl: 'templates/financial/refund.html',
             controller: '',
         })
+        .state('notification', {
+            url: '/notification',
+            templateUrl: 'templates/notification.html',
+            controller: '',
+        })
 
 
 	}])

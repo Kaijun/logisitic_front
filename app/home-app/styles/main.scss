@@ -511,8 +511,15 @@ input{
     padding:5px 8px;
     line-height: 20px;
     color: #333;
+    width: 100%;
     border:1px solid #D1D1D1;
     border-radius:0; 
+}
+input[type="radio"]{
+    width: auto;
+}
+input[type="checkbox"]{
+    width: auto;
 }
 
 //表单选择框
@@ -527,6 +534,17 @@ select{
     border-radius:0;
     background:url(../images/form-dropdown.png) right 10px center no-repeat #f6f6f6;
 }
+textarea{
+    box-sizing: border-box;
+    width: 100%;
+    background:#f6f6f6;
+    padding:5px 8px;
+    line-height: 20px;
+    color: #333;
+    border:1px solid #D1D1D1;
+    border-radius:0; 
+}
+
 
 
 
@@ -579,6 +597,7 @@ select{
     font-size: 14px;
     line-height: 30px;
     padding:10px 8px;
+    box-sizing:border-box;
 }
 .uh-form-section{
     font-size:14px;
@@ -727,4 +746,53 @@ select{
     }
 }
 
+.uh-no-notification{
+    position: relative;
+    top: -6px;
+    left: -6px;
+    z-index: 99;
+    width: 20px;
+    height: 20px;
+    padding:4px 8px;
+    border-radius:15px;
+    background: red;
+    font-size: 12px;
+}
 
+.uh-message{
+    font-size: 14px;
+    padding: 10px 8px;
+
+    border-bottom: 1px solid #efefef;
+
+    .title{
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: bold;
+        padding-bottom:10px;
+    }
+    .content{
+        color: #333;
+        line-height: 24px;
+    }
+    .info{
+        padding-top:10px;
+        width: 100%;
+        font-size: 12px;
+        color: #666;
+    }
+    .time{
+        float: left;
+    }
+    .control{
+        text-align: right;
+        float: right;
+    }
+    .info a{
+        text-decoration: none;
+        color: blue;
+    }
+    &:hover{
+        background:#efefef;
+    }
+}
