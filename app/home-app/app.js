@@ -80,6 +80,11 @@
             templateUrl: 'templates/financial/refill.html',
             controller: '',
         })
+        .state('refund', {
+            url: '/financial/refund',
+            templateUrl: 'templates/financial/refund.html',
+            controller: '',
+        })
 
 
 	}])
