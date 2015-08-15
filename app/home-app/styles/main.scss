@@ -604,6 +604,10 @@ textarea{
     line-height: 30px;
     padding:10px 8px;
     border-bottom: 1px solid #D1D1D1;
+    .inline-button{
+        padding:5px;
+        line-height: 12px;
+    }
 }
 
 /* List - Div */
@@ -795,4 +799,67 @@ textarea{
     &:hover{
         background:#efefef;
     }
+}
+
+
+.uh-index-btns{
+    margin-top:10px;
+    width: 22%;
+    float: left;
+    margin-left: 4%;
+    padding: 10px 0 10px 65px;
+    line-height: 30px;
+    box-sizing:border-box;
+    font-size: 14px;
+    border-radius:2px;
+    &.pbm-btn{
+        margin-left: 0;
+        color: white;
+        background:url("../images/icon-pbm.png") 14px 12px no-repeat #4A90E2;
+        &:hover{
+            background:url("../images/icon-pbm.png") 14px 12px no-repeat #1F78E0;
+        }
+
+    }
+    &.stock-btn{
+        background:url("../images/icon-stock.png") 20px 12px no-repeat #f2f2f2;
+        &:hover{
+            background:url("../images/icon-stock.png") 20px 12px no-repeat #DBDBDB;
+        }
+    }
+    &.pay-btn{
+        background:url("../images/icon-pay.png") 20px 12px no-repeat #f2f2f2;
+          &:hover{
+            background:url("../images/icon-pay.png") 20px 12px no-repeat #DBDBDB;
+        }
+    }
+        &.shipped-btn{
+            float: right;
+        background:url("../images/icon-shipped.png") 20px 14px no-repeat #f2f2f2;
+          &:hover{
+            background:url("../images/icon-shipped.png") 20px 14px no-repeat #DBDBDB;
+        }
+    }
+}
+.uh-index-tips{
+        color: #666;
+        font-size: 14px;
+        padding:10px 24px;
+        text-align: right;
+        a{
+            text-decoration: none;
+            color: #4A90E2;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+}
+
+.uh-index-empty{
+    height: 120px;
+    padding:60px 0;
+    color: #333;
+    line-height: 40px;
+    text-align:center;
+    font-weight: bold;
 }
