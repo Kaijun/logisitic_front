@@ -61,9 +61,11 @@
         function getLogisticPaths(type) {
             if(stockInfoCache.get('logisticPaths')){
                 return stockInfoCache.get('logisticPaths').then(function(data){
-                    var data = data.filter(function(value){
-                        return value.type === type;
-                    });
+                    if(angular.isArray(data)){
+                        var data = data.filter(function(value){
+                            return value.type === type;
+                        });
+                    }
                     return data;
                 });
             }
@@ -73,9 +75,11 @@
             stockInfoCache.put('logisticPaths', promise);
 
             promise = promise.then(function(data) {
-                var data = data.filter(function(value){
-                    return value.type === type;
-                });
+                if(angular.isArray(data)){
+                    var data = data.filter(function(value){
+                        return value.type === type;
+                    });
+                }
                 return data;
             });
             return promise;
@@ -84,9 +88,11 @@
         // type: 1=入库，2=出库
         function getLogisticPathById (id, type) {
            return getLogisticPaths(type).then(function(lps) {
-                var lp = lps.filter(function (item) {
-                    return parseInt(item.id) === parseInt(id);
-                });
+                if(angular.isArray(lps)){
+                    var lp = lps.filter(function (item) {
+                        return parseInt(item.id) === parseInt(id);
+                    });
+                }
                 return angular.isArray(lp)&&lp.length>0 ? lp[0] : null;
            });
         }
@@ -96,9 +102,11 @@
         function getExtraServices(type, userGroup) {
             if(stockInfoCache.get('extraServices')){
                 return stockInfoCache.get('extraServices').then(function(data){
-                    var data = data.filter(function(value){
-                        return parseInt(value.type) === parseInt(type) && parseInt(value.user_group) === parseInt(userGroup) ;
-                    });
+                    if(angular.isArray(data)){
+                        var data = data.filter(function(value){
+                            return parseInt(value.type) === parseInt(type) && parseInt(value.user_group) === parseInt(userGroup) ;
+                        });
+                    }
                     return data;
                 });
             }
@@ -108,9 +116,11 @@
             stockInfoCache.put('extraServices', promise);
 
             promise = promise.then(function(data) {
-                var data = data.filter(function(value){
-                    return parseInt(value.type) === parseInt(type) && parseInt(value.user_group) === parseInt(userGroup) ;
-                });
+                if(angular.isArray(data)){
+                    data = data.filter(function(value){
+                        return parseInt(value.type) === parseInt(type) && parseInt(value.user_group) === parseInt(userGroup) ;
+                    });
+                }
                 return data;
             });
             return promise;

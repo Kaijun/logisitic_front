@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('OrderDetail', OrderDetail);
 
-    OrderDetail.$inject = ['$scope', '$stateParams', 'OrderService', 'InfoService', '$timeout'];
+    OrderDetail.$inject = ['$scope', '$stateParams', 'OrderService', 'InfoService', '$timeout', '$state'];
 
     /* @ngInject */
-    function OrderDetail($scope, $stateParams, OrderService, InfoService, $timeout) {
+    function OrderDetail($scope, $stateParams, OrderService, InfoService, $timeout, $state) {
   
         $scope.order = null;
         $scope.isWeightPopupShown = false;
@@ -20,6 +20,7 @@
         $scope.weightAndPackCancle = weightAndPackCancle;
         $scope.printPackListconfirm = printPackListconfirm;
         $scope.printPostListconfirm = printPostListconfirm;
+        $scope.editOrder = editOrder;
         $scope.confirmShip = confirmShip;
         activate();
 
@@ -42,7 +43,7 @@
             OrderService.editOrder($stateParams.orderId, {
                 ship_status: 5
             }).then(function() {
-
+                $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
             })
         }
 
@@ -57,6 +58,7 @@
                 ship_status: 2,
             }).then(function() {
                 weightAndPackCancle();
+                $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
             })
         }
 
@@ -71,6 +73,7 @@
                 ship_status: 4,
             }).then(function() {
                 weightAndPackCancle();
+                $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
             })
         }
         function weightAndPackCancle () {
@@ -86,6 +89,12 @@
                 });
                 return weightSum;
             }
+        }
+
+        function editOrder () {
+            OrderService.editOrder($stateParams.orderId, $scope.order).then(function() {
+                $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+            })
         }
     }
 })();

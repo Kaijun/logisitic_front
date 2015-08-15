@@ -13,6 +13,7 @@
             getTrans: getTrans,
             getTranss: getTranss,
             submitTrans: submitTrans,
+            confirmTrans: confirmTrans,
         };
         return service;
 
@@ -23,7 +24,7 @@
                 return response.data;
             });
             return promise;
-        }
+        }        
         function getTranss() {
             var promise = $http.get(AppConfig.apiUrl + '/trans-order-list/').then(function (response) {
                 return response.data;
@@ -40,6 +41,12 @@
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+        function confirmTrans(transId) {
+            var promise = $http.get(AppConfig.apiUrl + '/trans-order-confirm/' + transId).then(function (response) {
                 return response.data;
             });
             return promise;

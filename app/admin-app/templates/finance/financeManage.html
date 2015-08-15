@@ -1,0 +1,12 @@
+<input ng-model="userEmail"> <button ng-click="checkAmountByEmail()">Email查询</button>
+<br>
+<input ng-model="stockNum"> <button ng-click="checkAmountByStockNuml()">库位号查询</button>
+<br>
+<span> 余额: {{amount}} </span>
+<br><br><br><br>
+
+
+充值用户Email: <input ng-model="chargeEmail"> 
+充值用户库位号: <input ng-model="chargeStockNum"> 
+重置金额: <input ng-model="chargeAmount"> 
+<button ng-click="charge()">库位号查询</button>

@@ -44,7 +44,7 @@
               <tr><td>配送线路</td><td>生成名字!!!</td></tr>
               <tr><td>物品所在仓库</td><td>生成名字!!!</td></tr>
               <tr><td>入库重量</td><td>{{weightSum}}KG</td></tr>
-              <tr><td>按线路配重</td><td>{{order.weight}}KG</td></tr>
+              <tr><td>按线路配重</td><td > <span ng-init="isWeightEditShown=false" ng-click="isWeightEditShown=true" ng-hide="isWeightEditShown">{{order.weight}}KG(点击修改)</span>  <input ng-show="isWeightEditShown" ng-model="order.weight"></td></tr>
             </table>
           </div>
 
@@ -54,7 +54,7 @@
             <tr><td>提交时间</td><td>{{order.created_time.date}}</td></tr>
             <tr><td>发货时间 还是更新时间???</td><td>{{order.updated_time.date}}</td></tr>
             <tr><td>发货跟踪号</td><td>{{order.ship_tracknumber.International}} <br> {{order.ship_tracknumber.China}} <br> 要不要链接到官网呢? </td></tr>
-            <tr><td>发货跟踪状态</td><td>{{order.ship_status}}</td></tr>
+            <tr><td>发货跟踪状态</td><td><span ng-init="isShipStatusEditShown=false" ng-click="isShipStatusEditShown=true" ng-hide="isShipStatusEditShown">{{order.ship_status}}(点击修改)</span> <input ng-show="isShipStatusEditShown" ng-model="order.ship_status"> </td></tr>
           </table>
         </div>
 
@@ -141,7 +141,7 @@
      <div><a class="pure-button blue divide">生成运单</a></div>
      <div><a ng-click="confirmShip()" class="pure-button green divide">确认发货</a></div>
      <div><a class="pure-button disable divide">更新运单状态</a></div>
-     <div><a class="pure-button red divide">修改订单</a></div>
+     <div><a ng-click="editOrder()" class="pure-button red divide">修改订单</a></div>
      <div><a class="pure-button back divide">返回列表</a></div>
    </div> <!-- 右侧功能键结束 Div -->
 </div><!-- 中部信息栏结束 Div -->

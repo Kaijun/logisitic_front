@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('TransSubmitCtrl', TransSubmitCtrl);
 
-    TransSubmitCtrl.$inject = ['$scope', '$timeout', 'InfoService', 'TransService', 'OrderService', '$q'];
+    TransSubmitCtrl.$inject = ['$scope', '$timeout', 'InfoService', 'TransService', 'OrderService', '$q', '$state'];
 
     /* @ngInject */
-    function TransSubmitCtrl($scope, $timeout, InfoService, TransService, OrderService, $q) {
+    function TransSubmitCtrl($scope, $timeout, InfoService, TransService, OrderService, $q, $state) {
         $scope.isConfirmShown = false;
         var transObj = {
             to_stock_number: null,
@@ -71,7 +71,6 @@
         }
         function submit () {
             TransService.submitTrans($scope.trans).then(function (data) {
-                debugger;
                 if(data.package_id && data.success==="true"){
                     $state.go('transDetail', {transId: data.trans_order_id});
                 }

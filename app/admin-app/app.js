@@ -67,6 +67,12 @@
             templateUrl: 'templates/logistic/logisticManage.html',
             controller: 'LogisticManage',
         })
+
+        .state('financeManage', {
+            url: '/financeManage',
+            templateUrl: 'templates/finance/financeManage.html',
+            controller: 'FinanceManage',
+        })
         
 	}])
     .run(['$state', '$injector', function($state, $injector){

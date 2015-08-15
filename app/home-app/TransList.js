@@ -2,9 +2,9 @@
 
 'use strict';
 ;(function () {
-	
+    
     angular.module('home.controllers')
-    .controller('StockListCtrl', ['$scope', '$state', '$filter', 'StockService', 'InfoService', 'ngTableParams', 
+    .controller('TransListCtrl', ['$scope', '$state', '$filter', 'StockService', 'InfoService', 'ngTableParams', 
     function($scope, $state, $filter, StockService, InfoService, ngTableParams) {
         var filterStockList = [];
         $scope.stockList = [];
@@ -28,7 +28,7 @@
         function active () {
             StockService.getStocks().then(function (list) {
                 list = list.filter(function (item) {
-                    return item.status==-1 || item.status==0 || item.status==1 || item.status==2 || item.status==-3 || item.status==4 || item.status==5;
+                    return item.status==6 || item.status==7 || item.status==8 || item.status==9 || item.status==10;
                 })
                 list.map(function (item) {
                     item.timestampStr = (new Date(item.timestamp.date)).toISOString().substring(0, 10);
@@ -45,7 +45,7 @@
                 
             });
         }
-    	
+        
         function toggleStatusFilter(statusId){
             if(statusId===-1){
                 filterStockList = $scope.stockList;
@@ -57,8 +57,8 @@
             $scope.tableParams.reload();
         }
 
-        function goToDetail (stockId) {
-            $state.go('stockDetail', {stockId: stockId});
+        function goToDetail (transId) {
+            $state.go('transDetail', {transId: transId});
         }
 
     }]);

@@ -2,10 +2,10 @@
 
 'use strict';
 ;(function () {
-	
+    
     angular.module('home.controllers')
-    .controller('StockListCtrl', ['$scope', '$state', '$filter', 'StockService', 'InfoService', 'ngTableParams', 
-    function($scope, $state, $filter, StockService, InfoService, ngTableParams) {
+    .controller('OrderListCtrl', ['$scope', '$state', '$filter', 'OrderService', 'InfoService', 'ngTableParams', 
+    function($scope, $state, $filter, OrderService, InfoService, ngTableParams) {
         var filterStockList = [];
         $scope.stockList = [];
         $scope.goToDetail = goToDetail;
@@ -26,14 +26,11 @@
         active();
 
         function active () {
-            StockService.getStocks().then(function (list) {
-                list = list.filter(function (item) {
-                    return item.status==-1 || item.status==0 || item.status==1 || item.status==2 || item.status==-3 || item.status==4 || item.status==5;
-                })
+            OrderService.getOrders().then(function (list) {
                 list.map(function (item) {
-                    item.timestampStr = (new Date(item.timestamp.date)).toISOString().substring(0, 10);
-                    item.inStockTime = Math.floor((new Date() - new Date(item.timestamp.date)) / (1000*60*60*24)) + 1;
-                    item.statusStr = InfoService.getStockStatusMapping(parseInt(item.status));
+                    item.createdTime = (new Date(item.created_at)).toISOString().substring(0, 10);
+                    item.updatedTime = (new Date(item.updated_at)).toISOString().substring(0, 10);
+                    item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.ship_status));
                     return item;
                 })
                 $scope.stockList = list;
@@ -45,20 +42,20 @@
                 
             });
         }
-    	
+        
         function toggleStatusFilter(statusId){
             if(statusId===-1){
                 filterStockList = $scope.stockList;
             }
             else{
-                filterStockList = $filter('filter')($scope.stockList, {status: statusId});
+                filterStockList = $filter('filter')($scope.stockList, {ship_status: statusId});
             }
             $scope.toggleStatus = statusId;
             $scope.tableParams.reload();
         }
 
-        function goToDetail (stockId) {
-            $state.go('stockDetail', {stockId: stockId});
+        function goToDetail (orderId) {
+            $state.go('orderDetail', {orderId: orderId});
         }
 
     }]);

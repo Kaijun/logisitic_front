@@ -57,6 +57,11 @@
             url: '/trans/submit?action?orderId',
             templateUrl: 'templates/transSubmit.html',
             controller: 'TransSubmitCtrl',
+        })        
+        .state('transList', {
+            url: '/transList',
+            templateUrl: 'templates/transList.html',
+            controller: 'TransListCtrl',
         })
         .state('transDetail', {
             url: '/trans/:transId',
@@ -86,5 +91,5 @@
     //Default Configuration of App 
     angular.module('home').constant('AppConfig', {
         apiUrl: '/api',
-    })
+    });
 })();

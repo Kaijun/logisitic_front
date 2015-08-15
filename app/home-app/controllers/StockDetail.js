@@ -34,9 +34,11 @@
                  $scope.extraServices = data;
             });
             $q.all([warehousePromise, pathPromise, extraSrvPromise]).then(function () {
+
                if($stateParams.stockId){
                     var stockId = $stateParams.stockId;
                     StockService.getStock(stockId).then(function(data){
+                        
                         data.timestampStr = (new Date(data.timestamp.date)).toISOString().substring(0, 10);
                         data.statusStr = InfoService.getStockStatusMapping(parseInt(data.status));
                         data.warehouseStr = $scope.warehouses.filter(function(wh){

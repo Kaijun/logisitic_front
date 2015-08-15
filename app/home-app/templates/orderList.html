@@ -3,7 +3,7 @@
 <div class="uh-list">
   <div class="uh-main-header">
     <div class="left">
-      <span class="title">库存列表</span>
+      <span class="title">移库列表</span>
       <a ui-sref="stockSubmit" class="pure-button radius lightblue">新增</a>
     </div>
 
@@ -15,15 +15,16 @@
   <div class="uh-list-body">
     <div class="tab">
       <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="pure-button radius">所有记录</a>
-      <a ng-click="toggleStatusFilter(2)" ng-class="{active: toggleStatus===2}"  class="pure-button radius ">已预报</a>
-      <a ng-click="toggleStatusFilter(4)" ng-class="{active: toggleStatus===4}" class="pure-button radius ">已入库</a>
+      <a ng-click="toggleStatusFilter(1)" ng-class="{active: toggleStatus===1}"  class="pure-button radius ">发货处理中</a>
+      <a ng-click="toggleStatusFilter(4)" ng-class="{active: toggleStatus===4}" class="pure-button radius ">待发货</a>
+      <a ng-click="toggleStatusFilter(5)" ng-class="{active: toggleStatus===5}" class="pure-button radius ">已发货</a>
     </div>
     <div class="list">
 
       <table ng-table="tableParams" class="pure-table pure-table-horizontal uh-custom-table">
           <tr ng-repeat="stock in $data">
               <td data-title="'更新日期'">
-                  {{stock.timestampStr}}
+                  {{stock.updatedTime}}
               </td>
               <td data-title="'包裹运单号'">
                   {{stock.ship_info}}
@@ -31,17 +32,15 @@
               <td data-title="'包裹备注'">
                   {{stock.desc}}
               </td>
-              <td data-title="'库存天数'">
-                  {{stock.inStockTime}}天
+              <td data-title="'创建时间'">
+                  {{stock.createdTime}}
               </td>
               <td data-title="'状态'">
                   {{stock.statusStr}}
               </td>
               <td data-title="'操作'">
-                  <div ng-if="stock.status === 1 || stock.status === 2" ng-click="goToDetail(stock.id)" class="opt-radius-btn edit" title="编辑"></div>
-                  <div ng-if="stock.status === 1 || stock.status === 2" class="opt-radius-btn delete" title="删除"></div>
-                  <div ng-if="stock.status === 4" ui-sref="orderSubmit" class="opt-radius-btn ship-order" title="出库"></div>
-                  <div ng-if="stock.status === 4" ui-sref="transSubmit" class="opt-radius-btn trans-order" title="移库"></div>
+                  <div ng-if="stock.status === 11" ng-click="goToDetail(stock.id)" class="opt-radius-btn edit" title="编辑"></div>
+                  <div ng-if="stock.status === 11" class="opt-radius-btn delete" title="删除"></div>
                   <div class="opt-radius-btn check"  ng-click="goToDetail(stock.id)" title="查看详情"></div>
               </td>
           </tr>

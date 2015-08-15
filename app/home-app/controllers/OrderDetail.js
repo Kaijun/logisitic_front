@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('OrderDetailCtrl', OrderDetailCtrl);
 
-    OrderDetailCtrl.$inject = ['$scope', 'OrderService', 'InfoService', '$q', '$stateParams', '$timeout'];
+    OrderDetailCtrl.$inject = ['$scope', 'OrderService', 'InfoService', '$q', '$stateParams', '$state', '$timeout'];
 
     /* @ngInject */
-    function OrderDetailCtrl($scope, OrderService, InfoService, $q, $stateParams, $timeout) {
+    function OrderDetailCtrl($scope, OrderService, InfoService, $q, $stateParams, $state, $timeout) {
         
         $scope.order = null;
         $scope.warehouse = null;

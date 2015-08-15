@@ -41,7 +41,7 @@
         function enterStock () {
             if($scope.stockId){
                 StockService.enterStock($scope.stockId).then(function(data) {
-                    $state.go('stockDetail', {stockId: data.package_id});
+                    $state.go($state.current, {stockId: data.package_id}, {reload: true});
                 });
             }
         }

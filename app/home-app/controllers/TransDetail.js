@@ -5,12 +5,15 @@
         .module('home.controllers')
         .controller('TransDetailCtrl', TransDetailCtrl);
 
-    TransDetailCtrl.$inject = ['$scope', 'TransService', 'InfoService', '$stateParams', '$timeout'];
+    TransDetailCtrl.$inject = ['$scope', 'TransService', 'InfoService', 'UserInfo','$stateParams', '$timeout'];
 
     /* @ngInject */
-    function TransDetailCtrl($scope, TransService, InfoService, $stateParams, $timeout) {
+    function TransDetailCtrl($scope, TransService, InfoService, UserInfo, $stateParams, $timeout) {
         $scope.trans = null;
         $scope.warehouse = null;
+        $scope.isConfirmShown = false;
+
+        $scope.confirmTrans = confirmTrans;
         activate();
 
         ////////////////
@@ -22,6 +25,8 @@
                     $timeout(function() {
                         $scope.trans = data;
                         $scope.trans.statusStr = InfoService.getStockStatusMapping(data.status);
+                        // $scope.isConfirmShown = data.to_email == UserInfo.email;
+                        $scope.isConfirmShown = true;
                     });
                     return data;
                 },
@@ -38,6 +43,12 @@
             else{
                 $state.go('index');
             }
+        }
+
+        function confirmTrans(){
+            TransService.confirmTrans($stateParams.transId).then(function() {
+                $state.go($state.current, {transId: $stateParams.transId}, {reload: true});
+            });
         }
     }
 })();
