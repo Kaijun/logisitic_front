@@ -129,9 +129,16 @@ textarea{
                 font-size: 12px;
                 padding:5px 10px;
                 margin-left: 5px;
+                text-decoration: none;
+                color: white;
         }
         .addmoney:hover{
+            color: white;
             background:#F06127;
+        }
+        .addmoney a{
+            text-decoration: none;
+            color: white;
         }
     }
     .uh-siderbar-fastopt{
@@ -193,7 +200,7 @@ textarea{
         float: left;
         .title{
             display: inline-block;
-            font-size: 18px;
+            font-size: 16px;
             line-height: 18px;
             padding: 5px 10px;
             border-left: solid 5px #E65F5F;
@@ -376,7 +383,7 @@ textarea{
 // 此为每一个section的标题
 .uh-section{
     line-height: 20px;
-    font-size: 18px;
+    font-size: 16px;
     color: #333333;
     padding:10px 0;
     margin-top: 10px;
@@ -496,12 +503,7 @@ textarea{
 }
 
 // 表单每行的设定
-.uh-form-section{
-    font-size:14px;
-    line-height: 30px;
-    padding:10px 8px;
-    border-bottom: 1px solid #D1D1D1;
-}
+
 // 表单的输入框，经过重新定义了
 input{
     box-sizing: border-box;
@@ -509,8 +511,15 @@ input{
     padding:5px 8px;
     line-height: 20px;
     color: #333;
+    width: 100%;
     border:1px solid #D1D1D1;
     border-radius:0; 
+}
+input[type="radio"]{
+    width: auto;
+}
+input[type="checkbox"]{
+    width: auto;
 }
 
 //表单选择框
@@ -525,6 +534,17 @@ select{
     border-radius:0;
     background:url(../images/form-dropdown.png) right 10px center no-repeat #f6f6f6;
 }
+textarea{
+    box-sizing: border-box;
+    width: 100%;
+    background:#f6f6f6;
+    padding:5px 8px;
+    line-height: 20px;
+    color: #333;
+    border:1px solid #D1D1D1;
+    border-radius:0; 
+}
+
 
 
 
@@ -573,8 +593,18 @@ select{
             padding-left: 8px;
         }
 }
-
-
+.uh-form-label{
+    font-size: 14px;
+    line-height: 30px;
+    padding:10px 8px;
+    box-sizing:border-box;
+}
+.uh-form-section{
+    font-size:14px;
+    line-height: 30px;
+    padding:10px 8px;
+    border-bottom: 1px solid #D1D1D1;
+}
 
 /* List - Div */
 
@@ -615,6 +645,7 @@ select{
 
     &.blue{
         color: white;
+         padding:10px;
         background-color: #4A90E2
     }
     &.lightblue{
@@ -715,4 +746,53 @@ select{
     }
 }
 
+.uh-no-notification{
+    position: relative;
+    top: -6px;
+    left: -6px;
+    z-index: 99;
+    width: 20px;
+    height: 20px;
+    padding:4px 8px;
+    border-radius:15px;
+    background: red;
+    font-size: 12px;
+}
 
+.uh-message{
+    font-size: 14px;
+    padding: 10px 8px;
+
+    border-bottom: 1px solid #efefef;
+
+    .title{
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: bold;
+        padding-bottom:10px;
+    }
+    .content{
+        color: #333;
+        line-height: 24px;
+    }
+    .info{
+        padding-top:10px;
+        width: 100%;
+        font-size: 12px;
+        color: #666;
+    }
+    .time{
+        float: left;
+    }
+    .control{
+        text-align: right;
+        float: right;
+    }
+    .info a{
+        text-decoration: none;
+        color: blue;
+    }
+    &:hover{
+        background:#efefef;
+    }
+}

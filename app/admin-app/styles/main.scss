@@ -1,3 +1,7 @@
+// 列表使用 ah-list-table
+
+
+
 //Utils
 @mixin clearfix {
   &:after {
@@ -145,62 +149,41 @@ $sub-navbar-height: 64px;
     }
 }
 
-.ah-list{
-    .ah-list-body{
-        .tab{
-            padding: 20px 0;                
-            border-bottom: solid 3px #D1D1D1;
-            .pure-button{
-                &:hover{
-                    background-color: #91C1FA;
-                    color: white;
-                }
-                &.active{
-                    color: white;
-                    background-color: #91C1FA;
-                }
-                color: #4A7FB2;
-                background: transparent;
-                margin-right: 64px;
-            }
-        }
-        .list{
-        }
-    }
 
-    .action-btns{
-        @include clearfix;
-        .left{
-            float: left;
-        }
-        .right{
-            float: right;
-        }
-    }
-}
-
-.ah-custom-table{
+.ah-list-table{
+    font-size: 14px;
     table-layout: fixed;
     width: 100%;
     border: none;
     thead{
-        background: none;
+        background: #efefef;
         th{
+            border-top: solid 1px #D1D1D1;
             display: table-cell !important;
             line-height: 30px;
-            border-top: 1px solid #D1D1D1;
             // padding: 8px 8px;
+             &:last-of-type{
+          text-align: right;
         }
+        }
+       
     }
 
     tbody{
         tr{
             border-bottom: solid 1px #D1D1D1;
         }
+        tr:hover{
+          background:#eeeeee;
+        }
         td{
             // padding: 16px 8px 16px 8px;
             line-height: 30px;
+                &:last-of-type{
+          text-align: right;
         }
+        }
+    
     }
 }
 
@@ -285,6 +268,7 @@ $sub-navbar-height: 64px;
 //小段标题栏
 .ah-section{
   width: 100%;
+  // float: left;
   height: 40px;
   color: #666666;
   font-size: 16px;
@@ -325,7 +309,7 @@ $sub-navbar-height: 64px;
     width: 100%;
     border: none;
     thead{
-        background: none;
+        background: #efefef;
         th{
             border-top: solid 1px #D1D1D1;
             display: table-cell !important;
@@ -369,11 +353,30 @@ $sub-navbar-height: 64px;
    }
 }
 
+.ah-tips{
+  line-height: 30px;
+  font-size: 12px;
+  color: #666;
+
+}
+
+//底部按键区域
+.ah-action-btns{
+  margin-top: 20px;
+       .left{
+            float: left;
+        }
+        .right{
+            float: right;
+        }
+}
+
 .pure-button{
     width: 140px;
     color: white;
     font-size: 14px;
     text-align: center;
+    margin-top: 20px;
     padding: 10px 0;
     border-radius: 2px;
     &.radius{
@@ -418,15 +421,15 @@ $sub-navbar-height: 64px;
       background: url(../images/btn-view.png) no-repeat 10px center #F5A623;
       padding: 10px 16px 10px 40px;
     }
-    &.divide{
-      margin-top: 10px;
-    }
     &.horizon-small{
       width: 60px;
       margin-right: 5px; 
       &:last-of-type{
         margin-right:0; 
       }
+    }
+    &.horizon{
+      margin-top: 0;
     }
 
 }
@@ -444,6 +447,17 @@ input{
     border:1px solid #D1D1D1;
     border-radius:0; 
 }
+textarea{
+    box-sizing: border-box;
+    width: 100%;
+    background:#f6f6f6;
+    padding:5px 8px;
+    line-height: 20px;
+    color: #333;
+    border:1px solid #D1D1D1;
+    border-radius:0; 
+}
+
 
 //表单选择框
 select{

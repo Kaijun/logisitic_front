@@ -67,12 +67,28 @@
             templateUrl: 'templates/logistic/logisticManage.html',
             controller: 'LogisticManage',
         })
+        .state('logisticType', {
+            url: '/logisticType',
+            templateUrl: 'templates/logistic/logisticType.html',
+            controller: 'LogisticType',
+        })
 
         .state('financeManage', {
             url: '/financeManage',
             templateUrl: 'templates/finance/financeManage.html',
             controller: 'FinanceManage',
         })
+        .state('refill', {
+            url: '/financial/refill',
+            templateUrl: 'templates/financial/refill.html',
+            controller: 'Refill',
+        })
+        .state('refound', {
+            url: '/financial/refound',
+            templateUrl: 'templates/financial/refound.html',
+            controller: 'Refound',
+        })
+
         
 	}])
     .run(['$state', '$injector', function($state, $injector){

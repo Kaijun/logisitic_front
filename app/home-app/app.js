@@ -80,6 +80,23 @@
             templateUrl: 'templates/profile/personalInfo.html',
             controller: '',
         })
+        .state('refill', {
+            url: '/financial/refill',
+            templateUrl: 'templates/financial/refill.html',
+            controller: '',
+        })
+        .state('refund', {
+            url: '/financial/refund',
+            templateUrl: 'templates/financial/refund.html',
+            controller: '',
+        })
+        .state('notification', {
+            url: '/notification',
+            templateUrl: 'templates/notification.html',
+            controller: '',
+        })
+
+
 	}])
     .run(['$state', '$injector', function($state, $injector){
         var isUserInfoRendered = $injector.has('UserInfo');

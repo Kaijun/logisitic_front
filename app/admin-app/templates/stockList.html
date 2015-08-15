@@ -13,12 +13,11 @@
     </div>
   </div>
 
-  <div class="ah-list-body">
-    <div class="list">
-      <table class="pure-table pure-table-horizontal ah-custom-table">
+  <div class="ah-list">
+      <table class="pure-table pure-table-horizontal ah-list-table">
         <thead>
           <tr>
-            <th><input type="checkbox"></th>
+            <th width="30px"><input type="checkbox"></th>
             <th>入库跟踪号</th>
             <th>客户ID</th>
             <th>入库码</th>
@@ -45,16 +44,15 @@
           </tr>
         </tbody>
       </table>
-    </div>
   </div>
-  <div class="action-btns"> 
+  <div class="ah-action-btns"> 
     <div class="left">
       <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
       <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
     </div>
     <div class="right">
-      <a  ng-click="" class="pure-button red">批量存档</a>
-      <a  ng-click="" class="pure-button blue">批量导出</a>
+      <a  ng-click="" class="pure-button red horizon">批量存档</a>
+      <a  ng-click="" class="pure-button blue horizon">批量导出</a>
     </div>
   </div>
   
