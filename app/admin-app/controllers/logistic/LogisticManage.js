@@ -13,8 +13,8 @@
         var logisticPathObj = {
             logistic_name: null,
             number_ship_company: 2,
-            ship_company_international: 1,
-            ship_company_china: 1,
+            ship_company_international: "DHL",
+            ship_company_china: "EMS",
             options: [],
             weight_upper_bound: null,
             user_group: null,
@@ -54,9 +54,12 @@
         }
 
         function submit () {
-            $scope.logisticPath.ladders = $scope.ladders;
-            $scope.logisticPath.options = $scope.shipOptions.split(' ');
-            $scope.logisticPath.user_group = $scope.roles.split(' ');
+            $scope.logisticPath.price_ladders = $scope.ladders;
+            $scope.logisticPath.options = $scope.shipOptions.split(' ').map(function (item) {
+                return {
+                    type_name: item
+                }
+            });
             LogisticService.submitLogistic($scope.logisticPath).then(function (data) {
                 console.log(data);
             })

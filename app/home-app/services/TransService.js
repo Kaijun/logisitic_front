@@ -46,7 +46,10 @@
             return promise;
         }
         function confirmTrans(transId) {
-            var promise = $http.get(AppConfig.apiUrl + '/trans-order-confirm/' + transId).then(function (response) {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/trans-order-confirm/' + transId,
+                method: 'POST',
+            }).then(function(response){
                 return response.data;
             });
             return promise;

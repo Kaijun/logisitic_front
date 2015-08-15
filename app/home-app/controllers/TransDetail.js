@@ -25,8 +25,8 @@
                     $timeout(function() {
                         $scope.trans = data;
                         $scope.trans.statusStr = InfoService.getStockStatusMapping(data.status);
-                        // $scope.isConfirmShown = data.to_email == UserInfo.email;
-                        $scope.isConfirmShown = true;
+                        $scope.isConfirmShown = data.to_email == UserInfo.email;
+                        // $scope.isConfirmShown = true;
                     });
                     return data;
                 },

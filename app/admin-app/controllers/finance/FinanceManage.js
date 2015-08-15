@@ -32,7 +32,7 @@
             })
         }
         function checkAmountByStockNuml() {            
-            FinanceService.getAmountByEmail($scope.stockNum).then(function (data) {                
+            FinanceService.getAmountByStockNum($scope.stockNum).then(function (data) {                
                 $timeout(function () {
                     $scope.amount = data;
                 })
@@ -41,8 +41,8 @@
         }
         function charge() {
             FinanceService.chargeAmount({
-                user_email: $scope.chargeEmail,
-                user_stock_number: $scope.chargeStockNum,
+                email: $scope.chargeEmail,
+                stock_number: $scope.chargeStockNum,
                 amount: $scope.chargeAmount,
             });
             

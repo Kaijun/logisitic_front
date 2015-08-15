@@ -21,11 +21,8 @@
         function chargeAmount(chargeObj) {
             var promise = $http({
                 url: AppConfig.apiUrl + '/finance/',
-                method: 'POST',
-                data: $httpParamSerializer(chargeObj),
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                method: 'PUT',
+                data: chargeObj,
             }).then(function (response) {
                 return response.data;
             });

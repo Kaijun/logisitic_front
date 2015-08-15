@@ -38,12 +38,12 @@
         <p>put your head </p>
       </div>
       <div class="uh-siderbar-info ">
-      <p>{user-name}</p>
+      <p>{{userInfo.name}}</p>
       <ul>
-        <li>库位号:{location-code}</li>
-        <li>库存码:{stock-code}</li>
-        <li>积分:{credit}</li>
-        <li>余额:{money}<span class="addmoney">充值</span></li>
+        <li>库位号:{{userInfo.stock_position}}</li>
+        <li>库存码:{{userInfo.stock_number}}</li>
+        <li>积分:{{userInfo.score}}</li>
+        <li>余额:{{userInfo.remain}}<span class="addmoney">充值</span></li>
       </ul>
       </div>
       <div class="uh-siderbar-fastopt">
