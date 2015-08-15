@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('TransDetail', TransDetail);
 
-    TransDetail.$inject = ['$scope', '$stateParams', '$timeout', 'TransService', 'InfoService'];
+    TransDetail.$inject = ['$scope', '$stateParams', '$timeout', 'TransService', 'InfoService', '$state'];
 
     /* @ngInject */
-    function TransDetail($scope, $stateParams, $timeout, TransService, InfoService) {
+    function TransDetail($scope, $stateParams, $timeout, TransService, InfoService, $state) {
         $scope.trans = null;
         $scope.submitTrans = submitTrans;
         $scope.printTrans = printTrans;
@@ -31,14 +31,14 @@
             TransService.editTrans($stateParams.transId, {
                 status: 10
             }).then(function (response) {
-                console.log(response)
+                $state.go($state.current, {transId: $stateParams.transId}, {reload: true});
             })
         }
         function printTrans () {
             TransService.editTrans($stateParams.transId, {
                 status: 8
             }).then(function (response) {
-                console.log(response)
+                $state.go($state.current, {transId: $stateParams.transId}, {reload: true});
             })
         }
     }

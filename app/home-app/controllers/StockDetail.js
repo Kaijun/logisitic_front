@@ -26,7 +26,7 @@
             var warehousePromise = InfoService.getWarehouses().then(function (data){
                 $scope.warehouses = data;
             });
-            var pathPromise = InfoService.getLogisticPaths(1).then(function (data){
+            var pathPromise = InfoService.getLogisticPaths(0).then(function (data){
                 $scope.logisticPaths = data;
             });
             // TODO: add user Group!!! from UserInfo
@@ -44,9 +44,14 @@
                         data.warehouseStr = $scope.warehouses.filter(function(wh){
                             return wh.id === parseInt(data.warehouse)
                         })[0].name;
-                        data.shipCompanyStr = $scope.logisticPaths.filter(function(lp){
-                            return lp.id === parseInt(data.ship_company)
-                        })[0].name;
+                        try{
+                            data.shipCompanyStr = $scope.logisticPaths.filter(function(lp){
+                                return lp.id === parseInt(data.ship_company)
+                            })[0].name;
+                        }
+                        catch(err){
+                            console.log(err)
+                        }
                         $timeout(function () {
                             $scope.stock = data;
                         });
