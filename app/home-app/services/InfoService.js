@@ -63,7 +63,7 @@
                 return stockInfoCache.get('logisticPaths').then(function(data){
                     if(angular.isArray(data)){
                         var data = data.filter(function(value){
-                            return value.type === type;
+                            return parseInt(value.type) === type;
                         });
                     }
                     return data;
@@ -77,7 +77,7 @@
             promise = promise.then(function(data) {
                 if(angular.isArray(data)){
                     var data = data.filter(function(value){
-                        return value.type === type;
+                        return parseInt(value.type) === type;
                     });
                 }
                 return data;
