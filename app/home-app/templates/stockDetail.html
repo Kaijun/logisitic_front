@@ -131,7 +131,7 @@
       <div class="left">
         <a  ng-click="goBack()" class="pure-button blue">返回</a>
       </div>
-      <div class="right">
+      <div ng-show="stock.status==1 || stock.status==2 " class="right">
         <a  ng-click="deleteStock()" class="pure-button delete">删除</a>
         <a  ng-click="editStock()" class="pure-button edit">编辑</a>
       </div>
