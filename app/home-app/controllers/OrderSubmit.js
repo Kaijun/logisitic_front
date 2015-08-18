@@ -51,6 +51,10 @@
                  $scope.extraServices = data;
             });
             var addressListPromise = ProfileService.getAddressList().then(function (data) {
+                if(data.length === 0){
+                    alert('请先添加地址!');
+                    $state.go('addressManage');
+                }
                 $scope.addressList = data;
             });
             $q.all([warehousePromise, pathPromise, extraSrvPromise, addressListPromise]).then(function () {

@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('TransDetailCtrl', TransDetailCtrl);
 
-    TransDetailCtrl.$inject = ['$scope', 'TransService', 'InfoService', 'UserInfo','$stateParams', '$timeout'];
+    TransDetailCtrl.$inject = ['$scope', 'TransService', 'InfoService', 'UserInfo','$stateParams', '$timeout', '$state'];
 
     /* @ngInject */
-    function TransDetailCtrl($scope, TransService, InfoService, UserInfo, $stateParams, $timeout) {
+    function TransDetailCtrl($scope, TransService, InfoService, UserInfo, $stateParams, $timeout, $state) {
         $scope.trans = null;
         $scope.warehouse = null;
         $scope.isConfirmShown = false;
