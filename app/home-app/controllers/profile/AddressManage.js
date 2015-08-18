@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('AddressManageCtrl', AddressManageCtrl);
 
-    AddressManageCtrl.$inject = ['$scope', 'ProfileService'];
+    AddressManageCtrl.$inject = ['$scope', 'ProfileService', '$state'];
 
     /* @ngInject */
-    function AddressManageCtrl($scope, ProfileService) {
+    function AddressManageCtrl($scope, ProfileService, $state) {
 
         $scope.cancle = cancle;
         $scope.submit = submit;
@@ -61,10 +61,14 @@
 
         function submit(){
             if(isEditing && isEditingAddrId){
-                ProfileService.editAddress(isEditing, $scope.address);
+                ProfileService.editAddress(isEditing, $scope.address).then(function () {
+                    $state.go($state.current, {}, {reload: true});
+                });;
             }
             else{
-                ProfileService.submitAddress($scope.address);
+                ProfileService.submitAddress($scope.address).then(function () {
+                    $state.go($state.current, {}, {reload: true});
+                });
             }
         }
     }

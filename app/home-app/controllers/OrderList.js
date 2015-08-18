@@ -27,6 +27,12 @@
 
         function active () {
             OrderService.getOrders().then(function (list) {
+
+                list = list.filter(function (item) {
+                    var order_status = item.order_status;
+                    return order_status!=null;
+                });
+
                 list.map(function (item) {
                     item.createdTime = (new Date(item.created_at)).toISOString().substring(0, 10);
                     item.updatedTime = (new Date(item.updated_at)).toISOString().substring(0, 10);

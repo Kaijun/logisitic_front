@@ -52,11 +52,11 @@
       </tr>
       <tr>
         <td>提交时间</td>
-        <td>{{order.created_time.date}}</td>
+        <td>{{order.timestampStr}}</td>
       </tr>
       <tr>
         <td>更新时间</td>
-        <td>{{order.updated_time.date}}</td>
+        <td>{{order.timestampStr}}</td>
       </tr>
       <tr>
         <td>入库重量</td>
@@ -155,7 +155,7 @@
   <div class="pure-u-1-2 left">
     <div class="pure-button back left"><a href="">返回</a></div>
   </div>
-  <div class="pure-u-1-2 right">
+  <div ng-show="order.status==1" class="pure-u-1-2 right">
     <div class="pure-button edit right"><a href="">编辑</a></div>
     <div class="pure-button delete right"><a href="">删除</a></div>
   </div>

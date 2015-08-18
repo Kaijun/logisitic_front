@@ -92,8 +92,13 @@
         })
         .state('notification', {
             url: '/notification',
-            templateUrl: 'templates/notification.html',
-            controller: '',
+            templateUrl: 'templates/notification/notification.html',
+            controller: 'NotificationCtrl',
+        })
+        .state('messaage', {
+            url: '/notification/:id',
+            templateUrl: 'templates/notification/message.html',
+            controller: 'MessageCtrl',
         })
 
 

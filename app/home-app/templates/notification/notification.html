@@ -1,0 +1,25 @@
+
+<div class="uh-main-header">
+    <div class="left"><span class="title">消息中心</span></div>
+</div>
+
+<div ng-repeat="conversation in conversations" ng-click="goToDetail(conversation.id)" class="uh-message pure-g">
+  <div class="pure-u-2-24">
+    <img src="images/icon-notification.png">
+  </div>
+
+  <div class="pure-u-22-24">
+    <div class="title">{{conversation.title}}</div>
+    <!-- <div class="content">你的订单已经发货。</div> -->
+
+    <div class="info">
+
+      <div class="pure-u-12-24 time">{{conversation.updated_at}}</div>
+      <div class="pure-u-12-24 control"><a>标记为已读 删除</a></div>
+
+    </div>
+    
+  </div>
+
+</div>
+

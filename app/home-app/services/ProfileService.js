@@ -48,6 +48,7 @@
                 profileCache.remove('addressList');
                 return response.data;
             });
+            return promise;
         }
         function editAddress (id, addr) {
             var promise =  $http({
@@ -61,6 +62,8 @@
                 profileCache.remove('addressList');
                 return response.data;
             });
+
+            return promise;
         }
         function deleteAddress (id) {
             var promise =  $http({

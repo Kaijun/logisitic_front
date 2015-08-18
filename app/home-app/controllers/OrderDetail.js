@@ -23,6 +23,7 @@
                 if($stateParams.orderId){
                     var orderId = $stateParams.orderId;
                     OrderService.getOrderById(orderId).then(function (data) {
+                        data.timestampStr = (new Date(data.timestamp.date)).toISOString().substring(0, 10);
                         $timeout(function() {
                             $scope.order = data;
                             $scope.order.statusStr = InfoService.getOrderStatusMapping(data.ship_status);
