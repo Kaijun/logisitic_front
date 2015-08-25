@@ -94,6 +94,17 @@
             templateUrl: 'templates/financial/refund.html',
             controller: 'Refund',
         })
+        .state('userList', {
+            url: '/user/userList',
+            templateUrl: 'templates/user/userList.html',
+            controller: 'UserList',
+        })
+        .state('userManage', {
+            url: '/user/userManage',
+            templateUrl: 'templates/user/userManage.html',
+            controller: 'UserManage',
+        })
+
 
         
 	}])

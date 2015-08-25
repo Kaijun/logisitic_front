@@ -29,6 +29,7 @@ $navbar-height: 32px;
   height: $navbar-height;
   background: black;
   color: #E6E6E6;
+  font-size:12px;
 
   .title{
     line-height: $navbar-height;
@@ -39,7 +40,7 @@ $navbar-height: 32px;
     display: inline-block;
     text-align: right;
     ul{
-      line-height: $navbar-height;
+      line-height: 32px;
       margin: 0;
       font-size: 14px;
 
@@ -88,7 +89,7 @@ $sub-navbar-height: 64px;
   margin: 0 auto;
   background-color: #6E6E6E;
   color: #FDFDFD;
-  padding: 12px 42px ;
+  padding: 12px 30px ;
 
   .list-wrapper{
     margin-bottom: 32px;
@@ -126,7 +127,7 @@ $sub-navbar-height: 64px;
 .ah-main-header{
     @include clearfix;
     padding-bottom: 10px;
-    // border-bottom:1px solid #ddd;
+    border-bottom:1px solid #ddd;
     .left{
         float: left;
         .title{
@@ -158,10 +159,12 @@ $sub-navbar-height: 64px;
     font-size: 14px;
     table-layout: fixed;
     width: 100%;
+    // border-radius:5px;
     border: none;
     thead{
         background: #efefef;
         th{
+
             border-top: solid 1px #D1D1D1;
             display: table-cell !important;
             line-height: 30px;
@@ -318,6 +321,9 @@ $sub-navbar-height: 64px;
             border-top: solid 1px #D1D1D1;
             display: table-cell !important;
             padding: 10px 0 10px 8px;
+            &:last-of-type{
+              text-align: center;
+            }
         }
     }
 
@@ -328,6 +334,9 @@ $sub-navbar-height: 64px;
         td{
             padding: 10px 0px 10px 8px;
             border: 0;
+            &:last-of-type{
+              text-align: center;
+            }
         }
         tr:last-of-type{
             border-bottom: solid 1px #D1D1D1;
@@ -354,6 +363,11 @@ $sub-navbar-height: 64px;
    line-height: 40px;
    &:first-child{
     text-align: left;
+   }
+   &.none-edit{
+    text-align: left;
+    color: #666;
+
    }
 }
 
@@ -401,6 +415,11 @@ $sub-navbar-height: 64px;
     &.red{
         background-color: #E2574A;
     }
+    &.small{
+      margin-top:5px;
+      padding: 5px 10px;
+      width: auto;
+    }
     &.flag{
       border: solid 1px #F54623;
       color: #F54623;
@@ -413,7 +432,7 @@ $sub-navbar-height: 64px;
       padding: 10px 16px 10px 40px;
     }
     &.back{
-      background: url(../images/btn-back.png) no-repeat 10px center #333;
+      background: url(../images/btn-back.png) no-repeat 10px center #666;
       padding: 10px 16px 10px 20px;
     }
     &.disable{
@@ -462,6 +481,12 @@ textarea{
     border-radius:0; 
 }
 
+input[type="search"]{
+  width: 150px;
+  background:url(../images/search-icon.png) left 5px center no-repeat #f6f6f6;
+  padding-left:30px;
+  font-size: 12px;
+}
 
 //表单选择框
 select{
