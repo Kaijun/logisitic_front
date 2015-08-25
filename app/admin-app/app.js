@@ -73,6 +73,12 @@
             controller: 'LogisticType',
         })
 
+          .state('logisticTrack', {
+            url: '/logisticTrack',
+            templateUrl: 'templates/logistic/logisticTrack.html',
+            controller: 'LogisticTrack',
+        })
+
         .state('financeManage', {
             url: '/financeManage',
             templateUrl: 'templates/finance/financeManage.html',

@@ -126,7 +126,7 @@ $sub-navbar-height: 64px;
 .ah-main-header{
     @include clearfix;
     padding-bottom: 10px;
-    border-bottom:1px solid #ddd;
+    // border-bottom:1px solid #ddd;
     .left{
         float: left;
         .title{
