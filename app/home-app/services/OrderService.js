@@ -13,6 +13,8 @@
             getPackages: getPackages,
             submitOrder: submitOrder,
             getOrderById: getOrderById,
+            deleteOrder: deleteOrder,
+            editOrder: editOrder,
             getOrders: getOrders,
         };
 
@@ -37,8 +39,30 @@
                 return response.data;
             });
             return promise;
+        }  
+        function deleteOrder(orderId) {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/ship-order/' + orderId,
+                method: 'DELETE',
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
         }
 
+        function editOrder(orderId, order) {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/ship-order/' + orderId,
+                method: 'PUT',
+                data: order,
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
         function submitOrder(order) {
             var promise =  $http({
                 url: AppConfig.apiUrl + '/ship-order/',

@@ -23,7 +23,7 @@
             controller: 'StockListCtrl',
         })
         .state('stockSubmit', {
-            url: '/stock/submit?action?stockId',
+            url: '/stock/submit?stockId',
             templateUrl: 'templates/stockSubmit.html',
             controller: 'StockSubmitCtrl',
         })
@@ -43,7 +43,7 @@
             controller: 'OrderListCtrl',
         })
         .state('orderSubmit', {
-            url: '/order/submit?action?orderId',
+            url: '/order/submit?orderId',
             templateUrl: 'templates/orderSubmit.html',
             controller: 'OrderSubmitCtrl',
         })
@@ -54,7 +54,7 @@
         })
 
         .state('transSubmit', {
-            url: '/trans/submit?action?orderId',
+            url: '/trans/submit?transId',
             templateUrl: 'templates/transSubmit.html',
             controller: 'TransSubmitCtrl',
         })        

@@ -113,7 +113,7 @@
 
         function submitOrder(){
             OrderService.submitOrder($scope.order).then(function (data) {
-                if(data.package_id && data.success==="true"){
+                if(data.package_id && data.success==true){
                     $state.go('orderDetail', {orderId: data.ship_order_id});
                 }
             })

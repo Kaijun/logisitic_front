@@ -9,7 +9,7 @@
 
     /* @ngInject */
     function InfoService(AppConfig, $http, $cacheFactory, $q) {
-        var AppConfig = {apiUrl: '/api/'}
+        var AppConfig = {apiUrl: '/api'}
 
 
         var stockInfoCache = $cacheFactory('stockInfo');

@@ -31,6 +31,7 @@
         $scope.deleteSubmit = deleteSubmit;
 
         var isImagesChanged = false;
+        var isEditMode = false;
 
         active();
 
@@ -47,13 +48,14 @@
             });
             $q.all([warehousePromise, pathPromise, extraSrvPromise]).then(function () {
                 $timeout(function(){
-                    if(!$stateParams.action){
+                    if(!$stateParams.stockId){
                         $scope.stock = angular.copy(stockObj);
                         $scope.stock.warehouse = $scope.warehouses[0].id.toString();
                         $scope.stock.ship_company = $scope.logisticPaths[0].id.toString();
                     }
-                    else if($stateParams.action==='edit'){
-                        StockService.getStock(stockId).then(function(data){
+                    else{
+                        isEditMode = true;
+                        StockService.getStock($stateParams.stockId).then(function(data){
                             $scope.stock = data;
                             $scope.stock.warehouse = $scope.warehouses[0].id.toString();
                             $scope.stock.ship_company = $scope.logisticPaths[0].id.toString();
@@ -62,10 +64,6 @@
                         function(){
                             $state.go('index');
                         })
-                    }
-                    else{
-                        // 非法
-                        $state.go('index');
                     }
                 });
             });
@@ -136,11 +134,20 @@
 
         function confirmSubmit () {
             console.log($scope.stock);
-            StockService.submitStock($scope.stock).then(function (data) {
-                if(data.package_id && data.success==="true"){
-                    $state.go('stockDetail', {stockId: data.package_id});
-                }
-            });
+            if($stateParams.stockId && isEditMode){
+                StockService.submitStock($stateParams.stockId, $scope.stock).then(function (data) {
+                    if(data.package_id && data.success==="true"){
+                        $state.go('stockDetail', {stockId: $stateParams.stockId});
+                    }
+                });
+            }
+            else{
+                StockService.submitStock($scope.stock).then(function (data) {
+                    if(data.package_id && data.success==="true"){
+                        $state.go('stockDetail', {stockId: data.package_id});
+                    }
+                });
+            }
         }
 
         function editSubmit () {

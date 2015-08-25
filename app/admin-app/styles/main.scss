@@ -500,6 +500,7 @@ select{
   line-height: 30px;
   color: black;
   box-sizing: border-box;
+  text-align: left;
 }
 
 .pop-up-body{
@@ -522,6 +523,10 @@ select{
   height: 40px;
   text-align: right;
   box-sizing: border-box;
+
+  .pure-button{
+    margin-top: 0px;
+  }
 }
 
 .pop-up-tips{

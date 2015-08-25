@@ -116,7 +116,7 @@
         </thead>
         <tbody>
         <!-- TODO: 这里请使用AS生产动态数据 -->
-          <tr>
+<!--           <tr>
             <td>运费</td>
             <td>149.00元</td>
             <td>德国专线转运费用</td>
@@ -130,10 +130,10 @@
             <td>其他费用</td>
             <td>12.00元</td>
             <td>用户申请重新打包的费用</td>
-          </tr>
+          </tr> -->
           <tr class="sum">
             <td>合计</td>
-            <td>175.00元</td>
+            <td>{{order.cost}}元</td>
             <td>客服手动确认后付款</td>
           </tr>
         </tbody>
@@ -155,9 +155,9 @@
   <div class="pure-u-1-2 left">
     <div class="pure-button back left"><a href="">返回</a></div>
   </div>
-  <div ng-show="order.status==1" class="pure-u-1-2 right">
-    <div class="pure-button edit right"><a href="">编辑</a></div>
-    <div class="pure-button delete right"><a href="">删除</a></div>
+  <div ng-show="order.ship_status==1" class="pure-u-1-2 right">
+    <div ng-click="editOrder()" class="pure-button edit right"><a >编辑</a></div>
+    <div ng-click="deleteOrder()" class="pure-button delete right"><a >删除</a></div>
   </div>
 
 </div>

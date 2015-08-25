@@ -14,6 +14,9 @@
         $scope.warehouse = null;
         $scope.logisticPath = null;
 
+        $scope.editOrder = editOrder;
+        $scope.deleteOrder = deleteOrder;
+
         activate();
 
         ////////////////
@@ -49,6 +52,17 @@
                     $state.go('index');
                 }
 
+        }
+
+        function editOrder () {
+            $state.go('orderSubmit', {orderId: $stateParams.orderId});
+        }
+        function deleteOrder () {
+            OrderService.deleteOrder($stateParams.orderId).then(function() {
+                $state.go('orderList');
+            }, function () {
+                // body...
+            })
         }
     }
 })();

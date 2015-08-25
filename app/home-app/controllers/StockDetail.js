@@ -68,10 +68,14 @@
         }
 
         function editStock () {
-            $state.go('stockEdit', {stockId: $stateParams.stockId});
+            $state.go('stockSubmit', {stockId: $stateParams.stockId});
         }
         function deleteStock () {
-            
+            StockService.deleteStock($stateParams.stockId).then(function() {
+                $state.go('stockList');
+            }, function () {
+                // body...
+            })
         }
     }
 })();

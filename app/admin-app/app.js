@@ -1,7 +1,7 @@
 'use strict';
 ;(function () {
 
-	angular.module('admin', ['admin.controllers','admin.services', 'ui.router', 'angular-loading-bar'])
+	angular.module('admin', ['admin.controllers','admin.services','admin.directives', 'ui.router', 'angular-loading-bar'])
 	.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', 
     function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = true;

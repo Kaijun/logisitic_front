@@ -15,6 +15,7 @@
             getStocks: getStocks,
             submitStock: submitStock,
             editStock: editStock,
+            deleteStock: deleteStock,
         };
         return service;
 
@@ -52,6 +53,18 @@
                 url: AppConfig.apiUrl + '/stocks/' + stockId,
                 method: 'PUT',
                 data: stock,
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+        function deleteStock(stockId) {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/stocks/' + stockId,
+                method: 'DELETE',
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }

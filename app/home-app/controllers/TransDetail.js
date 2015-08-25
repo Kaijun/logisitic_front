@@ -14,6 +14,8 @@
         $scope.isConfirmShown = false;
 
         $scope.confirmTrans = confirmTrans;
+        $scope.deleteTrans = deleteTrans;
+        $scope.editTrans = editTrans;
         activate();
 
         ////////////////
@@ -49,6 +51,18 @@
             TransService.confirmTrans($stateParams.transId).then(function() {
                 $state.go($state.current, {transId: $stateParams.transId}, {reload: true});
             });
+        }
+
+
+        function editTrans () {
+            $state.go('transSubmit', {transId: $stateParams.transId});
+        }
+        function deleteTrans () {
+            TransService.deleteTrans($stateParams.transId).then(function() {
+                $state.go('transList');
+            }, function () {
+                // body...
+            })
         }
     }
 })();

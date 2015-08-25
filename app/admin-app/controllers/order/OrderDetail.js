@@ -34,7 +34,7 @@
                 OrderService.getOrderById($stateParams.orderId).then(function(data) {
                     $timeout(function () {
                         $scope.order = data;
-                        $scope.order.statusStr = InfoService.getStockStatusMapping(data.ship_status);
+                        $scope.order.statusStr = InfoService.getOrderStatusMapping(data.ship_status);
 
                         $scope.order.created_time.date = (new Date(data.created_time.date)).toISOString().substring(0, 10);
                         $scope.order.updated_time.date = (new Date(data.updated_time.date)).toISOString().substring(0, 10);
