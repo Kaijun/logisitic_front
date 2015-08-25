@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="JS/CODE128.js"></script>
+	<script src="JS/JsBarcode.js"></script>
+	<link href="print.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="delivery-wapper">
+	<div><img src="wb-logo.png" height="30px;"></div>
+			<div class="ship-info">
+		<span>移库跟踪号：YK20150203XXXX</span>
+		<br/>
+		<img id="barcode1"/>
+		<script>$("#barcode1").JsBarcode("YK20150203XXXX",{width:1.5,height:45});</script>
+	</div>
+	<table>
+    <tbody>
+        <tr>
+			<th>新库位号</th>
+            <th>3920</th>
+        </tr>
+        <tr>
+			<td>原库位号</td>
+            <td>1920</td>
+        </tr>
+    </tbody>
+    </table>
+
+
+	<div>配货单</div>
+	 <div class="track-code">入库跟踪号:JD02930122</div>
+	<table>
+    <tbody>
+     <tr>
+			<th>物品名称</th>
+            <th>数量</th>
+        </tr>
+        <tr>
+			<td>奶粉</td>
+            <td>1</td>
+        </tr>
+        <tr>
+        	<td>WMF刀</td>
+            <td>2</td>
+        </tr>
+
+    </tbody>
+    </table>
+    <div class="track-code">入库跟踪号:JD029322122</div>
+    	<table>
+    <tbody>
+     <tr>
+			<th>物品名称</th>
+            <th>数量</th>
+        </tr>
+        <tr>
+			<td>奶粉</td>
+            <td>1</td>
+        </tr>
+        <tr>
+        	<td>WMF刀</td>
+            <td>2</td>
+        </tr>
+
+    </tbody>
+    </table>
+
+</div>
+<!-- <footer></footer> -->
+</body>
+</html>

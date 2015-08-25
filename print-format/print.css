@@ -11,6 +11,10 @@
     padding: 10px;
 
 }
+.track-code{
+    font-size: 12px;
+    color: #666;
+}
 .ship-info{
     text-align: center;
 }
