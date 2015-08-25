@@ -83,10 +83,10 @@
             templateUrl: 'templates/financial/refill.html',
             controller: 'Refill',
         })
-        .state('refound', {
-            url: '/financial/refound',
-            templateUrl: 'templates/financial/refound.html',
-            controller: 'Refound',
+        .state('refund', {
+            url: '/financial/refund',
+            templateUrl: 'templates/financial/refund.html',
+            controller: 'Refund',
         })
 
         

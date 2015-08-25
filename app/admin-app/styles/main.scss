@@ -94,15 +94,19 @@ $sub-navbar-height: 64px;
     margin-bottom: 32px;
     .title{
       font-size: 18px;
+      color: #ddd;
       margin: 12px 0;
     }
     .list{
-      font-style: 14px;
+      font-size: 14px;
       list-style: none;
       padding: 0;
       li{
         cursor: pointer;
         padding: 3px 0;
+      }
+      li:hover{
+        text-decoration: underline;
       }
 
     }
