@@ -1,0 +1,61 @@
+
+<div class="ah-list">
+  <div class="ah-main-header">
+    <div class="left">
+      <span class="title">问题件列表</span>
+    </div>
+
+    <div class="right pure-u-1-8">
+
+    <select>
+      <option value="0">全部</option>
+      <option value="0">入库问题件</option>
+      <option value="1">订单问题件</option>
+      <option value="1">移库问题件</option>
+
+    </select>
+    </div>
+  </div>
+
+  <div class="ah-list">
+      <table class="pure-table pure-table-horizontal ah-list-table">
+        <thead>
+          <tr>
+            <th width="30px"><input type="checkbox"></th>
+            <th>跟踪号</th>
+            <th>客户ID</th>
+            <th>入库码</th>
+            <th>库位号</th>
+            <th>联系</th>
+            <th>分类</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>DKD0192313</td>
+            <td>CPJSTUDIO</td>
+            <td>NKDWQK</td>
+            <td>2114</td>
+            <td>Email</td>
+            <td>订单问题件</td>
+            <td>已解决</td>
+            <td>查看</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="ah-action-btns"> 
+    <div class="left">
+      <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
+      <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
+    </div>
+    <div class="right">
+      <a  ng-click="" class="pure-button red horizon">批量存档</a>
+      <a  ng-click="" class="pure-button blue horizon">批量导出</a>
+    </div>
+  </div>
+  
+</div>

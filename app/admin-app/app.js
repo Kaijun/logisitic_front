@@ -55,6 +55,16 @@
             templateUrl: 'templates/trans/transDetail.html',
             controller: 'TransDetail',
         })
+        .state('problemList', {
+            url: '/problemList',
+            templateUrl: 'templates/problemList.html',
+            controller: '',
+        })
+        .state('problemDetail', {
+            url: '/problemDetail',
+            templateUrl: 'templates/problemDetail.html',
+            controller: '',
+        })
 
 
         .state('logisticList', {
