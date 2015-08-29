@@ -34,7 +34,7 @@
                 OrderService.getOrderById($stateParams.orderId).then(function(data) {
                     $timeout(function () {
                         $scope.order = data;
-                        $scope.order.statusStr = InfoService.getOrderStatusMapping(data.ship_status);
+                        $scope.order.statusStr = InfoService.getOrderStatusMapping(data.order_status);
 
                         $scope.order.created_time.date = (new Date(data.created_time.date)).toISOString().substring(0, 10);
                         $scope.order.updated_time.date = (new Date(data.updated_time.date)).toISOString().substring(0, 10);
@@ -61,7 +61,7 @@
         function confirmShip () {
             if($scope.order.ship_tracknumber.International && $scope.order.ship_tracknumber.China){
                 OrderService.editOrder($stateParams.orderId, {
-                    ship_status: 5
+                    order_status: 5
                 }).then(function() {
                     $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
                 })
@@ -79,7 +79,7 @@
         function weightAndPackConfirm () {
             OrderService.editOrder($stateParams.orderId, {
                 weight: $scope.weight,
-                ship_status: 2,
+                order_status: 2,
             }).then(function() {
                 weightAndPackCancle();
                 $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
@@ -92,10 +92,20 @@
         }
         //打印面单 后 - 代发货
         function printPostListconfirm () {
-            OrderService.editOrder($stateParams.orderId, {
-                ship_status: 4,
-            }).then(function() {
-                $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+            swal({
+                title: "已打印?",
+                text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                cancelButtonText: "取消",
+                confirmButtonText: "确定",
+                closeOnConfirm: false,
+            }, function () {
+                OrderService.editOrder($stateParams.orderId, {
+                    order_status: 4,
+                }).then(function() {
+                    $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+                })
             })
         }
         function weightAndPackCancle () {
@@ -115,9 +125,9 @@
 
         function editOrder () {
             //如果填写了跟踪号码 则发货!!!
-            if($scope.order.ship_status < 5){
+            if($scope.order.order_status < 5){
                 if($scope.order.ship_tracknumber.International || $scope.order.ship_tracknumber.China){
-                    $scope.order.ship_status = 5;
+                    $scope.order.order_status = 5;
                 }
             }
             OrderService.editOrder($stateParams.orderId, $scope.order).then(function() {

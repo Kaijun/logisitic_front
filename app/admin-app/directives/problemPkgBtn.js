@@ -19,7 +19,7 @@
             restrict: 'A',
             scope: {
                 packageId: "@",
-                problemStatus: "@",
+                currentStatus: "@",
             }
         };
         return directive;
@@ -38,10 +38,17 @@
             }
 
             scope.markAsProblemPkg = function () {
+                var status = 0;
+                if(scope.currentStatus<=3){
+                    status = 4;
+                }
+                else if(scope.currentStatus<=4){
+                    status = 5;
+                }
                 ProblemService.newProblemPkg({
                     "package_id": scope.packageId, 
                     "description": scope.problemDesc, 
-                    "status": scope.problemStatus, 
+                    "status": status, 
                 }).then(function () {
                     scope.dismissProblemPopup();
                 })

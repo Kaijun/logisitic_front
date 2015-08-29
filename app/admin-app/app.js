@@ -73,6 +73,17 @@
             controller: 'LogisticType',
         })
 
+        .state('extraSrvList', {
+            url: '/extraSrvList',
+            templateUrl: 'templates/extraSrv/extraSrvList.html',
+            controller: 'ExtraSrvList',
+        })
+        .state('ExtraSrvManage', {
+            url: '/extraSrvManage',
+            templateUrl: 'templates/extraSrv/extraSrvManage.html',
+            controller: 'ExtraSrvManage',
+        })
+
         .state('financeManage', {
             url: '/financeManage',
             templateUrl: 'templates/finance/financeManage.html',
@@ -91,11 +102,27 @@
 
         
 	}])
-    .run(['$state', '$injector', function($state, $injector){
+    .run(['$state', '$injector', '$templateCache', '$templateRequest', '$compile', '$rootScope',
+    function($state, $injector, $templateCache, $templateRequest, $compile, $rootScope){
+
         var isUserInfoRendered = $injector.has('UserInfo');
         if(isUserInfoRendered===false){
             window.location.href = '/login/auth'
         }
+
+ //  加载 静态打印的页面
+   $templateRequest("templates/print-format/perpare-list.html").then(function(html){
+      var template = angular.element(html);
+        var scope = $rootScope.$new();
+        scope.test = "test";
+        var b = $compile(html)(scope);
+        console.log(b)
+
+        var myWindow = window.open();
+        angular.element(myWindow.document.body).html(b);
+   });
+
+
     }]);
 
     //Default Configuration of App 

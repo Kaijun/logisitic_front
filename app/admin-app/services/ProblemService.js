@@ -19,7 +19,7 @@
         function newProblemPkg(pkg) {
             var promise = $http({
                 url: AppConfig.apiUrl + '/hasproblem/',
-                method: 'POST',
+                method: 'PUT',
                 data: pkg,
             }).then(function(response){
                 return response.data;
