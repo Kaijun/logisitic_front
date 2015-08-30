@@ -2,7 +2,7 @@
 <div class="ah-list">
   <div class="ah-main-header">
     <div class="left">
-      <span class="title">库存列表</span>
+      <span class="title">用户列表</span>
     </div>
 
     <div class="right">
@@ -16,30 +16,26 @@
         <thead>
           <tr>
             <th width="30px"><input type="checkbox"></th>
-            <th>入库跟踪号</th>
             <th>客户ID</th>
             <th>入库码</th>
             <th>库位号</th>
-            <th>联系</th>
-            <th>包裹描述</th>
-            <th>客户备注</th>
-            <th>状态</th>
+            <th>Email</th>
+            <th>积分</th>
+            <th>余额</th>
+            <th>用户组</th>
             <th>操作</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-click="goToDetail(stock)" ng-repeat="stock in stocks">
-            <td><input type="checkbox"></td>
-            <td>{{stock.ship_info}}</td>
-            <td>{{stock.owner_id}}</td>
-            <td>{{stock.warehouse_code}}</td>
-            <td>{{stock.position_number}}</td>
-            <td>QQ - Email</td>
-            <td>{{stock.desc}}</td>
-            <td>{{stock.message}}</td>
-            <td>已入库</td>
-            <td>动态生成操作</td>
-          </tr>
+        <td><input type="checkbox"></td>
+        <td>CPJStudio</td>
+        <td>JDIEQD</td>
+        <td>1923</td>
+        <td>p@p.com</td>
+        <td>123</td>
+        <td>324.00</td>
+        <td>VIP用户</td>
+        <td>修改｜删除</td>
         </tbody>
       </table>
   </div>
@@ -49,8 +45,7 @@
       <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
     </div>
     <div class="right">
-      <a  ng-click="" class="pure-button red horizon">批量存档</a>
-      <a  ng-click="" class="pure-button blue horizon">批量导出</a>
+      <a  class="pure-button blue horizon" ui-sref="userManage">添加用户</a>
     </div>
   </div>
   

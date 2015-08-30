@@ -55,6 +55,16 @@
             templateUrl: 'templates/trans/transDetail.html',
             controller: 'TransDetail',
         })
+        .state('problemList', {
+            url: '/problemList',
+            templateUrl: 'templates/problemList.html',
+            controller: '',
+        })
+        .state('problemDetail', {
+            url: '/problemDetail',
+            templateUrl: 'templates/problemDetail.html',
+            controller: '',
+        })
 
 
         .state('logisticList', {
@@ -84,6 +94,12 @@
             controller: 'ExtraSrvManage',
         })
 
+          .state('logisticTrack', {
+            url: '/logisticTrack',
+            templateUrl: 'templates/logistic/logisticTrack.html',
+            controller: 'LogisticTrack',
+        })
+
         .state('financeManage', {
             url: '/financeManage',
             templateUrl: 'templates/finance/financeManage.html',
@@ -94,11 +110,22 @@
             templateUrl: 'templates/financial/refill.html',
             controller: 'Refill',
         })
-        .state('refound', {
-            url: '/financial/refound',
-            templateUrl: 'templates/financial/refound.html',
-            controller: 'Refound',
+        .state('refund', {
+            url: '/financial/refund',
+            templateUrl: 'templates/financial/refund.html',
+            controller: 'Refund',
         })
+        .state('userList', {
+            url: '/user/userList',
+            templateUrl: 'templates/user/userList.html',
+            controller: 'UserList',
+        })
+        .state('userManage', {
+            url: '/user/userManage',
+            templateUrl: 'templates/user/userManage.html',
+            controller: 'UserManage',
+        })
+
 
         
 	}])
