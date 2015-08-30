@@ -488,6 +488,10 @@ input[type="search"]{
   padding-left:30px;
   font-size: 12px;
 }
+input[type="checkbox"]{
+  width: auto;
+  margin-right:5px;
+}
 
 //表单选择框
 select{
