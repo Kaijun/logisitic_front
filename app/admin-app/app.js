@@ -10,6 +10,12 @@
 	    
 	    $stateProvider
 
+        .state('login',{
+            url: '/login',
+            templateUrl:'login.html',
+        })
+
+
         .state('business', {
             url: '/business',
             abstract: true,
