@@ -77,7 +77,7 @@
 
         //确认称重 - 代付款
         function weightAndPackConfirm () {
-            if($scope.order_status==1){
+            if($scope.order.order_status==1){
                 OrderService.editOrder($stateParams.orderId, {
                     weight: $scope.weight,
                     order_status: 2,

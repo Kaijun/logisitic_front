@@ -49,7 +49,7 @@
         }
         function submitLogisticType () {
             if($scope.typeName){
-                LogisticService.submitLogisticType($scope.typeName).then(function (data) {
+                LogisticService.submitLogisticType({type_name: $scope.typeName}).then(function (data) {
                     $scope.isPopupShown = false;
                     $state.go($state.current, {}, {reload: true})
                 })

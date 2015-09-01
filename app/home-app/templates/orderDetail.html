@@ -116,24 +116,19 @@
         </thead>
         <tbody>
         <!-- TODO: 这里请使用AS生产动态数据 -->
+          <tr ng-repeat="es in order.extra_services">
+            <td>{{es.name}}</td>
+            <td>{{es.cost}}元</td>
+            <td>{{es.desc}}</td>
+          </tr>
 <!--           <tr>
-            <td>运费</td>
-            <td>149.00元</td>
-            <td>德国专线转运费用</td>
-          </tr>
-          <tr>
-            <td>保费</td>
-            <td>44.00元</td>
-            <td>按总价值1%收费</td>
-          </tr>
-          <tr>
             <td>其他费用</td>
             <td>12.00元</td>
             <td>用户申请重新打包的费用</td>
           </tr> -->
           <tr class="sum">
             <td>合计</td>
-            <td>{{order.cost}}元</td>
+            <td>{{order.total_cost}}元</td>
             <td>客服手动确认后付款</td>
           </tr>
         </tbody>
@@ -160,7 +155,7 @@
     <div ng-click="deleteOrder()" class="pure-button delete right"><a >删除</a></div>
   </div>
   <div ng-show="order.order_status==2" class="pure-u-1-2 right">
-    <div ng-click="payOrder()" class="pure-button edit right"><a >编辑</a></div>
+    <div ng-click="payOrder()" class="pure-button edit right"><a >付款</a></div>
   </div>
 
 </div>

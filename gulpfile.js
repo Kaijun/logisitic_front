@@ -7,6 +7,8 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var proxyMiddleware = require('http-proxy-middleware');
 
+// var gutil = require('gulp-util');
+
 gulp.task('styles', function () {
   return gulp.src('app/**/*.scss')
     .pipe($.sourcemaps.init())
@@ -38,7 +40,8 @@ gulp.task('html', ['styles'], function () {
   return gulp.src(['app/*.html', 'app/home-app/**/*.html', 'app/admin-app/**/*.html'], { base: 'app' })
     .pipe($.sourcemaps.init())
     .pipe(assets)
-    .pipe($.if('*.js', $.uglify({ mangle: false })))
+    // .pipe($.if('*.js', $.uglify({ mangle: false })))
+    // .pipe($.if('*.js', $.uglify({ mangle: false }).on('error', gutil.log)))
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
     .pipe($.useref())

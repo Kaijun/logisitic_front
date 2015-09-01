@@ -101,11 +101,8 @@
         function submitLogisticType(logisticPath) {
             var promise = $http({
                 url: AppConfig.apiUrl + '/logistict-types/',
-                method: 'POST',
+                method: 'PUT',
                 data: logisticPath,
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded'
-                }
             }).then(function (response) {
                 return response.data;
             });
