@@ -20,7 +20,7 @@
             <tr><td>接收方ID</td><td>{{trans.to_name}}</td></tr>
             <tr><td>接收方库存码</td><td>{{trans.to_stock_number}}</td></tr>
             <tr><td>接收方库位号</td><td>{{trans.to_stock_position}}</td></tr>
-            <tr><td>物品所在仓库</td><td>{{trans.warehouse}} - 渲染成名字</td></tr>
+            <tr><td>物品所在仓库</td><td>{{warehouse.name}}</td></tr>
           </table>
         </div>
 
@@ -61,7 +61,7 @@
 
       <!-- 收费明细 -->
 
-      <div class="ah-section">收费明细</div>
+<!--       <div class="ah-section">收费明细</div>
       <table class="pure-table pure-table-horizontal ah-line-table">
         <thead>
           <tr>
@@ -71,7 +71,6 @@
           </tr>
         </thead>
         <tbody>
-          <!-- TODO: 这里请使用AS生产动态数据 -->
           <tr>
             <td>运费</td>
             <td>149.00元</td>
@@ -93,7 +92,7 @@
             <td>客服手动确认后付款</td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
 
 
       <div class="ah-section">附加信息</div>
@@ -107,7 +106,7 @@
     <div class="pure-u-6-24 right">
      <div><a class="pure-button flag ">标记为问题件</a></div>
      <div><a ng-click="printTrans()" class="pure-button blue divide">打印</a></div>
-     <div><a ng-click="submitTrans()" class="pure-button blue divide">移库</a></div>
+     <div><a ng-if="trans.status==8||trans.status==9" ng-click="submitTrans()" class="pure-button blue divide">移库</a></div>
      <div><a class="pure-button red divide">存档</a></div>
    </div> <!-- 右侧功能键结束 Div -->
 </div><!-- 中部信息栏结束 Div -->

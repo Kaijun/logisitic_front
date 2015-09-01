@@ -1,107 +1,92 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-    <head>
-        <meta charset="UTF-8">
-        <title>{{test}}</title>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="JS/CODE128.js"></script>
-        <script src="JS/JsBarcode.js"></script>
-        <script src="JS/jquery.qrcode.min.js"></script>
-        <link href="print.css" rel="stylesheet" type="text/css" />
-    </head>
-    <body>
+
         <div class="perpare-wapper">
             <heaer>
-                <span ><img src="wb-logo.png" height="30px;"></span>
-                <span class="info">配货单-订单号：DKD391021923</span>
+                <span ><img src="images/wb-logo.png" height="30px;"></span>
+                <span class="info">配货单-订单号：{{order.reference_code}}</span>
             </header>
             <table>
                 <tbody>
                     <tr>
                         <th>用户ID</th>
-                        <th>CPJSTUDIO</th>
+                        <th>{{order.user_name}}</th>
                         <th>库位号</th>
-                        <th>3920</th>
+                        <th>{{order.stock_position}}</th>
                     </tr>
                 </tbody>
             </table>
             <div>
                 配货信息
             </div>
-        <table class="line-table">
-            <tr>
+
+
+        <!-- TODO: filter出各个包裹!!!! -->
+            <table class="line-table">
+            <tr >
+                <th><input type="checkbox"></th>
                 <th>名称</th>
                 <th>分类</th>
                 <th>单价/总价</th>
                 <th>单重/总重</th>
                 <th>数量</th>
-                <th>入库跟踪号</th>
             </tr>
-            <tr >
-                <td>婴幼儿奶粉</td>
-                <td>奶粉</td>
-                <td>123.00 / 123.00</td>
-                <td>0.5kg / 0.5kg</td>
-                <td>1</td>
-                <td>DHL38019231</td>
-            </tr>
-            <tr >
-                <td>婴幼儿奶粉</td>
-                <td>奶粉</td>
-                <td>123.00 / 123.00</td>
-                <td>0.5kg / 0.5kg</td>
-                <td>1</td>
-                <td>DHL38019231</td>
-            </tr>
-            <tr >
-                <td>WFD奶粉</td>
-                <td>奶粉</td>
-                <td>123.00 / 123.00</td>
-                <td>0.5kg / 0.5kg</td>
-                <td>1</td>
-                <td>DHL38019231</td>
-            </tr>
-            <tr >
-                <td>WFD奶粉</td>
-                <td>奶粉</td>
-                <td>123.00 / 123.00</td>
-                <td>0.5kg / 0.5kg</td>
-                <td>1</td>
-                <td>DHL38019231</td>
-            </tr>
-            <tr >
-                <td>WFD奶粉</td>
-                <td>奶粉</td>
-                <td>123.00 / 123.00</td>
-                <td>0.5kg / 0.5kg</td>
-                <td>1</td>
-                <td>DHL38019231</td>
-            </tr>
-            <tr >
-                <td>WFD奶粉</td>
-                <td>奶粉</td>
-                <td>123.00 / 123.00</td>
-                <td>0.5kg / 0.5kg</td>
-                <td>1</td>
-                <td>DHL38019231</td>
-            </tr>
-            <tr >
-                <td>婴幼儿奶粉</td>
-                <td>奶粉</td>
-                <td>123.00 / 123.00</td>
-                <td>0.5kg / 0.5kg</td>
-                <td>1</td>
-                <td>DHL38019231</td>
-            </tr>
-            <tr >
-                <td>婴幼儿奶粉</td>
-                <td>奶粉</td>
-                <td>123.00 / 123.00</td>
-                <td>0.5kg / 0.5kg</td>
-                <td>1</td>
-                <td>DHL38019231</td>
+            <tr ng-repeat="item in order.items">
+                <td><input type="checkbox"></td>
+                <td>{{item.item_name}}</td>
+                <td>{{item.type}}</td>
+                <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
+                <td>{{item.unit_weight}} / {{item.unit_weight*item.quantity}}</td>
+                <td>{{item.quantity}}</td>
             </tr>
         </table>
+
+        <!-- TODO: filter出各个包裹!!!! -->
+
+<!--             <div class="track-code">入库跟踪号:JDD029120345</div>
+        <table class="line-table">
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>名称</th>
+                <th>分类</th>
+                <th>单价/总价</th>
+                <th>单重/总重</th>
+                <th>数量</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>婴幼儿奶粉</td>
+                <td>奶粉</td>
+                <td>123.00 / 123.00</td>
+                <td>0.5kg / 0.5kg</td>
+                <td>1</td>
+            </tr>
+        </table>
+        <div class="track-code">入库跟踪号:JDD029120346</div>
+        <table class="line-table">
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>名称</th>
+                <th>分类</th>
+                <th>单价/总价</th>
+                <th>单重/总重</th>
+                <th>数量</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>婴幼儿奶粉</td>
+                <td>奶粉</td>
+                <td>123.00 / 123.00</td>
+                <td>0.5kg / 0.5kg</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>WFM</td>
+                <td>厨具</td>
+                <td>123.00 / 123.00</td>
+                <td>0.5kg / 0.5kg</td>
+                <td>1</td>
+            </tr>
+        </table> -->
         <div>
             附加服务
         </div>
@@ -121,10 +106,22 @@
     <table>
         <tbody>
             <tr>
-                <th>收货的是我妈妈</th>
+                <th>{{order.message}}</th>
             </tr>
         </tbody>
     </table>
+
+        <div>
+        物流线路
+    </div>
+    <table>
+        <tbody>
+            <tr>
+                <th>DHL特惠奶粉线路</th>
+            </tr>
+        </tbody>
+    </table>
+
     <div>
         包裹信息
     </div>
@@ -133,12 +130,14 @@
             <tr>
                 <th>体积重</th>
                 <th>实际重</th>
+                <th>净重</th>
                 <th>打包人</th>
             </tr>
             <tr>
                 <td>长</td>
                 <td>宽</td>
                 <td>高</td>
+                <td></td>
             </tr>
         </tbody>
     </table>
@@ -147,11 +146,3 @@
         <div class="code-right"><img id="barcode"/></div>
     </div>
 </div>
-
-</body>
-<script>
-$('#qrcode').qrcode({width: 72,height: 72,text: "http://xxxlbag.com/admin-app/orderDetail/1203932"});
-$("#barcode").JsBarcode("DKD391021923",{width:1.5,height:72});
-</script>
-<!-- <footer></footer> -->
-</html>

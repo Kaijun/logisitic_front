@@ -156,8 +156,11 @@
     <div class="pure-button back left"><a href="">返回</a></div>
   </div>
   <div ng-show="order.order_status==1" class="pure-u-1-2 right">
-    <div ng-click="editOrder()" class="pure-button edit right"><a >编辑</a></div>
+    <!-- <div ng-click="editOrder()" class="pure-button edit right"><a >编辑</a></div> -->
     <div ng-click="deleteOrder()" class="pure-button delete right"><a >删除</a></div>
+  </div>
+  <div ng-show="order.order_status==2" class="pure-u-1-2 right">
+    <div ng-click="payOrder()" class="pure-button edit right"><a >编辑</a></div>
   </div>
 
 </div>

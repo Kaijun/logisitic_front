@@ -3,12 +3,12 @@
 
     angular
         .module('admin.controllers')
-        .controller('FinanceManage', FinanceManage);
+        .controller('Refund', Refund);
 
-    FinanceManage.$inject = ['$scope', '$timeout', 'FinanceService'];
+    Refund.$inject = ['$scope'];
 
     /* @ngInject */
-    function FinanceManage($scope, $timeout, FinanceService) {
+    function Refund($scope) {
         $scope.userEmail = '';
         $scope.stockNum = '';
         $scope.amount = '';
@@ -42,8 +42,19 @@
         function charge() {
             FinanceService.chargeAmount({
                 email: $scope.chargeEmail,
-                stock_number: $scope.chargeStockNum,
+                stock_number: -$scope.chargeStockNum,
                 amount: $scope.chargeAmount,
+            }).then(function (data) {
+                swal({
+                    type: "success",
+                    title: "退款成功!",
+                    showCancelButton: false,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确定",
+                    closeOnConfirm: true,
+                }, function () {
+                    
+                })
             });
             
         }

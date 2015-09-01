@@ -1,0 +1,62 @@
+
+<div class="ah-list">
+  <div class="ah-main-header">
+    <div class="left">
+      <span class="title">搜索</span>
+    </div>
+
+    <div class="right">
+    <span><input type="search" ng-model="searchText" placeholder ="搜索" ng-keypress="($event.which === 13)?search():0"></span>
+   
+    </div>
+  </div>
+
+  <div class="ah-list">
+      <table class="pure-table pure-table-horizontal ah-list-table">
+        <thead>
+          <tr>
+            <th width="30px"><input type="checkbox"></th>
+            <th>入库跟踪号</th>
+            <th>客户ID</th>
+            <th>入库码</th>
+            <th>库位号</th>
+            <th>联系</th>
+            <th>包裹描述</th>
+            <th>客户备注</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="stock in packages">
+            <td><input ng-model="stock.selected" ng-click="stockSelected(stock)" type="checkbox"></td>
+            <td>{{stock.reference_code}}</td>
+            <td>{{stock.user_name}}</td>
+            <td>{{stock.stock_position}}</td>
+            <td>{{stock.stock_number}}</td>
+            <td>QQ:{{stock.user_qq? stock.user_qq: "空"}}  - Email: {{stock.user_email}}</td>
+            <td>{{stock.desc}}</td>
+            <td>{{stock.message}}</td>
+            <td>{{StockService.getStockStatusMapping(stock.status)}}</td>
+            <td>                   
+              <!-- <a ng-if="stock.status === 1 || stock.status === 2" ng-click="goToDetail(stock.id)"  title="编辑"></a> -->
+              <!-- <a ng-if="stock.status === 1 || stock.status === 2" ng-click="enterStock(stock)" >入库</a> -->
+              <a ng-click="goToDetail(stock)" >详情</a>
+              <!-- <a ng-if="stock.status !== -1" ng-click="deleteStock(stock)" >删除</a> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="ah-action-btns"> 
+    <div class="left">
+      <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
+      <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
+    </div>
+    <div class="right">
+      <a  ng-click="" class="pure-button red horizon">批量存档</a>
+      <a  ng-click="batchDownload()" class="pure-button blue horizon">批量导出</a>
+    </div>
+  </div>
+  
+</div>

@@ -121,7 +121,11 @@
     </div>
     <div class="pure-g entry">
       <div class="pure-u-1-4 title">附件信息</div>
-      <div class="pure-u-3-4"> <img ng-src="{{imageUrlPrefix + stock.image_1}}"></div>
+      <div class="pure-u-3-4"> 
+        <img ng-if="stock.image_1" ng-src="{{imageUrlPrefix + stock.image_1}}">
+        <img ng-if="stock.image_2" ng-src="{{imageUrlPrefix + stock.image_2}}">
+        <img ng-if="stock.image_3" ng-src="{{imageUrlPrefix + stock.image_3}}">
+      </div>
     </div>
     <div class="pure-g entry">
       <div class="pure-u-1-4 title">入库清点</div>

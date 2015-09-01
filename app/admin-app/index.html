@@ -20,6 +20,7 @@
 
     <!-- build:css /admin-app/styles/main.css -->
     <link rel="stylesheet" href="/admin-app/styles/main.css">
+    <link rel="stylesheet" href="/admin-app/styles/print.css">
     <!-- endbuild -->
 
     <!-- build:js /scripts/vendor/modernizr.js -->
@@ -36,7 +37,9 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ng-include="'templates/shell.html'"></div>
+    <!-- <div ng-include="'templates/shell.html'"></div> -->
+    <div ui-view></div>
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -49,15 +52,17 @@
 
     <!-- build:js /admin-app/scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
     <script src="/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="/admin-app/print-vendor/CODE128.js"></script>
+    <script src="/admin-app/print-vendor/JsBarcode.js"></script>
+    <script src="/admin-app/print-vendor/jquery.qrcode.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
-
 
     <!-- build:js /admin-app/scripts/plugins.js -->
     <!-- endbuild -->
@@ -66,6 +71,7 @@
     <script src="/admin-app/app.js"></script>
     <script src="/admin-app/controllers/controllers.module.js"></script>
     <script src="/admin-app/controllers/Shell.js"></script>
+    <script src="/admin-app/controllers/Search.js"></script>
     <script src="/admin-app/controllers/StockList.js"></script>
     <script src="/admin-app/controllers/StockDetail.js"></script>
     <script src="/admin-app/controllers/StockQuick.js"></script>
@@ -77,12 +83,22 @@
     <script src="/admin-app/controllers/trans/TransDetail.js"></script>
     <script src="/admin-app/controllers/logistic/LogisticManage.js"></script>
     <script src="/admin-app/controllers/logistic/LogisticList.js"></script>
+    <script src="/admin-app/controllers/logistic/LogisticType.js"></script>
+    <script src="/admin-app/controllers/logistic/LogisticTrack.js"></script>
     <script src="/admin-app/controllers/extraSrv/ExtraSrvManage.js"></script>
     <script src="/admin-app/controllers/extraSrv/ExtraSrvList.js"></script>
-    <script src="/admin-app/controllers/finance/FinanceManage.js"></script>
+    <script src="/admin-app/controllers/financial/Refill.js"></script>
+    <script src="/admin-app/controllers/financial/Refund.js"></script>
+    <script src="/admin-app/controllers/print/PrintPrepareList.js"></script>
+    <script src="/admin-app/controllers/print/PrintShip.js"></script>
+    <script src="/admin-app/controllers/print/PrintStockBatch.js"></script>
+    <script src="/admin-app/controllers/print/PrintTrans.js"></script>
+
+    <script src="/admin-app/controllers/problem/ProblemList.js"></script>
 
     <script src="/admin-app/directives/directives.module.js"></script>
     <script src="/admin-app/directives/problemPkgBtn.js"></script>
+    <script src="/admin-app/directives/fileModel.js"></script>
 
     <script src="/admin-app/services/services.module.js"></script>
     <script src="/admin-app/services/StockService.js"></script>

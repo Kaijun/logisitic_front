@@ -1,32 +1,19 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<meta charset="UTF-8">
-	<title></title>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="JS/CODE128.js"></script>
-	<script src="JS/JsBarcode.js"></script>
-	<link href="print.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
+
 <div class="delivery-wapper">
-	<div><img src="wb-logo.png" height="30px;"></div>
+	<div><img src="images/wb-logo.png" height="30px;"></div>
 	<hr/>
 	<div>	
-		<h1>李某某</h1>
-		<h2>重庆人民广场中山路45号</h2>
-		<h2>重庆市 沙坪坝 中国</h2>
-		<h2>邮政编码：404055</h2>
-		<h2>联系电话：182912321</h2>
+		<h1>{{order.post_info.receiver_name}}</h1>
+		<h1>{{order.post_info.street}}</h1>
+		<h1>{{order.post_info.city}} {{order.post_info.city}} {{order.post_info.province}} 中国</h1>
+		<h1>邮政编码：{{order.post_info.post_code}}</h1>
+		<h1>联系电话：{{order.post_info.phone}}</h1>
 	</div>
 	<hr/>	
 	<div class="ship-info">
-		<span><a>订单号：DKD391021923</a></span><span>  <a>重量：7.9KG</a></span>
+		<span><a>订单号：{{order.reference_code}}</a></span><span>  <a>重量：{{order.weight}}KG</a></span>
 		<br/>
 		<img id="barcode1"/>
-		<script>$("#barcode1").JsBarcode("DKD391021923",{width:1.5,height:45});</script>
 	</div>
 </div>
-<!-- <footer></footer> -->
-</body>
-</html>
+

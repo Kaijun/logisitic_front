@@ -17,16 +17,17 @@
     </div>
     <div class="pure-u-2-3 ah-sub-nav-list">
       <ul>
-        <li>业务</li>
-        <li>运维</li>
-        <li ui-sref="financeManage">财务</li>
-        <li>系统</li>
+        <li ui-sref="stockList">业务</li>
+        <li ui-sref="logisticList">运维</li>
+        <li ui-sref="refill">财务</li>
+        <li ui-sref="userList">系统</li>
       </ul>
     </div>
   </nav>
   <div class="pure-g main">
     <div class="pure-u-3-24">
-      <div class="ah-sidebar">
+
+      <div ng-show="$state.includes('business')" class="ah-sidebar">
         <div class="list-wrapper">
           <div class="title">库存</div>
           <ul class="list" >
@@ -53,6 +54,17 @@
           </ul>
         </div>
         <div class="list-wrapper">
+          <div class="title">搜索</div>
+          <ul class="list" >
+            <li ui-sref="search">搜索</li>
+          </ul>
+        </div>
+        
+        
+      </div>
+
+      <div ng-show="$state.includes('financial')"  class="ah-sidebar">
+        <div class="list-wrapper">
           <div class="title">财务</div>
           <ul class="list">
             <li ui-sref="refill">账户充值</li>
@@ -74,6 +86,10 @@
             <li>积分消费记录</li>
             </ul>
         </div>
+      </div>
+
+      <div  ng-show="$state.includes('maintenance')"  class="ah-sidebar">
+      
         <div class="list-wrapper">
           <div class="title">物流</div>
           <ul class="list">
@@ -85,7 +101,7 @@
         <div class="list-wrapper">
           <div class="title">附加服务</div>
           <ul class="list">
-            <li>附加服务管理</li>
+            <li ui-sref="extraSrvList">附加服务管理</li>
             </ul>
         </div>
          <div class="list-wrapper">
@@ -94,6 +110,10 @@
             <li>优惠码管理</li>
             </ul>
         </div>
+
+      </div>
+
+      <div ng-show="$state.includes('system')"  class="ah-sidebar">
 
         <div class="list-wrapper">
           <div class="title">消息</div>
@@ -117,6 +137,8 @@
             <li ui-sref="userManage">用户组管理</li>
             </ul>
         </div>
+
+
       </div>
       
     </div>

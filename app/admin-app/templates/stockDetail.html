@@ -12,25 +12,25 @@
     <div class="pure-g"> 
     <div class="pure-u-1-2">
       <table class="pure-table pure-table-horizontal ah-small-table">
-        <tr><td>客户ID</td><td>CPJSTUDIO</td></tr>
+        <tr><td>客户ID</td><td>{{stock.user_name}}</td></tr>
         <tr>
           <td style="width:30%">收件仓库</td>
-          <td>德国卡尔斯鲁尔仓库</td>
+          <td>{{warehouse.name}}</td>
 
         </tr>
         <tr>
           <td>包裹备注</td>
-          <td>【AJ备注】</td>
+          <td>{{stock.desc}}</td>
 
         </tr>
           <tr>
           <td>库位码</td>
-          <td>NHDIWK</td>
+          <td>{{stock.stock_number}}</td>
 
         </tr>
         <tr>
           <td>入库跟踪码</td>
-          <td>DHL1231321</td>
+          <td>{{stock.reference_code}}</td>
 
         </tr>
 
@@ -45,7 +45,7 @@
           </tr>
           <tr>
           <td>库位号</td>
-          <td>1234</td>
+          <td>{{stock.stock_position}}</td>
           </tr>
           <tr>
           <td>预报时间</td>
@@ -87,11 +87,15 @@
     <table class="pure-table pure-table-horizontal ah-small-table">
   <tr>
     <td style="width:15%">留言</td>
-    <td>留什么</td>
+    <td>{{stock.message}}</td>
   </tr>
     <tr>
     <td>附件信息</td>
-    <td>$80</td>
+    <td>
+      <img ng-if="stock.image_1" ng-src="{{imageUrlPrefix + stock.image_1}}">
+      <img ng-if="stock.image_2" ng-src="{{imageUrlPrefix + stock.image_2}}">
+      <img ng-if="stock.image_3" ng-src="{{imageUrlPrefix + stock.image_3}}">
+    </td>
   </tr>
   <tr>
     <td>入库清单</td>
@@ -103,10 +107,11 @@
       </div>
       <!-- 右侧功能键开始 -->
       <div class="pure-u-1-6 right">
-           <div><a class="pure-button flag ">标记为问题件</a></div>
+           
+            <div problem-pkg-btn package-id="{{$stateParams.stockId}}" type="0" current-status="{{stock.status}}"></div>
            <div><a ng-if="stock.status==2" ng-click="enterStock()" class="pure-button blue">入库</a></div>
            <div><a class="pure-button red ">存档</a></div>
-           <div><a class="pure-button back ">返回</a></div>
+           <div><a ng-click="goBack()" class="pure-button back ">返回</a></div>
            
            
       </div> <!-- 右侧功能键结束 Div -->

@@ -13,6 +13,7 @@
             getTrans: getTrans,
             getTranss: getTranss,
             editTrans: editTrans,
+            deleteTrans: deleteTrans,
         };
         return service;
 
@@ -36,6 +37,18 @@
                 url: AppConfig.apiUrl + '/trans-order/' + transId,
                 method: 'PUT',
                 data: trans,
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+        function deleteTrans(transId) {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/trans-order/' + transId,
+                method: 'DELETE',
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }

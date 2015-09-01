@@ -19,6 +19,8 @@
             restrict: 'A',
             scope: {
                 packageId: "@",
+                // Type: 0-stock, 1-order, 2-代刷
+                type: "@",
                 currentStatus: "@",
             }
         };
@@ -38,20 +40,45 @@
             }
 
             scope.markAsProblemPkg = function () {
-                var status = 0;
-                if(scope.currentStatus<=3){
+                if(scope.type==0){
+                    var status = 0;
+                    if(scope.currentStatus<=3){
+                        status = 3;
+                    }
+                    else if(scope.currentStatus<=5){
+                        status = 5;
+                    }
+                    else if(scope.currentStatus<=9){
+                        status = 9;
+                    }
+                    ProblemService.newProblemPkg({
+                        "package_id": scope.packageId, 
+                        "description": scope.problemDesc, 
+                        "status": status, 
+                    }).then(function () {
+                        scope.dismissProblemPopup();
+                    })
+                }
+                else if(scope.type==1){
+                    var order_status = 6;
+                    ProblemService.newProblemPkg({
+                        "package_id": scope.packageId, 
+                        "description": scope.problemDesc, 
+                        "order_status": order_status, 
+                    }).then(function () {
+                        scope.dismissProblemPopup();
+                    })
+                }
+                else if(scope.type==2){
                     status = 4;
+                    ProblemService.newProblemPkg({
+                        "package_id": scope.packageId, 
+                        "description": scope.problemDesc, 
+                        "status": status, 
+                    }).then(function () {
+                        scope.dismissProblemPopup();
+                    })
                 }
-                else if(scope.currentStatus<=4){
-                    status = 5;
-                }
-                ProblemService.newProblemPkg({
-                    "package_id": scope.packageId, 
-                    "description": scope.problemDesc, 
-                    "status": status, 
-                }).then(function () {
-                    scope.dismissProblemPopup();
-                })
             }
         }
     }

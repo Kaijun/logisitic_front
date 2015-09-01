@@ -57,7 +57,7 @@
       <div ng-repeat="package in packageList" ng-if="package.items.length!=0">
 
         <div class="uh-list-header pure-g" ng-class="{active: package.toggle}" ng-click="package.toggle = !package.toggle">
-          <div class="pure-u-8-24">{{getLogisticPathNameById(package.ship_order.logistic_path_id)}} {{package.ship_order.track_code}}</div>
+          <div class="pure-u-8-24">{{getLogisticPathNameById(package.ship_order.logistic_path_id)}} {{package.ship_order.track_code}} {{package.ship_order.reference_code}}</div>
           <div class="pure-u-14-24">{{package.desc}}</div>
           <div ng-if="package.toggle" class="pure-u-2-24">关闭</div>
         </div>
@@ -91,10 +91,11 @@
 
     <!-- <div class="uh-divider thick"></div> -->
     <div class="uh-form-section pure-g">
-      <div class="title pure-u-1-4">增值服务</div>
+      <div class="title pure-u-1-4">附加服务</div>
       <div class="pure-u-3-4">
-              xxx
-              <div class="desc">如有需要，请选择相应的增值服务，部分服务可能会产生费用。</div>
+              
+          <div extra-service-list type="2" user-group="0" selected-services="order.extra_services"></div>
+          <div class="desc">如有需要，请选择相应的增值服务，部分服务可能会产生费用。</div>
       </div>
 
       
@@ -102,9 +103,9 @@
     <div class="uh-form-section pure-g">
       <div class="title pure-u-1-4">支付方式</div>
       <div class="pure-u-3-4 uh-order-pay-method">
-        <div><input type="radio" name="payMethod" id="manualConfirm" ><label for="manualConfirm">客服手动确认后支付</label>
+        <div><input ng-model="order.auto_charge" ng-value="0" type="radio" name="payMethod" id="manualConfirm" ><label for="manualConfirm">客服手动确认后支付</label>
         </div>
-        <div><input type="radio" name="payMethod" id="autoConfirm" ><label for="autoConfirm">称重后自动结算（需有足够余额)</label>
+        <div><input ng-model="order.auto_charge" ng-value="1" type="radio" name="payMethod" id="autoConfirm" ><label for="autoConfirm">称重后自动结算（需有足够余额)</label>
         </div>
       </div>
 
@@ -119,8 +120,8 @@
 
 
     <div class="action-btns" >
-      <div class="right">
-        <a  ng-click="confirmOrder()" class="pure-button blue">下一步</a>
+      <div  ng-click="confirmOrder()" class="right">
+        <a  class="pure-button blue">下一步</a>
       </div>
     </div>
   </div>
@@ -214,16 +215,16 @@
     <div class="uh-section">附加信息</div>
     <table class="pure-table pure-table-horizontal uh-small-table">
       <tr>
-        <td style="width:15%">增值服务</td>
-        <td>拍照服务，加固服务</td>
+        <td style="width:15%">附加服务</td>
+        <td ng-repeat="e in order.extra_services">{{e.service_name}} </td>
       </tr>
       <tr>
         <td style="width:15%">支付方式</td>
-        <td>客服手动确认后支付</td>
+        <td>{{order.auto_charge==0? "客服手动确认后支付" : "称重后自动结算（需有足够余额)"}}</td>
       </tr>
       <tr>
         <td style="width:15%">发货备注</td>
-        <td>收货的是我妈妈，请直接确认签收！！</td>
+        <td>{{order.message}}</td>
       </tr>
     </table>
 

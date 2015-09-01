@@ -28,17 +28,22 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-click="goToDetail(stock)" ng-repeat="stock in stocks">
-            <td><input type="checkbox"></td>
-            <td>{{stock.ship_info}}</td>
-            <td>{{stock.owner_id}}</td>
-            <td>{{stock.warehouse_code}}</td>
-            <td>{{stock.position_number}}</td>
-            <td>QQ - Email</td>
+          <tr ng-repeat="stock in stocks">
+            <td><input ng-model="stock.selected" ng-click="stockSelected(stock)" type="checkbox"></td>
+            <td>{{stock.reference_code}}</td>
+            <td>{{stock.user_name}}</td>
+            <td>{{stock.stock_position}}</td>
+            <td>{{stock.stock_number}}</td>
+            <td>QQ:{{stock.user_qq? stock.user_qq: "空"}}  - Email: {{stock.user_email}}</td>
             <td>{{stock.desc}}</td>
             <td>{{stock.message}}</td>
-            <td>已入库</td>
-            <td>动态生成操作</td>
+            <td>{{StockService.getStockStatusMapping(stock.status)}}</td>
+            <td>                   
+              <!-- <a ng-if="stock.status === 1 || stock.status === 2" ng-click="goToDetail(stock.id)"  title="编辑"></a> -->
+              <a ng-if="stock.status === 1 || stock.status === 2" ng-click="enterStock(stock)" >入库</a>
+              <a ng-click="goToDetail(stock)" >详情</a>
+              <a ng-if="stock.status !== -1" ng-click="deleteStock(stock)" >删除</a>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -50,7 +55,7 @@
     </div>
     <div class="right">
       <a  ng-click="" class="pure-button red horizon">批量存档</a>
-      <a  ng-click="" class="pure-button blue horizon">批量导出</a>
+      <a  ng-click="batchDownload()" class="pure-button blue horizon">批量导出</a>
     </div>
   </div>
   

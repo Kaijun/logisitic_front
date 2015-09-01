@@ -18,11 +18,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr ng-repeat="path in paths">
             <td><input type="checkbox"></td>
-            <td>DHL特别线路</td>
-            <td>适用于最新的活动</td>
-            <td>修改｜删除</td>
+            <td>{{path.name}}</td>
+            <td>{{path.description}}</td>
+            <td>
+            <a ng-click="editPath(path)">修改</a>
+            ｜
+            <a ng-click="deletePath(path)">删除</a>
+            
+
+            </td>
           </tr>
         </tbody>
       </table>

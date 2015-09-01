@@ -16,23 +16,36 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr ng-repeat="lt in logisticTypes">
             <td><input type="checkbox"></td>
-            <td>奶粉</td>
-            <td>修改｜删除</td>
+            <td>{{lt.type_name}}</td>
+            <!-- <td>修改｜删除</td> -->
+            <td><a ng-click="deleteLogisticType(lt)">删除</a></td>
           </tr>
         </tbody>
       </table>
     </div>
   <div class="ah-action-btns"> 
-    <div class="left">
-      <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
-      <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
-    </div>
     <div class="right">
       <a  ng-click="" class="pure-button red horizon">批量删除</a>
-      <a  ng-click="" class="pure-button blue horizon">添加新类型</a>
+      <a  ng-click="addLogisticType()" class="pure-button blue horizon">添加新类型</a>
     </div>
   </div>
   
+</div>
+
+
+<div ng-show="isPopupShown" class="pop-up-wapper">
+  <div class="pop-up-title">
+    添加新类型
+  </div>
+  <div class="pop-up-body">
+    <div class="poo-up-section"><input type="text" ng-model="typeName" placeholder="请填写类型名称"> </div>      
+  </div>
+  <div class="pop-up-opt pure-g">
+    <div class="pure-u-1-3">
+      <a ng-click="cancle()" class="pure-button red horizon-small">取消</a>
+      <a ng-click="submitLogisticType()" class="pure-button blue horizon-small">确认</a>
+    </div>
+  </div>
 </div>

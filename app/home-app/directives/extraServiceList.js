@@ -32,8 +32,20 @@
 
             scope.services = [];
             InfoService.getExtraServices(type, userGroup).then(function(data) {
-                scope.services = data;
+                scope.services = angular.isArray(data)? data: [data];
+                scope.services.map(function (item) {
+                    item.selected = false;
+                })
             });
+
+            scope.$watch('services', function () {
+                scope.selectedServicesId = [];
+                scope.selectedServicesName = [];
+                scope.services.forEach(function (item) {
+                    if (item.selected === true)
+                        scope.selectedServices.push(item);
+                })
+            }, true)
         }
     }
 

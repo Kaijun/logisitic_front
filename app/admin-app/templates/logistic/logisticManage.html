@@ -32,11 +32,13 @@
       <!-- 表单第一行开始 -->
      <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">线路名称</div> 
-      <div class="pure-u-1-4"><input ng-model="logisticPath.logistic_name"></div>
+      <div class="pure-u-3-24"><input ng-model="logisticPath.logistic_name"></div>
       <div class="pure-u-2-24 input-label">重量上线(Kg)</div> 
-      <div class="pure-u-2-24"><input ng-model="logisticPath.weight_upper_bound"></div>
-      <div class="pure-u-2-24 input-label">运单数量:</div> 
-      <div class="pure-u-2-24"><input ng-model="logisticPath.number_ship_company"></div>    
+      <div class="pure-u-1-24"><input ng-model="logisticPath.weight_upper_bound"></div>
+      <div class="pure-u-2-24 input-label">国际段公司名称:</div> 
+      <div class="pure-u-2-24"><input ng-model="logisticPath.ship_company_international"></div>    
+      <div class="pure-u-2-24 input-label">国内段公司名称:</div> 
+      <div class="pure-u-2-24"><input ng-model="logisticPath.ship_company_china"></div>    
      </div>
 
       <!-- 第一行结束结束 -->
@@ -68,7 +70,7 @@
 
      </div>
     <!-- 第四行结束 -->
-
+    <div ng-if="logisticPath.based_on==1">
       <div class="ah-section">价格梯度<span ng-click="addLadder()" class="add">+添加</span></div>
       <table class="pure-table pure-table-horizontal ah-line-table">
         <thead>
@@ -87,6 +89,9 @@
           </tr>
         </tbody>
       </table>
+
+    </div>
+
 
 
       <div class="ah-section">线路描述</div>

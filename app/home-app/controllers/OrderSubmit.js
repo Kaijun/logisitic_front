@@ -18,6 +18,7 @@
             message: null,
             pay_method: null,
             warehouse: null, 
+            auto_charge: 1
         }
         $scope.isConfirmShown = false;
         $scope.warehouses = [];

@@ -5,16 +5,16 @@
         .module('admin.controllers')
         .controller('OrderDetail', OrderDetail);
 
-    OrderDetail.$inject = ['$scope', '$stateParams', 'OrderService', 'InfoService', '$timeout', '$state'];
+    OrderDetail.$inject = ['$scope', '$stateParams', 'OrderService', 'InfoService', '$timeout', '$state', '$window'];
 
     /* @ngInject */
-    function OrderDetail($scope, $stateParams, OrderService, InfoService, $timeout, $state) {
+    function OrderDetail($scope, $stateParams, OrderService, InfoService, $timeout, $state, $window) {
   
         $scope.order = null;
         $scope.isWeightPopupShown = false;
         $scope.weightSum = null
         $scope.weight = null;
-
+        $scope.$stateParams = $stateParams;
 
 
         $scope.weightAndPack = weightAndPack;
@@ -77,36 +77,60 @@
 
         //确认称重 - 代付款
         function weightAndPackConfirm () {
-            OrderService.editOrder($stateParams.orderId, {
-                weight: $scope.weight,
-                order_status: 2,
-            }).then(function() {
-                weightAndPackCancle();
-                $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
-            })
+            if($scope.order_status==1){
+                OrderService.editOrder($stateParams.orderId, {
+                    weight: $scope.weight,
+                    order_status: 2,
+                }).then(function() {
+                    weightAndPackCancle();
+                    $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+                })
+            }
+            else{
+                OrderService.editOrder($stateParams.orderId, {
+                    weight: $scope.weight,
+                }).then(function() {
+                    weightAndPackCancle();
+                    $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+                })
+            }
         }
 
         //打印配货单 - 不该状态 - 引导称重
         function printPackListconfirm () {
-            //- 引导称重
+            // $window.open($state.href('stateName', {}, {absolute: true}), '_blank');
+            $window.localStorage.setItem('printPrepareListData', angular.toJson($scope.order));
+            var url = $state.href('printPrepareList');
+            var newWindow = $window.open(url,'_blank');
         }
         //打印面单 后 - 代发货
         function printPostListconfirm () {
-            swal({
-                title: "已打印?",
-                text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                cancelButtonText: "取消",
-                confirmButtonText: "确定",
-                closeOnConfirm: false,
-            }, function () {
-                OrderService.editOrder($stateParams.orderId, {
-                    order_status: 4,
-                }).then(function() {
-                    $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+            if($scope.order_status==3){
+                swal({
+                    title: "已打印?",
+                    text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    cancelButtonText: "取消",
+                    confirmButtonText: "确定",
+                    closeOnConfirm: true,
+                }, function () {
+                    OrderService.editOrder($stateParams.orderId, {
+                        order_status: 4,
+                    }).then(function() {
+                        $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+                    })
+
+                    $window.localStorage.setItem('printShipData', angular.toJson($scope.order));
+                    var url = $state.href('printShip');
+                    var newWindow = $window.open(url,'_blank');
                 })
-            })
+            }
+            else{
+                    $window.localStorage.setItem('printShipData', angular.toJson($scope.order));
+                    var url = $state.href('printShip');
+                    var newWindow = $window.open(url,'_blank');
+            }
         }
         function weightAndPackCancle () {
             $scope.isWeightPopupShown = false;

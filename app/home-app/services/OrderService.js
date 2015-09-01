@@ -16,6 +16,7 @@
             deleteOrder: deleteOrder,
             editOrder: editOrder,
             getOrders: getOrders,
+            payOrder: payOrder,
         };
 
         return service;
@@ -68,6 +69,19 @@
                 url: AppConfig.apiUrl + '/ship-order/',
                 method: 'POST',
                 data: order,
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+
+        function payOrder (orderId) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/ship-order-pay/' + orderId,                
+                method: 'POST',
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }

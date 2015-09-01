@@ -71,7 +71,7 @@
         }
         function submit () {
             TransService.submitTrans($scope.trans).then(function (data) {
-                if(data.package_id && data.success==="true"){
+                if(data.package_id && data.success===true){
                     $state.go('transDetail', {transId: data.trans_order_id});
                 }
             })

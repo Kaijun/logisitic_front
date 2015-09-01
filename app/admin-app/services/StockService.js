@@ -14,8 +14,12 @@
             getStocks: getStocks,
             getStock: getStock,
             enterStock: enterStock,
+            deleteStock: deleteStock,
             submitStock: submitStock,
             getStockByTrackNr: getStockByTrackNr,
+            batchDownload: batchDownload,
+            batchUpload: batchUpload,
+            submitBatch: submitBatch,
 
         };
         return service;
@@ -23,7 +27,8 @@
         ////////////////
         ////////////////
         function getStockStatusMapping (statusId) {
-            var statusMapping = ['未知','未预报','已预报','预报问题件','已入库','库存问题件','申请移库','移库处理中','移库问题件','申请发货','发货处理中','已发货']
+            statusId = statusId + 1;
+            var statusMapping = ['删除','未知','未预报','已预报','预报问题件','已入库','库存问题件','（对方）未确认','（对方）已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货']
             if(statusId<statusMapping.length){
                 return statusMapping[statusId];
             }
@@ -70,6 +75,18 @@
             });
             return promise;
         }
+        function deleteStock (stockId) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/stocks/' + stockId,
+                method: 'DELETE',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
 
         function submitStock (stock) {
             var promise = $http({
@@ -84,6 +101,44 @@
             });
             return promise;
         }
+        function batchDownload(stocks) {
+            var stocks = stocks.join(',')
+            var promise = $http.get(AppConfig.apiUrl + '/batchdownload?packages=' + stocks).success(function(data, status, headers, config) {
+                 var anchor = angular.element('<a/>');
+                 anchor.attr({
+                     href: 'data:attachment/xlsx;charset=utf-8,' + encodeURI(data),
+                     target: '_blank',
+                     download: '库存导出.xlsx'
+                 })[0].click();
 
+              }).
+              error(function(data, status, headers, config) {
+                // if there's an error you should see it here
+            });
+            return promise;
+        }
+
+        function batchUpload (excel) {
+            var fd = new FormData();
+            fd.append('upload', excel);
+            var promise = $http.post(AppConfig.apiUrl + '/stocks_batch/', fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+
+        function submitBatch (stocks) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/batch-saving/',
+                method: 'PUT',
+                data: stocks,
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
     }
 })();

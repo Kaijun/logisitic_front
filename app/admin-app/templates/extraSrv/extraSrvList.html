@@ -1,0 +1,43 @@
+
+<div class="ah-list">
+  <div class="ah-main-header">
+    <div class="left">
+      <span class="title">附加服务管理</span>
+    </div>
+  </div>
+
+
+    <div class="list">
+      <table class="pure-table pure-table-horizontal ah-list-table">
+        <thead>
+          <tr>
+            <th width="25px;"><input type="checkbox"></th>
+            <th>附加服务名称</th>
+            <th>附加服务描述</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="srv in extraSrvs">
+            <td><input type="checkbox"></td>
+            <td>{{srv.service_name}}</td>
+            <td>{{srv.description}}</td>
+            <td>
+            <!-- <a ng-click="editExtraSrv(srv)">修改</a> -->
+            <!-- ｜ -->
+            <a ng-click="deleteExtraSrv(srv)">删除</a>
+            
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <div class="ah-action-btns"> 
+    <div class="right">
+      <a  ng-click="" class="pure-button red horizon">批量删除</a>
+      <a  ui-sref="extraSrvManage" ng-click="" class="pure-button blue horizon">添加新服务</a>
+    </div>
+  </div>
+  
+</div>

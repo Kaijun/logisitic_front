@@ -12,9 +12,20 @@
 
         return {
             newProblemPkg: newProblemPkg,
+            getProblemPkgs: getProblemPkgs,
         };
 
         ////////////////
+
+        function getProblemPkgs() {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/hasproblem/',
+                method: 'GET',
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
 
         function newProblemPkg(pkg) {
             var promise = $http({

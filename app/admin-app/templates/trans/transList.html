@@ -29,15 +29,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="trans in transs" ng-click="goToDetail(trans.transorder_id)" >
+          <tr ng-repeat="trans in transs" >
             <td><input type="checkbox"></td>
-            <td>{{trans.transorder_id}}</td>
+            <td>{{trans.reference_code}}</td>
             <td>{{trans.from_name}}</td>
             <td>{{trans.from_stock_number}}</td>
             <td>{{trans.to_name}}</td>
             <td>{{trans.to_stock_number}}</td>
-            <td>{{trans.status}}</td>
-            <td>动态生成操作</td>
+            <td>{{StockService.getStockStatusMapping(trans.status)}}</td>
+            <td>
+              <!-- <a ng-if="trans.status === 7" ng-click="confirmTrans(trans)" >确认移库</a> -->
+              <a ng-click="goToDetail(trans.transorder_id)" >详情</a>
+              <a ng-if="trans.status !== -1" ng-click="deleteTrans(trans)" >删除</a>
+            </td>
           </tr>
         </tbody>
       </table>

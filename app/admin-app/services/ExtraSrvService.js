@@ -10,7 +10,9 @@
     /* @ngInject */
     function ExtraSrvService($http, AppConfig) {
         var service = {
-            submitExtraSrv: submitExtraSrv
+            getExtraSrvs: getExtraSrvs,
+            submitExtraSrv: submitExtraSrv,
+            deleteExtraSrv: deleteExtraSrv,
         };
         return service;
 
@@ -24,6 +26,26 @@
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        
+        function getExtraSrvs() {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/extra-service/',
+                method: 'GET'
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+
+        function deleteExtraSrv(id) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/extra-service/' +id,
+                method: 'DELETE'
             }).then(function (response) {
                 return response.data;
             });

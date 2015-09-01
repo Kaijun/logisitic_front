@@ -9,11 +9,18 @@
 
     /* @ngInject */
     function StockListCtrl($scope, $state, $http, $timeout, StockService) {
+        $scope.StockService = StockService;
+
         $scope.stocks = [];
         $scope.goToDetail = goToDetail;
+        $scope.enterStock = enterStock;
+        $scope.deleteStock = deleteStock;
+        $scope.stockSelected = stockSelected;
+        $scope.batchDownload = batchDownload;
         $scope.pageInfo = null;
-
         $scope.requestPage = requestPage;
+
+        var selectedStocks = [];
 
         activate();
 
@@ -22,6 +29,9 @@
         function activate() {
             StockService.getStocks().then(function(data){
                 $scope.stocks = data.data;
+                $scope.stocks.map(function (item) {
+                    item.selected = arrayExist(selectedStocks, item.package_id);
+                });
                 $timeout(function () {
                     $scope.pageInfo = data;
                 })
@@ -33,10 +43,79 @@
         function requestPage (url) {
             $http.get(url).then(function (response) {
                 $scope.stocks = response.data.data;
+                $scope.stocks.map(function (item) {
+                    item.selected = arrayExist(selectedStocks, item.package_id);
+                });
                 $timeout(function () {
                     $scope.pageInfo = response.data;
                 })
             })
         }
+
+        function enterStock (stock) {
+            if(stock.package_id){
+
+                swal({
+                    title: "确认入库?",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    cancelButtonText: "取消",
+                    confirmButtonText: "确定",
+                    closeOnConfirm: true,
+                }, function () {
+
+                    StockService.enterStock(stock.package_id).then(function(data) {
+                        $timeout(function () {
+                            stock.status = 2;
+                        })
+                    });
+                })
+                
+
+            }
+        }
+        function deleteStock (stock) {
+            if(stock.package_id){
+                swal({
+                    title: "确认删除?",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    cancelButtonText: "取消",
+                    confirmButtonText: "确定",
+                    closeOnConfirm: true,
+                }, function () {
+                    StockService.deleteStock(stock.package_id).then(function(data) {
+                        $scope.stocks.map(function (item, index, arry) {
+                            if(item === stock){
+                                arry.splice(index, 1);
+                            }
+                        })
+                    });
+                })
+            }
+        }
+
+        function stockSelected (stock) {
+            if(stock.selected===true){
+                selectedStocks.push(stock.package_id);
+            }
+            else{
+                selectedStocks.map(function (item, idx, arry) {
+                    if(item === stock.package_id){
+                        arry.splice(idx, 1);
+                    }
+                })
+            }
+        }
+        function arrayExist (array, item) {
+            if(angular.isArray(array)){
+                return array.indexOf(item) > -1;
+            }
+        }
+        function batchDownload () {
+            StockService.batchDownload(selectedStocks);
+        }
+
+
     }
 })();

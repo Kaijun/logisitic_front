@@ -161,10 +161,10 @@
 
     <div class="pure-u-6-24 right">
      <!-- <div><a class="pure-button flag  ">标记为问题件</a></div> -->
-     <div problem-pkg-btn package-id="11" problem-status="5"></div>
-     <div><a class="pure-button blue ">打印配货单</a></div>
+     <div problem-pkg-btn package-id="{{$stateParams.orderId}}" type="1" current-status="order.order_status"></div>
+     <div><a ng-click="printPackListconfirm()" class="pure-button blue ">打印配货单</a></div>
      <div><a ng-click="weightAndPack()" class="pure-button blue ">称重打包</a></div>
-     <div><a ng-click="printPackListconfirm()" class="pure-button blue ">打印面单</a></div>
+     <!-- <div><a ng-click="printPackListconfirm()" class="pure-button blue ">打印面单</a></div> -->
      <div><a ng-click="printPostListconfirm()" class="pure-button blue ">生成运单</a></div>
      <div><a ng-hide="isTrackNumEditShown" ng-click="confirmShip()" class="pure-button green ">确认发货</a></div>
      <div><a ng-show="isWeightEditShown || isShipStatusEditShown || isTrackNumEditShown" ng-click="editOrder()" class="pure-button red ">确认修改</a></div>

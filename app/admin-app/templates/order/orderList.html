@@ -29,16 +29,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="order in orders" ng-click="goToDetail(order.id)" >
-            <td><input type="checkbox"></td>
+          <tr ng-repeat="order in orders"  >
+            <td><input ng-model="order.selected" ng-click="orderSelected(order)" type="checkbox"></td>
             <td>{{order.id}}</td>
-            <td>{{order.owner_id}}</td>
+            <td>{{order.user_name}}</td>
             <td>{{order.post_info.receiver_name}}</td>
             <td>{{order.dateStr}}</td>
             <td>{{order.weight}}</td>
             <td>待生成</td>
-            <td>{{order.status}}</td>
-            <td>动态生成操作</td>
+            <td>{{order.statusStr}}</td>
+            <td>
+              <a ng-click="goToDetail(order.id)" >详情</a>
+              <a ng-if="order.order_status !== -1" ng-click="deleteOrder(order)" >删除</a>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -50,7 +53,7 @@
     </div>
     <div class="right">
       <a  ng-click="" class="pure-button red horizon">批量存档</a>
-      <a  ng-click="" class="pure-button blue horizon">批量导出</a>
+      <a  ng-click="batchDownload()" class="pure-button blue horizon">批量导出</a>
     </div>
   </div>
   

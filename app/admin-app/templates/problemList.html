@@ -22,27 +22,27 @@
         <thead>
           <tr>
             <th width="30px"><input type="checkbox"></th>
-            <th>跟踪号</th>
+            <!-- <th>跟踪号</th> -->
             <th>客户ID</th>
             <th>入库码</th>
             <th>库位号</th>
-            <th>联系</th>
-            <th>分类</th>
+            <!-- <th>联系</th> -->
+            <!-- <th>分类</th> -->
             <th>状态</th>
             <th>操作</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr ng-repeat="p in problemPkgs">
             <td><input type="checkbox"></td>
-            <td>DKD0192313</td>
-            <td>CPJSTUDIO</td>
-            <td>NKDWQK</td>
-            <td>2114</td>
-            <td>Email</td>
-            <td>订单问题件</td>
-            <td>已解决</td>
-            <td>查看</td>
+            <!-- <td>DKD0192313</td> -->
+            <td>{{p.package_owner}}</td>
+            <td>{{p.owner_stock_number}}</td>
+            <td>{{p.owner_stock_postion}}</td>
+            <!-- <td>Email</td> -->
+            <!-- <td>订单问题件</td> -->
+            <td>{{p.status}}</td>
+            <td><a ng-click="goToDetail(p.package_id)">查看</a></td>
           </tr>
         </tbody>
       </table>

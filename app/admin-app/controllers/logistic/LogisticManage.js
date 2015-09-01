@@ -5,16 +5,16 @@
         .module('admin.controllers')
         .controller('LogisticManage', LogisticManage);
 
-    LogisticManage.$inject = ['$scope', '$timeout', 'LogisticService'];
+    LogisticManage.$inject = ['$scope', '$timeout', 'LogisticService', '$state', '$stateParams'];
 
     /* @ngInject */
-    function LogisticManage($scope, $timeout, LogisticService) {
+    function LogisticManage($scope, $timeout, LogisticService, $state, $stateParams) {
 
         var logisticPathObj = {
             logistic_name: null,
             number_ship_company: 2,
-            ship_company_international: "DHL",
-            ship_company_china: "EMS",
+            ship_company_international: "",
+            ship_company_china: "",
             options: [],
             weight_upper_bound: null,
             user_group: null,
@@ -61,7 +61,7 @@
                 }
             });
             LogisticService.submitLogistic($scope.logisticPath).then(function (data) {
-                console.log(data);
+                $state.go('logisticList');
             })
         }
 

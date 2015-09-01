@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('OrderDetailCtrl', OrderDetailCtrl);
 
-    OrderDetailCtrl.$inject = ['$scope', 'OrderService', 'InfoService', '$q', '$stateParams', '$state', '$timeout'];
+    OrderDetailCtrl.$inject = ['$scope', 'OrderService', 'InfoService', '$q', '$stateParams', '$state', '$timeout', 'UserInfo', '$window'];
 
     /* @ngInject */
-    function OrderDetailCtrl($scope, OrderService, InfoService, $q, $stateParams, $state, $timeout) {
+    function OrderDetailCtrl($scope, OrderService, InfoService, $q, $stateParams, $state, $timeout, UserInfo, $window) {
         
         $scope.order = null;
         $scope.warehouse = null;
@@ -16,6 +16,8 @@
 
         $scope.editOrder = editOrder;
         $scope.deleteOrder = deleteOrder;
+
+        $scope.payOrder = payOrder;
 
         activate();
 
@@ -63,6 +65,55 @@
             }, function () {
                 // body...
             })
+        }
+
+        function payOrder () {
+            if($scope.order.order_status==2){
+                if(UserInfo.remain >= $scope.order.total_cost){
+                    swal({
+                        title: "确认付款",
+                        text: "本次订单将扣款" + $scope.order.total_cost + '元',
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        cancelButtonText: "取消",
+                        confirmButtonText: "确定",
+                        closeOnConfirm: true,
+                    }, function () {
+                        OrderService.payOrder($stateParams.orderId).then(function () {
+                            swal({
+                                title: "付款成功",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "确定",
+                                closeOnConfirm: true,
+                            }, function () {
+                                $window.reload();
+                            })
+                        })
+                    }, function(){
+                        swal({
+                            title: "付款失败",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "确定",
+                            closeOnConfirm: true,
+                        })
+                    })
+                }
+                else{
+                    swal({
+                        title: "余额不足",
+                        text: "账户余额不足, 订单待付款" + $scope.order.total_cost + '元',
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        cancelButtonText: "取消",
+                        confirmButtonText: "充值",
+                        closeOnConfirm: true,
+                    }, function () {
+                        $state.go('refill', {reload: true});
+                    })
+                }
+            }
         }
     }
 })();

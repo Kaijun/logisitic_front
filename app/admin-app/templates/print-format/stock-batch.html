@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="JS/CODE128.js"></script>
+	<script src="JS/JsBarcode.js"></script>
+	<link href="print.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="delivery-wapper">
+	<div><img src="wb-logo.png" height="30px;"></div>
+			<div class="ship-info">
+		<span>入库跟踪号：DE20150203XXXX</span>
+		<br/>
+		<img id="barcode1"/>
+		<script>$("#barcode1").JsBarcode("DE20150203XXXX",{width:1.5,height:45});</script>
+	</div>
+	<table>
+    <tbody>
+        <tr>
+			<th>库存码</th>
+            <th>NDEKDS</th>
+        </tr>
+        <tr>
+			<td>库位号</td>
+            <td>1920</td>
+        </tr>
+    </tbody>
+    </table>
+
+</div>
+<!-- <footer></footer> -->
+</body>
+</html>

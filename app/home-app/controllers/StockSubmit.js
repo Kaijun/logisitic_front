@@ -23,7 +23,7 @@
         $scope.stock = null; 
         $scope.warehouses = [];
         $scope.logisticPaths = [];
-        $scope.extraServices = [];
+        $scope.extraServicesName = [];
         $scope.imagesToUpload = [];
         $scope.isConfirmShown = false;
         $scope.confirmSubmit = confirmSubmit;
@@ -81,6 +81,7 @@
         $scope.confirm = function(){
             // TODO: check if stock available!!!
             console.log($scope.stock);
+            console.log($scope.extraServicesName);
 
             //upload Images
             if(isImagesChanged){

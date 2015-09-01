@@ -104,7 +104,7 @@
         <div class="pure-g entry">
       <div class="pure-u-1-4 uh-form-label">附加服务</div>
       <div class="pure-u-3-4">
-        <div extra-service-list type="1" user-group="0"></div>
+        <div extra-service-list type="1" user-group="0" selected-services="stock.extra_services" ></div>
       </div>
     </div>
     
@@ -186,8 +186,8 @@
       <div class="pure-u-3-4">{{stock.message}}</div>
     </div>
     <div class="pure-g entry">
-      <div class="pure-u-1-4 title">入库清点</div>
-      <div class="pure-u-3-4"></div>
+      <div class="pure-u-1-4 title">附加服务</div>
+      <div ng-repeat="e in order.extra_services" class="pure-u-3-4">{{e.service_name}} </div>
     </div>
     <div class="pure-g entry">
       <div class="pure-u-1-4 title">附件信息</div>
