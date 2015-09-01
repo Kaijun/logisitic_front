@@ -617,11 +617,18 @@ textarea{
     font-size:14px;
     line-height: 30px;
     padding:10px 8px;
-    // border-bottom: 1px solid #D1D1D1;
+    box-sizing: border-box;
+    border-bottom: 1px solid #D1D1D1;
     .inline-button{
         padding:5px;
         line-height: 12px;
     }
+    .desc{
+            font-size: 12px;
+            color: #969696;
+            padding: 5px 0 0 24px;
+            background: url(../images/uh-help-desc.png) no-repeat left center;
+        }
 }
 
 /* List - Div */

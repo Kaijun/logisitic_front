@@ -46,14 +46,32 @@
       <!-- 表单第二行 -->
      <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">可发货类型</div> 
-      <div class="pure-u-14-24"><input ng-model="shipOptions"></div>    
+      <div class="pure-u-14-24">
+      <input type="checkbox" name="sports" value="soccer"  />奶粉
+      <input type="checkbox" name="sports" value="soccer"  />厨具
+      <input type="checkbox" name="sports" value="soccer"  />生活用品
+      <input type="checkbox" name="sports" value="soccer"  />其他
+
+      <!-- <input ng-model="shipOptions"> -->
+
+      </div> 
+
+
      </div>
 
       <!-- 第2行结束结束 -->
       <!-- 表单第三行开始 -->
       <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">适用用户组</div> 
-      <div class="pure-u-14-24"><input ng-model="logisticPath.user_group"></div>    
+      <div class="pure-u-4-24">
+        <select>
+          <option value="0">全部用户</option>
+           <option value="1">普通用户</option>
+            <option value="2">VIP用户</option>
+        </select>
+      <!-- <input ng-model="logisticPath.user_group"> -->
+
+      </div>    
      </div>
      <!-- 表单第三行结束 -->
      <!-- 表单第四行开始 -->
@@ -96,7 +114,8 @@
 
       <div class="ah-section">线路描述</div>
       <div>
-          <input ng-model="logisticPath.description" type="text">
+      <textarea ng-model="logisticPath.description"></textarea>
+          <!-- <input ng-model="logisticPath.description" type="text"> -->
       </div>  
       </div><!-- 左侧主题结束 -->
 

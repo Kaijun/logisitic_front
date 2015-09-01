@@ -4,88 +4,38 @@
         <span class="title blue">入库预报</span>
       </div>
   </div>
-  <div class="uh-main-body pure-form" >
-    <div class="pure-g">
-      <div class="pure-u-3-5">
-        <div>基本信息</div>
-        <div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">收件仓库</div>
-              <div class="pure-u-3-4">
-                {{stock.warehouseStr}}
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">包裹备注</div>
-              <div class="pure-u-3-4">
-                {{stock.desc}}
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">快递信息</div>
-              <div class="pure-u-3-4">
-                {{stock.shipCompanyStr}} 运单号: {{stock.ship_tracknumber}}
-              </div>
+
+  <div class="uh-main-body" >
+   <!-- section 1 基本信息 -->
+    <div class="pure-g pure-u-1"><div class="uh-section first-child">基本信息</div> </div>
+    <!-- section 1 表格开始 -->
+        <div class="pure-g">
+         <div class="pure-u-1-2">
+           <table class="pure-table pure-table-horizontal uh-small-table">
+              <tr><td style="width:30%">收件仓库</td><td>{{stock.warehouseStr}}</td></tr>
+              <tr><td>包裹备注</td><td>{{stock.desc}}</td>
+              <tr><td>快递信息</td><td>{{stock.shipCompanyStr}} {{stock.ship_tracknumber}}</tr>
+              <!-- 快递信息正确：数据库项目为 packages/reference_code -->
+              <tr><td>入库重量</td><td>[To-Do]</td></tr>
+          </table>
+        </div>
+        <div class="pure-u-1-2">
+         <table class="pure-table pure-table-horizontal uh-small-table">
+              <tr><td style="width:30%">状态</td><td>{{stock.statusStr}}</td></tr>
+              <tr><td>预报时间</td><td>{{stock.timestampStr}}</td></tr>
+              <tr><td>更新时间</td><td>[To-Do]</td></tr>
+          </table>
           </div>
         </div>
-      </div>
-      <div class="pure-u-2-5">
-        <div>库存信息</div>
-        <div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">状态</div>
-              <div class="pure-u-3-4">
-                {{stock.statusStr}}
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">库存位置</div>
-              <div class="pure-u-3-4">
-                {{stock.desc}}
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">预报时间</div>
-              <div class="pure-u-3-4">
-                {{stock.timestampStr}}
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">入库时间</div>
-              <div class="pure-u-3-4">
-                -
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">出库时间</div>
-              <div class="pure-u-3-4">
-                -
-              </div>
-          </div>
-          <div class="entry pure-g">
-              <div class="title pure-u-1-4">入库重量</div>
-              <div class="pure-u-3-4">
-                -
-              </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      
-    </div>
+
+<!-- 重构结构 -->
 
 
-    <div class="uh-divider"></div>
-
-    <div class="entry">
-      <div class="title">包裹物品信息</div>
-    </div>
-    <div class="uh-divider thick"></div>
-    <div class="item-list">
-      <table class="pure-table pure-table-horizontal uh-custom-table">
+<div class="uh-section"> 包裹物品信息 </div>
+<!-- 物品表格 -->
+<table class="pure-table pure-table-horizontal uh-line-table">
         <thead>
           <tr>
-            <th class="pure-u-1-4">预报运单号</th>
             <th class="pure-u-1-4">名称</th>
             <th class="pure-u-1-8">分类</th>
             <th class="pure-u-1-8">单价/总价</th>
@@ -95,7 +45,6 @@
         </thead>
         <tbody>
           <tr ng-repeat="item in stock.items" >
-            <td>--</td>
             <td>{{item.item_name}}</td>
             <td>{{item.type}}</td>
             <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
@@ -103,39 +52,49 @@
             <td>{{item.quantity}}</td>
           </tr>
         </tbody>
-      </table>
-    </div>
+</table>
 
-    <div class="uh-divider thick"></div>
-    <div class="entry">
-      <div class="title">附加信息</div>
-    </div>    
+<div class="uh-section"> 购物信息 </div>
 
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 title">留言</div>
-      <div class="pure-u-3-4">{{stock.message}}</div>
-    </div>
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 title">管理员留言</div>
-      <div class="pure-u-3-4">***</div>
-    </div>
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 title">附件信息</div>
-      <div class="pure-u-3-4"> 
-        <img ng-if="stock.image_1" ng-src="{{imageUrlPrefix + stock.image_1}}">
-        <img ng-if="stock.image_2" ng-src="{{imageUrlPrefix + stock.image_2}}">
-        <img ng-if="stock.image_3" ng-src="{{imageUrlPrefix + stock.image_3}}">
+
+<table class="pure-table pure-table-horizontal uh-small-table">
+        <tr>
+         <td style="width: 25%;" >购物网站</td>
+         <td>TODO</td>
+        </tr>
+        <tr>
+          <td>购物网站订单号</td>
+          <td>TODO</td>
+        </tr>
+        <tr>
+          <td>购物凭证</td>
+          <td>TODO</td>
+        </tr>
+</table>
+    
+<div class="uh-section">附加信息</div>
+
+
+<table class="pure-table pure-table-horizontal uh-small-table">
+        <tr>
+         <td style="width: 25%;">附加服务</td>
+         <td>TODO</td>
+        </tr>
+        <tr>
+          <td>留言</td>
+          <td>{{stock.message}}</td>
+        </tr>
+</table>
+
+
+
+
+    <!-- 底部按钮开始 -->
+    <div class="pure-g action-btns" >
+      <div class="pure-u-1-2 left">
+        <a  ng-click="goBack()" class="pure-button blue">返回列表</a>
       </div>
-    </div>
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 title">入库清点</div>
-      <div class="pure-u-3-4"></div>
-    </div>
-    <div class="action-btns" >
-      <div class="left">
-        <a  ng-click="goBack()" class="pure-button blue">返回</a>
-      </div>
-      <div ng-show="stock.status==1 || stock.status==2 " class="right">
+      <div ng-show="stock.status==1 || stock.status==2 " class="pure-u-1-2right">
         <a  ng-click="deleteStock()" class="pure-button delete">删除</a>
         <a  ng-click="editStock()" class="pure-button edit">编辑</a>
       </div>

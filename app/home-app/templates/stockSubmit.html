@@ -4,10 +4,9 @@
         <span class="title blue">入库预报</span>
       </div>
   </div>
-  <div >
-    <div>
+
       <div class="uh-form-section pure-g">
-          <div class="title pure-u-1-4">选择收件仓库</div>
+          <div class="title pure-u-1-4">选择收件仓库*</div>
           <div class="pure-u-3-4">
             <select ng-model="stock.warehouse" class="pure-u-1">
               <option ng-repeat="warehouse in warehouses" value="{{warehouse.id}}">
@@ -19,13 +18,13 @@
 
       </div>
       <div class="uh-form-section pure-g">
-          <div class="title pure-u-1-4">包裹备注</div>
+          <div class="title pure-u-1-4">包裹备注*</div>
           <div class="pure-u-3-4">
             <input ng-model="stock.desc" class="pure-u-1" type="text">
           </div>
       </div>
       <div class="uh-form-section pure-g">
-          <div class="title pure-u-1-4">入库跟踪号</div>
+          <div class="title pure-u-1-4">入库跟踪号*</div>
           <div class="pure-u-3-4">
             <select ng-model="stock.ship_company" class="pure-u-1-5">
               <option ng-repeat="path in logisticPaths" value="{{path.id}}">
@@ -35,11 +34,17 @@
             <input ng-model="stock.ship_tracknumber" class="pure-u-19-24" type="text">
           </div>
       </div>
-    </div>
+      <div class="uh-form-section pure-g">
+          <div class="title pure-u-1-4">包裹重量*</div>
+          <div class="pure-u-1-4">
+            <input placeholder="请填写预估重量TODO" class="pure-u-1" type="text">
+          </div>
+      </div>
+
 
 
     <div class="entry">
-      <div class="uh-section">添加物品进包裹</div>
+      <div class="uh-section">添加物品进包裹*</div>
       <div class="desc">必须有一件物品；如需批量上传，请阅读帮助或下载模板</div>
     </div>
     <div class="item-list">
@@ -82,40 +87,57 @@
       </table>
       <div class="options"> 
         <a ng-click="addItem()" class="pure-button radius blue">新增一项</a>
-        <a class="pure-button radius blue">批量上传</a>
+        <!-- <a class="pure-button radius blue">批量上传</a> -->
       </div>
     </div>
+<div class="entry">
+      <div class="uh-section">购物信息</div>
+      <div class="desc">完善购物信息可帮助我们更快的处理您的退换货服务。</div>
 
-    <div class="entry">
-      <div class="uh-section">上传购物凭证</div>
-      <div class="desc">请根据需要上传相应购物凭证，最多3张，支持 jpg, gif, png 小于500 KB</div>
-      <div class="pure-g pic-upload">
-        <div class="pure-u-1-3"><input file-model="imagesToUpload[0]" type="file" accept="image/*"/></div>
-        <div class="pure-u-1-3"><input file-model="imagesToUpload[1]" type="file" accept="image/*"/></div>
-        <div class="pure-u-1-3"><input file-model="imagesToUpload[2]" type="file" accept="image/*"/></div>
+      </div>
+      <div class="uh-form-section pure-g">
+
+          <div class="title pure-u-1-4">购物网站</div>
+          <div class="pure-u-3-4"><input type="text"></div>
+
+      </div>
+      <div class="uh-form-section pure-g">
+
+       <div class="title pure-u-1-4">购物网站订单号</div>
+          <div class="pure-u-3-4"><input type="text" placeholder="TODO"></div>
+   </div>
+      
+    <div class="pure-g uh-form-section">
+      <div class="title pure-u-1-4">上传购物凭证截图</div>
+      <div class="pure-u-3-4">
+        <div class="pure-u-1-4"><input file-model="imagesToUpload[0]" type="file" accept="image/*"/></div>
+        <div class="pure-u-1-4"><input file-model="imagesToUpload[1]" type="file" accept="image/*"/></div>
+        <div class="pure-u-1-4"><input file-model="imagesToUpload[2]" type="file" accept="image/*"/></div>
+        <div class="desc">请根据需要上传相应购物凭证，最多3张，支持 jpg, gif, png 小于500 KB</div>
       </div>
     </div>    
 
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 uh-form-label">运单留言</div>
-      <div class="pure-u-3-4 "><textarea ng-model="stock.message" class="pure-u-1" ></textarea></div>
-    </div>
-    <!-- 特殊服务 -->
-        <div class="pure-g entry">
-      <div class="pure-u-1-4 uh-form-label">附加服务</div>
-      <div class="pure-u-3-4">
-        <div extra-service-list type="1" user-group="0" selected-services="stock.extra_services" ></div>
+    <!-- 附加信息 -->
+    <div class="uh-section">附加信息</div>
+         <div class="pure-g uh-form-section">
+      <div class="pure-u-1-4 title">附加服务</div>
+      <div class="pure-u-3-4"><div extra-service-list type="1" user-group="0"></div>
+      <div class="desc">如有需要，请选择相应的增值服务，部分服务可能会产生费用。</div>
       </div>
     </div>
-    
+    <div class="pure-g uh-form-section">
+      <div class="title pure-u-1-4">留言</div>
+      <div class="pure-u-3-4"><textarea ng-model="stock.message" class="pure-u-1" ></textarea></div>
     </div>
+      
+ 
     <div class="action-btns" >
       <div class="right">
         <a  ng-click="confirm()" class="pure-button blue">下一步</a>
       </div>
     </div>
-  </div>
 </div>
+
 
 
 
@@ -141,8 +163,8 @@
           <td>{{stock.desc}}</td>
         </tr>
         <tr>
-          <td>快递信息</td>
-          <td>{{(logisticPaths | filter:{id: stock.ship_company})[0].name }} 运单号: {{stock.ship_tracknumber}}</td>
+          <td>入库跟踪号</td>
+          <td>{{(logisticPaths | filter:{id: stock.ship_company})[0].name }} {{stock.ship_tracknumber}}</td>
         </tr>
 
       </table>
@@ -150,12 +172,10 @@
 
   </div> <!-- pure-g 结束 -->
 
-    <div class="uh-divider"></div>
 
     <div class="uh-section">包裹物品信息</div>
-    <div class="uh-divider thick"></div>
     <div class="item-list">
-      <table class="pure-table pure-table-horizontal uh-custom-table">
+      <table class="pure-table pure-table-horizontal uh-line-table">
         <thead>
           <tr>
             <th class="pure-u-1-4">物品名称</th>
@@ -177,28 +197,45 @@
       </table>
     </div>
 
-    <div class="uh-divider thick"></div>
+<div class="uh-section">购物信息</div>
 
+<table class="pure-table pure-table-horizontal uh-small-table">
+        <tr>
+         <td style="width: 25%;" >购物网站</td>
+         <td>TODO</td>
+        </tr>
+        <tr>
+          <td>购物网站订单号</td>
+          <td>TODO</td>
+        </tr>
+        <tr>
+          <td>购物凭证</td>
+          <td>TODO</td>
+        </tr>
+</table>
+    
     <div class="uh-section">附加信息</div>
 
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 title">留言</div>
-      <div class="pure-u-3-4">{{stock.message}}</div>
-    </div>
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 title">附加服务</div>
-      <div ng-repeat="e in order.extra_services" class="pure-u-3-4">{{e.service_name}} </div>
-    </div>
-    <div class="pure-g entry">
-      <div class="pure-u-1-4 title">附件信息</div>
-      <div class="pure-u-3-4">已上传凭证....(TODO)</div>
-    </div>
+
+<table class="pure-table pure-table-horizontal uh-small-table">
+        <tr>
+         <td style="width: 25%;">附加服务</td>
+         <td>TODO</td>
+        </tr>
+        <tr>
+          <td>留言</td>
+          <td>{{stock.message}}</td>
+        </tr>
+</table>
+
+    
     <div class="action-btns" >
       <div class="left">
-        <a  ng-click="editSubmit()" class="pure-button edit">编辑</a>
-        <a  ng-click="deleteSubmit()" class="pure-button delete">删除</a>
+        <a  ng-click="editSubmit()" class="pure-button edit">返回编辑</a>
+      
       </div>
       <div class="right">
+        <!-- <a  ng-click="deleteSubmit()" class="pure-button delete">取消</a> -->
         <a  ng-click="confirmSubmit()" class="pure-button confirm">提交</a>
       </div>
     </div>
