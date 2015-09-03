@@ -96,48 +96,57 @@
             controller: 'Search',
         })
 
-
-
         .state('maintenance', {
             url: '/maintenance',
             abstract: true,
             templateUrl: 'templates/shell.html',
         })
+
+
+         .state('articleList', {
+             parent: 'maintenance',
+             url: '/articleList',
+             templateUrl: 'templates/article/articleList.html',
+             controller:''
+        })
+
+
+
         .state('logisticList', {
-            parent: 'maintenance',
+            parent: 'system',
             url: '/logisticList',
             templateUrl: 'templates/logistic/logisticList.html',
             controller: 'LogisticList',
         })
         .state('logisticManage', {
-            parent: 'maintenance',
+            parent: 'systyem',
             url: '/logisticManage',
             templateUrl: 'templates/logistic/logisticManage.html',
             controller: 'LogisticManage',
             params: {logisticPath: null}
         })
         .state('logisticType', {
-            parent: 'maintenance',
+            parent: 'system',
             url: '/logisticType',
             templateUrl: 'templates/logistic/logisticType.html',
             controller: 'LogisticType',
         })
 
         .state('extraSrvList', {
-            parent: 'maintenance',
+            parent: 'system',
             url: '/extraSrvList',
             templateUrl: 'templates/extraSrv/extraSrvList.html',
             controller: 'ExtraSrvList',
         })
         .state('extraSrvManage', {
-            parent: 'maintenance',
+            parent: 'system',
             url: '/extraSrvManage',
             templateUrl: 'templates/extraSrv/extraSrvManage.html',
             controller: 'ExtraSrvManage',
         })
 
           .state('logisticTrack', {
-            parent: 'maintenance',
+            parent: 'system',
             url: '/logisticTrack',
             templateUrl: 'templates/logistic/logisticTrack.html',
             controller: 'LogisticTrack',
@@ -183,7 +192,18 @@
             templateUrl: 'templates/user/userManage.html',
             controller: 'UserManage',
         })
-
+        .state('roleList', {
+            parent: 'system',
+            url: '/user/roleList',
+            templateUrl: 'templates/user/roleList.html',
+            controller: 'RoleList',
+        })
+        .state('roleManage', {
+            parent: 'system',
+            url: '/user/roleManage',
+            templateUrl: 'templates/user/roleManage.html',
+            controller: 'roleManage',
+        })
 
 
         .state('printPrepareList', {

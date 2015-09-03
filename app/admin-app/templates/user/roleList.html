@@ -1,0 +1,81 @@
+
+<div class="ah-list">
+  <div class="ah-main-header">
+    <div class="left">
+      <span class="title">用户组列表</span>
+    </div>
+  </div>
+
+  <div class="ah-list">
+      <table class="pure-table pure-table-horizontal ah-list-table">
+        <thead>
+          <tr>
+            <th width="30px"><input type="checkbox"></th>
+            <th>用户组名称</th>
+            <th>VIP用户</th>
+            <th>后台管理</th>
+            <th>财务管理</th>
+            <th>运维管理</th>
+            <th>业务管理</th>
+            <th>系统管理</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+        <td><input type="checkbox"></td>
+        <td>系统管理员</td>
+        <td>有</td>
+        <td>有</td>
+        <td>有</td>
+        <td>有</td>
+        <td>有</td>
+        <td>有</td>
+        <td>默认无法操作</td>
+        </tbody>
+        <tbody>
+        <td><input type="checkbox"></td>
+        <td>普通用户</td>
+        <td>无</td>
+        <td>无</td>
+        <td>无</td>
+        <td>无</td>
+        <td>无</td>
+        <td>无</td>
+        <td>默认无法操作</td>
+        </tbody>
+        <tbody>
+        <td><input type="checkbox"></td>
+        <td>高级用户</td>
+        <td>有</td>
+        <td>无</td>
+        <td>无</td>
+        <td>无</td>
+        <td>无</td>
+        <td>无</td>
+        <td>默认无法操作</td>
+        </tbody>
+        <tbody>
+        <td><input type="checkbox"></td>
+        <td>财务管理</td>
+        <td>有</td>
+        <td>有</td>
+        <td>有</td>
+        <td>无</td>
+        <td>有</td>
+        <td>无</td>
+        <td>修改｜删除</td>
+        </tbody>
+      </table>
+  </div>
+  <div class="ah-action-btns"> 
+    <div class="left">
+      <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
+      <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
+    </div>
+    <div class="right">
+       <a  class="pure-button red horizon">批量删除</a>
+      <a  class="pure-button blue horizon" ui-sref="roleManage">添加用户组</a>
+    </div>
+  </div>
+  
+</div>

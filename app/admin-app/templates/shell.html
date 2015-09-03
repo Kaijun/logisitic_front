@@ -18,7 +18,7 @@
     <div class="pure-u-2-3 ah-sub-nav-list">
       <ul>
         <li ui-sref="stockList">业务</li>
-        <li ui-sref="logisticList">运维</li>
+        <li ui-sref="articleList">运维</li>
         <li ui-sref="refill">财务</li>
         <li ui-sref="userList">系统</li>
       </ul>
@@ -89,8 +89,33 @@
       </div>
 
       <div  ng-show="$state.includes('maintenance')"  class="ah-sidebar">
-      
         <div class="list-wrapper">
+          <div class="title">消息</div>
+          <ul class="list">
+          <li>消息列表</li>
+            <li>群发消息</li>
+            <li>工单管理</li>
+            </ul>
+        </div>
+       
+         <div class="list-wrapper">
+          <div class="title">优惠码</div>
+          <ul class="list">
+            <li>优惠码管理</li>
+            </ul>
+        </div>
+                <div class="list-wrapper">
+          <div class="title">文档</div>
+          <ul class="list">
+          <li>首页文档管理</li>
+            <li>促销信息管理</li>
+            </ul>
+        </div>
+
+      </div>
+
+      <div ng-show="$state.includes('system')"  class="ah-sidebar">
+      <div class="list-wrapper">
           <div class="title">物流</div>
           <ul class="list">
             <li ui-sref="logisticList">物流线路管理</li>
@@ -104,32 +129,8 @@
             <li ui-sref="extraSrvList">附加服务管理</li>
             </ul>
         </div>
-         <div class="list-wrapper">
-          <div class="title">优惠码</div>
-          <ul class="list">
-            <li>优惠码管理</li>
-            </ul>
-        </div>
+ 
 
-      </div>
-
-      <div ng-show="$state.includes('system')"  class="ah-sidebar">
-
-        <div class="list-wrapper">
-          <div class="title">消息</div>
-          <ul class="list">
-          <li>消息列表</li>
-            <li>群发消息</li>
-            <li>工单管理</li>
-            </ul>
-        </div>
-        <div class="list-wrapper">
-          <div class="title">文档</div>
-          <ul class="list">
-          <li>首页文档管理</li>
-            <li>促销信息管理</li>
-            </ul>
-        </div>
         <div class="list-wrapper">
           <div class="title">用户</div>
           <ul class="list">
@@ -137,7 +138,13 @@
             <li ui-sref="userManage">用户组管理</li>
             </ul>
         </div>
-
+             <div class="list-wrapper">
+          <div class="title">数据库</div>
+          <ul class="list">
+            <li>数据库备份</li>
+            <li>数据库导出</li>
+            </ul>
+        </div>
 
       </div>
       
