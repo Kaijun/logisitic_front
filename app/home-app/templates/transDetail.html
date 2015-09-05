@@ -1,6 +1,6 @@
 
 <div class="uh-submit">
-
+<div class="uh-main-section first">
   <div class="uh-main-header">
         <div class="left">
           <span class="title blue">包裹移库</span>
@@ -12,7 +12,7 @@
 
   <div class="pure-g uh-form-section">
     <div class="pure-u-4-24">接收方Email</div>
-    <div class="pure-u-12-24">{{trans.to_email}}</input></div>
+    <div class="pure-u-12-24">{{trans.to_email}}</div>
   </div>  
 
   <div class="pure-g uh-form-section">
@@ -29,14 +29,14 @@
     <div class="pure-u-12-24">{{warehouse.name}}</div>
   </div>
 
-
-
   <div class="pure-g uh-form-section">
     <div class="pure-u-4-24">移库状态</div>
     <div class="pure-u-12-24">{{trans.statusStr}}</div>
   </div>
+</div>
+</div>
 
-
+<div class="uh-main-section addtion">
   <div class="uh-section"> 发送物品信息 </div>
 
   <table class="pure-table pure-table-horizontal uh-line-table">
@@ -59,7 +59,10 @@
       </tr>
     </tbody>
   </table>
+</div>
 
+
+<div class="uh-main-section last">
 <div class="uh-section pure-g">
   <div class="pure-u-3-24">留言</div>
   <div class="pure-u-21-24 ">
@@ -68,12 +71,14 @@
 </div>
 
 <div class="uh-section pure-g">
-  <div class="pure-u-3-24">管理员备注</div>
-  <div class="pure-u-21-24 ">
-        缺失{{trans.message}}
+    <div class="pure-u-3-24">管理员备注</div>
+    <div class="pure-u-21-24 ">
+          缺失{{trans.message}}
+    </div>
   </div>
 </div>
 
+<div class="uh-main-atcion">
   <!-- 底部操作栏 -->
   <div class="pure-g uh-btm-controller">
       <div class="pure-u-1-2 left">
@@ -86,3 +91,4 @@
       </div>
 
   </div>
+</div>

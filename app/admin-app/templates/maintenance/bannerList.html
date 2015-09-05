@@ -1,0 +1,46 @@
+<div class="ah-list">
+  <div class="ah-main-header">
+    <div class="left">
+      <span class="title">横幅列表</span>
+    </div>
+  </div>
+
+  <div class="ah-list">
+      <table class="pure-table pure-table-horizontal ah-list-table">
+        <thead>
+          <tr>
+            <th width="30px"><input type="checkbox"></th>
+            <th width="20%">标题</th>
+            <th width="30%">描述</th>
+            <th>配图</th>
+            <th>撰写人</th>
+            <th>发布时间</th>
+            <th>发布状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+        <td><input type="checkbox"></td>
+        <td>文章的标题好长好不要操过23个字</td>
+        <td>文章的描述好长好不要操过40个字</td>
+        <td>查看 </td>
+        <td>CPJstudio</td>
+        <td>2015-04-30</td>
+        <td>已发布</td>
+        <td>修改｜删除</td>
+      
+        </tbody>
+      </table>
+  </div>
+  <div class="ah-action-btns"> 
+    <div class="left">
+      <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
+      <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
+    </div>
+    <div class="right">
+       <a  class="pure-button red horizon">批量删除</a>
+      <a  class="pure-button blue horizon" ui-sref="bannerManage">添加新横幅</a>
+    </div>
+  </div>
+  
+</div>

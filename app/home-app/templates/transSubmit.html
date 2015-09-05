@@ -1,5 +1,5 @@
 <div class="uh-submit" ng-hide="isConfirmShown">
-
+<div class="uh-main-section first">
   <div class="uh-main-header">
         <div class="left">
           <span class="title blue">包裹移库</span>
@@ -30,10 +30,12 @@
       </option>
     </select>
   </div>
-
+  </div>
 
   </div>
 
+
+<div class="uh-main-section addtion">
   <div class="uh-section"> 选择移库物品 </div>
   <div class="uh-section desc">请勾选你需要移库的物品，并确定数量</div>
 
@@ -72,19 +74,26 @@
       </table>
     </div>
   </div>
+</div>
 
-<div class="uh-form-section pure-g">
-  <div class="pure-u-4-24 uh-form-label">发货备注</div>
-  <div class="pure-u-18-24 ">
-    <textarea ng-model="trans.message"></textarea>
+<div class="uh-main-section last">
+  <div class="uh-form-section pure-g">
+    <div class="pure-u-4-24 uh-form-label">附加服务</div>
+    <div class="pure-u-18-24 ">TODO</div>
+  </div>
+  <div class="uh-form-section pure-g">
+    <div class="pure-u-4-24 uh-form-label">发货备注</div>
+    <div class="pure-u-18-24 ">
+      <textarea ng-model="trans.message"></textarea>
+    </div>
   </div>
 </div>
   <!-- 底部操作栏 -->
-  <div class="pure-g uh-btm-controller">
+<div class="uh-main-action">
     <div class="pure-u-1-1 right">
-      <div ng-click="confirm()" class="pure-button edit right"><a href="">下一步</a></div>
+      <div ng-click="confirm()"><a href="#">下一步</a></div>
     </div>
-  </div>
+</div>
 
 </div>
 

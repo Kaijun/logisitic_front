@@ -102,13 +102,52 @@
             templateUrl: 'templates/shell.html',
         })
 
-
-         .state('articleList', {
-             parent: 'maintenance',
-             url: '/articleList',
-             templateUrl: 'templates/article/articleList.html',
-             controller:''
+        .state('groupMessageList', {
+            parent: 'maintenance',
+            url: '/groupMessageList',
+            templateUrl: 'templates/maintenance/groupMessageList.html',
+            controller: '',
         })
+        .state('ticketList', {
+            parent: 'maintenance',
+            url: '/ticketList',
+            templateUrl: 'templates/maintenance/ticketList.html',
+            controller: '',
+        })
+
+        .state('messageList', {
+            parent: 'maintenance',
+            url: '/messageList',
+            templateUrl: 'templates/maintenance/messageList.html',
+            controller: '',
+        })
+
+        .state('articleList', {
+            parent: 'maintenance',
+            url: '/articleList',
+            templateUrl: 'templates/maintenance/articleList.html',
+            controller: '',
+        })
+        .state('articleManage', {
+            parent: 'maintenance',
+            url: '/articleManage',
+            templateUrl: 'templates/maintenance/articleManage.html',
+            controller: '',
+        })
+        .state('bannerList', {
+            parent: 'maintenance',
+            url: '/bannerList',
+            templateUrl: 'templates/maintenance/bannerList.html',
+            controller: '',
+        })
+        .state('bannerManage', {
+            parent: 'maintenance',
+            url: '/bannerManage',
+            templateUrl: 'templates/maintenance/bannerManage.html',
+            controller: '',
+        })
+       
+
 
 
 

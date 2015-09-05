@@ -1,4 +1,6 @@
 <div ng-hide="isConfirmShown" class="uh-submit">
+
+<div class="uh-main-section first"> 
   <div class="uh-main-header">
       <div class="left">
         <span class="title blue">入库预报</span>
@@ -15,7 +17,6 @@
             </select>
             <div class="desc">请确认您的包裹填写的收获地址正确，保证我们仓库能收到你的货物。</div>
           </div>
-
       </div>
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">包裹备注*</div>
@@ -41,8 +42,8 @@
           </div>
       </div>
 
-
-
+</div><!-- 头部背景结束 -->
+<div class="uh-main-section addtion">
     <div class="entry">
       <div class="uh-section">添加物品进包裹*</div>
       <div class="desc">必须有一件物品；如需批量上传，请阅读帮助或下载模板</div>
@@ -90,6 +91,9 @@
         <!-- <a class="pure-button radius blue">批量上传</a> -->
       </div>
     </div>
+</div>
+
+<div class="uh-main-section middle">
 <div class="entry">
       <div class="uh-section">购物信息</div>
       <div class="desc">完善购物信息可帮助我们更快的处理您的退换货服务。</div>
@@ -116,7 +120,9 @@
         <div class="desc">请根据需要上传相应购物凭证，最多3张，支持 jpg, gif, png 小于500 KB</div>
       </div>
     </div>    
+</div>
 
+<div class="uh-main-section last">
     <!-- 附加信息 -->
     <div class="uh-section">附加信息</div>
          <div class="pure-g uh-form-section">
@@ -129,12 +135,13 @@
       <div class="title pure-u-1-4">留言</div>
       <div class="pure-u-3-4"><textarea ng-model="stock.message" class="pure-u-1" ></textarea></div>
     </div>
+</div>
       
  
-    <div class="action-btns" >
-      <div class="right">
-        <a  ng-click="confirm()" class="pure-button blue">下一步</a>
-      </div>
+    <div class="uh-main-action" >
+
+        <a  ng-click="confirm()" >下一步</a>
+
     </div>
 </div>
 

@@ -20,8 +20,8 @@ $topnavheight:30px;
 $navheight:50px;
 body{
     height: 100%;
-    background: #0a2d58 no-repeat fixed;
-    background: linear-gradient(to bottom, #0a2d58 0%, #dafde2 100%) no-repeat fixed;
+    background: #0a2d58 no-repeat;
+    background: linear-gradient(to bottom, #0B4285 0%, #3E947C 100%) no-repeat;
 }
 
 // input[type="text"], select{
@@ -122,13 +122,18 @@ textarea{
             line-height: $topnavheight;
             list-style:none;
         }
+    }
+
         .addmoney{
+                width: 150px;
+                height: 38px;
                 background:#FF8250;
-                line-height: 15px;
-                border-radius:5px;
-                font-size: 12px;
-                padding:5px 10px;
-                margin-left: 5px;
+                line-height: 38px;
+                border-radius:20px;
+                font-size: 14px;
+
+                text-align: center;
+                margin:10px 0;
                 text-decoration: none;
                 color: white;
         }
@@ -140,7 +145,6 @@ textarea{
             text-decoration: none;
             color: white;
         }
-    }
     .uh-siderbar-fastopt{
         margin-top:20px; 
         ul{
@@ -153,19 +157,19 @@ textarea{
         ul li{
             width: 110px;
             margin-top: 10px;
-            border-radius:17px;
             background:#4A90E2;
             padding-left:40px;
             line-height: 34px;
             list-style: none;
+            border-bottom: 1px solid white;
             &.prestock{
-                background:url('/images/uh-btn-prestock.png') no-repeat #4A90E2 10% 50%;
+                background:url('/images/uh-btn-prestock.png') no-repeat  10% 50%;
             }
             &.transstock{
-                background:url('/images/uh-btn-movestock.png') no-repeat #4A90E2 10% 50%;
+                background:url('/images/uh-btn-movestock.png') no-repeat  10% 50%;
             }
             &.sendstock{
-                background:url('/images/uh-btn-sendstock.png') no-repeat #4A90E2 10% 50%;
+                background:url('/images/uh-btn-sendstock.png') no-repeat 10% 50%;
             }
 
             a{
@@ -178,8 +182,8 @@ textarea{
 }
 
 .uh-main{
-    background:white;
-    padding: 24px;
+    // background:white;
+    // padding: 24px;
     opacity: 1;
 
     &.ng-enter {
@@ -235,6 +239,56 @@ textarea{
 .uh-main-body{
     padding-top: 24px;
 }
+
+.uh-main-section{
+    padding: 18px 24px;
+    background:white;
+    border-radius:0 0 5px 5px;
+    box-shadow: 0 2px 4px #333;
+    &.first{
+        border-radius: 0;
+    }
+    &.first-list{
+        border-radius: 0 0 5px 5px;
+        padding: 18px 24px 0 24px;
+    }
+    &.addtion{
+        background: #F8F8F8;
+        border-radius: 0 0 5px 5px;
+    }
+    &.middle{
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    &.last{
+        margin-top: 10px;
+        border-radius: 5px 5px 0 0;
+    }
+    
+}
+.uh-header-tab{
+    font-size: 14px;
+    line-height: 40px;
+    margin-right: 30px;
+    margin-bottom: 1px;
+    .active{
+        border-bottom: 1px solid #000;
+    }
+}
+
+.uh-main-action{
+    background: #3A6FAD;
+     box-shadow: 0 2px 4px #333;
+     border-radius: 0 0 5px 5px;
+     margin-bottom: 20px;
+     text-align: center;
+     height: 50px;
+     line-height: 50px;
+     a {
+        color: white;
+     }
+}
+
 .uh-divider{
     margin: 20px 0;
     border-bottom: solid 1px #D1D1D1;
@@ -491,9 +545,9 @@ textarea{
     thead{
         background: none;
         th{
-            border-top: solid 1px #D1D1D1;
+            // border-top: solid 1px #D1D1D1;
             display: table-cell !important;
-            padding: 8px 0 8px 8px;
+            padding: 10px 0 10px 8px;
         }
     }
 
@@ -618,7 +672,7 @@ textarea{
     line-height: 30px;
     padding:10px 8px;
     box-sizing: border-box;
-    border-bottom: 1px solid #D1D1D1;
+    // border-bottom: 1px solid #D1D1D1;
     .inline-button{
         padding:5px;
         line-height: 12px;
@@ -827,36 +881,36 @@ textarea{
     float: left;
     margin-left: 4%;
     padding: 10px 0 10px 65px;
-    line-height: 30px;
+    line-height: 24px;
     box-sizing:border-box;
     font-size: 14px;
-    border-radius:2px;
+    border-radius:30px;
     &.pbm-btn{
         margin-left: 0;
         color: white;
-        background:url("../images/icon-pbm.png") 14px 12px no-repeat #4A90E2;
+        background:url("../images/icon-pbm.png") 14px 10px no-repeat #4A90E2;
         &:hover{
-            background:url("../images/icon-pbm.png") 14px 12px no-repeat #1F78E0;
+            background:url("../images/icon-pbm.png") 14px 10px no-repeat #1F78E0;
         }
 
     }
     &.stock-btn{
-        background:url("../images/icon-stock.png") 20px 12px no-repeat #f2f2f2;
+        background:url("../images/icon-stock.png") 20px 10px no-repeat #f2f2f2;
         &:hover{
-            background:url("../images/icon-stock.png") 20px 12px no-repeat #DBDBDB;
+            background:url("../images/icon-stock.png") 20px 10px no-repeat #DBDBDB;
         }
     }
     &.pay-btn{
-        background:url("../images/icon-pay.png") 20px 12px no-repeat #f2f2f2;
+        background:url("../images/icon-pay.png") 20px 10px no-repeat #f2f2f2;
           &:hover{
-            background:url("../images/icon-pay.png") 20px 12px no-repeat #DBDBDB;
+            background:url("../images/icon-pay.png") 20px 10px no-repeat #DBDBDB;
         }
     }
         &.shipped-btn{
             float: right;
-        background:url("../images/icon-shipped.png") 20px 14px no-repeat #f2f2f2;
+        background:url("../images/icon-shipped.png") 20px 12px no-repeat #f2f2f2;
           &:hover{
-            background:url("../images/icon-shipped.png") 20px 14px no-repeat #DBDBDB;
+            background:url("../images/icon-shipped.png") 20px 12px no-repeat #DBDBDB;
         }
     }
 }

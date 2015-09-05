@@ -1,0 +1,44 @@
+<div class="ah-list">
+  <div class="ah-main-header">
+    <div class="left">
+      <span class="title">文章列表</span>
+    </div>
+  </div>
+
+  <div class="ah-list">
+      <table class="pure-table pure-table-horizontal ah-list-table">
+        <thead>
+          <tr>
+            <th width="30px"><input type="checkbox"></th>
+            <th width="45%">文章标题</th>
+            <th>分类</th>
+            <th>撰写人</th>
+            <th>发布时间</th>
+            <th>发布状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+        <td><input type="checkbox"></td>
+        <td>文章的标题好长好不要操过40个字</td>
+        <td>活动</td>
+        <td>CPJstudio</td>
+        <td>2015-04-30</td>
+        <td>已发布</td>
+        <td>修改｜删除</td>
+      
+        </tbody>
+      </table>
+  </div>
+  <div class="ah-action-btns"> 
+    <div class="left">
+      <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
+      <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
+    </div>
+    <div class="right">
+       <a  class="pure-button red horizon">批量删除</a>
+      <a  class="pure-button blue horizon" ui-sref="articleManage">添加新文章</a>
+    </div>
+  </div>
+  
+</div>

@@ -22,9 +22,9 @@
   <span><img src="images/uh-logo.png"></span>会员中心</div>
   <div class="pure-u-3-4 uh-nav-list">
       <ul >                      
-        <li ng-class="{selected: $state.includes('index')}"  ui-sref="index">我的账户</li>
-        <li ng-class="{selected: $state.includes('refill')|| $state.includes('refund')}" ui-sref="refill">财务管理</li>
-        <li ng-class="{selected: $state.includes('notification')}"  ui-sref="notification">消息中心<span ng-show="userInfo.unread>0"class="uh-no-notification">{{userInfo.unread}}</span></li>
+        <li ng-class="{selected: $state.includes('index')}"  ui-sref="index">动态</li>
+        <li ng-class="{selected: $state.includes('refill')|| $state.includes('refund')}" ui-sref="refill">管理</li>
+        <li ng-class="{selected: $state.includes('notification')}"  ui-sref="notification">消息<span ng-show="userInfo.unread>0"class="uh-no-notification">{{userInfo.unread}}</span></li>
       </ul>
   </div>
   </div>
@@ -43,14 +43,16 @@
         <li>库位号:{{userInfo.stock_position}}</li>
         <li>库存码:{{userInfo.stock_number}}</li>
         <li>积分:{{userInfo.score}}</li>
-        <li>余额:{{userInfo.remain}}<span class="addmoney"><a ui-sref="refill">充值</a></span></li>
+        <li>余额:{{userInfo.remain}}</li>
       </ul>
       </div>
+      <div class="addmoney"><a ui-sref="refill">充值</a></div>
       <div class="uh-siderbar-fastopt">
         <ul>
         <li class="prestock"><a ui-sref="stockSubmit">入库预报</a>｜<a ui-sref="stockList">列表</a></li>
         <li class="sendstock"><a ui-sref="orderSubmit">提交发货</a>｜<a ui-sref="orderList">列表</a></li>
         <li class="transstock"><a ui-sref="transSubmit">包裹移库｜<a ui-sref="transList">列表</a></a></li>
+        <li class="transstock"><a>海外代刷｜列表</a></a></li>
         </ul>
 
       </div>
@@ -58,9 +60,9 @@
 
     </div>
     <div class="pure-u-4-5">
-      <div ng-show="isLoadingCompleted" class="uh-main" ui-view></div>
+      <!-- <div ng-show="isLoadingCompleted" class="uh-main" ui-view></div> -->
 
-      <!-- <div class="uh-main" ui-view></div> -->
+      <div class="uh-main" ui-view></div>
     </div>
   </div>
 </div>

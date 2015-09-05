@@ -1,11 +1,12 @@
 <div class="uh-submit" ng-hide="isConfirmShown">
+
+<div class="uh-main-section first">
   <div class="uh-main-header">
       <div class="left">
         <span class="title blue">提交发货</span>
       </div>
   </div>
-  <div >
-    <div>
+
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">选择收货地址</div>
           <div class="pure-u-3-4">
@@ -14,10 +15,9 @@
                 {{addr.addr_symbol}}
               </option>
             </select>
-            <a class="pure-button blue inline-button " ui-sref="addressManage">管理国内地址</a>
+            <a class="pure-button blue inline-button" ui-sref="addressManage">管理国内地址</a>
             <div class="desc">请确认您的包裹填写的收获地址正确，保证您能在国内收到货物。</div>
           </div>
-
       </div>
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">配送路线选择</div>
@@ -45,8 +45,10 @@
             </select>
           </div>
       </div>
-    </div>
 
+</div>
+
+<div class="uh-main-section addtion">
 
     <div class="entry">
       <div class="uh-section">请选择发货物品</div>
@@ -88,8 +90,11 @@
         </table>
       </div>
     </div>
+</div>
+
 
     <!-- <div class="uh-divider thick"></div> -->
+<div class="uh-main-section last">
     <div class="uh-form-section pure-g">
       <div class="title pure-u-1-4">附加服务</div>
       <div class="pure-u-3-4">
@@ -117,14 +122,13 @@
       </div>
 
     </div>    
+</div>
+
+<div class="uh-main-action" >
+      <div  ng-click="confirmOrder()"><a>下一步</a></div>
+</div>
 
 
-    <div class="action-btns" >
-      <div  ng-click="confirmOrder()" class="right">
-        <a  class="pure-button blue">下一步</a>
-      </div>
-    </div>
-  </div>
 </div>
 
 
