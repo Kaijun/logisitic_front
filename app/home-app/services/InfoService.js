@@ -85,7 +85,7 @@
             return promise;
         }
 
-        // type: 1=入库，2=出库
+        // type: 0=all, 1=入库，2=出库, 3=移库
         function getLogisticPathById (id, type) {
            return getLogisticPaths(type).then(function(lps) {
                 if(angular.isArray(lps)){

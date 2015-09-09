@@ -102,20 +102,13 @@
             return promise;
         }
         function batchDownload(stocks) {
-            var stocks = stocks.join(',')
-            var promise = $http.get(AppConfig.apiUrl + '/batchdownload?packages=' + stocks).success(function(data, status, headers, config) {
                  var anchor = angular.element('<a/>');
                  anchor.attr({
-                     href: 'data:attachment/xlsx;charset=utf-8,' + encodeURI(data),
+                     href: AppConfig.apiUrl + '/batchdownload?packages=' + stocks,
                      target: '_blank',
                      download: '库存导出.xlsx'
-                 })[0].click();
-
-              }).
-              error(function(data, status, headers, config) {
-                // if there's an error you should see it here
-            });
-            return promise;
+                 })[0].click();            
+                 return promise;
         }
 
         function batchUpload (excel) {

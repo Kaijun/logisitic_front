@@ -35,9 +35,9 @@
       <div class="pure-u-3-24"><input ng-model="logisticPath.logistic_name"></div>
       <div class="pure-u-2-24 input-label">重量上线(Kg)</div> 
       <div class="pure-u-1-24"><input ng-model="logisticPath.weight_upper_bound"></div>
-      <div class="pure-u-2-24 input-label">国际段公司名称:</div> 
+      <div class="pure-u-2-24 input-label">国际段公司名:</div> 
       <div class="pure-u-2-24"><input ng-model="logisticPath.ship_company_international"></div>    
-      <div class="pure-u-2-24 input-label">国内段公司名称:</div> 
+      <div class="pure-u-2-24 input-label">国内段公司名:</div> 
       <div class="pure-u-2-24"><input ng-model="logisticPath.ship_company_china"></div>    
      </div>
 
@@ -47,12 +47,7 @@
      <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">可发货类型</div> 
       <div class="pure-u-14-24">
-      <input type="checkbox" name="sports" value="soccer"  />奶粉
-      <input type="checkbox" name="sports" value="soccer"  />厨具
-      <input type="checkbox" name="sports" value="soccer"  />生活用品
-      <input type="checkbox" name="sports" value="soccer"  />其他
-
-      <!-- <input ng-model="shipOptions"> -->
+      <span ng-repeat="type in logisticTypes" ><input ng-model="type.selected" type="checkbox" name="sports" value="soccer"  />{{type.type_name}}</span>
 
       </div> 
 
@@ -64,10 +59,23 @@
       <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">适用用户组</div> 
       <div class="pure-u-4-24">
-        <select>
+        <select ng-model="logisticPath.user_group">
           <option value="0">全部用户</option>
            <option value="1">普通用户</option>
             <option value="2">VIP用户</option>
+        </select>
+      <!-- <input ng-model="logisticPath.user_group"> -->
+
+      </div>    
+     </div>
+      <div class="pure-g ah-form-line">
+      <div class="pure-u-2-24 input-label">路线类型</div> 
+      <div class="pure-u-4-24">
+        <select ng-model="logisticPath.type">
+          <option value="0">全部</option>
+           <option value="1">入库</option>
+            <option value="2">发货</option>
+            <option value="3">移库</option>
         </select>
       <!-- <input ng-model="logisticPath.user_group"> -->
 
@@ -83,8 +91,8 @@
         <option value="1">按重量梯度算</option>
         <option value="2">按每公斤算</option>
       </select></div>
-      <div class="pure-u-2-24 input-label">基准价格</div> 
-      <div class="pure-u-4-24"><input ng-model="logisticPath.base_price"></div>  
+      <div  ng-if="logisticPath.based_on!=1" class="pure-u-2-24 input-label">基准价格</div> 
+      <div  ng-if="logisticPath.based_on!=1" class="pure-u-4-24"><input ng-model="logisticPath.base_price"></div>  
 
      </div>
     <!-- 第四行结束 -->

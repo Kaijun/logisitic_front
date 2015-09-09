@@ -19,6 +19,7 @@
             weight_upper_bound: null,
             user_group: null,
             description: null,
+            type: null,
             based_on: "0",
             base_price: null,
             price_ladders: [],
@@ -28,9 +29,9 @@
         $scope.ladderFrom = null;
         $scope.ladderTo = null;
         $scope.ladderPrice = null;
+        $scope.logisticTypes = [];
 
         $scope.logisticPath = null;
-        $scope.shipOptions = '';
         $scope.roles = '';
         $scope.ladders = [];
 
@@ -46,20 +47,33 @@
         ////////////////
 
         function activate() {
+
+            $scope.logisticTypes = LogisticService.getLogisticTypes().then(function (data) {
+                data.map(function (item) {
+                    item.selected = false;
+                });
+                $scope.logisticTypes = data;
+            });
+
+
             $timeout(function () {
                 $scope.logisticPath = angular.copy(logisticPathObj);
 
             })
 
+            $scope.$watch('logisticTypes', function () {
+                $scope.logisticPath.options = [];
+                $scope.logisticTypes.forEach(function (item) {
+                    if(item.selected === true){
+                        $scope.logisticPath.options.push(item.id);
+                    }
+                });
+            }, true)
+
         }
 
         function submit () {
             $scope.logisticPath.price_ladders = $scope.ladders;
-            $scope.logisticPath.options = $scope.shipOptions.split(' ').map(function (item) {
-                return {
-                    type_name: item
-                }
-            });
             LogisticService.submitLogistic($scope.logisticPath).then(function (data) {
                 $state.go('logisticList');
             })

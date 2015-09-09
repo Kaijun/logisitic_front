@@ -16,28 +16,36 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr ng-repeat="lt in logisticTracks">
             <td><input type="checkbox"></td>
-            <td>从仓库发往法兰克福</td>
-            <td>修改｜删除</td>
-          </tr>
-            <tr>
-            <td><input type="checkbox"></td>
-            <td>正发往国内仓库</td>
-            <td>修改｜删除</td>
+            <td>{{lt.name}}</td>
+            <!-- <td>修改｜删除</td> -->
+            <td><a ng-click="deleteLogisticTrack(lt)">删除</a></td>
           </tr>
         </tbody>
       </table>
     </div>
   <div class="ah-action-btns"> 
-    <div class="left">
-      <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
-      <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
-    </div>
     <div class="right">
       <a  ng-click="" class="pure-button red horizon">批量删除</a>
-      <a  ng-click="" class="pure-button blue horizon">添加新状态</a>
+      <a  ng-click="addLogisticTrack()" class="pure-button blue horizon">添加新类型</a>
     </div>
   </div>
   
+</div>
+
+
+<div ng-show="isPopupShown" class="pop-up-wapper">
+  <div class="pop-up-title">
+    添加新类型
+  </div>
+  <div class="pop-up-body">
+    <div class="poo-up-section"><input type="text" ng-model="trackName" placeholder="请填写类型名称"> </div>      
+  </div>
+  <div class="pop-up-opt pure-g">
+    <div class="pure-u-1-3">
+      <a ng-click="cancle()" class="pure-button red horizon-small">取消</a>
+      <a ng-click="submitLogisticTrack()" class="pure-button blue horizon-small">确认</a>
+    </div>
+  </div>
 </div>

@@ -16,9 +16,13 @@
             deleteLogistic: deleteLogistic,
             editLogistic: editLogistic,
 
-            getLogisticTypes,
-            deleteLogisticType,
-            submitLogisticType,
+            getLogisticTypes: getLogisticTypes,
+            deleteLogisticType: deleteLogisticType,
+            submitLogisticType: submitLogisticType,
+
+            getLogisticTracks: getLogisticTracks,
+            deleteLogisticTrack: deleteLogisticTrack,
+            submitLogisticTrack: submitLogisticTrack,
 
         };
         return service;
@@ -103,6 +107,35 @@
                 url: AppConfig.apiUrl + '/logistict-types/',
                 method: 'PUT',
                 data: logisticPath,
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+
+        function getLogisticTracks() {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/ship-status/',
+                method: 'GET',
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function deleteLogisticTrack(id) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/ship-status/' + id,
+                method: 'DELETE',
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function submitLogisticTrack(logisticTrack) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/ship-status/',
+                method: 'PUT',
+                data: logisticTrack,
             }).then(function (response) {
                 return response.data;
             });

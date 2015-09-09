@@ -18,14 +18,18 @@
             <th>操作</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody ng-repeat="article in articles">
         <td><input type="checkbox"></td>
-        <td>文章的标题好长好不要操过40个字</td>
-        <td>活动</td>
-        <td>CPJstudio</td>
-        <td>2015-04-30</td>
-        <td>已发布</td>
-        <td>修改｜删除</td>
+        <td>{{article.title}}</td>
+        <td>
+          <span ng-if="article.type==0">通知</span>
+          <span ng-if="article.type==1">活动</span>
+          <span ng-if="article.type==2">拼单</span>
+        </td>
+        <td>{{article.author}}</td>
+        <td>{{article.created_at}}</td>
+        <td>{{article.unpublish?'未发布':'已发布'}}</td>
+        <td><a ng-click="editArticle(article.id)">修改</a>｜<a ng-click="deleteArticle(article.id)">删除</a></td>
       
         </tbody>
       </table>

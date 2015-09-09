@@ -12,13 +12,15 @@
             ship_tracknumber: null,
             status: null,
             timestamp: null,
-            weight: null,
             items: [],
             image_1: null,
             image_2: null,
             image_3: null,
             message: null,
             extra_services: [],
+            weight: null,
+            web_link: null,
+            website_reference: null,
         }
         $scope.stock = null; 
         $scope.warehouses = [];
@@ -42,11 +44,8 @@
             var pathPromise = InfoService.getLogisticPaths(0).then(function (data){
                 $scope.logisticPaths = data;
             });
-            // TODO: add user Group!!! from UserInfo
-            var extraSrvPromise = InfoService.getExtraServices(1, 0).then(function (data){
-                 $scope.extraServices = data;
-            });
-            $q.all([warehousePromise, pathPromise, extraSrvPromise]).then(function () {
+
+            $q.all([warehousePromise, pathPromise]).then(function () {
                 $timeout(function(){
                     if(!$stateParams.stockId){
                         $scope.stock = angular.copy(stockObj);

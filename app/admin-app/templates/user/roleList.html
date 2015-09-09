@@ -21,50 +21,18 @@
             <th>操作</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody ng-repeat="role in roles">
         <td><input type="checkbox"></td>
-        <td>系统管理员</td>
-        <td>有</td>
-        <td>有</td>
-        <td>有</td>
-        <td>有</td>
-        <td>有</td>
-        <td>有</td>
-        <td>默认无法操作</td>
+        <td>{{role.role_name}}</td>
+        <td>{{role.is_vip?'有': '无'}}</td>
+        <td>{{role.is_backend?'有': '无'}}</td>
+        <td>{{role.accountancy?'有': '无'}}</td>
+        <td>{{role.ship_manage?'有': '无'}}</td>
+        <td>{{role.stock_manage?'有': '无'}}</td>
+        <td>{{role.is_adminstrator?'有': '无'}}</td>
+        <td> <a ng-click="deleteRole(role.id)">删除</a></td>
         </tbody>
-        <tbody>
-        <td><input type="checkbox"></td>
-        <td>普通用户</td>
-        <td>无</td>
-        <td>无</td>
-        <td>无</td>
-        <td>无</td>
-        <td>无</td>
-        <td>无</td>
-        <td>默认无法操作</td>
-        </tbody>
-        <tbody>
-        <td><input type="checkbox"></td>
-        <td>高级用户</td>
-        <td>有</td>
-        <td>无</td>
-        <td>无</td>
-        <td>无</td>
-        <td>无</td>
-        <td>无</td>
-        <td>默认无法操作</td>
-        </tbody>
-        <tbody>
-        <td><input type="checkbox"></td>
-        <td>财务管理</td>
-        <td>有</td>
-        <td>有</td>
-        <td>有</td>
-        <td>无</td>
-        <td>有</td>
-        <td>无</td>
-        <td>修改｜删除</td>
-        </tbody>
+        
       </table>
   </div>
   <div class="ah-action-btns"> 
@@ -74,7 +42,7 @@
     </div>
     <div class="right">
        <a  class="pure-button red horizon">批量删除</a>
-      <a  class="pure-button blue horizon" ui-sref="roleManage">添加用户组</a>
+      <a ui-sref="roleManage"  class="pure-button blue horizon" ui-sref="roleManage">添加用户组</a>
     </div>
   </div>
   

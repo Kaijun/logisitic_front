@@ -88,6 +88,7 @@ gulp.task('serve', ['styles', 'fonts'], function () {
   var proxyAuth = proxyMiddleware('/auth/', {target: 'http://0.0.0.0:8000'});
   var proxyApi = proxyMiddleware('/api/', {target: 'http://0.0.0.0:8000'});
   var proxyHome = proxyMiddleware('/home/', {target: 'http://0.0.0.0:8000'});
+  var proxyAdmin = proxyMiddleware('/admin/', {target: 'http://0.0.0.0:8000'});
 
   browserSync({
     notify: false,
@@ -98,7 +99,7 @@ gulp.task('serve', ['styles', 'fonts'], function () {
         '/bower_components': 'bower_components',
         '/scripts': 'app/scripts'
       },
-      middleware: [proxyAuth, proxyApi, proxyHome],
+      middleware: [proxyAuth, proxyApi, proxyHome, proxyAdmin],
     }
   });
 

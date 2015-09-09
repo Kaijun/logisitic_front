@@ -37,14 +37,14 @@
         <div class="pure-u-1-2">
           <table class="pure-table pure-table-horizontal ah-small-table">
             <tr><td style="width:30%">订单号</td><td>{{order.ship_tracknumber.id}}</td></tr>
-            <tr><td>客户ID</td><td>{{order.owner_id}}</td></tr>
+            <tr><td>客户ID</td><td>{{order.user_name}}</td></tr>
             <tr><td>收件人</td><td>{{order.post_info.receiver_name}}</td></tr>
             <tr><td>收货地址</td><td>{{order.post_info.province}} {{order.post_info.city}} {{order.post_info.town}} {{order.post_info.street}} </td>
               <tr><td>联系电话</td><td>{{order.post_info.phone}}</td></tr>
               <tr><td>配送线路</td><td>{{logisticPath.name}}</td></tr>
               <tr><td>物品所在仓库</td><td>{{warehouse.name}}</td></tr>
               <tr><td>入库重量</td><td>{{weightSum}}KG</td></tr>
-              <tr><td>按线路配重</td><td > <span ng-init="isWeightEditShown=false" ng-click="isWeightEditShown=true" ng-hide="isWeightEditShown">{{order.weight}}KG(点击修改)</span>  <input ng-show="isWeightEditShown" ng-model="order.weight"></td></tr>
+              <tr><td>按线路配重</td><td > <span ng-init="isWeightEditShown=false" ng-hide="isWeightEditShown">{{order.weight}}KG</span>  <input ng-show="isWeightEditShown" ng-model="order.weight"></td></tr>
             </table>
           </div>
 
@@ -63,7 +63,9 @@
                 国际段: <input ng-model="order.ship_tracknumber.International" style="width: auto;"><br> 国内段: <input ng-model="order.ship_tracknumber.China"  style="width: auto;">
               </span>  
             </td></tr>
-            <tr><td>发货跟踪状态</td><td><span ng-init="isShipStatusEditShown=false" ng-click="isShipStatusEditShown=true" ng-hide="isShipStatusEditShown">{{order.ship_status}}(点击修改)</span> <input ng-show="isShipStatusEditShown" ng-model="order.ship_status"> </td></tr>
+            <tr><td>发货跟踪状态</td><td><span ng-init="isShipStatusEditShown=false" ng-click="isShipStatusEditShown=true" ng-hide="isShipStatusEditShown">{{ship_status_string}}(点击修改)</span> 
+            <select ng-show="isShipStatusEditShown" ng-model="order.ship_status"  ng-options="convertToInt(lt.id) as lt.name for lt in logisticTracks"></select>
+            </td></tr>
           </table>
         </div>
 
@@ -163,10 +165,10 @@
      <!-- <div><a class="pure-button flag  ">标记为问题件</a></div> -->
      <div problem-pkg-btn package-id="{{$stateParams.orderId}}" type="1" current-status="order.order_status"></div>
      <div><a ng-click="printPackListconfirm()" class="pure-button blue ">打印配货单</a></div>
-     <div><a ng-click="weightAndPack()" class="pure-button blue ">称重打包</a></div>
+     <div ng-if="order.order_status<2"><a ng-click="weightAndPack()" class="pure-button blue ">称重打包</a></div>
      <!-- <div><a ng-click="printPackListconfirm()" class="pure-button blue ">打印面单</a></div> -->
      <div><a ng-click="printPostListconfirm()" class="pure-button blue ">生成运单</a></div>
-     <div><a ng-hide="isTrackNumEditShown" ng-click="confirmShip()" class="pure-button green ">确认发货</a></div>
+     <div ng-if="order.order_status==3 || order.order_status==4"><a  ng-hide="isTrackNumEditShown" ng-click="confirmShip()" class="pure-button green ">确认发货</a></div>
      <div><a ng-show="isWeightEditShown || isShipStatusEditShown || isTrackNumEditShown" ng-click="editOrder()" class="pure-button red ">确认修改</a></div>
      <div><a class="pure-button back ">返回列表</a></div>
    </div> 

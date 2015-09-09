@@ -10,23 +10,23 @@
     <div class="ah-section">基本信息</div>
     <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">用户ID</div>
-      <div class="pure-u-4-24 input-label none-edit">CPJStudio</div>
+      <div class="pure-u-4-24 input-label none-edit">{{user.name}}</div>
       <div class="pure-u-2-24 input-label">入库码</div>
-      <div class="pure-u-4-24 input-label none-edit">NDEIDW</div>
+      <div class="pure-u-4-24 input-label none-edit">{{user.stock_number}}</div>
       <div class="pure-u-2-24 input-label">库位号</div>
-      <div class="pure-u-4-24 input-label none-edit">6832</div>
+      <div class="pure-u-4-24 input-label none-edit">{{user.stock_position}}</div>
     </div>
     <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">真实姓名</div>
-      <div class="pure-u-4-24"><input placeholder="CPJStudio"></div>
+      <div class="pure-u-4-24"><input ng-model="user.name" ng-value="user.name"></div>
     </div>
     <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">身份证号</div>
-      <div class="pure-u-8-24"><input placeholder="59998519900301575"></div>
+      <div class="pure-u-4-24"><input ng-model="user.ID_card_number" ng-value="user.ID_card_number"></div>
     </div>
     <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">Email</div>
-      <div class="pure-u-8-24"><input type="email" placeholder="cpj@cpj.com"></div>
+      <div class="pure-u-4-24"><input ng-model="user.email" ng-value="user.email"></div>
     </div>
     <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">密码</div>
@@ -35,52 +35,55 @@
     <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">用户组</div>
       <div class="pure-u-8-24">
-        <select>
-          <option value="0">普通用户</option>
-          <option value="1">VIP用户</option>
+        <select ng-model="user.role_id"  ng-options="convertToInt(role.id) as role.role_name for role in roles">
         </select></div>
       </div>
     <div class="ah-section">财务信息</div>
     <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">余额</div>
-      <div class="pure-u-2-24 input-label none-edit">212.00</div>
-      <div class="pure-u-2-24"><a class="pure-button red small horizon">充值</a></div>
+      <div class="pure-u-2-24 input-label none-edit">{{user.remain}}</div>
+      <div class="pure-u-2-24"><a ui-sref="refill" class="pure-button red small horizon">充值</a></div>
       <div class="pure-u-2-24 input-label">积分</div>
-      <div class="pure-u-4-24"><input placeholder="212"></div>
+      <div class="pure-u-4-24"><input ng-model="user.score" ng-value="user.score"></div>
     </div>
     <div class="ah-section">联系信息</div>
     <div class="pure-g ah-form-line">
-      <div class="pure-u-2-24 input-label">电话</div>
-      <div class="pure-u-4-24 input-label"><input placeholder="13996600223"></div>
       <div class="pure-u-2-24 input-label">微信</div>
-      <div class="pure-u-4-24 input-label"><input placeholder="cpjstuio"></div>
+      <div class="pure-u-4-24 input-label"><input ng-model="user.wechat" ng-value="user.wechat"></div>
       <div class="pure-u-2-24 input-label">QQ</div>
-      <div class="pure-u-4-24 input-label"><input placeholder="3829102"></div>
+      <div class="pure-u-4-24 input-label"><input ng-model="user.qq" ng-value="user.qq"></div>
     </div>
     <div class="ah-section">发货地址</div>
     <table class="pure-table pure-table-horizontal ah-line-table">
       <thead>
         <tr>
           <th class="pure-u-3-24">地址代号</th>
-          <th class="pure-u-1-4">详细地址</th>
-          <th class="pure-u-1-4">收件人</th>
-          <th class="pure-u-1-8">身份证</th>
+          <th class="pure-u-2-24">省份</th>
+          <th class="pure-u-2-24">城市</th>
+          <th class="pure-u-2-24">区域</th>
+          <th class="pure-u-6-24">街道</th>
+          <th class="pure-u-2-24">收件人</th>
+          <th class="pure-u-1-8">电话</th>
         </tr>
       </thead>
-      <tbody>
-          <td><input placeholder="重庆"></td>
-          <td><input placeholder="重庆市重庆大学A区49号"></td>
-          <td><input placeholder="小秘密"></td>
-          <td>查看</td>
+      <tbody ng-repeat="addr in user.post_addresses">
+          <td><input ng-model="addr.addr_symbol" ng-value="addr.addr_symbol"></td>
+          <td><input ng-model="addr.province" ng-value="addr.province"></td>
+          <td><input ng-model="addr.city" ng-value="addr.city"></td>
+          <td><input ng-model="addr.town" ng-value="addr.town"></td>
+          <td><input ng-model="addr.street" ng-value="addr.street"></td>
+          <td><input ng-model="addr.receiver_name" ng-value="addr.receiver_name"></td>
+          <td><input ng-model="addr.phone" ng-value="addr.phone"></td>
+          <!-- <td>查看</td> -->
         </tr>
       </tbody>
     </table>
     </div>
   <div class="pure-u-4-24 right">
-        <a  ng-click="" class="pure-button green">历史记录</a>
-      <a  ng-click="" class="pure-button blue">保存修改</a>
-      <a  ng-click="" class="pure-button red">删除用户</a>
-      <a  ng-click="" class="pure-button back">返回</a>
+        <!-- <a  ng-click="" class="pure-button green">历史记录</a> -->
+      <a  ng-click="saveEdit()" class="pure-button blue">保存修改</a>
+      <!-- <a  ng-click="deleteUser()" class="pure-button red">删除用户</a> -->
+      <a  ng-click="goBack()" class="pure-button back">返回</a>
     </div>
   </div>
 </div>

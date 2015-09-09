@@ -85,8 +85,12 @@
         .state('problemDetail', {
             parent: 'business',
             url: '/problemDetail',
+            params: {
+                id: null,
+                type: null,
+            },
             templateUrl: 'templates/problemDetail.html',
-            controller: '',
+            controller: 'ProblemDetail',
         })
 
         .state('search', {
@@ -126,13 +130,13 @@
             parent: 'maintenance',
             url: '/articleList',
             templateUrl: 'templates/maintenance/articleList.html',
-            controller: '',
+            controller: 'ArticleList',
         })
         .state('articleManage', {
             parent: 'maintenance',
-            url: '/articleManage',
+            url: '/articleManage/:articleId',
             templateUrl: 'templates/maintenance/articleManage.html',
-            controller: '',
+            controller: 'ArticleManage',
         })
         .state('bannerList', {
             parent: 'maintenance',
@@ -158,11 +162,10 @@
             controller: 'LogisticList',
         })
         .state('logisticManage', {
-            parent: 'systyem',
+            parent: 'system',
             url: '/logisticManage',
             templateUrl: 'templates/logistic/logisticManage.html',
             controller: 'LogisticManage',
-            params: {logisticPath: null}
         })
         .state('logisticType', {
             parent: 'system',
@@ -227,7 +230,7 @@
         })
         .state('userManage', {
             parent: 'system',
-            url: '/user/userManage',
+            url: '/user/userManage/:userId',
             templateUrl: 'templates/user/userManage.html',
             controller: 'UserManage',
         })
@@ -241,7 +244,7 @@
             parent: 'system',
             url: '/user/roleManage',
             templateUrl: 'templates/user/roleManage.html',
-            controller: 'roleManage',
+            controller: 'RoleManage',
         })
 
 

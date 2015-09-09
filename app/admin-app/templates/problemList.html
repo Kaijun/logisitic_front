@@ -7,12 +7,10 @@
 
     <div class="right pure-u-1-8">
 
-    <select>
-      <option value="0">全部</option>
+    <select ng-model="type">
       <option value="0">入库问题件</option>
       <option value="1">订单问题件</option>
-      <option value="1">移库问题件</option>
-
+      <option value="2">移库问题件</option>
     </select>
     </div>
   </div>
@@ -36,13 +34,13 @@
           <tr ng-repeat="p in problemPkgs">
             <td><input type="checkbox"></td>
             <!-- <td>DKD0192313</td> -->
-            <td>{{p.package_owner}}</td>
-            <td>{{p.owner_stock_number}}</td>
-            <td>{{p.owner_stock_postion}}</td>
+            <td>{{p.package_owner.name}}</td>
+            <td>{{p.package_owner.stock_number}}</td>
+            <td>{{p.package_owner.stock_position}}</td>
             <!-- <td>Email</td> -->
             <!-- <td>订单问题件</td> -->
-            <td>{{p.status}}</td>
-            <td><a ng-click="goToDetail(p.package_id)">查看</a></td>
+            <td><span ng-if="type==0">预报问题件</span><span ng-if="type==1">订单问题件</span><span ng-if="type==2">移库问题件</span></td>
+            <td><a ng-click="goToDetail(p)">查看</a></td>
           </tr>
         </tbody>
       </table>

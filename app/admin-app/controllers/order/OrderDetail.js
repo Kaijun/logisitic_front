@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('OrderDetail', OrderDetail);
 
-    OrderDetail.$inject = ['$scope', '$stateParams', 'OrderService', 'InfoService', '$timeout', '$state', '$window'];
+    OrderDetail.$inject = ['$scope', '$stateParams', 'OrderService', 'InfoService', 'LogisticService', '$timeout', '$state', '$window'];
 
     /* @ngInject */
-    function OrderDetail($scope, $stateParams, OrderService, InfoService, $timeout, $state, $window) {
+    function OrderDetail($scope, $stateParams, OrderService, InfoService,LogisticService, $timeout, $state, $window) {
   
         $scope.order = null;
         $scope.isWeightPopupShown = false;
@@ -53,6 +53,14 @@
                             $scope.logisticPath = lp;
                         })
                     });
+                    LogisticService.getLogisticTracks().then(function (lts) {
+                        $timeout(function () {
+                            $scope.logisticTracks = lts;
+                            $scope.ship_status_string = $scope.logisticTracks.filter(function (item) {
+                                return item.id == $scope.order.ship_status;
+                            })[0].name;
+                        })
+                    })
                 });
             }
         }
@@ -164,5 +172,8 @@
         //     $scope.isShipStatusEditShown = false;
         //     $scope.isTrackNumEditShown = false;
         // }
+        $scope.convertToInt = function(id){
+            return parseInt(id, 10);
+        };
     }
 })();

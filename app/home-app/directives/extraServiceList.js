@@ -39,12 +39,11 @@
             });
 
             scope.$watch('services', function () {
-                scope.selectedServicesId = [];
-                scope.selectedServicesName = [];
+                scope.selectedServices = [];
                 scope.services.forEach(function (item) {
                     if (item.selected === true)
                         scope.selectedServices.push(item);
-                })
+                });
             }, true)
         }
     }

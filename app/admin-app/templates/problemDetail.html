@@ -13,9 +13,9 @@
     <div class="pure-u-1-2">
       <table class="pure-table pure-table-horizontal ah-small-table">
         <tr style="width:30%"><td>跟踪号</td><td>DKD029312313</td></tr>
-        <tr><td>客户ID</td><td>CPJSTUDIO</td></tr>
-        <tr><td>库存码</td><td>ODIO</td></tr>
-        <tr><td>库位号</td><td>0313</td></tr>
+        <tr><td>客户ID</td><td>{{problemPkg.package_owner.name}}</td></tr>
+        <tr><td>库存码</td><td>{{problemPkg.package_owner.stock_number}}</td></tr>
+        <tr><td>库位号</td><td>{{problemPkg.package_owner.stock_position}}</td></tr>
         
 
       </table>
@@ -23,10 +23,10 @@
 
     <div class="pure-u-1-2">
       <table class="pure-table pure-table-horizontal ah-small-table" > 
-          <tr><td style="width:30%">状态</td><td>已处理</td></tr>
-          <tr><td>问题件描述</td><td>您的包裹已经操作，并被标为问题件，请及时处理</td></tr>
-          <tr><td>问题件分类</td><td>订单问题件</td></tr>
-          <tr><td>提交时间</td><td>2014-4-4</td></tr>
+          <tr><td style="width:30%">状态</td><td></td></tr>
+          <tr><td>问题件描述</td><td></td></tr>
+          <tr><td>问题件分类</td><td></td></tr>
+          <tr><td>提交时间</td><td></td></tr>
       </table>
     </div>
     </div>  
@@ -34,7 +34,7 @@
 
 <div class="ah-section"> 消息记录 </div>
 <div class="ah-message">
-<div class="ah-message-avatar reply">系</div>
+<!-- <div class="ah-message-avatar reply">系</div>
 <div class="ah-message-text reply">您的包裹已经操作，并被标为问题件，请及时处理</div>
 <div class="ah-message-timestamp reply">2015-03-02 20:20</div>
 </div>
@@ -46,7 +46,7 @@
 <div class="ah-message">
 <div class="ah-message-avatar reply">系</div>
 <div class="ah-message-text reply">已按客户意见重新发送</div>
-<div class="ah-message-timestamp reply">2015-03-02 22:20</div>
+<div class="ah-message-timestamp reply">2015-03-02 22:20</div> -->
 
 </div>
 
@@ -56,11 +56,9 @@
 </div>
       <!-- 右侧功能键开始 -->
       <div class="pure-u-1-6 right">
-           <div><a class="pure-button flag ">处理问题件</a></div>
+           <div><a ng-click="solveProblem()" class="pure-button flag ">处理问题件</a></div>
            <div><a class="pure-button blue">回复</a></div>
            <div><a class="pure-button back ">返回</a></div>
-           
-           
       </div> <!-- 右侧功能键结束 Div -->
     </div><!-- 中部信息栏结束 Div -->
 
