@@ -69,6 +69,12 @@
             controller: 'TransDetailCtrl',
         })
 
+        .state('vorkasse', {
+            url: '/vorkasse',
+            templateUrl: 'templates/vorkasse.html',
+            controller: '',
+        })
+        // 代刷页面
 
         .state('addressManage', {
             url: '/profile/addressManage',
@@ -94,6 +100,11 @@
             url: '/notification',
             templateUrl: 'templates/notification/notification.html',
             controller: 'NotificationCtrl',
+        })
+        .state('conversation',{
+            url: '/conversation',
+            templateUrl: 'templates/notification/conversation.html',
+            controller: '',
         })
         .state('messaage', {
             url: '/notification/:id',

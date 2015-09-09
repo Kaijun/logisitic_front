@@ -150,14 +150,16 @@
 
 <!-- 预报确认页面 -->
 
-<div ng-show="isConfirmShown" class="uh-submit">
+<!-- <div ng-show="isConfirmShown" class="uh-submit"> -->
+<div class="uh-submit">
+ <div class="uh-main-section first"> 
   <div class="uh-main-header">
       <div class="left">
         <span class="title blue">入库预报</span>
       </div>
   </div>
-  <div class="uh-main-body" >
-    <div class="pure-g pure-u-1"><div class="uh-section first-child">基本信息</div> </div>
+
+    <div class="pure-g pure-u-1"><div class="uh-section">基本信息</div> </div>
     <div class="pure-g">
     <div class="pure-u-1-1">
       <table class="pure-table pure-table-horizontal uh-small-table">
@@ -177,12 +179,16 @@
           <td>入库跟踪号</td>
           <td>{{(logisticPaths | filter:{id: stock.ship_company})[0].name }} {{stock.ship_tracknumber}}</td>
         </tr>
-
+        <tr>
+          <td>入库重量</td>
+          <td></td>
+        </tr>
       </table>
     </div> <!-- 左边表格结束  -->
 
   </div> <!-- pure-g 结束 -->
-
+</div>
+<div class="uh-main-section addtion">
 
     <div class="uh-section">包裹物品信息</div>
     <div class="item-list">
@@ -207,7 +213,9 @@
         </tbody>
       </table>
     </div>
+</div>
 
+<div class="uh-main-section middle">
 <div class="uh-section">购物信息</div>
 
 <table class="pure-table pure-table-horizontal uh-small-table">
@@ -224,6 +232,9 @@
           <td>TODO</td>
         </tr>
 </table>
+</div>
+
+<div class="uh-main-section last">
     
     <div class="uh-section">附加信息</div>
 
@@ -238,19 +249,16 @@
           <td>{{stock.message}}</td>
         </tr>
 </table>
-
+</div>
     
-    <div class="action-btns" >
-      <div class="left">
-        <a  ng-click="editSubmit()" class="pure-button edit">返回编辑</a>
-      
+<div class="uh-main-action" >
+      <div class="btn-edit left" ng-click="editSubmit()"></div>
+      <div  ng-click="deleteSubmit()" class="btn-delete left"></div>
+      <div class="btn-msg-send right" ng-click="confirmSubmit()">
+        
       </div>
-      <div class="right">
-        <!-- <a  ng-click="deleteSubmit()" class="pure-button delete">取消</a> -->
-        <a  ng-click="confirmSubmit()" class="pure-button confirm">提交</a>
-      </div>
-    </div>
-  </div>
+</div>
+
 </div>
 
 

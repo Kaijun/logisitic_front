@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="22px" viewBox="0 0 16 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Fill 205</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="新闻" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="通知列表" sketch:type="MSArtboardGroup" transform="translate(-221.000000, -220.000000)" fill="#175561">
+            <g id="Group-2" sketch:type="MSLayerGroup" transform="translate(197.000000, 138.000000)">
+                <path d="M26.9090909,82 C25.3025455,82 24,83.3025455 24,84.9090909 L24,100.909091 C24,102.515636 25.3025455,103.818182 26.9090909,103.818182 L32,98.7272727 L37.0909091,103.818182 C38.6974545,103.818182 40,102.515636 40,100.909091 L40,84.9090909 C40,83.3025455 38.6974545,82 37.0909091,82 L26.9090909,82 Z" id="Fill-205" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

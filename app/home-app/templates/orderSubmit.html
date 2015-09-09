@@ -141,7 +141,9 @@
 
 
 
-<div class="uh-submit" ng-show="isConfirmShown">
+<!-- <div class="uh-submit" ng-show="isConfirmShown"> -->
+<div class="uh-submit">
+<div class="uh-main-section first">
   <div class="uh-main-header">
     <div class="left">
       <span class="title blue">提交发货</span>
@@ -149,10 +151,9 @@
   </div> 
   <!-- 头部标题结束 -->
   <!-- 主体开始 -->
-  <div class="uh-main-body" >
 
     <!-- section 1 基本信息 -->
-    <div class="pure-g pure-u-1"><div class="uh-section first-child">基本信息</div> </div>
+    <div class="pure-g pure-u-1"><div class="uh-section">基本信息</div> </div>
     <!-- section 1 表格开始 -->
     <div class="pure-g">
     <div class="pure-u-1-1">
@@ -187,10 +188,10 @@
     </div> <!-- 左边表格结束  -->
 
     </div> <!-- pure-g 结束 -->
-
+</div>
 
   <!-- section 2 开始 -->
-
+<div class="uh-main-section addtion">
     <div class="uh-section"> 包裹物品信息 </div>
 
     <table class="pure-table pure-table-horizontal uh-line-table">
@@ -213,9 +214,9 @@
         </tr>
       </tbody>
     </table>
-
+</div>
     <!-- section 3 开始 -->
-
+<div class="uh-main-section last">
     <div class="uh-section">附加信息</div>
     <table class="pure-table pure-table-horizontal uh-small-table">
       <tr>
@@ -231,24 +232,24 @@
         <td>{{order.message}}</td>
       </tr>
     </table>
-
-    <div style="margin-top: 24px;">
-      <input type="checkbox" id="protocolConfirm"> <label for="protocolConfirm">以上信息无误，我已经阅读并且同意<a href="">大口袋转运服务条款</a>！</label>
+             <div class="pure-g uh-form-section">
+      <div class="pure-u-1"><input type="checkbox" id="protocolConfirm"> 我已确认并阅读了《大口袋服务协议》</div>
     </div>
+
+      <!-- <input type="checkbox" id="protocolConfirm"> <label for="protocolConfirm">以上信息无误，我已经阅读并且同意<a href="">大口袋转运服务条款</a>！</label> -->
+
+</div>
+
 
 
     <!-- 底部操作按钮开始 -->
-    <div class="pure-g">
-      <div class="pure-u-1-2 left">
-        <div ng-click="editOrder()" class="pure-button edit left"><a >返回编辑</a></div>
-        <div ng-click="deleteOrder()" class="pure-button delete left"><a >删除</a></div>
-      </div>
-      <div class="pure-u-1-2 right">
-        <div ng-click="submitOrder()" class="pure-button confirm right"><a >提交订单</a></div>
-      </div>
+<div class="uh-main-action">
 
-    </div>
-  </div>
+        <div ng-click="editOrder()" class="btn-edit left"></div>
+        <div ng-click="deleteOrder()" class="btn-delete left"></div>
+        <div ng-click="submitOrder()" class="right"><a >提交</a></div>
+
+</div>
 
 </div>
 

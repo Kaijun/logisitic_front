@@ -19,6 +19,7 @@
 $topnavheight:30px;
 $navheight:50px;
 body{
+    min-height: 100vh;
     height: 100%;
     background: #0a2d58 no-repeat;
     background: linear-gradient(to bottom, #0B4285 0%, #3E947C 100%) no-repeat;
@@ -163,13 +164,16 @@ textarea{
             list-style: none;
             border-bottom: 1px solid white;
             &.prestock{
-                background:url('/images/uh-btn-prestock.png') no-repeat  10% 50%;
+                background:url('../images/uh-btn-prestock.svg') no-repeat  10% 50%;
             }
             &.transstock{
-                background:url('/images/uh-btn-movestock.png') no-repeat  10% 50%;
+                background:url('../images/uh-btn-movestock.svg') no-repeat  10% 50%;
             }
             &.sendstock{
-                background:url('/images/uh-btn-sendstock.png') no-repeat 10% 50%;
+                background:url('../images/uh-btn-sendstock.svg') no-repeat 10% 50%;
+            }
+            &.vorkasse{
+                background:url('../images/uh-btn-vorkasse.svg') no-repeat 10% 50%;
             }
 
             a{
@@ -248,6 +252,9 @@ textarea{
     &.first{
         border-radius: 0;
     }
+    &.message{
+        background:#F8F8F8;
+    }
     &.first-list{
         border-radius: 0 0 5px 5px;
         padding: 18px 24px 0 24px;
@@ -283,9 +290,41 @@ textarea{
      margin-bottom: 20px;
      text-align: center;
      height: 50px;
+     color: white;
+     padding: 5px 10px;
      line-height: 50px;
      a {
+        margin-top:0;
         color: white;
+     }
+     .left{
+        float: left;
+        margin: 5px 15px;
+        background: #376191;
+        border-radius: 5px;
+        width: 40px;
+        height: 40px;
+     }
+     .right{
+        float: right;
+        margin: 5px 15px;
+        width: 40px;
+        height: 40px;
+     }
+     .btn-back{
+        background: url('../images/btn-back.png')  no-repeat center;
+
+     }
+     .btn-msg-send{
+        background: url('../images/msg-send.svg') no-repeat center;
+        background-size: 20px 20px;
+     }
+     .btn-edit{
+        background: url('../images/btn-edit.svg') #376191 no-repeat center;
+        background-size: 18px 18px;
+     }
+     .btn-delete{
+        background: url('../images/btn-delete.svg') no-repeat center;
      }
 }
 
@@ -672,6 +711,9 @@ textarea{
     line-height: 30px;
     padding:10px 8px;
     box-sizing: border-box;
+    .label{
+        padding-left:8px;
+    }
     // border-bottom: 1px solid #D1D1D1;
     .inline-button{
         padding:5px;
@@ -833,6 +875,53 @@ textarea{
     border-radius:15px;
     background: red;
     font-size: 12px;
+}
+
+.uh-conversation-box{
+    min-height: 400px;
+}
+.uh-conversation{
+    height: auto;
+    margin: 10px 0;
+    line-height: 40px;
+    font-size: 14px;
+    clear: both;
+   .message{
+    padding: 0 20px;
+    max-width: 75%;
+    clear: both;
+          border-radius: 999px;
+   }
+    .send{
+        clear: both;
+        float: right;
+        text-align: right;
+        color: white;
+        box-shadow: 0 1px 2px #D1D1D1;
+        background: #4B88CF;
+    }
+    .receive{
+        float: left;
+        clear: both;
+        text-align: left;
+        background: white;
+        box-shadow: 0 1px 2px #D1D1D1;
+ 
+    }
+    .s-time{
+        clear: both;
+        float: right;
+        font-size: 10px;
+        color: #999;
+        margin-right: 24px;
+    }
+        .r-time{
+        clear: both;
+        float: left;
+            font-size: 10px;
+            color: #999;
+            margin-left: 24px;
+    }
 }
 
 .uh-message{
