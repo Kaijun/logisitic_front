@@ -84,7 +84,7 @@
         .state('personalInfo', {
             url: '/profile/personalInfo',
             templateUrl: 'templates/profile/personalInfo.html',
-            controller: '',
+            controller: 'PersonalInfoCtrl',
         })
         .state('refill', {
             url: '/financial/refill',

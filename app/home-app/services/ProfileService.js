@@ -16,6 +16,8 @@
             submitAddress: submitAddress,
             editAddress: editAddress,
             deleteAddress: deleteAddress,
+
+            editPersonalInfo: editPersonalInfo,
         }
 
         ////////////////
@@ -69,6 +71,19 @@
             var promise =  $http({
                 url: AppConfig.apiUrl + '/address/' + id,
                 method: 'DELETE',
+            }).then(function(response){
+                return response.data;
+            });
+        }
+
+        function editPersonalInfo (pi) {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/api/putUserProfile/',
+                method: 'PUT',
+                data: pi,
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                }
             }).then(function(response){
                 return response.data;
             });
