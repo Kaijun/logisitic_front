@@ -290,30 +290,41 @@ textarea{
      margin-bottom: 20px;
      text-align: center;
      height: 50px;
+     color: white;
+     padding: 5px 10px;
      line-height: 50px;
      a {
+        margin-top:0;
         color: white;
      }
      .left{
         float: left;
         margin: 5px 15px;
-     }
-     .right{
-        float: right;
-        margin: 5px 15px;
-     }
-     .btn-back{
-        background: url('../images/btn-back.png') #376191 no-repeat center;
-       
+        background: #376191;
         border-radius: 5px;
         width: 40px;
         height: 40px;
      }
+     .right{
+        float: right;
+        margin: 5px 15px;
+        width: 40px;
+        height: 40px;
+     }
+     .btn-back{
+        background: url('../images/btn-back.png')  no-repeat center;
+
+     }
      .btn-msg-send{
         background: url('../images/msg-send.svg') no-repeat center;
         background-size: 20px 20px;
-        width: 40px;
-        height: 40px;
+     }
+     .btn-edit{
+        background: url('../images/btn-edit.svg') #376191 no-repeat center;
+        background-size: 18px 18px;
+     }
+     .btn-delete{
+        background: url('../images/btn-delete.svg') no-repeat center;
      }
 }
 

@@ -90,9 +90,7 @@
 </div>
   <!-- 底部操作栏 -->
 <div class="uh-main-action">
-    <div class="pure-u-1-1 right">
-      <div ng-click="confirm()"><a href="#">下一步</a></div>
-    </div>
+    <div class="ng-click="confirm()"">下一步</div>
 </div>
 
 </div>
@@ -101,8 +99,9 @@
 
 <!-- 确认界面 -->
 
-<div class="uh-submit" ng-show="isConfirmShown">
-
+<!-- <div class="uh-submit" ng-show="isConfirmShown"> -->
+<div class="uh-submit" >
+<div class="uh-main-section first">
   <div class="uh-main-header">
         <div class="left">
           <span class="title blue">包裹移库</span>
@@ -116,7 +115,7 @@
 
   <div class="pure-g uh-form-section">
     <div class="pure-u-4-24">接收方Email</div>
-    <div class="pure-u-12-24">{{trans.to_email}}</input></div>
+    <div class="pure-u-12-24">{{trans.to_email}}</div>
   </div>  
 
   <div class="pure-g uh-form-section">
@@ -125,14 +124,12 @@
   </div>
 
   <div class="pure-g uh-form-section">
-  <div class="pure-u-4-24">选择包裹所在仓库</div>
-  <div class="pure-u-12-24">{{getWarehouseNameById(trans.warehouse)}}</div>
-
-
+    <div class="pure-u-4-24">选择包裹所在仓库</div>
+    <div class="pure-u-12-24">{{getWarehouseNameById(trans.warehouse)}}</div>  
   </div>
-
-  <div class="uh-section"> 选择移库物品 </div>
-  <div class="uh-section desc">请勾选你需要移库的物品，并确定数量</div>
+</div>  
+<!-- frist section end -->
+<div class="uh-main-section addtion">
 
   <div class="uh-section"> 包裹物品信息 </div>
 
@@ -156,22 +153,26 @@
       </tr>
     </tbody>
   </table>
+</div>
+<!-- addtion end -->
 
-<div class="uh-section pure-g">
+<div class="uh-main-section last">
+<div class="uh-section">附加信息</div>
+<div class="uh-form-section pure-g">
+  <div class="pure-u-3-24">附加服务</div>
+  <div class="pure-u-21-24">TODO</div>
+</div>
+<div class="uh-form-section pure-g">
   <div class="pure-u-3-24">发货备注</div>
-  <div class="pure-u-21-24 ">
-        {{trans.message}}
-  </div>
+  <div class="pure-u-21-24">{{trans.message}}</div>
+</div>
 </div>
   <!-- 底部操作栏 -->
-  <div class="pure-g uh-btm-controller">
-      <div class="pure-u-1-2 left">
-        <div ng-click="edit()" class="pure-button edit left"><a >编辑</a></div>
-        <div ng-click="delete()" class="pure-button delete left"><a >删除</a></div>
-      </div>
-      <div class="pure-u-1-2 right">
-        <div ng-click="submit()" class="pure-button confirm right"><a >提交</a></div>
-      </div>
+<div class="uh-main-action">
+
+        <div ng-click="edit()" class="btn-edit left"></div>
+        <div ng-click="delete()" class="btn-delete left"></div>
+        <div ng-click="submit()" class="btn-msg-send right"></div>
 
   </div>
 
