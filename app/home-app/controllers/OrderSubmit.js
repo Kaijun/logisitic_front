@@ -44,7 +44,7 @@
             var warehousePromise = InfoService.getWarehouses().then(function (data){
                 $scope.warehouses = data;
             });
-            var pathPromise = InfoService.getLogisticPaths(0).then(function (data){
+            var pathPromise = InfoService.getLogisticPaths(2).then(function (data){
                 $scope.logisticPaths = data;
             });
             // TODO: add user Group!!! from UserInfo

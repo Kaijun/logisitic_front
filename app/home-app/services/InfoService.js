@@ -60,13 +60,19 @@
                 return angular.isArray(wh)&&wh.length>0 ? wh[0] : null;
            });
         }
+        // 0=all, 1=入库 2=出库 3=移库
         function getLogisticPaths(type) {
             if(stockInfoCache.get('logisticPaths')){
                 return stockInfoCache.get('logisticPaths').then(function(data){
                     if(angular.isArray(data)){
-                        var data = data.filter(function(value){
-                            return parseInt(value.type) === type;
-                        });
+                        if(parseInt(type)===0){
+                            return data;
+                        }
+                        else{
+                            var data = data.filter(function(value){
+                                return parseInt(value.type) === type;
+                            });
+                        }
                     }
                     return data;
                 });
@@ -78,9 +84,14 @@
 
             promise = promise.then(function(data) {
                 if(angular.isArray(data)){
-                    var data = data.filter(function(value){
-                        return parseInt(value.type) === type;
-                    });
+                    if(parseInt(type)===0){
+                        return data;
+                    }
+                    else{
+                        var data = data.filter(function(value){
+                            return parseInt(value.type) === type;
+                        });
+                    }
                 }
                 return data;
             });
