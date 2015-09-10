@@ -82,18 +82,16 @@
                         OrderService.payOrder($stateParams.orderId).then(function () {
                             swal({
                                 title: "付款成功",
-                                showCancelButton: true,
                                 confirmButtonColor: "#DD6B55",
                                 confirmButtonText: "确定",
                                 closeOnConfirm: true,
                             }, function () {
-                                $window.reload();
+                                $window.location.reload();
                             })
                         })
                     }, function(){
                         swal({
                             title: "付款失败",
-                            showCancelButton: true,
                             confirmButtonColor: "#DD6B55",
                             confirmButtonText: "确定",
                             closeOnConfirm: true,
