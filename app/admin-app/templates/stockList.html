@@ -16,15 +16,15 @@
         <thead>
           <tr>
             <th width="30px"><input type="checkbox"></th>
-            <th>入库跟踪号</th>
-            <th>客户ID</th>
-            <th>入库码</th>
-            <th>库位号</th>
-            <th>联系</th>
-            <th>包裹描述</th>
-            <th>客户备注</th>
-            <th>状态</th>
-            <th>操作</th>
+            <th width="10%">入库跟踪号</th>
+            <th width="5%">客户ID</th>
+            <th width="5%">入库码</th>
+            <th width="5%">库位号</th>
+            <th width="5%">联系</th>
+            <th width="10%">包裹描述</th>
+            <th width="10%">客户备注</th>
+            <th width="5%">状态</th>
+            <th width="5%">操作</th>
           </tr>
         </thead>
         <tbody>
@@ -32,9 +32,10 @@
             <td><input ng-model="stock.selected" ng-click="stockSelected(stock)" type="checkbox"></td>
             <td>{{stock.reference_code}}</td>
             <td>{{stock.user_name}}</td>
-            <td>{{stock.stock_position}}</td>
             <td>{{stock.stock_number}}</td>
-            <td>QQ:{{stock.user_qq? stock.user_qq: "空"}}  - Email: {{stock.user_email}}</td>
+            <td>{{stock.stock_position}}</td>
+            <td>QQ:{{stock.user_qq? stock.user_qq: "空"}}  - 
+                <a href="mailto:{{stock.user_email}}" target="_top">Email</a></td>
             <td>{{stock.desc}}</td>
             <td>{{stock.message}}</td>
             <td>{{StockService.getStockStatusMapping(stock.status)}}</td>
