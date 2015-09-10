@@ -21,7 +21,7 @@
             description: null,
             type: null,
             based_on: "0",
-            base_price: null,
+            base_price: "0",
             price_ladders: [],
         }
 
