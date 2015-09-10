@@ -36,7 +36,7 @@
                 list.map(function (item) {
                     item.createdTime = (new Date(item.created_at)).toISOString().substring(0, 10);
                     item.updatedTime = (new Date(item.updated_at)).toISOString().substring(0, 10);
-                    item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.ship_status));
+                    item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
                     return item;
                 })
                 $scope.stockList = list;
@@ -54,7 +54,7 @@
                 filterStockList = $scope.stockList;
             }
             else{
-                filterStockList = $filter('filter')($scope.stockList, {ship_status: statusId});
+                filterStockList = $filter('filter')($scope.stockList, {order_status: statusId});
             }
             $scope.toggleStatus = statusId;
             $scope.tableParams.reload();

@@ -36,7 +36,7 @@
 
         <div class="pure-u-1-2">
           <table class="pure-table pure-table-horizontal ah-small-table">
-            <tr><td style="width:30%">订单号</td><td>{{order.ship_tracknumber.id}}</td></tr>
+            <tr><td style="width:30%">订单号</td><td>{{order.reference_code}</td></tr>
             <tr><td>客户ID</td><td>{{order.user_name}}</td></tr>
             <tr><td>收件人</td><td>{{order.post_info.receiver_name}}</td></tr>
             <tr><td>收货地址</td><td>{{order.post_info.province}} {{order.post_info.city}} {{order.post_info.town}} {{order.post_info.street}} </td>

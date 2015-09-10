@@ -79,7 +79,8 @@
 <div class="uh-main-section last">
   <div class="uh-form-section pure-g">
     <div class="pure-u-4-24 uh-form-label">附加服务</div>
-    <div class="pure-u-18-24 ">TODO</div>
+    <div extra-service-list type="2" user-group="0" selected-services="trans.extra_services"></div>
+          
   </div>
   <div class="uh-form-section pure-g">
     <div class="pure-u-4-24 uh-form-label">发货备注</div>
@@ -90,7 +91,7 @@
 </div>
   <!-- 底部操作栏 -->
 <div class="uh-main-action">
-    <div class="ng-click="confirm()"">下一步</div>
+    <div ng-click="confirm()">下一步</div>
 </div>
 
 </div>
@@ -160,7 +161,7 @@
 <div class="uh-section">附加信息</div>
 <div class="uh-form-section pure-g">
   <div class="pure-u-3-24">附加服务</div>
-  <div class="pure-u-21-24">TODO</div>
+  <spab ng-repeat="e in trans.extra_services">{{e.service_name}} </span>
 </div>
 <div class="uh-form-section pure-g">
   <div class="pure-u-3-24">发货备注</div>

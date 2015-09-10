@@ -118,13 +118,16 @@
     <div class="uh-section">附加信息</div>
          <div class="pure-g uh-form-section">
       <div class="pure-u-1-4 title">附加服务</div>
-      <div class="pure-u-3-4"><div extra-service-list type="1" user-group="0"></div>
+      <div class="pure-u-3-4"><div extra-service-list type="1" user-group="0" selected-services="stock.extra_services"></div>
+          </div>
       <div class="desc">如有需要，请选择相应的增值服务，部分服务可能会产生费用。</div>
       </div>
-    </div>
+
     <div class="pure-g uh-form-section">
       <div class="title pure-u-1-4">留言</div>
       <div class="pure-u-3-4"><textarea ng-model="stock.message" class="pure-u-1" ></textarea></div>
+    </div>
+    
     </div>
 </div>
       
@@ -232,8 +235,8 @@
 
 <table class="pure-table pure-table-horizontal uh-small-table">
         <tr>
-         <td style="width: 25%;">附加服务</td>
-         <td>TODO</td>
+        <td style="width:25%">附加服务</td>
+        <td ng-repeat="e in stock.extra_services">{{e.service_name}} </td>
         </tr>
         <tr>
           <td>留言</td>

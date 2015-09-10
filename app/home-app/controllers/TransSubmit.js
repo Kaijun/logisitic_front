@@ -67,6 +67,7 @@
             $timeout(function () {
                 $scope.trans.items = assembleItems();
                 $scope.isConfirmShown = true;
+                console.log($scope.trans.extra_services)
             })
         }
         function submit () {
