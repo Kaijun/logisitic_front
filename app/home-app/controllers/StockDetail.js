@@ -44,6 +44,11 @@
                         data.warehouseStr = $scope.warehouses.filter(function(wh){
                             return wh.id === parseInt(data.warehouse)
                         })[0].name;
+                        data.items.map(function (item) {
+                            InfoService.getTypeById(item.type).then(function (data) {
+                                item.typeName = data.type_name;
+                            });
+                        })
                         try{
                             data.shipCompanyStr = $scope.logisticPaths.filter(function(lp){
                                 return lp.id === parseInt(data.ship_company)

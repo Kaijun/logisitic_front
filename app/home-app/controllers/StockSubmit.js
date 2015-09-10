@@ -25,6 +25,7 @@
         $scope.stock = null; 
         $scope.warehouses = [];
         $scope.logisticPaths = [];
+        $scope.optionTypes = [];
         $scope.extraServicesName = [];
         $scope.imagesToUpload = [];
         $scope.isConfirmShown = false;
@@ -44,8 +45,11 @@
             var pathPromise = InfoService.getLogisticPaths(0).then(function (data){
                 $scope.logisticPaths = data;
             });
+            var optionPromise = InfoService.getTypes().then(function (data) {
+                $scope.optionTypes = data;
+            })
 
-            $q.all([warehousePromise, pathPromise]).then(function () {
+            $q.all([warehousePromise, pathPromise, optionPromise]).then(function () {
                 $timeout(function(){
                     if(!$stateParams.stockId){
                         $scope.stock = angular.copy(stockObj);

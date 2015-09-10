@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('ExtraSrvManage', ExtraSrvManage);
 
-    ExtraSrvManage.$inject = ['$scope', '$timeout', 'ExtraSrvService'];
+    ExtraSrvManage.$inject = ['$scope', '$timeout', 'ExtraSrvService', '$state'];
 
     /* @ngInject */
-    function ExtraSrvManage($scope, $timeout, ExtraSrvService) {
+    function ExtraSrvManage($scope, $timeout, ExtraSrvService, $state) {
 
         var extraSrvObj = {
             service_name: null,
@@ -54,7 +54,17 @@
         function submit () {
             $scope.extraSrv.price_ladders = $scope.ladders;
             ExtraSrvService.submitExtraSrv($scope.extraSrv).then(function (data) {
-                console.log(data);
+                if(data.success!="true") return;
+                swal({
+                    type: "success",
+                    title: "添加成功!",
+                    showCancelButton: false,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确定",
+                    closeOnConfirm: true,
+                }, function () {
+                    $state.go('extraSrvList', {}, {reload: true});
+                })
             })
         }
 

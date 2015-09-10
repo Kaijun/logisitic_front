@@ -19,6 +19,8 @@
             getLogisticPaths: getLogisticPaths,
             getLogisticPathById: getLogisticPathById,
             getExtraServices: getExtraServices,
+            getTypes: getTypes,
+            getTypeById: getTypeById,
             uploadImage: uploadImage,
         };
         return service;
@@ -124,6 +126,26 @@
                 return data;
             });
             return promise;
+        }
+
+        function getTypes () {
+            if(stockInfoCache.get('types')){
+                return stockInfoCache.get('types');
+            }
+            var promise = $http.get(AppConfig.apiUrl + '/info/logistic-types').then(function (response) {
+                return response.data;
+            });
+            stockInfoCache.put('types', promise);
+            return promise;
+        }
+
+        function getTypeById (id) {
+            return getTypes().then(function (data) {
+                var t = data.filter(function (item) {
+                    return parseInt(item.id) === parseInt(id);
+                });
+                return angular.isArray(t)&&t.length>0 ? t[0] : null;
+            })
         }
 
         function uploadImage (image) {

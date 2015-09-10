@@ -29,7 +29,7 @@
           <div class="pure-u-3-4">
             <select ng-model="stock.ship_company" class="pure-u-1-5">
               <option ng-repeat="path in logisticPaths" value="{{path.id}}">
-                {{path.name}}
+                {{path.name}} - {{path.ship_company_international}}
               </option>
             </select>
             <input ng-model="stock.ship_tracknumber" class="pure-u-19-24" type="text">
@@ -64,18 +64,9 @@
           <tr ng-repeat="item in stock.items" >
             <td><input ng-model="item.item_name" class="pure-u-1"  type="text"></td>
             <td>
-              <select ng-model="item.type" class="pure-u-1" >
-                <option value="奶制品">
-                  奶制品
-                </option>
-                <option value="纺织品">
-                  纺织品
-                </option>
-                <option value="奢侈品">
-                  奢侈品
-                </option>
-                <option value="其他">
-                  其他
+              <select ng-model="item.type"class="pure-u-1" >
+                <option ng-repeat="ot in optionTypes" ng-value="ot.id">
+                  {{ot.type_name}}
                 </option>
               </select>
             </td>
