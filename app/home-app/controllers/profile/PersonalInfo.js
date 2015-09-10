@@ -2,13 +2,13 @@
     'use strict';
 
     angular
-        .module('admin')
+        .module('home.controllers')
         .controller('PersonalInfoCtrl', PersonalInfoCtrl);
 
-    PersonalInfoCtrl.$inject = ['$scope', '$timeout', 'ProfileService', 'UserInfo'];
+    PersonalInfoCtrl.$inject = ['$scope', '$timeout', 'ProfileService', 'UserInfo', '$window'];
 
     /* @ngInject */
-    function PersonalInfoCtrl($scope, $timeout, ProfileService, UserInfo) {
+    function PersonalInfoCtrl($scope, $timeout, ProfileService, UserInfo, $window) {
 
         $scope.personalInfo = {
             "name": UserInfo.name,
@@ -28,6 +28,21 @@
         function activate() {
 
 
+        }
+
+        $scope.editProfile = function () {
+            ProfileService.editPersonalInfo($scope.personalInfo).then(function () {
+                swal({
+                    type: "success",
+                    title: "修改成功!",
+                    showCancelButton: false,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确定",
+                    closeOnConfirm: true,
+                }, function () {
+                    $window.location.reload();
+                })
+            })
         }
     }
 })();

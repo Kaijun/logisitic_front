@@ -16,7 +16,7 @@
               <tr><td>包裹备注</td><td>{{stock.desc}}</td>
               <tr><td>快递信息</td><td>{{stock.shipCompanyStr}} {{stock.ship_tracknumber}}</tr>
               <!-- 快递信息正确：数据库项目为 packages/reference_code -->
-              <tr><td>入库重量</td><td>[To-Do]</td></tr>
+              <tr><td>入库重量</td><td>{{stock.weight}}</td></tr>
           </table>
         </div>
         <div class="pure-u-1-2">
@@ -60,11 +60,11 @@
 <table class="pure-table pure-table-horizontal uh-small-table">
         <tr>
          <td style="width: 25%;" >购物网站</td>
-         <td>TODO</td>
+         <td>{{stock.web_link}}</td>
         </tr>
         <tr>
           <td>购物网站订单号</td>
-          <td>TODO</td>
+          <td>{{stock.website_reference}}</td>
         </tr>
         <tr>
           <td>购物凭证</td>
