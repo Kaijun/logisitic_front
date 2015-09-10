@@ -1,5 +1,5 @@
 
-<div>
+<div class="uh-main-section first">
   <div class="uh-main-header">
       <div class="left">
         <span class="title blue">订单详情</span>
@@ -7,10 +7,9 @@
   </div> 
   <!-- 头部标题结束 -->
   <!-- 主体开始 -->
-  <div class="uh-main-body" >
     
      <!-- section 1 基本信息 -->
-    <div class="pure-g pure-u-1"><div class="uh-section first-child">基本信息</div> </div>
+    <div class="uh-section">基本信息</div>
     <!-- section 1 表格开始 -->
     <div class="pure-g">
     <div class="pure-u-1-2">
@@ -75,10 +74,10 @@
     </div><!-- 右边表格结束 -->
 
   </div> <!-- pure-g 结束 -->
-
+</div>
 
 <!-- section 2 开始 -->
-
+<div class="uh-main-section additon">
 <div class="uh-section"> 包裹物品信息 </div>
 
 <table class="pure-table pure-table-horizontal uh-line-table">
@@ -102,8 +101,8 @@
           </tr>
         </tbody>
 </table>
-
-
+</div>
+<div class="uh-main-section last">
 <!-- section 3 收费明细开始 -->
 <div class="uh-section">收费明细</div>
 <table class="pure-table pure-table-horizontal uh-line-table">
@@ -143,21 +142,33 @@
     <td style="width:15%">发货备注</td>
     <td>{{order.message}}</td>
 </table>
-
-<div class="uh-divider thick"></div>
+</div>
 <!-- 底部操作按钮开始 -->
-<div class="pure-g">
+
+<div class="uh-main-action">
+
+    <div class="btn-back left"></div>
+
+    <!-- <div ng-click="editOrder()" class="pure-button edit right"><a >编辑</a></div> -->
+    <div ng-show="order.order_status==1" ng-click="deleteOrder()" class="btn-delete right"></div>
+
+
+    <div ng-show="order.order_status==2" ng-click="payOrder()" class="btn-edit right"></div>
+
+
+</div>
+<!-- <div class="pure-g">
   <div class="pure-u-1-2 left">
     <div class="pure-button back left"><a href="">返回</a></div>
   </div>
   <div ng-show="order.order_status==1" class="pure-u-1-2 right">
-    <!-- <div ng-click="editOrder()" class="pure-button edit right"><a >编辑</a></div> -->
-    <div ng-click="deleteOrder()" class="pure-button delete right"><a >删除</a></div>
+    <div ng-click="editOrder()" class="pure-button edit right"><a >编辑</a></div>
+    <div ng-click="deleteOrder()" class="delete right"><a >删除</a></div>
   </div>
   <div ng-show="order.order_status==2" class="pure-u-1-2 right">
     <div ng-click="payOrder()" class="pure-button edit right"><a >付款</a></div>
   </div>
 
-</div>
-</div>
+</div> -->
+
 
