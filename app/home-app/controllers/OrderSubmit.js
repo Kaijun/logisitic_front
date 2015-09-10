@@ -48,7 +48,7 @@
                 $scope.logisticPaths = data;
             });
             // TODO: add user Group!!! from UserInfo
-            var extraSrvPromise = InfoService.getExtraServices(1, 0).then(function (data){
+            var extraSrvPromise = InfoService.getExtraServices(1, 3).then(function (data){
                  $scope.extraServices = data;
             });
             var addressListPromise = ProfileService.getAddressList().then(function (data) {

@@ -66,7 +66,7 @@
 
                     StockService.enterStock(stock.package_id).then(function(data) {
                         $timeout(function () {
-                            stock.status = 2;
+                            stock.status = 4;
                         })
                     });
                 })

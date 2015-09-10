@@ -100,7 +100,7 @@
            });
         }
 
-        // type: 1=入库, 2=出库, 3=入库+出库
+        // type: 0=全部 1=入库, 2=移库, 3=出库, 4=带刷
         // user_group: 0=all, 1=vip only
         function getExtraServices(type, userGroup) {
             if(stockInfoCache.get('extraServices')){
