@@ -2,7 +2,8 @@
 <div class="ah-list">
   <div class="ah-main-header">
     <div class="left">
-      <span class="title">库存列表</span>
+      <span ng-if="$state.current.name=='preStockList'" class="title">预报列表</span>
+      <span ng-if="$state.current.name=='stockList'" class="title">库存列表</span>
     </div>
 
     <div class="right">

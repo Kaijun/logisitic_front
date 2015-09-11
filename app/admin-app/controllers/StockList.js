@@ -20,6 +20,8 @@
         $scope.pageInfo = null;
         $scope.requestPage = requestPage;
 
+        $scope.$state = $state;
+        
         var selectedStocks = [];
 
         activate();
@@ -27,7 +29,11 @@
         ////////////////
 
         function activate() {
-            StockService.getStocks().then(function(data){
+            var status = '';
+            if($state.current.name=="preStockList"){
+                status = 1;
+            }
+            StockService.getStocks(status).then(function(data){
                 $scope.stocks = data.data;
                 $scope.stocks.map(function (item) {
                     item.selected = arrayExist(selectedStocks, item.package_id);

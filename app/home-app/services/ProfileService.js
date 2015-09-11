@@ -78,7 +78,7 @@
 
         function editPersonalInfo (pi) {
             var promise =  $http({
-                url: AppConfig.apiUrl + '/api/putUserProfile',
+                url: AppConfig.apiUrl + '/putUserProfile',
                 method: 'PUT',
                 data: pi,
                 headers: {

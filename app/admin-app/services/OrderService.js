@@ -66,20 +66,15 @@
 
 
         function batchDownload(orders) {
-            var orders = orders.join(',')
-            var promise = $http.get(AppConfig.apiUrl + '/batchdownload?shiporders=' + orders).success(function(data, status, headers, config) {
-                 var anchor = angular.element('<a/>');
-                 anchor.attr({
-                     href: 'data:attachment/xlsx;charset=utf-8,' + encodeURI(data),
-                     target: '_blank',
-                     download: '库存导出.xlsx'
-                 })[0].click();
 
-              }).
-              error(function(data, status, headers, config) {
-                // if there's an error you should see it here
-            });
-            return promise;
+            var orders = orders.join(',')
+             var anchor = angular.element('<a/>');
+             anchor.attr({
+                 href: AppConfig.apiUrl + '/batchdownload?shiporders=' + orders,
+                 target: '_blank',
+                 download: '订单导出.xlsx'
+             })[0].click();
+
         }
 
     }

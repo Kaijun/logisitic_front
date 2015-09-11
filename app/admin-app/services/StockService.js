@@ -35,8 +35,12 @@
             }
             return statusMapping[0];
         }
-        function getStocks() {
-            var promise = $http.get(AppConfig.apiUrl + '/stocks/').then(function (response) {
+        function getStocks(status) {
+            var url = '';
+            if(status){
+                url = '?status=' + status;
+            }
+            var promise = $http.get(AppConfig.apiUrl + '/stocks' + url).then(function (response) {
                 return response.data;
             });
             return promise;
@@ -108,8 +112,7 @@
                      href: AppConfig.apiUrl + '/batchdownload?packages=' + stocks,
                      target: '_blank',
                      download: '库存导出.xlsx'
-                 })[0].click();            
-                 return promise;
+                 })[0].click();
         }
 
         function batchUpload (excel) {

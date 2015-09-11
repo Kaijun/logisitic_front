@@ -21,6 +21,12 @@
             abstract: true,
             templateUrl: 'templates/shell.html',
         })
+        .state('preStockList', {
+            parent: 'business',
+            url: '/preStockList',
+            templateUrl: 'templates/stockList.html',
+            controller: 'StockListCtrl',
+        })
         .state('stockList', {
             parent: 'business',
             url: '/stockList',
