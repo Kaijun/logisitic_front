@@ -36,7 +36,7 @@
 
         <div class="pure-u-1-2">
           <table class="pure-table pure-table-horizontal ah-small-table">
-            <tr><td style="width:30%">订单号</td><td>{{order.ship_tracknumber.id}}</td></tr>
+            <tr><td style="width:30%">订单号</td><td>{{order.reference_code}}</td></tr>
             <tr><td>客户ID</td><td>{{order.user_name}}</td></tr>
             <tr><td>收件人</td><td>{{order.post_info.receiver_name}}</td></tr>
             <tr><td>收货地址</td><td>{{order.post_info.province}} {{order.post_info.city}} {{order.post_info.town}} {{order.post_info.street}} </td>
@@ -90,7 +90,7 @@
         <tbody>
           <tr ng-repeat="item in order.items">
             <td>{{order.ship_tracknumber.International}} </td>
-            <td>{{item.item_name}}}</td>
+            <td>{{item.item_name}}</td>
             <td>{{item.type}}</td>
             <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
             <td>{{item.unit_weight}} / {{item.unit_weight*item.quantity}}</td>
@@ -113,24 +113,9 @@
         <tbody>
           <!-- TODO: 这里请使用AS生产动态数据 -->
           <tr>
-            <td>运费</td>
-            <td>149.00元</td>
-            <td>德国专线转运费用</td>
-          </tr>
-          <tr>
-            <td>保费</td>
-            <td>44.00元</td>
-            <td>按总价值1%收费</td>
-          </tr>
-          <tr>
-            <td>其他费用</td>
-            <td>12.00元</td>
-            <td>用户申请重新打包的费用</td>
-          </tr>
-          <tr class="sum">
-            <td>合计</td>
-            <td>175.00元</td>
-            <td>客服手动确认后付款</td>
+            <td>TODO</td>
+            <td>TODO</td>
+            <td>TODO/td>
           </tr>
         </tbody>
       </table>

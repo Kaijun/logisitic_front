@@ -42,9 +42,24 @@
       <!-- 表单第三行开始 -->
       <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">适用用户组</div> 
-      <div class="pure-u-6-24"><input ng-model="extraSrv.user_group"></div>   
+      <!-- <div class="pure-u-6-24"><input ng-model="extraSrv.user_group"></div>    -->
+      <div class="pure-u-6-24">
+      <select ng-model="extraSrv.user_group">
+          <option value="0">全部用户</option>
+           <option value="1">普通用户</option>
+            <option value="2">VIP用户</option>
+        </select>
+      </div>
       <div class="pure-u-2-24 input-label">适用类型</div> 
-      <div class="pure-u-6-24"><input ng-model="extraSrv.type"></div>    
+      <div class="pure-u-6-24">
+        <!-- <input ng-model="extraSrv.type"> -->
+        <select ng-model="extraSrv.type">
+         <option value="0">全部</option>
+           <option value="1">入库</option>
+            <option value="2">发货</option>
+            <option value="3">移库</option>
+            </select>
+      </div>    
      </div>
      <!-- 表单第三行结束 -->
      <!-- 表单第四行开始 -->
