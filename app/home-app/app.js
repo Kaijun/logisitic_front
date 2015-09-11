@@ -75,7 +75,16 @@
             controller: '',
         })
         // 代刷页面
-
+        .state('vorkasseDetail', {
+            url: '/vorkasseDetail',
+            templateUrl: 'templates/vorkasseDetail.html',
+            controller: '',
+        })
+        .state('vorkasseList', {
+            url: '/vorkasseList',
+            templateUrl: 'templates/vorkasseList.html',
+            controller: '',
+        })
         .state('addressManage', {
             url: '/profile/addressManage',
             templateUrl: 'templates/profile/addressManage.html',
