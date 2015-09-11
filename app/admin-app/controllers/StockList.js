@@ -21,7 +21,7 @@
         $scope.requestPage = requestPage;
 
         $scope.$state = $state;
-        
+
         var selectedStocks = [];
 
         activate();
@@ -32,6 +32,9 @@
             var status = '';
             if($state.current.name=="preStockList"){
                 status = 1;
+            }
+            else{
+                status = 4
             }
             StockService.getStocks(status).then(function(data){
                 $scope.stocks = data.data;
