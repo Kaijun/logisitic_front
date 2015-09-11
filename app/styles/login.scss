@@ -223,6 +223,10 @@ $pager-height:30px;
   }
 
 }
+
+label{
+  padding-left:8px;
+}
 .sp-form{
   box-sizing:border-box;
   text-align: left;
@@ -255,12 +259,13 @@ $pager-height:30px;
 .des{
     width: 100%;
     clear: both;
+    height: auto;
     padding: 10px 0;
-    margin-bottom: 10px;
     text-align: left;
   }
   .left{
-      text-align: left !important;
+    width: 50%;
+      text-align: left;
       float: left;
     }
   .right{
@@ -269,6 +274,17 @@ $pager-height:30px;
   .center{
     text-align: center;
   }
+.tips{
+  color: white;
+  border-radius:5px;
+  padding:5px;
+  margin: 10px 0;
+  background:#E24545;
+  text-align: center;
+  }
+.dismiss{
+  display: none;
+}
 
 }
 
@@ -317,6 +333,7 @@ button{
         
   }
 }
+
 
 .container-narrow > hr {
   margin: 30px 0;
