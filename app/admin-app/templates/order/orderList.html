@@ -17,7 +17,7 @@
       <table class="pure-table pure-table-horizontal ah-list-table">
         <thead>
           <tr>
-            <th width="25px"><input type="checkbox"></th>
+            <th width="20px"><input type="checkbox"></th>
             <th>订单号</th>
             <th>客户ID</th>
             <th>收件人</th>
@@ -31,7 +31,7 @@
         <tbody>
           <tr ng-repeat="order in orders"  >
             <td><input ng-model="order.selected" ng-click="orderSelected(order)" type="checkbox"></td>
-            <td>{{order.id}}</td>
+            <td>{{order.reference_code}}</td>
             <td>{{order.user_name}}</td>
             <td>{{order.post_info.receiver_name}}</td>
             <td>{{order.dateStr}}</td>
