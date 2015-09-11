@@ -66,25 +66,16 @@
 <div class="uh-section pure-g">
   <div class="pure-u-3-24">留言</div>
   <div class="pure-u-21-24 ">
-        缺失{{trans.message}}
+        {{trans.message}}
   </div>
 </div>
 
-<div class="uh-section pure-g">
-    <div class="pure-u-3-24">管理员备注</div>
-    <div class="pure-u-21-24 ">
-          缺失{{trans.message}}
-    </div>
-  </div>
 </div>
 
-<div class="uh-main-atcion">
+<div class="uh-main-action">
   <!-- 底部操作栏 -->
-  <div class="pure-g uh-btm-controller">
-      <div class="pure-u-1-2 left">
-        <div ng-click="submit()" class="pure-button back left"><a >返回</a></div>
-      </div>
-      <div ng-show="trans.status==6 || trans.status==7" class="pure-u-1-2 right">
+        <div ng-click="submit()" class="btn-back left"><a >返回</a></div>
+      <div ng-show="trans.status==6 || trans.status==7" class="right">
         <div ng-show="isConfirmShown" ng-click="confirmTrans()" class="pure-button edit right"><a >确认移库</a></div>
         <!-- <div ng-click="editTrans()" class="pure-button edit right"><a >编辑</a></div> -->
         <div ng-click="deleteTrans()" class="pure-button delete right"><a >删除</a></div>
