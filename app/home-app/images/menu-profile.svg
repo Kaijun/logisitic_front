@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval 19</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="图标" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="header" sketch:type="MSLayerGroup" transform="translate(-918.000000, -115.000000)" fill="#FFFFFF">
+            <g id="Group" transform="translate(894.000000, 31.000000)" sketch:type="MSShapeGroup">
+                <path d="M30,96 C33.3137085,96 36,93.3137085 36,90 C36,86.6862915 33.3137085,84 30,84 C26.6862915,84 24,86.6862915 24,90 C24,93.3137085 26.6862915,96 30,96 Z M32.2706517,94.3834041 C31.6010559,94.7162961 30.8462524,94.9034856 30.0477286,94.9034856 C29.2378888,94.9034856 28.4730173,94.7109531 27.7963903,94.3691642 L28.5401928,92.0770219 C27.9858612,91.7208188 27.5701161,91.1676794 27.3917704,90.5164166 C27.3293292,90.2884008 27.2959882,90.0483571 27.2959882,89.8005261 C27.2959882,88.3071417 28.5066155,87.0965144 30,87.0965144 C31.4933845,87.0965144 32.7040118,88.3071417 32.7040118,89.8005261 C32.7040118,90.7562162 32.2082177,91.5961073 31.4598072,92.0770219 L32.2706517,94.3834041 L32.2706517,94.3834041 Z" id="Oval-19"></path>
+            </g>
+        </g>
+    </g>
+</svg>

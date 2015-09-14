@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 50</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="图标" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="header" sketch:type="MSLayerGroup" transform="translate(-918.000000, -146.000000)" fill="#FFFFFF">
+            <g id="Group" transform="translate(894.000000, 31.000000)" sketch:type="MSShapeGroup">
+                <path d="M24,117.00853 C24,115.89925 24.9019504,115 26.0085302,115 L33.9914698,115 C35.1007504,115 36,115.90195 36,117.00853 L36,124.99147 C36,126.10075 35.0980496,127 33.9914698,127 L26.0085302,127 C24.8992496,127 24,126.09805 24,124.99147 L24,117.00853 Z M26.1428571,121 L30.4285714,121 L30.4285714,124 L26.1428571,124 L26.1428571,121 Z M32.5,122.376316 C32.5,122.376316 34,120.328427 34,119.5 C34,118.671573 33.3284271,118 32.5,118 C31.6715729,118 31,118.671573 31,119.5 C31,120.328427 32.5,122.376316 32.5,122.376316 Z" id="Rectangle-50"></path>
+            </g>
+        </g>
+    </g>
+</svg>
