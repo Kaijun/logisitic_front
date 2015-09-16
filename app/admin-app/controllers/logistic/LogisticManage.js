@@ -10,6 +10,8 @@
     /* @ngInject */
     function LogisticManage($scope, $timeout, LogisticService, $state, $stateParams) {
 
+        var isEditing = false;
+
         var logisticPathObj = {
             logistic_name: null,
             number_ship_company: 2,
@@ -55,11 +57,22 @@
                 $scope.logisticTypes = data;
             });
 
+            if($stateParams.id){
+                LogisticService.getLogisticById($stateParams.id).then(function (data) {
 
-            $timeout(function () {
-                $scope.logisticPath = angular.copy(logisticPathObj);
-
-            })
+                    $timeout(function () {
+                        $scope.logisticPath = data[0];
+                        // debugger;
+                        $scope.ladders = data[0].price_ladders;
+                        isEditing = true;
+                    })
+                })
+            }
+            else{
+                $timeout(function () {
+                    $scope.logisticPath = angular.copy(logisticPathObj);
+                })
+            }
 
             $scope.$watch('logisticTypes', function () {
                 $scope.logisticPath.options = [];
@@ -74,9 +87,16 @@
 
         function submit () {
             $scope.logisticPath.price_ladders = $scope.ladders;
-            LogisticService.submitLogistic($scope.logisticPath).then(function (data) {
-                $state.go('logisticList');
-            })
+            if(isEditing){
+                LogisticService.editLogistic($stateParams.id, $scope.logisticPath).then(function (dataa) {
+                   $state.go('logisticList');
+                })
+            }
+            else{
+                LogisticService.submitLogistic($scope.logisticPath).then(function (data) {
+                    $state.go('logisticList');
+                })
+            }
         }
 
         function addLadder () {

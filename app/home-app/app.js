@@ -69,21 +69,21 @@
             controller: 'TransDetailCtrl',
         })
 
-        .state('vorkasse', {
-            url: '/vorkasse',
-            templateUrl: 'templates/vorkasse.html',
-            controller: '',
-        })
         // 代刷页面
+        .state('vorkasseSubmit', {
+            url: '/vorkasseSubmit',
+            templateUrl: 'templates/vorkasseSubmit.html',
+            controller: 'VorkasseSubmitCtrl',
+        })
         .state('vorkasseDetail', {
-            url: '/vorkasseDetail',
+            url: '/vorkasseDetail/:id',
             templateUrl: 'templates/vorkasseDetail.html',
-            controller: '',
+            controller: 'VorkasseDetailCtrl',
         })
         .state('vorkasseList', {
             url: '/vorkasseList',
             templateUrl: 'templates/vorkasseList.html',
-            controller: '',
+            controller: 'VorkasseListCtrl',
         })
         .state('addressManage', {
             url: '/profile/addressManage',

@@ -6,22 +6,26 @@
   </div>
 
     <div class="tab">
-      <a class="uh-header-tab">所有记录</a>
-      <a  class="uh-header-tab">处理中</a>
-      <a  class="uh-header-tab">代刷成功</a>
+      <a ng-click="toggleStatusFilter(-1)" class="uh-header-tab">所有记录</a>
+      <a ng-click="toggleStatusFilter(2)" class="uh-header-tab">处理中</a>
+      <a ng-click="toggleStatusFilter(3)" class="uh-header-tab">代刷成功</a>
     </div>
  </div>  
  
 
 <div class="uh-main-section middle">
 
-      <table class="pure-table pure-table-horizontal uh-line-table">
-          <tr >
-              <td >提交日期</td>
-              <td data-title="">代刷金额（欧元）</td>
-              <td data-title="">代刷金额（人民币）</td>
-              <td data-title="'状态'">状态</td>
-              <td data-title="'操作'">操作</td>
+      <table ng-table="tableParams" class="pure-table pure-table-horizontal uh-line-table">
+          <tr ng-repeat="vk in $data" >
+              <td data-title="'提交日期'">{{vk.created_at}}</td>
+              <td data-title="'代刷金额（欧元）'">{{vk.amount}}</td>
+              <td data-title="'代刷金额（人民币）'">{{vk.amount*10}}</td>
+              <td data-title="'状态'">{{vk.statusStr}}</td>              
+              <td data-title="'操作'">
+                  <div ng-if="vk.status === 1" ng-click="goToDetail(vk.id)" class="opt-radius-btn edit" title="编辑"></div>
+                  <div ng-if="vk.status === 1" class="opt-radius-btn delete" title="删除"></div>
+                  <div class="opt-radius-btn check"  ng-click="goToDetail(vk.id)" title="查看详情"></div>
+              </td>
           </tr>
       </table>
 </div>

@@ -169,7 +169,7 @@
         })
         .state('logisticManage', {
             parent: 'system',
-            url: '/logisticManage',
+            url: '/logisticManage/:id',
             templateUrl: 'templates/logistic/logisticManage.html',
             controller: 'LogisticManage',
         })
@@ -188,7 +188,7 @@
         })
         .state('extraSrvManage', {
             parent: 'system',
-            url: '/extraSrvManage',
+            url: '/extraSrvManage/:id',
             templateUrl: 'templates/extraSrv/extraSrvManage.html',
             controller: 'ExtraSrvManage',
         })

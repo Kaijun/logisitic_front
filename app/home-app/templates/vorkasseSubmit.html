@@ -11,7 +11,7 @@
           <div class="title pure-u-1-4">代刷金额*</div>
           <div class="pure-u-3-4">
 
-            <div class="pure-u-1-2"><input></div>
+            <div class="pure-u-1-2"><input ng-model="vorkasse.amount" type="text"></div>
             <div class="pure-u-1-4 label">欧元</div>
           <div class="pure-u-1 desc">您目前的余额为800,可代刷金额800/10欧元</div>
 
@@ -29,7 +29,7 @@
       <div class="uh-form-section pure-g">
 
           <div class="title pure-u-1-4">购物网站</div>
-          <div class="pure-u-3-4"><input type="text"></div>
+          <div class="pure-u-3-4"><input ng-model="vorkasse.reference_website" type="text"></div>
 
       </div>
       <div class="uh-form-section pure-g">
@@ -50,7 +50,7 @@
 
        <div class="pure-g uh-form-section">
        <div class="title pure-u-1-4">留言</div>
-          <div class="pure-u-3-4"><textarea ng-model="stock.message" class="pure-u-1" ></textarea></div>
+          <div class="pure-u-3-4"><textarea  ng-model="vorkasse.description"  class="pure-u-1" ></textarea></div>
         </div>
 
 </div>
@@ -64,8 +64,10 @@
 </div>
 </div> 
 <!-- submit end -->
+
+
 <!-- submit start -->
-<div class="uh-submit">
+<div ng-show="isConfirmShown" class="uh-submit">
 
 <div class="uh-main-section"> 
   <div class="uh-main-header">
@@ -77,7 +79,7 @@
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">代刷金额*</div>
           <div class="pure-u-3-4">
-            <div class="pure-u-1-2">500.00 欧元</div>
+            <div class="pure-u-1-2">{{vorkasse.amount}} 欧元</div>
             <div class="pure-u-1 desc">您目前的余额为800,可代刷金额800/10欧元</div>
           </div>
          
@@ -93,7 +95,7 @@
       <div class="uh-form-section pure-g">
 
           <div class="title pure-u-1-4">购物网站</div>
-          <div class="pure-u-3-4">TODO</div>
+          <div class="pure-u-3-4">{{vorkasse.reference_website}}</div>
 
       </div>
       <div class="uh-form-section pure-g">
@@ -112,14 +114,14 @@
     <div class="uh-form-section pure-g">
 
        <div class="title pure-u-1-4">留言</div>
-          <div class="pure-u-3-4">TODO</div>
+          <div class="pure-u-3-4">{{vorkasse.description}}</div>
    </div>
 </div>
       
 <div class="uh-main-section last">
     <div class="uh-section">确认信息</div>
        <div class="pure-g uh-form-section">
-          <div class="pure-u-1">本次代刷｛TODO｝欧元，将从您的余额中冻结｛人民币｝</div>
+          <div class="pure-u-1">本次代刷{{vorkasse.amount}}欧元，将从您的余额中冻结｛人民币｝</div>
           </div>
          <div class="pure-g uh-form-section">
       <div class="pure-u-1"><input type="checkbox"> 我已确认并阅读了《大口袋服务协议》</div>
@@ -130,10 +132,10 @@
  
 <div class="uh-main-action" >
 
-    <div   class="btn-edit left"></div>
+    <div ng-click="editSubmit()"  class="btn-edit left"></div>
 
-    <div   class="btn-delete left"></div>
-    <div   class="right">提交</div>
+    <div ng-click="deleteSubmit()"  class="btn-delete left"></div>
+    <div ng-click="confirmSubmit()"  class="right">提交</div>
 
 </div>
 

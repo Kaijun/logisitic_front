@@ -5,10 +5,12 @@
         .module('admin.controllers')
         .controller('ExtraSrvManage', ExtraSrvManage);
 
-    ExtraSrvManage.$inject = ['$scope', '$timeout', 'ExtraSrvService', '$state'];
+    ExtraSrvManage.$inject = ['$scope', '$timeout', 'ExtraSrvService', '$state', '$stateParams'];
 
     /* @ngInject */
-    function ExtraSrvManage($scope, $timeout, ExtraSrvService, $state) {
+    function ExtraSrvManage($scope, $timeout, ExtraSrvService, $state, $stateParams) {
+
+        var isEditing = false;
 
         var extraSrvObj = {
             service_name: null,
@@ -44,28 +46,60 @@
         ////////////////
 
         function activate() {
-            $timeout(function () {
-                $scope.extraSrv = angular.copy(extraSrvObj);
 
-            })
+            if($stateParams.id){
+                ExtraSrvService.getExtraSrv($stateParams.id).then(function (data) {
+
+                    $timeout(function () {
+                        $scope.extraSrv = data[0];
+                        $scope.ladders = data[0].price_ladders;
+                        isEditing = true;
+                    })
+                })
+            }
+            else{
+                $timeout(function () {
+                    $scope.extraSrv = angular.copy(extraSrvObj);
+
+                })
+            }
+
 
         }
 
         function submit () {
             $scope.extraSrv.price_ladders = $scope.ladders;
-            ExtraSrvService.submitExtraSrv($scope.extraSrv).then(function (data) {
-                if(data.success!="true") return;
-                swal({
-                    type: "success",
-                    title: "添加成功!",
-                    showCancelButton: false,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "确定",
-                    closeOnConfirm: true,
-                }, function () {
-                    $state.go('extraSrvList', {}, {reload: true});
+            if(isEditing){
+                ExtraSrvService.editExtraSrv($stateParams.id, $scope.extraSrv).then(function (data) {
+                    if(data.success!="true") return;
+                    swal({
+                        type: "success",
+                        title: "修改成功!",
+                        showCancelButton: false,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定",
+                        closeOnConfirm: true,
+                    }, function () {
+                        $state.go('extraSrvList', {}, {reload: true});
+                    })
                 })
-            })
+            }
+            else{
+                
+                ExtraSrvService.submitExtraSrv($scope.extraSrv).then(function (data) {
+                    if(data.success!="true") return;
+                    swal({
+                        type: "success",
+                        title: "添加成功!",
+                        showCancelButton: false,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定",
+                        closeOnConfirm: true,
+                    }, function () {
+                        $state.go('extraSrvList', {}, {reload: true});
+                    })
+                })
+            }
         }
 
         function addLadder () {
