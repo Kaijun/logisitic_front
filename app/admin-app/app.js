@@ -202,22 +202,40 @@
 
 
 
-        .state('financial', {
-            url: '/financial',
+        .state('finance', {
+            url: '/finance',
             abstract: true,
             templateUrl: 'templates/shell.html',
         })
         .state('refill', {
-            parent: 'financial',
+            parent: 'finance',
             url: '/refill',
-            templateUrl: 'templates/financial/refill.html',
+            templateUrl: 'templates/finance/refill.html',
             controller: 'Refill',
         })
         .state('refund', {
-            parent: 'financial',
+            parent: 'finance',
             url: '/refund',
-            templateUrl: 'templates/financial/refund.html',
+            templateUrl: 'templates/finance/refund.html',
             controller: 'Refund',
+        })
+        .state('vorkasseList', {
+            parent: 'finance',
+            url: '/vorkasseList',
+            templateUrl: 'templates/finance/vorkasseList.html',
+            controller: '',
+        })
+        .state('vorkasseRate', {
+            parent: 'finance',
+            url: '/vorkasseRate',
+            templateUrl: 'templates/finance/vorkasseRate.html',
+            controller: '',
+        })
+       .state('vorkasseDetail', {
+            parent: 'finance',
+            url: '/vorkasseDetail',
+            templateUrl: 'templates/finance/vorkasseDetail.html',
+            controller: '',
         })
 
 
