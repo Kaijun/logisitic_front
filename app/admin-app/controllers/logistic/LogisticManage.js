@@ -9,11 +9,12 @@
 
     /* @ngInject */
     function LogisticManage($scope, $timeout, LogisticService, $state, $stateParams) {
-
+        $scope.USER_GROUPS = ['全部用户', '普通用户', 'VIP用户'];
+        
         var isEditing = false;
 
         var logisticPathObj = {
-            logistic_name: null,
+            name: null,
             number_ship_company: 2,
             ship_company_international: "",
             ship_company_china: "",
@@ -59,6 +60,20 @@
 
             if($stateParams.id){
                 LogisticService.getLogisticById($stateParams.id).then(function (data) {
+                    //重新组装options;
+                    var options = [];
+                    data[0].options.forEach(function (item) {
+                        options.push(item.id);
+                        $scope.logisticTypes.some(function (i) {
+                            
+                            if(i.id==item.id){
+                                i.selected = true;
+                                return true;
+                            }
+                        
+                        })
+                    })
+                    data[0].options = options;
 
                     $timeout(function () {
                         $scope.logisticPath = data[0];
@@ -74,13 +89,18 @@
                 })
             }
 
-            $scope.$watch('logisticTypes', function () {
-                $scope.logisticPath.options = [];
-                $scope.logisticTypes.forEach(function (item) {
-                    if(item.selected === true){
-                        $scope.logisticPath.options.push(item.id);
-                    }
-                });
+            $scope.$watch('logisticTypes', function (newValue, oldValue) {
+                if(newValue === oldValue){
+                    return ;
+                }
+                if($scope.logisticPath){
+                    $scope.logisticPath.options = [];
+                    $scope.logisticTypes.forEach(function (item) {
+                        if(item.selected === true){
+                            $scope.logisticPath.options.push(item.id);
+                        }
+                    });
+                }
             }, true)
 
         }
@@ -89,12 +109,32 @@
             $scope.logisticPath.price_ladders = $scope.ladders;
             if(isEditing){
                 LogisticService.editLogistic($stateParams.id, $scope.logisticPath).then(function (dataa) {
-                   $state.go('logisticList');
+                   if(data.success!="true") return;
+                    swal({
+                        type: "success",
+                        title: "添加成功!",
+                        showCancelButton: false,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定",
+                        closeOnConfirm: true,
+                    }, function () {
+                        $state.go('logisticList', {}, {reload: true});
+                    })
                 })
             }
             else{
                 LogisticService.submitLogistic($scope.logisticPath).then(function (data) {
-                    $state.go('logisticList');
+                    if(data.success!="true") return;
+                    swal({
+                        type: "success",
+                        title: "修改成功!",
+                        showCancelButton: false,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定",
+                        closeOnConfirm: true,
+                    }, function () {
+                        $state.go('logisticList', {}, {reload: true});
+                    })
                 })
             }
         }

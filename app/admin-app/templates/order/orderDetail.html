@@ -91,7 +91,7 @@
           <tr ng-repeat="item in order.items">
             <td>{{order.ship_tracknumber.International}} </td>
             <td>{{item.item_name}}</td>
-            <td>{{item.type}}</td>
+            <td>{{item.typeName}}</td>
             <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
             <td>{{item.unit_weight}} / {{item.unit_weight*item.quantity}}</td>
             <td>{{item.quantity}}</td>
@@ -112,10 +112,15 @@
         </thead>
         <tbody>
           <!-- TODO: 这里请使用AS生产动态数据 -->
+          <tr ng-repeat="es in order.extra_services">
+            <td>{{es.service_name}}</td>
+            <td>{{es.service_price}}</td>
+            <td>{{es.service_description}}</td>
+          </tr>
           <tr>
-            <td>TODO</td>
-            <td>TODO</td>
-            <td>TODO/td>
+            <td>运费</td>
+            <td>{{order.cost}}</td>
+            <td>-</td>
           </tr>
         </tbody>
       </table>
