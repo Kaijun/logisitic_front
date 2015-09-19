@@ -1,0 +1,56 @@
+
+<div class="ah-list">
+  <div class="ah-main-header">
+    <div class="left">
+      <span class="title">代刷列表</span>
+    </div>
+
+    <div class="right">
+      <span>筛选: </span>
+      <span>按状态</span>
+      <span> | </span>
+      <span>按时间</span>
+    </div>
+  </div>
+
+
+    <div class="list">
+      <table class="pure-table pure-table-horizontal ah-list-table">
+        <thead>
+          <tr>
+            <th width="25px;"><input type="checkbox"></th>
+            <th>代刷订单号</th>
+            <th>客户ID</th>
+            <th>联系</th>
+            <th>金额(人民币)</th>
+            <th>备注</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+          <td width="25px;"><input type="checkbox"></td>
+            <td>DS20150099123</td>
+            <td>CPJSUTDIO</td>
+            <td>QQ|Email</td>
+            <td>5000</td>
+            <td>我的备注</td>
+            <td>已转账</td>
+            <td>确认｜查看</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <div class="ah-action-btns"> 
+    <div class="left">
+      <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
+      <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
+    </div>
+    <div class="right">
+      <a  ng-click="" class="pure-button red horizon">批量下载附件</a>
+    </div>
+  </div>
+  
+</div>
