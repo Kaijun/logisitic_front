@@ -435,16 +435,37 @@ textarea{
 
 //首页行条bar
 .uh-index-horizon{
-    background: #000;
+    margin-top: 20px;
+    background: #f8f8f8;
+    box-sizing:border-box;
+    border-radius:5px 5px 0 0;
+    box-shadow: 0 0 2px #333;
     height: 100px;
+    padding: 27px 25px;
     width: 100%;
-    // &.cell{
-    //     float: left;
-    //     margin-top: 20px;
-    //     width: 25%;
-    //     box-sizing:border-box;
-    //     border-left: 1px solid #333;
-    // }
+    .cell{
+        text-align: center;
+        float: left;
+        width: 18%;
+        font-size: 14px;
+        padding-bottom:10px;
+        &.active{
+            padding-bottom: 5px;
+            border-bottom: 5px solid #4A90E2;
+        }
+        span{
+            line-height: 30px;
+        }
+    }
+    .cell-divider{
+        height: 50px;
+        width: 1px;
+        float: left;        
+        background: #D1D1D1;
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+
 }
 
 
