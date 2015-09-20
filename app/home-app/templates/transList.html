@@ -1,5 +1,5 @@
-<!-- TODO: 之后可以抽象成一个Directive 用作所有的ListView!!! -->
-
+<!-- TODO: 之后可以抽象成一个Directive 用作所有的ListView!!!
+<div class="uh-main-section first-list">
 <div class="uh-list">
   <div class="uh-main-header">
     <div class="left">
@@ -10,17 +10,24 @@
     <div class="right">
       <input placeholder="搜索" ng-model="searchText" />
     </div>
+  </div> -->
+
+<div class="uh-main-section first-list">
+  <div class="uh-main-header">
+    <div class="left">
+      <span class="title">移库列表</span>
+    </div>
   </div>
 
-  <div class="uh-list-body">
     <div class="tab">
-      <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="pure-button radius">所有记录</a>
-      <a ng-click="toggleStatusFilter(6)" ng-class="{active: toggleStatus===6}"  class="pure-button radius ">未确认</a>
-      <a ng-click="toggleStatusFilter(7)" ng-class="{active: toggleStatus===7}" class="pure-button radius ">已确认</a>
+      <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="uh-header-tab">所有记录</a>
+      <a ng-click="toggleStatusFilter(6)" ng-class="{active: toggleStatus===6}"  class="uh-header-tab">未确认</a>
+      <a ng-click="toggleStatusFilter(7)" ng-class="{active: toggleStatus===7}" class="uh-header-tab">已确认</a>
     </div>
-    <div class="list">
+ </div>  
 
-      <table ng-table="tableParams" class="pure-table pure-table-horizontal uh-custom-table">
+<div class="uh-main-section middle">
+      <table ng-table="tableParams" class="pure-table pure-table-horizontal uh-line-table">
           <tr ng-repeat="stock in $data">
               <td data-title="'更新日期'">
                   {{stock.updatedTime}}
@@ -44,7 +51,4 @@
               </td>
           </tr>
       </table>
-    </div>
-  </div>
-  
 </div>

@@ -57,9 +57,14 @@ textarea{
         padding: 0 1.5em;
         display: inline-block;
         height: $topnavheight;
+        a{
+            color: white;
+            text-decoration: none;
+        }
     }
 
     }
+
    
 }
 
