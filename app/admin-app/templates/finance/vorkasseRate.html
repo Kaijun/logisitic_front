@@ -4,16 +4,16 @@
   </div>
 </div>
 
-      <div class=" ah-section"> 更改汇率</div>
+      <div class=" ah-section">更改汇率</div>
 
       <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">当前汇率</div> 
-      <div class="pure-u-10-24 inpu-label"> 1欧元 ＝ 7人民币</div>
+      <div class="pure-u-10-24 inpu-label"> 1欧元 ＝ {{currentRate}}人民币</div>
      </div>
       <!-- 表单第一行开始 -->
      <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">调整</div> 
-      <div class="pure-u-10-24"><input></div>
+      <div class="pure-u-10-24"><input ng-model="rate"></div>
      </div>
 
       <!-- 第一行结束结束 -->
@@ -22,8 +22,8 @@
 
 <div class="pure-g ah-action-btns">
     <div class="pure-u-1 right">
-      <a  ng-click="" class="pure-button red">取消</a>
-      <a  ng-click="" class="pure-button blue">确认</a>
+      <a  ng-click="cancle()" class="pure-button red">取消</a>
+      <a  ng-click="confirmEdit()" class="pure-button blue">确认</a>
     </div>
 </div>
 </div>

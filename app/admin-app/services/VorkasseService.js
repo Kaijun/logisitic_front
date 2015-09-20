@@ -14,6 +14,8 @@
             getVorkasses: getVorkasses,
             editVorkasse: editVorkasse,
             deleteVorkasse: deleteVorkasse,
+            getVorkasseRate: getVorkasseRate,
+            editVorkasseRate: editVorkasseRate,
         };
         return service;
 
@@ -52,6 +54,27 @@
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+        function editVorkasseRate(rate) {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/exchange-rate/' + rate,
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+        function getVorkasseRate() {
+            var promise =  $http({
+                url: AppConfig.apiUrlHome + '/info/exchange-rate/',
+                method: 'GET',
             }).then(function(response){
                 return response.data;
             });

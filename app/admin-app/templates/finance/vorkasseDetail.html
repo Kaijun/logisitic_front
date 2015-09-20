@@ -61,11 +61,11 @@
 
 
     <div class="pure-u-md-4-24 pure-u-1  right">
-    <a  ng-click="" class="pure-button blue">审核通过</a>
-    <a  ng-click="" class="pure-button blue">下载附件</a>
-    <a  ng-click="" class="pure-button blue">确认付款</a>
-     <a  ng-click="" class="pure-button red">申请拒绝</a>
-      <a  ng-click="" class="pure-button back">返回</a>
+    <a  ng-click="changeStatus(2, '审核通过')" class="pure-button blue">审核通过</a>
+    <a  ng-click="changeStatus(3, '下载附件成功')" class="pure-button blue">下载附件</a>
+    <a  ng-click="changeStatus(4, '确认付款成功')" class="pure-button blue">确认付款</a>
+     <a  ng-click="changeStatus(-1, '拒绝成功')" class="pure-button red">申请拒绝</a>
+      <a  ui-sref="vorkasseList" class="pure-button back">返回</a>
     </div>
 
 
