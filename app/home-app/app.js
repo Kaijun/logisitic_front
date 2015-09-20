@@ -105,6 +105,17 @@
             templateUrl: 'templates/financial/refund.html',
             controller: '',
         })
+        .state('finance',{
+            url: '/manage/finance',
+            templateUrl: 'templates/financial/finance.html',
+            controller: '',
+        })
+        .state('credits',{
+            url: '/manage/credits',
+            templateUrl: 'templates/financial/credits.html',
+            controller: '',
+        })
+
         .state('notification', {
             url: '/notification',
             templateUrl: 'templates/notification/notification.html',
