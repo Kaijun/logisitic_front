@@ -223,19 +223,19 @@
             parent: 'finance',
             url: '/vorkasseList',
             templateUrl: 'templates/finance/vorkasseList.html',
-            controller: '',
+            controller: 'VorkasseList',
         })
         .state('vorkasseRate', {
             parent: 'finance',
             url: '/vorkasseRate',
             templateUrl: 'templates/finance/vorkasseRate.html',
-            controller: '',
+            controller: 'VorkasseRate',
         })
        .state('vorkasseDetail', {
             parent: 'finance',
-            url: '/vorkasseDetail',
+            url: '/vorkasseDetail/:vorkasseId',
             templateUrl: 'templates/finance/vorkasseDetail.html',
-            controller: '',
+            controller: 'VorkasseDetail',
         })
 
 

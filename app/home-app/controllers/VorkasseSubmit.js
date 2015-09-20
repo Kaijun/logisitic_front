@@ -12,6 +12,7 @@
        var vorkasseObj = {
             amount: null,
             reference_website: null,
+            order_number: null,
             description: null,
             proof_files_paths: null,
         }

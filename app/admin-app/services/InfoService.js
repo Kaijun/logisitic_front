@@ -17,6 +17,7 @@
         var service = {
             getStockStatusMapping: getStockStatusMapping,
             getOrderStatusMapping: getOrderStatusMapping,
+            getVorkasseStatusMapping: getVorkasseStatusMapping,
             getWarehouses: getWarehouses,
             getWarehouseById: getWarehouseById,
             getLogisticPaths: getLogisticPaths,
@@ -37,6 +38,15 @@
         function getOrderStatusMapping (statusId) {
             statusId = statusId + 1;
             var statusMapping = ['删除','未知','发货处理中','待付款','已付款','待发货','已发货','订单问题件'];
+            if(statusId<statusMapping.length){
+                return statusMapping[statusId];
+            }
+            return statusMapping[0];
+        }
+        
+        function getVorkasseStatusMapping (statusId) {
+            statusId = statusId + 1;
+            var statusMapping = ['删除','未知','未处理','处理中','代刷成功','代刷问题件'];
             if(statusId<statusMapping.length){
                 return statusMapping[statusId];
             }

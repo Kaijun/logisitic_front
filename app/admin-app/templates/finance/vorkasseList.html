@@ -29,15 +29,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr >
+          <tr ng-repeat="vorkasse in vorkasses">
           <td width="25px;"><input type="checkbox"></td>
-            <td>DS20150099123</td>
-            <td>CPJSUTDIO</td>
+            <td>{{vorkasse.reference_code}}</td>
+            <td>{{vorkasse.handler_id}}</td>
             <td>QQ|Email</td>
-            <td>5000</td>
-            <td>我的备注</td>
-            <td>已转账</td>
-            <td>确认｜查看</td>
+            <td>{{vorkasse.amount}}</td>
+            <td>{{vorkasse.description}}</td>
+            <td>{{vorkasse.statusStr}}</td>
+            <td>确认｜<a ng-click="goToDetail(vorkasse.id)">查看</a></td>
 
           </tr>
         </tbody>
