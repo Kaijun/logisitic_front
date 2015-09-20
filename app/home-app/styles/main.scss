@@ -80,7 +80,13 @@ textarea{
         display: inline-block;
         padding-right:1em;
     }
-    .uh-nav-list{
+
+}
+
+.uh-nav-list{
+      display: inline;
+  margin: 0;
+    position:relative;
         text-align: right;
     ul{
         line-height: $navheight;
@@ -96,10 +102,43 @@ textarea{
             background:url('/images/uh-indicator.png') no-repeat bottom center; 
         }
     }
-
-
+    ul li:hover{
+        cursor: pointer;
+        background:#000;
     }
+    ul li:hover ul {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    ul ul {
+        z-index: 99;
+      padding: 0;
+      position: absolute;
+      top: 50px;
+      right: 73px;
+      width: 150px;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      display: none;
+    }
+    ul ul li { 
+        text-align: center;
+      background: #555; 
+      display: block; 
+      color: #fff;
+      text-shadow: 0 -1px 0 #000;
+    }
+    ul ul li:hover { 
+        cursor: pointer;
+        background: #666; }
+
 }
+
+
+
 
 .uh-siderbar{
     margin: 0 auto;
@@ -394,6 +433,19 @@ textarea{
     }
 }
 
+//首页行条bar
+.uh-index-horizon{
+    background: #000;
+    height: 100px;
+    width: 100%;
+    // &.cell{
+    //     float: left;
+    //     margin-top: 20px;
+    //     width: 25%;
+    //     box-sizing:border-box;
+    //     border-left: 1px solid #333;
+    // }
+}
 
 
 // 最好切换到uh-line-talbe

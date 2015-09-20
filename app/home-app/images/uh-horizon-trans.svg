@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="30px" viewBox="0 0 32 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Fill 105</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="会员中心首页" sketch:type="MSArtboardGroup" transform="translate(-985.000000, -282.000000)" fill="#4A90E2">
+            <g id="action_bar" sketch:type="MSLayerGroup" transform="translate(379.000000, 243.000000)">
+                <path d="M611,53 L623.273,53 L619.282,49.701 C618.89,49.31 618.89,48.674 619.282,48.282 C619.676,47.89 620.313,47.89 620.706,48.282 L626.687,53.224 C626.896,53.434 626.985,53.711 626.971,53.984 C626.985,54.258 626.896,54.535 626.687,54.745 L620.706,59.687 C620.313,60.079 619.676,60.079 619.282,59.687 C618.89,59.295 618.89,58.659 619.282,58.268 L623.235,55 L611,55 C610.448,55 610,54.553 610,54 C610,53.447 610.448,53 611,53 L611,53 Z M606,43 L606,65 C606,67.209 607.791,69 610,69 L630,69 L630,39 L610,39 C607.791,39 606,40.791 606,43 L606,43 Z M634,39 L632,39 L632,69 L634,69 C636.209,69 638,67.209 638,65 L638,43 C638,40.791 636.209,39 634,39 L634,39 Z" id="Fill-105" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>
