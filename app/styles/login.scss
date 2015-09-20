@@ -176,8 +176,23 @@ $pager-height:30px;
     font-size: 32px;
     padding:10%;
     box-sizing: border-box;
+
+    ul{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li{
+        float: left;
+        width: 100%;
+        display: block;
+        position: relative;
+        text-align: center; /* ensures the image is always in the h-middle */
+        overflow: hidden; /* hide the cropped portion */
+      }
+    }
   }
   .pr-btn{
+    font-size: 16px;
     text-align:center;
     clear: both;
     border: 1px #E84B4B solid;
@@ -187,6 +202,7 @@ $pager-height:30px;
     width: 195px;
     color: #E84B4B;
     margin: 0 auto;
+    margin-top: 36px;
   }
   &.index{
     border-radius: 10px;

@@ -129,7 +129,7 @@ $main-button-color: #5579B9;
     }
 
     .lp-main-search{
-      margin-top: 5em;
+      margin-top: 30em;
       width: 90%;
       height: 3em;
       padding-left: 2em;
@@ -173,6 +173,7 @@ $main-button-color: #5579B9;
     li{
       float: left;
       width: 100%;
+      position: relative;
       text-align: center; /* ensures the image is always in the h-middle */
       overflow: hidden; /* hide the cropped portion */
 
@@ -185,6 +186,25 @@ $main-button-color: #5579B9;
         position: relative; 
         left: 100%; 
         margin-left: -200%;
+      }
+
+      .title{
+        position: absolute;
+        top: 5em;
+        left:0;
+        right:0;
+        text-align: center;
+        color: white;
+        z-index: 10;
+      }
+      .content{
+        position: absolute;
+        top: 12em;
+        left:0;
+        right:0;
+        text-align: center;
+        color: white;
+        z-index: 10;
       }
     }
   }
