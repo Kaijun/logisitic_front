@@ -36,10 +36,8 @@
                 })
             })
         }
-        function editExtraSrv(path){
-            // LogisticService.deleteLogistic(path.id).then(function (data) {
-                
-            // })
+        function editExtraSrv(srv){
+            $state.go('extraSrvManage', {id: srv.id}, {reload: true});
         }
     }
 })();

@@ -61,6 +61,18 @@
                             })[0].name;
                         })
                     })
+                    LogisticService.getLogisticTypes().then(function (lts) {
+                        $timeout(function () {
+                            $scope.order.items.forEach(function (item) {
+                                lts.some(function (i) {
+                                    if(item.type == i.id){
+                                        item.typeName = i.type_name;
+                                        return true;
+                                    }
+                                })
+                            })
+                        })
+                    })
                 });
             }
         }

@@ -37,9 +37,7 @@
             })
         }
         function editPath(path){
-            // LogisticService.deleteLogistic(path.id).then(function (data) {
-                
-            // })
+            $state.go('logisticManage', {id: path.id}, {reload: true});
         }
     }
 })();

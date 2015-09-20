@@ -59,7 +59,7 @@
       </tr>
       <tr>
         <td>入库重量</td>
-        <td>计算</td>
+        <td>{{order.claim_weight}}kg</td>
       </tr>
        <tr>
         <td>出库重量</td>
@@ -120,11 +120,11 @@
             <td>{{es.cost}}元</td>
             <td>{{es.desc}}</td>
           </tr>
-<!--           <tr>
-            <td>其他费用</td>
-            <td>12.00元</td>
-            <td>用户申请重新打包的费用</td>
-          </tr> -->
+          <tr>
+            <td>运费</td>
+            <td>{{order.cost}}元</td>
+            <td>-</td>
+          </tr>
           <tr class="sum">
             <td>合计</td>
             <td>{{order.total_cost}}元</td>
