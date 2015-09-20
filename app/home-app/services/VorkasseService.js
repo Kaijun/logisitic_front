@@ -16,6 +16,7 @@
             submitVorkasse: submitVorkasse,
             editVorkasse: editVorkasse,
             deleteVorkasse: deleteVorkasse,
+            getVorkasseRate: getVorkasseRate,
         };
         return service;
 
@@ -74,5 +75,14 @@
             return promise;
         }
 
+        function getVorkasseRate() {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/info/exchange-rate/',
+                method: 'GET',
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
     }
 })();

@@ -13,7 +13,7 @@
 
             <div class="pure-u-1-2"><input ng-model="vorkasse.amount" type="text"></div>
             <div class="pure-u-1-4 label">欧元</div>
-          <div class="pure-u-1 desc">您目前的余额为800,可代刷金额800/10欧元</div>
+          <div class="pure-u-1 desc">您目前的余额为800,汇率为{{currentRate}}, 可代刷金额{{800/currentRate}}欧元</div>
 
           </div>
          
@@ -80,7 +80,7 @@
           <div class="title pure-u-1-4">代刷金额*</div>
           <div class="pure-u-3-4">
             <div class="pure-u-1-2">{{vorkasse.amount}} 欧元</div>
-            <div class="pure-u-1 desc">您目前的余额为800,可代刷金额800/10欧元</div>
+            <div class="pure-u-1 desc">您目前的余额为800,汇率为{{currentRate}}, 可代刷金额{{800/currentRate}}欧元</div>
           </div>
          
           
@@ -121,7 +121,7 @@
 <div class="uh-main-section last">
     <div class="uh-section">确认信息</div>
        <div class="pure-g uh-form-section">
-          <div class="pure-u-1">本次代刷{{vorkasse.amount}}欧元，将从您的余额中冻结｛人民币｝</div>
+          <div class="pure-u-1">本次代刷{{vorkasse.amount}}欧元，将从您的余额中冻结{{vorkasse.amount*currentRate}}人民币</div>
           </div>
          <div class="pure-g uh-form-section">
       <div class="pure-u-1"><input type="checkbox"> 我已确认并阅读了《大口袋服务协议》</div>

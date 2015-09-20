@@ -17,7 +17,7 @@
             proof_files_paths: null,
         }
         $scope.vorkasse = null; 
-
+        $scope.currentRate = null
         $scope.imagesToUpload = [];
         $scope.isConfirmShown = false;
         $scope.confirmSubmit = confirmSubmit;
@@ -31,28 +31,35 @@
 
         function active () {
 
-            $timeout(function(){
-                if(!$stateParams.id){
-                    $scope.vorkasse = angular.copy(vorkasseObj);
-                }
-                else{
-                    isEditMode = true;
-                    VorkasseService.getVorkasse($stateParams.id).then(function(data){
-                        $scope.vorkasse = data;
-                    },
-                    // 非法
-                    function(){
-                        $state.go('index');
-                    })
-                }
-            });
+            VorkasseService.getVorkasseRate().then(function (data) {
+                $scope.currentRate = data;
+
+                $timeout(function(){
+                    if(!$stateParams.id){
+                        $scope.vorkasse = angular.copy(vorkasseObj);
+                    }
+                    else{
+                        isEditMode = true;
+                        VorkasseService.getVorkasse($stateParams.id).then(function(data){
+                            $scope.vorkasse = data;
+                        },
+                        // 非法
+                        function(){
+                            $state.go('index');
+                        })
+                    }
+                });
 
 
-            //监察Images是否改变...
-            $scope.$watch('imagesToUpload', function (newValue, oldValue) {
-                if(newValue === oldValue) return;
-                isImagesChanged = true;
-            }, true);
+                //监察Images是否改变...
+                $scope.$watch('imagesToUpload', function (newValue, oldValue) {
+                    if(newValue === oldValue) return;
+                    isImagesChanged = true;
+                }, true);
+                
+            })
+
+            
             
         }
         
