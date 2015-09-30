@@ -21,11 +21,11 @@
             <th width="5%">客户ID</th>
             <th width="5%">入库码</th>
             <th width="5%">库位号</th>
-            <th width="10%">联系</th>
+            <th width="8%">联系</th>
             <th width="15%">包裹描述</th>
             <th width="15%">客户备注</th>
             <th width="5%">状态</th>
-            <th width="5%">操作</th>
+            <th width="8%">操作</th>
           </tr>
         </thead>
         <tbody>
@@ -36,7 +36,7 @@
             <td>{{stock.stock_number}}</td>
             <td>{{stock.stock_position}}</td>
             <td>QQ:{{stock.user_qq? stock.user_qq: "空"}}  - 
-                <a href="mailto:{{stock.user_email}}" target="_top"><img src="images/contact.svg"></a></td>
+                <a href="mailto:{{stock.user_email}}" target="_top"><img src="images/contact-email.svg"></a></td>
             <td>{{stock.desc}}</td>
             <td>{{stock.message}}</td>
             <td>{{StockService.getStockStatusMapping(stock.status)}}</td>

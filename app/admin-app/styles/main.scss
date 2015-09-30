@@ -1,7 +1,6 @@
 // 列表使用 ah-list-table
 
 
-
 //Utils
 @mixin clearfix {
   &:after {
@@ -13,11 +12,6 @@
 
 
 html,body { height:100%; position: relative; }
-
-a{
-    cursor: pointer;
-    color: blue;
-}
 
 .ah-login-background{
   width: 100%;
@@ -94,6 +88,11 @@ $navbar-height: 32px;
         display: inline-block;
         padding: 0 1.5em;
       }
+    }
+    a{
+      cursor: pointer;
+      color: #fff;
+      text-decoration: none;
     }
   }
 }
@@ -240,6 +239,13 @@ $sub-navbar-height: 64px;
         }
     
     }
+    a{
+    cursor: pointer;
+    color: #fff;
+    background: #3A6FAD;
+    border-radius: 5px;
+    padding:5px;
+  }
 }
 
 
