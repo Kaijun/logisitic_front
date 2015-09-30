@@ -29,8 +29,8 @@
             <ul>
               <li ui-sref="personalInfo"><img src="images/menu-profile.svg">个人资料</li>
               <li ui-sref="addressManage"><img src="images/menu-address.svg">地址管理</li>
-              <li><img src="images/menu-finance.svg">财务管理</li>
-              <li><img src="images/menu-credits.svg">积分管理</li>
+              <li ui-sref="finance"><img src="images/menu-finance.svg">财务管理</li>
+              <li ui-sref="credits"><img src="images/menu-credits.svg">积分管理</li>
             </ul>
             </li>
         <li ng-class="{selected: $state.includes('notification')}"  ui-sref="notification">消息<span ng-show="userInfo.unread>0"class="uh-no-notification">{{userInfo.unread}}</span></li>
