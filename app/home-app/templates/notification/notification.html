@@ -3,18 +3,42 @@
       <div class="left"><span class="title">消息中心</span></div>
   </div>
 
-      <div class="tab">
-      <a class="uh-header-tab">所有</a>
-      <a class="uh-header-tab">通知</a>
-      <a class="uh-header-tab">对话</a>
-    </div>
+      <div class="uh-main-tab">
+        <div class="left">
+          <a class="uh-header-tab">所有</a>
+          <a class="uh-header-tab">通知</a>
+          <a class="uh-header-tab">对话</a>
+        </div>
+        <div class="right">
+          <a class="uh-header-tab" ui-sref="contact">联系客服</a>
+        </div>
+      </div>
 </div>
 
 
 <!-- <div ng-repeat="conversation in conversations" ng-click="goToDetail(conversation.id)" class="uh-message pure-g"> -->
+<div class="uh-main-section middle uh-message pure-g">
+  <div class="pure-u-2-24 icon">
+    <img src="images/icon-notification.png" width="30px;">
+  </div>
 
-<div ng-repeat="conversation in conversations" ng-click="goToDetail(conversation.id)"  class="uh-main-section middle uh-message">
-  <div class="pure-u-2-24">
+  <div class="pure-u-22-24">
+    <!-- <div class="title">{{conversation.title}}</div> -->
+    <div class="content">你的订单已经发货。你的订单已经发货。你的订单已经发货。你的订单已经发货。你的订单已经发货。你的订单已经发货。你的订单已经发货。你的订单已经发货。你的订单已经发货。你的订单已经发货。</div>
+
+    <div class="info">
+
+      <div class="pure-u-12-24 time">2012-4-4</div>
+      <div class="pure-u-12-24 control"><a>标记为已读 删除</a></div>
+
+    </div>
+    
+  </div>
+
+</div>
+
+<div ng-repeat="conversation in conversations" ng-click="goToDetail(conversation.id)"  class="uh-main-section middle uh-message pure-g">
+  <div class="pure-u-2-24 icon">
     <img src="images/icon-notification.png" width="30px;">
   </div>
 

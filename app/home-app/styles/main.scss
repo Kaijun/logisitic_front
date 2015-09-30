@@ -318,17 +318,20 @@ textarea{
     
 }
 .uh-main-tab{
-    border: 1px solid #000;
     width: 100%;
-    background:#000;
+    height: 40px;
     .left{
         width: 80%;
         float: left;
-        background:#000;
     }
     .right{
-        width: 20%
+        text-align: right;
+        width: 20%;
         float: right;
+    }
+    a {
+        text-decoration: none;
+        color: #000;
     }
 }
 
@@ -357,7 +360,7 @@ textarea{
      text-align: center;
      height: 50px;
      color: white;
-     padding: 5px 10px;
+     // padding: 5px 10px;
      line-height: 50px;
      a {
         margin-top:0;
@@ -376,6 +379,9 @@ textarea{
        &.withtext{
             width: 80px;
         }
+        &:hover{
+            cursor: pointer;
+        }
      }
      .right{
         float: right;
@@ -383,24 +389,29 @@ textarea{
         width: 40px;
         height: 40px;
         &.withtext{
-            width: 80px;
+            width: auto;
+            height: 40px;
         }
-     }
-     .btn-back{
-        background: url('../images/btn-back.png') #376191 no-repeat center;
         &:hover{
             cursor: pointer;
         }
      }
+     .btn-back{
+        background: url('../images/btn-back.png') #376191 no-repeat center;
+     }
      .btn-pwd{
-         background: url('../images/btn-pwd.svg') #376191 no-repeat left;
+            font-size: 12px;
+            line-height: 40px;
+            padding-left: 10px;
+         background: url('../images/btn-pwd.svg') #376191 no-repeat 8px 12px;
+         background-size: 15px 15px;
      }
      .btn-confirm{
-        background: url('../images/btn-confirm.png') no-repeat center;
+        background: url('../images/btn-confirm.svg') no-repeat center;
         background-size: 20px 20px;
         &:hover{
-            pointer: cursor;
-            background: url('../images/btn-confirm.png') #376191 no-repeat center;
+            background: url('../images/btn-confirm.svg') #376191 no-repeat center;
+            border-radius:5px;
             background-size: 20px 20px;
         }
 
@@ -414,14 +425,12 @@ textarea{
         background-size: 18px 18px;
         &:hover{
             background: url('../images/btn-edit.svg') #306191 no-repeat center;
-             cursor: pointer;
         }
      }
      .btn-delete{
         background: url('../images/btn-delete.svg') no-repeat center;
         &:hover{
             background: url('../images/btn-delete.svg') #E24545 no-repeat center;
-            cursor: pointer;
         }
      }
 
@@ -541,6 +550,9 @@ textarea{
             height: 24px;
             background: url(../images/uh-item-delete.png) no-repeat center center;
             cursor: pointer;
+        }
+        .span{
+            margin-left:5px;
         }
     }
 
@@ -760,7 +772,10 @@ input[type="radio"]{
 }
 input[type="checkbox"]{
     width: auto;
+    padding-right:5px;
+
 }
+
 
 //表单选择框
 select{
@@ -1059,10 +1074,17 @@ textarea{
 
 .uh-message{
     font-size: 14px;
-    padding: 10px 8px;
+    padding: 20px;
 
     border-bottom: 1px solid #efefef;
-
+    &:last-of-type{
+        margin-bottom: 50px;
+    }
+    .icon{
+        position: relative;
+        top: 50%;
+        transform: translateY(25%);
+    }
     .title{
         font-size: 16px;
         line-height: 20px;
@@ -1071,7 +1093,7 @@ textarea{
     }
     .content{
         color: #333;
-        line-height: 24px;
+        line-height: 30px;
     }
     .info{
         padding-top:10px;
@@ -1088,7 +1110,7 @@ textarea{
     }
     .info a{
         text-decoration: none;
-        color: blue;
+        color: #3A6FAD;
     }
     &:hover{
         background:#efefef;
