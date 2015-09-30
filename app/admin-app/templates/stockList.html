@@ -36,7 +36,7 @@
             <td>{{stock.stock_number}}</td>
             <td>{{stock.stock_position}}</td>
             <td>QQ:{{stock.user_qq? stock.user_qq: "空"}}  - 
-                <a href="mailto:{{stock.user_email}}" target="_top">Email</a></td>
+                <a href="mailto:{{stock.user_email}}" target="_top"><img src="images/contact.svg"></a></td>
             <td>{{stock.desc}}</td>
             <td>{{stock.message}}</td>
             <td>{{StockService.getStockStatusMapping(stock.status)}}</td>

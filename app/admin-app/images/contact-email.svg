@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="17px" viewBox="0 0 24 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="库存" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="库存列表" sketch:type="MSArtboardGroup" transform="translate(-590.000000, -230.000000)" fill="#969191">
+            <g id="info_group1" sketch:type="MSLayerGroup" transform="translate(153.000000, 229.000000)">
+                <path d="M437,2.31395061 C437,1.76118445 437.447469,1.31307895 438.000695,1.31307895 L459.999305,1.31307895 C460.551974,1.31307895 461,1.75770981 461,2.31395061 L461,16.3122073 C461,16.8649734 460.552531,17.3130789 459.999305,17.3130789 L438.000695,17.3130789 C437.448026,17.3130789 437,16.8684481 437,16.3122073 L437,2.31395061 Z M449.5,10.3130789 L459,3.31307895 L440,3.31307895 L449.5,10.3130789 Z" id="Rectangle-8" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

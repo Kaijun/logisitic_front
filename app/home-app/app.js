@@ -126,6 +126,11 @@
             templateUrl: 'templates/notification/conversation.html',
             controller: '',
         })
+        .state('contact',{
+            url: '/contact',
+            templateUrl: 'templates/notification/contact.html',
+            controller: '',
+        })
         .state('messaage', {
             url: '/notification/:id',
             templateUrl: 'templates/notification/message.html',

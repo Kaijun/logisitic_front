@@ -43,12 +43,12 @@
   <div class="pure-g uh-form-section">
     <div class="pure-u-3-24">所在地*</div>
     <div class="pure-u-12-24">
-  	<select name="province" form="">
+  	<!-- <select name="province" form="">
   	  <option value="1">选择省|直辖市</option>
   	  <option value="2">北京</option>
   	  <option value="3">上海</option>
   	  <option value="4">重庆</option>
-  	</select>
+  	</select> -->
     <city-select ng-model="item.city"></city-select>
   </div>
   </div>	
@@ -109,11 +109,10 @@
 
 
 <div class="uh-main-action">
-  <div class="left">
-    <div ng-click="cancle()" class="pure-button delete left"><a href="">取消</a></div>
-  </div>
-  <div class="right">
-    <div ng-click="submit()" class="pure-button edit right"><a href="">添加</a></div>
+
+    <div ng-click="cancle()" class="btn-back left"></div>
+
+    <div ng-click="submit()" class="btn-msg-send right"></div>
 </div>
-</div>
+
 

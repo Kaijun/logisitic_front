@@ -560,13 +560,13 @@ select{
   }
 .pop-up-wapper{
   position: absolute; 
-  top: 50%; 
+  top: 20%; 
   left: 30%;
   z-index: 999;
   width: 500px;
   height: auto;
   font-size: 14px;
-  border-radius:5px;
+  // border-radius:5px;
   line-height: 40px;
   background: white;
   box-shadow: 0 0px 5px grey;
@@ -577,9 +577,9 @@ select{
   width: 100%;
   height: 40px;
   padding: 5px 10px;
-  background: #D8D8D8;
+  background: #4A90E2;
   line-height: 30px;
-  color: black;
+  color: #fff;
   box-sizing: border-box;
   text-align: left;
 }
@@ -587,7 +587,7 @@ select{
 .pop-up-body{
   width: 100%;
   box-sizing: border-box;
-  padding:15px 10px;
+  padding:15px 20px;
 }
 
 .pop-up-section{
@@ -598,13 +598,20 @@ select{
 }
 
 .pop-up-opt{
-  padding: 0 10px;
+  padding: 0 20px;
   width: 100%;
   margin-bottom:10px; 
   height: 40px;
   text-align: right;
   box-sizing: border-box;
-
+  .right{
+    float: right;
+    text-align: right;
+  }
+  .left{
+    text-align: left;
+    float: left;
+  }
   .pure-button{
     margin-top: 0px;
   }

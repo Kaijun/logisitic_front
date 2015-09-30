@@ -317,6 +317,21 @@ textarea{
     }
     
 }
+.uh-main-tab{
+    border: 1px solid #000;
+    width: 100%;
+    background:#000;
+    .left{
+        width: 80%;
+        float: left;
+        background:#000;
+    }
+    .right{
+        width: 20%
+        float: right;
+    }
+}
+
 .uh-header-tab{
     font-size: 14px;
     line-height: 40px;
@@ -348,6 +363,9 @@ textarea{
         margin-top:0;
         color: white;
      }
+     a:hover{
+        cursor: pointer;
+     }
      .left{
         float: left;
         margin: 5px 15px;
@@ -370,16 +388,19 @@ textarea{
      }
      .btn-back{
         background: url('../images/btn-back.png') #376191 no-repeat center;
-
+        &:hover{
+            cursor: pointer;
+        }
      }
      .btn-pwd{
          background: url('../images/btn-pwd.svg') #376191 no-repeat left;
      }
-     .btn-confrim{
-        background: url('../images/btn-confrim.svg') no-repeat center;
+     .btn-confirm{
+        background: url('../images/btn-confirm.png') no-repeat center;
         background-size: 20px 20px;
         &:hover{
-            background: url('../images/btn-confrim.svg') #376191 no-repeat center;
+            pointer: cursor;
+            background: url('../images/btn-confirm.png') #376191 no-repeat center;
             background-size: 20px 20px;
         }
 
@@ -392,7 +413,8 @@ textarea{
         background: url('../images/btn-edit.svg') #376191 no-repeat center;
         background-size: 18px 18px;
         &:hover{
-            background: url('../images/btn-edit.svg') #306191 no-repeat center
+            background: url('../images/btn-edit.svg') #306191 no-repeat center;
+             cursor: pointer;
         }
      }
      .btn-delete{
@@ -1136,6 +1158,19 @@ textarea{
     text-align:center;
     font-weight: bold;
 }
+
+
+//city select
+.city-select{
+    background:#000;
+}
+
+.city-select-drop{
+    background:#000;
+    display: none;
+}
+
+
 
 // 用于修改自动填充颜色
 ::-webkit-input-placeholder { color:#333; }
