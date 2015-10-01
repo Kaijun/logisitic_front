@@ -28,7 +28,7 @@
         function active () {
             StockService.getStocks().then(function (list) {
                 list = list.filter(function (item) {
-                    return item.status==-1 || item.status==0 || item.status==1 || item.status==2 || item.status==-3 || item.status==4 || item.status==5;
+                    return item.status==-1 || item.status==0 || item.status==1 || item.status==2 || item.status==3 || item.status==4 || item.status==5;
                 })
                 list.map(function (item) {
                     item.timestampStr = (new Date(item.timestamp.date)).toISOString().substring(0, 10);

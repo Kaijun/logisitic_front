@@ -20,8 +20,8 @@
         <div class="pure-u-1-2">
          <table class="pure-table pure-table-horizontal uh-small-table">
               <tr><td style="width:30%">状态</td><td>{{stock.statusStr}}</td></tr>
-              <tr><td>预报时间</td><td>{{stock.timestampStr}}</td></tr>
-              <tr><td>更新时间</td><td>[To-Do]</td></tr>
+              <tr><td>预报时间</td><td>{{stock.created_at}}</td></tr>
+              <tr><td>更新时间</td><td>{{stock.updated_at}}</td></tr>
           </table>
           </div>
         </div>
@@ -79,7 +79,11 @@
 <table class="pure-table pure-table-horizontal uh-small-table">
         <tr>
          <td style="width: 25%;">附加服务</td>
-         <td>TODO</td>
+         <td>
+            <span ng-repeat="es in stock.extra_services">
+              {{es.service_name}}
+            </span>
+         </td>
         </tr>
         <tr>
           <td>留言</td>

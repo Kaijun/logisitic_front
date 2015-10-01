@@ -309,6 +309,6 @@
     //Default Configuration of App 
     angular.module('admin').constant('AppConfig', {
         apiUrl: '/api/admin',
-        apiUrlHome: '/api/',
+        apiUrlHome: '/api',
     })
 })();

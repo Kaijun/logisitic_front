@@ -14,6 +14,7 @@
         $scope.stockId = $stateParams.stockId;
         $scope.enterStock = enterStock;
         $scope.goBack = goBack;
+        $scope.deleteStock = deleteStock;
         $scope.imageUrlPrefix = AppConfig.apiUrlHome+ '/image/';
 
         activate();
@@ -71,5 +72,24 @@
         function goBack () {
             $window.history.back();
         }
+
+
+        function deleteStock () {
+            if($scope.stockId){
+                swal({
+                    title: "确认删除?",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    cancelButtonText: "取消",
+                    confirmButtonText: "确定",
+                    closeOnConfirm: true,
+                }, function () {
+                    StockService.deleteStock($scope.stockId).then(function(data) {
+                        $state.go('preStockList', {}, {reload: true});
+                    });
+                })
+            }
+        }
+
     }
 })();

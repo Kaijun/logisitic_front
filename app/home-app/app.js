@@ -122,14 +122,9 @@
             controller: 'NotificationCtrl',
         })
         .state('conversation',{
-            url: '/conversation',
+            url: '/conversation/:id',
             templateUrl: 'templates/notification/conversation.html',
-            controller: '',
-        })
-        .state('messaage', {
-            url: '/notification/:id',
-            templateUrl: 'templates/notification/message.html',
-            controller: 'MessageCtrl',
+            controller: 'ConversationCtrl',
         })
 
 

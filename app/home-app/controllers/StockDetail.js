@@ -39,7 +39,8 @@
                     var stockId = $stateParams.stockId;
                     StockService.getStock(stockId).then(function(data){
                         
-                        data.timestampStr = (new Date(data.timestamp.date)).toISOString().substring(0, 10);
+                        data.created_at = (new Date(data.created_at.date)).toISOString().substring(0, 10);
+                        data.updated_at = (new Date(data.updated_at.date)).toISOString().substring(0, 10);
                         data.statusStr = InfoService.getStockStatusMapping(parseInt(data.status));
                         data.warehouseStr = $scope.warehouses.filter(function(wh){
                             return wh.id === parseInt(data.warehouse)

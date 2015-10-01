@@ -3,14 +3,16 @@
 
     angular
         .module('home.controllers')
-        .controller('MessageCtrl', MessageCtrl);
+        .controller('ConversationCtrl', ConversationCtrl);
 
-    MessageCtrl.$inject = ['$scope', 'MsgService', '$timeout', '$stateParams', '$state'];
+    ConversationCtrl.$inject = ['$scope', 'MsgService', '$timeout', '$stateParams', '$state', 'UserInfo'];
 
     /* @ngInject */
-    function MessageCtrl($scope, MsgService, $timeout, $stateParams, $state) {
+    function ConversationCtrl($scope, MsgService, $timeout, $stateParams, $state, UserInfo) {
         var conversationId = $stateParams.id;
+        $scope.userId = UserInfo.id;
         $scope.conversation = null;
+        $scope.textToSend = '';
         activate();
 
         ////////////////
@@ -27,6 +29,16 @@
             }
             else{
                 $state.go('index');
+            }
+        }
+
+        $scope.sendMsg = function(){
+            if($scope.textToSend.length>0){
+                MsgService.sendMessageInConv(conversationId, {
+                    content: $scope.textToSend
+                }).then(function (data) {
+                    console.log(data);
+                })
             }
         }
     }
