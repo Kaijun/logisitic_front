@@ -9,10 +9,19 @@
   <!-- 标题栏结束 -->
 
   <!-- 主体部分开始 -->
+<div class="ah-scan-space">
+      <div class="pure-g ah-big-search">
+        <div><input ng-model="serachText" type="text" ></div>
+        <button ng-click="search()" class="">回车确认</button>
+      </div>  
+ </div> 
+
+
   <div class="ah-main-body pure-form" >
-    <div class="pure-g">
+
+
+<!--     <div class="pure-g">
       <div class="title pure-u-5-6">
-        <span><img src="images/scan.png"></span>
         <span><input ng-model="serachText" type="text" ></span>
       </div>
       <div class="pure-u-1-6 right">
@@ -20,8 +29,8 @@
       </div>  
 
 
-    </div> <!-- 顶部栏结束 Div -->
-    <div class="ah-divider thick"></div>
+    </div> <!-- 顶部栏结束 Div 
+    <div class="ah-divider thick"></div>--> 
     <div ng-if="stock" class="pure-g">
 
       <div class="pure-u-7-8">
@@ -141,3 +150,6 @@
 
    <div ng-if="!stock" > 未找到信息 - ...</div>
  </div>
+  <script type="text/javascript">
+  $("input:text:visible:first").focus();
+ </script>
