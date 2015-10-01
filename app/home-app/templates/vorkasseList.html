@@ -4,12 +4,16 @@
       <span class="title">代刷列表</span>
     </div>
   </div>
-
-    <div class="tab">
+  <div class="uh-main-tab">
+    <div class="left">
       <a ng-click="toggleStatusFilter(-1)" class="uh-header-tab">所有记录</a>
       <a ng-click="toggleStatusFilter(2)" class="uh-header-tab">处理中</a>
       <a ng-click="toggleStatusFilter(3)" class="uh-header-tab">代刷成功</a>
     </div>
+    <div class="right">
+        <a ui-sref="vorkasseSubmit" class="uh-header-tab function">新建代刷</a>
+    </div>
+  </div>
  </div>  
  
 
@@ -18,8 +22,8 @@
       <table ng-table="tableParams" class="pure-table pure-table-horizontal uh-line-table">
           <tr ng-repeat="vk in $data" >
               <td data-title="'提交日期'">{{vk.created_at}}</td>
-              <td data-title="'代刷金额（欧元）'">{{vk.amount_foreign}}</td>
-              <td data-title="'代刷金额（人民币）'">{{vk.amount}}</td>
+              <td data-title="'代刷金额(欧元)'">{{vk.amount_foreign}}</td>
+              <td data-title="'代刷金额(人民币)'">{{vk.amount}}</td>
               <td data-title="'状态'">{{vk.statusStr}}</td>              
               <td data-title="'操作'">
                   <div ng-if="vk.status === 1" ng-click="goToDetail(vk.id)" class="opt-radius-btn edit" title="编辑"></div>
@@ -28,4 +32,8 @@
               </td>
           </tr>
       </table>
+      <div class="uh-box-empty">
+          <img src="images/message-empty.svg" width="120px;">
+          <div>您的代刷列表为空 :(</div>
+        </div>
 </div>

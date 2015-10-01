@@ -11,13 +11,17 @@
           <a ng-click="toggleConversation()" class="uh-header-tab">对话</a>  
         </div>
         <div class="right">
-          <a class="uh-header-tab" ui-sref="contact">联系客服</a>
+          <a class="uh-header-tab function" ui-sref="contact">联系客服</a>
         </div>
       </div>
 </div>
 
-
-
+<div class="uh-main-section middle">
+  <div class="uh-box-empty">
+  <img src="images/message-empty.svg" width="120px;">
+  <div>您还没有收到任何消息</div>
+  </div>
+</div>
 
 <div ng-if="isNotificationToggled" ng-show="notifications.length > 0" ng-repeat="notification in notifications" class="uh-main-section middle uh-message pure-g">
   <div class="pure-u-2-24 icon">

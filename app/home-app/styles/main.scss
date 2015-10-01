@@ -347,6 +347,13 @@ textarea{
     .active{
         border-bottom: 1px solid #000;
     }
+    &.function{
+        margin-right: 0;
+        color: #fff;
+        padding:5px 10px;
+        border-radius:99px;
+        background:#4A90E2;
+    }
 }
 
 .uh-main-headbar{
@@ -1120,6 +1127,11 @@ textarea{
         background:#efefef;
         cursor: pointer;
     }
+}
+.uh-box-empty{
+    min-height:300px;
+    margin-top:120px;
+    text-align: center;
 }
 
 

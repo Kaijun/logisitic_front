@@ -13,10 +13,15 @@
   </div>
 
  
-    <div>
+    <div class="uh-main-tab">
+    <div class="left">
       <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="uh-header-tab active">所有记录</a>
       <a ng-click="toggleStatusFilter(2)" ng-class="{active: toggleStatus===2}"  class="uh-header-tab ">已预报</a>
       <a ng-click="toggleStatusFilter(4)" ng-class="{active: toggleStatus===4}" class="uh-header-tab ">已入库</a>
+    </div>
+    <div class="right">
+      <a ui-sref="stockSubmit" class="uh-header-tab function">添加新的预报</a>
+    </div>
     </div>
 </div>
 
@@ -48,6 +53,10 @@
               </td>
           </tr>
       </table>
+              <div class="uh-box-empty">
+          <img src="images/message-empty.svg" width="120px;">
+          <div>您的库存列表为空 :(</div>
+        </div>
     </div>
 
   
