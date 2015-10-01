@@ -37,7 +37,24 @@
                 MsgService.sendMessageInConv(conversationId, {
                     content: $scope.textToSend
                 }).then(function (data) {
-                    console.log(data);
+                    if(data.success === "true"){
+                        var currentdate = new Date(); 
+                        var datetime =  currentdate.getFullYear() + "-"
+                                        + (currentdate.getMonth()+1)  + "-" 
+                                        + currentdate.getDate() + " "  
+                                        + ("0" + currentdate.getHours()).slice(-2)  + ":"  
+                                        + ("0" + currentdate.getMinutes()).slice(-2)  + ":"  
+                                        + ("0" + currentdate.getSeconds()).slice(-2); 
+                        $timeout(function () {
+                            $scope.conversation.messages.push({
+                                from: $scope.userId,
+                                created_at: datetime,
+                                content: $scope.textToSend
+                            })
+
+                            $scope.textToSend = '';
+                        })
+                    }
                 })
             }
         }

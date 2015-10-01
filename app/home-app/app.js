@@ -95,6 +95,11 @@
             templateUrl: 'templates/profile/personalInfo.html',
             controller: 'PersonalInfoCtrl',
         })
+        .state('changePassword', {
+            url: '/profile/changePassword',
+            templateUrl: 'templates/profile/changePassword.html',
+            controller: '',
+        })
         .state('refill', {
             url: '/financial/refill',
             templateUrl: 'templates/financial/refill.html',
@@ -125,6 +130,11 @@
             url: '/conversation/:id',
             templateUrl: 'templates/notification/conversation.html',
             controller: 'ConversationCtrl',
+        })
+        .state('contact',{
+            url: '/contact',
+            templateUrl: 'templates/notification/contact.html',
+            controller: '',
         })
 
 

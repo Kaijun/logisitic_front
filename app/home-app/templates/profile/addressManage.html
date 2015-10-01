@@ -43,12 +43,12 @@
   <div class="pure-g uh-form-section">
     <div class="pure-u-3-24">所在地*</div>
     <div class="pure-u-12-24">
-  	<select name="province" form="">
+  	<!-- <select name="province" form="">
   	  <option value="1">选择省|直辖市</option>
   	  <option value="2">北京</option>
   	  <option value="3">上海</option>
   	  <option value="4">重庆</option>
-  	</select>
+  	</select> -->
     <city-select ng-model="item.city"></city-select>
   </div>
   </div>	
@@ -98,22 +98,25 @@
 
   <div class="pure-g uh-form-section">
   <div class="pure-u-3-24">地址代号*</div>
-  <div class="pure-u-10-24"><input ng-model="address.addr_symbol" tyep="text"></div>	
+  <div class="pure-u-10-24"><input ng-model="address.addr_symbol" tyep="text"></div>
+  </div>
+  <div class="pure-g uh-form-section">
+  <div class="pure-u-3-24"></div>
   <div class="pure-u-10-24">
   <input type="checkbox" ng-model="address.is_default_addr" id="default" />
   <label for="default"><span></span>设为默认</label>
   </div>
   </div>
+  
 </div>
 
 
 
 <div class="uh-main-action">
-  <div class="left">
-    <div ng-click="cancle()" class="pure-button delete left"><a href="">取消</a></div>
-  </div>
-  <div class="right">
-    <div ng-click="submit()" class="pure-button edit right"><a href="">添加</a></div>
+
+    <div ng-click="cancle()" class="btn-back left"></div>
+
+    <div ng-click="submit()" class="btn-msg-send right"></div>
 </div>
-</div>
+
 

@@ -4,7 +4,7 @@
     <div class="pure-u-1-4">大口袋转运</div>
     <div class="pure-u-3-4 uh-topnav-list">
       <ul >
-        <li>首页</li>
+        <li><a href="../index.html">首页</a></li>
         <li>价格</li>
         <li>新闻</li>
         <li>帮助</li>
@@ -19,8 +19,8 @@
 <!-- 二级导航条 -->
 <div class="pure-g uh-nav">
   <div class="uh-box pure-g">
-  <div class="pure-u-1-4">
-  <span><img src="images/uh-logo.png"></span>会员中心</div>
+  <div class="pure-u-1-4" >
+  <span><img src="images/uh-logo.png"></span><a ui-sref="index">会员中心</a></div>
   <div class="pure-u-3-4 uh-nav-list">
       <ul >                      
         <li ng-class="{selected: $state.includes('index')}"  ui-sref="index">动态</li>
@@ -29,8 +29,8 @@
             <ul>
               <li ui-sref="personalInfo"><img src="images/menu-profile.svg">个人资料</li>
               <li ui-sref="addressManage"><img src="images/menu-address.svg">地址管理</li>
-              <li><img src="images/menu-finance.svg">财务管理</li>
-              <li><img src="images/menu-credits.svg">积分管理</li>
+              <li ui-sref="finance"><img src="images/menu-finance.svg">财务管理</li>
+              <li ui-sref="credits"><img src="images/menu-credits.svg">积分管理</li>
             </ul>
             </li>
         <li ng-class="{selected: $state.includes('notification')}"  ui-sref="notification">消息<span ng-show="userInfo.unread>0"class="uh-no-notification">{{userInfo.unread}}</span></li>
@@ -43,9 +43,9 @@
 
   <div class="pure-g uh-box">
     <div class="pure-u-1-5 uh-siderbar">
-     <div class="uh-siderbar-avater">
+<!--      <div class="uh-siderbar-avater">
         <p>put your head </p>
-      </div>
+      </div> -->
       <div class="uh-siderbar-info ">
       <p>{{userInfo.name}}</p>
       <ul>

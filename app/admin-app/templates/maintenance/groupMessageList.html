@@ -1,1 +1,70 @@
-groupMessageList
+<!-- <div ng-show="isPopupShown" class="pop-up-wapper"> -->
+<div class="pop-up-wapper">
+  <div class="pop-up-title">
+    群发消息
+  </div>
+  <div class="pop-up-body">
+      <div class="poo-up-section">
+            <select name="">
+                <option value="">全部用户</option>
+                 <option value="">普通用户</option>
+                 <option value="">VIP用户</option>
+                </select> 
+    </div>   
+        <div class="poo-up-section">
+            <textarea name="" rows="5"></textarea>
+        </div>      
+    </div>
+  <div class="pop-up-opt pure-g">
+  <div class="pure-u-2-3 left">
+  <input type="checkbox"> 通知
+  <input type="checkbox"> 邮件
+  <input type="checkbox">短信
+</div>
+    <div class="pure-u-1-3 right">
+      <a ng-click="cancle()" class="pure-button red horizon-small">取消</a>
+      <a ng-click="submitLogisticType()" class="pure-button blue horizon-small">确认</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="ah-list">
+  <div class="ah-main-header">
+    <div class="left">
+      <span class="title">消息列表</span>
+    </div>
+  </div>
+
+  <div class="ah-list">
+      <table class="pure-table pure-table-horizontal ah-list-table">
+        <thead>
+          <tr>
+            <th width="2%"><input type="checkbox"></th>
+            <th width="30%">消息内容</th>
+            <th width="5%">发件人</th>
+            <th width="5%">发布时间</th>
+          </tr>
+        </thead>
+        <tbody>
+        <td><input type="checkbox"></td>
+        <td>这个消息的内容如果比较长只显示一部分？</td>
+        <td>CPJstudio</td>
+        <td>2015-04-30</td>
+      
+        </tbody>
+      </table>
+  </div>
+  <div class="ah-action-btns"> 
+    <div class="left">
+      <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
+      <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
+    </div>
+    <div class="right">
+      <a  class="pure-button blue horizon">新建群消息</a>
+    </div>
+  </div>
+  
+</div>
+
+

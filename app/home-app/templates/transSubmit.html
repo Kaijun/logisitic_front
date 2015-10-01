@@ -46,6 +46,7 @@
         <div class="pure-u-8-24">{{getLogisticPathNameById(package.ship_order.logistic_path_id)}} {{package.ship_order.track_code}}</div>
         <div class="pure-u-14-24">{{package.desc}}</div>
         <div ng-if="package.toggle" class="pure-u-2-24">关闭</div>
+        <div ng-if="!package.toggle" class="pure-u-2-24">展开</div>
       </div>
 
       <table ng-show="package.toggle"  class="pure-table pure-table-horizontal uh-list-table">

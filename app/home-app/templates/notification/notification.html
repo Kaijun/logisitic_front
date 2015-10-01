@@ -3,20 +3,24 @@
       <div class="left"><span class="title">消息中心</span></div>
   </div>
 
-  <div class="tab">
-    <!-- <a ng-click="" class="uh-header-tab">所有</a> -->
-    <a ng-click="toggleNotification()" class="uh-header-tab">通知</a>
-    <a ng-click="toggleConversation()" class="uh-header-tab">对话</a>
-  </div>
+      <div class="uh-main-tab">
+        <div class="left">
+          <!-- <a class="uh-header-tab">所有</a> -->
+        
+          <a ng-click="toggleNotification()" class="uh-header-tab">通知</a>
+          <a ng-click="toggleConversation()" class="uh-header-tab">对话</a>  
+        </div>
+        <div class="right">
+          <a class="uh-header-tab" ui-sref="contact">联系客服</a>
+        </div>
+      </div>
 </div>
 
 
-<!-- <div ng-repeat="conversation in conversations" ng-click="goToDetail(conversation.id)" class="uh-message pure-g"> -->
 
 
-
-<div ng-if="isNotificationToggled" ng-show="notifications.length > 0" ng-repeat="notification in notifications" class="uh-main-section middle uh-message">
-  <div class="pure-u-2-24">
+<div ng-if="isNotificationToggled" ng-show="notifications.length > 0" ng-repeat="notification in notifications" class="uh-main-section middle uh-message pure-g">
+  <div class="pure-u-2-24 icon">
     <img src="images/icon-notification.png" width="30px;">
   </div>
 

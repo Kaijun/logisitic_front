@@ -9,13 +9,13 @@
       <table class="pure-table pure-table-horizontal ah-list-table">
         <thead>
           <tr>
-            <th width="30px"><input type="checkbox"></th>
-            <th width="45%">文章标题</th>
-            <th>分类</th>
-            <th>撰写人</th>
-            <th>发布时间</th>
-            <th>发布状态</th>
-            <th>操作</th>
+            <th width="2%"><input type="checkbox"></th>
+            <th width="30%">文章标题</th>
+            <th width="5%">分类</th>
+            <th width="5%">撰写人</th>
+            <th width="10%">发布时间</th>
+            <th width="5%">发布状态</th>
+            <th width="8%">操作</th>
           </tr>
         </thead>
         <tbody ng-repeat="article in articles">
@@ -29,7 +29,7 @@
         <td>{{article.author}}</td>
         <td>{{article.created_at}}</td>
         <td>{{article.unpublish?'未发布':'已发布'}}</td>
-        <td><a ng-click="editArticle(article.id)">修改</a>｜<a ng-click="deleteArticle(article.id)">删除</a></td>
+        <td><a ng-click="editArticle(article.id)">修改</a> <a ng-click="deleteArticle(article.id)">删除</a></td>
       
         </tbody>
       </table>

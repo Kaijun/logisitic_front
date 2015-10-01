@@ -80,6 +80,10 @@ textarea{
         display: inline-block;
         padding-right:1em;
     }
+    a{
+        text-decoration: none;
+        color: white;
+    }
 
 }
 
@@ -317,6 +321,24 @@ textarea{
     }
     
 }
+.uh-main-tab{
+    width: 100%;
+    height: 40px;
+    .left{
+        width: 80%;
+        float: left;
+    }
+    .right{
+        text-align: right;
+        width: 20%;
+        float: right;
+    }
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+}
+
 .uh-header-tab{
     font-size: 14px;
     line-height: 40px;
@@ -327,6 +349,13 @@ textarea{
     }
 }
 
+.uh-main-headbar{
+    height: 40px;
+    margin-top: 20px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
 .uh-main-action{
     background: #3A6FAD;
      box-shadow: 0 2px 4px #333;
@@ -335,11 +364,14 @@ textarea{
      text-align: center;
      height: 50px;
      color: white;
-     padding: 5px 10px;
+     // padding: 5px 10px;
      line-height: 50px;
      a {
         margin-top:0;
         color: white;
+     }
+     a:hover{
+        cursor: pointer;
      }
      .left{
         float: left;
@@ -351,6 +383,9 @@ textarea{
        &.withtext{
             width: 80px;
         }
+        &:hover{
+            cursor: pointer;
+        }
      }
      .right{
         float: right;
@@ -358,21 +393,29 @@ textarea{
         width: 40px;
         height: 40px;
         &.withtext{
-            width: 80px;
+            width: auto;
+            height: 40px;
+        }
+        &:hover{
+            cursor: pointer;
         }
      }
      .btn-back{
         background: url('../images/btn-back.png') #376191 no-repeat center;
-
      }
      .btn-pwd{
-         background: url('../images/btn-pwd.svg') #376191 no-repeat left;
+            font-size: 12px;
+            line-height: 40px;
+            padding-left: 10px;
+         background: url('../images/btn-pwd.svg') #376191 no-repeat 8px 12px;
+         background-size: 15px 15px;
      }
-     .btn-confrim{
-        background: url('../images/btn-confrim.svg') no-repeat center;
+     .btn-confirm{
+        background: url('../images/btn-confirm.svg') no-repeat center;
         background-size: 20px 20px;
         &:hover{
-            background: url('../images/btn-confrim.svg') #376191 no-repeat center;
+            background: url('../images/btn-confirm.svg') #376191 no-repeat center;
+            border-radius:5px;
             background-size: 20px 20px;
         }
 
@@ -385,14 +428,13 @@ textarea{
         background: url('../images/btn-edit.svg') #376191 no-repeat center;
         background-size: 18px 18px;
         &:hover{
-            background: url('../images/btn-edit.svg') #306191 no-repeat center
+            background: url('../images/btn-edit.svg') #306191 no-repeat center;
         }
      }
      .btn-delete{
         background: url('../images/btn-delete.svg') no-repeat center;
         &:hover{
             background: url('../images/btn-delete.svg') #E24545 no-repeat center;
-            cursor: pointer;
         }
      }
 
@@ -512,6 +554,9 @@ textarea{
             height: 24px;
             background: url(../images/uh-item-delete.png) no-repeat center center;
             cursor: pointer;
+        }
+        .span{
+            margin-left:5px;
         }
     }
 
@@ -731,7 +776,10 @@ input[type="radio"]{
 }
 input[type="checkbox"]{
     width: auto;
+    padding-right:5px;
+
 }
+
 
 //表单选择框
 select{
@@ -1030,10 +1078,17 @@ textarea{
 
 .uh-message{
     font-size: 14px;
-    padding: 10px 8px;
+    padding: 20px;
 
     border-bottom: 1px solid #efefef;
-
+    &:last-of-type{
+        margin-bottom: 50px;
+    }
+    .icon{
+        position: relative;
+        top: 50%;
+        transform: translateY(25%);
+    }
     .title{
         font-size: 16px;
         line-height: 20px;
@@ -1042,7 +1097,7 @@ textarea{
     }
     .content{
         color: #333;
-        line-height: 24px;
+        line-height: 30px;
     }
     .info{
         padding-top:10px;
@@ -1059,7 +1114,7 @@ textarea{
     }
     .info a{
         text-decoration: none;
-        color: blue;
+        color: #3A6FAD;
     }
     &:hover{
         background:#efefef;
@@ -1129,6 +1184,69 @@ textarea{
     text-align:center;
     font-weight: bold;
 }
+
+
+//city select
+.city-select:hover{
+    cursor: pointer;
+    .city-select-drop{
+         display: block;
+    }
+   
+}
+
+dt{
+    display: none;
+}
+.city-select-tab{
+    background:#3A6FAD;
+    padding-left:15px;
+    border-radius:5px 5px 0 0;
+
+    .col-xs-4{
+        padding:5px 20px;
+        color: #F8F8F8;
+    } 
+
+    .mb{
+        &.first-of-type{
+            padding-left:0;
+        }
+        padding-left:15px;
+    }
+    .active{
+        border-radius:5px;
+        color: #fff;
+        background:#376191;
+    }
+}
+.city-select-panel{
+    // padding: 5px;
+    a{
+        padding-left:10px;
+    }
+    dl{
+        margin-left:-20px;
+    }
+}
+
+.city-select-drop{
+    position:absolute;
+    width: 400px;
+    box-shadow: 0 0 4px #999;
+    background:#F8F8F8;
+    border-radius:5px;
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+    display: none;
+
+}
+
+
+
+
 
 // 用于修改自动填充颜色
 ::-webkit-input-placeholder { color:#333; }
