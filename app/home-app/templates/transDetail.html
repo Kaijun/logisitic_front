@@ -74,11 +74,11 @@
 
 <div class="uh-main-action">
   <!-- 底部操作栏 -->
-        <div ng-click="submit()" class="btn-back left"><a >返回</a></div>
-      <div ng-show="trans.status==6 || trans.status==7" class="right">
+        <div ng-click="submit()" class="btn-back left"></div>
+      <div ng-show="trans.status==6 || trans.status==7">
         <div ng-show="isConfirmShown" ng-click="confirmTrans()" class="pure-button edit right"><a >确认移库</a></div>
         <!-- <div ng-click="editTrans()" class="pure-button edit right"><a >编辑</a></div> -->
-        <div ng-click="deleteTrans()" class="pure-button delete right"><a >删除</a></div>
+        <div ng-click="deleteTrans()" class="btn-delete right"></div>
       </div>
 
   </div>
