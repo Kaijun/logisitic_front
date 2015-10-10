@@ -5,11 +5,12 @@
         .module('home.controllers')
         .controller('VorkasseSubmitCtrl', VorkasseSubmitCtrl);
 
-    VorkasseSubmitCtrl.$inject = ['$scope', 'VorkasseService', 'InfoService', '$timeout', '$q', '$state', '$stateParams'];
+    VorkasseSubmitCtrl.$inject = ['$scope', 'VorkasseService', 'InfoService', '$timeout', '$q', '$state', '$stateParams', 'UserInfo'];
 
     /* @ngInject */
-    function VorkasseSubmitCtrl($scope, VorkasseService, InfoService, $timeout, $q, $state,  $stateParams) {
-       var vorkasseObj = {
+    function VorkasseSubmitCtrl($scope, VorkasseService, InfoService, $timeout, $q, $state,  $stateParams, UserInfo) {
+        $scope.userInfo = UserInfo;
+        var vorkasseObj = {
             amount: null,
             reference_website: null,
             order_number: null,

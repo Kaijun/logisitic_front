@@ -13,7 +13,7 @@
 
             <div class="pure-u-1-2"><input ng-model="vorkasse.amount" type="text"></div>
             <div class="pure-u-1-4 label">欧元</div>
-          <div class="pure-u-1 desc">您目前的余额为800,汇率为{{currentRate}}, 可代刷金额{{800/currentRate}}欧元</div>
+          <div class="pure-u-1 desc">您目前的余额为{{userInfo.remain}},汇率为{{currentRate}}, 可代刷金额{{userInfo.remain/currentRate}}欧元</div>
 
           </div>
          
