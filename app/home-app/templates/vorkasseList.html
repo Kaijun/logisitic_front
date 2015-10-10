@@ -19,7 +19,7 @@
 
 <div class="uh-main-section middle">
 
-      <table ng-table="tableParams" class="pure-table pure-table-horizontal uh-line-table">
+      <table ng-show="filterList.length>0" ng-table="tableParams" class="pure-table pure-table-horizontal uh-line-table">
           <tr ng-repeat="vk in $data" >
               <td data-title="'提交日期'">{{vk.created_at}}</td>
               <td data-title="'代刷金额(欧元)'">{{vk.amount_foreign}}</td>
@@ -32,7 +32,7 @@
               </td>
           </tr>
       </table>
-      <div class="uh-box-empty">
+      <div ng-show="filterList.length==0" class="uh-box-empty">
           <img src="images/message-empty.svg" width="120px;">
           <div>您的代刷列表为空 :(</div>
         </div>

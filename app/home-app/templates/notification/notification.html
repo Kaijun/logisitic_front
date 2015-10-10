@@ -16,45 +16,59 @@
       </div>
 </div>
 
-<div class="uh-main-section middle">
-  <div class="uh-box-empty">
-  <img src="images/message-empty.svg" width="120px;">
-  <div>您还没有收到任何消息</div>
-  </div>
-</div>
-
-<div ng-if="isNotificationToggled" ng-show="notifications.length > 0" ng-repeat="notification in notifications" class="uh-main-section middle uh-message pure-g">
-  <div class="pure-u-2-24 icon">
-    <img src="images/icon-notification.png" width="30px;">
-  </div>
-
-  <div class="pure-u-21-24">
-    <div class="title">{{notification.title}}</div>
-    <!-- <div class="content">你的订单已经发货。</div> -->
-    <div class="info">
-      <div class="pure-u-12-24 time">{{notification.updated_at}}</div>
-      <div class="pure-u-12-24 control"><a ng-click="markNotificationAsRead(notification);$event.stopPropagation()">标记为已读</a> <a ng-click="deleteNotification(notification);$event.stopPropagation()">删除</a></div>
+<div ng-if="isNotificationToggled" >
+  
+  <div ng-show="notifications.length==0" class="uh-main-section middle">
+    <div class="uh-box-empty">
+    <img src="images/message-empty.svg" width="120px;">
+    <div>您还没有收到任何消息</div>
     </div>
   </div>
 
-</div>
+  <div ng-show="notifications.length > 0" ng-repeat="notification in notifications" class="uh-main-section middle uh-message pure-g">
+    <div class="pure-u-2-24 icon">
+      <img src="images/icon-notification.png" width="30px;">
+    </div>
 
+    <div class="pure-u-21-24">
+      <div class="title">{{notification.title}}</div>
+      <!-- <div class="content">你的订单已经发货。</div> -->
+      <div class="info">
+        <div class="pure-u-12-24 time">{{notification.updated_at}}</div>
+        <div class="pure-u-12-24 control"><a ng-click="markNotificationAsRead(notification);$event.stopPropagation()">标记为已读</a> <a ng-click="deleteNotification(notification);$event.stopPropagation()">删除</a></div>
+      </div>
+    </div>
 
-<div ng-if="!isNotificationToggled" ng-show="conversations.length > 0" ng-repeat="conversation in conversations" ng-click="goToDetail(conversation.id)"  class="uh-main-section middle uh-message">
-  <div class="pure-u-2-24">
-    <img src="images/icon-notification.png" width="30px;">
   </div>
 
-  <div class="pure-u-21-24">
-    <div class="title">{{conversation.title}}</div>
-    <!-- <div class="content">你的订单已经发货。</div> -->
-    <div class="info">
-      <div class="pure-u-12-24 time">{{conversation.updated_at}}</div>
-      <div class="pure-u-12-24 control">
-        <a ng-if="!conversation.is_read_by_customer" ng-click="markConversationAsRead(conversation);$event.stopPropagation()">标记为已读</a> 
-        <a ng-click="deleteConversation(conversation);$event.stopPropagation()">删除</a>
-      </div>
+</div>
+
+<div ng-if="!isNotificationToggled" >
+  
+
+  <div ng-show="conversations.length==0" class="uh-main-section middle">
+    <div class="uh-box-empty">
+    <img src="images/message-empty.svg" width="120px;">
+    <div>您还没有收到任何消息</div>
     </div>
   </div>
   
+  <div ng-show="conversations.length > 0" ng-repeat="conversation in conversations" ng-click="goToDetail(conversation.id)"  class="uh-main-section middle uh-message">
+    <div class="pure-u-2-24">
+      <img src="images/icon-notification.png" width="30px;">
+    </div>
+
+    <div class="pure-u-21-24">
+      <div class="title">{{conversation.title}}</div>
+      <!-- <div class="content">你的订单已经发货。</div> -->
+      <div class="info">
+        <div class="pure-u-12-24 time">{{conversation.updated_at}}</div>
+        <div class="pure-u-12-24 control">
+          <a ng-if="!conversation.is_read_by_customer" ng-click="markConversationAsRead(conversation);$event.stopPropagation()">标记为已读</a> 
+          <a ng-click="deleteConversation(conversation);$event.stopPropagation()">删除</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
 </div>

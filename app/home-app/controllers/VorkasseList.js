@@ -10,7 +10,7 @@
     /* @ngInject */
     function VorkasseListCtrl($scope, VorkasseService, InfoService, $filter, $timeout, $state, ngTableParams) {
         
-        var filterList = [];
+        $scope.filterList = [];
         $scope.vorkasseList = [];
         $scope.goToDetail = goToDetail;
         $scope.toggleStatusFilter = toggleStatusFilter;
@@ -23,8 +23,8 @@
         }, {
             total: $scope.vorkasseList.length, // length of data
             getData: function ($defer, params) {
-                $defer.resolve(filterList.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                params.total(filterList.length); // set total for recalc pagination
+                $defer.resolve($scope.filterList.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                params.total($scope.filterList.length); // set total for recalc pagination
             }
         })
         active();
@@ -40,7 +40,7 @@
                     return item;
                 })
                 $scope.vorkasseList = list;
-                filterList = list;
+                $scope.filterList = list;
                 $scope.tableParams.reload();
             });
 
@@ -51,10 +51,10 @@
         
         function toggleStatusFilter(statusId){
             if(statusId===-1){
-                filterList = $scope.vorkasseList;
+                $scope.filterList = $scope.vorkasseList;
             }
             else{
-                filterList = $filter('filter')($scope.vorkasseList, {status: statusId});
+                $scope.filterList = $filter('filter')($scope.vorkasseList, {status: statusId});
             }
             $scope.toggleStatus = statusId;
             $scope.tableParams.reload();

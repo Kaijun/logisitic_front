@@ -6,7 +6,7 @@
     angular.module('home.controllers')
     .controller('TransListCtrl', ['$scope', '$state', '$filter', 'TransService', 'InfoService', 'ngTableParams', 
     function($scope, $state, $filter, TransService, InfoService, ngTableParams) {
-        var filterStockList = [];
+        $scope.filterStockList = [];
         $scope.stockList = [];
         $scope.goToDetail = goToDetail;
         $scope.toggleStatusFilter = toggleStatusFilter;
@@ -19,8 +19,8 @@
         }, {
             total: $scope.stockList.length, // length of data
             getData: function ($defer, params) {
-                $defer.resolve(filterStockList.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                params.total(filterStockList.length); // set total for recalc pagination
+                $defer.resolve($scope.filterStockList.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                params.total($scope.filterStockList.length); // set total for recalc pagination
             }
         })
         active();
@@ -34,7 +34,7 @@
                     return item;
                 })
                 $scope.stockList = list;
-                filterStockList = list;
+                $scope.filterStockList = list;
                 $scope.tableParams.reload();
             });
 
@@ -45,10 +45,10 @@
         
         function toggleStatusFilter(statusId){
             if(statusId===-1){
-                filterStockList = $scope.stockList;
+                $scope.filterStockList = $scope.stockList;
             }
             else{
-                filterStockList = $filter('filter')($scope.stockList, {status: statusId});
+                $scope.filterStockList = $filter('filter')($scope.stockList, {status: statusId});
             }
             $scope.toggleStatus = statusId;
             $scope.tableParams.reload();
