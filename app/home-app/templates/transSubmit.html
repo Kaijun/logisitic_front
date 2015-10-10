@@ -165,11 +165,12 @@
 <div class="uh-section">附加信息</div>
 <div class="uh-form-section pure-g">
   <div class="pure-u-3-24">附加服务</div>
-  <spab ng-repeat="e in trans.extra_services">{{e.service_name}} </span>
+  <span ng-if="trans.extra_services.length>0" ng-repeat="e in trans.extra_services">{{e.service_name}} </span>
+  <span ng-if="trans.extra_services.length==0">空</span>
 </div>
 <div class="uh-form-section pure-g">
   <div class="pure-u-3-24">发货备注</div>
-  <div class="pure-u-21-24">{{trans.message}}</div>
+  <div class="pure-u-21-24">{{trans.message?trans.message:"空"}}</div>
 </div>
 </div>
   <!-- 底部操作栏 -->

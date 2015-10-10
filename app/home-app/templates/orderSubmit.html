@@ -222,7 +222,8 @@
     <table class="pure-table pure-table-horizontal uh-small-table">
       <tr>
         <td style="width:15%">附加服务</td>
-        <td ng-repeat="e in order.extra_services">{{e.service_name}} </td>
+        <td ng-if="order.extra_services.length>0" ng-repeat="e in order.extra_services">{{e.service_name}} </td>
+        <td ng-if="order.extra_services.length==0">空</td>
       </tr>
       <tr>
         <td style="width:15%">支付方式</td>
@@ -230,7 +231,7 @@
       </tr>
       <tr>
         <td style="width:15%">发货备注</td>
-        <td>{{order.message}}</td>
+        <td>{{order.message?order.message:"空"}}</td>
       </tr>
     </table>
              <div class="pure-g uh-form-section">
