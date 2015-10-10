@@ -13,6 +13,7 @@
             chargeAmount: chargeAmount,
             getAmountByEmail: getAmountByEmail,
             getAmountByStockNum: getAmountByStockNum,
+            getRecords: getRecords,
         };
         return service;
 
@@ -36,6 +37,13 @@
         }
         function getAmountByStockNum (stocknum) {
             return $http.get(AppConfig.apiUrl + '/finance/info?stock_number=' + stocknum).then(function (response) {
+                return response.data;
+            })
+        }
+        function getRecords (page) {
+            var page = page?('?page='+page):'';
+            var url = '/transaction-list' + page;
+            return $http.get(AppConfig.apiUrl + url).then(function (response) {
                 return response.data;
             })
         }

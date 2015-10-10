@@ -31,16 +31,16 @@
         </thead>
         <tbody>
           <!-- <tr ng-repeat=""> -->
-          <tr>
+          <tr ng-repeat="record in records" >
           <td width="25px;"><input type="checkbox"></td>
             <td>TS01921321</td>
-            <td>2015-4-3</td>
+            <td>{{record.created_at}}</td>
             <td>代刷</td>
-            <td>CPJSTUDIO</td>
-            <td>293元</td>
-            <td>用户代刷申请</td>
+            <td>{{record.customer_id}}</td>
+            <td>{{record.amount}}元</td>
+            <td>{{record.trans_content}}</td>
             <td>-</td>
-            <td>admin</td>
+            <td>{{record.confirmed_by}}</td>
           </tr>
         </tbody>
       </table>

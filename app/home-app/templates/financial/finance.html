@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="pure-g uh-main-headbar">
-    <div class="pure-u-1-4">账户余额:50元</div>
+    <div class="pure-u-1-4">账户余额:{{userInfo.remain}}元</div>
     <div class="pure-u-1-4" ui-sref="refill"><a href="">充值</a></div>
     <div class="pure-u-1-4" ui-sref="refund"><a href="">退款</a></div>
   </div>
@@ -17,27 +17,25 @@
       <span class="title">消费记录</span>
     </div>
   </div>
-      <table ng-table="tableParams" class="pure-table pure-table-horizontal uh-line-table">
-          <tr ng-repeat="stock in $data">
-              <td data-title="'消费日期'">
-                  {{stock.updatedTime}}
-              </td>
-              <td data-title="'相关订单号'">
-                  {{stock.ship_info}}
-              </td>
-              <td data-title="'消费金额'">
-                  {{stock.desc}}
-              </td>
-              <td data-title="'消费说明'">
-                  {{stock.desc}}
-              </td>
-          </tr>
+      <table class="pure-table pure-table-horizontal uh-line-table">
+
+        <thead>
           <tr>
-          <td>2015-3-3</td>
-          <td>DKD09123214</td>
-          <td>325元</td>
-          <td>发货</td>
+            <th width="30%">消费日期</th>
+            <th  width="20%">消费金额</th>
+            <th  width="50%">消费说明</th>
           </tr>
+        </thead>
+        <tbody>
+          <!-- <tr ng-repeat=""> -->
+          <tr ng-repeat="record in records" >
+            <td>{{record.created_at}}</td>
+            <td>{{record.amount}}元</td>
+            <td>{{record.trans_content}}</td>
+          </tr>
+        </tbody>
+
+
 
       </table>
 </div>

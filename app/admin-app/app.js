@@ -237,11 +237,11 @@
             templateUrl: 'templates/finance/vorkasseDetail.html',
             controller: 'VorkasseDetail',
         })
-       .state('transaction', {
+       .state('financialRecord', {
             parent: 'finance',
-            url: '/transaction',
-            templateUrl: 'templates/finance/transaction.html',
-            controller: '',
+            url: '/record',
+            templateUrl: 'templates/finance/record.html',
+            controller: 'FinancialRecord',
         })
 
 

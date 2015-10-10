@@ -110,10 +110,10 @@
             templateUrl: 'templates/financial/refund.html',
             controller: '',
         })
-        .state('finance',{
-            url: '/manage/finance',
+        .state('financialRecord',{
+            url: '/financial/record',
             templateUrl: 'templates/financial/finance.html',
-            controller: '',
+            controller: 'FinancialRecordCtrl',
         })
         .state('credits',{
             url: '/manage/credits',
