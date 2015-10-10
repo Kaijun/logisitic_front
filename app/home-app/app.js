@@ -3,8 +3,8 @@
 
 
 	angular.module('home',  ['home.controllers','home.services','home.directives' , 'ngAnimate', 'ui.router', 'angular-loading-bar'])
-	.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', 
-        function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
+	.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', '$httpProvider',
+        function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider, $httpProvider) {
         cfpLoadingBarProvider.includeSpinner = true;
         
 	    $urlRouterProvider.otherwise('/');
@@ -138,6 +138,19 @@
         })
 
 
+               // Error Http Interceptors
+        $httpProvider.interceptors.push(function() {
+          return {
+            'response': function(response) {
+                if(response.data.success==='false'){
+                    swal(response.data.reason, "", "error");
+                    return null;
+                }
+                return response;
+            }
+          };
+        });
+
 	}])
     .run(['$state', '$injector', function($state, $injector){
         var isUserInfoRendered = $injector.has('UserInfo');
@@ -150,4 +163,7 @@
     angular.module('home').constant('AppConfig', {
         apiUrl: '/api',
     });
+
 })();
+
+

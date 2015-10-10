@@ -45,16 +45,17 @@
                 stock_number: $scope.chargeStockNum,
                 amount: $scope.chargeAmount,
             }).then(function (data) {
-                swal({
-                    type: "success",
-                    title: "充值成功!",
-                    showCancelButton: false,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "确定",
-                    closeOnConfirm: true,
-                }, function () {
-                    
-                })
+                if(data.success==="true")
+                    swal({
+                        type: "success",
+                        title: "充值成功!",
+                        showCancelButton: false,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定",
+                        closeOnConfirm: true,
+                    }, function () {
+                        
+                    })
             });
             
         }

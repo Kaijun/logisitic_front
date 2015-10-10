@@ -2,8 +2,8 @@
 ;(function () {
 
 	angular.module('admin', ['admin.controllers','admin.services','admin.directives', 'ui.router', 'angular-loading-bar'])
-	.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', 
-    function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
+	.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', '$httpProvider', 
+    function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider, $httpProvider) {
         cfpLoadingBarProvider.includeSpinner = true;
 
 	    $urlRouterProvider.otherwise('/business/stockList');
@@ -302,7 +302,18 @@
             controller: 'PrintTrans',
         })
 
-        
+               // Error Http Interceptors
+        $httpProvider.interceptors.push(function() {
+          return {
+            'response': function(response) {
+                if(response.data.success==='false'){
+                    swal(response.data.reason, "", "error");
+                    return null;
+                }
+                return response;
+            }
+          };
+        });
 	}])
     .run(['$state', '$injector', '$templateCache', '$templateRequest', '$compile', '$rootScope',
     function($state, $injector, $templateCache, $templateRequest, $compile, $rootScope){

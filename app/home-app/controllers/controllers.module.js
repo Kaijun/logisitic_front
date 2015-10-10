@@ -5,6 +5,5 @@
         .module('home.controllers', [
             'ngTable',
             'angular.city.select',
-            
         ]);
 })();
