@@ -56,7 +56,7 @@
             $scope.address = angular.copy(addressObj);
             var isEditing = false;
             var isEditingAddrId = null;
-
+            
         }
 
         function submit(){

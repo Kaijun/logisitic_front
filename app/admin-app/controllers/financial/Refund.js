@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('Refund', Refund);
 
-    Refund.$inject = ['$scope'];
+    Refund.$inject = ['$scope', '$window'];
 
     /* @ngInject */
-    function Refund($scope) {
+    function Refund($scope, $window) {
         $scope.userEmail = '';
         $scope.stockNum = '';
         $scope.amount = '';
@@ -57,6 +57,9 @@
                 })
             });
             
+        }
+        $scope.goBack = function () {
+            $window.history.back();
         }
     }
 })();

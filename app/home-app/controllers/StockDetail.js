@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('StockDetailCtrl', StockDetailCtrl);
 
-    StockDetailCtrl.$inject = ['StockService', 'InfoService', 'AppConfig', '$q', '$scope', '$timeout', '$stateParams', '$state'];
+    StockDetailCtrl.$inject = ['StockService', 'InfoService', 'AppConfig', '$q', '$scope', '$timeout', '$stateParams', '$state', '$window'];
 
     /* @ngInject */
-    function StockDetailCtrl(StockService, InfoService, AppConfig, $q, $scope, $timeout, $stateParams, $state) {
+    function StockDetailCtrl(StockService, InfoService, AppConfig, $q, $scope, $timeout, $stateParams, $state, $window) {
         $scope.stock = null;
         $scope.deleteStock = deleteStock;
         $scope.editStock = editStock;
@@ -82,6 +82,10 @@
             }, function () {
                 // body...
             })
+        }
+
+        $scope.goBack = function () {
+            $window.history.back();
         }
     }
 })();

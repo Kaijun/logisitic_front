@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('VorkasseDetailCtrl', VorkasseDetailCtrl);
 
-    VorkasseDetailCtrl.$inject = ['$scope', 'VorkasseService', '$timeout', '$state', '$stateParams', 'InfoService'];
+    VorkasseDetailCtrl.$inject = ['$scope', 'VorkasseService', '$timeout', '$state', '$stateParams', 'InfoService', '$window'];
 
     /* @ngInject */
-    function VorkasseDetailCtrl($scope, VorkasseService, $timeout, $state, $stateParams, InfoService) {
+    function VorkasseDetailCtrl($scope, VorkasseService, $timeout, $state, $stateParams, InfoService, $window) {
     
         $scope.vorkasse = null;
 
@@ -62,5 +62,8 @@
             })
         }
 
+        $scope.goBack = function () {
+            $window.history.back();
+        }
     }
 })();

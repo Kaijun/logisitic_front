@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('Refill', Refill);
 
-    Refill.$inject = ['$scope', '$timeout', 'FinanceService'];
+    Refill.$inject = ['$scope', '$timeout', 'FinanceService', '$window'];
 
     /* @ngInject */
-    function Refill($scope, $timeout, FinanceService) {
+    function Refill($scope, $timeout, FinanceService, $window) {
         $scope.userEmail = '';
         $scope.stockNum = '';
         $scope.amount = '';
@@ -58,6 +58,10 @@
                     })
             });
             
+        }
+
+        $scope.goBack = function () {
+            $window.history.back();
         }
     }
 })();

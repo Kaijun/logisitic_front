@@ -67,6 +67,10 @@
             })
         }
 
+        $scope.goBack = function () {
+            $window.history.back();
+        }
+        
         function payOrder () {
             if($scope.order.order_status==2){
                 if(UserInfo.remain >= $scope.order.total_cost){

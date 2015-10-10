@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('TransDetailCtrl', TransDetailCtrl);
 
-    TransDetailCtrl.$inject = ['$scope', 'TransService', 'InfoService', 'UserInfo','$stateParams', '$timeout', '$state'];
+    TransDetailCtrl.$inject = ['$scope', 'TransService', 'InfoService', 'UserInfo','$stateParams', '$timeout', '$state', '$window'];
 
     /* @ngInject */
-    function TransDetailCtrl($scope, TransService, InfoService, UserInfo, $stateParams, $timeout, $state) {
+    function TransDetailCtrl($scope, TransService, InfoService, UserInfo, $stateParams, $timeout, $state, $window) {
         $scope.trans = null;
         $scope.warehouse = null;
         $scope.isConfirmShown = false;
@@ -63,6 +63,9 @@
             }, function () {
                 // body...
             })
+        }
+        $scope.goBack = function () {
+            $window.history.back();
         }
     }
 })();
