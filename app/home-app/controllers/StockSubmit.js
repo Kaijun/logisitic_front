@@ -92,7 +92,7 @@
                 var promises = []; 
                 $scope.imagesToUpload.forEach(function (image, index) {
                     var promise = InfoService.uploadImage(image).then(function(data){
-                        if(data.success=='true')
+                        if(data.success === true ) 
                             $scope.stock['image_'+(index+1)] = data.file_name;
                     });
                     promises.push(promise);
@@ -140,14 +140,14 @@
             console.log($scope.stock);
             if($stateParams.stockId && isEditMode){
                 StockService.submitStock($stateParams.stockId, $scope.stock).then(function (data) {
-                    if(data.package_id && data.success==="true"){
+                    if(data.package_id && data.success === true ){
                         $state.go('stockDetail', {stockId: $stateParams.stockId});
                     }
                 });
             }
             else{
                 StockService.submitStock($scope.stock).then(function (data) {
-                    if(data.package_id && data.success==="true"){
+                    if(data.package_id && data.success===true){
                         $state.go('stockDetail', {stockId: data.package_id});
                     }
                 });

@@ -18,6 +18,7 @@
             deleteAddress: deleteAddress,
 
             editPersonalInfo: editPersonalInfo,
+            editPassword: editPassword,
         }
 
         ////////////////
@@ -84,6 +85,18 @@
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+
+
+        function editPassword (pwd) {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/user/password',
+                method: 'PUT',
+                data: pwd,
             }).then(function(response){
                 return response.data;
             });

@@ -45,7 +45,7 @@
                 stock_number: $scope.chargeStockNum,
                 amount: $scope.chargeAmount,
             }).then(function (data) {
-                if(data.success==="true")
+                if(data.success===true)
                     swal({
                         type: "success",
                         title: "充值成功!",

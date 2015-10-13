@@ -96,7 +96,7 @@
         .state('changePassword', {
             url: '/profile/changePassword',
             templateUrl: 'templates/profile/changePassword.html',
-            controller: '',
+            controller: 'ChangePassword',
         })
         .state('refill', {
             url: '/financial/refill',
@@ -140,8 +140,8 @@
         $httpProvider.interceptors.push(function() {
           return {
             'response': function(response) {
-                if(response.data.success==='false'){
-                    swal(response.data.reason, "", "error");
+                if(response.data.success===false){
+                    swal(response.data.message, "", "error");
                     return null;
                 }
                 return response;

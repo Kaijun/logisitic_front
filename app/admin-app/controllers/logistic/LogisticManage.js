@@ -109,7 +109,7 @@
             $scope.logisticPath.price_ladders = $scope.ladders;
             if(isEditing){
                 LogisticService.editLogistic($stateParams.id, $scope.logisticPath).then(function (dataa) {
-                   if(data.success!="true") return;
+                   if(data.success===true)
                     swal({
                         type: "success",
                         title: "添加成功!",
@@ -124,7 +124,7 @@
             }
             else{
                 LogisticService.submitLogistic($scope.logisticPath).then(function (data) {
-                    if(data.success!="true") return;
+                    if(data.success===true)
                     swal({
                         type: "success",
                         title: "修改成功!",

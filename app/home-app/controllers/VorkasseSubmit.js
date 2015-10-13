@@ -75,7 +75,7 @@
                 var promises = []; 
                 $scope.imagesToUpload.forEach(function (image, index) {
                     var promise = InfoService.uploadImage(image).then(function(data){
-                        if(data.success=='true')
+                        if(data.success===true)
                             // imgFileNames.push(data.file_name);
 
                             $scope.vorkasse['proof_files_paths'] = data.file_name;
@@ -107,7 +107,7 @@
             console.log($scope.vorkasse);
             if($stateParams.id && isEditMode){
                 VorkasseService.editVorkasse($stateParams.id, $scope.vorkasse).then(function (data) {
-                    // if(data.package_id && data.success==="true"){
+                    // if(data.package_id && data.success===true){
                     //     $state.go('stockDetail', {stockId: $stateParams.stockId});
                     // }
                 });

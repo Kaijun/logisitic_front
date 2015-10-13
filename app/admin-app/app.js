@@ -306,8 +306,8 @@
         $httpProvider.interceptors.push(function() {
           return {
             'response': function(response) {
-                if(response.data.success==='false'){
-                    swal(response.data.reason, "", "error");
+                if(response.data.success===false){
+                    swal(response.data.message, "", "error");
                     return null;
                 }
                 return response;

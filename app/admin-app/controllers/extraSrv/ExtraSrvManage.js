@@ -71,33 +71,33 @@
             $scope.extraSrv.price_ladders = $scope.ladders;
             if(isEditing){
                 ExtraSrvService.editExtraSrv($stateParams.id, $scope.extraSrv).then(function (data) {
-                    if(data.success!="true") return;
-                    swal({
-                        type: "success",
-                        title: "修改成功!",
-                        showCancelButton: false,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "确定",
-                        closeOnConfirm: true,
-                    }, function () {
-                        $state.go('extraSrvList', {}, {reload: true});
-                    })
+                    if(data.success===true)
+                        swal({
+                            type: "success",
+                            title: "修改成功!",
+                            showCancelButton: false,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "确定",
+                            closeOnConfirm: true,
+                        }, function () {
+                            $state.go('extraSrvList', {}, {reload: true});
+                        })
                 })
             }
             else{
                 
                 ExtraSrvService.submitExtraSrv($scope.extraSrv).then(function (data) {
-                    if(data.success!="true") return;
-                    swal({
-                        type: "success",
-                        title: "添加成功!",
-                        showCancelButton: false,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "确定",
-                        closeOnConfirm: true,
-                    }, function () {
-                        $state.go('extraSrvList', {}, {reload: true});
-                    })
+                    if(data.success===true)
+                        swal({
+                            type: "success",
+                            title: "添加成功!",
+                            showCancelButton: false,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "确定",
+                            closeOnConfirm: true,
+                        }, function () {
+                            $state.go('extraSrvList', {}, {reload: true});
+                        })
                 })
             }
         }

@@ -37,7 +37,7 @@
                 MsgService.sendMessageInConv(conversationId, {
                     content: $scope.textToSend
                 }).then(function (data) {
-                    if(data.success === "true"){
+                    if(data.success === true){
                         var currentdate = new Date(); 
                         var datetime =  currentdate.getFullYear() + "-"
                                         + (currentdate.getMonth()+1)  + "-" 
