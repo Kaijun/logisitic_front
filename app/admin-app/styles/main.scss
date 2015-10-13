@@ -202,7 +202,7 @@ $sub-navbar-height: 64px;
 
 
 .ah-list-table{
-    font-size: 12px;
+    font-size: 14px;
     table-layout: fixed;
     width: 100%;
     margin-top: -5px;
@@ -241,10 +241,8 @@ $sub-navbar-height: 64px;
     }
     a{
     cursor: pointer;
-    color: #fff;
-    background: #3A6FAD;
-    border-radius: 5px;
-    padding:5px;
+    color: #333;
+    text-decoration: underline;
   }
 }
 
