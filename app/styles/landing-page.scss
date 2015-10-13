@@ -314,4 +314,33 @@ $main-button-color: #5579B9;
     }
   }
 }
+.lp-news-list{
+  width: 100%;
+  line-height: 30px;
+  font-size: 14px;
+  margin-bottom: 5px;
+  .right{
+    text-align: right;
+    color: #333;
+    padding: 0 15px;
+    float: right;
+    width: 30%;
+  }
+  .left{
+    float: left;
+    width: 70%
+  }
+  a{
+    text-decoration: none;
+    color: #505050;
+    cursor: pointer;
+  }
+}
 
+.lp-news-span{
+  font-size: 28px;
+  margin: 5px 0;
+  &:first-of-type{
+    margin-top: 0;
+  }
+}
