@@ -3,7 +3,6 @@
     <span class="title blue">附加服务 > 添加</span>
   </div>
 </div>
-
 <div ng-show="isPopupShown" class="pop-up-wapper">
   <div class="pop-up-title">
     添加新的服务
@@ -15,7 +14,7 @@
       <div class="pure-u-1-5 input-label">至</div>
       <div class="pure-u-1-5"><input ng-model="ladderTo" type="text"></div>
     </div>
-    <div class="poo-up-section"><input type="text" ng-model="ladderPrice" placeholder="填写此范围的价格"> </div>      
+    <div class="poo-up-section"><input type="text" ng-model="ladderPrice" placeholder="填写此范围的价格"> </div>
   </div>
   <div class="pop-up-opt pure-g">
     <div class="pure-u-2-3 pop-up-tips">
@@ -27,89 +26,81 @@
     </div>
   </div>
 </div>
-
+<div class="pure-g">
+<div class="pure-u-20-24">
   <div class=" ah-section"> 基本信息 </div>
-      <!-- 表单第一行开始 -->
-     <div class="pure-g ah-form-line">
-      <div class="pure-u-2-24 input-label">服务名称</div> 
-      <div class="pure-u-1-4"><input ng-model="extraSrv.service_name"></div>
-      <div class="pure-u-2-24 input-label">适用路线</div> 
-      <div class="pure-u-1-4"><input ng-model="extraSrv.logistic_path_id"></div> 
-     </div>
-
-      <!-- 第一行结束结束 -->
-
-      <!-- 表单第三行开始 -->
-      <div class="pure-g ah-form-line">
-      <div class="pure-u-2-24 input-label">适用用户组</div> 
-      <!-- <div class="pure-u-6-24"><input ng-model="extraSrv.user_group"></div>    -->
-      <div class="pure-u-6-24">
+  <!-- 表单第一行开始 -->
+  <div class="pure-g ah-form-line">
+    <div class="pure-u-2-24 input-label">服务名称</div>
+    <div class="pure-u-1-4"><input ng-model="extraSrv.service_name"></div>
+    <div class="pure-u-2-24 input-label">适用路线</div>
+    <div class="pure-u-1-4"><input ng-model="extraSrv.logistic_path_id"></div>
+  </div>
+  <!-- 第一行结束结束 -->
+  <!-- 表单第三行开始 -->
+  <div class="pure-g ah-form-line">
+    <div class="pure-u-2-24 input-label">适用用户组</div>
+    <!-- <div class="pure-u-6-24"><input ng-model="extraSrv.user_group"></div>    -->
+    <div class="pure-u-6-24">
       <select ng-model="extraSrv.user_group">
-          <option value="0">全部用户</option>
-           <option value="1">普通用户</option>
-            <option value="2">VIP用户</option>
-        </select>
-      </div>
-      <div class="pure-u-2-24 input-label">适用类型</div> 
-      <div class="pure-u-6-24">
-        <!-- <input ng-model="extraSrv.type"> -->
-        <select ng-model="extraSrv.type">
-         <option value="0">全部</option>
-           <option value="1">入库</option>
-            <option value="2">发货</option>
-            <option value="3">移库</option>
-            </select>
-      </div>    
-     </div>
-     <!-- 表单第三行结束 -->
-     <!-- 表单第四行开始 -->
-      <div class="pure-g ah-form-line">
-      <div class="pure-u-2-24 input-label">收费基准</div> 
-      <div class="pure-u-4-24">
+        <option value="0">全部用户</option>
+        <option value="1">普通用户</option>
+        <option value="2">VIP用户</option>
+      </select>
+    </div>
+    <div class="pure-u-2-24 input-label">适用类型</div>
+    <div class="pure-u-6-24">
+      <!-- <input ng-model="extraSrv.type"> -->
+      <select ng-model="extraSrv.type">
+        <option value="0">全部</option>
+        <option value="1">入库</option>
+        <option value="2">发货</option>
+        <option value="3">移库</option>
+      </select>
+    </div>
+  </div>
+  <!-- 表单第三行结束 -->
+  <!-- 表单第四行开始 -->
+  <div class="pure-g ah-form-line">
+    <div class="pure-u-2-24 input-label">收费基准</div>
+    <div class="pure-u-6-24">
       <select ng-model="extraSrv.based_on">
         <option value="0">单件计算</option>
         <option value="1">按重量梯度计算</option>
         <option value="2">按价格计算</option>
       </select></div>
-      <div class="pure-u-2-24 input-label">基准价格</div> 
-      <div class="pure-u-4-24"><input ng-model="extraSrv.base_price"></div>  
-
-     </div>
+      <div class="pure-u-2-24 input-label">基准价格</div>
+      <div class="pure-u-4-24"><input ng-model="extraSrv.base_price"></div>
+    </div>
     <!-- 第四行结束 -->
-
-      <div class="ah-section">价格梯度<span ng-click="addLadder()" class="add">+添加</span></div>
-      <table class="pure-table pure-table-horizontal ah-line-table">
-        <thead>
-          <tr>
-            <th class="pure-u-1-4">范围</th>
-            <th class="pure-u-1-4">价格</th>
-            <th class="pure-u-1-4">操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- TODO: 这里请使用AS生产动态数据 -->
-          <tr ng-repeat="ladder in ladders">
-            <td>{{$first?"0":ladders[$index-1].lower_bound}}-{{ladder.lower_bound}}公斤</td>
-            <td>{{ladder.unit_price}}元</td>
-            <td><a ng-click="deleteLadder(ladder)">删除</a>｜<a ng-click="addLadder(ladder)">修改</a></td>
-          </tr>
-        </tbody>
-      </table>
-
-
-      <div class="ah-section">线路描述</div>
-      <div>
-          <input ng-model="extraSrv.description" type="text">
-      </div>  
-      </div><!-- 左侧主题结束 -->
-
-<div class="pure-g action-btns">
-    <div class="pure-u-1-2">
-       <a class="pure-button back">返回列表</a>
+    <div class="ah-section">价格梯度<span ng-click="addLadder()" class="add">+添加</span></div>
+    <table class="pure-table pure-table-horizontal ah-line-table">
+      <thead>
+        <tr>
+          <th class="pure-u-1-4">范围</th>
+          <th class="pure-u-1-4">价格</th>
+          <th class="pure-u-1-4">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- TODO: 这里请使用AS生产动态数据 -->
+        <tr ng-repeat="ladder in ladders">
+          <td>{{$first?"0":ladders[$index-1].lower_bound}}-{{ladder.lower_bound}}公斤</td>
+          <td>{{ladder.unit_price}}元</td>
+          <td><a ng-click="deleteLadder(ladder)">删除</a>｜<a ng-click="addLadder(ladder)">修改</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="ah-section">线路描述</div>
+    <div>
+      <textarea ng-model="extraSrv.description" type="text" rows="6"></textarea>
     </div>
-    <div class="pure-u-1-2 right">
+  </div><!-- 左侧主题结束 -->
+    <div class="pure-u-4-24 right">
+    <a  ng-click="submit()" class="pure-button blue">确认</a>
       <a  ng-click="" class="pure-button red">取消</a>
-      <a  ng-click="submit()" class="pure-button blue">确认</a>
-    </div>
-</div>
-</div>
+        <a  ng-click="goBack()" class="pure-button back">返回列表</a>
+        
+        
+      </div>
+  </div>
