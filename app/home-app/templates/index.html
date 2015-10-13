@@ -57,7 +57,6 @@
 
 <div ng-show="currentView==1">
     <div ng-show="currentStocks.length>0">
-        <div class="uh-section">最近库存</div>
         <table  class="pure-table pure-table-horizontal uh-list-table">
             
             <thead>
@@ -66,16 +65,14 @@
                 <th>包裹备注</th>
                 <th>库存天数</th>
                 <th>状态</th>
-                <th>操作</th>
             </thead>
             <tbody>
-                <tr ng-repeat="stock in currentStocks">
+                <tr ng-repeat="stock in currentStocks" ui-sref="stockDetail({stockId:stock.id})" style="cursor: pointer;">
                     <td>{{stock.timestampStr}}</td>
                     <td>{{stock.ship_info}}</td>
                     <td>{{stock.desc}}</td>
                     <td>{{stock.inStockTime}}天</td>
                     <td>{{stock.statusStr}}</td>
-                    <td>fdww</td>
                 </tr>
             </tbody>
         </table>
@@ -86,7 +83,6 @@
     </div>
   
     <div ng-show="currentStocks.length==0" >  
-        <div class="uh-section">最近库存为空</div>
         <div class="uh-index-empty ">
             <div>您还没有预报库存</div>
             <div ui-sref="stockSubmit" class="pure-button blue">添加新的库存</div>
@@ -97,7 +93,6 @@
 
 <div ng-show="currentView==2">
     <div ng-show="currentOrders.length>0" >
-        <div class="uh-section">最近订单</div>
         <table class="pure-table pure-table-horizontal uh-list-table">
             
             <thead>
@@ -106,16 +101,14 @@
                 <th>包裹备注</th>
                 <th>创建时间</th>
                 <th>状态</th>
-                <th>操作</th>
             </thead>
             <tbody>
-                <tr ng-repeat="order in currentOrders">
+                <tr ng-repeat="order in currentOrders" ui-sref="orderDetail({orderId:order.id})" style="cursor: pointer;">
                     <td>{{order.updatedTime}}</td>
                     <td>{{order.package.reference_code}}</td>
                     <td>{{order.package.description}}</td>
                     <td>{{order.createdTime}}</td>
                     <td>{{order.statusStr}}</td>
-                    <td>fdww</td>
                 </tr>
             </tbody>
         </table>
@@ -125,7 +118,6 @@
     </div>
     
     <div ng-show="currentOrders.length==0" >  
-        <div class="uh-section">最近订单为空</div>
         <div class="uh-index-empty ">
             <div>您还没有订单</div>
             <div ui-sref="orderSubmit" class="pure-button blue">添加新的订单</div>
@@ -136,8 +128,7 @@
 
 <div ng-show="currentView==3">
     <div  ng-show="currentTranss.length>0" >
-        <div class="uh-section">最近移库</div>
-        <tableclass="pure-table pure-table-horizontal uh-list-table">
+        <table class="pure-table pure-table-horizontal uh-list-table">
             
             <thead>
                 <th>更新日期</th>
@@ -145,16 +136,14 @@
                 <th>接收方库位码</th>
                 <th>创建时间</th>
                 <th>状态</th>
-                <th>操作</th>
             </thead>
             <tbody>
-                <tr ng-repeat="trans in currentTranss">
+                <tr ng-repeat="trans in currentTranss" ui-sref="transDetail({transId:trans.id})" style="cursor: pointer;">
                     <td>{{trans.updatedTime}}</td>
                     <td>{{trans.to_name}}</td>
                     <td>{{trans.to_stock_number}}</td>
                     <td>{{trans.createdTime}}</td>
                     <td>{{trans.statusStr}}</td>
-                    <td>fdww</td>
                 </tr>
             </tbody>
         </table>
@@ -165,7 +154,6 @@
     </div>
     
     <div ng-show="currentTranss.length==0" >  
-        <div class="uh-section">最近移库为空</div>
         <div class="uh-index-empty ">
             <div>您还没有移库</div>
             <div ui-sref="transSubmit" class="pure-button blue">添加新的移库</div>
