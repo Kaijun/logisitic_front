@@ -29,15 +29,27 @@
                     var orderId = $stateParams.orderId;
                     OrderService.getOrderById(orderId).then(function (data) {
                         data.timestampStr = (new Date(data.timestamp.date)).toISOString().substring(0, 10);
-                        $timeout(function() {
-                            $scope.order = data;
-                            $scope.order.statusStr = InfoService.getOrderStatusMapping(data.order_status);
-                        });
+                        
                         return data;
                     },
                     function(){
                         $state.go('index');
                     }).then(function (data) {
+                        InfoService.getTypes().then(function (lts) {
+                            data.items.forEach(function (item) {
+                                lts.some(function (i) {
+                                    if(item.type == i.id){
+                                        item.typeName = i.type_name;
+                                        return true;
+                                    }
+                                })
+                            });
+                            $timeout(function() {
+                                $scope.order = data;
+                                $scope.order.statusStr = InfoService.getOrderStatusMapping(data.order_status);
+                            });
+                        })
+
                         InfoService.getWarehouseById(data.warehouse).then(function (wh){
                             $timeout(function() {
                                 $scope.warehouse = wh;

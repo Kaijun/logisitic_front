@@ -60,11 +60,11 @@
 <table class="pure-table pure-table-horizontal uh-small-table">
         <tr>
          <td style="width: 25%;" >购物网站</td>
-         <td>{{stock.web_link}}</td>
+         <td>{{stock.web_link?stock.web_link:'空'}}</td>
         </tr>
         <tr>
           <td>购物网站订单号</td>
-          <td>{{stock.website_reference}}</td>
+          <td>{{stock.website_reference?stock.website_reference:'空'}}</td>
         </tr>
         <tr>
           <td>购物凭证</td>
@@ -80,14 +80,17 @@
         <tr>
          <td style="width: 25%;">附加服务</td>
          <td>
-            <span ng-repeat="es in stock.extra_services">
+            <span ng-if="stock.extra_services.length>0" ng-repeat="es in stock.extra_services">
               {{es.service_name}}
+            </span>
+            <span ng-if="stock.extra_services.length==0">
+              空
             </span>
          </td>
         </tr>
         <tr>
           <td>留言</td>
-          <td>{{stock.message}}</td>
+          <td>{{stock.message?stock.message:'空'}}</td>
         </tr>
 </table>
 </div>

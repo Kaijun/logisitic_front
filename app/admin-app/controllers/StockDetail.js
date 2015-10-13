@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('StockDetailCtrl', StockDetailCtrl);
 
-    StockDetailCtrl.$inject = ['$scope', '$state', '$stateParams', '$timeout', 'StockService', 'InfoService', 'AppConfig', '$window'];
+    StockDetailCtrl.$inject = ['$scope', '$state', 'LogisticService', '$stateParams', '$timeout', 'StockService', 'InfoService', 'AppConfig', '$window'];
 
     /* @ngInject */
-    function StockDetailCtrl($scope, $state, $stateParams, $timeout, StockService, InfoService, AppConfig, $window) {
+    function StockDetailCtrl($scope, $state, LogisticService, $stateParams, $timeout, StockService, InfoService, AppConfig, $window) {
         $scope.$stateParams = $stateParams;
         $scope.stock = null;
         $scope.stockId = $stateParams.stockId;
@@ -36,6 +36,20 @@
                 }, function() {
                     $state.go('stockList');
                 }).then(function(data) {
+
+                    LogisticService.getLogisticTypes().then(function (lts) {
+                        $timeout(function () {
+                            $scope.stock.items.forEach(function (item) {
+                                lts.some(function (i) {
+                                    if(item.type == i.id){
+                                        item.typeName = i.type_name;
+                                        return true;
+                                    }
+                                })
+                            })
+                        })
+                    })
+
                     InfoService.getWarehouseById(data.warehouse).then(function (wh){
                         $timeout(function() {
                             $scope.warehouse = wh;

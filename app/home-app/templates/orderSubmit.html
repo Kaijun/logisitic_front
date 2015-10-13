@@ -80,7 +80,7 @@
           <tbody>
             <tr ng-repeat="item in package.items" ng-if="item.remain>0">
               <td><input ng-model="item.isSelected" type="checkbox"><label>{{item.item_name}}</label></td>
-              <td>{{item.type}}</td>
+              <td>{{item.typeName}}</td>
               <td>{{item.quantity}}</td>
               <td>{{item.unit_price}}</td>
               <td>{{item.unit_weight}}</td>
@@ -208,7 +208,7 @@
       <tbody>
         <tr ng-repeat="item in order.items">
           <td>{{item.item_name}}</td>
-          <td>{{item.type}}</td>
+          <td>{{item.typeName}}</td>
           <td>{{item.unit_price}} / {{item.quantity*item.unit_price}}</td>
           <td>{{item.unit_weight}}KG / {{item.quantity*item.unit_weight}}KG</td>
           <td>{{item.quantity}}</td>

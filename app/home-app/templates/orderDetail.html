@@ -94,7 +94,7 @@
         <!-- TODO: 这里请使用AS生产动态数据 -->
           <tr ng-repeat="item in order.items">
             <td>{{item.item_name}}</td>
-            <td>{{item.type}}</td>
+            <td>{{item.typeName}}</td>
             <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
             <td>{{item.unit_weight}}kg / {{item.unit_weight*item.quantity}}kg</td>
             <td>{{item.quantity}}</td>
@@ -140,7 +140,7 @@
 <table class="pure-table pure-table-horizontal uh-small-table">
   <tr>
     <td style="width:15%">发货备注</td>
-    <td>{{order.message}}</td>
+    <td>{{order.message?order.message:'空'}}</td>
 </table>
 </div>
 <!-- 底部操作按钮开始 -->

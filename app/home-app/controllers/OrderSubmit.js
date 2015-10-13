@@ -74,7 +74,22 @@
                                 item.quantityToSend = 1;
                             });
                         });
-                        $scope.packageList = data;
+                        return data;
+                    }).then(function (data) {
+                        InfoService.getTypes().then(function (lts) {
+                            data.forEach(function (pkg) {
+                                pkg.items.forEach(function (item) {
+                                    lts.some(function (i) {
+                                        if(item.type == i.id){
+                                            item.typeName = i.type_name;
+                                            return true;
+                                        }
+                                    })
+                                });
+                            })
+
+                            $scope.packageList = data;
+                        })
                     });
                 })
             });
@@ -135,6 +150,7 @@
                             quantity: item.quantityToSend,
                             item_name: item.item_name,
                             type: item.type,
+                            typeName: item.typeName,
                             unit_price: item.unit_price,
                             unit_weight: item.unit_weight
                         })
