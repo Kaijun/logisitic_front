@@ -1,0 +1,62 @@
+(function() {
+    'use strict';
+
+    angular
+        .module('home.controllers')
+        .controller('IndexCtrl', IndexCtrl);
+
+    IndexCtrl.$inject = ['$scope', 'InfoService', 'StockService', 'OrderService', 'TransService', '$timeout', '$state', 'UserInfo'];
+
+    /* @ngInject */
+    function IndexCtrl($scope, InfoService, StockService, OrderService, TransService, $timeout, $state, UserInfo) {
+        $scope.userInfo = UserInfo;
+        $scope.currentView = 0;
+        $scope.currentStocks = [];
+        $scope.currentOrders = [];
+        $scope.currentTranss = [];
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+        }
+
+        $scope.toggleView = function (viewNum) {
+            $scope.currentView = viewNum;
+            if(viewNum===1){
+                StockService.getCurrentStocks().then(function (list) {
+                    list.map(function (item) {
+                        item.timestampStr = (new Date(item.timestamp.date)).toISOString().substring(0, 10);
+                        item.inStockTime = Math.floor((new Date() - new Date(item.timestamp.date)) / (1000*60*60*24)) + 1;
+                        item.statusStr = InfoService.getStockStatusMapping(parseInt(item.status));
+                        return item;
+                    })
+                    $scope.currentStocks = list;
+                });
+            }
+            else if(viewNum === 2){
+                OrderService.getCurrentOrders().then(function (list) {
+                    list.map(function (item) {
+                      item.createdTime = (new Date(item.created_at)).toISOString().substring(0, 10);
+                        item.updatedTime = (new Date(item.updated_at)).toISOString().substring(0, 10);
+                        item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
+                        return item;
+                    })
+                    $scope.currentOrders = list;
+                });  
+            }
+            else if(viewNum === 3){
+                TransService.getCurrentTranss().then(function (list) {
+                    list.map(function (item) {
+                        item.createdTime = (new Date(item.created_at.date)).toISOString().substring(0, 10);
+                        item.updatedTime = (new Date(item.updated_at.date)).toISOString().substring(0, 10);
+                        item.statusStr = InfoService.getStockStatusMapping(parseInt(item.status));
+                        return item;
+                    })
+                    $scope.currentTranss = list;
+                });  
+            }
+        }
+    }
+})();

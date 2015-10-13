@@ -41,10 +41,8 @@
             $state.go('conversation', {id: id});
         }
 
-        function toggleNotification () {                
-            $timeout(function () {
-                $scope.isNotificationToggled = false;
-            });
+        function toggleNotification () {  
+            $scope.isNotificationToggled = true;
         }
 
         function toggleConversation () {

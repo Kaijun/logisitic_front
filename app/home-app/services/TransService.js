@@ -11,6 +11,7 @@
     function TransService($http, AppConfig) {
         var service = {
             getTrans: getTrans,
+            getCurrentTranss: getCurrentTranss,
             editTrans: editTrans,
             deleteTrans: deleteTrans,
             getTranss: getTranss,
@@ -27,6 +28,18 @@
             });
             return promise;
         }     
+        function getCurrentTranss() {
+            var promise = getTranss().then(function (data) {
+                var data = data.filter(function (item) {
+                    var currentDate = new Date();
+                    var date = new Date(item.created_at.date);
+                    var diff = parseInt((currentDate-date)/(24*3600*1000));
+                    return (diff<=7)?true:false;
+                });
+                return data;
+            });
+            return promise;
+        }
         function deleteTrans(transId) {
             var promise =  $http({
                 url: AppConfig.apiUrl + '/trans-order/' + transId,

@@ -13,6 +13,7 @@
         var service = {
             getStock: getStock,
             getStocks: getStocks,
+            getCurrentStocks: getCurrentStocks,
             submitStock: submitStock,
             editStock: editStock,
             deleteStock: deleteStock,
@@ -32,6 +33,18 @@
             var promise = $http.get(AppConfig.apiUrl + '/stocks/').then(function (response) {
                 var stocks = response.data;
                 return stocks;
+            });
+            return promise;
+        }
+        function getCurrentStocks() {
+            var promise = getStocks().then(function (data) {
+                var data = data.filter(function (item) {
+                    var currentDate = new Date();
+                    var date = new Date(item.timestamp.date);
+                    var diff = parseInt((currentDate-date)/(24*3600*1000));
+                    return (diff<=7)?true:false;
+                });
+                return data;
             });
             return promise;
         }

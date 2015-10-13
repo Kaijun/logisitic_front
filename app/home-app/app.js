@@ -13,9 +13,7 @@
         .state('index', {
             url: '/',
             templateUrl: 'templates/index.html',
-            controller: function () {
-                
-            },
+            controller: 'IndexCtrl',
         })
         .state('stockList', {
             url: '/stockList',

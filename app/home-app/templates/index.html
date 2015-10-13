@@ -6,34 +6,34 @@
     </div>
     <div class="pure-g pure-u-1">
         <div class="uh-index-btns pbm-btn">问题件｜2</div>
-        <div class="uh-index-btns stock-btn">待入库｜2</div>
-        <div class="uh-index-btns pay-btn">待付款｜2</div>
-        <div class="uh-index-btns shipped-btn">已发货｜2</div>
+        <div ui-sref="stockList" class="uh-index-btns stock-btn">待入库｜2</div>
+        <div ui-sref="orderList" class="uh-index-btns pay-btn">待付款｜2</div>
+        <div ui-sref="transList" class="uh-index-btns shipped-btn">已发货｜2</div>
     </div>
 
 </div>
 
 
 <div class="uh-index-horizon">
-        <div class="cell active"><img src="images/uh-horizon-address.svg" alt=""> <br/> <span>仓库地址</span></div>
+        <div ng-click="toggleView(0)" ng-class="{'active': currentView===0}" class="cell active"><img src="images/uh-horizon-address.svg" alt=""> <br/> <span>仓库地址</span></div>
         <div class="cell-divider"></div>
-        <div class="cell"><img src="images/uh-horizon-stock.svg" alt=""> <br/> <span> 最近库存</span></div>
+        <div ng-click="toggleView(1)" ng-class="{'active': currentView===1}" class="cell"><img src="images/uh-horizon-stock.svg" alt=""> <br/> <span> 最近库存</span></div>
         <div class="cell-divider"></div>
-        <div class="cell"><img src="images/uh-horizon-order.svg" alt=""> <br/> <span> 最近订单</span></div>
+        <div ng-click="toggleView(2)" ng-class="{'active': currentView===2}" class="cell"><img src="images/uh-horizon-order.svg" alt=""> <br/> <span> 最近订单</span></div>
         <div class="cell-divider"></div>
-        <div class="cell"><img src="images/uh-horizon-trans.svg" alt=""> <br/> <span> 最近移库</span></div>
+        <div ng-click="toggleView(3)" ng-class="{'active': currentView===3}" class="cell"><img src="images/uh-horizon-trans.svg" alt=""> <br/> <span> 最近移库</span></div>
 </div>
 
 <div class="uh-main-section">
 
 
 
-<div id="1">
+<div ng-show="currentView==0">
     <table class="pure-table pure-table-horizontal uh-list-table">
         <tbody>
             <tr>
                 <td>名（Vorname）：FISE GmbH    </td>
-                <td>姓（Nachname）：EWQLIH / 890826</td>
+                <td>姓（Nachname）：{{userInfo.stock_number}} / {{userInfo.stock_position}}</td>
             </tr>
             <tr>
                 <td>地址（Straße und Hausnummer）：Siemensstr.23</td>
@@ -54,49 +54,125 @@
         </tbody>
     </table>
 </div>
-<!-- 
-<div class="uh-section">最近库存</div>
-<div id="2">
-    <table class="pure-table pure-table-horizontal uh-list-table">
-        
-        <thead>
-            <th>预报日期</th>
-            <th>包裹运单号</th>
-            <th>包裹备注</th>
-            <th>库存天数</th>
-            <th>状态</th>
-            <th>操作</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2321  </td>
-                <td>ffewfw</td>
-                <td>fwfew</td>
-                <td>fdfwf</td>
-                <td>fdww</td>
-                <td>fdww</td>
-            </tr>
-            <tr>
-                <td>2321  </td>
-                <td>ffewfw</td>
-                <td>fwfew</td>
-                <td>fdfwf</td>
-                <td>fdww</td>
-                <td>fdww</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <div class="uh-index-tips"><a href="#">查看全部库存</a></div>
-</div>
+<div ng-show="currentView==1">
+    <div ng-show="currentStocks.length>0">
+        <div class="uh-section">最近库存</div>
+        <table  class="pure-table pure-table-horizontal uh-list-table">
+            
+            <thead>
+                <th>预报日期</th>
+                <th>包裹运单号</th>
+                <th>包裹备注</th>
+                <th>库存天数</th>
+                <th>状态</th>
+                <th>操作</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stock in currentStocks">
+                    <td>{{stock.timestampStr}}</td>
+                    <td>{{stock.ship_info}}</td>
+                    <td>{{stock.desc}}</td>
+                    <td>{{stock.inStockTime}}天</td>
+                    <td>{{stock.statusStr}}</td>
+                    <td>fdww</td>
+                </tr>
+            </tbody>
+        </table>
 
-<div class="uh-section">最近库存为空</div>
-<div id="3">
-<div class="uh-index-empty ">
-<div>您还没有预报库存</div>
-<div class="pure-button blue">添加新的库存</div>
+        <div class="uh-index-tips"><a ui-sref="stockList">查看全部库存</a></div>
+
+
+    </div>
+  
+    <div ng-show="currentStocks.length==0" >  
+        <div class="uh-section">最近库存为空</div>
+        <div class="uh-index-empty ">
+            <div>您还没有预报库存</div>
+            <div ui-sref="stockSubmit" class="pure-button blue">添加新的库存</div>
+        </div>
+    </div>
 
 </div>
 
-</div> -->
+<div ng-show="currentView==2">
+    <div ng-show="currentOrders.length>0" >
+        <div class="uh-section">最近订单</div>
+        <table class="pure-table pure-table-horizontal uh-list-table">
+            
+            <thead>
+                <th>更新日期</th>
+                <th>包裹运单号</th>
+                <th>包裹备注</th>
+                <th>创建时间</th>
+                <th>状态</th>
+                <th>操作</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="order in currentOrders">
+                    <td>{{order.updatedTime}}</td>
+                    <td>{{order.package.reference_code}}</td>
+                    <td>{{order.package.description}}</td>
+                    <td>{{order.createdTime}}</td>
+                    <td>{{order.statusStr}}</td>
+                    <td>fdww</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="uh-index-tips"><a ui-sref="orderList">查看全部订单</a></div>
+
+    </div>
+    
+    <div ng-show="currentOrders.length==0" >  
+        <div class="uh-section">最近订单为空</div>
+        <div class="uh-index-empty ">
+            <div>您还没有订单</div>
+            <div ui-sref="orderSubmit" class="pure-button blue">添加新的订单</div>
+        </div>
+    </div>
+
+</div>
+
+<div ng-show="currentView==3">
+    <div  ng-show="currentTranss.length>0" >
+        <div class="uh-section">最近移库</div>
+        <tableclass="pure-table pure-table-horizontal uh-list-table">
+            
+            <thead>
+                <th>更新日期</th>
+                <th>接收方</th>
+                <th>接收方库位码</th>
+                <th>创建时间</th>
+                <th>状态</th>
+                <th>操作</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="trans in currentTranss">
+                    <td>{{trans.updatedTime}}</td>
+                    <td>{{trans.to_name}}</td>
+                    <td>{{trans.to_stock_number}}</td>
+                    <td>{{trans.createdTime}}</td>
+                    <td>{{trans.statusStr}}</td>
+                    <td>fdww</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="uh-index-tips"><a ui-sref="transList">查看全部移库</a></div>
+
+
+    </div>
+    
+    <div ng-show="currentTranss.length==0" >  
+        <div class="uh-section">最近移库为空</div>
+        <div class="uh-index-empty ">
+            <div>您还没有移库</div>
+            <div ui-sref="transSubmit" class="pure-button blue">添加新的移库</div>
+        </div>
+    </div>
+
+</div>
+
+
 </div>

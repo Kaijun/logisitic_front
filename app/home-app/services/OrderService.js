@@ -16,6 +16,7 @@
             deleteOrder: deleteOrder,
             editOrder: editOrder,
             getOrders: getOrders,
+            getCurrentOrders: getCurrentOrders,
             payOrder: payOrder,
         };
 
@@ -34,7 +35,19 @@
                 return response.data;
             });
             return promise;
-        }        
+        }      
+        function getCurrentOrders() {
+            var promise = getOrders().then(function (data) {
+                var data = data.filter(function (item) {
+                    var currentDate = new Date();
+                    var date = new Date(item.created_at);
+                    var diff = parseInt((currentDate-date)/(24*3600*1000));
+                    return (diff<=7)?true:false;
+                });
+                return data;
+            });
+            return promise;
+        }  
         function getOrderById(orderId) {
             var promise = $http.get(AppConfig.apiUrl + '/ship-order/' + orderId).then(function (response) {
                 return response.data;
