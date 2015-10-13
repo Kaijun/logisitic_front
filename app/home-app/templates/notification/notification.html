@@ -35,7 +35,9 @@
       <div class="content">{{notification.content}}</div>
       <div class="info">
         <div class="pure-u-12-24 time">{{notification.updated_at}}</div>
-        <div class="pure-u-12-24 control"><a ng-click="markNotificationAsRead(notification);$event.stopPropagation()">标记为已读</a> <a ng-click="deleteNotification(notification);$event.stopPropagation()">删除</a></div>
+        <div class="pure-u-12-24 control">
+        <a  ng-if="!notification.is_read_by_customer"  ng-click="markNotificationAsRead(notification);$event.stopPropagation()">标记为已读</a> 
+        <a ng-click="deleteNotification(notification);$event.stopPropagation()">删除</a></div>
       </div>
     </div>
 

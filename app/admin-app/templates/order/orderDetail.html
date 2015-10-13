@@ -79,8 +79,8 @@
       <table class="pure-table pure-table-horizontal ah-line-table">
         <thead>
           <tr>
-            <th class="pure-u-3-24">入库跟踪号</th>
-            <th class="pure-u-1-4">名称</th>
+            <th class="pure-u-5-24">入库跟踪号</th>
+            <th class="pure-u-4-24">名称</th>
             <th class="pure-u-1-8">分类</th>
             <th class="pure-u-1-8">单价/总价</th>
             <th class="pure-u-1-8">单重/总重</th>
@@ -89,7 +89,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="item in order.items">
-            <td>{{order.ship_tracknumber.International}} </td>
+            <td>{{item.source_ref}} </td>
             <td>{{item.item_name}}</td>
             <td>{{item.typeName}}</td>
             <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
