@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('ChangePassword', ChangePassword);
 
-    ChangePassword.$inject = ['$scope', '$timeout', 'ProfileService'];
+    ChangePassword.$inject = ['$scope', '$window', '$timeout', 'ProfileService'];
 
     /* @ngInject */
-    function ChangePassword($scope, $timeout, ProfileService) {
+    function ChangePassword($scope, $window, $timeout, ProfileService) {
         $scope.oldPwd = '';
         $scope.newPwd = '';
         $scope.newPwdConfirm = '';
@@ -38,5 +38,9 @@
                 alert('两次输入密码不一致!')
             }
         }
+        $scope.goBack = function (argument) {
+            $window.history.back();
+        }
+        
     }
 })();   
