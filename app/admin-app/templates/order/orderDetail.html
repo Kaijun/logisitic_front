@@ -125,7 +125,7 @@
           <tr class="sum">
             <td>合计</td>
             <td>{{order.total_cost}}元</td>
-            <td>{{order.auto_charge}}</td>
+            <td>{{order.auto_charge==0? "客服手动确认后支付" : "称重后自动结算（需有足够余额)"}}</td>
           </tr>
         </tbody>
       </table>
