@@ -39,7 +39,7 @@
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">包裹重量*</div>
           <div class="pure-u-1-4">
-            <input class="pure-u-1" ng-model="stock.weight" type="text">
+            <input class="pure-u-1" ng-model="stock.weight" type="text">KG
           </div>
       </div>
 
@@ -169,7 +169,7 @@
         </tr>
         <tr>
           <td>预报重量</td>
-          <td>{{stock.weight}}</td>
+          <td>{{stock.weight}}KG</td>
         </tr>
         <tr>
           <td>入库跟踪号</td>
@@ -239,11 +239,11 @@
         <tr>
         <td style="width:25%">附加服务</td>
         <td ng-if="stock.extra_services.length>0" ng-repeat="e in stock.extra_services">{{e.service_name}} </td>
-        <td ng-if="stock.extra_services.length==0" >空</td>
+        <td ng-if="stock.extra_services.length==0" >无</td>
         </tr>
         <tr>
           <td>留言</td>
-          <td>{{stock.message?stock.message:"空"}}</td>
+          <td>{{stock.message?stock.message:"无"}}</td>
         </tr>
 </table>
 </div>
