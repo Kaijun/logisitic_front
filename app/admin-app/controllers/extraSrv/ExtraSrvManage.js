@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('ExtraSrvManage', ExtraSrvManage);
 
-    ExtraSrvManage.$inject = ['$scope', '$timeout', 'ExtraSrvService', '$state', '$stateParams'];
+    ExtraSrvManage.$inject = ['$scope', '$timeout', 'ExtraSrvService', '$state', '$stateParams', '$window'];
 
     /* @ngInject */
-    function ExtraSrvManage($scope, $timeout, ExtraSrvService, $state, $stateParams) {
+    function ExtraSrvManage($scope, $timeout, ExtraSrvService, $state, $stateParams, $window) {
 
         var isEditing = false;
 
@@ -135,6 +135,10 @@
             $scope.ladderTo = null;
             $scope.ladderPrice = null;
             $scope.isPopupShown = false;
+        }
+
+       $scope.goBack = function () {
+            $window.history.back();
         }
     }
 })();
