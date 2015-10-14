@@ -114,8 +114,8 @@
 
         .state('groupMessageList', {
             parent: 'maintenance',
-            url: '/groupMessageList',
-            templateUrl: 'templates/maintenance/groupMessageList.html',
+            url: '/bulkManage',
+            templateUrl: 'templates/maintenance/bulkManage.html',
             controller: 'BulkManage',
         })
         .state('ticketList', {
