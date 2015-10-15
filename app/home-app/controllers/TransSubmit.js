@@ -29,6 +29,7 @@
         $scope.cancle = cancle;
         $scope.getWarehouseNameById = getWarehouseNameById;
         $scope.getLogisticPathNameById = getLogisticPathNameById;
+        $scope.toggleAllItems = toggleAllItems;
 
         activate();
 
@@ -57,7 +58,22 @@
                                 item.quantityToSend = 1;
                             })
                         });
-                        $scope.packageList = data;
+                        return data
+                    }).then(function (data) {
+                        InfoService.getTypes().then(function (lts) {
+                            data.forEach(function (pkg) {
+                                pkg.items.forEach(function (item) {
+                                    lts.some(function (i) {
+                                        if(item.type == i.id){
+                                            item.typeName = i.type_name;
+                                            return true;
+                                        }
+                                    })
+                                });
+                            })
+
+                            $scope.packageList = data;
+                        })
                     });
                 })
             });
@@ -78,7 +94,7 @@
             })
         }
         function edit () {
-            $scope.isConfirmShown = true;
+            $scope.isConfirmShown = false;
         }
         function cancle () {
             $scope.trans = angular.copy(transObj);
@@ -112,6 +128,7 @@
                             quantity: item.quantityToSend,
                             item_name: item.item_name,
                             type: item.type,
+                            typeName: item.typeName,
                             unit_price: item.unit_price,
                             unit_weight: item.unit_weight
                         })
@@ -119,6 +136,22 @@
                 });
             });
             return items;
+        }        
+
+        function toggleAllItems (pkg) {
+            if(pkg.isAllToggle===true){
+                pkg.items.forEach(function (item) {
+                    item.isSelected = true;
+                });
+                pkg.isAllToggle = true;
+            }
+            else{
+                pkg.items.forEach(function (item) {
+                    item.isSelected = false;
+                });
+                pkg.isAllToggle = false;
+            }
+
         }
     }
 })();

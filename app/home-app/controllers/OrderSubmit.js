@@ -35,7 +35,7 @@
         $scope.submitOrder = submitOrder;
         $scope.editOrder = editOrder;
         $scope.deleteOrder = deleteOrder;
-
+        $scope.toggleAllItems = toggleAllItems;
         activate();
 
         ////////////////
@@ -69,6 +69,7 @@
                     OrderService.getPackages(4, newValue).then(function (data) {
                         data.forEach(function (pkg) {
                             pkg.toggle = false;
+                            pkg.isAllToggle = false;
                             pkg.items.forEach(function (item) {
                                 item.isSelected = false;
                                 item.quantityToSend = 1;
@@ -160,5 +161,20 @@
             return items;
         }
 
+        function toggleAllItems (pkg) {
+            if(pkg.isAllToggle===true){
+                pkg.items.forEach(function (item) {
+                    item.isSelected = true;
+                });
+                pkg.isAllToggle = true;
+            }
+            else{
+                pkg.items.forEach(function (item) {
+                    item.isSelected = false;
+                });
+                pkg.isAllToggle = false;
+            }
+
+        }
     }
 })();

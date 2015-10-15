@@ -23,6 +23,7 @@
         $scope.printPackListconfirm = printPackListconfirm;
         $scope.printPostListconfirm = printPostListconfirm;
         $scope.editOrder = editOrder;
+        $scope.deleteOrder = deleteOrder;
         // $scope.cancleEditOrder = cancleEditOrder;
         $scope.confirmShip = confirmShip;
         activate();
@@ -50,7 +51,7 @@
                     });
                     InfoService.getLogisticPathById(data.ship_company,0).then(function (lp){
                         $timeout(function() {
-                            $scope.logisticPath = lp;
+                            data.logisticPath = lp;
                         })
                     });
                     LogisticService.getLogisticTracks().then(function (lts) {
@@ -178,7 +179,25 @@
                 $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
             })
         }
-
+        function deleteOrder () {
+            if($scope.order.id){
+                swal({
+                    title: "确认删除?",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    cancelButtonText: "取消",
+                    confirmButtonText: "确定",
+                    closeOnConfirm: true,
+                }, function () {
+                    OrderService.deleteOrder($scope.order.id).then(function(data) {
+                        if(data.success===true){
+                            swal("删除成功", "", "success");
+                            $state.go("orderList", {}, {reload: true})
+                        }
+                    });
+                })
+            }
+        }
         // function cancleEditOrder () {
         //     $scope.isWeightEditShown = false; 
         //     $scope.isShipStatusEditShown = false;
@@ -186,6 +205,9 @@
         // }
         $scope.convertToInt = function(id){
             return parseInt(id, 10);
+        };
+        $scope.goBack = function(){
+            $window.history.back();
         };
     }
 })();

@@ -46,11 +46,14 @@
                     closeOnConfirm: true,
                 }, function () {
                     TransService.deleteTrans(trans.transorder_id).then(function(data) {
-                        $scope.transs.map(function (item, index, arry) {
-                            if(item === trans){
-                                arry.splice(index, 1);
-                            }
-                        })
+                        if(data.success===true){
+                            swal("删除成功", "", "success");
+                            $scope.transs.map(function (item, index, arry) {
+                                if(item === trans){
+                                    arry.splice(index, 1);
+                                }
+                            })
+                        }
                     });
                 })
             }

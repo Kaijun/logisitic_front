@@ -5,17 +5,18 @@
         .module('home.controllers')
         .controller('VorkasseSubmitCtrl', VorkasseSubmitCtrl);
 
-    VorkasseSubmitCtrl.$inject = ['$scope', 'VorkasseService', 'InfoService', '$timeout', '$q', '$state', '$stateParams', 'UserInfo'];
+    VorkasseSubmitCtrl.$inject = ['$scope', 'VorkasseService', 'AppConfig', 'InfoService', '$timeout', '$q', '$state', '$stateParams', 'UserInfo'];
 
     /* @ngInject */
-    function VorkasseSubmitCtrl($scope, VorkasseService, InfoService, $timeout, $q, $state,  $stateParams, UserInfo) {
+    function VorkasseSubmitCtrl($scope, VorkasseService, AppConfig, InfoService, $timeout, $q, $state,  $stateParams, UserInfo) {
         $scope.userInfo = UserInfo;
+        $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
         var vorkasseObj = {
             amount: null,
             reference_website: null,
             order_number: null,
             description: null,
-            proof_files_paths: null,
+            proof_files_paths: [],
         }
         $scope.vorkasse = null; 
         $scope.currentRate = null
@@ -78,7 +79,7 @@
                         if(data.success===true)
                             // imgFileNames.push(data.file_name);
 
-                            $scope.vorkasse['proof_files_paths'] = data.file_name;
+                            $scope.vorkasse.proof_files_paths.push(data.file_name);
                             // $scope.vorkasse['image_'+(index+1)] = data.file_name;
                     });
                     promises.push(promise);

@@ -68,7 +68,11 @@
         </tr>
         <tr>
           <td>购物凭证</td>
-          <td>TODO</td>
+          <td>
+            <a ng-if="stock.image_1" ng-href="{{imageUrlPrefix + stock.image_1}}" target="_blank" >查看</a>
+            <a ng-if="stock.image_2" ng-href="{{imageUrlPrefix + stock.image_2}}" target="_blank" >查看</a>
+            <a ng-if="stock.image_3" ng-href="{{imageUrlPrefix + stock.image_3}}" target="_blank" >查看</a>
+          </td>
         </tr>
 </table>
 </div>   

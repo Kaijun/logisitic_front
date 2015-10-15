@@ -32,7 +32,7 @@
             <tr ng-repeat="item in order.items">
                 <td><input type="checkbox"></td>
                 <td>{{item.item_name}}</td>
-                <td>{{item.type}}</td>
+                <td>{{item.typeName}}</td>
                 <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
                 <td>{{item.unit_weight}} / {{item.unit_weight*item.quantity}}</td>
                 <td>{{item.quantity}}</td>
@@ -93,10 +93,7 @@
         <table>
             <tbody>
                 <tr>
-                    <th>物品拍照</th>
-                    <th>加固包裹</th>
-                <th>重新组装</td>
-                <th>其他附加服务</th>
+                    <th ng-repeat="es in order.extra_services">{{es.service_name}}</th>
             </tr>
         </tbody>
     </table>
@@ -117,7 +114,7 @@
     <table>
         <tbody>
             <tr>
-                <th>DHL特惠奶粉线路</th>
+                <th>{{order.logisticPath.name}}</th>
             </tr>
         </tbody>
     </table>

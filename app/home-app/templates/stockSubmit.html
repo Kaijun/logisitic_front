@@ -56,8 +56,8 @@
             <th class="pure-u-1-4">物品名称</th>
             <th class="pure-u-1-4">类型</th>
             <th class="pure-u-1-8">数量</th>
-            <th class="pure-u-1-8">单价</th>
-            <th class="pure-u-1-8">单件重量</th>
+            <th class="pure-u-1-8">单价(元)</th>
+            <th class="pure-u-1-8">单件重量(KG)</th>
             <th class="pure-u-1-8">操作</th>
           </tr>
         </thead>
@@ -65,11 +65,7 @@
           <tr ng-repeat="item in stock.items" >
             <td><input ng-model="item.item_name" class="pure-u-1"  type="text"></td>
             <td>
-              <select ng-model="item.type"class="pure-u-1" >
-                <option ng-repeat="ot in optionTypes" ng-value="ot.id">
-                  {{ot.type_name}}
-                </option>
-              </select>
+              <select ng-model="item.typeOption" ng-options="opt.type_name for opt in optionTypes" ng-init="item.type=item.typeOption.id; item.typeName=item.typeOption.type_name;" ng-change="item.type=item.typeOption.id; item.typeName=item.typeOption.type_name;">
             </td>
             <td><input ng-model="item.quantity" class="pure-u-1" type="text"></td>
             <td><input ng-model="item.unit_price" class="pure-u-1" type="text"></td>
@@ -201,10 +197,10 @@
         <tbody>
           <tr ng-repeat="item in stock.items" >
             <td>{{item.item_name}}</td>
-            <td>{{item.type}}</td>
+            <td>{{item.typeName}}</td>
             <td>{{item.quantity}}</td>
-            <td>{{item.unit_price}}</td>
-            <td>{{item.unit_weight}}</td>
+            <td>{{item.unit_price}} 元</td>
+            <td>{{item.unit_weight}} KG</td>
           </tr>
         </tbody>
       </table>
@@ -225,7 +221,11 @@
         </tr>
         <tr>
           <td>购物凭证</td>
-          <td>TODO</td>
+          <td>
+            <a ng-if="stock.image_1" ng-href="{{imageUrlPrefix + stock.image_1}}" target="_blank" >查看</a>
+            <a ng-if="stock.image_2" ng-href="{{imageUrlPrefix + stock.image_2}}" target="_blank" >查看</a>
+            <a ng-if="stock.image_3" ng-href="{{imageUrlPrefix + stock.image_3}}" target="_blank" >查看</a>
+          </td>
         </tr>
 </table>
 </div>

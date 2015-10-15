@@ -68,7 +68,7 @@
         <table ng-show="package.toggle"  class="pure-table pure-table-horizontal uh-list-table">
           <thead>
             <tr>
-              <th class="pure-u-1-4"><input type="checkbox"><span>物品名称</span></th>
+              <th class="pure-u-1-4"><input ng-click="toggleAllItems(package)" ng-model="package.isAllToggle" type="checkbox"><span>物品名称</span></th>
               <th class="pure-u-1-8">类型</th>
               <th class="pure-u-1-8">数量</th>
               <th class="pure-u-1-8">单价</th>

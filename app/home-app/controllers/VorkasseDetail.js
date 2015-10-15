@@ -5,12 +5,14 @@
         .module('home.controllers')
         .controller('VorkasseDetailCtrl', VorkasseDetailCtrl);
 
-    VorkasseDetailCtrl.$inject = ['$scope', 'VorkasseService', '$timeout', '$state', '$stateParams', 'InfoService', '$window'];
+    VorkasseDetailCtrl.$inject = ['$scope', 'VorkasseService', 'AppConfig', '$timeout', '$state', '$stateParams', 'InfoService', '$window'];
 
     /* @ngInject */
-    function VorkasseDetailCtrl($scope, VorkasseService, $timeout, $state, $stateParams, InfoService, $window) {
+    function VorkasseDetailCtrl($scope, VorkasseService, AppConfig, $timeout, $state, $stateParams, InfoService, $window) {
     
         $scope.vorkasse = null;
+
+        $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
 
         $scope.editVorkasse = editVorkasse;
         $scope.deleteVorkasse = deleteVorkasse;

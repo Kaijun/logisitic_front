@@ -54,7 +54,9 @@
      </div>
       <div class="pure-g ah-form-line">
       <div class="pure-u-4-24 input-label">购物凭证</div> 
-      <div class="pure-u-10-24 inpu-label">附件1 ｜ 附件2 </div>
+      <div class="pure-u-10-24 inpu-label">
+        <a ng-repeat="img in vorkasse.proof_files_paths" ng-href="{{imageUrlPrefix + img}}" target="_blank" >查看</a>
+      </div>
      </div>
       <div class="pure-g ah-form-line">
       <div class="pure-u-4-24 input-label">留言</div> 

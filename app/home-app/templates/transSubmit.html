@@ -52,7 +52,7 @@
       <table ng-show="package.toggle"  class="pure-table pure-table-horizontal uh-list-table">
         <thead>
           <tr>
-            <th class="pure-u-1-4"><input type="checkbox">物品名称</th>
+            <th class="pure-u-1-4"><input ng-click="toggleAllItems(package)" ng-model="package.isAllToggle" type="checkbox"><span>物品名称</span></th>
             <th class="pure-u-1-8">类型</th>
             <th class="pure-u-1-8">数量</th>
             <th class="pure-u-1-8">单价</th>
@@ -64,7 +64,7 @@
         <tbody>
           <tr ng-repeat="item in package.items" ng-if="item.remain>0">
             <td><input ng-model="item.isSelected" type="checkbox">{{item.item_name}}</td>
-            <td>{{item.type}}</td>
+            <td>{{item.typeName}}</td>
             <td>{{item.quantity}}</td>
             <td>{{item.unit_price}}</td>
             <td>{{item.unit_weight}}</td>
@@ -151,7 +151,7 @@
     <tbody>
       <tr ng-repeat="item in trans.items">
         <td>{{item.item_name}}</td>
-        <td>{{item.type}}</td>
+        <td>{{item.typeName}}</td>
         <td>{{item.unit_price}} / {{item.quantity*item.unit_price}}</td>
         <td>{{item.unit_weight}}KG / {{item.quantity*item.unit_weight}}KG</td>
         <td>{{item.quantity}}</td>

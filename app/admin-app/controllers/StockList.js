@@ -94,11 +94,14 @@
                     closeOnConfirm: true,
                 }, function () {
                     StockService.deleteStock(stock.package_id).then(function(data) {
-                        $scope.stocks.map(function (item, index, arry) {
-                            if(item === stock){
-                                arry.splice(index, 1);
-                            }
-                        })
+                        if(data.success===true){
+                            swal("删除成功", "", "success");
+                            $scope.stocks.map(function (item, index, arry) {
+                                if(item === stock){
+                                    arry.splice(index, 1);
+                                }
+                            })
+                        }
                     });
                 })
             }

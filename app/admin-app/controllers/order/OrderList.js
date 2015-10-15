@@ -71,11 +71,14 @@
                     closeOnConfirm: true,
                 }, function () {
                     OrderService.deleteOrder(order.id).then(function(data) {
-                        $scope.orders.map(function (item, index, arry) {
-                            if(item === order){
-                                arry.splice(index, 1);
-                            }
-                        })
+                        if(data.success===true){
+                            swal("删除成功", "", "success");
+                            $scope.orders.map(function (item, index, arry) {
+                                if(item === order){
+                                    arry.splice(index, 1);
+                                }
+                            })
+                        }
                     });
                 })
             }

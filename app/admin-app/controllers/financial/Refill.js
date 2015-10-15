@@ -28,7 +28,6 @@
                 $timeout(function () {
                     $scope.amount = data;
                 })
-                console.log(data);
             })
         }
         function checkAmountByStockNuml() {            
@@ -36,7 +35,6 @@
                 $timeout(function () {
                     $scope.amount = data;
                 })
-                console.log(data);
             })
         }
         function charge() {
@@ -46,16 +44,7 @@
                 amount: $scope.chargeAmount,
             }).then(function (data) {
                 if(data.success===true)
-                    swal({
-                        type: "success",
-                        title: "充值成功!",
-                        showCancelButton: false,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "确定",
-                        closeOnConfirm: true,
-                    }, function () {
-                        
-                    })
+                    swal("充值成功", "", "success");
             });
             
         }

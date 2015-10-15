@@ -3,8 +3,8 @@
 ;(function () {
     
     angular.module('home.controllers')
-    .controller('StockSubmitCtrl', ['$scope', 'StockService', 'InfoService', '$state', '$stateParams', '$timeout', '$q', 
-    function($scope, StockService, InfoService, $state, $stateParams, $timeout, $q) {
+    .controller('StockSubmitCtrl', ['$scope', 'StockService', 'AppConfig','InfoService', '$state', '$stateParams', '$timeout', '$q', 
+    function($scope, StockService, AppConfig, InfoService, $state, $stateParams, $timeout, $q) {
         var stockObj = {
             warehouse: null,
             desc: null,
@@ -33,6 +33,7 @@
         $scope.editSubmit = editSubmit;
         $scope.deleteSubmit = deleteSubmit;
 
+        $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
         var isImagesChanged = false;
         var isEditMode = false;
 
@@ -114,7 +115,9 @@
         $scope.addItem = function () {
             $scope.stock.items.push({
                 item_name: null,
+                typeOption: $scope.optionTypes[0],
                 type: null,
+                typeName: null,
                 unit_price: null,
                 unit_weight: null,
                 quantity: null,

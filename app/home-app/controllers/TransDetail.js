@@ -24,22 +24,37 @@
             if($stateParams.transId){
                 var transId = $stateParams.transId;
                 TransService.getTrans(transId).then(function (data) {
-                    $timeout(function() {
-                        $scope.trans = data;
-                        $scope.trans.statusStr = InfoService.getStockStatusMapping(data.status);
-                        $scope.isConfirmShown = data.to_email == UserInfo.email;
-                        // $scope.isConfirmShown = true;
-                    });
+                    
                     return data;
                 },
                 function(){
                     $state.go('index');
                 }).then(function (data) {
+                    InfoService.getTypes().then(function (lts) {
+                        data.items.forEach(function (item) {
+                            lts.some(function (i) {
+                                if(item.type == i.id){
+                                    item.typeName = i.type_name;
+                                    return true;
+                                }
+                            })
+                        });
+
+                        $timeout(function() {
+                            $scope.trans = data;
+                            $scope.trans.statusStr = InfoService.getStockStatusMapping(data.status);
+                            $scope.isConfirmShown = data.to_email == UserInfo.email;
+                            // $scope.isConfirmShown = true;
+                        });
+
+
+                    })
                     InfoService.getWarehouseById(data.warehouse).then(function (wh){
                         $timeout(function() {
                             $scope.warehouse = wh;
                         })
                     });
+
                 })
             }
             else{

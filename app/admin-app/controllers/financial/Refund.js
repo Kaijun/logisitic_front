@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('Refund', Refund);
 
-    Refund.$inject = ['$scope', '$window'];
+    Refund.$inject = ['$scope', '$timeout', 'FinanceService', '$window'];
 
     /* @ngInject */
-    function Refund($scope, $window) {
+    function Refund($scope, $timeout, FinanceService, $window) {
         $scope.userEmail = '';
         $scope.stockNum = '';
         $scope.amount = '';
@@ -28,7 +28,6 @@
                 $timeout(function () {
                     $scope.amount = data;
                 })
-                console.log(data);
             })
         }
         function checkAmountByStockNuml() {            
@@ -36,25 +35,16 @@
                 $timeout(function () {
                     $scope.amount = data;
                 })
-                console.log(data);
             })
         }
         function charge() {
             FinanceService.chargeAmount({
                 email: $scope.chargeEmail,
-                stock_number: -$scope.chargeStockNum,
-                amount: $scope.chargeAmount,
+                stock_number: $scope.chargeStockNum,
+                amount: -$scope.chargeAmount,
             }).then(function (data) {
-                swal({
-                    type: "success",
-                    title: "退款成功!",
-                    showCancelButton: false,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "确定",
-                    closeOnConfirm: true,
-                }, function () {
-                    
-                })
+                if(data.success===true)
+                    swal("退款成功", "", "success");
             });
             
         }

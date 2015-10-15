@@ -32,7 +32,7 @@
         </tr>
         <tr>
           <td>配送线路</td>
-          <td>{{logisticPath.name}}</td>
+          <td>{{order.logisticPath.name}}</td>
         </tr>
         <tr>
           <td>物品所在仓库</td>
@@ -67,7 +67,9 @@
       </tr>
       <tr>
         <td>运单号</td>
-        <td><a href="#">{{order.ship_tracknumber.International}} 需要跳转到快递公司页面</a><br/><a href="#">{{order.ship_tracknumber.China}}</a></td>
+        <td>
+        国际段({{order.logisticPath.ship_company_international}}): {{order.ship_tracknumber || "未添加"}} <br> 国内段({{order.logisticPath.ship_company_china}}): {{order.ship_tracknumber_2 || "未添加"}}
+        </td>
       </tr>
 
     </table>

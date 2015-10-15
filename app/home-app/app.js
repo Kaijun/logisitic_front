@@ -145,7 +145,15 @@
                     return null;
                 }
                 return response;
+            },
+           'responseError': function(response) {
+                if(response.data.success===false){
+                    swal(response.data.message, "", "error");
+                    return null;
+                }
+                return response;
             }
+
           };
         });
 

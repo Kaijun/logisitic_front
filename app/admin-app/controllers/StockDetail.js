@@ -15,7 +15,7 @@
         $scope.enterStock = enterStock;
         $scope.goBack = goBack;
         $scope.deleteStock = deleteStock;
-        $scope.imageUrlPrefix = AppConfig.apiUrlHome+ '/image/';
+        $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
 
         activate();
 
@@ -31,6 +31,7 @@
                     
                     $timeout(function() {
                         $scope.stock = data;
+                        $scope.imageUrlPrefix = $scope.imageUrlPrefix + data.owner_id + '/';
                     }); 
                     return data;
                 }, function() {

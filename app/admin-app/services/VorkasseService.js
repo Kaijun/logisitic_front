@@ -22,7 +22,7 @@
         ////////////////
 
         function getVorkasse(transId) {
-            var promise = $http.get(AppConfig.apiUrl + '/purchase-agent?id=' + transId).then(function (response) {
+            var promise = $http.get(AppConfig.apiUrl + '/purchase-agent/' + transId).then(function (response) {
                 return response.data;
             });
             return promise;

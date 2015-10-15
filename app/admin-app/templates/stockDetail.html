@@ -92,9 +92,9 @@
     <tr>
     <td>附件信息</td>
     <td>
-      <img ng-if="stock.image_1" ng-src="{{imageUrlPrefix + stock.image_1}}">
-      <img ng-if="stock.image_2" ng-src="{{imageUrlPrefix + stock.image_2}}">
-      <img ng-if="stock.image_3" ng-src="{{imageUrlPrefix + stock.image_3}}">
+        <a ng-if="stock.image_1" ng-href="{{imageUrlPrefix + stock.image_1}}" target="_blank" >查看</a>
+        <a ng-if="stock.image_2" ng-href="{{imageUrlPrefix + stock.image_2}}" target="_blank" >查看</a>
+        <a ng-if="stock.image_3" ng-href="{{imageUrlPrefix + stock.image_3}}" target="_blank" >查看</a>
     </td>
   </tr>
   <tr>

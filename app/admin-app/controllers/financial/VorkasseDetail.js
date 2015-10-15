@@ -5,11 +5,14 @@
         .module('admin.controllers')
         .controller('VorkasseDetail', VorkasseDetail);
 
-    VorkasseDetail.$inject = ['$scope', '$timeout', 'InfoService', 'VorkasseService', '$stateParams', '$state'];
+    VorkasseDetail.$inject = ['$scope', '$timeout', 'AppConfig', 'InfoService', 'VorkasseService', '$stateParams', '$state'];
 
     /* @ngInject */
-    function VorkasseDetail($scope, $timeout, InfoService, VorkasseService, $stateParams, $state) {
+    function VorkasseDetail($scope, $timeout, AppConfig, InfoService, VorkasseService, $stateParams, $state) {
         $scope.vorkasse = null;
+
+        $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
+
         $scope.deleteVorkasse = deleteVorkasse;
         $scope.changeStatus = changeStatus;
 
@@ -24,6 +27,7 @@
                     VorkasseService.getVorkasse(id).then(function (data) {
                         $timeout(function() {
                             $scope.vorkasse = data;
+                            $scope.imageUrlPrefix = $scope.imageUrlPrefix + data.user_id + '/';
                             $scope.vorkasse.statusStr = InfoService.getVorkasseStatusMapping(data.status);
                         });
                         return data;

@@ -9,22 +9,22 @@
       <!-- 表单第一行开始 -->
      <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">用户Email</div> 
-      <div class="pure-u-10-24"><input></div>
+      <div class="pure-u-10-24"><input ng-model="chargeEmail"></div>
      </div>
 
       <!-- 第一行结束结束 -->
 
       <!-- 表单第二行 -->
      <div class="pure-g ah-form-line">
-      <div class="pure-u-2-24 input-label">用户库存码</div> 
-      <div class="pure-u-10-24"><input></div>    
+      <div class="pure-u-2-24 input-label">用户库存码</div>
+      <div class="pure-u-10-24"><input ng-model="chargeStockNum"></div> 
      </div>
 
       <!-- 第2行结束结束 -->
       <!-- 表单第三行开始 -->
       <div class="pure-g ah-form-line">
       <div class="pure-u-2-24 input-label">退款金额</div> 
-      <div class="pure-u-10-24"><input></div>    
+      <div class="pure-u-10-24"><input ng-model="chargeAmount"></div> 
      </div>
      <!-- 表单第三行结束 -->
 
@@ -37,8 +37,8 @@
 
 <div class="pure-g ah-action-btns">
     <div class="pure-u-1-2 right">
-      <a  ng-click="" class="pure-button red">取消</a>
-      <a  ng-click="" class="pure-button blue">确认</a>
+      <a  ng-click="goBack()" class="pure-button red">取消</a>
+      <a  ng-click="charge()" class="pure-button blue">确认</a>
     </div>
 </div>
 </div>

@@ -12,7 +12,6 @@
         
         $scope.order = null;
         $scope.warehouse = null;
-        $scope.logisticPath = null;
 
         $scope.editOrder = editOrder;
         $scope.deleteOrder = deleteOrder;
@@ -57,7 +56,7 @@
                         });
                         InfoService.getLogisticPathById(data.ship_company,0).then(function (lp){
                             $timeout(function() {
-                                $scope.logisticPath = lp;
+                                $scope.order.logisticPath = lp;
                             })
                         });
                     })

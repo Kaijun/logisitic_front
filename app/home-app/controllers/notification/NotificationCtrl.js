@@ -75,7 +75,7 @@
            MsgService.markNotificationAsRead(noti.id).then(function (data) {
                 if(data.success === true ) 
                 $timeout(function () {
-                    noti.is_read_by_customer = 1;
+                    noti.is_read = 1;
                 })
             })
         }

@@ -52,9 +52,9 @@
     <tbody>
       <tr ng-repeat="item in trans.items">
         <td>{{item.item_name}}</td>
-        <td>{{item.type}}</td>
-        <td>{{item.unit_price}} / {{item.quantity*item.unit_price}}</td>
-        <td>{{item.unit_weight}}KG / {{item.quantity*item.unit_weight}}KG</td>
+        <td>{{item.typeName}}</td>
+        <td>{{item.unit_price}} 元 / {{item.quantity*item.unit_price}} 元</td>
+        <td>{{item.unit_weight}} KG / {{item.quantity*item.unit_weight}} KG</td>
         <td>{{item.quantity}}</td>
       </tr>
     </tbody>
@@ -75,7 +75,7 @@
 <div class="uh-main-action">
   <!-- 底部操作栏 -->
       <div ng-click="goBack()" class="btn-back left"></div>
-      <div ng-show="trans.status==6 || trans.status==7">
+      <div ng-show="trans.status==6">
         <div ng-show="isConfirmShown" ng-click="confirmTrans()" class="pure-button edit right"><a >确认移库</a></div>
         <!-- <div ng-click="editTrans()" class="pure-button edit right"><a >编辑</a></div> -->
         <div ng-click="deleteTrans()" class="btn-delete right"></div>
