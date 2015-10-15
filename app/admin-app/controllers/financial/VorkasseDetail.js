@@ -5,16 +5,17 @@
         .module('admin.controllers')
         .controller('VorkasseDetail', VorkasseDetail);
 
-    VorkasseDetail.$inject = ['$scope', '$timeout', 'AppConfig', 'InfoService', 'VorkasseService', '$stateParams', '$state'];
+    VorkasseDetail.$inject = ['$scope', '$timeout', 'AppConfig', 'InfoService', 'VorkasseService', '$stateParams', '$state', '$window'];
 
     /* @ngInject */
-    function VorkasseDetail($scope, $timeout, AppConfig, InfoService, VorkasseService, $stateParams, $state) {
+    function VorkasseDetail($scope, $timeout, AppConfig, InfoService, VorkasseService, $stateParams, $state, $window) {
         $scope.vorkasse = null;
 
         $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
 
         $scope.deleteVorkasse = deleteVorkasse;
         $scope.changeStatus = changeStatus;
+        $scope.downloadAttachments = downloadAttachments;
 
         activate();
 
@@ -51,25 +52,32 @@
         }
         function changeStatus (st, msg) {
             VorkasseService.editVorkasse($stateParams.vorkasseId, {
-                status: st
-            }).then(function() {
-                swal({
-                        type: "success",
-                        title: msg,
-                        showCancelButton: false,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "确定",
-                        closeOnConfirm: true,
-                    }, function () {
-                       
-                        $timeout(function() {
-                           $scope.vorkasse.statusStr = InfoService.getVorkasseStatusMapping(st);
-                        });
-                })  
+                status: st,
+            }).then(function(data) {
+                if(data.success===true){
+                    swal(msg, '', 'success');
+                    $timeout(function () { 
+                       $scope.vorkasse.statusStr = InfoService.getVorkasseStatusMapping(st);
+                       $scope.vorkasse.status = st;
+                    })
+                }  
 
             }, function () {
                 // body...
             })
+        }
+
+        function downloadAttachments () {
+            if($scope.vorkasse.proof_files_paths.length>0){
+                $scope.vorkasse.proof_files_paths.forEach(function (item) {
+                    var a = $("<a>")
+                    .attr("href", $scope.imageUrlPrefix+item)
+                    .attr("download", item)
+                    .appendTo("body");
+                    a[0].click();
+                    a.remove();
+                })
+            }
         }
     }
 })();

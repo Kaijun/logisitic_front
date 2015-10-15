@@ -44,7 +44,7 @@
         }
         function getVorkasseStatusMapping (statusId) {
             statusId = statusId + 1;
-            var statusMapping = ['删除','未知','未处理','处理中','代刷成功','代刷问题件'];
+            var statusMapping = ['删除','未知','未处理','处理中','代刷成功','申请拒绝'];
             if(statusId<statusMapping.length){
                 return statusMapping[statusId];
             }
