@@ -33,12 +33,12 @@
       
       <div class="pure-g ah-form-line">
       <div class="pure-u-4-24 input-label">客户ID</div> 
-      <div class="pure-u-10-24 inpu-label">{{vorkasse.handler_id}}</div>
+      <div class="pure-u-10-24 inpu-label">{{vorkasse.customer.name}}</div>
       </div>
 
       <div class="pure-g ah-form-line">
       <div class="pure-u-4-24 input-label">联系方式</div> 
-      <div class="pure-u-10-24 inpu-label">QQ|Email</div>
+      <div class="pure-u-10-24 inpu-label">QQ: {{vorkasse.customer.QQ || "空"}} | Email: {{vorkasse.customer.email || "空"}}</div>
      </div>
 
 
@@ -71,7 +71,7 @@
     <a ng-if="vorkasse.status==1" ng-click="changeStatus(2, '审核成功')" class="pure-button blue">审核通过</a>
     <a ng-if="vorkasse.proof_files_paths.length>0" ng-click="downloadAttachments()" class="pure-button blue">下载附件</a>
     <a ng-if="vorkasse.status==2" ng-click="changeStatus(3, '确认付款成功')" class="pure-button blue">确认付款</a>
-     <a ng-if="vorkasse.status<=3" ng-click="changeStatus(4, '拒绝成功')" class="pure-button red">申请拒绝</a>
+     <a ng-if="vorkasse.status==1" ng-click="changeStatus(4, '拒绝成功')" class="pure-button red">申请拒绝</a>
       <a  ui-sref="vorkasseList" class="pure-button back">返回</a>
     </div>
 
