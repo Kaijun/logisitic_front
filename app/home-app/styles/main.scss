@@ -1258,7 +1258,9 @@ dt{
 
 
 
-
+.input-label{
+    padding-left:8px;
+}
 
 // 用于修改自动填充颜色
 ::-webkit-input-placeholder { color:#333; }
