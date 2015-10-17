@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('ConversationCtrl', ConversationCtrl);
 
-    ConversationCtrl.$inject = ['$scope', 'MsgService', '$timeout', '$stateParams', '$state', 'UserInfo'];
+    ConversationCtrl.$inject = ['$scope', '$window', 'MsgService', '$timeout', '$stateParams', '$state', 'UserInfo'];
 
     /* @ngInject */
-    function ConversationCtrl($scope, MsgService, $timeout, $stateParams, $state, UserInfo) {
+    function ConversationCtrl($scope, $window, MsgService, $timeout, $stateParams, $state, UserInfo) {
         var conversationId = $stateParams.id;
         $scope.userId = UserInfo.id;
         $scope.conversation = null;
@@ -57,6 +57,11 @@
                     }
                 })
             }
+        }
+
+
+       $scope.goBack = function () {
+            $window.history.back();
         }
     }
 })();
