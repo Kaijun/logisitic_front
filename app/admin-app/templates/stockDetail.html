@@ -112,7 +112,7 @@
       <!-- 右侧功能键开始 -->
       <div class="pure-u-1-6 right">
            
-            <div problem-pkg-btn package-id="{{$stateParams.stockId}}" type="0" current-status="{{stock.status}}"></div>
+            <div problem-pkg-btn package-id="{{$stateParams.stockId}}" type="{{stock.status<=3?0:3}}" current-status="{{stock.status}}"></div>
            <div><a ng-if="stock.status==2" ng-click="enterStock()" class="pure-button blue">入库</a></div>
            <div><a ng-click="deleteStock()" class="pure-button red ">删除</a></div>
            <div><a ng-click="goBack()" class="pure-button back ">返回</a></div>

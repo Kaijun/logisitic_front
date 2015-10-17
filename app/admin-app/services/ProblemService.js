@@ -15,6 +15,7 @@
             solveProblemPkg: solveProblemPkg,
             getProblemPkgs: getProblemPkgs,
             getProblemPkg: getProblemPkg,
+            sendMessageInConv: sendMessageInConv,
         };
 
         ////////////////
@@ -39,9 +40,9 @@
             return promise;
         }
 
-        function newProblemPkg(pkg) {
+        function newProblemPkg(pkg, type) {
             var promise = $http({
-                url: AppConfig.apiUrl + '/hasproblem/',
+                url: AppConfig.apiUrl + '/hasproblem?type=' + type,
                 method: 'PUT',
                 data: pkg,
             }).then(function(response){
@@ -50,11 +51,24 @@
             return promise;
         }
 
-        function solveProblemPkg(pkg) {
+        function solveProblemPkg(type, id, pkg) {
             var promise = $http({
-                url: AppConfig.apiUrl + '/hasproblem/',
+                url: AppConfig.apiUrl + '/solve-problem/' + id + '?type=' + type,
                 method: 'PUT',
                 data: pkg,
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+        function sendMessageInConv(convId, msg) {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/message/' + convId,
+                method: 'POST',
+                data: msg,
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                }
             }).then(function(response){
                 return response.data;
             });

@@ -12,6 +12,7 @@
         $scope.trans = null;
         $scope.submitTrans = submitTrans;
         $scope.printTrans = printTrans;
+        $scope.$stateParams = $stateParams;
         activate();
 
         ////////////////

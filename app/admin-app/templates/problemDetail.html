@@ -1,3 +1,6 @@
+
+
+
 <div class="ah-stock-detail">
   <div class="ah-main-header">
       <div class="left">
@@ -23,9 +26,8 @@
 
     <div class="pure-u-1-2">
       <table class="pure-table pure-table-horizontal ah-small-table" > 
-          <tr><td style="width:30%">状态</td><td></td></tr>
-          <tr><td>问题件描述</td><td></td></tr>
-          <tr><td>问题件分类</td><td></td></tr>
+          <tr><td style="width:30%">状态</td><td>{{problemPkg.statusStr}}</td></tr>
+          <tr><td>问题件分类</td><td><span ng-if="$stateParams.type==0">预报问题件</span><span ng-if="$stateParams.type==1">订单问题件</span><span ng-if="$stateParams.type==2">移库问题件</span><span ng-if="$stateParams.type==3">库存问题件</span></td></tr>
           <tr><td>提交时间</td><td></td></tr>
       </table>
     </div>
@@ -33,35 +35,58 @@
 <!-- 并列表格结束 -->
 
 <div class="ah-section"> 消息记录 </div>
-<div class="ah-message">
-<!-- <div class="ah-message-avatar reply">系</div>
-<div class="ah-message-text reply">您的包裹已经操作，并被标为问题件，请及时处理</div>
-<div class="ah-message-timestamp reply">2015-03-02 20:20</div>
+<div ng-repeat="msg in problemPkg.conversation.messages" class="ah-message">
+  <div class="ah-message-avatar" ng-class="{reply: msg.from!=problemPkg.package_owner.id}">{{msg.from==problemPkg.package_owner.id?"客":"系"}}</div>
+  <div class="ah-message-text" ng-class="{reply: msg.from!=problemPkg.package_owner.id}">{{msg.content}}</div>
+  <div class="ah-message-timestamp" ng-class="{reply: msg.from!=problemPkg.package_owner.id}">{{msg.created_at}}</div>
 </div>
-<div class="ah-message">
-<div class="ah-message-avatar">客</div>
-<div class="ah-message-text">我的包裹还没收到我的包裹还没收到我的包裹还没收到我的包裹还没收到我的包裹还没收到我的包裹还没收到</div>
-<div class="ah-message-timestamp">2015-03-02 21:20</div>
-</div>
-<div class="ah-message">
-<div class="ah-message-avatar reply">系</div>
-<div class="ah-message-text reply">已按客户意见重新发送</div>
-<div class="ah-message-timestamp reply">2015-03-02 22:20</div> -->
-
-</div>
-
 
 
 
 </div>
       <!-- 右侧功能键开始 -->
       <div class="pure-u-1-6 right">
-           <div><a ng-click="solveProblem()" class="pure-button flag ">处理问题件</a></div>
-           <div><a class="pure-button blue">回复</a></div>
-           <div><a class="pure-button back ">返回</a></div>
+           <div><a ng-click="solveProblemShow()" class="pure-button flag ">处理问题件</a></div>
+           <div><a ng-click="replyShow()" class="pure-button blue">回复</a></div>
+           <div><a ui-sref="problemList" class="pure-button back ">返回</a></div>
       </div> <!-- 右侧功能键结束 Div -->
     </div><!-- 中部信息栏结束 Div -->
 
 
   </div><!-- 主体部分结束 Div  -->
+</div>
+
+
+<div ng-show="isPopupShown" class="pop-up-wapper">
+  <div class="pop-up-title">
+    修改状态
+  </div>
+  <div class="pop-up-body">
+    <div class="poo-up-section">
+      <select ng-model="selectedStatus" ng-options="status for status in statusOfType" />
+    </div>      
+  </div>
+  <div class="pop-up-opt pure-g">
+    <div class="pure-u-1 right">
+      <a ng-click="cancle()" class="pure-button red horizon-small">取消</a>
+      <a ng-click="solveProblem()" class="pure-button blue horizon-small">确认</a>
+    </div>
+  </div>
+</div>
+
+<div ng-show="isReplyPopupShown" class="pop-up-wapper">
+  <div class="pop-up-title">
+    回复
+  </div>
+  <div class="pop-up-body">
+    <div class="poo-up-section">
+      <textarea ng-model="replyContent"> </textarea> 
+    </div>      
+  </div>
+  <div class="pop-up-opt pure-g">
+    <div class="pure-u-1 right">
+      <a ng-click="cancleReply()" class="pure-button red horizon-small">取消</a>
+      <a ng-click="sendMsg()" class="pure-button blue horizon-small">确认</a>
+    </div>
+  </div>
 </div>

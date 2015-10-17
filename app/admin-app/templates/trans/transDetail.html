@@ -104,8 +104,8 @@
         </tr>
       </table>
     </div><!-- 左侧主题结束 -->
-    <div class="pure-u-6-24 right">
-     <div><a class="pure-button flag ">标记为问题件</a></div>
+    <div class="pure-u-6-24 right">     
+    <div problem-pkg-btn package-id="{{$stateParams.transId}}" type="2" current-status="trans.status"></div>
      <div><a ng-click="printTrans()" class="pure-button blue divide">打印</a></div>
      <div><a ng-if="trans.status==8||trans.status==9" ng-click="submitTrans()" class="pure-button blue divide">移库</a></div>
      <div><a class="pure-button red divide">存档</a></div>

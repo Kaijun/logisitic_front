@@ -28,16 +28,22 @@
         return service;
 
         function getStockStatusMapping (statusId) {
+            var statusMapping = ['删除','未知','未预报','已预报','预报问题件','已入库','库存问题件','移库未确认','移库已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货'];
+            if(statusId===undefined){
+                return statusMapping;
+            }
             statusId = statusId + 1;
-            var statusMapping = ['删除','未知','未预报','已预报','预报问题件','已入库','库存问题件','移库未确认','移库已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货']
             if(statusId<statusMapping.length){
                 return statusMapping[statusId];
             }
             return statusMapping[0];
         }
         function getOrderStatusMapping (statusId) {
-            statusId = statusId + 1;
             var statusMapping = ['删除','未知','发货处理中','待付款','已付款','待发货','已发货','订单问题件'];
+            if(statusId===undefined){
+                return statusMapping;
+            }
+            statusId = statusId + 1;
             if(statusId<statusMapping.length){
                 return statusMapping[statusId];
             }

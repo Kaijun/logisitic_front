@@ -40,6 +40,9 @@
                 case "2":
                     id = pkg.transaction_id;
                     break;
+                case "3":
+                    id = pkg.package_id;
+                    break;
             }
             $state.go('problemDetail', {type: $scope.type, id: id});
             

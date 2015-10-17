@@ -5,10 +5,10 @@
         .module('admin.directives')
         .directive('problemPkgBtn', problemPkgBtn);
 
-    problemPkgBtn.$inject = ['$http', 'ProblemService'];
+    problemPkgBtn.$inject = ['$http', 'ProblemService', '$state'];
 
     /* @ngInject */
-    function problemPkgBtn ($http, ProblemService) {
+    function problemPkgBtn ($http, ProblemService, $state) {
         // Usage:
         //
         // Creates:
@@ -40,42 +40,47 @@
             }
 
             scope.markAsProblemPkg = function () {
+                //0- 预报问题件
                 if(scope.type==0){
-                    var status = 0;
-                    if(scope.currentStatus<=3){
-                        status = 3;
-                    }
-                    else if(scope.currentStatus<=5){
-                        status = 5;
-                    }
-                    else if(scope.currentStatus<=9){
-                        status = 9;
-                    }
+                    var status = 3;
                     ProblemService.newProblemPkg({
                         "package_id": scope.packageId, 
                         "description": scope.problemDesc, 
                         "status": status, 
-                    }).then(function () {
+                    }, 0).then(function () {
                         scope.dismissProblemPopup();
                     })
                 }
+                //1- 订单问题件
                 else if(scope.type==1){
                     var order_status = 6;
                     ProblemService.newProblemPkg({
-                        "package_id": scope.packageId, 
+                        "ship_order_id": scope.packageId, 
                         "description": scope.problemDesc, 
                         "order_status": order_status, 
-                    }).then(function () {
+                    }, 1).then(function () {
                         scope.dismissProblemPopup();
                     })
                 }
+                //2- 移库问题件
                 else if(scope.type==2){
-                    status = 4;
+                    var status = 9;
+                    ProblemService.newProblemPkg({
+                        "transaction_id": scope.packageId, 
+                        "description": scope.problemDesc, 
+                        "status": status, 
+                    }, 2).then(function () {
+                        scope.dismissProblemPopup();
+                    })
+                }
+                //3- 库存问题件
+                else if(scope.type==3){
+                    var status = 5;
                     ProblemService.newProblemPkg({
                         "package_id": scope.packageId, 
                         "description": scope.problemDesc, 
                         "status": status, 
-                    }).then(function () {
+                    }, 3).then(function () {
                         scope.dismissProblemPopup();
                     })
                 }

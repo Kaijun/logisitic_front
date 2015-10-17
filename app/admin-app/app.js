@@ -90,11 +90,7 @@
         })
         .state('problemDetail', {
             parent: 'business',
-            url: '/problemDetail',
-            params: {
-                id: null,
-                type: null,
-            },
+            url: '/problemDetail/:type/:id',
             templateUrl: 'templates/problemDetail.html',
             controller: 'ProblemDetail',
         })
