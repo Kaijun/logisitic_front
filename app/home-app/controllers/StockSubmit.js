@@ -25,6 +25,7 @@
         $scope.stock = null; 
         $scope.warehouses = [];
         $scope.logisticPaths = [];
+        $scope.logisticPathChosen = null;
         $scope.optionTypes = [];
         $scope.extraServicesName = [];
         $scope.imagesToUpload = [];
@@ -45,6 +46,13 @@
             });
             var pathPromise = InfoService.getLogisticPaths(1).then(function (data){
                 $scope.logisticPaths = data;
+                $scope.logisticPathChosen = $scope.logisticPaths[0];
+                $scope.$watch('logisticPathChosen', function (newValue, oldValue) {
+                    $scope.stock.ship_company = $scope.logisticPathChosen.id;
+                    $scope.extraServices = $scope.logisticPathChosen.extra_services.filter(function (item) {
+                        return (item.type==0 || item.type==1);
+                    });
+                })
             });
             var optionPromise = InfoService.getTypes().then(function (data) {
                 $scope.optionTypes = data;
