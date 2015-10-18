@@ -42,7 +42,7 @@
             }
             else{
                 scope.$watch('givenServices', function () {
-                    scope.services = scope.givenServices;
+                    scope.services = scope.givenServices; 
                     scope.services.map(function (item) {
                         item.selected = false;
                     });

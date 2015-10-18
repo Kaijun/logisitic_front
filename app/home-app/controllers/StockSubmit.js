@@ -26,6 +26,7 @@
         $scope.warehouses = [];
         $scope.logisticPaths = [];
         $scope.logisticPathChosen = null;
+        $scope.extraServices = [];
         $scope.optionTypes = [];
         $scope.extraServicesName = [];
         $scope.imagesToUpload = [];
