@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('LogisticManage', LogisticManage);
 
-    LogisticManage.$inject = ['$scope', '$timeout', 'LogisticService', '$state', '$stateParams'];
+    LogisticManage.$inject = ['$scope', '$timeout', 'LogisticService', 'RoleService', '$state', '$stateParams'];
 
     /* @ngInject */
-    function LogisticManage($scope, $timeout, LogisticService, $state, $stateParams) {
+    function LogisticManage($scope, $timeout, LogisticService, RoleService, $state, $stateParams) {
         $scope.USER_GROUPS = ['全部用户', '普通用户', 'VIP用户'];
         
         var isEditing = false;
@@ -22,7 +22,7 @@
             weight_upper_bound: null,
             user_group: null,
             description: null,
-            type: null,
+            type: "0",
             based_on: "0",
             base_price: "0",
             price_ladders: [],
@@ -38,6 +38,9 @@
         $scope.roles = '';
         $scope.ladders = [];
 
+        $scope.allRoles = [];
+        $scope.chosenRole = null;
+
         $scope.submit = submit;
         $scope.addLadder = addLadder;
         $scope.deleteLadder = deleteLadder;
@@ -51,11 +54,17 @@
 
         function activate() {
 
-            $scope.logisticTypes = LogisticService.getLogisticTypes().then(function (data) {
+            LogisticService.getLogisticTypes().then(function (data) {
                 data.map(function (item) {
                     item.selected = false;
                 });
                 $scope.logisticTypes = data;
+            });
+
+            RoleService.getRoles().then(function (data) {
+                data = [{id: 0, role_name: '全部'}].concat(data);
+                $scope.allRoles = data;
+                $scope.chosenRole = $scope.allRoles[0];
             });
 
             if($stateParams.id){
@@ -107,6 +116,7 @@
 
         function submit () {
             $scope.logisticPath.price_ladders = $scope.ladders;
+            $scope.logisticPath.user_group = $scope.chosenRole.id;
             if(isEditing){
                 LogisticService.editLogistic($stateParams.id, $scope.logisticPath).then(function (dataa) {
                    if(data.success===true)

@@ -5,10 +5,10 @@
         .module('admin.directives')
         .directive('problemPkgBtn', problemPkgBtn);
 
-    problemPkgBtn.$inject = ['$http', 'ProblemService', '$state'];
+    problemPkgBtn.$inject = ['$http', 'ProblemService', '$state', '$stateParams'];
 
     /* @ngInject */
-    function problemPkgBtn ($http, ProblemService, $state) {
+    function problemPkgBtn ($http, ProblemService, $state, $stateParams) {
         // Usage:
         //
         // Creates:
@@ -37,6 +37,7 @@
             scope.dismissProblemPopup = function () {
                 scope.problemPopupShown = false;
                 scope.problemDesc = null;
+                $state.go($state.current, $stateParams, {reload: true});
             }
 
             scope.markAsProblemPkg = function () {

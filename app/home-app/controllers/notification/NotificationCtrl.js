@@ -37,8 +37,16 @@
         }
 
 
-        function goToDetail (id) {
-            $state.go('conversation', {id: id});
+        function goToDetail (con) {
+            if(con.is_read_by_customer==0){
+                MsgService.markConversationAsRead(con.id).then(function (data) {
+                    if(data.success === true ) 
+                    $state.go('conversation', {id: con.id});
+                })
+            }
+            else{
+                $state.go('conversation', {id: con.id});
+            }
         }
 
         function toggleNotification () {  
