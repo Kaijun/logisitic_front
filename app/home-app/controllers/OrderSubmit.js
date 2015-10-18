@@ -23,6 +23,7 @@
         $scope.isConfirmShown = false;
         $scope.warehouses = [];
         $scope.logisticPaths = [];
+        $scope.logisticPathChosen = null;
         $scope.extraServices = [];
         $scope.addressList  = [];
         $scope.packageList = [];
@@ -46,11 +47,16 @@
             });
             var pathPromise = InfoService.getLogisticPaths(2).then(function (data){
                 $scope.logisticPaths = data;
+                $scope.logisticPathChosen = $scope.logisticPaths[0];
+                $scope.$watch('logisticPathChosen', function (newValue, oldValue) {
+                    $scope.order.logistic_path = $scope.logisticPathChosen.id;
+                    $scope.extraServices = $scope.logisticPathChosen.extra_services;
+                })
             });
             // TODO: add user Group!!! from UserInfo
-            var extraSrvPromise = InfoService.getExtraServices(1, 3).then(function (data){
-                 $scope.extraServices = data;
-            });
+            // var extraSrvPromise = InfoService.getExtraServices(1, 3).then(function (data){
+            //      $scope.extraServices = data;
+            // });
             var addressListPromise = ProfileService.getAddressList().then(function (data) {
                 if(data.length === 0){
                     alert('请先添加地址!');
@@ -58,7 +64,7 @@
                 }
                 $scope.addressList = data;
             });
-            $q.all([warehousePromise, pathPromise, extraSrvPromise, addressListPromise]).then(function () {
+            $q.all([warehousePromise, pathPromise, addressListPromise]).then(function () {
                 $scope.order = angular.copy(orderObj);
                 $scope.order.warehouse = $scope.warehouses[0].id.toString();
                 $scope.order.logistic_path = $scope.logisticPaths[0].id.toString();
@@ -74,6 +80,7 @@
                                 item.isSelected = false;
                                 item.quantityToSend = 1;
                             });
+
                         });
                         return data;
                     }).then(function (data) {

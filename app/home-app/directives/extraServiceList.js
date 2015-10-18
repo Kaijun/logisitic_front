@@ -20,6 +20,7 @@
             scope: {
                 selectedServices: '=',
                 type: '@',
+                givenServices: '=',
                 userGroup: '@',
             }
         };
@@ -30,13 +31,21 @@
             var type = parseInt(scope.type);
             var userGroup = parseInt(scope.userGroup);
 
-            scope.services = [];
-            InfoService.getExtraServices(type, userGroup).then(function(data) {
-                scope.services = angular.isArray(data)? data: [data];
+            if(type){
+                scope.services = [];
+                InfoService.getExtraServices(type, userGroup).then(function(data) {
+                    scope.services = angular.isArray(data)? data: [data];
+                    scope.services.map(function (item) {
+                        item.selected = false;
+                    })
+                });
+            }
+            else if(scope.givenServices){
+                scope.services = scope.givenServices;
                 scope.services.map(function (item) {
                     item.selected = false;
-                })
-            });
+                });
+            }
 
             scope.$watch('services', function () {
                 scope.selectedServices = [];

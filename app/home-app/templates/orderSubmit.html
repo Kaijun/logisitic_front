@@ -22,10 +22,7 @@
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">配送路线选择</div>
           <div class="pure-u-3-4">
-            <select ng-model="order.logistic_path" class="pure-u-1">
-              <option ng-repeat="lp in logisticPaths" value="{{lp.id}}">
-                {{lp.name}}
-              </option>
+            <select ng-model="logisticPathChosen" ng-options="lp.name for lp in logisticPaths" class="pure-u-1" >
             </select>
           </div>
       </div>
@@ -100,7 +97,7 @@
       <div class="title pure-u-1-4">附加服务</div>
       <div class="pure-u-3-4">
               
-          <div extra-service-list type="3" user-group="0" selected-services="order.extra_services"></div>
+          <div extra-service-list given-services="extraServices" user-group="0" selected-services="order.extra_services"></div>
           <div class="desc">如有需要，请选择相应的增值服务，部分服务可能会产生费用。</div>
       </div>
 
