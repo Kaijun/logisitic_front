@@ -15,7 +15,7 @@
     <div class="pure-g"> 
     <div class="pure-u-1-2">
       <table class="pure-table pure-table-horizontal ah-small-table">
-        <tr style="width:30%"><td>跟踪号</td><td>DKD029312313</td></tr>
+        <tr style="width:30%"><td>跟踪号</td><td>{{problemPkg.reference_code}}</td></tr>
         <tr><td>客户ID</td><td>{{problemPkg.package_owner.name}}</td></tr>
         <tr><td>库存码</td><td>{{problemPkg.package_owner.stock_number}}</td></tr>
         <tr><td>库位号</td><td>{{problemPkg.package_owner.stock_position}}</td></tr>
@@ -28,7 +28,7 @@
       <table class="pure-table pure-table-horizontal ah-small-table" > 
           <tr><td style="width:30%">状态</td><td>{{problemPkg.statusStr}}</td></tr>
           <tr><td>问题件分类</td><td><span ng-if="$stateParams.type==0">预报问题件</span><span ng-if="$stateParams.type==1">订单问题件</span><span ng-if="$stateParams.type==2">移库问题件</span><span ng-if="$stateParams.type==3">库存问题件</span></td></tr>
-          <tr><td>提交时间</td><td></td></tr>
+          <tr><td>更新时间</td><td>{{problemPkg.updated_at}}</td></tr>
       </table>
     </div>
     </div>  
