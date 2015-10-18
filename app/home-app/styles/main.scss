@@ -437,6 +437,13 @@ textarea{
         &:hover{
             background: url('../images/btn-edit.svg') #306191 no-repeat center;
         }
+     }     
+     .btn-pay{
+        background: url('../images/btn-pay.svg') #376191 no-repeat center;
+        background-size: 18px 18px;
+        &:hover{
+            background: url('../images/btn-pay.svg') #306191 no-repeat center;
+        }
      }
      .btn-delete{
         background: url('../images/btn-delete.svg') no-repeat center;
