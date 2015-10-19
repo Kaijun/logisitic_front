@@ -34,8 +34,10 @@
                 });
 
                 list.map(function (item) {
-                    item.createdTime = (new Date(item.created_at)).toISOString().substring(0, 10);
-                    item.updatedTime = (new Date(item.updated_at)).toISOString().substring(0, 10);
+                    var dt = item.created_at;
+                    var du = item.created_at;
+                    item.createdTime = dt.substr(0, 4) + '-' + dt.substr(5,2) + '-' + dt.substr(8,2);
+                    item.updatedTime = du.substr(0, 4) + '-' + du.substr(5,2) + '-' + du.substr(8,2);
                     item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
                     return item;
                 })

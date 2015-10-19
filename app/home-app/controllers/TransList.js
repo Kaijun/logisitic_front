@@ -28,8 +28,14 @@
         function active () {
             TransService.getTranss().then(function (list) {
                 list.map(function (item) {
-                    item.createdTime = (new Date(item.created_at.date)).toISOString().substring(0, 10);
-                    item.updatedTime = (new Date(item.updated_at.date)).toISOString().substring(0, 10);
+                    var dt = item.created_at.date;
+                    var du = item.created_at.date;
+                    
+                    item.createdTime = dt.substr(0,4) + '-' + dt.substr(5,2) + '-' + dt.substr(8,2) ;
+                    item.updatedTime = du.substr(0,4) + '-' + du.substr(5,2) + '-' + du.substr(8,2);
+
+                    // item.createdTime = (new Date(item.created_at.date)).toISOString().substring(0, 10);
+                    // item.updatedTime = (new Date(item.updated_at.date)).toISOString().substring(0, 10);
                     item.statusStr = InfoService.getStockStatusMapping(parseInt(item.status));
                     return item;
                 })

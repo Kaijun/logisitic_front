@@ -31,8 +31,16 @@
                     return item.status==-1 || item.status==0 || item.status==1 || item.status==2 || item.status==3 || item.status==4 || item.status==5;
                 })
                 list.map(function (item) {
-                    item.timestampStr = (new Date(item.timestamp.date)).toISOString().substring(0, 10);
-                    item.inStockTime = Math.floor((new Date() - new Date(item.timestamp.date)) / (1000*60*60*24)) + 1;
+
+                    var d = item.timestamp.date;
+                    var year = d.substr(0, 4);
+                    var month = d.substr(5, 2);
+                    var day = d.substr(8,2);
+                    item.timestampStr = year + '-' + month + '-' + day;
+                    // item.timestampStr = (new Date(item.timestamp.date)).toISOString().substring(0, 10);
+                    var d1 = new Date(item.timestampStr);
+                    var d0 = new Date();
+                    item.inStockTime = Math.floor((d0 - d1) / (1000*60*60*24));
                     item.statusStr = InfoService.getStockStatusMapping(parseInt(item.status));
                     return item;
                 })
