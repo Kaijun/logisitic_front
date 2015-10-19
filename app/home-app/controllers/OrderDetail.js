@@ -27,7 +27,9 @@
                 if($stateParams.orderId){
                     var orderId = $stateParams.orderId;
                     OrderService.getOrderById(orderId).then(function (data) {
-                        data.timestampStr = (new Date(data.timestamp.date)).toISOString().substring(0, 10);
+                        data.timestampStr = data.timestamp.date.substr(0,4) + '-' + data.timestamp.date.substr(5,2) + '-' + data.timestamp.date.substr(8,2);
+
+                        // data.timestampStr = (new Date(data.timestamp.date)).toISOString().substring(0, 10);
                         
                         return data;
                     },
