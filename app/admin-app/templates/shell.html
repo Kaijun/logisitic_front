@@ -13,7 +13,8 @@
   </nav>
   <nav class="ah-sub-nav pure-g">
     <div class="pure-u-1-3">
-      <div class="logo"><img src="images/ah-logo.png"> <span>后台管理</span></div>
+    <!-- <img src="images/ah-logo.png"> -->
+      <div class="logo">大口袋后台管理</div>
     </div>
     <div class="pure-u-2-3 ah-sub-nav-list">
       <ul>
@@ -25,14 +26,14 @@
     </div>
   </nav>
   <div class="pure-g main">
-    <div class="pure-u-3-24">
+    <div class="pure-u-2-24">
 
       <div ng-show="$state.includes('business')" class="ah-sidebar">
         <div class="list-wrapper">
           <div class="title">库存</div>
           <ul class="list" >
             <li ui-sref="preStockList">预报列表</li>
-            <li ui-sref="stockList">库存列表</li>
+            <li ui-sref="stockList" class="active">库存列表</li>
             <li ui-sref="stockQuick">快速入库</li>
             <li ui-sref="stockBatch">批量入库</li>
             <li ui-sref="transList">移库列表</li>
@@ -42,6 +43,8 @@
           <div class="title">订单</div>
           <ul class="list" >
             <li ui-sref="orderList">订单列表</li>
+            <li>处理中</li>
+             <li>已付款</li>
             <li ui-sref="orderQuick">快速处理</li>
             <li ui-sref="orderTrack">订单跟踪</li>
           </ul>
@@ -50,15 +53,17 @@
           <div class="title">问题件</div>
           <ul class="list" >
             <li ui-sref="problemList">问题件列表</li>
+            <li>库存｜移库</li>
+            <li>代刷｜订单</li>
             <!-- <li ui-sref="problemDetail">已存档问题件</li> -->
           </ul>
         </div>
-        <div class="list-wrapper">
+        <!-- <div class="list-wrapper">
           <div class="title">搜索</div>
           <ul class="list" >
             <li ui-sref="search">搜索</li>
           </ul>
-        </div>
+        </div> -->
         
         
       </div>
@@ -149,7 +154,7 @@
       </div>
       
     </div>
-    <div class="pure-u-21-24">
+    <div class="pure-u-22-24">
       <div class="ah-main" ui-view></div>
     </div>
   </div>

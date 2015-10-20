@@ -1,32 +1,38 @@
-
 <div class="ah-list">
-  <div class="ah-main-header">
-    <div class="left">
-      <span class="title">用户列表</span>
+  <div class="pure-g ah-filter">
+    <div class="pure-u-1-24 label">客户ID</div>
+    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-1-24 label">Email</div>
+    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-1-24 label">入库码</div>
+    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-1-24 label">库位号</div>
+    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-1-24 label">用户组</div>
+    <div class="pure-u-2-24">
+        <select>
+          <option value="1">全部</option>
+          <option value="1">用户组2</option>
+        </select>
     </div>
-
-    <div class="right">
-    <span><input type="search" placeholder ="搜索" ></span>
-   
-    </div>
+    <div class="pure-u-9-24 button"><a>筛选</a></div>
   </div>
-
   <div class="ah-list">
-      <table class="pure-table pure-table-horizontal ah-list-table">
-        <thead>
-          <tr>
-            <th width="2%"><input type="checkbox"></th>
-            <th width="10%">客户ID</th>
-            <th width="5%">入库码</th>
-            <th width="5%">库位号</th>
-            <th width="10%">Email</th>
-            <th width="10%">积分</th>
-            <th width="8%">余额</th>
-            <th width="10%">用户组</th>
-            <th width="8%">操作</th>
-          </tr>
-        </thead>
-        <tbody ng-repeat="user in users">
+    <table class="pure-table pure-table-horizontal ah-list-table">
+      <thead>
+        <tr>
+          <th width="2%"><input type="checkbox"></th>
+          <th width="10%">客户ID</th>
+          <th width="5%">入库码</th>
+          <th width="5%">库位号</th>
+          <th width="10%">Email</th>
+          <th width="10%">积分</th>
+          <th width="8%">余额</th>
+          <th width="10%">用户组</th>
+          <th width="8%">操作</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="user in users">
         <td><input type="checkbox"></td>
         <td>{{user.name}}</td>
         <td>{{user.stock_number}}</td>
@@ -36,10 +42,10 @@
         <td>{{user.remain}}</td>
         <td>{{user.role.role_name}}</td>
         <td> <a ng-click="editUser(user.id)">修改</a></td>
-        </tbody>
-      </table>
+      </tbody>
+    </table>
   </div>
-  <div class="ah-action-btns"> 
+  <div class="ah-action-btns">
     <div class="left">
       <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
       <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>

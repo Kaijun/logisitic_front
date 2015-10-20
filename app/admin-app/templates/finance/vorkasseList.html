@@ -1,16 +1,25 @@
 
 <div class="ah-list">
-  <div class="ah-main-header">
-    <div class="left">
-      <span class="title">代刷列表</span>
+  <div class="pure-g ah-filter">
+    <div class="pure-u-1-24 label">客户ID</div>
+    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-1-24 label">入库码</div>
+    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-1-24 label">状态</div>
+    <div class="pure-u-2-24">
+        <select>
+          <option value="1">全部</option>
+          <option value="1">用户组2</option>
+        </select>
     </div>
-
-    <div class="right">
-      <span>筛选: </span>
-      <span>按状态</span>
-      <span> | </span>
-      <span>按时间</span>
+    <div class="pure-u-1-24 label">最近</div>
+    <div class="pure-u-2-24">
+        <select>
+          <option value="1">1个月</option>
+          <option value="1">3个月</option>
+        </select>
     </div>
+    <div class="pure-u-12-24 button"><a>筛选</a></div>
   </div>
 
 
@@ -49,7 +58,7 @@
       <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
     </div>
     <div class="right">
-      <a  ng-click="" class="pure-button red horizon">批量下载附件</a>
+      <a  ng-click="" class="pure-button blue horizon">批量下载附件</a>
     </div>
   </div>
   

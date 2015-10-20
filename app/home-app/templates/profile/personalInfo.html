@@ -22,8 +22,12 @@
 
    <div class="uh-list-row pure-g">
     <div class="pure-u-4-24 uh-list-cell">身份证号码</div>
-    <div class="pure-u-1-2 uh-list-cell"><input ng-model="personalInfo.ID_card_number" ng-value="personalInfo.ID_card_number"></div>
-    <div class="pure-u-8-24 uh-list-cell last">请确保身份证正确以保证通关</div>
+    <div class="pure-u-1-2 uh-list-cell"><input ng-model="personalInfo.ID_card_number" ng-value="personalInfo.ID_card_number" ng-pattern="" required></div>
+    <div class="pure-u-8-24 uh-list-cell last">
+    {{personalInfo.ID_card_number}}
+        <span ng-show="personalInfo.ID_card_number.$error.pattern">请确保身份证正确以保证通关</span>
+        <span ng-show="personalInfo.ID_card_number.required">请填写身份证号码</span>
+    </div>
   </div> 
 </div>
 </div>

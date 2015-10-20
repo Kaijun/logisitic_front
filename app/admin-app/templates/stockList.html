@@ -1,36 +1,50 @@
-
 <div class="ah-list">
-  <div class="ah-main-header">
+<!--   <div class="ah-main-header">
     <div class="left">
       <span ng-if="$state.current.name=='preStockList'" class="title">预报列表</span>
       <span ng-if="$state.current.name=='stockList'" class="title">库存列表</span>
     </div>
 
-    <div class="right">
-    <span><input type="search" placeholder ="搜索" ></span>
-   
-    </div>
+  </div> -->
+  <div class="pure-g ah-filter">
+  <!-- <div class="pure-u-1-24 label">搜索</div> -->
+    <div class="pure-u-2-24 label">入库跟踪号</div>
+    <div class="pure-u-4-24"><input></div>
+
+    <div class="pure-u-1-24 label">入库码</div>
+    <div class="pure-u-2-24"><input></div>
+       <div class="pure-u-1-24 label">客户ID</div>
+    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-1-24 label">时间</div>
+    <div class="pure-u-2-24"><input placeholder="yyyy-mm-dd"></div>
+    <div class="pure-u-1-24 label">至</div>
+    <div class="pure-u-2-24"><input placeholder="yyyy-mm-dd"></div>
+    <div class="pure-u-6-24 button"><a>筛选</a></div>
   </div>
+
+
 
   <div class="ah-list">
       <table class="pure-table pure-table-horizontal ah-list-table">
         <thead>
           <tr>
             <th width="2%"><input type="checkbox"></th>
+            <th width="5%">提交时间</th>
             <th width="10%">入库跟踪号</th>
             <th width="5%">客户ID</th>
             <th width="5%">入库码</th>
-            <th width="5%">库位号</th>
-            <th width="8%">联系</th>
-            <th width="15%">包裹描述</th>
-            <th width="15%">客户备注</th>
+            <th width="4%">库位号</th>
+            <th width="5%">联系</th>
+            <th width="10%">包裹描述</th>
+            <th width="10%">备注</th>
             <th width="5%">状态</th>
-            <th width="8%">操作</th>
+            <th width="5%">操作</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="stock in stocks">
             <td><input ng-model="stock.selected" ng-click="stockSelected(stock)" type="checkbox"></td>
+            <td>TODo</td>
             <td>{{stock.reference_code}}</td>
             <td>{{stock.user_name}}</td>
             <td>{{stock.stock_number}}</td>

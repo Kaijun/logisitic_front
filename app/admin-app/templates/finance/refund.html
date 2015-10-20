@@ -1,44 +1,31 @@
-<div class="ah-main-header">
-  <div class="left">
-    <span class="title blue">手动退款</span>
-  </div>
+<div class=" ah-section"> 退款信息 </div>
+<!-- 表单第一行开始 -->
+<div class="pure-g ah-form-line">
+  <div class="pure-u-2-24 input-label">用户Email</div>
+  <div class="pure-u-10-24"><input ng-model="chargeEmail"></div>
 </div>
-
-
-  <div class=" ah-section"> 基本信息 </div>
-      <!-- 表单第一行开始 -->
-     <div class="pure-g ah-form-line">
-      <div class="pure-u-2-24 input-label">用户Email</div> 
-      <div class="pure-u-10-24"><input ng-model="chargeEmail"></div>
-     </div>
-
-      <!-- 第一行结束结束 -->
-
-      <!-- 表单第二行 -->
-     <div class="pure-g ah-form-line">
-      <div class="pure-u-2-24 input-label">用户库存码</div>
-      <div class="pure-u-10-24"><input ng-model="chargeStockNum"></div> 
-     </div>
-
-      <!-- 第2行结束结束 -->
-      <!-- 表单第三行开始 -->
-      <div class="pure-g ah-form-line">
-      <div class="pure-u-2-24 input-label">退款金额</div> 
-      <div class="pure-u-10-24"><input ng-model="chargeAmount"></div> 
-     </div>
-     <!-- 表单第三行结束 -->
-
-
-      <div class="ah-section">附加信息</div>
-      <div>
-          <textarea rows="5" class="pure-u-1-2" ></textarea>
-     
-      </div>  
-
+<!-- 第一行结束结束 -->
+<!-- 表单第二行 -->
+<div class="pure-g ah-form-line">
+  <div class="pure-u-2-24 input-label">用户库存码</div>
+  <div class="pure-u-10-24"><input ng-model="chargeStockNum"></div>
+</div>
+<!-- 第2行结束结束 -->
+<!-- 表单第三行开始 -->
+<div class="pure-g ah-form-line">
+  <div class="pure-u-2-24 input-label">退款金额</div>
+  <div class="pure-u-10-24"><input ng-model="chargeAmount"></div>
+</div>
+<!-- 表单第三行结束 -->
+<div class="ah-section">附加信息</div>
+<div>
+  <textarea rows="5" class="pure-u-1-2" ></textarea>
+  <p class="ah-tips">提示：本功能只适用于退回用户余额功能，不能涉及实际资金退款。</p>
+</div>
 <div class="pure-g ah-action-btns">
-    <div class="pure-u-1-2 right">
-      <a  ng-click="goBack()" class="pure-button red">取消</a>
-      <a  ng-click="charge()" class="pure-button blue">确认</a>
-    </div>
+  <div class="pure-u-1-2 right">
+    <a  ng-click="goBack()" class="pure-button red">取消</a>
+    <a  ng-click="charge()" class="pure-button blue">确认</a>
+  </div>
 </div>
 </div>
