@@ -48,12 +48,7 @@
             var pathPromise = InfoService.getLogisticPaths(3).then(function (data){
                 $scope.logisticPaths = data;
                 $scope.logisticPathChosen = $scope.logisticPaths[0];
-                $scope.$watch('logisticPathChosen', function (newValue, oldValue) {
-                    $scope.order.logistic_path = $scope.logisticPathChosen.id;
-                    $scope.extraServices = $scope.logisticPathChosen.extra_services.filter(function (item) {
-                        return (item.type==0 || item.type==3);
-                    });
-                })
+                
             });
             // TODO: add user Group!!! from UserInfo
             // var extraSrvPromise = InfoService.getExtraServices(1, 3).then(function (data){
@@ -100,6 +95,13 @@
 
                             $scope.packageList = data;
                         })
+                    });
+                });
+
+                $scope.$watch('logisticPathChosen', function (newValue, oldValue) {
+                    $scope.order.logistic_path = $scope.logisticPathChosen.id;
+                    $scope.extraServices = $scope.logisticPathChosen.extra_services.filter(function (item) {
+                        return (item.type==0 || item.type==3);
                     });
                 })
             });
