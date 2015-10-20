@@ -12,7 +12,6 @@
     display: table;
     clear: both;
   }
-}
 
 // endbower
 // 前缀uh user-home
@@ -593,12 +592,18 @@ textarea{
           margin: 16px 0;
         .title{
             font-size: 16px;
+            width: 50%;
+            float: left;
         }
         .desc{
             font-size: 12px;
             color: #969696;
             padding: 5px 0 5px 24px;
             background: url(../images/uh-help-desc.svg) no-repeat left center;
+        }
+        .right{
+            width: 50%;
+            float: right;
         }
     }
 
@@ -661,12 +666,21 @@ textarea{
         margin: 0;
         padding-top: 0;
     }
+    &.title{
+        width: 400px;
+        float: left;
+    }
     &.desc{
         color: #666;
         margin: 0 0 5px 0;
         font-size: 12px;
         padding:0 24px;
         background:url(../images/uh-help-desc.svg) left center no-repeat;
+    }
+    .right {
+        background: #000;
+        float: right;
+        width: 200px;
     }
 
 }

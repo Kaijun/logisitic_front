@@ -76,7 +76,8 @@
       <div class="pure-u-4-24"><input ng-model="extraSrv.base_price"></div>
     </div>
     <!-- 第四行结束 -->
-    <div class="ah-section">价格梯度<span ng-click="addLadder()" class="add">+添加</span></div>
+    <div ng-if="extraSrv.based_on != 0 ">
+    <div class="ah-section" >价格梯度<span ng-click="addLadder()" class="add">+添加</span></div>
     <table class="pure-table pure-table-horizontal ah-line-table">
       <thead>
         <tr>
@@ -94,6 +95,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
     <div class="ah-section">线路描述</div>
     <div>
       <textarea ng-model="extraSrv.description" type="text" rows="6"></textarea>

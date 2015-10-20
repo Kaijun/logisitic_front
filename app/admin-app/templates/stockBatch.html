@@ -1,10 +1,5 @@
 
 <div class="ah-list">
-  <div class="ah-main-header">
-    <div class="left">
-      <span class="title">批量入库</span>
-    </div>
-  </div>
 
   <div class="ah-list">
       <table class="pure-table pure-table-horizontal ah-list-table">
@@ -17,7 +12,6 @@
             <th>库位号</th>
             <th>联系</th>
             <th>包裹描述</th>
-            <th>客户备注</th>
           </tr>
         </thead>
         <tbody>
@@ -29,7 +23,6 @@
             <td>{{stock.stock_number}}</td>
             <td>QQ:{{stock.user_qq? stock.user_qq: "空"}}  - Email: {{stock.user_email}}</td>
             <td>{{stock.description}}</td>
-            <td>{{stock.message}}</td>
           </tr>
         </tbody>
       </table>
@@ -44,12 +37,8 @@
  
 
   <div class="ah-action-btns"> 
-    <div class="pure-g">
 
-
-    <div class="right">
       <a ng-if="selectedStocks.length>0"  ng-click="submitBatch()" class="pure-button blue horizon">批量入库</a>
-    </div>
-  </div>
+</div>
   
 </div>
