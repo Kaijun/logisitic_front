@@ -134,7 +134,7 @@
         function submitLogisticTrack(logisticTrack) {
             var promise = $http({
                 url: AppConfig.apiUrl + '/ship-status/',
-                method: 'PUT',
+                method: 'POST',
                 data: logisticTrack,
             }).then(function (response) {
                 return response.data;

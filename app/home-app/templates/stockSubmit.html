@@ -1,13 +1,12 @@
 <div ng-hide="isConfirmShown" class="uh-submit">
   <div>
 
-    <form name="Form" id="form">
-    <div class="uh-main-section first"> 
-        <div class="uh-main-header">
-          <div class="left">
-            <span class="title blue">入库预报</span>
-          </div>
-        </div>
+<div class="uh-main-section first"> 
+  <div class="uh-main-header">
+      <div class="left">
+        <span class="title blue">入库预报</span>
+      </div>
+  </div>
 
         <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">选择收件仓库*</div>
@@ -185,9 +184,8 @@
       <a validation-submit="Form" ng-click="form.submit(Form)" >下一步</a>
 
     </div>
+</div>
 
-      </form>
-  </div>
 
 
 
@@ -259,27 +257,29 @@
   </div>
 </div>
 
+<div ng-show="checkboxModel.value">
 <div class="uh-main-section middle">
-  <div class="uh-section">购物信息</div>
 
-  <table class="pure-table pure-table-horizontal uh-small-table">
-    <tr>
-     <td style="width: 25%;" >购物网站</td>
-     <td>{{stock.web_link?stock.web_link:"空"}}</td>
-   </tr>
-   <tr>
-    <td>购物网站订单号</td>
-    <td>{{stock.website_reference?stock.website_reference:"空"}}</td>
-  </tr>
-  <tr>
-    <td>购物凭证</td>
-    <td>
-      <a ng-if="stock.image_1" ng-href="{{imageUrlPrefix + stock.image_1}}" target="_blank" >查看</a>
-      <a ng-if="stock.image_2" ng-href="{{imageUrlPrefix + stock.image_2}}" target="_blank" >查看</a>
-      <a ng-if="stock.image_3" ng-href="{{imageUrlPrefix + stock.image_3}}" target="_blank" >查看</a>
-    </td>
-  </tr>
+<div class="uh-section">购物信息</div>
+<table class="pure-table pure-table-horizontal uh-small-table">
+        <tr>
+         <td style="width: 25%;" >购物网站</td>
+         <td>{{stock.web_link?stock.web_link:"空"}}</td>
+        </tr>
+        <tr>
+          <td>购物网站订单号</td>
+          <td>{{stock.website_reference?stock.website_reference:"空"}}</td>
+        </tr>
+        <tr>
+          <td>购物凭证</td>
+          <td>
+            <a ng-if="stock.image_1" ng-href="{{imageUrlPrefix + stock.image_1}}" target="_blank" >查看</a>
+            <a ng-if="stock.image_2" ng-href="{{imageUrlPrefix + stock.image_2}}" target="_blank" >查看</a>
+            <a ng-if="stock.image_3" ng-href="{{imageUrlPrefix + stock.image_3}}" target="_blank" >查看</a>
+          </td>
+        </tr>
 </table>
+</div>
 </div>
 
 <div class="uh-main-section last">

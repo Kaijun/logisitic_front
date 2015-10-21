@@ -18,8 +18,8 @@
           <div class="pure-u-1-2">
             <table class="pure-table pure-table-horizontal ah-small-table">
               <tr>
-                <td style="width:30%">收件仓库</td>
-                <td>{{stock.ship_company}}</td>
+                <td style="width:25%">收件仓库</td>
+                <td>TODO</td>
 
               </tr>
               <tr>
@@ -29,12 +29,12 @@
               </tr>
               <tr>
                 <td>快递信息</td>
-                <td>{{stock.ship_company}} {{stock.ship_tracknumber}}</td>
+                <td>{{stock.reference_code}}</td>
 
               </tr>
               <tr>
                 <td>客户ID</td>
-                <td>{{stock.owner_id}}</td>
+                <td>{{stock.user_name}}</td>
 
               </tr>
             </table>
@@ -43,7 +43,7 @@
           <div class="pure-u-1-2">
             <table class="pure-table pure-table-horizontal ah-small-table" > 
               <tr>    
-                <td  style="width:30%">状态</td>
+                <td  style="width:25%">状态</td>
                 <td>{{stock.statusStr}}</td>
               </tr>
               <tr>
@@ -52,11 +52,11 @@
               </tr>
               <tr>
                 <td>预报时间</td>
-                <td>{{stock.createTimeString}}</td>
+                <td>{{stock.created_time}}</td>
               </tr>
               <tr>
                 <td>入库时间</td>
-                <td>{{stock.updateTimeStr}}</td></tr>
+                <td>{{stock.updated_time}}</td></tr>
               </table>
             </div>
 
@@ -70,7 +70,6 @@
           <table class="pure-table pure-table-horizontal ah-line-table">
             <thead>
               <tr>
-                <th class="pure-u-1-4">预报运单号</th>
                 <th class="pure-u-1-4">名称</th>
                 <th class="pure-u-1-8">分类</th>
                 <th class="pure-u-1-8">单价/总价</th>
@@ -80,11 +79,10 @@
             </thead>
             <tbody>
               <tr ng-repeat="item in stock.items" >
-                <td>--</td>
                 <td>{{item.item_name}}</td>
-                <td>{{item.type}}</td>
-                <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
-                <td>{{item.unit_weight}} / {{item.unit_weight*item.quantity}}</td>
+                <td>TODO</td>
+                <td>{{item.unit_price|number:2}} / {{item.unit_price*item.quantity|number:2}}</td>
+                <td>{{item.unit_weight|number:2}} / {{item.unit_weight*item.quantity|number:2}}</td>
                 <td>{{item.quantity}}</td>
               </tr>
             </tbody>
@@ -95,15 +93,27 @@
           <table class="pure-table pure-table-horizontal ah-small-table">
             <tr>
               <td style="width:15%">留言</td>
-              <td>留什么</td>
+              <td>{{stock.message?stock.message:"空"}}</td>
             </tr>
             <tr>
               <td>附件信息</td>
-              <td>$80</td>
+              <td>
+                <a ng-if="stock.image_1" ng-href="{{imageUrlPrefix + stock.image_1}}" target="_blank" >查看</a>
+                <a ng-if="stock.image_2" ng-href="{{imageUrlPrefix + stock.image_2}}" target="_blank" >查看</a>
+                <a ng-if="stock.image_3" ng-href="{{imageUrlPrefix + stock.image_3}}" target="_blank" >查看</a>
+              </td>
             </tr>
             <tr>
-              <td>入库清单</td>
-              <td>$80</td>
+              <td>附加服务</td>
+              <td><span ng-repeat="es in stock.extra_services">{{es.service_name}}</span></td>
+            </tr>
+            <tr>
+              <td>购物网站</td>
+              <td>{{stock.website_link?stock.website_link:"无"}}</td>
+            </tr>
+             <tr>
+              <td>购物网站订单号</td>
+              <td>{{stock.website_reference?stock.website_reference:"无"}}</td>
             </tr>
           </table>
 

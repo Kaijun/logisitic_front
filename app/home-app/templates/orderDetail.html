@@ -1,176 +1,157 @@
-
 <div class="uh-main-section first">
   <div class="uh-main-header">
-      <div class="left">
-        <span class="title blue">订单详情</span>
-      </div>
-  </div> 
+    <div class="left">
+      <span class="title blue">订单详情</span>
+    </div>
+  </div>
   <!-- 头部标题结束 -->
   <!-- 主体开始 -->
-    
-     <!-- section 1 基本信息 -->
-    <div class="uh-section">基本信息</div>
-    <!-- section 1 表格开始 -->
-    <div class="pure-g">
+  
+  <!-- section 1 基本信息 -->
+  <div class="uh-section">基本信息</div>
+  <!-- section 1 表格开始 -->
+  <div class="pure-g">
     <div class="pure-u-1-2">
       <table class="pure-table pure-table-horizontal uh-small-table">
-       <tr>
-         <td style="width:30%">订单号</td>
-         <td>{{order.reference_code}}</td></tr>
-         <tr>
-          <td>收件人</td>
-          <td>{{order.address.receiver_name}}</td>
-        </tr>
         <tr>
-          <td>联系电话</td>
-          <td>{{order.address.phone}}</td>
-        </tr>
-        <tr>
-          <td>收货地址</td>
-          <td>{{order.address.province}} {{order.address.city}} {{order.address.town}} {{order.address.street}}</td>
-
-        </tr>
-        <tr>
-          <td>配送线路</td>
-          <td>{{order.logisticPath.name}}</td>
-        </tr>
-        <tr>
-          <td>物品所在仓库</td>
-          <td>{{warehouse.name}}</td>
-
-        </tr>
-
-      </table>
-    </div> <!-- 左边表格结束  -->
-
-  <div class="pure-u-1-2">
-    <table class="pure-table pure-table-horizontal uh-small-table" > 
-      <tr>    
-        <td style="width:30%">状态</td>
-        <td>{{order.statusStr}}</td>
-      </tr>
-      <tr>
-        <td>提交时间</td>
-        <td>{{order.timestampStr}}</td>
-      </tr>
-      <tr>
-        <td>更新时间</td>
-        <td>{{order.timestampStr}}</td>
-      </tr>
-      <tr>
-        <td>入库重量</td>
-        <td>{{order.claim_weight}}kg</td>
-      </tr>
-       <tr>
-        <td>出库重量</td>
-        <td>{{order.weight}}kg</td>
-      </tr>
-      <tr>
-        <td>运单号</td>
-        <td>
-        国际段({{order.logisticPath.ship_company_international}}): {{order.ship_tracknumber || "未添加"}} <br> 国内段({{order.logisticPath.ship_company_china}}): {{order.ship_tracknumber_2 || "未添加"}}
-        </td>
-      </tr>
-
-    </table>
-    </div><!-- 右边表格结束 -->
-
-  </div> <!-- pure-g 结束 -->
-</div>
-
-<!-- section 2 开始 -->
-<div class="uh-main-section additon">
-<div class="uh-section"> 包裹物品信息 </div>
-
-<table class="pure-table pure-table-horizontal uh-line-table">
-        <thead>
+          <td style="width:30%">订单号</td>
+          <td>{{order.reference_code}}</td></tr>
           <tr>
-            <th class="pure-u-1-4">名称</th>
-            <th class="pure-u-1-8">分类</th>
-            <th class="pure-u-1-8">单价/总价</th>
-            <th class="pure-u-1-8">单重/总重</th>
-            <th class="pure-u-1-8">数量</th>
-          </tr>
-        </thead>
-        <tbody>
-        <!-- TODO: 这里请使用AS生产动态数据 -->
-          <tr ng-repeat="item in order.items">
-            <td>{{item.item_name}}</td>
-            <td>{{item.typeName}}</td>
-            <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
-            <td>{{item.unit_weight}}kg / {{item.unit_weight*item.quantity}}kg</td>
-            <td>{{item.quantity}}</td>
-          </tr>
-        </tbody>
-</table>
-</div>
-<div class="uh-main-section last">
-<!-- section 3 收费明细开始 -->
-<div class="uh-section">收费明细</div>
-<table class="pure-table pure-table-horizontal uh-line-table">
-        <thead>
-          <tr>
-            <th class="pure-u-1-4">项目</th>
-            <th class="pure-u-1-4">费用</th>
-            <th class="pure-u-2-4">说明</th>
-          </tr>
-        </thead>
-        <tbody>
-        <!-- TODO: 这里请使用AS生产动态数据 -->
-          <tr ng-repeat="es in order.extra_services">
-            <td>{{es.name}}</td>
-            <td>{{es.cost}}元</td>
-            <td>{{es.desc}}</td>
+            <td>收件人</td>
+            <td>{{order.address.receiver_name}}</td>
           </tr>
           <tr>
-            <td>运费</td>
-            <td>{{order.cost}}元</td>
-            <td>-</td>
+            <td>联系电话</td>
+            <td>{{order.address.phone}}</td>
           </tr>
-          <tr class="sum">
-            <td>合计</td>
-            <td>{{order.total_cost}}元</td>
-            <td>客服手动确认后付款</td>
+          <tr>
+            <td>收货地址</td>
+            <td>{{order.address.province}} {{order.address.city}} {{order.address.town}} {{order.address.street}}</td>
           </tr>
-        </tbody>
-</table>
-
-
-<!-- section 4 开始 -->
-
-<div class="uh-section">附加信息</div>
-<table class="pure-table pure-table-horizontal uh-small-table">
-  <tr>
-    <td style="width:15%">发货备注</td>
-    <td>{{order.message?order.message:'空'}}</td>
-</table>
-</div>
-<!-- 底部操作按钮开始 -->
-
-<div class="uh-main-action">
-
-    <div ng-click="goBack()" class="btn-back left"></div>
-
-    <!-- <div ng-click="editOrder()" class="pure-button edit right"><a >编辑</a></div> -->
-    <div ng-show="order.order_status==1" ng-click="deleteOrder()" class="btn-delete right"></div>
-
-
-    <div ng-show="order.order_status==2" ng-click="payOrder()" class="btn-pay right"></div>
-
-
-</div>
-<!-- <div class="pure-g">
-  <div class="pure-u-1-2 left">
-    <div class="pure-button back left"><a href="">返回</a></div>
-  </div>
-  <div ng-show="order.order_status==1" class="pure-u-1-2 right">
-    <div ng-click="editOrder()" class="pure-button edit right"><a >编辑</a></div>
-    <div ng-click="deleteOrder()" class="delete right"><a >删除</a></div>
-  </div>
-  <div ng-show="order.order_status==2" class="pure-u-1-2 right">
-    <div ng-click="payOrder()" class="pure-button edit right"><a >付款</a></div>
-  </div>
-
-</div> -->
-
-
+          <tr>
+            <td>配送线路</td>
+            <td>{{order.logisticPath.name}}</td>
+          </tr>
+          <tr>
+            <td>物品所在仓库</td>
+            <td>{{warehouse.name}}</td>
+          </tr>
+        </table>
+        </div> <!-- 左边表格结束  -->
+        <div class="pure-u-1-2">
+          <table class="pure-table pure-table-horizontal uh-small-table" >
+            <tr>
+              <td style="width:30%">状态</td>
+              <td>{{order.statusStr}}</td>
+            </tr>
+            <tr>
+              <td>提交时间</td>
+              <td>{{order.timestampStr}}</td>
+            </tr>
+            <tr>
+              <td>更新时间</td>
+              <td>{{order.timestampStr}}</td>
+            </tr>
+            <tr>
+              <td>入库重量</td>
+              <td>{{order.claim_weight}}kg</td>
+            </tr>
+            <tr>
+              <td>出库重量</td>
+              <td>{{order.weight}}kg</td>
+            </tr>
+            <tr>
+              <td>运单号</td>
+              <td>
+                国际段({{order.logisticPath.ship_company_international}}): {{order.ship_tracknumber || "未添加"}} <br> 国内段({{order.logisticPath.ship_company_china}}): {{order.ship_tracknumber_2 || "未添加"}}
+              </td>
+            </tr>
+          </table>
+          </div><!-- 右边表格结束 -->
+          </div> <!-- pure-g 结束 -->
+        </div>
+        <!-- section 2 开始 -->
+        <div class="uh-main-section additon">
+          <div class="uh-section"> 包裹物品信息 </div>
+          <table class="pure-table pure-table-horizontal uh-line-table">
+            <thead>
+              <tr>
+                <th class="pure-u-1-4">名称</th>
+                <th class="pure-u-1-8">分类</th>
+                <th class="pure-u-1-8">单价/总价</th>
+                <th class="pure-u-1-8">单重/总重</th>
+                <th class="pure-u-1-8">数量</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in order.items">
+                <td>{{item.item_name}}</td>
+                <td>{{item.typeName}}</td>
+                <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
+                <td>{{item.unit_weight}}kg / {{item.unit_weight*item.quantity}}kg</td>
+                <td>{{item.quantity}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="uh-main-section last">
+          <!-- section 3 收费明细开始 -->
+          <div class="entry">
+            <div class="uh-section">收费明细</div>
+            <div ng-show = "order.order_status < 3 || order.order_status == 7" class = "desc">目前价格为预估价格</div>
+            <!-- 在未被称重时的状态 -->
+          </div>
+          <table class="pure-table pure-table-horizontal uh-line-table">
+            <thead>
+              <tr>
+                <th class="pure-u-1-4">项目</th>
+                <th class="pure-u-1-4">费用</th>
+                <th class="pure-u-2-4">说明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- TODO: 这里请使用AS生产动态数据 -->
+              <tr ng-repeat="es in order.extra_services">
+                <td>{{es.name}}</td>
+                <td>{{es.cost}}元</td>
+                <td>{{es.desc}}</td>
+              </tr>
+              <tr>
+                <td>运费</td>
+                <td>{{order.cost}}元</td>
+                <td>-</td>
+              </tr>
+              <tr class="sum">
+                <td>合计</td>
+                <td>{{order.total_cost}}元</td>
+                <td>客服手动确认后付款</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- section 4 开始 -->
+          <div class="uh-section">附加信息</div>
+          <table class="pure-table pure-table-horizontal uh-small-table">
+            <tr>
+              <td style="width:15%">发货备注</td>
+              <td>{{order.message?order.message:'空'}}</td>
+            </table>
+          </div>
+          <!-- 底部操作按钮开始 -->
+          <div class="uh-main-action">
+            <div ng-click="goBack()" class="btn-back left"></div>
+            <!-- <div ng-click="editOrder()" class="pure-button edit right"><a >编辑</a></div> -->
+            <div ng-show="order.order_status==1" ng-click="deleteOrder()" class="btn-delete left"></div>
+            <div ng-show="order.order_status==2" ng-click="payOrder()" class="btn-pay right"></div>
+          </div>
+          <!-- <div class="pure-g">
+            <div class="pure-u-1-2 left">
+              <div class="pure-button back left"><a href="">返回</a></div>
+            </div>
+            <div ng-show="order.order_status==1" class="pure-u-1-2 right">
+              <div ng-click="editOrder()" class="pure-button edit right"><a >编辑</a></div>
+              <div ng-click="deleteOrder()" class="delete right"><a >删除</a></div>
+            </div>
+            <div ng-show="order.order_status==2" class="pure-u-1-2 right">
+              <div ng-click="payOrder()" class="pure-button edit right"><a >付款</a></div>
+            </div>
+          </div> -->

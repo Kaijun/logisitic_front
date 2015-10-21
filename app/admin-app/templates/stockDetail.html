@@ -68,7 +68,7 @@
           <table class="pure-table pure-table-horizontal ah-small-table">
             <tr>
               <td style="width:15%">留言</td>
-              <td>{{stock.message}}</td>
+              <td>{{stock.message?stock.message:"空"}}</td>
             </tr>
             <tr>
               <td>附件信息</td>
@@ -80,11 +80,15 @@
             </tr>
             <tr>
               <td>附加服务</td>
-              <td>
-                <span ng-repeat="es in stock.extra_services">
-                  {{es.service_name}}
-                </span>
-              </td>
+              <td><span ng-repeat="es in stock.extra_services">{{es.service_name}}</span></td>
+            </tr>
+            <tr>
+              <td>购物网站</td>
+              <td>{{stock.website_link?stock.website_link:"无"}}</td>
+            </tr>
+             <tr>
+              <td>购物网站订单号</td>
+              <td>{{stock.website_reference?stock.website_reference:"无"}}</td>
             </tr>
           </table>
         </div>
@@ -92,7 +96,7 @@
         <div class="pure-u-1-6 right">
           
           <div problem-pkg-btn package-id="{{$stateParams.stockId}}" type="{{stock.status<=3?0:3}}" current-status="{{stock.status}}"></div>
-          <div><a ng-if="stock.status==2" ng-click="enterStock()" class="pure-button blue">入库</a></div>
+          <div><a ng-if="stock.status==2" ng-click="enterStock()" class="pure-button export">入库</a></div>
           <div><a ng-click="deleteStock()" class="pure-button red ">删除</a></div>
           <div><a ng-click="goBack()" class="pure-button back ">返回</a></div>
           

@@ -502,7 +502,37 @@ $sub-navbar-height: 40px;
     }
     &.view{
       background: url(../images/btn-view.png) no-repeat 10px center #F5A623;
-      padding: 10px 16px 10px 40px;
+      padding: 10px 16px 10px 20px;
+    }
+    &.scale{
+      background: url(../images/btn-scale.svg) no-repeat 10px center #4A90E2;
+      background-size: 20px 20px;
+      padding: 10px 16px 10px 20px;
+    }
+    &.print-list{
+      background: url(../images/btn-print-list.svg) no-repeat 10px center #4A90E2;
+      background-size: 20px 20px;
+      padding: 10px 16px 10px 25px;
+      
+    }
+    &.print{
+      background: url(../images/btn-print.svg) no-repeat 10px center #4A90E2;
+      background-size: 20px 20px;
+      text-align: center;
+      padding: 10px 16px 10px 25px;
+    }
+     &.export{
+      background: url(../images/btn-export.svg) no-repeat 10px center #4A90E2;
+      background-size: 20px 20px;
+      text-align: center;
+      padding: 10px 16px 10px 25px;
+    }
+
+    &.ship{
+      background: url(../images/btn-ship.svg) no-repeat 10px center #4A90E2;
+      background-size: 20px 20px;
+      padding: 10px 16px 10px 25px;
+      
     }
     &.horizon-small{
       width: 60px;
