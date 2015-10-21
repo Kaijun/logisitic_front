@@ -1,155 +1,110 @@
-<div class="ah-stock-quick">
-
-  <!-- 标题栏开始 -->
- <!--  <div class="ah-main-header">
-    <div class="left">
-      <span class="title blue">快速打包</span>
-    </div>
-  </div> -->
-  <!-- 标题栏结束 -->
-
-  <!-- 主体部分开始 -->
 <div class="ah-scan-space">
-      <div class="pure-g ah-big-search">
-        <div><input ng-model="serachText" type="text" ></div>
-        <button ng-click="search()" class="">回车确认</button>
-      </div>  
- </div> 
-
-
-  <div class="ah-main-body pure-form" >
-
-
-<!--     <div class="pure-g">
-      <div class="title pure-u-5-6">
-        <span><input ng-model="serachText" type="text" ></span>
-      </div>
-      <div class="pure-u-1-6 right">
-        <a ng-click="search()" class="pure-button enter">回车确认</a>
-      </div>  
-
-
-    </div> <!-- 顶部栏结束 Div 
-    <div class="ah-divider thick"></div>--> 
-    <div ng-if="stock" class="pure-g">
-
-      <div class="pure-u-7-8">
-        <div class="pure-g pure-u-1"><div class="ah-section">找到匹配：跟踪号码 - {{stock.ship_tracknumber}}</div></div>
-        <!-- 并列表格开始 -->
-        <div class="pure-g"> 
-          <div class="pure-u-1-2">
-            <table class="pure-table pure-table-horizontal ah-small-table">
-              <tr>
-                <th colspan="2">基本信息</th>
-
-              </tr>
-              <tr>
-                <td style="width:30%">收件仓库</td>
-                <td>{{stock.ship_company}}</td>
-
-              </tr>
-              <tr>
-                <td>包裹备注</td>
-                <td>{{stock.desc}}</td>
-
-              </tr>
-              <tr>
-                <td>快递信息</td>
-                <td>{{stock.ship_company}} {{stock.ship_tracknumber}}</td>
-
-              </tr>
-              <tr>
-                <td>客户ID</td>
-                <td>{{stock.owner_id}}</td>
-
-              </tr>
-            </table>
-          </div>
-
-          <div class="pure-u-1-2">
-            <table class="pure-table pure-table-horizontal ah-small-table" > 
-              <th colspan="2">库存信息</th>
-              <tr>    
-                <td  style="width:30%">状态</td>
-                <td>{{stock.status}}</td>
-              </tr>
-              <tr>
-                <td>库位号</td>
-                <td>{{stock.weight}}</td>
-              </tr>
-              <tr>
-                <td>预报时间</td>
-                <td>{{stock.timeString}}</td>
-              </tr>
-              <tr>
-                <td>入库时间</td>
-                <td>--</td></tr>
-              </table>
-            </div>
-
-
-
-          </div>  
-          <!-- 并列表格结束 -->
-
-          <div class="ah-section has-divider"> 包裹物品信息 </div>
-
-          <table class="pure-table pure-table-horizontal ah-custom-table">
-            <thead>
-              <tr>
-                <th class="pure-u-1-4">预报运单号</th>
-                <th class="pure-u-1-4">名称</th>
-                <th class="pure-u-1-8">分类</th>
-                <th class="pure-u-1-8">单价/总价</th>
-                <th class="pure-u-1-8">单重/总重</th>
-                <th class="pure-u-1-8">数量</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="item in stock.items" >
-                <td>--</td>
-                <td>{{item.item_name}}</td>
-                <td>{{item.type}}</td>
-                <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
-                <td>{{item.unit_weight}} / {{item.unit_weight*item.quantity}}</td>
-                <td>{{item.quantity}}</td>
-              </tr>
-            </tbody>
-          </table>
-
-
-          <div class="ah-section">附加信息</div>
+  <div class="pure-g ah-big-search">
+    <div><input ng-model="serachText" type="text" ></div>
+    <button ng-click="search()" class="">回车确认</button>
+  </div>
+</div>
+<div class="ah-main-body" >
+  <!-- <div ng-if="stock" class="pure-g"> 动态后请显示-->
+  <div class="pure-g">
+    <div class="pure-u-20-24">
+      <div class="pure-g pure-u-1"><div class="ah-section">找到匹配：订单号 - {{order.reference_code}}</div></div>
+      <div class="pure-g">
+        <div class="pure-u-1-2">
           <table class="pure-table pure-table-horizontal ah-small-table">
-            <tr>
-              <td style="width:15%">留言</td>
-              <td>留什么</td>
-            </tr>
-            <tr>
-              <td>附件信息</td>
-              <td>$80</td>
-            </tr>
-            <tr>
-              <td>入库清单</td>
-              <td>$80</td>
-            </tr>
+            <tr><td width="25%">客户ID</td><td>{{order.user_name}}</td></tr>
+            <tr><td>收件人</td><td>{{order.post_info.receiver_name}}</td></tr>
+            <tr><td>收货地址</td><td>{{order.post_info.province}} {{order.post_info.city}} {{order.post_info.town}} {{order.post_info.street}} </td>
+            <tr><td>联系电话</td><td>{{order.post_info.phone}}</td></tr>
+            <tr><td>配送线路</td><td>{{order.logisticPath.name}}</td></tr>
+            <tr><td>物品所在仓库</td><td>{{warehouse.name}}</td></tr>
+            <tr><td>入库重量</td><td>{{weightSum}}KG</td></tr>
+            
           </table>
-
-
         </div>
-        <!-- 右侧功能键开始 -->
-        <div class="pure-u-1-8 right">
-         <div><a class="pure-button flag divide">标记为问题件</a></div>
-         <div><a class="pure-button view divide">查看详情</a></div>
-         <div><a class="pure-button blue divide">确认入库</a></div>
-         <div><a class="pure-button back divide">返回继续</a></div>
-       </div> <!-- 右侧功能键结束 Div -->
-     </div><!-- 中部信息栏结束 Div -->
-
-
-   </div><!-- 主体部分结束 Div  -->
-
-   <div ng-if="!stock" > 未找到信息 - ...</div>
- </div>
-  <script type="text/javascript">
-  $("input:text:visible:first").focus();
- </script>
+        <div class="pure-u-1-2">
+          <table class="pure-table pure-table-horizontal ah-small-table">
+            <tr><td style="width:25%">订单状态</td><td>{{order.statusStr}}</td></tr>
+            <tr><td>提交时间</td><td>{{order.created_time.date}}</td></tr>
+            <tr><td>更新时间</td><td>{{order.updated_time.date}}</td></tr>
+            <tr><td>按线路配重</td><td><input readonly placeholder="待称重"></td></tr>
+            <tr><td>发货跟踪号</td><td><input></td><td>
+          </table>
+        </div>
+      </div>
+      <div class="ah-section"> 包裹物品信息 </div>
+      <table class="pure-table pure-table-horizontal ah-line-table">
+        <thead>
+          <tr>
+            <th class="pure-u-5-24">入库跟踪号</th>
+            <th class="pure-u-4-24">名称</th>
+            <th class="pure-u-1-8">分类</th>
+            <th class="pure-u-1-8">单价/总价</th>
+            <th class="pure-u-1-8">单重/总重</th>
+            <th class="pure-u-1-8">数量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in order.items">
+            <td>{{item.source_ref}} </td>
+            <td>{{item.item_name}}</td>
+            <td>{{item.typeName}}</td>
+            <td>{{item.unit_price}} / {{item.unit_price*item.quantity | number:2}}</td>
+            <td>{{item.unit_weight}} / {{item.unit_weight*item.quantity | number:2}}</td>
+            <td>{{item.quantity}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- 收费明细 -->
+      <div class="ah-section">收费明细</div>
+      <table class="pure-table pure-table-horizontal ah-line-table">
+        <thead>
+          <tr>
+            <th class="pure-u-1-4">项目</th>
+            <th class="pure-u-1-4">费用</th>
+            <th class="pure-u-2-4">说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- TODO: 这里请使用AS生产动态数据 -->
+          <tr ng-repeat="es in order.extra_services">
+            <td>{{es.service_name}}</td>
+            <td>{{es.service_price}}</td>
+            <td>{{es.service_description}}</td>
+          </tr>
+          <tr>
+            <td>运费</td>
+            <td>{{order.cost}}</td>
+            <td>-</td>
+          </tr>
+          <tr class="sum">
+            <td>合计</td>
+            <td>{{order.total_cost}}元</td>
+            <td>{{order.auto_charge==0? "客服手动确认后支付" : "称重后自动结算（需有足够余额)"}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="ah-section">附加信息</div>
+      <table class="pure-table pure-table-horizontal ah-small-table">
+        <tr>
+          <td style="width:15%">发货备注</td>
+          <td>{{order.message}}</td>
+        </tr>
+      </table>
+      </div><!-- 左侧主题结束 -->
+      <!-- 右侧功能键开始，对于快速处理来说，只显示当前状态需要的按钮 -->
+      <div class="pure-u-4-24 right">
+        <div><a class="pure-button flag divide">标记为问题件</a></div>
+        <div><a class="pure-button view divide">查看详情</a></div>
+        <div><a class="pure-button scale divide">称重打包</a></div>
+        <div><a class="pure-button print-list divide">打印面单</a></div>
+        <div><a class="pure-button ship divide">确认发货</a></div>
+        <div><a class="pure-button back divide">返回继续</a></div>
+        </div> <!-- 右侧功能键结束 Div -->
+        </div><!-- 中部信息栏结束 Div -->
+        </div><!-- 主体部分结束 Div  -->
+        <div ng-if="!stock" > 未找到信息 - ...</div>
+      </div>
+      <script type="text/javascript">
+      $("input:text:visible:first").focus();
+      </script>
