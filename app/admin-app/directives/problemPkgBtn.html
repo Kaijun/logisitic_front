@@ -1,7 +1,8 @@
 
 <div ng-click="showProblemPopup()"><a class="pure-button flag">标记为问题件</a></div>
 
-<div ng-show="problemPopupShown" class="pop-up-wapper">
+<div ng-show="problemPopupShown" class="pop-up-cover">
+<div class="pop-up-wapper">
   <div class="pop-up-title">
     标记此包裹为问题件
   </div>
@@ -17,4 +18,5 @@
       <a ng-click="markAsProblemPkg()" class="pure-button blue horizon-small">确认</a>
     </div>
   </div>
+</div>
 </div>

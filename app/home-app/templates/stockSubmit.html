@@ -22,7 +22,7 @@
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">包裹备注*</div>
           <div class="pure-u-3-4">
-            <input ng-model="stock.desc" class="pure-u-1" type="text">
+            <input ng-model="stock.desc" class="pure-u-1" type="text" placeholder="如：9月18日在亚马逊购买的商品">
           </div>
       </div>
       <div class="uh-form-section pure-g">
@@ -38,7 +38,7 @@
           <div class="pure-u-1-4">
             <input class="pure-u-1" ng-model="stock.weight" min="0" max="{{logisticPathChosen.weight_upper_bound}}" type="number">
           </div>
-          <div class="pure-u-1-4 input-label">KG</div>
+          <div class="pure-u-1-4 input-label">KG 线路限重{{logisticPathChosen.weight_upper_bound}}KG</div>
       </div>
 
 </div><!-- 头部背景结束 -->
@@ -55,7 +55,7 @@
             <th class="pure-u-1-4">类型</th>
             <th class="pure-u-1-8">数量</th>
             <th class="pure-u-1-8">单价(元)</th>
-            <th class="pure-u-1-8">单件重量(KG)</th>
+            <th class="pure-u-1-8">单量(KG)</th>
             <th class="pure-u-1-8">操作</th>
           </tr>
         </thead>
@@ -81,11 +81,15 @@
 
 <div class="uh-main-section middle">
 <div class="entry">
-      <div class="uh-section">购物信息</div>
-      <div class="desc">完善购物信息可帮助我们更快的处理您的退换货服务。</div>
+      <div class="uh-section">
 
+        <div><input type="checkbox" ng-model = "checkboxModel.value"> 添加购物详细信息</div>
+      
       </div>
-      <div class="uh-form-section pure-g">
+      <div class="desc">完善购物信息可帮助我们更快的处理您的退换货服务。</div>
+</div>
+<div ng-show="checkboxModel.value">
+      <div class="uh-form-section pure-g" >
 
           <div class="title pure-u-1-4">购物网站</div>
           <div class="pure-u-3-4"><input ng-model="stock.web_link" type="text"></div>
@@ -106,6 +110,7 @@
         <div class="desc">请根据需要上传相应购物凭证，最多3张，支持 jpg, gif, png 小于500 KB</div>
       </div>
     </div>    
+</div>
 </div>
 
 <div class="uh-main-section last">
@@ -248,7 +253,7 @@
     
 <div class="uh-main-action" >
       <div class="btn-edit left" ng-click="editSubmit()"></div>
-      <div  ng-click="deleteSubmit()" class="btn-delete left"></div>
+      <!-- <div  ng-click="deleteSubmit()" class="btn-delete left"></div> -->
       <div class="btn-msg-send right" ng-click="confirmSubmit()">
       </div>
 </div>
