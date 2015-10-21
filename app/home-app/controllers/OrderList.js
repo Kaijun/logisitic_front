@@ -26,6 +26,7 @@
         active();
 
         function active () {
+
             OrderService.getOrders().then(function (list) {
 
                 list = list.filter(function (item) {

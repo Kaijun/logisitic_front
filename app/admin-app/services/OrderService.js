@@ -21,8 +21,12 @@
 
         ////////////////
 
-        function getOrders() {
-            var promise = $http.get(AppConfig.apiUrl + '/ship-order/').then(function (response) {
+        function getOrders(status) {
+            var url = '';
+            if(status){
+                url = '?status=' + status;
+            }
+            var promise = $http.get(AppConfig.apiUrl + '/ship-order'+url).then(function (response) {
                 return response.data;
             });
             return promise;

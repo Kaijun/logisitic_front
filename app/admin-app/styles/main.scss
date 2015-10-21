@@ -512,18 +512,26 @@ $sub-navbar-height: 40px;
     &.print-list{
       background: url(../images/btn-print-list.svg) no-repeat 10px center #4A90E2;
       background-size: 20px 20px;
-      padding: 10px 16px 10px 20px;
+      padding: 10px 16px 10px 25px;
       
     }
     &.print{
       background: url(../images/btn-print.svg) no-repeat 10px center #4A90E2;
       background-size: 20px 20px;
-      padding: 10px 16px 10px 20px;
+      text-align: center;
+      padding: 10px 16px 10px 25px;
     }
+     &.export{
+      background: url(../images/btn-export.svg) no-repeat 10px center #4A90E2;
+      background-size: 20px 20px;
+      text-align: center;
+      padding: 10px 16px 10px 25px;
+    }
+
     &.ship{
       background: url(../images/btn-ship.svg) no-repeat 10px center #4A90E2;
       background-size: 20px 20px;
-      padding: 10px 16px 10px 20px;
+      padding: 10px 16px 10px 25px;
       
     }
     &.horizon-small{

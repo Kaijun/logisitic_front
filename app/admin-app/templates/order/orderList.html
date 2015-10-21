@@ -68,8 +68,8 @@
                 <td>{{order.reference_code}}</td>
                 <td>{{order.user_name}}</td>
                 <td>{{order.post_info.receiver_name}}</td>
-                <td>{{order.weight}}KG</td>
-                <td>{{order.total_cost}}元</td>
+                <td>{{order.weight | number:2 }}KG</td>
+                <td>{{order.total_cost|number:2}}元</td>
                 <td>{{order.statusStr}}</td>
                 <td>
                   <a ng-click="goToDetail(order.id)" >详情</a>
@@ -86,7 +86,8 @@
           </div>
           <div class="right">
             <a  ng-click="" class="pure-button red horizon">批量存档</a>
-            <a  ng-click="batchDownload()" class="pure-button blue horizon">批量导出</a>
+            <a  ng-click="" class="pure-button print horizon">打印配货单</a>
+            <a  ng-click="batchDownload()" class="pure-button export horizon">批量导出</a>
           </div>
         </div>
         
