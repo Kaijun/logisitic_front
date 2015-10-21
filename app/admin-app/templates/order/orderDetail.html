@@ -159,7 +159,7 @@
      <div ng-if="order.order_status<2"><a ng-click="weightAndPack()" class="pure-button blue ">称重打包</a></div>
      <!-- <div><a ng-click="printPackListconfirm()" class="pure-button blue ">打印面单</a></div> -->
      <div><a ng-click="printPostListconfirm()" class="pure-button blue ">打印面单</a></div>
-     <div ng-if="order.order_status==3 || order.order_status==4 & order.order_status != -1"><a  ng-hide="isTrackNumEditShown" ng-click="confirmShip()" class="pure-button green ">提交发货</a></div>
+     <div ng-if="(order.order_status==3 || order.order_status==4) && order.order_status != -1"><a  ng-hide="isTrackNumEditShown" ng-click="confirmShip()" class="pure-button green ">提交发货</a></div>
      <div><a ng-show="isWeightEditShown || isShipStatusEditShown || isTrackNumEditShown" ng-click="editOrder()" class="pure-button red ">确认修改</a></div>
      <div><a ng-click="goBack()" class="pure-button back ">返回列表</a></div>
    </div> 

@@ -308,7 +308,7 @@
                 }
                 return response;
             },
-           'responseError': function(response) 
+           'responseError': function(response) {
                 if (response.status==500) {  
                     swal("服务器错误", "", "error");
                     return null;
