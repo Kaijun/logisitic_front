@@ -147,11 +147,13 @@
                 return response;
             },
            'responseError': function(response) {
-                if(response.data.success===false){
-                    swal(response.data.message, "", "error");
+                if (response.status==500) {  
+                    swal("服务器错误", "", "error");
+                    return null;
+                }else{
+                    swal("未知错误", "", "error");
                     return null;
                 }
-                return response;
             }
 
           };

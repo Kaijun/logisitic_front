@@ -3,6 +3,7 @@
 
     angular
         .module('admin.controllers', [
-            
+            'validation',
+            'validation.rule',
         ]);
 })();

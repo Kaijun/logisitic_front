@@ -31,7 +31,7 @@
                 });
                 $scope.orders.map(function (item) {
                     item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
-                    item.dateStr = (new Date(item.created_time.date)).toISOString().substring(0, 10);
+                    item.dateStr = item.created_time.date.substring(0, 10);
                     item.selected = arrayExist(selectedOrders, item.id);
                 })
                 $timeout(function () {
@@ -50,7 +50,7 @@
                 });
                 $scope.orders.map(function (item) {
                     item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
-                    item.dateStr = (new Date(item.created_time.date)).toISOString().substring(0, 10);
+                    item.dateStr = item.created_time.date.substring(0, 10);
                     item.selected = arrayExist(selectedOrders, item.id);
                 })
                 $timeout(function () {

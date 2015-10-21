@@ -32,8 +32,8 @@
         function search() {
             if($scope.serachText){
                 StockService.getStockByTrackNr($scope.serachText).then(function (data) {
-                    data.createTimeString = (new Date(data.created_time.date)).toISOString().substring(0, 10);
-                    data.updateTimeString = (new Date(data.updated_time.date)).toISOString().substring(0, 10);
+                    data.createTimeString = data.created_time.date.substring(0, 10);
+                    data.updateTimeString = data.updated_time.date.substring(0, 10);
                     data.statusStr = InfoService.getStockStatusMapping(data.status);
                     $timeout(function(){
                         $scope.stock = data;

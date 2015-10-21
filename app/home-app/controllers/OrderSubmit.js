@@ -99,7 +99,6 @@
                 });
 
                 $scope.$watch('logisticPathChosen', function (newValue, oldValue) {
-                    $scope.order.logistic_path = $scope.logisticPathChosen.id;
                     $scope.extraServices = $scope.logisticPathChosen.extra_services.filter(function (item) {
                         return (item.type==0 || item.type==3);
                     });
@@ -126,6 +125,11 @@
 
 
         function confirmOrder(){
+
+
+            $scope.order.logistic_path = $scope.logisticPathChosen.id;
+
+                    
             var addr = $scope.addressList.filter(function (item) {
                 return item.id === parseInt($scope.order.address);
             });

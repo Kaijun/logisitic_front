@@ -27,7 +27,7 @@
             if(viewNum===1){
                 StockService.getCurrentStocks().then(function (list) {
                     list.map(function (item) {
-                        item.timestampStr = (new Date(item.timestamp.date)).toISOString().substring(0, 10);
+                        item.timestampStr = item.timestamp.date.substring(0, 10);
                         item.inStockTime = Math.floor((new Date() - new Date(item.timestamp.date)) / (1000*60*60*24)) + 1;
                         item.statusStr = InfoService.getStockStatusMapping(parseInt(item.status));
                         return item;
@@ -38,8 +38,8 @@
             else if(viewNum === 2){
                 OrderService.getCurrentOrders().then(function (list) {
                     list.map(function (item) {
-                      item.createdTime = (new Date(item.created_at)).toISOString().substring(0, 10);
-                        item.updatedTime = (new Date(item.updated_at)).toISOString().substring(0, 10);
+                      item.createdTime = item.created_at.substring(0, 10);
+                        item.updatedTime = item.updated_at.substring(0, 10);
                         item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
                         return item;
                     })
@@ -49,8 +49,8 @@
             else if(viewNum === 3){
                 TransService.getCurrentTranss().then(function (list) {
                     list.map(function (item) {
-                        item.createdTime = (new Date(item.created_at.date)).toISOString().substring(0, 10);
-                        item.updatedTime = (new Date(item.updated_at.date)).toISOString().substring(0, 10);
+                        item.createdTime = item.created_at.date.substring(0, 10);
+                        item.updatedTime = item.updated_at.date.substring(0, 10);
                         item.statusStr = InfoService.getStockStatusMapping(parseInt(item.status));
                         return item;
                     })

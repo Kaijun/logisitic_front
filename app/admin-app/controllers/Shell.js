@@ -25,5 +25,6 @@
             var height = $(window).height() - sidebarTopOffset;
             if($sidebar.outerHeight()<height) $sidebar.outerHeight(height);
         }
+
     }
 })();

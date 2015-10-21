@@ -52,7 +52,7 @@
                 var type = $stateParams.type;
                 var id = $stateParams.id;
                 ProblemService.getProblemPkg(type, id).then(function (data) {                    
-                    data.updated_at = (new Date(data.updated_at.date)).toISOString().substring(0, 10);
+                    data.updated_at = data.updated_at.date.substring(0, 10);
                     if(type==1){
                         data.statusStr = InfoService.getOrderStatusMapping(data.order_status);
                     }

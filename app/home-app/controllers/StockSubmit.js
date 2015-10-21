@@ -48,6 +48,11 @@
             var pathPromise = InfoService.getLogisticPaths(1).then(function (data){
                 $scope.logisticPaths = data;
                 $scope.logisticPathChosen = $scope.logisticPaths[0];
+                $scope.$watch('logisticPathChosen', function (newValue, oldValue) {
+                    $scope.extraServices = $scope.logisticPathChosen.extra_services.filter(function (item) {
+                        return (item.type==0 || item.type==1);
+                    });
+                })
             });
             var optionPromise = InfoService.getTypes().then(function (data) {
                 $scope.optionTypes = data;
@@ -60,12 +65,6 @@
                         $scope.stock.warehouse = $scope.warehouses[0].id.toString();
                         $scope.stock.ship_company = $scope.logisticPaths[0].id.toString();
 
-                        $scope.$watch('logisticPathChosen', function (newValue, oldValue) {
-                            $scope.stock.ship_company = $scope.logisticPathChosen.id;
-                            $scope.extraServices = $scope.logisticPathChosen.extra_services.filter(function (item) {
-                                return (item.type==0 || item.type==1);
-                            });
-                        })
                     }
                     else{
                         isEditMode = true;
@@ -73,14 +72,6 @@
                             $scope.stock = data;
                             $scope.stock.warehouse = $scope.warehouses[0].id.toString();
                             $scope.stock.ship_company = $scope.logisticPaths[0].id.toString();
-
-
-                            $scope.$watch('logisticPathChosen', function (newValue, oldValue) {
-                                $scope.stock.ship_company = $scope.logisticPathChosen.id;
-                                $scope.extraServices = $scope.logisticPathChosen.extra_services.filter(function (item) {
-                                    return (item.type==0 || item.type==1);
-                                });
-                            })
                 
                         },
                         // 非法
@@ -102,6 +93,10 @@
         
 
         $scope.confirm = function(){
+
+
+            $scope.stock.ship_company = $scope.logisticPathChosen.id;
+                            
             // TODO: check if stock available!!!
             console.log($scope.stock);
             console.log($scope.extraServicesName);

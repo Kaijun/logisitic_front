@@ -27,7 +27,7 @@
         function activate() {
             MessageService.getBulkList().then(function (data) {
                 data.forEach(function (item) {
-                    item.created_at = (new Date(item.created_at)).toISOString().substring(0, 10);
+                    item.created_at = item.created_at.substring(0, 10);
                 })
                 $scope.bulkList = data;
             }).then(function () {

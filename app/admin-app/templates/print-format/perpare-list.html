@@ -22,7 +22,8 @@
         <!-- TODO: filter出各个包裹!!!! -->
             <table class="line-table">
             <tr >
-                <th><input type="checkbox"></th>
+                <th style="width: 3%;"><input type="checkbox"></th>
+                <th style="width: 23%;">跟踪号</th>
                 <th>名称</th>
                 <th>分类</th>
                 <th>单价/总价</th>
@@ -31,6 +32,7 @@
             </tr>
             <tr ng-repeat="item in order.items">
                 <td><input type="checkbox"></td>
+                <td>{{item.source_ref}}</td>
                 <td>{{item.item_name}}</td>
                 <td>{{item.typeName}}</td>
                 <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>

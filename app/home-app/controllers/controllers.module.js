@@ -5,5 +5,7 @@
         .module('home.controllers', [
             'ngTable',
             'angular.city.select',
+            'validation',
+            'validation.rule',
         ]);
 })();

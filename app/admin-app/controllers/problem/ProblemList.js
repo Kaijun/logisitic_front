@@ -22,7 +22,7 @@
             $scope.$watch('type', function () {
                 ProblemService.getProblemPkgs($scope.type).then(function (data) {
                     data.forEach(function (item) {
-                        item.updated_at = (new Date(item.updated_at.date)).toISOString().substring(0, 10);
+                        item.updated_at = item.updated_at.date.substring(0, 10);
                     })
                     $scope.problemPkgs = data;               
                 });

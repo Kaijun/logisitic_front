@@ -31,7 +31,7 @@
             <th width="2%"><input type="checkbox"></th>
             <th width="5%">提交时间</th>
             <th width="10%">入库跟踪号</th>
-            <th width="5%">客户ID</th>
+            <th width="5%" ng-hide="isPreStockList">客户ID</th>
             <th width="5%">入库码</th>
             <th width="4%">库位号</th>
             <th width="5%">联系</th>
@@ -44,9 +44,9 @@
         <tbody>
           <tr ng-repeat="stock in stocks">
             <td><input ng-model="stock.selected" ng-click="stockSelected(stock)" type="checkbox"></td>
-            <td>TODo</td>
+            <td>{{stock.created_time}}</td>
             <td>{{stock.reference_code}}</td>
-            <td>{{stock.user_name}}</td>
+            <td ng-hide="isPreStockList">{{stock.user_name}}</td>
             <td>{{stock.stock_number}}</td>
             <td>{{stock.stock_position}}</td>
             <td>QQ:{{stock.user_qq? stock.user_qq: "空"}}  - 

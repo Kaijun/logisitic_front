@@ -36,7 +36,7 @@
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">包裹重量*</div>
           <div class="pure-u-1-4">
-            <input class="pure-u-1" ng-model="stock.weight" type="text">
+            <input class="pure-u-1" ng-model="stock.weight" min="0" max="{{logisticPathChosen.weight_upper_bound}}" type="number">
           </div>
           <div class="pure-u-1-4 input-label">KG</div>
       </div>

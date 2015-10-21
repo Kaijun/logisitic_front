@@ -10,6 +10,7 @@
     /* @ngInject */
     function StockListCtrl($scope, $state, $http, $timeout, StockService) {
         $scope.StockService = StockService;
+        $scope.isPreStockList = false;
 
         $scope.stocks = [];
         $scope.goToDetail = goToDetail;
@@ -32,6 +33,7 @@
             var status = '';
             if($state.current.name=="preStockList"){
                 status = 1;
+                $scope.isPreStockList = true;
             }
             else{
                 status = 4
@@ -39,6 +41,7 @@
             StockService.getStocks(status).then(function(data){
                 $scope.stocks = data.data;
                 $scope.stocks.map(function (item) {
+                    item.created_time = item.created_time.date.substr(0,10);
                     item.selected = arrayExist(selectedStocks, item.package_id);
                 });
                 $timeout(function () {
@@ -53,6 +56,7 @@
             $http.get(url).then(function (response) {
                 $scope.stocks = response.data.data;
                 $scope.stocks.map(function (item) {
+                    item.created_time = item.created_time.date.substr(0,10);
                     item.selected = arrayExist(selectedStocks, item.package_id);
                 });
                 $timeout(function () {

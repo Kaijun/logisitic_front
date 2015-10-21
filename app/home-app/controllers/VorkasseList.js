@@ -35,8 +35,7 @@
                 //     return item.status==-1 || item.status==0 || item.status==1 || item.status==2 || item.status==-3 || item.status==4 || item.status==5;
                 // })
                 list.map(function (item) {
-                    var dt = item.created_at;
-                    item.created_at = dt.substr(0,4) + '-' + dt.substr(5,2) + '-' + dt.substr(8,2);
+                    item.created_at = data.created_at.substring(0, 10);
                     item.statusStr = InfoService.getVorkasseStatusMapping(parseInt(item.status));
                     return item;
                 })
