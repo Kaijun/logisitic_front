@@ -13,6 +13,18 @@
     clear: both;
   }
 }
+
+input.invalid-input{
+    border-color: red;
+}
+input.valid-input{
+    border-color: green;
+}
+
+label.invalid-label{
+    color: red;
+}
+
 // endbower
 // 前缀uh user-home
 $topnavheight:30px;

@@ -3,8 +3,8 @@
 ;(function () {
     
     angular.module('home.controllers')
-    .controller('StockSubmitCtrl', ['$scope', 'StockService', 'AppConfig','InfoService', '$state', '$stateParams', '$timeout', '$q', 
-    function($scope, StockService, AppConfig, InfoService, $state, $stateParams, $timeout, $q) {
+    .controller('StockSubmitCtrl', ['$scope', '$validation', 'StockService', 'AppConfig','InfoService', '$state', '$stateParams', '$timeout', '$q', 
+    function($scope, $validation, StockService, AppConfig, InfoService, $state, $stateParams, $timeout, $q) {
         var stockObj = {
             warehouse: null,
             desc: null,
@@ -34,10 +34,29 @@
         $scope.confirmSubmit = confirmSubmit;
         $scope.editSubmit = editSubmit;
         $scope.deleteSubmit = deleteSubmit;
+        $scope.isWeightUpperBound = isWeightUpperBound;
 
         $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
         var isImagesChanged = false;
         var isEditMode = false;
+
+        // $scope.form = {
+        //     checkValid: $validation.checkValid,
+        //     submit: function (form) {
+        //         debugger;
+        //         $validation.validate(form)
+        //             .success(function () {
+        //                 $scope.confirm();
+        //             })
+        //             .error(function () {
+        //                 swal('表单不完整或者不合格, 请重新填写', '', 'error');
+        //             });
+        //     },
+        //     reset: function (form) {
+        //         $validation.reset(form);
+        //     }
+        // };
+
 
         active();
 
@@ -93,8 +112,6 @@
         
 
         $scope.confirm = function(){
-
-
             $scope.stock.ship_company = $scope.logisticPathChosen.id;
                             
             // TODO: check if stock available!!!
@@ -177,6 +194,15 @@
 
         function deleteSubmit () {
             $state.go('stockSubmit', {}, { reload: true });
+        }
+        function isWeightUpperBound (event, value) {
+            debugger;
+            if(parseInt(value)<=parseInt($scope.logisticPathChosen.weight_upper_bound)){
+                $scope.stock.weight = value;
+            }
+            else{
+                $scope.stock.weight = $scope.logisticPathChosen.weight_upper_bound
+            }
         }
 
     }]);

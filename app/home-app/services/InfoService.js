@@ -36,7 +36,7 @@
         }
         function getOrderStatusMapping (statusId) {
             statusId = statusId + 1;
-            var statusMapping = ['删除','未知','发货处理中','待付款','已付款','待发货','已发货','订单问题件'];
+            var statusMapping = ['删除','未知','未处理','待付款','已付款','待发货','已发货','订单问题件','打包中'];
             if(statusId<statusMapping.length){
                 return statusMapping[statusId];
             }
