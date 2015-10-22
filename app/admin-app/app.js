@@ -309,7 +309,11 @@
                 return response;
             },
            'responseError': function(response) {
-                if (response.status==500) {  
+                if (response.status==404) {  
+                    swal(response.data.message, "", "error");
+                    return null;
+                }
+                else if (response.status==500) {  
                     swal("服务器错误", "", "error");
                     return null;
                 }else{

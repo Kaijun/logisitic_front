@@ -13,6 +13,7 @@
 
             getUsers: getUsers,
             getUser: getUser,
+            getUserByStockNumber: getUserByStockNumber,
             editUser: editUser,
             deleteUser: deleteUser,
         }
@@ -31,6 +32,15 @@
         function getUser(id) {
             var promise = $http({
                 url: AppConfig.apiUrl + '/user/'+id,
+                method: 'GET',
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function getUserByStockNumber(sn) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/get-user-by-stock-number/'+sn,
                 method: 'GET',
             }).then(function (response) {
                 return response.data;

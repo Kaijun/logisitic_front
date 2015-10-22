@@ -95,12 +95,9 @@
 
         function submitStock (stock) {
             var promise = $http({
-                url: AppConfig.apiUrl + '/stocks/',
+                url: AppConfig.apiUrl + '/package/',
                 method: 'POST',
-                data: $httpParamSerializer(stock),
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                data: stock,
             }).then(function (response) {
                 return response.data;
             });
