@@ -764,6 +764,10 @@ textarea{
             // border-top: solid 1px #D1D1D1;
             display: table-cell !important;
             padding: 10px 0 10px 8px;
+            &:first-of-type{
+                text-align: left;
+            }
+            text-align: center;
         }
     }
 
@@ -772,6 +776,7 @@ textarea{
             border-bottom: 0;
         }
         td{
+            text-align: center;
             padding: 8px 0px 8px 8px;
             border: 0;
         }
@@ -782,6 +787,9 @@ textarea{
                   font-weight: bold; 
                 }
         }
+    }
+    input{
+        background: #fff;
     }
 
 }

@@ -1,157 +1,214 @@
-<div class="ah-stock-quick">
-
-
 <div class="ah-scan-space">
-    <div class="pure-g ah-big-search">
-        <div><input ng-model="serachText" type="text" ></div>
-        <button ng-click="search()" class="">回车确认</button>
-    </div>  
+  <div class="pure-g ah-big-search">
+    <div><input ng-model="serachText" type="text" ></div>
+    <button ng-click="search()" class="">回车确认</button>
+  </div>
 </div>
- 
-   
-    <div ng-if="stock" class="pure-g">
 
-      <div class="pure-u-7-8">
-        <div class="pure-g pure-u-1"><div class="ah-section">找到匹配：跟踪号码 - {{stock.ship_tracknumber}}</div></div>
-        <!-- 并列表格开始 -->
-        <div class="pure-g"> 
-          <div class="pure-u-1-2">
-            <table class="pure-table pure-table-horizontal ah-small-table">
-              <tr>
-                <td style="width:25%">收件仓库</td>
-                <td>TODO</td>
+<!-- <div ng-if="stock" class="pure-g"> -->
+<div class="pure-g">
+    <div class="pure-u-7-8">
+    <div class="pure-g pure-u-1"><div class="ah-section">找到匹配：跟踪号码 - {{stock.ship_tracknumber}}</div></div>
+    <!-- 并列表格开始 -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <table class="pure-table pure-table-horizontal ah-small-table">
+          <tr>
+            <td style="width:80px">收件仓库</td>
+            <td>TODO</td>
+          </tr>
+          <tr>
+            <td>包裹备注</td>
+            <td>{{stock.desc}}</td>
+          </tr>
+          <tr>
+            <td>快递信息</td>
+            <td>{{stock.reference_code}}</td>
+          </tr>
+          <tr>
+            <td>客户ID</td>
+            <td>{{stock.user_name}}</td>
+          </tr>
+          <tr>
+            <td>需验证</td>
+            <td>NO/YES</td>
+          </tr>
+        </table>
+      </div>
+      <div class="pure-u-1-2">
+        <table class="pure-table pure-table-horizontal ah-small-table" >
+          <tr>
+            <td  style="width:80px">状态</td>
+            <td>{{stock.statusStr}}</td>
+          </tr>
+          <tr>
+            <td>库位号</td>
+            <td>{{stock.stock_position}}</td>
+          </tr>
+          <tr>
+            <td>预报时间</td>
+            <td>{{stock.created_time}}</td>
+          </tr>
+          <tr>
+            <td>入库时间</td>
+            <td>{{stock.updated_time}}</td></tr>
+          </table>
+        </div>
+      </div>
+      <!-- 并列表格结束 -->
+      <div class="ah-section">附加信息</div>
+      <table class="pure-table pure-table-horizontal ah-small-table">
+         <tr>
+          <td style="width:80px">附加服务</td>
+          <td>入库清点</td>
+        </tr>
+        <tr>
+          <td>用户留言</td>
+          <td>{{stock.message?stock.message:"空"}}</td>
+        </tr>
+        <tr>
+          <td>附件信息</td>
+          <td>
+            <a ng-if="stock.image_1" ng-href="{{imageUrlPrefix + stock.image_1}}" target="_blank" >查看</a>
+            <a ng-if="stock.image_2" ng-href="{{imageUrlPrefix + stock.image_2}}" target="_blank" >查看</a>
+            <a ng-if="stock.image_3" ng-href="{{imageUrlPrefix + stock.image_3}}" target="_blank" >查看</a>
+          </td>
+        </tr>
+      </table>
 
-              </tr>
-              <tr>
-                <td>包裹备注</td>
-                <td>{{stock.desc}}</td>
 
+      <div class="ah-section"> <input type="checkbox" ng-model="add_item"> 入库清点 </div>
+      <table ng-if="add_item"class="pure-table pure-table-horizontal ah-line-table">
+        <thead>
+          <tr>
+            <th class="pure-u-1-4">名称</th>
+            <th class="pure-u-1-8">分类</th>
+            <th class="pure-u-1-8">单价/总价</th>
+            <th class="pure-u-1-8">单重/总重</th>
+            <th class="pure-u-1-8">数量</th>
+          </tr>
+        </thead>
+            <tbody>
+              <tr>
+                <td><input></td>
+                <td><select></select></td>
+                <td><input></td>
+                <td><input></td>
+                <td><input></td>
               </tr>
               <tr>
-                <td>快递信息</td>
-                <td>{{stock.reference_code}}</td>
+                <td><input></td>
+                <td><select></select></td>
+                <td><input></td>
+                <td><input></td>
+                <td><input></td>
+              </tr>
+            </tbody>
+      </table>
+    </div>
+    <!-- 右侧功能键开始 -->
+    <div class="pure-u-1-8 right">
+      <div><a class="pure-button flag divide">标记为问题件</a></div>
+      <div><a ng-click="goToDetail()" class="pure-button view divide">查看详情</a></div>
+      <div><a ng-click="enterStock()" class="pure-button blue divide">确认入库</a></div>
+      <div><a class="pure-button back divide">返回继续</a></div>
+      </div> <!-- 右侧功能键结束 Div -->
+</div>
 
-              </tr>
-              <tr>
-                <td>客户ID</td>
-                <td>{{stock.user_name}}</td>
-
-              </tr>
-            </table>
-          </div>
-
-          <div class="pure-u-1-2">
-            <table class="pure-table pure-table-horizontal ah-small-table" > 
-              <tr>    
-                <td  style="width:25%">状态</td>
-                <td>{{stock.statusStr}}</td>
-              </tr>
-              <tr>
-                <td>库位号</td>
-                <td>{{stock.stock_position}}</td>
-              </tr>
-              <tr>
-                <td>预报时间</td>
-                <td>{{stock.created_time}}</td>
-              </tr>
-              <tr>
-                <td>入库时间</td>
-                <td>{{stock.updated_time}}</td></tr>
-              </table>
+<!-- 找到了信息 -->
+      <!-- 未找到结果部分 -->
+<div ng-if="!stock" >
+        <div class="ah-section">未找到信息 － 新建库存</div>
+        <div class="pure-g">
+        <div class="pure-u-20-24">
+          <div class="pure-g ah-form-line">
+            <div class="pure-u-2-24 input-label">选择仓库</div>
+            <div class="pure-u-4-24">
+              <select name="">
+                <option value="">德国仓库</option>
+                <option value="">美国仓库</option>
+              </select>
             </div>
-
-
-
-          </div>  
-          <!-- 并列表格结束 -->
-
-          <div class="ah-section has-divider"> 包裹物品信息 </div>
-
-          <table class="pure-table pure-table-horizontal ah-line-table">
+            <div class="pure-u-2-24 input-label">入库线路</div>
+            <div class="pure-u-2-24">                  
+              <select name="">
+                <option value="">DHL</option>
+                <option value="">EMS</option>
+              </select>
+            </div>
+            <div class="pure-u-2-24 input-label">包裹运单号</div>
+            <div class="pure-u-1-4"><input ng-model="submitData.ship_tracknumber" placeholder="从扫描中获取" type="text" ></div>
+            <div class="pure-u-2-24 input-label">入库重量</div>
+            <div class="pure-u-2-24"><input ></div>
+            <div class="pure-u-1-24 input-label">KG</div>
+          </div>
+          <div class="pure-g ah-form-line">
+                <div class="pure-u-2-24 input-label">入库码</div>
+                <div class="pure-u-4-24"><input></div>
+                <div class="pure-u-2-24 input-label">库位号</div>
+                <div class="pure-u-2-24"><input placeholder="89232" readonly></div>
+                <div class="pure-u-2-24 input-label">用户组</div>
+                <div class="pure-u-4-24"><input placeholder="VIP用户" readonly></div>
+                <div class="pure-u-2-24 input-label">保证金</div>
+                <div class="pure-u-4-24"><input placeholder="已交" readonly></div>
+          </div>
+          <div class="ah-section">入库信息</div>
+          <div class="ah-tips">如需用户提交购物凭证等信息，勾选[需要验证]；</div>
+          <div class="pure-g ah-form-line">
+            <div class="pure-u-2-24 input-label">需要验证</div>
+            <div class="pure-u-1-24"><input type="checkbox"></div>
+            <div class="pure-u-2-24">入库清点</div>
+            <div class="pure-u-1-24"><input type="checkbox" ng-model="whole_package"></div>
+          </div>
+          <div ng-if = "whole_package">
+            <table class="pure-table pure-table-horizontal ah-line-table">
             <thead>
               <tr>
                 <th class="pure-u-1-4">名称</th>
                 <th class="pure-u-1-8">分类</th>
-                <th class="pure-u-1-8">单价/总价</th>
-                <th class="pure-u-1-8">单重/总重</th>
+                <th class="pure-u-1-8">单价</th>
+                <th class="pure-u-1-8">单重</th>
                 <th class="pure-u-1-8">数量</th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="item in stock.items" >
-                <td>{{item.item_name}}</td>
-                <td>TODO</td>
-                <td>{{item.unit_price|number:2}} / {{item.unit_price*item.quantity|number:2}}</td>
-                <td>{{item.unit_weight|number:2}} / {{item.unit_weight*item.quantity|number:2}}</td>
-                <td>{{item.quantity}}</td>
+              <tr>
+                <td><input></td>
+                <td><select></select></td>
+                <td><input></td>
+                <td><input></td>
+                <td><input></td>
+              </tr>
+              <tr>
+                <td><input></td>
+                <td><select></select></td>
+                <td><input></td>
+                <td><input></td>
+                <td><input></td>
               </tr>
             </tbody>
           </table>
+          </div>
 
 
-          <div class="ah-section">附加信息</div>
-          <table class="pure-table pure-table-horizontal ah-small-table">
-            <tr>
-              <td style="width:15%">留言</td>
-              <td>{{stock.message?stock.message:"空"}}</td>
-            </tr>
-            <tr>
-              <td>附件信息</td>
-              <td>
-                <a ng-if="stock.image_1" ng-href="{{imageUrlPrefix + stock.image_1}}" target="_blank" >查看</a>
-                <a ng-if="stock.image_2" ng-href="{{imageUrlPrefix + stock.image_2}}" target="_blank" >查看</a>
-                <a ng-if="stock.image_3" ng-href="{{imageUrlPrefix + stock.image_3}}" target="_blank" >查看</a>
-              </td>
-            </tr>
-            <tr>
-              <td>附加服务</td>
-              <td><span ng-repeat="es in stock.extra_services">{{es.service_name}}</span></td>
-            </tr>
-            <tr>
-              <td>购物网站</td>
-              <td>{{stock.website_link?stock.website_link:"无"}}</td>
-            </tr>
-             <tr>
-              <td>购物网站订单号</td>
-              <td>{{stock.website_reference?stock.website_reference:"无"}}</td>
-            </tr>
-          </table>
+
+
 
 
         </div>
-        <!-- 右侧功能键开始 -->
-        <div class="pure-u-1-8 right">
-         <div><a class="pure-button flag divide">标记为问题件</a></div>
-         <div><a ng-click="goToDetail()" class="pure-button view divide">查看详情</a></div>
-         <div><a ng-click="enterStock()" class="pure-button blue divide">确认入库</a></div>
-         <div><a class="pure-button back divide">返回继续</a></div>
-       </div> <!-- 右侧功能键结束 Div -->
-     </div><!-- 中部信息栏结束 Div -->
+        <!-- 右边控制开始 -->
+        <div class="pure-u-4-24 right">
+            <div><a class="pure-button blue ">提交入库</a></div>
+            <div><a class="pure-button print ">打印面单</a></div>
+        </div>
+      </div>
+</div>
 
 
-   </div><!-- 主体部分结束 Div  -->
 
-   <!-- 未找到结果部分 -->
-   <div ng-if="!stock" > 
-      <p>未找到信息</p>
-      <div class="pure-g ah-form-line">
-        <div class="pure-u-2-24 input-label">入库码</div>
-        <div class="pure-u-1-4"><input ng-model="submitData.stock_number" type="text" ></div> 
-        <div class="pure-u-2-24 input-label">仓库ID</div> 
-        <div class="pure-u-1-4"> <input ng-model="submitData.warehouse" type="text" ></div>
-      </div> 
-        
-      <div class="pure-g ah-form-line">
-        <div class="pure-u-2-24 input-label">运输公司ID</div> 
-        <div class="pure-u-1-4"><input ng-model="submitData.ship_company" type="text" ></div>
-        <div class="pure-u-2-24 input-label">包裹运单号</div> 
-        <div class="pure-u-1-4"><input ng-model="submitData.ship_tracknumber" type="text" ></div>
-      </div>  
-      <div class="ah-action-btns"><a ng-click="submitStock()" class="pure-button blue divide">确认入库</a></div>
-   </div>
 
- </div>
 
- <script type="text/javascript">
-  $("input:text:visible:first").focus();
- </script>
+
+    <script type="text/javascript">
+    $("input:text:visible:first").focus();
+    </script>

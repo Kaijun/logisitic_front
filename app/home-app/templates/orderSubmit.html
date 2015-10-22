@@ -156,11 +156,11 @@
     <div class="pure-g">
     <div class="pure-u-1-1">
       <table class="pure-table pure-table-horizontal uh-small-table">
-       <tr>
+    <!--    <tr>
          <td style="width:25%">订单号</td>
-         <td>DKD123457</td></tr>
+         <td>DKD123457</td></tr> -->
          <tr>
-          <td>收件人</td>
+          <td style="width:25%">收件人</td>
           <td>{{addrInfo.receiver_name}}</td>
         </tr>
         <tr>
@@ -190,26 +190,29 @@
 
   <!-- section 2 开始 -->
 <div class="uh-main-section addtion">
-    <div class="uh-section"> 包裹物品信息 </div>
-
+  <div class="entry">
+    <div class="uh-section"> 请完善报关单</div>
+    <div class="desc"> 请修改或填写报关单，如果报关单信息错误，概不负责 </div>
+  </div>
     <table class="pure-table pure-table-horizontal uh-line-table">
       <thead>
         <tr>
-          <th class="pure-u-1-4">名称</th>
+          <th class="pure-u-3-8">名称</th>
           <th class="pure-u-1-8">分类</th>
-          <th class="pure-u-1-8">单价/总价</th>
-          <th class="pure-u-1-8">单重/总重</th>
+          <th class="pure-u-1-8">单价(元)</th>
+          <th class="pure-u-1-8">单重(KG)</th>
           <th class="pure-u-1-8">数量</th>
+          <th class="pure-u-1-8">操作</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="item in order.items">
-          <td>{{item.item_name}}</td>
+          <td><input value="{{item.item_name}}"></td>
           <td>{{item.typeName}}</td>
-          <td>{{item.unit_price}} / {{item.quantity*item.unit_price}}</td>
-          <td>{{item.unit_weight}}KG / {{item.quantity*item.unit_weight}}KG</td>
-          <td>{{item.quantity}}</td>
-        </tr>
+          <td><input value="{{item.unit_price|number:2}}"</td>
+          <td><input value="{{item.unit_weight|number:2}}"</td>
+          <td><input value="{{item.quantity}}"></td>
+           <td><a  class="item-delete-icon"></a></td>
       </tbody>
     </table>
 </div>
