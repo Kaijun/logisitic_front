@@ -9,7 +9,11 @@
 
     /* @ngInject */
     function StockDetailCtrl(StockService, InfoService, AppConfig, $q, $scope, $timeout, $stateParams, $state, $window) {
+
+        $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
+
         $scope.stock = null;
+
         $scope.deleteStock = deleteStock;
         $scope.editStock = editStock;
         $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
@@ -17,6 +21,9 @@
         $scope.warehouses = [];
         $scope.logisticPaths = [];
         $scope.extraServices = [];
+
+        $scope.imagesToUpload = [];
+        $scope.isStockEditable = false;
 
         activate();
 
@@ -26,40 +33,32 @@
             var warehousePromise = InfoService.getWarehouses().then(function (data){
                 $scope.warehouses = data;
             });
-            var pathPromise = InfoService.getLogisticPaths(0).then(function (data){
-                $scope.logisticPaths = data;
-            });
+            // var pathPromise = InfoService.getLogisticPaths(0).then(function (data){
+            //     $scope.logisticPaths = data;
+            // });
             // TODO: add user Group!!! from UserInfo
             var extraSrvPromise = InfoService.getExtraServices(1, 0).then(function (data){
                  $scope.extraServices = data;
             });
-            $q.all([warehousePromise, pathPromise, extraSrvPromise]).then(function () {
+            $q.all([warehousePromise, extraSrvPromise]).then(function () {
 
                if($stateParams.stockId){
                     var stockId = $stateParams.stockId;
-                    StockService.getStock(stockId).then(function(data){
-                        // data.created_at = data.created_at.date.substr(0,4) + '-' + data.created_at.date.substr(5,2) + '-' + data.created_at.date.substr(8,2);
-                        // data.updated_at = data.updated_at.date.substr(0,4) + '-' + data.updated_at.date.substr(5,2) + '-' + data.updated_at.date.substr(8,2);
-                        debugger;
-                        data.created_at = data.created_at.date.substring(0, 10);
-                        data.updated_at = data.updated_at.date.substring(0, 10);
+                    StockService.getStock(stockId).then(function (data) {
+                        $scope.isStockEditable = (data.status==1 || data.status==2);
+                        return data;
+                    }).then(function(data){
+                        data.created_at = data.created_at.substring(0, 10);
+                        data.updated_at = data.updated_at.substring(0, 10);
                         data.statusStr = InfoService.getStockStatusMapping(parseInt(data.status));
                         data.warehouseStr = $scope.warehouses.filter(function(wh){
-                            return wh.id === parseInt(data.warehouse)
+                            return parseInt(wh.id) === parseInt(data.warehouse_id)
                         })[0].name;
                         data.items.map(function (item) {
                             InfoService.getTypeById(item.type).then(function (data) {
                                 item.typeName = data.type_name;
                             });
                         })
-                        try{
-                            data.shipCompanyStr = $scope.logisticPaths.filter(function(lp){
-                                return lp.id === parseInt(data.ship_company)
-                            })[0].name;
-                        }
-                        catch(err){
-                            console.log(err)
-                        }
                         $timeout(function () {
                             $scope.stock = data;
                         });
@@ -76,7 +75,26 @@
         }
 
         function editStock () {
-            $state.go('stockSubmit', {stockId: $stateParams.stockId});
+            // $state.go('stockSubmit', {stockId: $stateParams.stockId});
+            if($scope.stock.need_check){
+                uploadImg().then(function () {
+                    StockService.editStock($stateParams.stockId, $scope.stock).then(function (data) {
+                        if(data.success===true){
+                            swal('修改成功, 等待管理员审核', '', 'success')
+                            $state.go($state.current, {}, {reload: true});
+                        }
+                    })
+                });
+            }
+            else{
+                StockService.editStock($stateParams.stockId, $scope.stock).then(function (data) {
+                    if(data.success===true){
+                        swal('修改成功, 等待管理员审核', '', 'success')
+                        $state.go($state.current, {}, {reload: true});
+                    }
+                })
+            }
+
         }
         function deleteStock () {
             StockService.deleteStock($stateParams.stockId).then(function() {
@@ -86,6 +104,18 @@
             })
         }
 
+        function uploadImg () {
+            var deferred = $q.defer();
+            var promises = []; 
+            $scope.imagesToUpload.forEach(function (image, index) {
+                var promise = InfoService.uploadImage(image).then(function(data){
+                    if(data.success === true ) 
+                        $scope.stock['image_'+(index+1)] = data.file_name;
+                });
+                promises.push(promise);
+            });
+            return $q.all(promises)
+        }
         $scope.goBack = function () {
             $window.history.back();
         }

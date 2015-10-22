@@ -57,10 +57,12 @@
             });
             return promise;
         }
-        function enterStock(stockId) {
+        // 管理员入库清点, 或者整箱
+        function enterStock(stockId, items) {            
             var promise = $http({
                 url: AppConfig.apiUrl + '/stocks_enter/' + stockId,
-                method: 'POST',
+                method: 'PUT',
+                data: items,
             }).then(function (response) {
                 return response.data;
             });

@@ -15,7 +15,7 @@
         <table class="pure-table pure-table-horizontal ah-small-table">
           <tr>
             <td style="width:80px">收件仓库</td>
-            <td>TODO</td>
+            <td>{{warehouses.filter(function(item){return item.id==stock.warehouse_id})[0].name}}</td>
           </tr>
           <tr>
             <td>包裹备注</td>
@@ -174,34 +174,6 @@
             <div class="pure-u-1-24"><input type="checkbox" ng-model=""></div>
  -->          
         </div>
-          <div ng-if = "whole_package">
-            <table class="pure-table pure-table-horizontal ah-line-table">
-            <thead>
-              <tr>
-                <th class="pure-u-1-4">名称</th>
-                <th class="pure-u-1-8">分类</th>
-                <th class="pure-u-1-8">单价</th>
-                <th class="pure-u-1-8">单重</th>
-                <th class="pure-u-1-8">数量</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input></td>
-                <td><select></select></td>
-                <td><input></td>
-                <td><input></td>
-                <td><input></td>
-              </tr>
-              <tr>
-                <td><input></td>
-                <td><select></select></td>
-                <td><input></td>
-                <td><input></td>
-                <td><input></td>
-              </tr>
-            </tbody>
-          </table>
           </div>
 
 

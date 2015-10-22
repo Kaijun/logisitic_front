@@ -21,7 +21,6 @@
                 selectedServices: '=',
                 type: '@',
                 givenServices: '=',
-                userGroup: '@',
             }
         };
         return directive;
@@ -29,11 +28,10 @@
         function link(scope, element, attrs) {
 
             var type = parseInt(scope.type);
-            var userGroup = parseInt(scope.userGroup);
 
             if(type){
                 scope.services = [];
-                InfoService.getExtraServices(type, userGroup).then(function(data) {
+                InfoService.getExtraServices(type).then(function(data) {
                     scope.services = angular.isArray(data)? data: [data];
                     scope.services.map(function (item) {
                         item.selected = false;
@@ -46,11 +44,24 @@
                     scope.services.map(function (item) {
                         item.selected = false;
                     });
+                });
+                scope.$watch('selectedServices', function (newValue, oldValue) {
+                    if(newValue===oldValue) return;
+                    if(scope.services.length>0){
+                        scope.services.map(function (item) {
+                            return item.selected = scope.selectedServices.some(function (item2) {
+                                return item.id == item2.id;
+                            })
+                        });
+                        console.log(scope.services)
+                    }
                 })
             }
 
             scope.$watch('services', function () {
-                scope.selectedServices = [];
+                //empty array
+                if(angular.isArray(scope.selectedServices))
+                    scope.selectedServices.length=0;
                 scope.services.forEach(function (item) {
                     if (item.selected === true)
                         scope.selectedServices.push(item);

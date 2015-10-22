@@ -28,7 +28,7 @@
         return service;
 
         function getStockStatusMapping (statusId) {
-            var statusMapping = ['删除','未知','未预报','已预报','预报问题件','已入库','库存问题件','移库未确认','移库已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货'];
+            var statusMapping = ['删除','未知','已到货','待入库','','已入库','库存问题件','移库未确认','移库已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货'];
             if(statusId===undefined){
                 return statusMapping;
             }

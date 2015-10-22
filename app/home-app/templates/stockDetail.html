@@ -10,10 +10,9 @@
     <div class="pure-u-1-2">
       <table class="pure-table pure-table-horizontal uh-small-table">
         <tr><td style="width:30%">收件仓库</td><td>{{stock.warehouseStr}}</td></tr>
-        <tr><td>包裹备注</td><td>{{stock.desc}}</td></tr>
-        <tr><td>快递信息</td><td>{{stock.shipCompanyStr}} {{stock.ship_tracknumber}}</td></tr>
+        <tr><td>快递信息</td><td>{{stock.reference_code}}</td></tr>
         <!-- 快递信息正确：数据库项目为 packages/reference_code -->
-        <tr><td>入库重量</td><td>{{stock.claim_weight}}KG</td></tr>
+        <tr><td>入库重量</td><td>{{stock.weight}}KG</td></tr>
       </table>
     </div>
     <div class="pure-u-1-2">
@@ -25,7 +24,7 @@
     </div>
   </div>
 </div>
-<div ng-if="false" class="uh-main-section addition">
+<div ng-if="stock.items.length>0" class="uh-main-section addition">
   <div class="uh-section"> 包裹物品信息 </div>
   <table class="pure-table pure-table-horizontal uh-line-table">
     <thead>
@@ -48,15 +47,32 @@
     </tbody>
   </table>
 </div>
-<div ng-show="false">
+<div ng-show="stock.need_check">
   <div class="uh-main-section middle">
-    <div class="uh-section">您的包裹需要审核，请上传购物凭证截图</div>
-    <div class="pure-g uh-form-section">
-      <div class="pure-u-1-3"><input file-model="imagesToUpload[0]" type="file" accept="image/*"/></div>
-      <div class="pure-u-1-3"><input file-model="imagesToUpload[1]" type="file" accept="image/*"/></div>
-      <div class="pure-u-1-3"><input file-model="imagesToUpload[2]" type="file" accept="image/*"/></div>
+    <div class="uh-section"><b>您的包裹需要审核，请上传购物凭证截图</b></div>
+
+    <div ng-if="isStockEditable" class="pure-g uh-form-section">
+      <div class="pure-u-1-3">
+        <input file-model="imagesToUpload[0]" type="file" accept="image/*"/>
+        <a ng-if="stock.image_1" ng-href="{{imageUrlPrefix + stock.image_1}}" target="_blank" >查看</a>
+      </div>
+      <div class="pure-u-1-3">
+        <input file-model="imagesToUpload[1]" type="file" accept="image/*"/>
+        <a ng-if="stock.image_2" ng-href="{{imageUrlPrefix + stock.image_2}}" target="_blank" >查看</a>
+      </div>
+      <div class="pure-u-1-3">
+        <input file-model="imagesToUpload[2]" type="file" accept="image/*"/>
+        <a ng-if="stock.image_3" ng-href="{{imageUrlPrefix + stock.image_3}}" target="_blank" >查看</a>
+      </div>
       <div class="pure-u-1 desc">请根据需要上传相应购物凭证，最多3张，支持 jpg, gif, png 小于500 KB</div>
     </div>
+
+    <div ng-if="!isStockEditable" class="pure-g uh-form-section">
+      <a ng-if="stock.image_1" ng-href="{{imageUrlPrefix + stock.image_1}}" target="_blank" >查看</a>
+      <a ng-if="stock.image_2" ng-href="{{imageUrlPrefix + stock.image_2}}" target="_blank" >查看</a>
+      <a ng-if="stock.image_3" ng-href="{{imageUrlPrefix + stock.image_3}}" target="_blank" >查看</a>
+    </div>
+
   </div>
 </div>
 </div>
@@ -64,18 +80,30 @@
 <div class="uh-section">附加信息</div>
 <div class="pure-g uh-form-section">
   <div class="pure-u-1-4 title">附加服务</div>
-  <div class="pure-u-3-4">
-    <div extra-service-list given-services="extraServices" user-group="0" selected-services="stock.extra_services"></div>
+  <div ng-if="isStockEditable" class="pure-u-3-4">
+    <div extra-service-list given-services="extraServices" selected-services="stock.extra_services"></div>
     <div class="pure-u-1 desc">如有需要，请选择相应的增值服务，部分服务可能会产生费用。</div>
+  </div>
+  <div ng-if="!isStockEditable"  class="pure-u-3-4">
+    <div ng-if="stock.extra_services.length==0">空</div>
+    <div ng-if="stock.extra_services.length>0">
+      <span ng-repeat="es in stock.extra_services">{{es.service_name}}</span> 
+    </div>
   </div>
 </div>
 <div class="pure-g uh-form-section">
+  <div class="title pure-u-1-4">包裹备注</div>
+  <div ng-if="isStockEditable" class="pure-u-3-4"><textarea ng-model="stock.description" class="pure-u-1" ></textarea></div>
+  <div ng-if="!isStockEditable" class="pure-u-3-4">{{stock.description || "空"}}</div>
+</div>
+<div class="pure-g uh-form-section">
   <div class="title pure-u-1-4">留言</div>
-  <div class="pure-u-3-4"><textarea ng-model="stock.message" class="pure-u-1" ></textarea></div>
+  <div ng-if="isStockEditable" class="pure-u-3-4"><textarea ng-model="stock.message" class="pure-u-1" ></textarea></div>
+  <div ng-if="!isStockEditable" class="pure-u-3-4">{{stock.message || "空"}}</div>
 </div>
 </div>
 <!-- 底部按钮开始 -->
 <div class="uh-main-action" >
 <div ng-click="goBack()" class="btn-back left"></div>
-<div ng-click="editStock()" class="btn-confirm right"></div>
+<div ng-if="isStockEditable" ng-click="editStock()" class="btn-confirm right"></div>
 </div>

@@ -51,7 +51,7 @@
                         if(data.success==true){
                             $scope.userFound = data.user;
                             $scope.userFound.roleName = $scope.roles.filter(function (item) {
-                                return item.id == data.user.role_id;
+                                return parseInt(item.id) === parseInt(data.user.role_id);
                             })[0].role_name
                         }
                         else{

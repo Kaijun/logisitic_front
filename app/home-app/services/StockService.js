@@ -14,9 +14,9 @@
             getStock: getStock,
             getStocks: getStocks,
             getCurrentStocks: getCurrentStocks,
-            submitStock: submitStock,
+            // submitStock: submitStock,
             editStock: editStock,
-            deleteStock: deleteStock,
+            // deleteStock: deleteStock,
         };
         return service;
 
@@ -24,7 +24,7 @@
         
 
         function getStock(stockId) {
-            var promise = $http.get(AppConfig.apiUrl + '/stocks/' + stockId).then(function (response) {
+            var promise = $http.get(AppConfig.apiUrl + '/package/' + stockId).then(function (response) {
                 return response.data;
             });
             return promise;
@@ -48,22 +48,22 @@
             });
             return promise;
         }
-        function submitStock(stock) {
-            var promise =  $http({
-                url: AppConfig.apiUrl + '/stocks/',
-                method: 'POST',
-                data: stock,
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(function(response){
-                return response.data;
-            });
-            return promise;
-        }
+        // function submitStock(stock) {
+        //     var promise =  $http({
+        //         url: AppConfig.apiUrl + '/stocks/',
+        //         method: 'POST',
+        //         data: stock,
+        //         headers: {
+        //           'Content-Type': 'application/x-www-form-urlencoded'
+        //         }
+        //     }).then(function(response){
+        //         return response.data;
+        //     });
+        //     return promise;
+        // }
         function editStock(stockId, stock) {
             var promise =  $http({
-                url: AppConfig.apiUrl + '/stocks/' + stockId,
+                url: AppConfig.apiUrl + '/package/' + stockId,
                 method: 'PUT',
                 data: stock,
                 headers: {
@@ -74,18 +74,18 @@
             });
             return promise;
         }
-        function deleteStock(stockId) {
-            var promise =  $http({
-                url: AppConfig.apiUrl + '/stocks/' + stockId,
-                method: 'DELETE',
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(function(response){
-                return response.data;
-            });
-            return promise;
-        }
+        // function deleteStock(stockId) {
+        //     var promise =  $http({
+        //         url: AppConfig.apiUrl + '/stocks/' + stockId,
+        //         method: 'DELETE',
+        //         headers: {
+        //           'Content-Type': 'application/x-www-form-urlencoded'
+        //         }
+        //     }).then(function(response){
+        //         return response.data;
+        //     });
+        //     return promise;
+        // }
 
     }
 })();

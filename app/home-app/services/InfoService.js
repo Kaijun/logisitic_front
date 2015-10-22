@@ -28,7 +28,7 @@
 
         function getStockStatusMapping (statusId) {
             statusId = statusId + 1;
-            var statusMapping = ['删除','未知','未预报','已预报','预报问题件','已入库','库存问题件','移库未确认','移库已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货'];
+            var statusMapping = ['删除','未知','已到货','待入库','','已入库','库存问题件','移库未确认','移库已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货'];
             if(statusId<statusMapping.length){
                 return statusMapping[statusId];
             }
@@ -121,12 +121,12 @@
 
         // type: 0=all, 1=入库，2=移库, 3=出库
         // user_group: 0=all, 1=vip only
-        function getExtraServices(type, userGroup) {
+        function getExtraServices(type) {
             if(stockInfoCache.get('extraServices')){
                 return stockInfoCache.get('extraServices').then(function(data){
                     if(angular.isArray(data)){
                         var data = data.filter(function(value){
-                            return parseInt(value.type) === parseInt(type) && parseInt(value.user_group) === parseInt(userGroup) ;
+                            return parseInt(value.type) === parseInt(type);
                         });
                     }
                     return data;
@@ -140,7 +140,7 @@
             promise = promise.then(function(data) {
                 if(angular.isArray(data)){
                     data = data.filter(function(value){
-                        return parseInt(value.type) === parseInt(type) && parseInt(value.user_group) === parseInt(userGroup) ;
+                        return parseInt(value.type) === parseInt(type);
                     });
                 }
                 return data;
