@@ -7,7 +7,7 @@
 
 
     /* @ngInject */
-    function StockQuickCtrl($scope, StockService, UserService, RoleService, $timeout, InfoService, $state) {
+    function StockQuickCtrl($scope, StockService, UserService, RoleService, LogisticService, $timeout, InfoService, $state) {
         var TIMEOUT_DELAY = 500;
         $scope.stock = null;
         $scope.serachText = null;
@@ -24,6 +24,7 @@
         $scope.warehouses = [];
         $scope.warehouseChosen = [];
         $scope.roles = [];
+        $scope.optionTypes = [];
         $scope.search = search;
         $scope.enterStock = enterStock;
         $scope.regStock = regStock;
@@ -32,6 +33,11 @@
 
         ////////////////
         function activate() {
+            LogisticService.getLogisticTypes().then(function (data) {
+                $scope.optionTypes = data;
+            })
+
+
             var searchStockTimeout;
             $scope.$watch('serachText', function (newValue, oldValue) {
                 if(newValue === oldValue) return;
@@ -81,9 +87,13 @@
                     else{
                         $scope.isStockFound = true;
                         data = data.package;
-                        data.createTimeString = data.created_time.date.substring(0, 10);
-                        data.updateTimeString = data.updated_time.date.substring(0, 10);
+                        data.warehouseName = $scope.warehouses.filter(function(item){
+                            return parseInt(item.id)===parseInt(data.warehouse_id)
+                        })[0].name
+                        data.created_at = data.created_at.substring(0, 10);
+                        data.updated_at = data.updated_at.substring(0, 10);
                         data.statusStr = InfoService.getStockStatusMapping(data.status);
+                        data.isStockCheck = data.items.length>0;
                         $timeout(function(){
                             $scope.stock = data;
                         });
@@ -93,9 +103,29 @@
         }
 
         function enterStock () {
-            if($scope.stock.package_id){
-                StockService.enterStock($scope.stock.package_id).then(function(data) {
-                    $state.go('stockDetail', {stockId: data.package_id});
+            if($scope.stock.id){
+                //item存在
+                var items;
+                if($scope.stock.isStockCheck){
+                    items = $scope.stock.items;
+                }
+                // item 不存在 整箱发货! 整箱的type是第一个type
+                else{
+                    items = [{
+                        item_name: "整箱发货",
+                        type: $scope.optionTypes[0].id,
+                        unit_price: null,
+                        unit_weight: null,
+                        quantity: 1,
+                    }];
+                }
+                StockService.enterStock($scope.stock.id, {
+                    items: items
+                }).then(function(data) {
+                    if(data.success===true){
+                        swal('入库/修改包裹成功!', '', 'success');
+                        $state.go($state.current, {}, {reload: true});
+                    }
                 });
             }
         }
@@ -111,5 +141,24 @@
                 $state.go('stockDetail', {stockId: data.package_id});
             })
         }
+
+
+        $scope.addItem = function () {
+            $scope.stock.items.push({
+                item_name: null,
+                typeOption: $scope.optionTypes[0],
+                type: null,
+                typeName: null,
+                unit_price: null,
+                unit_weight: null,
+                quantity: null,
+            })
+        }
+
+
+        $scope.deleteItem = function ($index) {
+            $scope.stock.items.splice($index, 1);
+        }
+        
     }
 })();

@@ -196,7 +196,6 @@
             $state.go('stockSubmit', {}, { reload: true });
         }
         function isWeightUpperBound (event, value) {
-            debugger;
             if(parseInt(value)<=parseInt($scope.logisticPathChosen.weight_upper_bound)){
                 $scope.stock.weight = value;
             }

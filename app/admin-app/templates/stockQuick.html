@@ -15,10 +15,10 @@
         <table class="pure-table pure-table-horizontal ah-small-table">
           <tr>
             <td style="width:80px">收件仓库</td>
-            <td>{{warehouses.filter(function(item){return item.id==stock.warehouse_id})[0].name}}</td>
+            <td>{{stock.warehouseName}}</td>
           </tr>
           <tr>
-            <td>包裹备注</td>
+            <!-- <td>包裹备注</td> -->
             <td>{{stock.desc}}</td>
           </tr>
           <tr>
@@ -27,11 +27,14 @@
           </tr>
           <tr>
             <td>客户ID</td>
-            <td>{{stock.user_name}}</td>
+            <td>{{stock.user.name}}</td>
           </tr>
           <tr>
             <td>需验证</td>
-            <td>NO/YES</td>
+            <td>
+              <span ng-if="!stock.user.is_assured">是</span>
+              <span ng-if="stock.user.is_assured">否</span>
+            </td>
           </tr>
         </table>
       </div>
@@ -43,15 +46,15 @@
           </tr>
           <tr>
             <td>库位号</td>
-            <td>{{stock.stock_position}}</td>
+            <td>{{stock.user.stock_position}}</td>
           </tr>
           <tr>
             <td>预报时间</td>
-            <td>{{stock.created_time}}</td>
+            <td>{{stock.created_at}}</td>
           </tr>
           <tr>
             <td>入库时间</td>
-            <td>{{stock.updated_time}}</td></tr>
+            <td>{{stock.updated_at}}</td></tr>
           </table>
         </div>
       </div>
@@ -60,7 +63,8 @@
       <table class="pure-table pure-table-horizontal ah-small-table">
          <tr>
           <td style="width:80px">附加服务</td>
-          <td>入库清点</td>
+          <td ng-repeat="es in stock.extra_services">{{es.service_name}}</td>
+          <td ng-if="stock.extra_services.length==0">无</td>
         </tr>
         <tr>
           <td>用户留言</td>
@@ -77,34 +81,62 @@
       </table>
 
 
-      <div class="ah-section"> <input type="checkbox" ng-model="add_item"> 入库清点 </div>
-      <table ng-if="add_item"class="pure-table pure-table-horizontal ah-line-table">
-        <thead>
-          <tr>
-            <th class="pure-u-1-4">名称</th>
-            <th class="pure-u-1-8">分类</th>
-            <th class="pure-u-1-8">单价/总价</th>
-            <th class="pure-u-1-8">单重/总重</th>
-            <th class="pure-u-1-8">数量</th>
-          </tr>
-        </thead>
-            <tbody>
-              <tr>
-                <td><input></td>
-                <td><select></select></td>
-                <td><input></td>
-                <td><input></td>
-                <td><input></td>
-              </tr>
-              <tr>
-                <td><input></td>
-                <td><select></select></td>
-                <td><input></td>
-                <td><input></td>
-                <td><input></td>
-              </tr>
+      <div class="ah-section"> <input  ng-model="stock.isStockCheck" type="checkbox" > 入库清点 {{isStockCheck}}</div>
+      <div ng-show="stock.isStockCheck">
+        <table class="pure-table pure-table-horizontal ah-line-table">
+          <thead>
+            <tr>
+              <th class="pure-u-1-4">物品名称</th>
+              <th class="pure-u-1-4">类型</th>
+              <th class="pure-u-1-8">数量</th>
+              <th class="pure-u-1-8">单价(元)</th>
+              <th class="pure-u-1-8">单件重量(KG)</th>
+              <th class="pure-u-1-8">操作</th>
+            </tr>
+          </thead>
+              <tbody>
+                <tr ng-repeat="item in stock.items" >
+                  <td><input ng-model="item.item_name" class="pure-u-1"  type="text"></td>
+                  <td>
+                    <select ng-model="item.typeOption" ng-options="opt.type_name for opt in optionTypes" ng-init="item.type=item.typeOption.id; item.typeName=item.typeOption.type_name;" ng-change="item.type=item.typeOption.id; item.typeName=item.typeOption.type_name;">
+                  </td>
+                  <td><input ng-model="item.quantity" class="pure-u-1" type="text"></td>
+                  <td><input ng-model="item.unit_price" class="pure-u-1" type="text"></td>
+                  <td><input ng-model="item.unit_weight" class="pure-u-1" type="text"></td>
+                  <td><a ng-click="deleteItem($index)" class="item-delete-icon"></a></td>
+                </tr>
             </tbody>
-      </table>
+        </table>
+
+        <div class="options"> 
+          <a ng-click="addItem()" class="pure-button radius blue">新增一项</a>
+          <!-- <a class="pure-button radius blue">批量上传</a> -->
+        </div>
+      </div>      
+      <div ng-show="!stock.isStockCheck">
+        <table class="pure-table pure-table-horizontal ah-line-table">
+          <thead>
+            <tr>
+              <th class="pure-u-1-4">物品名称</th>
+              <th class="pure-u-1-4">类型</th>
+              <th class="pure-u-1-8">数量</th>
+              <th class="pure-u-1-8">单价(元)</th>
+              <th class="pure-u-1-8">单件重量(KG)</th>
+            </tr>
+          </thead>
+              <tbody>
+                <tr >
+                  <td>整箱发货</td>
+                  <td>{{optionTypes[0].type_name}}</td>
+                  <td>1</td>
+                  <td>无</td>
+                  <td>无</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+
+
     </div>
     <!-- 右侧功能键开始 -->
     <div class="pure-u-1-8 right">
@@ -181,13 +213,12 @@
 
 
 
-        </div>
         <!-- 右边控制开始 -->
         <div class="pure-u-4-24 right">
             <div><a ng-click="regStock()" class="pure-button blue ">登记包裹</a></div>
             <div><a class="pure-button print ">打印面单</a></div>
         </div>
-      </div>
+    </div>
 </div>
 
 
