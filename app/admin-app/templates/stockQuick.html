@@ -32,8 +32,7 @@
           <tr>
             <td>需验证</td>
             <td>
-              <span ng-if="!stock.user.is_assured">是</span>
-              <span ng-if="stock.user.is_assured">否</span>
+              <span>{{stock.need_check?"是":"否"}}</span>
             </td>
           </tr>
         </table>
@@ -72,7 +71,8 @@
         </tr>
         <tr>
           <td>附件信息</td>
-          <td>
+          <td ng-if="(!stock.image_1)&&(!stock.image_2)&&(!stock.image_3)"> 未上传 </td>
+          <td ng-if="stock.image_1 || stock.image_2 || stock.image_3">
             <a ng-if="stock.image_1" ng-href="{{imageUrlPrefix + stock.image_1}}" target="_blank" >查看</a>
             <a ng-if="stock.image_2" ng-href="{{imageUrlPrefix + stock.image_2}}" target="_blank" >查看</a>
             <a ng-if="stock.image_3" ng-href="{{imageUrlPrefix + stock.image_3}}" target="_blank" >查看</a>
