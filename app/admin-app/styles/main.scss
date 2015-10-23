@@ -835,6 +835,10 @@ select{
     height: 24px;
   }
 }
+
+.center{
+  text-align: center;
+}
 // 用于修改自动填充颜色
 ::-webkit-input-placeholder { color:#333; }
 ::-moz-placeholder { color:#333; } /* firefox 19+ */

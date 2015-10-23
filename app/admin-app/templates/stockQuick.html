@@ -82,7 +82,7 @@
 
 
       <div class="ah-section"> <input  ng-model="stock.isStockCheck" type="checkbox" > 入库清点 {{isStockCheck}}</div>
-      <div ng-show="stock.isStockCheck">
+      <div ng-show="stock.isStockCheck" >
         <table class="pure-table pure-table-horizontal ah-line-table">
           <thead>
             <tr>
@@ -103,12 +103,12 @@
                   <td><input ng-model="item.quantity" class="pure-u-1" type="text"></td>
                   <td><input ng-model="item.unit_price" class="pure-u-1" type="text"></td>
                   <td><input ng-model="item.unit_weight" class="pure-u-1" type="text"></td>
-                  <td><a ng-click="deleteItem($index)" class="item-delete-icon"></a></td>
+                  <td><a ng-click="deleteItem($index)" class="item-delete-icon">删除</a></td>
                 </tr>
             </tbody>
         </table>
 
-        <div class="options"> 
+        <div class="center"> 
           <a ng-click="addItem()" class="pure-button radius blue">新增一项</a>
           <!-- <a class="pure-button radius blue">批量上传</a> -->
         </div>

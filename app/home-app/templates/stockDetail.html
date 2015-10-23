@@ -93,7 +93,7 @@
 </div>
 <div class="pure-g uh-form-section">
   <div class="title pure-u-1-4">包裹备注</div>
-  <div ng-if="isStockEditable" class="pure-u-3-4"><textarea ng-model="stock.description" class="pure-u-1" ></textarea></div>
+  <div ng-if="isStockEditable" class="pure-u-3-4"><input ng-model="stock.description" class="pure-u-1" ></div>
   <div ng-if="!isStockEditable" class="pure-u-3-4">{{stock.description || "空"}}</div>
 </div>
 <div class="pure-g uh-form-section">
