@@ -84,7 +84,8 @@
                 StockService.getStockByTrackNr($scope.serachText).then(function (data) {
                     $scope.isRequested = true;
 
-                    $scope.imageUrlPrefix = $scope.imageUrlPrefix + data.package.user.id + '/';
+                    $scope.imageUrlPrefix = data.package ? $scope.imageUrlPrefix + data.package.user.id + '/' : $scope.imageUrlPrefix ;
+
                     if(data.package==null){
                         $scope.isStockFound = false;
                         $scope.submitData.reference_code = $scope.serachText;

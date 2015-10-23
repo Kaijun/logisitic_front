@@ -14,6 +14,7 @@
             logistic_path: null,
             coupon_code: null,
             items: [],
+            declarations: [],
             extra_services: [],
             message: null,
             pay_method: null,
@@ -129,11 +130,13 @@
 
             $scope.order.logistic_path = $scope.logisticPathChosen.id;
 
-                    
             var addr = $scope.addressList.filter(function (item) {
                 return item.id === parseInt($scope.order.address);
             });
             $scope.order.items = assembleItems();
+
+            $scope.order.declarations = angular.copy($scope.order.items);
+            
             $timeout(function () {
                 $scope.addrInfo = addr[0];
                 $scope.isConfirmShown = true;
@@ -190,6 +193,19 @@
                 pkg.isAllToggle = false;
             }
 
+        }
+
+        $scope.addDeclaration = function () {
+            $scope.order.declarations.push({
+                item_name: null,
+                unit_price: null,
+                unit_weight: null,
+                quantity: null,
+            });
+        }
+
+        $scope.deleteDeclaration = function ($index) {
+            $scope.order.declarations.splice($index, 1);
         }
     }
 })();

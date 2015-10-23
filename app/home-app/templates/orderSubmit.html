@@ -56,7 +56,7 @@
       <div ng-repeat="package in packageList" ng-if="package.items.length!=0">
 
         <div class="uh-list-header pure-g" ng-class="{active: package.toggle}" ng-click="package.toggle = !package.toggle">
-          <div class="pure-u-8-24">{{getLogisticPathNameById(package.ship_order.logistic_path_id)}} {{package.ship_order.track_code}} {{package.ship_order.reference_code}}</div>
+          <div class="pure-u-8-24">{{package.reference_code}}</div>
           <div class="pure-u-14-24">{{package.desc}}</div>
           <div ng-if="!package.toggle" class="pure-u-2-24">展开</div>
           <div ng-if="package.toggle" class="pure-u-2-24">关闭</div>
@@ -198,7 +198,7 @@
       <thead>
         <tr>
           <th class="pure-u-3-8">名称</th>
-          <th class="pure-u-1-8">分类</th>
+          <!-- <th class="pure-u-1-8">分类</th> -->
           <th class="pure-u-1-8">单价(元)</th>
           <th class="pure-u-1-8">单重(KG)</th>
           <th class="pure-u-1-8">数量</th>
@@ -206,15 +206,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="item in order.items">
-          <td><input value="{{item.item_name}}"></td>
-          <td>{{item.typeName}}</td>
-          <td><input value="{{item.unit_price|number:2}}"</td>
-          <td><input value="{{item.unit_weight|number:2}}"</td>
-          <td><input value="{{item.quantity}}"></td>
-           <td><a  class="item-delete-icon"></a></td>
+        <tr ng-repeat="item in order.declarations">
+          <td><input ng-model="item.item_name"></td>
+          <!-- <td>{{item.typeName}}</td> -->
+          <td><input ng-model="item.unit_price"</td>
+          <td><input ng-model="item.unit_weight"</td>
+          <td><input ng-model="item.quantity"></td>
+           <td><a ng-click="deleteDeclaration($index)" class="item-delete-icon"></a></td>
       </tbody>
     </table>
+    <div class="options"> 
+      <a ng-click="addDeclaration()" class="pure-button radius blue">新增一项</a>
+      <!-- <a class="pure-button radius blue">批量上传</a> -->
+    </div>
 </div>
     <!-- section 3 开始 -->
 <div class="uh-main-section last">
