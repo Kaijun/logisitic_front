@@ -7,7 +7,10 @@
 
 
     /* @ngInject */
-    function StockQuickCtrl($scope, StockService, UserService, RoleService, LogisticService, $timeout, InfoService, $state) {
+    function StockQuickCtrl($scope, AppConfig, StockService, UserService, RoleService, LogisticService, $timeout, InfoService, $state) {
+        
+        $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
+
         var TIMEOUT_DELAY = 500;
         $scope.stock = null;
         $scope.serachText = null;
