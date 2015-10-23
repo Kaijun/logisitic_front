@@ -24,7 +24,9 @@
         <td>{{role.ship_manage?'有': '无'}}</td>
         <td>{{role.stock_manage?'有': '无'}}</td>
         <td>{{role.is_adminstrator?'有': '无'}}</td>
-        <td> <a ng-click="deleteRole(role.id)">删除</a></td>
+        <td> <a ng-click="deleteRole(role.id)" ng-show="{{role.is_deletable}}">删除</a>
+            <span ng-show="{{!role.is_deletable}}">无法删除</span>
+        </td>
         </tbody>
         
       </table>

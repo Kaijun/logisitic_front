@@ -1,21 +1,12 @@
-<div class="ah-list">
-  <div class="ah-main-header">
-    <div class="left">
-      <span class="title">用户信息</span>
-    </div>
-  </div>
-</div>
 <div class="pure-g">
   <div class="pure-u-20-24">
-   <div class="ah-section">基本信息</div>
+    <div class="ah-section">基本信息</div>
     
- 
     <div class="pure-g ah-form-line">
       <div class="pure-u-3-24 input-label">用户组名称</div>
       <div class="pure-u-8-24"><input ng-model="role.role_name" placeholder=""></div>
     </div>
-
-<div class="ah-section">管理权限</div>
+    <div class="ah-section">管理权限</div>
     <div class="pure-g ah-form-line">
       <div class="pure-u-3-24 input-label">高级用户</div>
       <div class="pure-u-4-24">
@@ -47,7 +38,6 @@
           <option value="0">无</option>
         </select>
       </div>
-
       <div class="pure-u-3-24 input-label">业务管理权限</div>
       <div class="pure-u-4-24">
         <select ng-model="role.stock_manage">
@@ -55,7 +45,7 @@
           <option value="0">无</option>
         </select>
       </div>
-            <div class="pure-u-3-24 input-label">运维管理权限</div>
+      <div class="pure-u-3-24 input-label">运维管理权限</div>
       <div class="pure-u-4-24">
         <select ng-model="role.ship_manage">
           <option value="1">有</option>
@@ -63,15 +53,13 @@
         </select>
       </div>
     </div>
-
- 
-
-    </div>
-  <div class="pure-u-4-24 right">
-      <a  ng-click="addRole()" class="pure-button blue">保存</a>
-      <!-- <a  ng-click="" class="pure-button red">删除</a> -->
-      <a  ng-click="goBack()" class="pure-button back">返回</a>
-    </div>
+    
   </div>
+  <div class="pure-u-4-24 right">
+    <a  ng-click="addRole()" class="pure-button blue">保存</a>
+    <!-- <a  ng-click="" class="pure-button red">删除</a> -->
+    <a  ng-click="goBack()" class="pure-button back">返回</a>
+  </div>
+</div>
 </div>
 </div>
