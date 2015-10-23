@@ -1,45 +1,36 @@
-
 <div class="ah-list">
-  <div class="ah-main-header">
-    <div class="left">
-      <span class="title">物流线路管理</span>
-    </div>
-  </div>
-
-
-    <div class="list">
-      <table class="pure-table pure-table-horizontal ah-list-table">
-        <thead>
-          <tr>
-            <th width="25px;"><input type="checkbox"></th>
-            <th>线路名称</th>
-            <th>线路描述</th>
-            <th>线路类型</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="path in paths">
-            <td><input type="checkbox"></td>
-            <td>{{path.name}}</td>
-            <td>{{path.description}}</td>
-            <td>
-              <span ng-if="path.type==0">全部</span>
-              <span ng-if="path.type==1">入库</span>
-              <span ng-if="path.type==2">移库</span>
-              <span ng-if="path.type==3">发货</span>
-            </td>
-            <td>
-            <a ng-click="editPath(path)">修改</a> 
-            <a ng-click="deletePath(path)">删除</a>
+  <div class="list">
+    <table class="pure-table pure-table-horizontal ah-list-table">
+      <thead>
+        <tr>
+          <th width="25px;"><input type="checkbox"></th>
+          <th>线路名称</th>
+          <th>线路描述</th>
+          <th>线路类型</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="path in paths">
+          <td><input type="checkbox"></td>
+          <td>{{path.name}}</td>
+          <td>{{path.description}}</td>
+          <td>
+            <span ng-if="path.type==0">全部</span>
+            <span ng-if="path.type==1">入库</span>
+            <span ng-if="path.type==2">移库</span>
+            <span ng-if="path.type==3">发货</span>
+          </td>
+          <td>
+            <a ng-click="editPath(path)">修改</a>
+            <a ng-click="deletePath(path)" ng-show="{{path.is_deletable}}">删除</a>
             
-
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  <div class="ah-action-btns"> 
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ah-action-btns">
     <div class="left">
       <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
       <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>

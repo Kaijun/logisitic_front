@@ -1,11 +1,5 @@
 
 <div class="ah-list">
-  <div class="ah-main-header">
-    <div class="left">
-      <span class="title">附加服务管理</span>
-    </div>
-  </div>
-
 
     <div class="list">
       <table class="pure-table pure-table-horizontal ah-list-table">
@@ -32,7 +26,7 @@
             <td>
             <a ng-click="editExtraSrv(srv)">修改</a>
             <!-- ｜ -->
-            <a ng-click="deleteExtraSrv(srv)">删除</a>
+            <a ng-click="deleteExtraSrv(srv)" ng-show="{{srv.is_deletable}}">删除</a>
             
 
             </td>
