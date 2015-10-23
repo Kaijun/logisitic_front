@@ -791,6 +791,9 @@ textarea{
             text-align: center;
             padding: 8px 0px 8px 8px;
             border: 0;
+            &:first-of-type{
+                text-align: left;
+            }
         }
         tr:last-of-type{
             border-bottom: solid 1px #D1D1D1;
