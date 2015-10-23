@@ -1,62 +1,59 @@
 <!-- TODO: 之后可以抽象成一个Directive 用作所有的ListView!!! -->
-
 <div class="uh-main-section first-list">
   <div class="uh-main-header">
     <div class="left">
       <span class="title">库存列表</span>
       <!-- <a ui-sref="stockSubmit" class="pure-button radius lightblue">新增</a> -->
     </div>
-
     <div class="right">
       <!-- <input placeholder="搜索" ng-model="searchText" /> -->
     </div>
   </div>
-
- 
-    <div class="uh-main-tab">
+  
+  <div class="uh-main-tab">
     <div class="left">
       <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="uh-header-tab active">所有记录</a>
-      <a ng-click="toggleStatusFilter(2)" ng-class="{active: toggleStatus===2}"  class="uh-header-tab ">已预报</a>
+      <a ng-click="toggleStatusFilter(2)" ng-class="{active: toggleStatus===2}"  class="uh-header-tab ">已到货</a>
+      <a ng-click="toggleStatusFilter(2)" ng-class="{active: toggleStatus===2}"  class="uh-header-tab ">待入库</a>
       <a ng-click="toggleStatusFilter(4)" ng-class="{active: toggleStatus===4}" class="uh-header-tab ">已入库</a>
     </div>
-    <div class="right">
+<!--     <div class="right">
       <a ui-sref="stockSubmit" class="uh-header-tab function">添加新的预报</a>
-    </div>
-    </div>
+    </div> -->
+  </div>
 </div>
-
-    <div class="uh-main-section middle">
-
-      <table ng-show="filterStockList.length>0" ng-table="tableParams" class="pure-table pure-table-horizontal uh-line-table">
-          <tr ng-repeat="stock in $data">
-              <td data-title="'更新日期'">
-                  {{stock.timestampStr}}
-              </td>
-              <td data-title="'包裹运单号'">
-                  {{stock.ship_info}}
-              </td>
-              <td data-title="'包裹备注'">
-                  {{stock.desc}}
-              </td>
-              <td data-title="'库存天数'">
-                  {{stock.inStockTime}}天
-              </td>
-              <td data-title="'状态'">
-                  {{stock.statusStr}}
-              </td>
-              <td data-title="'操作'">
-                  <div ng-if="stock.status === 1 || stock.status === 2" ng-click="goToDetail(stock.id)" class="opt-radius-btn edit" title="编辑"></div>
-                  <div ng-if="stock.status === 1 || stock.status === 2" class="opt-radius-btn delete" title="删除"></div>
-                  <div ng-if="stock.status === 4" ui-sref="orderSubmit" class="opt-radius-btn ship-order" title="出库"></div>
-                  <div ng-if="stock.status === 4" ui-sref="transSubmit" class="opt-radius-btn trans-order" title="移库"></div>
-                  <div class="opt-radius-btn check"  ng-click="goToDetail(stock.id)" title="查看详情"></div>
-              </td>
-          </tr>
-      </table>
-              <div ng-show="filterStockList.length==0" class="uh-box-empty">
-          <img src="images/message-empty.svg" width="120px;">
-          <div>您的库存列表为空 :(</div>
-        </div>
-    </div>
-
-  
+<div class="uh-main-section middle">
+  <table ng-show="filterStockList.length>0" ng-table="tableParams" class="pure-table pure-table-horizontal uh-line-table">
+    <tr ng-repeat="stock in $data">
+      <td data-title="'更新日期'">
+        {{stock.timestampStr}}
+      </td>
+      <td data-title="'包裹运单号'">
+        {{stock.ship_info}}
+      </td>
+      <td data-title="'包裹备注'">
+        {{stock.desc}}
+      </td>
+      <td data-title="'库存天数'">
+        {{stock.inStockTime}}天
+      </td>
+      <td data-title="'审核'">
+        TODO
+      </td>
+      <td data-title="'状态'">
+        {{stock.statusStr}}
+      </td>
+      <td data-title="'操作'">
+        <div ng-if="stock.status === 1 || stock.status === 2" ng-click="goToDetail(stock.id)" class="opt-radius-btn edit" title="编辑"></div>
+        <div ng-if="stock.status === 1 || stock.status === 2" class="opt-radius-btn delete" title="删除"></div>
+        <div ng-if="stock.status === 4" ui-sref="orderSubmit" class="opt-radius-btn ship-order" title="出库"></div>
+        <div ng-if="stock.status === 4" ui-sref="transSubmit" class="opt-radius-btn trans-order" title="移库"></div>
+        <div class="opt-radius-btn check"  ng-click="goToDetail(stock.id)" title="查看详情"></div>
+      </td>
+    </tr>
+  </table>
+  <div ng-show="filterStockList.length==0" class="uh-box-empty">
+    <img src="images/message-empty.svg" width="120px;">
+    <div>您的库存列表为空 :(</div>
+  </div>
+</div>
