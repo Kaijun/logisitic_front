@@ -13,7 +13,7 @@
   <div class="uh-main-tab">
     <div class="left">
       <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="uh-header-tab active">所有记录</a>
-      <a ng-click="toggleStatusFilter(2)" ng-class="{active: toggleStatus===2}"  class="uh-header-tab ">已到货</a>
+      <a ng-click="toggleStatusFilter(1)" ng-class="{active: toggleStatus===1}"  class="uh-header-tab ">已到货</a>
       <a ng-click="toggleStatusFilter(2)" ng-class="{active: toggleStatus===2}"  class="uh-header-tab ">待入库</a>
       <a ng-click="toggleStatusFilter(4)" ng-class="{active: toggleStatus===4}" class="uh-header-tab ">已入库</a>
     </div>
@@ -29,23 +29,23 @@
         {{stock.timestampStr}}
       </td>
       <td data-title="'包裹运单号'">
-        {{stock.ship_info}}
+        {{stock.reference_code}}
       </td>
       <td data-title="'包裹备注'">
-        {{stock.desc}}
+        {{stock.description}}
       </td>
       <td data-title="'库存天数'">
         {{stock.inStockTime}}天
       </td>
       <td data-title="'审核'">
-        TODO
+        {{stock.need_check?"需要":"不需要"}}
       </td>
       <td data-title="'状态'">
         {{stock.statusStr}}
       </td>
       <td data-title="'操作'">
         <div ng-if="stock.status === 1 || stock.status === 2" ng-click="goToDetail(stock.id)" class="opt-radius-btn edit" title="编辑"></div>
-        <div ng-if="stock.status === 1 || stock.status === 2" class="opt-radius-btn delete" title="删除"></div>
+        <!-- <div ng-if="stock.status === 1 || stock.status === 2" class="opt-radius-btn delete" title="删除"></div> -->
         <div ng-if="stock.status === 4" ui-sref="orderSubmit" class="opt-radius-btn ship-order" title="出库"></div>
         <div ng-if="stock.status === 4" ui-sref="transSubmit" class="opt-radius-btn trans-order" title="移库"></div>
         <div class="opt-radius-btn check"  ng-click="goToDetail(stock.id)" title="查看详情"></div>
