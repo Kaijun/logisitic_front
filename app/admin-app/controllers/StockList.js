@@ -41,8 +41,9 @@
             StockService.getStocks(status).then(function(data){
                 $scope.stocks = data.data;
                 $scope.stocks.map(function (item) {
-                    item.created_time = item.created_time.date.substr(0,10);
-                    item.selected = arrayExist(selectedStocks, item.package_id);
+                    item.created_at = item.created_at.substr(0,10);
+                    item.updated_at = item.updated_at.substr(0,10);
+                    item.selected = arrayExist(selectedStocks, item.id);
                 });
                 $timeout(function () {
                     $scope.pageInfo = data;
@@ -50,14 +51,15 @@
             })
         }
         function goToDetail (stock) {
-            $state.go('stockDetail', {stockId: stock.package_id});
+            $state.go('stockDetail', {stockId: stock.id});
         }
         function requestPage (url) {
             $http.get(url).then(function (response) {
                 $scope.stocks = response.data.data;
                 $scope.stocks.map(function (item) {
-                    item.created_time = item.created_time.date.substr(0,10);
-                    item.selected = arrayExist(selectedStocks, item.package_id);
+                    item.created_at = item.created_at.substr(0,10);
+                    item.updated_at = item.updated_at.substr(0,10);
+                    item.selected = arrayExist(selectedStocks, item.id);
                 });
                 $timeout(function () {
                     $scope.pageInfo = response.data;
@@ -66,7 +68,7 @@
         }
 
         function enterStock (stock) {
-            if(stock.package_id){
+            if(stock.id){
 
                 swal({
                     title: "确认入库?",
@@ -77,7 +79,7 @@
                     closeOnConfirm: true,
                 }, function () {
 
-                    StockService.enterStock(stock.package_id).then(function(data) {
+                    StockService.enterStock(stock.id).then(function(data) {
                         $timeout(function () {
                             stock.status = 4;
                         })
@@ -88,7 +90,7 @@
             }
         }
         function deleteStock (stock) {
-            if(stock.package_id){
+            if(stock.id){
                 swal({
                     title: "确认删除?",
                     showCancelButton: true,
@@ -97,7 +99,7 @@
                     confirmButtonText: "确定",
                     closeOnConfirm: true,
                 }, function () {
-                    StockService.deleteStock(stock.package_id).then(function(data) {
+                    StockService.deleteStock(stock.id).then(function(data) {
                         if(data.success===true){
                             swal("删除成功", "", "success");
                             $scope.stocks.map(function (item, index, arry) {
@@ -113,11 +115,11 @@
 
         function stockSelected (stock) {
             if(stock.selected===true){
-                selectedStocks.push(stock.package_id);
+                selectedStocks.push(stock.id);
             }
             else{
                 selectedStocks.map(function (item, idx, arry) {
-                    if(item === stock.package_id){
+                    if(item === stock.id){
                         arry.splice(idx, 1);
                     }
                 })
