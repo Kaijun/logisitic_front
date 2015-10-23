@@ -98,6 +98,12 @@
                         data.created_at = data.created_at.substring(0, 10);
                         data.updated_at = data.updated_at.substring(0, 10);
                         data.statusStr = InfoService.getStockStatusMapping(data.status);
+                        data.items.map(function (i) {
+                            var typeOption = $scope.optionTypes.filter(function (ot) {
+                                return parseInt(ot.id) === parseInt(i.type);
+                            })[0];
+                            return i.typeOption = typeOption;
+                        });
                         data.isStockCheck = data.items.length>0;
                         $timeout(function(){
                             $scope.stock = data;
