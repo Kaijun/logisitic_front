@@ -32,11 +32,11 @@
         function activate() {
             var status = '';
             if($state.current.name=="preStockList"){
-                status = 1;
+                status = 2;
                 $scope.isPreStockList = true;
             }
             else{
-                status = 4
+                status = '';
             }
             StockService.getStocks(status).then(function(data){
                 $scope.stocks = data.data;

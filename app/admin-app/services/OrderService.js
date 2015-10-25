@@ -24,7 +24,7 @@
         function getOrders(status) {
             var url = '';
             if(status){
-                url = '?status=' + status;
+                url = '?order_status=' + status;
             }
             var promise = $http.get(AppConfig.apiUrl + '/ship-order'+url).then(function (response) {
                 return response.data;
@@ -37,12 +37,12 @@
             });
             return promise;
         }
-        function getOrderById(orderId) {
-            var promise = $http.get(AppConfig.apiUrl + '/ship-order/' + orderId).then(function (response) {
-                return response.data;
-            });
-            return promise;
-        }
+        // function getOrderById(orderId) {
+        //     var promise = $http.get(AppConfig.apiUrl + '/ship-order/' + orderId).then(function (response) {
+        //         return response.data;
+        //     });
+        //     return promise;
+        // }
         function editOrder(orderId, order) {
             var promise =  $http({
                 url: AppConfig.apiUrl + '/ship-order/' + orderId,

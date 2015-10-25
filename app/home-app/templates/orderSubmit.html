@@ -194,6 +194,7 @@
     <div class="uh-section"> 请完善报关单</div>
     <div class="desc"> 请修改或填写报关单，如果报关单信息错误，概不负责 </div>
   </div>
+  <div class="item-list">
     <table class="pure-table pure-table-horizontal uh-line-table">
       <thead>
         <tr>
@@ -206,6 +207,7 @@
         </tr>
       </thead>
       <tbody>
+
         <tr ng-repeat="item in order.declarations">
           <td><input ng-model="item.item_name"></td>
           <!-- <td>{{item.typeName}}</td> -->
@@ -219,7 +221,9 @@
       <a ng-click="addDeclaration()" class="pure-button radius blue">新增一项</a>
       <!-- <a class="pure-button radius blue">批量上传</a> -->
     </div>
+    </div>
 </div>
+
     <!-- section 3 开始 -->
 <div class="uh-main-section last">
     <div class="uh-section">附加信息</div>

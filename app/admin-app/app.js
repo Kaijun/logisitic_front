@@ -69,6 +69,12 @@
             templateUrl: 'templates/order/orderQuick.html',
             controller: 'OrderQuick',
         })
+        .state('preOrderList', {
+            parent: 'business',
+            url: '/preOrderList',
+            templateUrl: 'templates/orderList.html',
+            controller: 'OrderList',
+        })
         
         .state('transList', {
             parent: 'business',
