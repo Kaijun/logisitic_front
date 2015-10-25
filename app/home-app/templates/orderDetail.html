@@ -87,9 +87,33 @@
               <tr ng-repeat="item in order.items">
                 <td>{{item.item_name}}</td>
                 <td>{{item.typeName}}</td>
-                <td>{{item.unit_price}} / {{item.unit_price*item.quantity}}</td>
-                <td>{{item.unit_weight}}kg / {{item.unit_weight*item.quantity}}kg</td>
+                <td>{{item.unit_price| number:2}} 元/ {{item.unit_price*item.quantity | number:2 }} 元</td>
+                <td>{{item.unit_weight | number:2}}kg / {{item.unit_weight*item.quantity | number:2}}kg</td>
                 <td>{{item.quantity}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="uh-main-section middle">
+          <div class="uh-section"> 报关单信息 </div>
+          <div class="desc">您填写的报关单将递交给海关检查</div>
+          <table class="pure-table pure-table-horizontal uh-line-table">
+            <thead>
+              <tr>
+                <th class="pure-u-1-4">名称</th>
+
+                <th class="pure-u-1-8">单价/总价</th>
+                <th class="pure-u-1-8">单重/总重</th>
+                <th class="pure-u-1-8">数量</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="d in order.declarations">
+                <td>{{d.item_name}}</td>
+                <td>{{d.unit_price | number:2}}元 / {{d.unit_price*d.quantity | number:2}}元</td>
+                <td>{{d.unit_weight | number:2}}kg / {{d.unit_weight*d.quantity |number:2}}kg</td>
+                <td>{{d.quantity}}</td>
               </tr>
             </tbody>
           </table>
