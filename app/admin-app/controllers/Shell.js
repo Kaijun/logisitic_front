@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('Shell', Shell);
 
-    Shell.$inject = ['$scope', '$state'];
+    Shell.$inject = ['$scope', '$state', '$window'];
 
     /* @ngInject */
-    function Shell($scope, $state) {
+    function Shell($scope, $state, $window) {
         $scope.$state = $state;
         console.log('Shell initialized');
         activate();
@@ -24,6 +24,10 @@
             var sidebarTopOffset = $sidebar.offset().top;
             var height = $(window).height() - sidebarTopOffset;
             if($sidebar.outerHeight()<height) $sidebar.outerHeight(height);
+        }
+
+        $scope.goBack = function () {
+            $window.history.back();
         }
 
     }

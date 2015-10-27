@@ -32,9 +32,9 @@
                 })
                 list.map(function (item) {
                     item.timestampStr = (new Date(item.created_at)).toISOString().substring(0, 10);
-                    var d1 = new Date(item.timestampStr);
-                    var d0 = new Date();
-                    item.inStockTime = Math.floor((d0 - d1) / (1000*60*60*24));
+                    // var d1 = new Date(item.timestampStr);
+                    // var d0 = new Date();
+                    // item.inStockTime = Math.floor((d0 - d1) / (1000*60*60*24));
                     item.statusStr = InfoService.getStockStatusMapping(parseInt(item.status));
                     return item;
                 })

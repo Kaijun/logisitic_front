@@ -32,28 +32,29 @@
         <div class="list-wrapper">
           <div class="title">库存</div>
           <ul class="list" >
-            <li ui-sref="stockList" class="active">库存列表</li>
-            <li ui-sref="preStockList">待入库</li>
-            <li ui-sref="stockQuick">快速入库</li>
-            <li ui-sref="stockBatch">批量入库</li>
-            <li ui-sref="transList">移库列表</li>
+            <li ui-sref="stockList" ui-sref-active="active">库存列表</li>
+            <!-- <li ui-sref="stockList" ng-class="{active: $state.current.name==='stockList'}">库存列表</li> -->
+            <li ui-sref="preStockList" ui-sref-active="active">待入库</li>
+            <li ui-sref="stockQuick" ui-sref-active="active">快速入库</li>
+            <li ui-sref="stockBatch" ui-sref-active="active">批量入库</li>
+            <li ui-sref="transList" ui-sref-active="active">移库列表</li>
           </ul>
         </div>
         <div class="list-wrapper">
           <div class="title">订单</div>
           <ul class="list" >
-            <li ui-sref="orderList">订单列表</li>
-            <li ui-sref="preOrderList">未处理</li>
+            <li ui-sref="orderList" ui-sref-active="active">订单列表</li>
+            <li ui-sref="preOrderList" ui-sref-active="active">未处理</li>
              <li>待发货</li>
               <li>已付款</li>
-            <li ui-sref="orderQuick">快速处理</li>
-            <li ui-sref="orderTrack">订单跟踪</li>
+            <li ui-sref="orderQuick" ui-sref-active="active">快速处理</li>
+            <li ui-sref="orderTrack" ui-sref-active="active">订单跟踪</li>
           </ul>
         </div>
         <div class="list-wrapper">
           <div class="title">问题件</div>
           <ul class="list" >
-            <li ui-sref="problemList">问题件列表</li>
+            <li ui-sref="problemList" ui-sref-active="active">问题件列表</li>
             <li>库存｜移库</li>
             <li>代刷｜订单</li>
             <!-- <li ui-sref="problemDetail">已存档问题件</li> -->
@@ -73,16 +74,16 @@
         <div class="list-wrapper">
           <div class="title">财务</div>
           <ul class="list">
-            <li ui-sref="refill">账户充值</li>
-            <li ui-sref="refund">账户退款</li>
+            <li ui-sref="refill" ui-sref-active="active">账户充值</li>
+            <li ui-sref="refund" ui-sref-active="active">账户退款</li>
             <!-- <li>财务统计</li> -->
-            <li ui-sref="financialRecord">交易记录</li>
+            <li ui-sref="financialRecord" ui-sref-active="active">交易记录</li>
         </div>
          <div class="list-wrapper">
           <div class="title">代刷</div>
           <ul class="list">
-            <li ui-sref="vorkasseList">代刷列表</li>
-            <li ui-sref="vorkasseRate">代刷汇率管理</li>
+            <li ui-sref="vorkasseList" ui-sref-active="active">代刷列表</li>
+            <li ui-sref="vorkasseRate" ui-sref-active="active">代刷汇率管理</li>
           </ul>
         </div>
 <!--         <div class="list-wrapper">
@@ -98,9 +99,9 @@
         <div class="list-wrapper">
           <div class="title">消息</div>
           <ul class="list">
-          <li ui-sref="messageList">消息列表</li>
-            <li ui-sref="groupMessageList">群发消息</li>
-            <li ui-sref="ticketList">工单管理</li>
+          <li ui-sref="messageList" ui-sref-active="active">消息列表</li>
+            <li ui-sref="groupMessageList" ui-sref-active="active">群发消息</li>
+            <li ui-sref="ticketList" ui-sref-active="active">工单管理</li>
             </ul>
         </div>
        
@@ -114,7 +115,7 @@
           <div class="title">文档</div>
           <ul class="list">
           <!-- <li ui-sref="bannerList" >横幅管理</li> -->
-            <li ui-sref="articleList" >文章管理</li>
+            <li ui-sref="articleList"  ui-sref-active="active">文章管理</li>
             </ul>
         </div>
 
@@ -124,15 +125,15 @@
       <div class="list-wrapper">
           <div class="title">物流</div>
           <ul class="list">
-            <li ui-sref="logisticList">物流线路管理</li>
-            <li ui-sref="logisticType">发货类型管理</li>
-            <li ui-sref="logisticTrack">跟踪状态管理</li>
+            <li ui-sref="logisticList" ui-sref-active="active">物流线路管理</li>
+            <li ui-sref="logisticType" ui-sref-active="active">发货类型管理</li>
+            <li ui-sref="logisticTrack" ui-sref-active="active">跟踪状态管理</li>
             </ul>
         </div>
         <div class="list-wrapper">
           <div class="title">附加服务</div>
           <ul class="list">
-            <li ui-sref="extraSrvList">附加服务管理</li>
+            <li ui-sref="extraSrvList" ui-sref-active="active">附加服务管理</li>
             </ul>
         </div>
  
@@ -140,8 +141,8 @@
         <div class="list-wrapper">
           <div class="title">用户</div>
           <ul class="list">
-            <li ui-sref="userList">用户管理</li>
-            <li ui-sref="roleList">用户组管理</li>
+            <li ui-sref="userList" ui-sref-active="active">用户管理</li>
+            <li ui-sref="roleList" ui-sref-active="active">用户组管理</li>
             </ul>
         </div>
 <!--              <div class="list-wrapper">

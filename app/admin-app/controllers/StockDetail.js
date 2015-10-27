@@ -12,9 +12,8 @@
         $scope.$stateParams = $stateParams;
         $scope.stock = null;
         $scope.stockId = $stateParams.stockId;
-        $scope.enterStock = enterStock;
-        $scope.goBack = goBack;
         $scope.deleteStock = deleteStock;
+        $scope.enterStock = enterStock;
         $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
 
         activate();
@@ -23,69 +22,89 @@
 
         function activate() {
             if($scope.stockId){
-                StockService.getStock($scope.stockId).then(function (data) {
-                    data.createTimeString = data.created_time.date.substring(0, 10);
-                    data.updateTimeString = data.updated_time.date.substring(0, 10);
-                    data.status = parseInt(data.status);
-                    data.statusStr = StockService.getStockStatusMapping(data.status);
-                    
-                    $timeout(function() {
-                        $scope.stock = data;
-                        $scope.imageUrlPrefix = $scope.imageUrlPrefix + data.owner_id + '/';
-                    }); 
-                    return data;
-                }, function() {
-                    $state.go('stockList');
-                }).then(function(data) {
-
-                    LogisticService.getLogisticTypes().then(function (lts) {
-                        $timeout(function () {
-                            $scope.stock.items.forEach(function (item) {
-                                lts.some(function (i) {
-                                    if(item.type == i.id){
-                                        item.typeName = i.type_name;
-                                        return true;
-                                    }
-                                })
-                            })
-                        })
-                    })
-
-                    InfoService.getWarehouseById(data.warehouse).then(function (wh){
-                        $timeout(function() {
-                            $scope.warehouse = wh;
-                        })
+                LogisticService.getLogisticTypes().then(function (data) {
+                    $scope.optionTypes = data;
+                }).then(function() {
+                    return InfoService.getWarehouses().then(function (data) {
+                        $scope.warehouses = data;
                     });
-                });
+                }).then(function() {
+                    StockService.getStock($scope.stockId).then(function (data) {
+                        $scope.isRequested = true;
+
+                        $scope.imageUrlPrefix = data.package ? $scope.imageUrlPrefix + data.package.user.id + '/' : $scope.imageUrlPrefix ;
+                            data.warehouseName = $scope.warehouses.filter(function(item){
+                                return parseInt(item.id)===parseInt(data.warehouse_id)
+                            })[0].name
+                            data.created_at = data.created_at.substring(0, 10);
+                            data.updated_at = data.updated_at.substring(0, 10);
+                            data.statusStr = InfoService.getStockStatusMapping(data.status);
+                            data.items.map(function (i) {
+                                var typeOption = $scope.optionTypes.filter(function (ot) {
+                                    return parseInt(ot.id) === parseInt(i.type);
+                                })[0];
+                                return i.typeOption = typeOption;
+                            });
+                            data.isStockCheck = (data.items.length>0) && !(data.items.length===1&&data.items[0].type==$scope.optionTypes[0].id);
+                            $timeout(function(){
+                                $scope.stock = data;
+                            });
+
+                    }, function() {
+                        $state.go('stockList');
+                    })
+                })
+                
             }
             else{
                 $state.go('stockList');
             }
         }
 
+
         function enterStock () {
-            if($scope.stockId){
-
-                swal({
-                    title: "确认入库?",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    cancelButtonText: "取消",
-                    confirmButtonText: "确定",
-                    closeOnConfirm: true,
-                }, function () {
-
-                              
-                    StockService.enterStock($scope.stockId).then(function(data) {
-                        $state.go($state.current, {stockId: data.package_id}, {reload: true});
-                    });
-                })
-                     
+            if($stateParams.stockId){
+                //item存在
+                var items;
+                if($scope.stock.isStockCheck){
+                    items = $scope.stock.items;
+                }
+                // item 不存在 整箱发货! 整箱的type是第一个type
+                else{
+                    items = [{
+                        item_name: "整箱发货",
+                        type: $scope.optionTypes[0].id,
+                        unit_price: null,
+                        unit_weight: null,
+                        quantity: 1,
+                    }];
+                }
+                StockService.enterStock($stateParams.stockId, {
+                    items: items
+                }).then(function(data) {
+                    if(data.success===true){
+                        swal('入库/修改包裹成功!', '', 'success');
+                        $state.go($state.current, {}, {reload: true});
+                    }
+                });
             }
         }
 
-        function goBack () {
-            $window.history.back();
+        $scope.addItem = function () {
+            $scope.stock.items.push({
+                item_name: null,
+                typeOption: $scope.optionTypes[0],
+                type: null,
+                typeName: null,
+                unit_price: null,
+                unit_weight: null,
+                quantity: null,
+            })
+        }
+
+
+        $scope.deleteItem = function ($index) {
+            $scope.stock.items.splice($index, 1);
         }
 
 
