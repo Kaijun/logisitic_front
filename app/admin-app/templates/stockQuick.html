@@ -142,7 +142,7 @@
     <div class="pure-u-1-8 right">
       <div><a class="pure-button flag divide">标记为问题件</a></div>
       <div><a ng-click="goToDetail()" class="pure-button view divide">查看详情</a></div>
-      <div><a ng-click="enterStock()" class="pure-button blue divide">确认入库</a></div>
+      <div><a ng-if="stock.status==2" ng-click="enterStock()" class="pure-button blue divide">确认入库</a></div>
       <div><a class="pure-button back divide">返回继续</a></div>
       </div> <!-- 右侧功能键结束 Div -->
 </div>
