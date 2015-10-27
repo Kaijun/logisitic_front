@@ -135,7 +135,13 @@
             });
             $scope.order.items = assembleItems();
 
-            $scope.order.declarations = angular.copy($scope.order.items);
+            //报关单除掉整箱发货!!!
+            InfoService.getTypes().then(function (lts) {
+                $scope.order.declarations = angular.copy($scope.order.items).filter(function(item) {
+                    return item.type != lts[0].id;
+                });
+            })
+            
             
             $timeout(function () {
                 $scope.addrInfo = addr[0];
