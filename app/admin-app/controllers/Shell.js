@@ -5,11 +5,12 @@
         .module('admin.controllers')
         .controller('Shell', Shell);
 
-    Shell.$inject = ['$scope', '$state', '$window'];
+    Shell.$inject = ['$scope', '$state', '$window', '$stateParams'];
 
     /* @ngInject */
-    function Shell($scope, $state, $window) {
+    function Shell($scope, $state, $window, $stateParams) {
         $scope.$state = $state;
+        $scope.$stateParams = $stateParams;
         console.log('Shell initialized');
         activate();
 

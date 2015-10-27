@@ -26,14 +26,8 @@
         active();
 
         function active () {
-            var status = '';
-            if($state.current.name=="preOrderList"){
-                status = 1;
-            }else{
-                status = '';
-            }
             
-            OrderService.getOrders(status).then(function (list) {
+            OrderService.getOrders().then(function (list) {
 
                 list = list.filter(function (item) {
                     var order_status = item.order_status;

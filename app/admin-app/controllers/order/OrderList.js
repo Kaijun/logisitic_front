@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('OrderList', OrderList);
 
-    OrderList.$inject = ['$scope', 'OrderService', '$timeout', '$state', '$http', 'InfoService'];
+    OrderList.$inject = ['$scope', 'OrderService', '$timeout', '$state', '$http', 'InfoService', '$stateParams'];
 
     /* @ngInject */
-    function OrderList($scope, OrderService, $timeout, $state, $http, InfoService) {
+    function OrderList($scope, OrderService, $timeout, $state, $http, InfoService, $stateParams) {
         $scope.orders = [];
         $scope.goToDetail = goToDetail;
         $scope.deleteOrder = deleteOrder;
@@ -25,7 +25,9 @@
         ////////////////
 
         function activate() {
-            OrderService.getOrders().then(function(data){
+
+            var status = $stateParams.orderStatus || '';
+            OrderService.getOrders(status).then(function(data){
                 $scope.orders = data.data.filter(function (item) {
                     return item.id;
                 });

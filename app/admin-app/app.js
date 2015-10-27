@@ -54,6 +54,9 @@
         .state('orderList', {
             parent: 'business',
             url: '/orderList',
+            params: {
+                orderStatus: '',
+            },
             templateUrl: 'templates/order/orderList.html',
             controller: 'OrderList',
         })

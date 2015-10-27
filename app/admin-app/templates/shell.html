@@ -43,10 +43,10 @@
         <div class="list-wrapper">
           <div class="title">订单</div>
           <ul class="list" >
-            <li ui-sref="orderList" ui-sref-active="active">订单列表</li>
-            <li ui-sref="preOrderList" ui-sref-active="active">未处理</li>
-             <li>待发货</li>
-              <li>已付款</li>
+            <li ui-sref="orderList" ng-class="{active: $state.current.name=='orderList'&&!$stateParams.orderStatus}">订单列表</li>
+            <li ui-sref="orderList({orderStatus: 1})" ng-class="{active: $state.current.name=='orderList'&&$stateParams.orderStatus==1}">未处理</li>
+            <li ui-sref="orderList({orderStatus: 3})" ng-class="{active: $state.current.name=='orderList'&&$stateParams.orderStatus==3}">已付款</li>
+            <li ui-sref="orderList({orderStatus: 4})" ng-class="{active: $state.current.name=='orderList'&&$stateParams.orderStatus==4}">待发货</li>
             <li ui-sref="orderQuick" ui-sref-active="active">快速处理</li>
             <li ui-sref="orderTrack" ui-sref-active="active">订单跟踪</li>
           </ul>
