@@ -139,14 +139,10 @@
 
         //打印配货单 - 不该状态 - 引导称重
         function printPackListconfirm () {
-            // $window.open($state.href('stateName', {}, {absolute: true}), '_blank');
-            $window.localStorage.setItem('printPrepareListData', angular.toJson($scope.order));
+            $window.localStorage.setItem('printPrepareListData', angular.toJson([$scope.order]));
             var url = $state.href('printPrepareList');
             var newWindow = $window.open(url,'_blank');
-        }
-        //打印面单 后 - 代发货
-        function printPostListconfirm () {
-            if($scope.order_status==3){
+            if($scope.order.order_status==3){
                 swal({
                     title: "已打印?",
                     text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",
@@ -156,21 +152,36 @@
                     confirmButtonText: "确定",
                     closeOnConfirm: true,
                 }, function () {
-                    OrderService.editOrder($scope.order.id, {
-                        order_status: 4,
+                    OrderService.editOrder($scope.order.order_status, {
+                        order_status: 7,
                     }).then(function() {
                         reload();
                     })
-
-                    $window.localStorage.setItem('printShipData', angular.toJson($scope.order));
-                    var url = $state.href('printShip');
-                    var newWindow = $window.open(url,'_blank');
                 })
             }
-            else{
-                    $window.localStorage.setItem('printShipData', angular.toJson($scope.order));
-                    var url = $state.href('printShip');
-                    var newWindow = $window.open(url,'_blank');
+
+        }
+        //打印面单 后 - 代发货
+        function printPostListconfirm () {
+            $window.localStorage.setItem('printShipData', angular.toJson([$scope.order]));
+            var url = $state.href('printShip');
+            var newWindow = $window.open(url,'_blank');
+            if($scope.order.order_status==7){
+                swal({
+                    title: "已打印?",
+                    text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    cancelButtonText: "取消",
+                    confirmButtonText: "确定",
+                    closeOnConfirm: true,
+                }, function () {
+                    OrderService.editOrder($scope.order.order_status, {
+                        order_status: 4,
+                    }).then(function() {
+                        reload()
+                    })
+                })
             }
         }
         function weightAndPackCancle () {
