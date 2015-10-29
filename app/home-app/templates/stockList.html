@@ -23,7 +23,7 @@
   </div>
 </div>
 <div class="uh-main-section middle">
-  <table ng-show="filterStockList.length>0" ng-table="tableParams" class="pure-table pure-table-horizontal uh-line-table">
+  <table ng-show="filterStockList.length>0" ng-table="tableParams" class="pure-table pure-table-horizontal uh-list-table">
     <tr ng-repeat="stock in $data">
       <td data-title="'更新日期'">
         {{stock.timestampStr}}
@@ -44,7 +44,7 @@
         {{stock.statusStr}}
       </td>
       <td data-title="'操作'">
-        <div ng-if="stock.status === 1 || stock.status === 2" ng-click="goToDetail(stock.id)" class="opt-radius-btn edit" title="编辑"></div>
+        <!-- <div ng-if="stock.status === 1 || stock.status === 2" ng-click="goToDetail(stock.id)" class="opt-radius-btn edit" title="编辑"></div> -->
         <!-- <div ng-if="stock.status === 1 || stock.status === 2" class="opt-radius-btn delete" title="删除"></div> -->
         <div ng-if="stock.status === 4" ui-sref="orderSubmit" class="opt-radius-btn ship-order" title="出库"></div>
         <div ng-if="stock.status === 4" ui-sref="transSubmit" class="opt-radius-btn trans-order" title="移库"></div>

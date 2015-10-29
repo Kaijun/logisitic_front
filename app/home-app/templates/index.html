@@ -24,7 +24,7 @@
         <div ng-click="toggleView(3)" ng-class="{'active': currentView===3}" class="cell"><img src="images/uh-horizon-trans.svg" alt=""> <br/> <span> 最近移库</span></div>
 </div>
 
-<div class="uh-main-section">
+<div class="uh-main-section index">
 
 
 
@@ -63,15 +63,15 @@
                 <th>预报日期</th>
                 <th>包裹运单号</th>
                 <th>包裹备注</th>
-                <th>库存天数</th>
+                <!-- <th>库存天数</th> -->
                 <th>状态</th>
             </thead>
             <tbody>
                 <tr ng-repeat="stock in currentStocks" ui-sref="stockDetail({stockId:stock.id})" style="cursor: pointer;">
-                    <td>{{stock.timestampStr}}</td>
-                    <td>{{stock.ship_info}}</td>
-                    <td>{{stock.desc}}</td>
-                    <td>{{stock.inStockTime}}天</td>
+                    <!-- <td>{{stock.timestampStr}}</td> -->
+                    <td>{{stock.reference_code}}</td>
+                    <td>{{stock.description}}</td>
+                    <!-- <td>{{stock.inStockTime}}天</td> -->
                     <td>{{stock.statusStr}}</td>
                 </tr>
             </tbody>
@@ -98,7 +98,7 @@
             <thead>
                 <th>更新日期</th>
                 <th>包裹运单号</th>
-                <th>包裹备注</th>
+                <!-- <th>包裹备注</th> -->
                 <th>创建时间</th>
                 <th>状态</th>
             </thead>
@@ -106,7 +106,7 @@
                 <tr ng-repeat="order in currentOrders" ui-sref="orderDetail({orderId:order.id})" style="cursor: pointer;">
                     <td>{{order.updatedTime}}</td>
                     <td>{{order.package.reference_code}}</td>
-                    <td>{{order.package.description}}</td>
+                    <!-- <td>{{order.package.description}}</td> -->
                     <td>{{order.createdTime}}</td>
                     <td>{{order.statusStr}}</td>
                 </tr>
