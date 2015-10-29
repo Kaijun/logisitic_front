@@ -33,7 +33,7 @@
                 break;
             //订单问题件
             case "1":
-                $scope.statusOfType = allStatuses.slice(2, -1);
+                $scope.statusOfType = allStatuses.slice(2, -2).concat(allStatuses.slice(-1));
                 break;
             //移库问题件
             case "2":
