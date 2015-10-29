@@ -10,7 +10,7 @@
     /* @ngInject */
     function StockListCtrl($scope, $state, $http, $timeout, StockService, $stateParams) {
         $scope.StockService = StockService;
-        $scope.isPreStockList = false;
+        // $scope.isPreStockList = false;
 
         $scope.stocks = [];
         $scope.goToDetail = goToDetail;
