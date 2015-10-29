@@ -7,10 +7,14 @@
 }
 .perpare-wapper{
     margin: 2mm;
-    width: 18cm;
     padding: 10px;
-
+    height: auto;
 }
+
+.print{
+    page-break-after: always;
+}
+
 .ship-info{
     text-align: center;
 }
@@ -32,8 +36,8 @@ table{
     table-layout: fixed;
     width: 100%;
     margin: 10px 0;
-border-spacing: 0;
-text-align: left;
+    border-spacing: 0;
+    text-align: left;
 }
 
 th{
@@ -65,16 +69,9 @@ td{
     float: right;
     text-align: right;
 }
-        
-@page{ 
-    size: auto;
-    margin:0;
-}
+
 @media print {
-    header {
-        display: none;
-    }
-    footer {
-        page-break-after: always;
+    html, body {
+        height: 99%;    
     }
 }

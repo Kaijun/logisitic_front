@@ -353,7 +353,12 @@ textarea{
     a {
         text-decoration: none;
         color: #000;
+        &.active{
+            border-bottom: 5px solid red;
+            padding: 7px 0;
+        }
     }
+
 }
 
 .uh-header-tab{

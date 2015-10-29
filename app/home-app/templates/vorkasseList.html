@@ -6,9 +6,9 @@
   </div>
   <div class="uh-main-tab">
     <div class="left">
-      <a ng-click="toggleStatusFilter(-1)" class="uh-header-tab">所有记录</a>
-      <a ng-click="toggleStatusFilter(2)" class="uh-header-tab">处理中</a>
-      <a ng-click="toggleStatusFilter(3)" class="uh-header-tab">代刷成功</a>
+      <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="uh-header-tab">所有记录</a>
+      <a ng-click="toggleStatusFilter(2)" ng-class="{active: toggleStatus===2}" class="uh-header-tab">处理中</a>
+      <a ng-click="toggleStatusFilter(3)" ng-class="{active: toggleStatus===3}" class="uh-header-tab">代刷成功</a>
     </div>
     <div class="right">
         <a ui-sref="vorkasseSubmit" class="uh-header-tab function">新建代刷</a>

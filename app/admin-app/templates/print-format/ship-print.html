@@ -1,19 +1,17 @@
-
 <div ng-repeat="order in orders" class="delivery-wapper">
 	<div><img src="images/wb-logo.png" height="30px;"></div>
 	<hr/>
-	<div>	
+	<div>
 		<h1>{{order.post_address.receiver_name}}</h1>
 		<h1>{{order.post_address.street}}</h1>
 		<h1>{{order.post_address.city}} {{order.post_address.city}} {{order.post_address.province}} 中国</h1>
 		<h1>邮政编码：{{order.post_address.post_code}}</h1>
 		<h1>联系电话：{{order.post_address.phone}}</h1>
 	</div>
-	<hr/>	
+	<hr/>
 	<div class="ship-info">
 		<span><a>订单号：{{order.package.reference_code}}</a></span><span>  <a>重量：{{order.weight}}KG</a></span>
 		<br/>
 		<img id="{{'barcode' + order.package.reference_code}}" ng-init="generateBarcode(order.package.reference_code)"/>
 	</div>
 </div>
-

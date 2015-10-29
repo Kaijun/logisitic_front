@@ -4,13 +4,16 @@
     padding: 10px;
     border-radius: 5px;
     border:1px solid black;
+    /*page-break-after: always;*/
 }
+
 .perpare-wapper{
     margin: 2mm;
     width: 18cm;
     padding: 10px;
-
+    page-break-after: always;
 }
+
 .track-code{
     font-size: 12px;
     color: #666;
@@ -78,7 +81,7 @@ td{
     header {
         display: none;
     }
-    footer {
+    footer{
         page-break-after: always;
     }
 }
