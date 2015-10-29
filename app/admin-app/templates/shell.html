@@ -32,9 +32,10 @@
         <div class="list-wrapper">
           <div class="title">库存</div>
           <ul class="list" >
-            <li ui-sref="stockList" ui-sref-active="active">库存列表</li>
-            <!-- <li ui-sref="stockList" ng-class="{active: $state.current.name==='stockList'}">库存列表</li> -->
-            <li ui-sref="preStockList" ui-sref-active="active">待入库</li>
+            <!-- <li ui-sref="stockList" ui-sref-active="active">库存列表</li> -->
+            <li ui-sref="stockList({stockStatus: ''})" ng-class="{active: $state.current.name=='stockList'&&!stateParams.stockStatus}">库存列表</li>
+            <li ui-sref="stockList({stockStatus: 1})" ng-class="{active: $state.current.name=='stockList'&&stateParams.stockStatus==1}">已登记</li>
+            <li ui-sref="stockList({stockStatus: 2})" ng-class="{active: $state.current.name=='stockList'&&stateParams.stockStatus==2}">待入库</li>
             <li ui-sref="stockQuick" ui-sref-active="active">快速入库</li>
             <li ui-sref="stockBatch" ui-sref-active="active">批量入库</li>
             <li ui-sref="transList" ui-sref-active="active">移库列表</li>

@@ -30,6 +30,9 @@
         .state('stockList', {
             parent: 'business',
             url: '/stockList',
+            params: {
+                stockStatus: '',
+            },
             templateUrl: 'templates/stockList.html',
             controller: 'StockListCtrl',
         })

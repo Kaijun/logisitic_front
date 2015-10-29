@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('StockListCtrl', StockListCtrl);
 
-    StockListCtrl.$inject = ['$scope', '$state', '$http', '$timeout', 'StockService'];
+    StockListCtrl.$inject = ['$scope', '$state', '$http', '$timeout', 'StockService', '$stateParams'];
 
     /* @ngInject */
-    function StockListCtrl($scope, $state, $http, $timeout, StockService) {
+    function StockListCtrl($scope, $state, $http, $timeout, StockService, $stateParams) {
         $scope.StockService = StockService;
         $scope.isPreStockList = false;
 
@@ -30,14 +30,7 @@
         ////////////////
 
         function activate() {
-            var status = '';
-            if($state.current.name=="preStockList"){
-                status = 2;
-                $scope.isPreStockList = true;
-            }
-            else{
-                status = '';
-            }
+            var status = $stateParams.stockStatus || '';
             StockService.getStocks(status).then(function(data){
                 $scope.stocks = data.data;
                 $scope.stocks.map(function (item) {

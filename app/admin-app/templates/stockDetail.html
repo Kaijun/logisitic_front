@@ -10,8 +10,8 @@
             <td>{{stock.warehouseName}}</td>
           </tr>
           <tr>
-            <!-- <td>包裹备注</td> -->
-            <td>{{stock.desc}}</td>
+            <td>包裹备注</td>
+            <td>{{stock.desc?stock.desc:"暂无"}}</td>
           </tr>
           <tr>
             <td>快递信息</td>
@@ -55,7 +55,8 @@
          <tr>
           <td style="width:80px">附加服务</td>
           <td ng-repeat="es in stock.extra_services">{{es.service_name}}</td>
-          <td ng-if="stock.extra_services.length==0">无</td>
+          <td ng-if="stock.extra_services.length==0&&stock.status==1">等待用户选择</td>
+          <td ng-if="stock.extra_services.length==0&&stock.status==2">用户未选择</td>
         </tr>
         <tr>
           <td>用户留言</td>
