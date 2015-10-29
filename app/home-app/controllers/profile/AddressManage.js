@@ -5,14 +5,14 @@
         .module('home.controllers')
         .controller('AddressManageCtrl', AddressManageCtrl);
 
-    AddressManageCtrl.$inject = ['$scope', 'ProfileService', '$state', '$timeout'];
+    AddressManageCtrl.$inject = ['$scope', 'ProfileService', '$state', '$timeout', 'InfoService', '$compile', '$q'];
 
     /* @ngInject */
-    function AddressManageCtrl($scope, ProfileService, $state, $timeout) {
+    function AddressManageCtrl($scope, ProfileService, $state, $timeout, InfoService, $compile, $q) {
 
         $scope.cancle = cancle;
         $scope.submit = submit;
-        $scope.item = {city: null};
+        $scope.imagesToUpload = [];
 
         var addressObj = {
             province: null, 
@@ -24,8 +24,8 @@
             receiver_name: null,
             phone: null,
             ID_card_no: null,
-            ID_card_front: '11',
-            ID_card_back: '11',
+            ID_card_front: null,
+            ID_card_back: null,
             is_default: null,
          };
 
@@ -63,32 +63,73 @@
 
         function editAddr(addr){
             $timeout(function () {
-                $scope.address = addr;
-                $scope.item.city[0] = $scope.address.province;
-                $scope.item.city[1] = $scope.address.city;
-                $scope.item.city[2] = $scope.address.town;
-                var isEditing = true;
+                $scope.address = angular.copy(addr);
+                //re-render the city selector
+                $scope.item = {
+                    city: [$scope.address.province, $scope.address.city, $scope.address.town]
+                }
+                var citySelectorDom = angular.element(document.querySelector('#city-selector'));
+                citySelectorDom.children().remove();
+                var newElement = $compile( "<city-select ng-model='item.city'></city-select>" )( $scope );
+                citySelectorDom.append( newElement );
+
+                isEditing = true;
             })
         }
 
         function deleteAddr(addr){
-            $timeout(function () {
-                $scope.address = addr
-                var isEditing = true;
+            swal({
+                title: "确认删除?",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                cancelButtonText: "取消",
+                confirmButtonText: "确定",
+                closeOnConfirm: true,
+            }, function () {
+                ProfileService.deleteAddress(addr.id).then(function(data) {
+                    if(data.success===true){
+                        swal("删除成功", "", "success");
+                        var idx = $scope.addressList.indexOf(addr);
+                        $scope.addressList.splice(idx, 1);
+                        cancle();
+                    }
+                });
             })
         }
 
         function submit(){
-            if(isEditing && $scope.address.id){
-                ProfileService.editAddress($scope.address.id, $scope.address).then(function () {
-                    $state.go($state.current, {}, {reload: true});
-                });;
-            }
-            else{
-                ProfileService.submitAddress($scope.address).then(function () {
-                    $state.go($state.current, {}, {reload: true});
+
+            var promises = []; 
+
+            if($scope.imagesToUpload[0]){
+                var promise = InfoService.uploadImage($scope.imagesToUpload[0]).then(function(data){
+                    if(data.success === true ) 
+                        $scope.address.ID_card_front = data.file_name;
                 });
+                promises.push(promise)
             }
+            if($scope.imagesToUpload[1]){
+                var promise = InfoService.uploadImage($scope.imagesToUpload[1]).then(function(data){
+                    if(data.success === true ) 
+                        $scope.address.ID_card_back = data.file_name;
+                });
+                promises.push(promise)
+            }
+            
+            $q.all(promises).then(function () {
+                if(isEditing && $scope.address.id){
+                    ProfileService.editAddress($scope.address.id, $scope.address).then(function () {
+                        swal('修改成功', '', 'success');
+                        $state.go($state.current, {}, {reload: true});
+                    });;
+                }
+                else{
+                    ProfileService.submitAddress($scope.address).then(function () {
+                        swal('添加成功', '', 'success');
+                        $state.go($state.current, {}, {reload: true});
+                    });
+                }
+            })
         }
     }
 })();

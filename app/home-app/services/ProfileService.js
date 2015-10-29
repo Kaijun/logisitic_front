@@ -75,6 +75,7 @@
             }).then(function(response){
                 return response.data;
             });
+            return promise;
         }
 
         function editPersonalInfo (pi) {
