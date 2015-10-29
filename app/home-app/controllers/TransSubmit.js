@@ -89,6 +89,8 @@
         function submit () {
             TransService.submitTrans($scope.trans).then(function (data) {
                 if(data.package_id && data.success===true){
+
+                    swal('提交移库订单成功', '', 'success');
                     $state.go('transDetail', {transId: data.trans_order_id});
                 }
             })
@@ -142,12 +144,14 @@
             if(pkg.isAllToggle===true){
                 pkg.items.forEach(function (item) {
                     item.isSelected = true;
+                    item.quantityToSend = item.remain;
                 });
                 pkg.isAllToggle = true;
             }
             else{
                 pkg.items.forEach(function (item) {
                     item.isSelected = false;
+                    item.quantityToSend = 1;
                 });
                 pkg.isAllToggle = false;
             }

@@ -27,18 +27,22 @@
         var allStatuses = ($stateParams.type==1)? InfoService.getOrderStatusMapping():InfoService.getStockStatusMapping();
         $scope.statusOfType = [];
         switch($stateParams.type){
+            //预报问题件 deprecated...
             case "0":
-                $scope.statusOfType = allStatuses.slice(2, 4);
+                $scope.statusOfType = allStatuses.slice(2, 4)
                 break;
+            //订单问题件
             case "1":
                 $scope.statusOfType = allStatuses.slice(2, -1);
                 break;
+            //移库问题件
             case "2":
                 $scope.statusOfType = allStatuses.slice(7, -3);
                 $scope.statusOfType.splice(-2, 1);
                 break;
+            //库存问题件
             case "3":
-                $scope.statusOfType = allStatuses.slice(5, 6);
+                $scope.statusOfType = allStatuses.slice(2, 4).concat(allStatuses.slice(5, 6));
                 break;
         }
         $scope.selectedStatus = $scope.statusOfType[0];

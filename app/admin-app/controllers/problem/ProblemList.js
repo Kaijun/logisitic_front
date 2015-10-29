@@ -9,7 +9,7 @@
 
     /* @ngInject */
     function ProblemList($scope, $state, $timeout, ProblemService, InfoService) {
-        $scope.type = "0";
+        $scope.type = "3";
 
         $scope.problemPkgs = [];
 
@@ -34,15 +34,19 @@
         function goToDetail (pkg) {
             var id = 0;
             switch($scope.type){
+                // 预报问题件 遗弃...
                 case "0":
                     id = pkg.package_id;
                     break;
+                //订单
                 case "1":
                     id = pkg.ship_order_id;
                     break;
+                //移库
                 case "2":
                     id = pkg.transaction_id;
                     break;
+                //库存
                 case "3":
                     id = pkg.package_id;
                     break;

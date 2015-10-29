@@ -1,16 +1,16 @@
 
-        <div class="perpare-wapper">
+        <div ng-repeat="order in orders" class="perpare-wapper">
             <heaer>
                 <span ><img src="images/wb-logo.png" height="30px;"></span>
-                <span class="info">配货单-订单号：{{order.reference_code}}</span>
+                <span class="info">配货单-订单号：{{order.package.reference_code}}</span>
             </header>
             <table>
                 <tbody>
                     <tr>
                         <th>用户ID</th>
-                        <th>{{order.user_name}}</th>
+                        <th>{{order.package.user.name}}</th>
                         <th>库位号</th>
-                        <th>{{order.stock_position}}</th>
+                        <th>{{order.package.user.stock_position}}</th>
                     </tr>
                 </tbody>
             </table>
@@ -30,7 +30,7 @@
                 <th>单重/总重</th>
                 <th>数量</th>
             </tr>
-            <tr ng-repeat="item in order.items">
+            <tr ng-repeat="item in order.package.items">
                 <td><input type="checkbox"></td>
                 <td>{{item.source_ref}}</td>
                 <td>{{item.item_name}}</td>
@@ -140,8 +140,8 @@
             </tr>
         </tbody>
     </table>
-    <div>
-        <div id="qrcode" class="code-left"></div>
-        <div class="code-right"><img id="barcode"/></div>
+    <div ng-init="generateBarcode(order.package.reference_code, order.id)">
+        <div id="{{'qrcode'+order.id}}" class="code-left"></div>
+        <div class="code-right"><img id="{{'barcode'+order.id}}"/></div>
     </div>
 </div>

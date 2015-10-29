@@ -22,7 +22,7 @@
                 $defer.resolve($scope.filterStockList.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                 params.total($scope.filterStockList.length); // set total for recalc pagination
             }
-        })
+        });
         active();
 
         function active () {

@@ -12,6 +12,7 @@
         var service = {
             getOrders: getOrders,
             getOrderById: getOrderById,
+            searchOrderByRef: searchOrderByRef,
             editOrder: editOrder,
             deleteOrder: deleteOrder,
             batchDownload: batchDownload,
@@ -33,6 +34,12 @@
         }
         function getOrderById(orderId) {
             var promise = $http.get(AppConfig.apiUrl + '/ship-order/' + orderId).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function searchOrderByRef(orderId) {
+            var promise = $http.get(AppConfig.apiUrl + '/search-by-ref-code/' + orderId).then(function (response) {
                 return response.data;
             });
             return promise;

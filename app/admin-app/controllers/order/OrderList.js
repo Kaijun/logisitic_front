@@ -5,14 +5,16 @@
         .module('admin.controllers')
         .controller('OrderList', OrderList);
 
-    OrderList.$inject = ['$scope', 'OrderService', '$timeout', '$state', '$http', 'InfoService', '$stateParams'];
+    OrderList.$inject = ['$scope', 'OrderService', '$timeout', '$state', '$http', 'InfoService', '$stateParams', '$window'];
 
     /* @ngInject */
-    function OrderList($scope, OrderService, $timeout, $state, $http, InfoService, $stateParams) {
+    function OrderList($scope, OrderService, $timeout, $state, $http, InfoService, $stateParams, $window) {
         $scope.orders = [];
         $scope.goToDetail = goToDetail;
         $scope.deleteOrder = deleteOrder;
         $scope.batchDownload = batchDownload;
+        $scope.batchPrintPackList = batchPrintPackList;
+        $scope.batchPrintPostList = batchPrintPostList;
         $scope.orderSelected = orderSelected;
         $scope.pageInfo = null;
 
@@ -33,8 +35,8 @@
                 });
                 $scope.orders.map(function (item) {
                     item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
-                    item.dateStr = item.created_time.date.substring(0, 10);
-                    item.selected = arrayExist(selectedOrders, item.id);
+                    item.dateStr = item.created_at.substring(0, 10);
+                    item.selected = arrayExist(selectedOrders, item);
                 })
                 $timeout(function () {
                     $scope.pageInfo = data;
@@ -52,12 +54,11 @@
                 });
                 $scope.orders.map(function (item) {
                     item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
-                    item.dateStr = item.created_time.date.substring(0, 10);
-                    item.selected = arrayExist(selectedOrders, item.id);
+                    item.dateStr = item.created_at.substring(0, 10);
+                    item.selected = arrayExist(selectedOrders, item);
                 })
                 $timeout(function () {
                     $scope.pageInfo = response.data;
-                    console.log($scope.pageInfo)
                 })
             })
         }
@@ -89,24 +90,39 @@
 
         function orderSelected (order) {
             if(order.selected===true){
-                selectedOrders.push(order.id);
+                selectedOrders.push(order);
             }
             else{
                 selectedOrders.map(function (item, idx, arry) {
-                    if(item === order.id){
+                    if(item === order){
                         arry.splice(idx, 1);
                     }
                 })
             }
-            console.log(selectedOrders)
         }
         function arrayExist (array, item) {
             if(angular.isArray(array)){
-                return array.indexOf(item) > -1;
+                return array.some(function (i) {
+                    return parseInt(item.id) === parseInt(i.id)
+                });
             }
         }
         function batchDownload () {
-            OrderService.batchDownload(selectedOrders);
+            var ids = [];
+            selectedOrders.forEach(function (item) {
+                ids.push(item.id);
+            });
+            OrderService.batchDownload(ids);
+        }
+        function batchPrintPackList () {
+            $window.localStorage.setItem('printPrepareListData', angular.toJson(selectedOrders));
+            var url = $state.href('printPrepareList');
+            var newWindow = $window.open(url,'_blank');
+        }
+        function batchPrintPostList () {
+            $window.localStorage.setItem('printShipData', angular.toJson(selectedOrders));
+            var url = $state.href('printShip');
+            var newWindow = $window.open(url,'_blank');
         }
 
     }

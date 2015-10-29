@@ -37,19 +37,19 @@
                         $scope.order = data;
                         $scope.order.statusStr = InfoService.getOrderStatusMapping(data.order_status);
 
-                        $scope.order.created_time.date = data.created_time.date.substring(0, 10);
-                        $scope.order.updated_time.date = data.updated_time.date.substring(0, 10);
+                        $scope.order.created_at = data.created_at.substring(0, 10);
+                        $scope.order.updated_at = data.updated_at.substring(0, 10);
 
                         $scope.weightSum = getAllItemsWeight(data);
                     })
                     return data;
                 }).then(function (data) {
-                    InfoService.getWarehouseById(data.warehouse).then(function (wh){
+                    InfoService.getWarehouseById(data.package.warehouse_id).then(function (wh){
                         $timeout(function() {
                             $scope.warehouse = wh;
                         })
                     });
-                    InfoService.getLogisticPathById(data.ship_company,0).then(function (lp){
+                    InfoService.getLogisticPathById(data.logistic_path_id,0).then(function (lp){
                         $timeout(function() {
                             data.logisticPath = lp;
                         })
@@ -64,7 +64,7 @@
                     })
                     LogisticService.getLogisticTypes().then(function (lts) {
                         $timeout(function () {
-                            $scope.order.items.forEach(function (item) {
+                            $scope.order.package.items.forEach(function (item) {
                                 lts.some(function (i) {
                                     if(item.type == i.id){
                                         item.typeName = i.type_name;
@@ -80,7 +80,7 @@
 
         //确认发货 - 已发货
         function confirmShip () {
-            if($scope.order.ship_tracknumber.International && $scope.order.ship_tracknumber.China){
+            if($scope.order.track_code && $scope.order.track_code_2){
                 OrderService.editOrder($stateParams.orderId, {
                     order_status: 5
                 }).then(function() {
@@ -98,29 +98,31 @@
 
         //确认称重 - 代付款
         function weightAndPackConfirm () {
-            if($scope.order.order_status==1){
-                OrderService.editOrder($stateParams.orderId, {
-                    weight: $scope.weight,
-                    order_status: 2,
-                }).then(function() {
-                    weightAndPackCancle();
-                    $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
-                })
-            }
-            else{
-                OrderService.editOrder($stateParams.orderId, {
-                    weight: $scope.weight,
-                }).then(function() {
-                    weightAndPackCancle();
-                    $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
-                })
+            if($scope.weight){
+                if($scope.order.order_status==1){
+                    OrderService.editOrder($stateParams.orderId, {
+                        weight: $scope.weight,
+                        order_status: 2,
+                    }).then(function() {
+                        weightAndPackCancle();
+                        $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+                    })
+                }
+                else{
+                    OrderService.editOrder($stateParams.orderId, {
+                        weight: $scope.weight,
+                    }).then(function() {
+                        weightAndPackCancle();
+                        $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+                    })
+                }
             }
         }
 
         //打印配货单 - 不该状态 - 引导称重
         function printPackListconfirm () {
             // $window.open($state.href('stateName', {}, {absolute: true}), '_blank');
-            $window.localStorage.setItem('printPrepareListData', angular.toJson($scope.order));
+            $window.localStorage.setItem('printPrepareListData', angular.toJson([$scope.order]));
             var url = $state.href('printPrepareList');
             var newWindow = $window.open(url,'_blank');
         }
@@ -142,13 +144,13 @@
                         $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
                     })
 
-                    $window.localStorage.setItem('printShipData', angular.toJson($scope.order));
+                    $window.localStorage.setItem('printShipData', angular.toJson([$scope.order]));
                     var url = $state.href('printShip');
                     var newWindow = $window.open(url,'_blank');
                 })
             }
             else{
-                    $window.localStorage.setItem('printShipData', angular.toJson($scope.order));
+                    $window.localStorage.setItem('printShipData', angular.toJson([$scope.order]));
                     var url = $state.href('printShip');
                     var newWindow = $window.open(url,'_blank');
             }
@@ -171,7 +173,7 @@
         function editOrder () {
             //如果填写了跟踪号码 则发货!!!
             if($scope.order.order_status < 5){
-                if($scope.order.ship_tracknumber.International || $scope.order.ship_tracknumber.China){
+                if($scope.order.track_code || $scope.order.track_code_2){
                     $scope.order.order_status = 5;
                 }
             }

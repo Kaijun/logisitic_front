@@ -6,7 +6,7 @@
   <div class="pop-up-body">
     <div class="pop-up-section">
       <!-- <input type="text" placeholder="请填写入库重量"> -->
-      入库重量: {{weightSum | number:2}}
+      入库重量: {{order.claim_weight | number:2}}
     </div>
     <div class="poo-up-section"><input type="text" ng-model="weight" placeholder="请填写出库重量" required> </div>      
   </div>
@@ -32,13 +32,13 @@
 
         <div class="pure-u-1-2">
           <table class="pure-table pure-table-horizontal ah-small-table">
-            <tr><td width="30%">客户ID</td><td>{{order.user_name}}</td></tr>
-            <tr><td>收件人</td><td>{{order.post_info.receiver_name}}</td></tr>
-            <tr><td>收货地址</td><td>{{order.post_info.province}} {{order.post_info.city}} {{order.post_info.town}} {{order.post_info.street}} </td>
-              <tr><td>联系电话</td><td>{{order.post_info.phone}}</td></tr>
+            <tr><td width="30%">客户ID</td><td>{{order.package.user.name}}</td></tr>
+            <tr><td>收件人</td><td>{{order.post_address.receiver_name}}</td></tr>
+            <tr><td>收货地址</td><td>{{order.post_address.province}} {{order.post_address.city}} {{order.post_address.town}} {{order.post_address.street}} </td>
+              <tr><td>联系电话</td><td>{{order.post_address.phone}}</td></tr>
               <tr><td>配送线路</td><td>{{order.logisticPath.name}}</td></tr>
               <tr><td>物品所在仓库</td><td>{{warehouse.name}}</td></tr>
-              <tr><td>入库重量</td><td>{{weightSum|number:2}}KG</td></tr>
+              <tr><td>入库重量</td><td>{{order.claim_weight|number:2}}KG</td></tr>
               <tr><td>按线路配重</td><td > <span ng-init="isWeightEditShown=false" ng-hide="isWeightEditShown">{{order.weight|number:2}}KG</span>  <input ng-show="isWeightEditShown" ng-model="order.weight"></td></tr>
             </table>
           </div>
@@ -46,13 +46,13 @@
           <div class="pure-u-1-2">
            <table class="pure-table pure-table-horizontal ah-small-table">
             <tr><td style="width:30%">订单状态</td><td>{{order.statusStr}}</td></tr>
-            <tr><td>提交时间</td><td>{{order.created_time.date}}</td></tr>
-            <tr><td>更新时间</td><td>{{order.updated_time.date}}</td></tr>
+            <tr><td>提交时间</td><td>{{order.created_at}}</td></tr>
+            <tr><td>更新时间</td><td>{{order.updated_at}}</td></tr>
 
 
             <tr><td>发货跟踪号</td><td>
               <span ng-init="isTrackNumEditShown=false"  ng-hide="isTrackNumEditShown">
-                国际段({{order.logisticPath.ship_company_international}}): {{order.ship_tracknumber.International || "待添加"}} <br> 国内段({{order.logisticPath.ship_company_china}}): {{order.ship_tracknumber.China || "待添加"}}
+                国际段({{order.logisticPath.ship_company_international}}): {{order.track_code || "待添加"}} <br> 国内段({{order.logisticPath.ship_company_china}}): {{order.track_code_2 || "待添加"}}
               </span>  
               <span ng-show="isTrackNumEditShown">
                 国际段: <input ng-model="order.ship_tracknumber.International" style="width: auto;"><br> 国内段: <input ng-model="order.ship_tracknumber.China"  style="width: auto;">
@@ -83,7 +83,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="item in order.items">
+          <tr ng-repeat="item in order.package.items">
             <td>{{item.source_ref}} </td>
             <td>{{item.item_name}}</td>
             <td>{{item.typeName}}</td>
