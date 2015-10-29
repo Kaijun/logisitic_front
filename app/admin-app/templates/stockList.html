@@ -56,7 +56,7 @@
             <td>{{StockService.getStockStatusMapping(stock.status)}}</td>
             <td>                   
               <!-- <a ng-if="stock.status === 1 || stock.status === 2" ng-click="goToDetail(stock.id)"  title="编辑"></a> -->
-              <a ng-if="stock.status === 2" ng-click="enterStock(stock)" >入库</a>
+              <!-- <a ng-if="stock.status === 2" ng-click="enterStock(stock)" >入库</a> -->
               <a ng-click="goToDetail(stock)" >详情</a>
               <a ng-if="stock.status !== -1" ng-click="deleteStock(stock)" >删除</a>
             </td>

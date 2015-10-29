@@ -118,12 +118,51 @@
             $window.localStorage.setItem('printPrepareListData', angular.toJson(selectedOrders));
             var url = $state.href('printPrepareList');
             var newWindow = $window.open(url,'_blank');
+            // 修改过打印的状态
+            swal({
+                    title: "已打印?",
+                    text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    cancelButtonText: "取消",
+                    confirmButtonText: "确定",
+                    closeOnConfirm: true,
+                }, function(){
+                    for (var i = selectedOrders.length - 1; i >= 0; i--) {
+                        if(selectedOrders[i].order_status == 1){
+                             OrderService.editOrder(selectedOrders[i].id, {
+                                order_status: 7,
+                            })
+                        }
+                    };
+                    $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+               })     
+
         }
         function batchPrintPostList () {
             $window.localStorage.setItem('printShipData', angular.toJson(selectedOrders));
             var url = $state.href('printShip');
             var newWindow = $window.open(url,'_blank');
+            swal({
+                    title: "已打印?",
+                    text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    cancelButtonText: "取消",
+                    confirmButtonText: "确定",
+                    closeOnConfirm: true,
+                }, function(){
+                    for (var i = selectedOrders.length - 1; i >= 0; i--) {
+                        if(selectedOrders[i].order_status == 3){
+                             OrderService.editOrder(selectedOrders[i].id, {
+                                order_status: 4,
+                            })
+                        }
+                    };
+                    $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+               })   
         }
+
 
     }
 })();

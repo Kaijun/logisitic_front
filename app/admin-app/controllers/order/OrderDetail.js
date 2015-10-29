@@ -80,7 +80,7 @@
 
         //确认发货 - 已发货
         function confirmShip () {
-            if($scope.order.track_code && $scope.order.track_code_2){
+            if($scope.order.track_code || $scope.order.track_code_2){
                 OrderService.editOrder($stateParams.orderId, {
                     order_status: 5
                 }).then(function() {
@@ -96,10 +96,20 @@
             $scope.isWeightPopupShown = true;
         }
 
+
         //确认称重 - 代付款
         function weightAndPackConfirm () {
             if($scope.weight){
-                if($scope.order.order_status==1){
+                // if($scope.order.order_status==7){
+                //     OrderService.editOrder($stateParams.orderId, {
+                //         weight: $scope.weight,
+                //         order_status: 2,
+                //     }).then(function() {
+                //         weightAndPackCancle();
+                //         $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+                //     })
+                // }
+                // else{
                     OrderService.editOrder($stateParams.orderId, {
                         weight: $scope.weight,
                         order_status: 2,
@@ -107,15 +117,17 @@
                         weightAndPackCancle();
                         $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
                     })
-                }
-                else{
-                    OrderService.editOrder($stateParams.orderId, {
-                        weight: $scope.weight,
-                    }).then(function() {
-                        weightAndPackCancle();
-                        $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
-                    })
-                }
+                // }
+            }else{
+                swal({
+                    title: "请输入重量",
+                    showCancelButton: false,
+                    confirmButtonColor: "#DD6B55",
+                    cancelButtonText: "取消",
+                    confirmButtonText: "OK",
+                    closeOnConfirm: true,
+                });
+
             }
         }
 
@@ -124,7 +136,7 @@
             $window.localStorage.setItem('printPrepareListData', angular.toJson([$scope.order]));
             var url = $state.href('printPrepareList');
             var newWindow = $window.open(url,'_blank');
-            if($scope.order.order_status==3){
+            if($scope.order.order_status==1){
                 swal({
                     title: "已打印?",
                     text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",
@@ -143,12 +155,12 @@
             }
 
         }
-        //打印面单 后 - 代发货
+        //打印面单后 - 待发货
         function printPostListconfirm () {
             $window.localStorage.setItem('printShipData', angular.toJson([$scope.order]));
             var url = $state.href('printShip');
             var newWindow = $window.open(url,'_blank');
-            if($scope.order.order_status==7){
+            if($scope.order.order_status==3){
                 swal({
                     title: "已打印?",
                     text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",

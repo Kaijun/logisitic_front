@@ -28,7 +28,7 @@
         return service;
 
         function getStockStatusMapping (statusId) {
-            var statusMapping = ['删除','未知','已到货','待入库','','已入库','库存问题件','移库未确认','移库已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货'];
+            var statusMapping = ['删除','未知','已登记到货','待入库','','已入库','库存问题件','移库未确认','移库已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货'];
             if(statusId===undefined){
                 return statusMapping;
             }
@@ -39,7 +39,7 @@
             return statusMapping[0];
         }
         function getOrderStatusMapping (statusId) {
-            var statusMapping = ['删除','未知','未处理','待付款','已付款','待发货','已发货','订单问题件','打包中'];
+            var statusMapping = ['删除','未知','未处理','待付款','已付款','待发货','已发货','订单问题件','打包配货中'];
             if(statusId===undefined){
                 return statusMapping;
             }
