@@ -1,6 +1,7 @@
 // 列表使用 ah-list-table
 
 
+
 //Utils
 @mixin clearfix {
   &:after {
@@ -9,6 +10,7 @@
     clear: both;
   }
 }
+
 
 
 html,body { height:100%; position: relative; }
@@ -506,33 +508,30 @@ $sub-navbar-height: 40px;
     }
     &.scale{
       background: url(../images/btn-scale.svg) no-repeat 10px center #4A90E2;
-      background-size: 20px 20px;
       padding: 10px 16px 10px 20px;
-    }
-    &.print-list{
-      background: url(../images/btn-print-list.svg) no-repeat 10px center #4A90E2;
       background-size: 20px 20px;
-      padding: 10px 16px 10px 25px;
+    }
+    &.list{
+      background: url(../images/btn-print-list.svg) no-repeat 10px center #4A90E2;
+      padding: 10px 16px 10px 21px;
+      background-size: 20px 20px;
       
     }
     &.print{
       background: url(../images/btn-print.svg) no-repeat 10px center #4A90E2;
-      background-size: 20px 20px;
-      text-align: center;
       padding: 10px 16px 10px 25px;
+      background-size: 20px 20px;
     }
-     &.export{
+    &.export{
       background: url(../images/btn-export.svg) no-repeat 10px center #4A90E2;
       background-size: 20px 20px;
-      text-align: center;
-      padding: 10px 16px 10px 25px;
+      padding: 10px 16px 10px 24px;
     }
 
     &.ship{
       background: url(../images/btn-ship.svg) no-repeat 10px center #4A90E2;
+      padding: 10px 16px 10px 23px;
       background-size: 20px 20px;
-      padding: 10px 16px 10px 25px;
-      
     }
     &.horizon-small{
       width: 60px;
@@ -546,6 +545,7 @@ $sub-navbar-height: 40px;
     }
 
 }
+
 
 /* 输入框样式重新定义 */
 

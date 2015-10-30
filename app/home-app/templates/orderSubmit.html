@@ -45,7 +45,7 @@
 
 </div>
 
-<div class="uh-main-section addtion">
+<div class="uh-main-section addition">
 
     <div class="entry">
       <div class="uh-section">请选择发货物品</div>
@@ -53,36 +53,36 @@
     </div>
     <!-- <div class="uh-divider thick"></div> -->
     <div class="item-list">
-      <div ng-repeat="package in packageList" ng-if="package.items.length!=0">
+      <div ng-repeat="package in packageList" ng-if="package.items.length!=0" class="clickable">
 
         <div class="uh-list-header pure-g" ng-class="{active: package.toggle}" ng-click="package.toggle = !package.toggle">
-          <div class="pure-u-8-24">{{package.reference_code}}</div>
-          <div class="pure-u-14-24">{{package.description}}</div>
-          <div ng-if="!package.toggle" class="pure-u-2-24">展开</div>
-          <div ng-if="package.toggle" class="pure-u-2-24">关闭</div>
+          <div class="pure-u-8-24">{{package.reference_code}} - {{package.description}}</div>
+          <div class="pure-u-14-24"></div>
+          <div ng-if="!package.toggle" class="pure-u-2-24 clickable">展开</div>
+          <div ng-if="package.toggle" class="pure-u-2-24 clickable">关闭</div>
         </div>
 
         <table ng-show="package.toggle"  class="pure-table pure-table-horizontal uh-list-table">
           <thead>
             <tr>
-              <th class="pure-u-1-4"><input ng-click="toggleAllItems(package)" ng-model="package.isAllToggle" type="checkbox"><span>物品名称</span></th>
-              <th class="pure-u-1-8">类型</th>
-              <th class="pure-u-1-8">数量</th>
-              <th class="pure-u-1-8">单价</th>
-              <th class="pure-u-1-8">单件重量</th>
-              <th class="pure-u-1-8">剩余数量</th>
-              <th class="pure-u-1-8">发货数量</th>
+              <th style="text-align:left" class="pure-u-1-4"><input ng-click="toggleAllItems(package)" ng-model="package.isAllToggle" type="checkbox"><span>物品名称</span></th>
+              <th class="pure-u-1-8" style="text-align:center" >类型</th>
+              <th class="pure-u-1-8" style="text-align:center">数量</th>
+              <th class="pure-u-1-8" style="text-align:center">单价</th>
+              <th class="pure-u-1-8" style="text-align:center">单重</th>
+              <th class="pure-u-1-8" style="text-align:center">剩余数量</th>
+              <th class="pure-u-1-8" style="text-align:center">发货数量</th>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="item in package.items" ng-if="item.remain>0">
-              <td><input ng-model="item.isSelected" type="checkbox"><label>{{item.item_name}}</label></td>
-              <td>{{item.typeName}}</td>
-              <td>{{item.quantity}}</td>
-              <td>{{item.unit_price}}</td>
-              <td>{{item.unit_weight}}</td>
-              <td>{{item.remain}}</td>
-              <td><input ng-model="item.quantityToSend" type="number" min="1" max="{{item.remain}}"></td>
+              <td style="text-align:left" ><input ng-model="item.isSelected" type="checkbox"><label>{{item.item_name}}</label></td>
+              <td style="text-align:center">{{item.typeName}}</td>
+              <td style="text-align:center">{{item.quantity}}</td>
+              <td style="text-align:center">{{item.unit_price || "-"}}</td>
+              <td style="text-align:center">{{item.unit_weight || "-"}}</td>
+              <td style="text-align:center">{{item.remain}}</td>
+              <td style="text-align:center"><input ng-model="item.quantityToSend" type="number" min="1" max="{{item.remain}}"></td>
             </tr>
           </tbody>
         </table>

@@ -137,7 +137,7 @@
   <!-- <div><a class="pure-button flag  ">标记为问题件</a></div> -->
   <div problem-pkg-btn package-id="{{$stateParams.orderId}}" type="1" current-status="order.order_status"></div>
   <div><a ng-if="order.order_status !=-1"ng-click="deleteOrder()" class="pure-button red ">删除</a></div>
-  <div><a ng-click="printPackListconfirm()" class="pure-button print-list blue ">打印配货单</a></div>
+  <div><a ng-click="printPackListconfirm()" class="pure-button list blue ">打印配货单</a></div>
   <div ng-if="order.order_status<3 || order.order_status == 7"><a ng-click="weightAndPack()" class="pure-button scale ">称重打包</a></div>
   <!-- <div><a ng-click="printPackListconfirm()" class="pure-button blue ">打印面单</a></div> -->
   <div><a ng-click="printPostListconfirm()" class="pure-button print blue ">打印面单</a></div>

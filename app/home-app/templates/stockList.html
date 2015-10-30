@@ -12,10 +12,10 @@
   
   <div class="uh-main-tab">
     <div class="left">
-      <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="uh-header-tab active">所有记录</a>
-      <a ng-click="toggleStatusFilter(1)" ng-class="{active: toggleStatus===1}"  class="uh-header-tab ">已到货</a>
-      <a ng-click="toggleStatusFilter(2)" ng-class="{active: toggleStatus===2}"  class="uh-header-tab ">待入库</a>
-      <a ng-click="toggleStatusFilter(4)" ng-class="{active: toggleStatus===4}" class="uh-header-tab ">已入库</a>
+      <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="uh-header-tab active clickable">所有记录</a>
+      <a ng-click="toggleStatusFilter(1)" ng-class="{active: toggleStatus===1}"  class="uh-header-tab clickable">已到货</a>
+      <a ng-click="toggleStatusFilter(2)" ng-class="{active: toggleStatus===2}"  class="uh-header-tab clickable">待入库</a>
+      <a ng-click="toggleStatusFilter(4)" ng-class="{active: toggleStatus===4}" class="uh-header-tab clickable">已入库</a>
     </div>
 <!--     <div class="right">
       <a ui-sref="stockSubmit" class="uh-header-tab function">添加新的预报</a>

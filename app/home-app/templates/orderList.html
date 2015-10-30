@@ -12,10 +12,10 @@
   </div>
   <div class="uh-main-tab">
     <div class="left">
-      <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="uh-header-tab">所有记录</a>
-      <a ng-click="toggleStatusFilter(1)" ng-class="{active: toggleStatus===1}"  class="uh-header-tab">发货处理中</a>
-      <a ng-click="toggleStatusFilter(4)" ng-class="{active: toggleStatus===4}" class="uh-header-tab">待发货</a>
-      <a ng-click="toggleStatusFilter(5)" ng-class="{active: toggleStatus===5}" class="uh-header-tab">已发货</a>
+      <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="uh-header-tab clickable">所有记录</a>
+      <a ng-click="toggleStatusFilter(1)" ng-class="{active: toggleStatus===1}"  class="uh-header-tab clickable">发货处理中</a>
+      <a ng-click="toggleStatusFilter(4)" ng-class="{active: toggleStatus===4}" class="uh-header-tab clickable">待发货</a>
+      <a ng-click="toggleStatusFilter(5)" ng-class="{active: toggleStatus===5}" class="uh-header-tab clickable">已发货</a>
     </div>
     <div class="right">
       <a ui-sref="orderSubmit" class="uh-header-tab function"> 添加新的订单</a>

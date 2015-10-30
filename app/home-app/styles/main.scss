@@ -25,6 +25,10 @@ label.invalid-label{
     color: red;
 }
 
+
+.clickable:hover{
+  cursor: pointer;
+}
 // endbower
 // 前缀uh user-home
 $topnavheight:30px;
@@ -319,7 +323,7 @@ textarea{
         padding: 18px 24px 0 24px;
     }
     &.addition{
-        background: #F8F8F8;
+        background: #F9F9F9;
         border-radius: 0 0 5px 5px;
     }
     &.middle{
