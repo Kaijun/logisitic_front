@@ -13,13 +13,12 @@
         var TIMEOUT_DELAY = 500;
         $scope.serachText = '';
         $scope.isRequested = false;
-
-        $scope.order = null;
         $scope.isWeightPopupShown = false;
+        $scope.order = null;
+
         $scope.weightSum = null
         $scope.weight = null;
         $scope.$stateParams = $stateParams;
-
 
         $scope.weightAndPack = weightAndPack;
         $scope.weightAndPackConfirm = weightAndPackConfirm;
@@ -35,6 +34,7 @@
         ////////////////
 
         function activate() {
+
 
             var searchStockTimeout;
             $scope.$watch('serachText', function (newValue, oldValue) {
@@ -98,7 +98,7 @@
         }
         //确认发货 - 已发货
         function confirmShip () {
-            if($scope.order.track_code && $scope.order.track_code_2){
+            if($scope.order.track_code || $scope.order.track_code_2){
                 OrderService.editOrder($scope.order.id, {
                     order_status: 5
                 }).then(function() {
@@ -107,6 +107,7 @@
             }
             else{
                 $scope.isTrackNumEditShown = true;
+                //这个参数貌似没有传给搜索的结果
             }
         }
 
@@ -117,7 +118,6 @@
         //确认称重 - 代付款
         function weightAndPackConfirm () {
             if($scope.weight){
-                if($scope.order.order_status==1){
                     OrderService.editOrder($scope.order.id, {
                         weight: $scope.weight,
                         order_status: 2,
@@ -125,15 +125,16 @@
                         weightAndPackCancle();
                         reload();
                     })
-                }
-                else{
-                    OrderService.editOrder($scope.order.id, {
-                        weight: $scope.weight,
-                    }).then(function() {
-                        weightAndPackCancle();
-                        reload();
-                    })
-                }
+            }else{
+                swal({
+                    title: "请输入重量",
+                    showCancelButton: false,
+                    confirmButtonColor: "#DD6B55",
+                    cancelButtonText: "取消",
+                    confirmButtonText: "OK",
+                    closeOnConfirm: true,
+                });
+
             }
         }
 
@@ -142,7 +143,7 @@
             $window.localStorage.setItem('printPrepareListData', angular.toJson([$scope.order]));
             var url = $state.href('printPrepareList');
             var newWindow = $window.open(url,'_blank');
-            if($scope.order.order_status==3){
+            if($scope.order.order_status==1){
                 swal({
                     title: "已打印?",
                     text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",
@@ -152,7 +153,7 @@
                     confirmButtonText: "确定",
                     closeOnConfirm: true,
                 }, function () {
-                    OrderService.editOrder($scope.order.order_status, {
+                    OrderService.editOrder($scope.order.id, {
                         order_status: 7,
                     }).then(function() {
                         reload();
@@ -166,9 +167,9 @@
             $window.localStorage.setItem('printShipData', angular.toJson([$scope.order]));
             var url = $state.href('printShip');
             var newWindow = $window.open(url,'_blank');
-            if($scope.order.order_status==7){
+            if($scope.order.order_status==3){
                 swal({
-                    title: "已打印?",
+                    title: "已打印？",
                     text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
@@ -176,7 +177,7 @@
                     confirmButtonText: "确定",
                     closeOnConfirm: true,
                 }, function () {
-                    OrderService.editOrder($scope.order.order_status, {
+                    OrderService.editOrder($scope.order.id, {
                         order_status: 4,
                     }).then(function() {
                         reload()
