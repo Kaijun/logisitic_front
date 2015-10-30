@@ -57,7 +57,7 @@
 
 
             <tr><td>发货跟踪号</td><td>
-              <span ng-init="isTrackNumEditShown=false"  ng-hide="isTrackNumEditShown">
+              <span  ng-hide="isTrackNumEditShown">
                 国际段({{order.logisticPath.ship_company_international}}): {{order.track_code || "待添加"}} <br> 国内段({{order.logisticPath.ship_company_china}}): {{order.track_code_2 || "待添加"}}
               </span> 
               <span ng-show="isTrackNumEditShown">

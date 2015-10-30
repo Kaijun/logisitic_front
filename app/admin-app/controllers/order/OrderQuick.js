@@ -46,6 +46,9 @@
                 }, TIMEOUT_DELAY); 
             });
 
+            $scope.serachText = $stateParams.referenceCode || '';
+            search();
+
         }
 
         function search () {
@@ -243,7 +246,7 @@
         };
 
         function reload () {
-            search();
+            $state.go($state.current.name, {referenceCode: $scope.serachText}, {reload: true});
         }
     }
 })();

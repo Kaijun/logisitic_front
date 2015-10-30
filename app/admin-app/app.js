@@ -71,7 +71,7 @@
         })
         .state('orderQuick', {
             parent: 'business',
-            url: '/orderQuick',
+            url: '/orderQuick/:referenceCode',
             templateUrl: 'templates/order/orderQuick.html',
             controller: 'OrderQuick',
         })
