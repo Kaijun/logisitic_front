@@ -17,6 +17,7 @@
             warehouse: null, 
             message: null, 
             pay_method: null, 
+            extra_services: [],
         }
 
         $scope.warehouses = [];
