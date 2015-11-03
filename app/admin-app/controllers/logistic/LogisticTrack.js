@@ -51,6 +51,7 @@
             if($scope.trackName){
                 LogisticService.submitLogisticTrack({name: $scope.trackName}).then(function (data) {
                     $scope.isPopupShown = false;
+                    swal('添加成功', '', 'success');
                     $state.go($state.current, {}, {reload: true})
                 })
             }

@@ -51,6 +51,7 @@
             if($scope.typeName){
                 LogisticService.submitLogisticType({type_name: $scope.typeName}).then(function (data) {
                     $scope.isPopupShown = false;
+                    swal('添加成功', '', 'success');
                     $state.go($state.current, {}, {reload: true})
                 })
             }
