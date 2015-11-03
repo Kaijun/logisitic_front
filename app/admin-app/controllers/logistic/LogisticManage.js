@@ -89,12 +89,10 @@
                         $scope.chosenRole = $filter('filter')($scope.allRoles, {id: data[0].user_group})[0];
                         data[0].type = data[0].type.toString();
                         data[0].based_on = data[0].based_on.toString();
-                        $scope.ladders = data[0].price_ladders;
+                        $scope.ladders = data[0].price_ladder;
                         
                         $timeout(function () {
                             $scope.logisticPath = data[0];
-                            // debugger;
-                            $scope.ladders = data[0].price_ladder;
                             isEditing = true;
                         })
                     })
@@ -126,6 +124,10 @@
 
         function submit () {
             $scope.logisticPath.price_ladders = $scope.ladders;
+            if(!isLadderValid($scope.ladders, $scope.logisticPath.weight_upper_bound)){
+                swal('请填写正确的价格梯度, 梯度应该涵盖重量上限', '', 'error');
+                return;
+            }
             $scope.logisticPath.user_group = $scope.chosenRole.id;
             if(isEditing){
                 LogisticService.editLogistic($stateParams.id, $scope.logisticPath).then(function (data) {
@@ -145,6 +147,10 @@
             }
         }
 
+        function isLadderValid(ladders, weightUp) {
+            return parseInt(ladders[ladders.length-1].lower_bound) >= parseInt(weightUp);
+        }
+
         function addLadder () {
             $scope.isPopupShown = true;
             if($scope.ladders.length===0){
@@ -155,10 +161,28 @@
             }
         }
         function deleteLadder (ladder) {
-            // body...
+            var index = $scope.ladders.indexOf(ladder);
+            if(index>-1)
+                $scope.ladders.splice(index, 1);
         }
         function editLadder (ladder) {
-            // body...
+            swal({
+                title: "修改梯度范围价格",
+                type: "input",
+                showCancelButton: true,
+                closeOnConfirm: true,
+                inputPlaceholder: ladder.unit_price 
+            }, function(inputValue){   
+                if (inputValue === false) 
+                    return false;      
+                if (inputValue === "") {     
+                    swal.showInputError("请填写此范围的价格");     
+                    return false   
+                }      
+                $timeout(function () {
+                    ladder.unit_price = inputValue;
+                })
+            });
         }
 
         function popupConfirm () {

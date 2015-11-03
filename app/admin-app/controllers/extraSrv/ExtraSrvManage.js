@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('ExtraSrvManage', ExtraSrvManage);
 
-    ExtraSrvManage.$inject = ['$scope', '$timeout', 'ExtraSrvService', 'LogisticService', 'RoleService', '$state', '$stateParams', '$window'];
+    ExtraSrvManage.$inject = ['$scope', '$timeout', 'ExtraSrvService', 'LogisticService', 'RoleService', '$state', '$stateParams', '$window', '$q', '$filter'];
 
     /* @ngInject */
-    function ExtraSrvManage($scope, $timeout, ExtraSrvService, LogisticService, RoleService, $state, $stateParams, $window) {
+    function ExtraSrvManage($scope, $timeout, ExtraSrvService, LogisticService, RoleService, $state, $stateParams, $window, $q, $filter) {
 
         var isEditing = false;
 
@@ -51,31 +51,39 @@
 
         function activate() {
 
-            LogisticService.getLogistics().then(function (data) {
+            var logisticsPromise = LogisticService.getLogistics().then(function (data) {
                 data = [{id: -1, name: '全部'}].concat(data);
                 $scope.allLogisticPaths = data;
                 $scope.chosenLogisticPath = $scope.allLogisticPaths[0];
             });
-            RoleService.getRoles().then(function (data) {
+            var rolesPromise = RoleService.getRoles().then(function (data) {
                 data = [{id: 0, role_name: '全部'}].concat(data);
                 $scope.allRoles = data;
                 $scope.chosenRole = $scope.allRoles[0];
             });
+            $q.all([logisticsPromise, rolesPromise]).then(function () {
+                if($stateParams.id){
+                    ExtraSrvService.getExtraSrv($stateParams.id).then(function (data) {
 
-            if($stateParams.id){
-                ExtraSrvService.getExtraSrv($stateParams.id).then(function (data) {
+                        //重新组装/转换 选择的项目
+                        $scope.chosenRole = $filter('filter')($scope.allRoles, {id: data[0].user_group})[0];
+                        $scope.chosenLogisticPath = $filter('filter')($scope.allLogisticPaths, {id: data[0].logistic_path_id})[0];
+                        data[0].type = data[0].type.toString();
+                        data[0].based_on = data[0].based_on.toString();
+                        $scope.ladders = data[0].price_ladder;
+                        
+                        $timeout(function () {
+                            $scope.extraSrv = data[0];
+                            isEditing = true;
+                        })
+                    });
+                }
+                else{
                     $timeout(function () {
-                        $scope.extraSrv = data[0];
-                        $scope.ladders = data[0].price_ladders;
-                        isEditing = true;
+                        $scope.extraSrv = angular.copy(extraSrvObj);
                     })
-                });
-            }
-            else{
-                $timeout(function () {
-                    $scope.extraSrv = angular.copy(extraSrvObj);
-                })
-            }
+                }
+            })
 
 
         }
@@ -86,33 +94,19 @@
             $scope.extraSrv.user_group = $scope.chosenRole.id;
             if(isEditing){
                 ExtraSrvService.editExtraSrv($stateParams.id, $scope.extraSrv).then(function (data) {
-                    if(data.success===true)
-                        swal({
-                            type: "success",
-                            title: "修改成功!",
-                            showCancelButton: false,
-                            confirmButtonColor: "#DD6B55",
-                            confirmButtonText: "确定",
-                            closeOnConfirm: true,
-                        }, function () {
-                            $state.go('extraSrvList', {}, {reload: true});
-                        })
+                    if(data.success===true){
+                        swal('修改成功', '', 'success');
+                        $state.go('extraSrvList', {}, {reload: true});
+                    }
                 })
             }
             else{
                 
                 ExtraSrvService.submitExtraSrv($scope.extraSrv).then(function (data) {
-                    if(data.success===true)
-                        swal({
-                            type: "success",
-                            title: "添加成功!",
-                            showCancelButton: false,
-                            confirmButtonColor: "#DD6B55",
-                            confirmButtonText: "确定",
-                            closeOnConfirm: true,
-                        }, function () {
-                            $state.go('extraSrvList', {}, {reload: true});
-                        })
+                    if(data.success===true){
+                        swal('添加成功', '', 'success');
+                        $state.go('extraSrvList', {}, {reload: true});
+                    }
                 })
             }
         }
@@ -127,10 +121,28 @@
             }
         }
         function deleteLadder (ladder) {
-            // body...
+            var index = $scope.ladders.indexOf(ladder);
+            if(index>-1)
+                $scope.ladders.splice(index, 1);
         }
         function editLadder (ladder) {
-            // body...
+            swal({
+                title: "修改梯度范围价格",
+                type: "input",
+                showCancelButton: true,
+                closeOnConfirm: true,
+                inputPlaceholder: ladder.unit_price 
+            }, function(inputValue){   
+                if (inputValue === false) 
+                    return false;      
+                if (inputValue === "") {     
+                    swal.showInputError("请填写此范围的价格");     
+                    return false   
+                }      
+                $timeout(function () {
+                    ladder.unit_price = inputValue;
+                })
+            });
         }
 
         function popupConfirm () {

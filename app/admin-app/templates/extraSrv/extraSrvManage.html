@@ -76,7 +76,7 @@
       <div class="pure-u-4-24"><input ng-model="extraSrv.base_price"></div>
     </div>
     <!-- 第四行结束 -->
-    <div ng-if="extraSrv.based_on != 0 ">
+    <div ng-if="extraSrv.based_on == 1 ">
     <div class="ah-section" >价格梯度<span ng-click="addLadder()" class="add">+添加</span></div>
     <table class="pure-table pure-table-horizontal ah-line-table">
       <thead>
@@ -91,7 +91,7 @@
         <tr ng-repeat="ladder in ladders">
           <td>{{$first?"0":ladders[$index-1].lower_bound}}-{{ladder.lower_bound}}公斤</td>
           <td>{{ladder.unit_price}}元</td>
-          <td><a ng-click="deleteLadder(ladder)">删除</a>｜<a ng-click="addLadder(ladder)">修改</a></td>
+          <td><a ng-click="deleteLadder(ladder)">删除</a>｜<a ng-click="editLadder(ladder)">修改</a></td>
         </tr>
       </tbody>
     </table>
