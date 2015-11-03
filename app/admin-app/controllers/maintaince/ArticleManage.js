@@ -20,14 +20,13 @@
         $scope.publish = publish;
         $scope.saveArticle = saveArticle;
 
-
+        var simditor;
         $scope.isEdit = false;
         activate();
 
         ////////////////
 
         function activate() {
-            console.log($stateParams.articleId)
             if($stateParams.articleId){
                 $timeout(function function_name (argument) {
                     $scope.isEdit = true;
@@ -35,19 +34,26 @@
                 ArticleService.getArticle($stateParams.articleId).then(function (data) {
                     data.type = ''+data.type;
                     $scope.article = data;
+    
+                    $timeout(function () {
+                        simditor = new Simditor({ textarea: $('#editor'), upload: { url: '/api/admin/image', fileKey: 'image' } });
+                        simditor.setValue($scope.article.body);
+                    })
                 }, function () {
                     $state.go('articleList', {}, {reload: true});
                 })
             }
             else{
+                $scope.article = angular.copy(articleObj)
                 $timeout(function function_name (argument) {
                     $scope.isEdit = false;
+                    simditor = new Simditor({ textarea: $('#editor'), upload: { url: '/api/admin/image', fileKey: 'image' } });
                 })
-                $scope.article = angular.copy(articleObj)
             }
         }
 
         function saveArticle(){
+            $scope.article.body = simditor.getValue();
             if($scope.isEdit){
                 ArticleService.editArticle($stateParams.articleId, $scope.article).then(function () {
                     $state.go('articleManage', {articleId: $stateParams.articleId}, {reload: true});
