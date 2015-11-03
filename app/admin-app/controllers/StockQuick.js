@@ -127,7 +127,7 @@
                         item_name: "整箱发货",
                         type: $scope.optionTypes[0].id,
                         unit_price: null,
-                        unit_weight: null,
+                        unit_weight: $scope.stock.weight,
                         quantity: 1,
                     }];
                 }

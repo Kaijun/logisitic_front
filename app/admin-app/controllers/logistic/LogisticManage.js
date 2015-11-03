@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('LogisticManage', LogisticManage);
 
-    LogisticManage.$inject = ['$scope', '$timeout', 'LogisticService', 'RoleService', '$state', '$stateParams'];
+    LogisticManage.$inject = ['$scope', '$timeout', 'LogisticService', 'RoleService', '$state', '$stateParams', '$q', '$filter'];
 
     /* @ngInject */
-    function LogisticManage($scope, $timeout, LogisticService, RoleService, $state, $stateParams) {
+    function LogisticManage($scope, $timeout, LogisticService, RoleService, $state, $stateParams, $q, $filter) {
         $scope.USER_GROUPS = ['全部用户', '普通用户', 'VIP用户'];
         
         var isEditing = false;
@@ -54,63 +54,73 @@
 
         function activate() {
 
-            LogisticService.getLogisticTypes().then(function (data) {
+            var ltPromise = LogisticService.getLogisticTypes().then(function (data) {
                 data.map(function (item) {
                     item.selected = false;
                 });
                 $scope.logisticTypes = data;
             });
 
-            RoleService.getRoles().then(function (data) {
+            var rolesPromise = RoleService.getRoles().then(function (data) {
                 data = [{id: 0, role_name: '全部'}].concat(data);
                 $scope.allRoles = data;
                 $scope.chosenRole = $scope.allRoles[0];
             });
 
-            if($stateParams.id){
-                LogisticService.getLogisticById($stateParams.id).then(function (data) {
-                    //重新组装options;
-                    var options = [];
-                    data[0].options.forEach(function (item) {
-                        options.push(item.id);
-                        $scope.logisticTypes.some(function (i) {
+            $q.all([ltPromise, rolesPromise]).then(function () {
+                if($stateParams.id){
+                    LogisticService.getLogisticById($stateParams.id).then(function (data) {
+                        //重新组装options;
+                        var options = [];
+                        data[0].options.forEach(function (item) {
+                            options.push(item.id);
+                            $scope.logisticTypes.some(function (i) {
+                                
+                                if(i.id==item.id){
+                                    i.selected = true;
+                                    return true;
+                                }
                             
-                            if(i.id==item.id){
-                                i.selected = true;
-                                return true;
-                            }
+                            })
+                        })
+                        data[0].options = options;
+
+                        //重新组装/转换 选择的项目
+                        $scope.chosenRole = $filter('filter')($scope.allRoles, {id: data[0].user_group})[0];
+                        data[0].type = data[0].type.toString();
+                        data[0].based_on = data[0].based_on.toString();
+                        $scope.ladders = data[0].price_ladders;
                         
+                        $timeout(function () {
+                            $scope.logisticPath = data[0];
+                            // debugger;
+                            $scope.ladders = data[0].price_ladder;
+                            isEditing = true;
                         })
                     })
-                    data[0].options = options;
-
+                }
+                else{
                     $timeout(function () {
-                        $scope.logisticPath = data[0];
-                        // debugger;
-                        $scope.ladders = data[0].price_ladders;
-                        isEditing = true;
+                        $scope.logisticPath = angular.copy(logisticPathObj);
                     })
-                })
-            }
-            else{
-                $timeout(function () {
-                    $scope.logisticPath = angular.copy(logisticPathObj);
-                })
-            }
+                }
 
-            $scope.$watch('logisticTypes', function (newValue, oldValue) {
-                if(newValue === oldValue){
-                    return ;
-                }
-                if($scope.logisticPath){
-                    $scope.logisticPath.options = [];
-                    $scope.logisticTypes.forEach(function (item) {
-                        if(item.selected === true){
-                            $scope.logisticPath.options.push(item.id);
-                        }
-                    });
-                }
-            }, true)
+                $scope.$watch('logisticTypes', function (newValue, oldValue) {
+                    if(newValue === oldValue){
+                        return ;
+                    }
+                    if($scope.logisticPath){
+                        $scope.logisticPath.options = [];
+                        $scope.logisticTypes.forEach(function (item) {
+                            if(item.selected === true){
+                                $scope.logisticPath.options.push(item.id);
+                            }
+                        });
+                    }
+                }, true)
+            })
+
+            
 
         }
 
@@ -118,33 +128,19 @@
             $scope.logisticPath.price_ladders = $scope.ladders;
             $scope.logisticPath.user_group = $scope.chosenRole.id;
             if(isEditing){
-                LogisticService.editLogistic($stateParams.id, $scope.logisticPath).then(function (dataa) {
-                   if(data.success===true)
-                    swal({
-                        type: "success",
-                        title: "添加成功!",
-                        showCancelButton: false,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "确定",
-                        closeOnConfirm: true,
-                    }, function () {
+                LogisticService.editLogistic($stateParams.id, $scope.logisticPath).then(function (data) {
+                   if(data.success===true){
+                        swal('修改成功', '', 'success');
                         $state.go('logisticList', {}, {reload: true});
-                    })
+                   }
                 })
             }
             else{
                 LogisticService.submitLogistic($scope.logisticPath).then(function (data) {
-                    if(data.success===true)
-                    swal({
-                        type: "success",
-                        title: "修改成功!",
-                        showCancelButton: false,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "确定",
-                        closeOnConfirm: true,
-                    }, function () {
+                    if(data.success===true){
+                        swal('添加成功', '', 'success');
                         $state.go('logisticList', {}, {reload: true});
-                    })
+                   }
                 })
             }
         }

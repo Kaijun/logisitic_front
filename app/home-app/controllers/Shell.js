@@ -45,7 +45,14 @@
             });
 
             
+            swal.setDefaults({
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+            });
 
+            $scope.goBack = function () {
+                $window.history.back();
+            }
 
     
 

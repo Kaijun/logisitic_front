@@ -1265,7 +1265,43 @@ textarea{
     font-weight: bold;
 }
 
+//附加服务hover显示
+.uh-tooltip {
+    outline:none;
+    position: relative;
+    float:left;
 
+    &:hover {
+        text-decoration:none;
+        span {
+            font-size:12px;
+            display:inline;
+            position:absolute;
+            color:#fff;
+            background:#4A90E2;
+        }
+    }
+    span {
+        position:absolute;
+        z-index:10;
+        display:none;
+        padding:8px 10px;
+        top: 30px;
+        left: 10%;
+        min-width:100px;
+        max-width:200px;
+        line-height:16px;
+    }
+    .arrow-up {
+        top:-5px;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid #4A90E2;
+    }
+}
 //city select
 .city-select:hover{
     cursor: pointer;

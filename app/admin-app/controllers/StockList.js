@@ -30,6 +30,7 @@
         ////////////////
 
         function activate() {
+
             var status = $stateParams.stockStatus || '';
             StockService.getStocks(status).then(function(data){
                 $scope.stocks = data.data;

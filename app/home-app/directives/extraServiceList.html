@@ -1,3 +1,10 @@
-<div ng-repeat="service in services" style="display: inline-block;">
-  <input type="checkbox"  id="{{service.service_name+service.id}}" ng-model="service.selected"><label for="{{service.service_name+service.id}}" style="margin-right: 12px;">{{service.service_name}}</label>
+<div ng-repeat="service in services" class="uh-tooltip">
+  <input type="checkbox"  id="{{service.service_name+service.id}}" ng-model="service.selected">
+    <label for="{{service.service_name+service.id}}" style="margin-right: 12px;">
+      {{service.service_name}}
+    </label>
+    <span>
+        <div class="arrow-up"></div>
+        {{service.description}}
+    </span>
 </div>

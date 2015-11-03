@@ -18,6 +18,13 @@
 
         function activate() {
             _setSidebarHeight();
+
+
+            swal.setDefaults({
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+            });
+        
         }
 
         function _setSidebarHeight(){
@@ -26,6 +33,7 @@
             var height = $(window).height() - sidebarTopOffset;
             if($sidebar.outerHeight()<height) $sidebar.outerHeight(height);
         }
+
 
         $scope.goBack = function () {
             $window.history.back();
