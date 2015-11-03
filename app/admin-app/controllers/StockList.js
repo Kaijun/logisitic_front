@@ -20,6 +20,7 @@
         $scope.batchDownload = batchDownload;
         $scope.pageInfo = null;
         $scope.requestPage = requestPage;
+        $scope.selectAllItems = selectAllItems;
 
         $scope.$state = $state;
 
@@ -118,6 +119,34 @@
                     }
                 })
             }
+                    console.log(selectedStocks);
+        }
+        function selectAllItems () {
+            var shouldSelectAll = $scope.stocks.some(function (item) {
+                return item.selected === false;
+            });
+            if(shouldSelectAll){
+                $scope.stocks.filter(function (stock) {
+                    return stock.selected === false;
+                }).forEach(function (stock) {
+                    stock.selected = true;
+                    selectedStocks.push(stock.id);
+                });
+                $scope.isAllSelected = true;
+            }
+            else{
+                $scope.stocks.forEach(function (stock) {
+                    stock.selected = false;
+                    selectedStocks.map(function (item, idx, arry) {
+                        if(item === stock.id){
+                            arry.splice(idx, 1);
+                        }
+                    });
+
+                })
+                $scope.isAllSelected = false;
+            }
+
         }
         function arrayExist (array, item) {
             if(angular.isArray(array)){

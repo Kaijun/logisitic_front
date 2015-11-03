@@ -19,6 +19,7 @@
         $scope.pageInfo = null;
 
         $scope.requestPage = requestPage;
+        $scope.selectAllItems = selectAllItems;
 
         var selectedOrders = [];
 
@@ -99,6 +100,35 @@
                     }
                 })
             }
+        }
+
+
+        function selectAllItems () {
+            var shouldSelectAll = $scope.orders.some(function (item) {
+                return item.selected === false;
+            });
+            if(shouldSelectAll){
+                $scope.orders.filter(function (order) {
+                    return order.selected === false;
+                }).forEach(function (order) {
+                    order.selected = true;
+                    selectedOrders.push(order.id);
+                });
+                $scope.isAllSelected = true;
+            }
+            else{
+                $scope.orders.forEach(function (order) {
+                    order.selected = false;
+                    selectedOrders.map(function (item, idx, arry) {
+                        if(item === order.id){
+                            arry.splice(idx, 1);
+                        }
+                    });
+
+                })
+                $scope.isAllSelected = false;
+            }
+
         }
         function arrayExist (array, item) {
             if(angular.isArray(array)){

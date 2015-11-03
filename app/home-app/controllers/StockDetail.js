@@ -80,8 +80,14 @@
                 uploadImg().then(function () {
                     StockService.editStock($stateParams.stockId, $scope.stock).then(function (data) {
                         if(data.success===true){
-                            swal('修改成功, 等待管理员审核', '', 'success')
-                            $state.go($state.current, {}, {reload: true});
+                            swal({
+                                title: "修改成功",    
+                                text: "等待管理员审核", 
+                                confirmButtonText: "返回",
+                                type: "success"
+                            }, function () {
+                                $state.go('stockList', {}, {reload: true});
+                            })
                         }
                     })
                 });
@@ -89,8 +95,14 @@
             else{
                 StockService.editStock($stateParams.stockId, $scope.stock).then(function (data) {
                     if(data.success===true){
-                        swal('修改成功, 等待管理员审核', '', 'success')
-                        $state.go($state.current, {}, {reload: true});
+                        swal({
+                            title: "修改成功",    
+                            text: "等待管理员审核", 
+                            confirmButtonText: "返回",
+                            type: "success"
+                        }, function () {
+                            $state.go('stockList', {}, {reload: true});
+                        })
                     }
                 })
             }
