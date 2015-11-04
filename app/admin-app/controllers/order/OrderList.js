@@ -112,7 +112,7 @@
                     return order.selected === false;
                 }).forEach(function (order) {
                     order.selected = true;
-                    selectedOrders.push(order.id);
+                    selectedOrders.push(order);
                 });
                 $scope.isAllSelected = true;
             }
@@ -120,7 +120,7 @@
                 $scope.orders.forEach(function (order) {
                     order.selected = false;
                     selectedOrders.map(function (item, idx, arry) {
-                        if(item === order.id){
+                        if(parseInt(item.id) === (order.id)){
                             arry.splice(idx, 1);
                         }
                     });
