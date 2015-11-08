@@ -38,17 +38,24 @@
                         return isNaN(value);
                     },
                     isID: function (value) {
-                        if(value===null || value.length===0 || value.toString().trim().length===0){
+                        if(!value || value.length===0 || value.toString().trim().length===0){
                             return true;
                         }
                         var patt = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
                         return patt.test(value);
                     },
                     isPhone: function (value) {
-                        if(value.toString().trim().length===0){
+                        if(!value || value.length===0 || value.toString().trim().length===0){
                             return true;
                         }
                         var patt = /((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)/;
+                        return patt.test(value);
+                    },
+                    isQQ: function (value) {
+                        if(!value || value.length===0 || value.toString().trim().length===0){
+                            return true;
+                        }
+                        var patt = /^\s*[.0-9]{5,10}\s*$/;
                         return patt.test(value);
                     },
                     maxvalue: function(value, scope, element, attrs, param) {
@@ -76,6 +83,9 @@
                     },
                     isID: {
                         error: '身份证号码不正确',
+                    },
+                    isQQ: {
+                        error: '您输入QQ号不正确',
                     },
                     isPhone: {
                         error: '手机号码不正确',

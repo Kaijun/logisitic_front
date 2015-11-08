@@ -36,8 +36,6 @@
                     type: "success",
                     title: "修改成功!",
                     showCancelButton: false,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "确定",
                     closeOnConfirm: true,
                 }, function () {
                     $window.location.reload();
