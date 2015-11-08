@@ -1,5 +1,5 @@
 <div class="uh-submit" ng-hide="isConfirmShown">
-
+<form name="orderForm">
 <div class="uh-main-section first">
   <div class="uh-main-header">
       <div class="left">
@@ -76,13 +76,22 @@
           </thead>
           <tbody>
             <tr ng-repeat="item in package.items" ng-if="item.remain>0">
-              <td style="text-align:left" ><input ng-model="item.isSelected" type="checkbox"><label>{{item.item_name}}</label></td>
+              <td style="text-align:left" >
+                <input ng-model="item.isSelected" type="checkbox"><label>{{item.item_name}}</label>
+              </td>
               <td style="text-align:center">{{item.typeName}}</td>
               <td style="text-align:center">{{item.quantity}}</td>
               <td style="text-align:center">{{item.unit_price || "-"}}</td>
               <td style="text-align:center">{{item.unit_weight || "-"}}</td>
               <td style="text-align:center">{{item.remain}}</td>
-              <td style="text-align:center"><input ng-model="item.quantityToSend" type="number" min="1" max="{{item.remain}}"></td>
+              <td style="text-align:center">
+                <input 
+                  name="{{'quantityToSend' + item.id}}"
+                  ng-model="item.quantityToSend" 
+                  type="text" 
+                  validator="required, number, minvalue=1, maxvalue={{item.remain}}"
+                >
+              </td>
             </tr>
           </tbody>
         </table>
@@ -123,10 +132,10 @@
 </div>
 
 <div class="uh-main-action" >
-      <div  ng-click="confirmOrder()"><a>下一步</a></div>
+      <div validation-submit="orderForm" ng-click="confirmOrder()"><a>下一步</a></div>
 </div>
 
-
+</form>
 </div>
 
 
@@ -138,6 +147,7 @@
 
 
 
+<form name="confirmForm">
 
 <div class="uh-submit" ng-show="isConfirmShown">
 <!-- <div class="uh-submit"> -->
@@ -243,7 +253,13 @@
       </tr>
     </table>
              <div class="pure-g uh-form-section">
-      <div class="pure-u-1"><input type="checkbox" id="protocolConfirm"> 我已确认并阅读了《大口袋服务协议》</div>
+      <div class="pure-u-1">
+        <input 
+          name="confirmProtocol"
+          type="checkbox"
+          ng-model="confirmProtocol"
+          validator="required"
+          id="protocolConfirm"> 我已确认并阅读了《大口袋服务协议》</div>
     </div>
 
       <!-- <input type="checkbox" id="protocolConfirm"> <label for="protocolConfirm">以上信息无误，我已经阅读并且同意<a href="">大口袋转运服务条款</a>！</label> -->
@@ -257,10 +273,10 @@
 
         <div ng-click="editOrder()" class="btn-edit left"></div>
         <!-- <div ng-click="deleteOrder()" class="btn-delete left"></div> -->
-        <div ng-click="submitOrder()" class="btn-confirm right"></div>
+        <div validation-submit="confirmForm" ng-click="submitOrder()" class="btn-confirm right"></div>
 
 </div>
 
 </div>
 
-
+</form>

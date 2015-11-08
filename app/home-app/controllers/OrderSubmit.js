@@ -127,13 +127,20 @@
 
         function confirmOrder(){
 
+            $scope.order.items = assembleItems();
+
+            //validate items if empty
+            if($scope.order.items.length===0){
+                swal('请至少勾选一项发货物品', '', 'error');
+                return;
+            }
+
 
             $scope.order.logistic_path = $scope.logisticPathChosen.id;
 
             var addr = $scope.addressList.filter(function (item) {
                 return item.id === parseInt($scope.order.address);
             });
-            $scope.order.items = assembleItems();
 
             //报关单除掉整箱发货!!!
             InfoService.getTypes().then(function (lts) {

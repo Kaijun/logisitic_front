@@ -38,7 +38,7 @@
                         return isNaN(value);
                     },
                     isID: function (value) {
-                        if(value.toString().trim().length===0){
+                        if(value===null || value.length===0 || value.toString().trim().length===0){
                             return true;
                         }
                         var patt = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
@@ -50,6 +50,12 @@
                         }
                         var patt = /((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)/;
                         return patt.test(value);
+                    },
+                    maxvalue: function(value, scope, element, attrs, param) {
+                      return parseInt(value,10) <= parseInt(param,10);
+                    },
+                    minvalue: function(value, scope, element, attrs, param) {
+                      return parseInt(value,10) >= parseInt(param,10);
                     },
                 }) // set expression
                 .setDefaultMsg({
@@ -70,6 +76,12 @@
                     },
                     isPhone: {
                         error: '手机号码不正确',
+                    },
+                    maxvalue: {
+                        error: '不能超出最大值',
+                    },
+                    minvalue: {
+                        error: '不能小于最小值',
                     },
                 }); // set valid message
 
