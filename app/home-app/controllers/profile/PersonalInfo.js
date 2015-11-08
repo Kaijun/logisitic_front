@@ -19,7 +19,7 @@
             "ID_card_scan_1": UserInfo.ID_card_scan_1,
             "ID_card_scan_2": UserInfo.ID_card_scan_2,
             "real_name": UserInfo.real_name,
-            "default_address_id": null,
+            // "default_address_id": null,
         }
 
         $scope.addrs = [];
@@ -40,7 +40,9 @@
         }
 
         $scope.editProfile = function () {
-            $scope.personalInfo.default_address_id = $scope.defaultAddr.id;
+            if($scope.defaultAddr){
+                $scope.personalInfo.default_address_id = $scope.defaultAddr.id;
+            }
             ProfileService.editPersonalInfo($scope.personalInfo).then(function () {
                 swal({
                     type: "success",
