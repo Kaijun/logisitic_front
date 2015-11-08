@@ -10,11 +10,16 @@
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">选择收货地址</div>
           <div class="pure-u-3-4">
-            <select ng-model="order.address" class="pure-u-18-24">
+            <select 
+              ng-model="selectedAddr" 
+              ng-options="addr.addr_symbol for addr in addressList;" 
+              ng-change="order.address=selectedAddr.id"
+              class="pure-u-18-24"></select>            
+<!--             <select ng-model="order.address" ng-value="order.address" class="pure-u-18-24">
               <option ng-repeat="addr in addressList" value="{{addr.id}}">
                 {{addr.addr_symbol}}
               </option>
-            </select>
+            </select> -->
             <a class="pure-button blue inline-button" ui-sref="addressManage">管理国内地址</a>
             <div class="desc">请确认您的包裹填写的收获地址正确，保证您能在国内收到货物。</div>
           </div>

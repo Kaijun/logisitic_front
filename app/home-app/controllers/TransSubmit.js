@@ -51,6 +51,9 @@
             }).then(function () {
                 $scope.$watch('trans.warehouse', function (newValue, oldValue) {
                     // 4 - 已入库
+                    if(data.length===0){
+                        swal('库存中没有可发货物品', '', 'error');
+                    }
                     OrderService.getPackages(4, newValue).then(function (data) {
                         data.forEach(function (pkg) {
                             pkg.toggle = false;

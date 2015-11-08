@@ -27,6 +27,7 @@
         $scope.logisticPathChosen = null;
         $scope.extraServices = [];
         $scope.addressList  = [];
+        $scope.selectedAddr  = null;
         $scope.packageList = [];
         $scope.addrInfo = null;
         $scope.allItems = [];
@@ -61,6 +62,9 @@
                     $state.go('addressManage');
                 }
                 $scope.addressList = data;
+                $scope.selectedAddr = $scope.addressList.filter(function (item) {
+                    return parseInt(item.is_default)===1;
+                })[0];
             });
             $q.all([warehousePromise, pathPromise, addressListPromise]).then(function () {
                 $scope.order = angular.copy(orderObj);
@@ -71,6 +75,10 @@
                 $scope.$watch('order.warehouse', function (newValue, oldValue) {
                     // 4 - 已入库
                     OrderService.getPackages(4, newValue).then(function (data) {
+                        if(data.length===0){
+                            swal('库存中没有可发货物品', '', 'error');
+                        }
+
                         data.forEach(function (pkg) {
                             pkg.toggle = false;
                             pkg.isAllToggle = false;
