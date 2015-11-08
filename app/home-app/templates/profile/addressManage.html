@@ -35,6 +35,7 @@
 </div>
 
 
+<form name="addressForm" novalidate>
 <div class="uh-main-section last">
   <div class="uh-main-header">
       <div class="left">
@@ -58,7 +59,13 @@
 
   <div class="pure-g uh-form-section">
     <div class="pure-u-3-24">街道地址*</div>
-    <div class="pure-u-12-24"><input ng-model="address.street" tyep="text"></div>
+    <div class="pure-u-12-24">
+      <input 
+        name="street" 
+        ng-model="address.street" 
+        tyep="text"
+        validator="required">
+    </div>
     <div class="pure-u-3-24" style="text-align:center">邮政编码</div>
     <div class="pure-u-6-24"><input ng-model="address.post_code" tyep="text"></div>
   </div>
@@ -66,19 +73,38 @@
 
   <div class="pure-g uh-form-section">
     <div class="pure-u-3-24">收件人*</div>
-    <div class="pure-u-10-24"><input ng-model="address.receiver_name" tyep="text"></div>	
+    <div class="pure-u-10-24">
+      <input 
+        name="receiver_name" 
+        ng-model="address.receiver_name"
+        tyep="text"
+        validator="required">
+    </div>	
   </div>
 
   <div class="pure-g uh-form-section">
   <div class="pure-u-3-24">手机号*</div>
-  <div class="pure-u-10-24"><input ng-model="address.phone" tyep="text"></div>
+  <div class="pure-u-10-24">
+    <input 
+      name="phone"
+      ng-model="address.phone" 
+      tyep="text"
+      validator="required, isPhone"
+    ></div>
   <div class="pure-u-6-24 uh-form-desc inline-desc">请输入正确的手机号</div>
   </div>
 
 
   <div class="pure-g uh-form-section">
-  <div class="pure-u-3-24">身份证号码*</div>
-  <div class="pure-u-10-24"><input ng-model="address.ID_card_no" tyep="text"></div>	
+  <div class="pure-u-3-24">身份证号码</div>
+  <div class="pure-u-10-24">
+    <input 
+      name="ID_card_no" 
+      ng-model="address.ID_card_no" 
+      tyep="text"
+      validator="isID"
+    >
+  </div>	
   </div>
 
   <div class="pure-g uh-form-section">
@@ -101,7 +127,14 @@
 
   <div class="pure-g uh-form-section">
   <div class="pure-u-3-24">地址代号*</div>
-  <div class="pure-u-10-24"><input ng-model="address.addr_symbol" tyep="text"></div>
+  <div class="pure-u-10-24">
+    <input 
+      name="addr_symbol"
+      ng-model="address.addr_symbol" 
+      tyep="text"
+      validator="required"
+    >
+  </div>
   </div>
   <div class="pure-g uh-form-section">
   <div class="pure-u-3-24"></div>
@@ -110,7 +143,6 @@
   <label for="default"><span></span>设为默认</label>
   </div>
   </div>
-  
 </div>
 
 
@@ -119,7 +151,8 @@
 
     <div ng-click="cancle()" class="btn-delete left"></div>
 
-    <div ng-click="submit()" class="btn-msg-send right"></div>
+    <div validation-submit="addressForm" ng-click="submit()" class="btn-msg-send right"></div>
 </div>
 
+  </form>
 

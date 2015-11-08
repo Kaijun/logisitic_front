@@ -37,8 +37,20 @@
                     notNumber: function (value) {
                         return isNaN(value);
                     },
-                    isID: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/,
-                    isPhone: /((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)/,
+                    isID: function (value) {
+                        if(value.toString().trim().length===0){
+                            return true;
+                        }
+                        var patt = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+                        return patt.test(value);
+                    },
+                    isPhone: function (value) {
+                        if(value.toString().trim().length===0){
+                            return true;
+                        }
+                        var patt = /((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)/;
+                        return patt.test(value);
+                    },
                 }) // set expression
                 .setDefaultMsg({
                     required: {
