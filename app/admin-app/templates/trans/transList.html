@@ -36,13 +36,13 @@
         <tbody>
           <tr ng-repeat="trans in transs" >
             <td><input type="checkbox"></td>
-            <td>TODO</td>
+            <td>{{trans.created_at}}</td>
             <td>{{trans.reference_code}}</td>
             <td>{{trans.from_name}}</td>
             <td>{{trans.from_stock_number}}</td>
             <td>{{trans.to_name}}</td>
             <td>{{trans.to_stock_number}}</td>
-            <td>{{StockService.getStockStatusMapping(trans.status)}}</td>
+            <td>{{trans.statusStr}}</td>
             <td>
               <!-- <a ng-if="trans.status === 7" ng-click="confirmTrans(trans)" >确认移库</a> -->
               <a ng-click="goToDetail(trans.transorder_id)" >详情</a>

@@ -27,6 +27,11 @@
                 $scope.transs = $scope.transs.filter(function (item) {
                     return item.transorder_id;
                 });
+                $scope.transs.map(function (item) {
+                    item.statusStr = StockService.getStockStatusMapping(item.status);
+                    item.created_at = item.created_time.date.substring(0, 10);
+                    // item.selected = arrayExist(selectedOrders, item);
+                })
                 $timeout(function () {
                     $scope.pageInfo = data;
                 })
@@ -63,7 +68,12 @@
                 $scope.transs = response.data.data;                
                 $scope.transs = $scope.transs.filter(function (item) {
                     return item.transorder_id;
-                });
+                });                
+                $scope.transs.map(function (item) {
+                    item.statusStr = StockService.getStockStatusMapping(item.status);
+                    item.created_at = item.created_time.date.substring(0, 10);
+                    // item.selected = arrayExist(selectedOrders, item);
+                })
                 $timeout(function () {
                     $scope.pageInfo = response.data;
                 })

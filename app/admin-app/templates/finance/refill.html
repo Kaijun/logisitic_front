@@ -1,20 +1,39 @@
+<form name="refillForm">
 <div class=" ah-section"> 充值信息 </div>
 <!-- 表单第一行开始 -->
 <div class="pure-g ah-form-line">
   <div class="pure-u-2-24 input-label">用户Email</div>
-  <div class="pure-u-10-24"><input ng-model="chargeEmail"></div>
+  <div class="pure-u-10-24">
+    <input 
+      name="chargeEmail"
+      type="text" 
+      ng-model="chargeEmail"
+      validator="required, email">
+  </div>
 </div>
 <!-- 第一行结束结束 -->
 <!-- 表单第二行 -->
 <div class="pure-g ah-form-line">
   <div class="pure-u-2-24 input-label">用户库存码</div>
-  <div class="pure-u-10-24"><input ng-model="chargeStockNum"></div>
+  <div class="pure-u-10-24">
+    <input 
+      ng-model="chargeStockNum"
+      name="chargeStockNum"
+      type="text" 
+      validator="required">
+  </div>
 </div>
 <!-- 第2行结束结束 -->
 <!-- 表单第三行开始 -->
 <div class="pure-g ah-form-line">
   <div class="pure-u-2-24 input-label">充值金额</div>
-  <div class="pure-u-10-24"><input ng-model="chargeAmount"></div>
+  <div class="pure-u-10-24">
+    <input 
+      ng-model="chargeAmount"
+      name="chargeAmount"
+      type="text" 
+      validator="required, number">
+  </div>
 </div>
 <!-- 表单第三行结束 -->
 <div class="ah-section">附加信息</div>
@@ -25,7 +44,8 @@
 <div class="pure-g ah-action-btns">
   <div class="pure-u-1-2 right">
     <a  ng-click="goBack()" class="pure-button red">取消</a>
-    <a  ng-click="charge()" class="pure-button blue">确认</a>
+    <a validation-submit="refillForm" ng-click="charge()" class="pure-button blue">确认</a>
   </div>
 </div>
 </div>
+</form>
