@@ -69,10 +69,6 @@
                 swal({
                     title: "确认删除?",
                     showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    cancelButtonText: "取消",
-                    confirmButtonText: "确定",
-                    closeOnConfirm: true,
                 }, function () {
                     OrderService.deleteOrder(order.id).then(function(data) {
                         if(data.success===true){

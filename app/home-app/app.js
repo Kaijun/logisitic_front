@@ -41,7 +41,7 @@
             controller: 'OrderListCtrl',
         })
         .state('orderSubmit', {
-            url: '/order/submit?orderId',
+            url: '/order/submit/:orderId',
             templateUrl: 'templates/orderSubmit.html',
             controller: 'OrderSubmitCtrl',
         })

@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('OrderSubmitCtrl', OrderSubmitCtrl);
 
-    OrderSubmitCtrl.$inject = ['$scope', 'OrderService', 'ProfileService', 'InfoService', '$q', '$timeout', '$state'];
+    OrderSubmitCtrl.$inject = ['$scope', 'OrderService', 'ProfileService', 'InfoService', '$q', '$timeout', '$state', '$stateParams'];
 
     /* @ngInject */
-    function OrderSubmitCtrl($scope, OrderService, ProfileService, InfoService, $q, $timeout, $state) {
+    function OrderSubmitCtrl($scope, OrderService, ProfileService, InfoService, $q, $timeout, $state, $stateParams) {
         var orderObj = {
             address: null,
             logistic_path: null,
@@ -95,7 +95,7 @@
                             })
 
                             $scope.packageList = data;
-                        })
+                        });
                     });
                 });
 
@@ -103,7 +103,7 @@
                     $scope.extraServices = $scope.logisticPathChosen.extra_services.filter(function (item) {
                         return (item.type==0 || item.type==3);
                     });
-                })
+                });
             });
         }
 

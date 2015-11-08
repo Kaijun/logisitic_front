@@ -9,6 +9,8 @@
         $scope.filterStockList = [];
         $scope.stockList = [];
         $scope.goToDetail = goToDetail;
+        $scope.deleteOrder = deleteOrder;
+        $scope.editOrder = editOrder;
         $scope.toggleStatusFilter = toggleStatusFilter;
         $scope.toggleStatus = -1;
         $scope.searchText = "";
@@ -63,6 +65,26 @@
 
         function goToDetail (orderId) {
             $state.go('orderDetail', {orderId: orderId});
+        }
+        function deleteOrder (order) {
+            if(order.id){
+                swal({
+                    title: "确认删除?",
+                    showCancelButton: true,
+                }, function () {
+                    OrderService.deleteOrder(order.id).then(function() {
+                        swal('删除成功', '', 'success');
+                        var idx = $scope.stockList.indexOf(order);
+                        if(idx > -1){
+                            $scope.stockList.splice(idx, 1);
+                            $scope.tableParams.reload();
+                        }
+                    });
+                })
+            }
+        }
+        function editOrder (order) {
+            $state.go('orderSubmit', {orderId: order.id});
         }
 
     }]);

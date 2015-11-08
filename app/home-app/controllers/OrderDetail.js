@@ -73,10 +73,14 @@
             $state.go('orderSubmit', {orderId: $stateParams.orderId});
         }
         function deleteOrder () {
-            OrderService.deleteOrder($stateParams.orderId).then(function() {
-                $state.go('orderList');
+            swal({
+                title: "确认删除?",
+                showCancelButton: true,
             }, function () {
-                // body...
+                OrderService.deleteOrder($stateParams.orderId).then(function() {
+                    swal('删除成功', '', 'success');
+                    $state.go('orderList');
+                });
             })
         }
 

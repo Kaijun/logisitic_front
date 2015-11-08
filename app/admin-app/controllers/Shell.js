@@ -23,6 +23,8 @@
             swal.setDefaults({
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
+                confirmButtonColor: "#DD6B55",
+                closeOnConfirm: true,
             });
         
         }
