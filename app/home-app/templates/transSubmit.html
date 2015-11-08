@@ -1,4 +1,5 @@
 <div class="uh-submit" ng-hide="isConfirmShown">
+<form name="transForm">
 <div class="uh-main-section first">
   <div class="uh-main-header">
         <div class="left">
@@ -13,12 +14,12 @@
 
   <div class="pure-g uh-form-section">
     <div class="pure-u-4-24">接收方Email</div>
-    <div class="pure-u-12-24"><input ng-model="trans.to_email" type="text"></input></div>
+    <div class="pure-u-12-24"><input name="to_email" ng-model="trans.to_email" type="text" validator="required, email"></div>
   </div>  
 
   <div class="pure-g uh-form-section">
     <div class="pure-u-4-24">接收方库存码</div>
-    <div class="pure-u-12-24"><input ng-model="trans.to_stock_number" type="text"></input></div>
+    <div class="pure-u-12-24"><input name="to_stock_number" ng-model="trans.to_stock_number" type="text" validator="required"></input></div>
   </div>
 
   <div class="pure-g uh-form-section">
@@ -69,7 +70,12 @@
             <td>{{item.unit_price}}</td>
             <td>{{item.unit_weight}}</td>
             <td>{{item.remain}}</td>
-            <td><input ng-model="item.quantityToSend" type="number" min="1" max="{{item.remain}}"></td>
+            <td>
+                <input                   
+                  name="{{'quantityToSend' + item.id}}"
+                  ng-model="item.quantityToSend" 
+                  type="text" 
+                  validator="required, number, minvalue=1, maxvalue={{item.remain}}"></td>
           </tr>
         </tbody>
       </table>
@@ -95,9 +101,10 @@
 </div>
   <!-- 底部操作栏 -->
 <div class="uh-main-action">
-    <div ng-click="confirm()">下一步</div>
+    <div validation-submit="transForm" ng-click="confirm()">下一步</div>
 </div>
 
+</form> 
 </div>
 
 

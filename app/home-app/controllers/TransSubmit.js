@@ -81,8 +81,13 @@
         }
 
         function confirm () {
+            $scope.trans.items = assembleItems();
+             //validate items if empty
+            if($scope.trans.items.length===0){
+                swal('请至少勾选一项发货物品', '', 'error');
+                return;
+            }
             $timeout(function () {
-                $scope.trans.items = assembleItems();
                 $scope.isConfirmShown = true;
                 console.log($scope.trans.extra_services)
             })

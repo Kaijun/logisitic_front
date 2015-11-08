@@ -62,6 +62,9 @@
                     required: {
                         error: '此项必填',
                     },
+                    email: {
+                        error: '邮箱格式不正确',
+                    },
                     number: {
                         error: '必须为数字',
                     },
