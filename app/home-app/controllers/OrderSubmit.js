@@ -64,7 +64,8 @@
                 $scope.addressList = data;
                 $scope.selectedAddr = $scope.addressList.filter(function (item) {
                     return parseInt(item.is_default)===1;
-                })[0];
+                });
+                $scope.selectedAddr = $scope.selectedAddr.length>0 ? $scope.selectedAddr[0] : $scope.addressList[0];
             });
             $q.all([warehousePromise, pathPromise, addressListPromise]).then(function () {
                 $scope.order = angular.copy(orderObj);
