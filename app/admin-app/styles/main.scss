@@ -11,6 +11,17 @@
   }
 }
 
+input.invalid-input{
+    border-color: red;
+}
+input.valid-input{
+    border-color: green;
+}
+
+label.invalid-label{
+    color: red;
+}
+
 
 
 html,body { height:100%; position: relative; }

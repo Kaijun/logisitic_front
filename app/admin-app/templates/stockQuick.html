@@ -151,6 +151,7 @@
 <!-- 找到了信息 -->
       <!-- 未找到结果部分 -->
 <div ng-if="isRequested&&(!isStockFound)" >
+  <form name="stockForm">
         <div class="ah-section">未找到信息 － 新建库存</div>
         <div class="pure-g">
         <div class="pure-u-20-24">
@@ -169,15 +170,32 @@
             </div>
  -->            
           <div class="pure-u-2-24 input-label">包裹运单号</div>
-            <div class="pure-u-1-4"><input ng-model="serachText" placeholder="从扫描中获取" type="text" ></div>
+            <div class="pure-u-1-4">
+              <input 
+                name="ref_code"
+                ng-model="serachText" 
+                placeholder="从扫描中获取"
+                validator="required"
+                type="text" 
+              >
+            </div>
             <div class="pure-u-2-24 input-label">入库重量</div>
-            <div class="pure-u-2-24"><input ng-model="submitData.weight" type="number"></div>
+            <div class="pure-u-2-24">
+              <input 
+                name="weight"
+                ng-model="submitData.weight" 
+                validator="required, number"
+                type="text">
+            </div>
             <div class="pure-u-1-24 input-label">KG</div>
           </div>
           <div class="pure-g ah-form-line">
                 <div class="pure-u-2-24 input-label">入库码</div>
                 <div class="pure-u-4-24">
-                  <input ng-model="submitData.stock_number" type="text">
+                  <input 
+                    name="stock_number"
+                    ng-model="submitData.stock_number"
+                    type="text">
                 </div>
                 <div class="pure-u-2-24 input-label">库位号:</div>
                 <div class="pure-u-2-24">
@@ -216,10 +234,11 @@
 
         <!-- 右边控制开始 -->
         <div class="pure-u-4-24 right">
-            <div><a ng-click="regStock()" class="pure-button blue ">登记包裹</a></div>
+            <div><a validation-submit="stockForm" ng-click="regStock()" class="pure-button blue ">登记包裹</a></div>
             <div><a class="pure-button print ">打印面单</a></div>
         </div>
     </div>
+    </form>
 </div>
 
 
