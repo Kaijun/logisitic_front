@@ -70,10 +70,7 @@
    <div class="uh-list-row pure-g">
     <div class="pure-u-4-24 uh-list-cell">默认收货地址</div>
     <div class="pure-u-1-2 uh-list-cell">
-        <select name="address">
-          <option value="1">重庆大学</option>
-          <option value="1">重庆大学2</option>
-        </select>
+      <select ng-model="defaultAddr" ng-options="addr.addr_symbol for addr in addrs"> </select>
     </div>
   </div> 
 </div>
