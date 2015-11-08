@@ -75,6 +75,7 @@
     <div class="pure-u-3-24">收件人*</div>
     <div class="pure-u-10-24">
       <input 
+        placeholder="请输入中文收件人姓名"
         name="receiver_name" 
         ng-model="address.receiver_name"
         tyep="text"
@@ -91,7 +92,7 @@
       tyep="text"
       validator="required, isPhone"
     ></div>
-  <div class="pure-u-6-24 uh-form-desc inline-desc">请输入正确的手机号</div>
+  <!-- <div class="pure-u-6-24 uh-form-desc inline-desc">请输入正确的手机号</div> -->
   </div>
 
 
@@ -129,6 +130,7 @@
   <div class="pure-u-3-24">地址代号*</div>
   <div class="pure-u-10-24">
     <input 
+      placeholder="快速识别发货地址，可使用数字或字母"
       name="addr_symbol"
       ng-model="address.addr_symbol" 
       tyep="text"
@@ -151,7 +153,7 @@
 
     <div ng-click="cancle()" class="btn-delete left"></div>
 
-    <div validation-submit="addressForm" ng-click="submit()" class="btn-msg-send right"></div>
+    <div validation-submit="addressForm" ng-click="submit()" class="btn-confirm right"></div>
 </div>
 
   </form>
