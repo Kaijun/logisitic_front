@@ -23,6 +23,7 @@
             getTypes: getTypes,
             getTypeById: getTypeById,
             uploadImage: uploadImage,
+            getDigits: getDigits,
         };
         return service;
 
@@ -178,6 +179,11 @@
                 return response.data;
             });
             return promise;
+        }
+        function getDigits () {
+            return $http.get(AppConfig.apiUrl + '/digits/').then(function (response) {
+                return response.data;
+            });
         }
     }
 })();

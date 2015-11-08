@@ -16,7 +16,7 @@
             controller: 'IndexCtrl',
         })
         .state('stockList', {
-            url: '/stockList',
+            url: '/stockList/:status',
             templateUrl: 'templates/stockList.html',
             controller: 'StockListCtrl',
         })
@@ -36,7 +36,7 @@
             controller: 'StockDetailCtrl',
         })
         .state('orderList', {
-            url: '/orderList',
+            url: '/orderList/:status',
             templateUrl: 'templates/orderList.html',
             controller: 'OrderListCtrl',
         })
@@ -57,7 +57,7 @@
             controller: 'TransSubmitCtrl',
         })        
         .state('transList', {
-            url: '/transList',
+            url: '/transList/:status',
             templateUrl: 'templates/transList.html',
             controller: 'TransListCtrl',
         })

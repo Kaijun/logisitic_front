@@ -5,10 +5,10 @@
         </div>
     </div>
     <div class="pure-g pure-u-1">
-        <div class="uh-index-btns pbm-btn">问题件｜2</div>
-        <div ui-sref="stockList" class="uh-index-btns stock-btn">待入库｜2</div>
-        <div ui-sref="orderList" class="uh-index-btns pay-btn">待付款｜2</div>
-        <div ui-sref="transList" class="uh-index-btns shipped-btn">已发货｜2</div>
+        <div class="uh-index-btns pbm-btn">问题件｜{{digits.digit_1}}</div>
+        <div ui-sref="stockList({status:2})" class="uh-index-btns stock-btn">待入库｜{{digits.digit_2}}</div>
+        <div ui-sref="orderList({status:2})" class="uh-index-btns pay-btn">待付款｜{{digits.digit_3}}</div>
+        <div ui-sref="orderList({status:5})" class="uh-index-btns shipped-btn">已发货｜{{digits.digit_4}}</div>
     </div>
 
 </div>

@@ -4,8 +4,8 @@
 ;(function () {
     
     angular.module('home.controllers')
-    .controller('OrderListCtrl', ['$scope', '$state', '$filter', 'OrderService', 'InfoService', 'ngTableParams', 
-    function($scope, $state, $filter, OrderService, InfoService, ngTableParams) {
+    .controller('OrderListCtrl', ['$scope', '$state', '$filter', 'OrderService', 'InfoService', 'ngTableParams', '$stateParams',
+    function($scope, $state, $filter, OrderService, InfoService, ngTableParams, $stateParams) {
         $scope.filterStockList = [];
         $scope.stockList = [];
         $scope.goToDetail = goToDetail;
@@ -45,6 +45,11 @@
                 $scope.stockList = list;
                 $scope.filterStockList = list;
                 $scope.tableParams.reload();
+            }).then(function () {
+                if($stateParams.status){
+                    toggleStatusFilter($stateParams.status);
+                    $scope.toggleStatus = parseInt($stateParams.status);
+                }
             });
 
             $scope.$watch('searchText', function (newValue, oldValue) {

@@ -4,8 +4,8 @@
 ;(function () {
     
     angular.module('home.controllers')
-    .controller('TransListCtrl', ['$scope', '$state', '$filter', 'TransService', 'InfoService', 'ngTableParams', 
-    function($scope, $state, $filter, TransService, InfoService, ngTableParams) {
+    .controller('TransListCtrl', ['$scope', '$state', '$filter', 'TransService', 'InfoService', 'ngTableParams', '$stateParams',
+    function($scope, $state, $filter, TransService, InfoService, ngTableParams, $stateParams) {
         $scope.filterStockList = [];
         $scope.stockList = [];
         $scope.goToDetail = goToDetail;
@@ -42,6 +42,11 @@
                 $scope.stockList = list;
                 $scope.filterStockList = list;
                 $scope.tableParams.reload();
+            }).then(function () {
+                if($stateParams.status){
+                    toggleStatusFilter($stateParams.status);
+                    $scope.toggleStatus = parseInt($stateParams.status);
+                }
             });
 
             $scope.$watch('searchText', function (newValue, oldValue) {

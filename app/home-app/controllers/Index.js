@@ -14,12 +14,18 @@
         $scope.currentStocks = [];
         $scope.currentOrders = [];
         $scope.currentTranss = [];
+        $scope.digits = {};
 
         activate();
 
         ////////////////
 
         function activate() {
+            InfoService.getDigits().then(function (data) {
+                $timeout(function () {
+                    $scope.digits = data;
+                })
+            })
         }
 
         $scope.toggleView = function (viewNum) {
