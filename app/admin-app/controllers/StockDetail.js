@@ -32,23 +32,23 @@
                     StockService.getStock($scope.stockId).then(function (data) {
                         $scope.isRequested = true;
 
-                        $scope.imageUrlPrefix = data.package ? $scope.imageUrlPrefix + data.package.user.id + '/' : $scope.imageUrlPrefix ;
-                            data.warehouseName = $scope.warehouses.filter(function(item){
-                                return parseInt(item.id)===parseInt(data.warehouse_id)
-                            })[0].name
-                            data.created_at = data.created_at.substring(0, 10);
-                            data.updated_at = data.updated_at.substring(0, 10);
-                            data.statusStr = InfoService.getStockStatusMapping(data.status);
-                            data.items.map(function (i) {
-                                var typeOption = $scope.optionTypes.filter(function (ot) {
-                                    return parseInt(ot.id) === parseInt(i.type);
-                                })[0];
-                                return i.typeOption = typeOption;
-                            });
-                            data.isStockCheck = (data.items.length>0) && !(data.items.length===1&&data.items[0].type==$scope.optionTypes[0].id);
-                            $timeout(function(){
-                                $scope.stock = data;
-                            });
+                        $scope.imageUrlPrefix = data.user ? $scope.imageUrlPrefix + data.user.id + '/' : $scope.imageUrlPrefix ;
+                        data.warehouseName = $scope.warehouses.filter(function(item){
+                            return parseInt(item.id)===parseInt(data.warehouse_id)
+                        })[0].name
+                        data.created_at = data.created_at.substring(0, 10);
+                        data.updated_at = data.updated_at.substring(0, 10);
+                        data.statusStr = InfoService.getStockStatusMapping(data.status);
+                        data.items.map(function (i) {
+                            var typeOption = $scope.optionTypes.filter(function (ot) {
+                                return parseInt(ot.id) === parseInt(i.type);
+                            })[0];
+                            return i.typeOption = typeOption;
+                        });
+                        data.isStockCheck = (data.items.length>0) && !(data.items.length===1&&data.items[0].type==$scope.optionTypes[0].id);
+                        $timeout(function(){
+                            $scope.stock = data;
+                        });
 
                     }, function() {
                         $state.go('stockList');

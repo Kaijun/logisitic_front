@@ -44,6 +44,7 @@
                 return;
             }
             MessageService.sendBulkMsg({
+                send_by_role:1,
                 roles:[$scope.roleChosen.id], 
                 content: $scope.textContent, 
                 send_notification: $scope.isNotification, 
