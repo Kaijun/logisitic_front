@@ -98,7 +98,9 @@
         }
 
         function submit(){
-
+            if(!validate()){
+                return;
+            }
             var promises = []; 
 
             if($scope.imagesToUpload[0]){
@@ -130,6 +132,14 @@
                     });
                 }
             })
+        }
+
+        function validate () {
+            if(!$scope.address.province || !$scope.address.city || !$scope.address.town ){
+                swal('请完善城市信息! 选择您所在的省份/城市/县区', '', 'error');
+                return false;
+            }
+            return true;
         }
     }
 })();
