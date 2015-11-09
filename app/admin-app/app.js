@@ -339,10 +339,10 @@
 	}])
     .run(['$state', '$injector', '$templateCache', '$templateRequest', '$compile', '$rootScope',
     function($state, $injector, $templateCache, $templateRequest, $compile, $rootScope){
-        var isUserInfoRendered = $injector.has('UserInfo');
-        if(isUserInfoRendered===false){
-            window.location.href = '/login/auth'
-        }
+        // var isUserInfoRendered = $injector.has('UserInfo');
+        // if(isUserInfoRendered===false){
+        //     window.location.href = '/auth/login'
+        // }
     }]);
 
     //Default Configuration of App 

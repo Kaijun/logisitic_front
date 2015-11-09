@@ -43,8 +43,17 @@ gulp.task('html', ['styles'], function () {
     .pipe($.if('*.js', $.uglify({ mangle: false })))
     // .pipe($.if('*.js', $.uglify({ mangle: false }).on('error', gutil.log)))
     .pipe($.if('*.css', $.csso()))
+
+    //添加timestamp在资源中
+    // .pipe($.rev())
+
+    //打包html中打包的资源
     .pipe(assets.restore())
     .pipe($.useref())
+
+    //替换useref html中 打包后添加了timestamp的路径!
+    // .pipe($.revReplace())
+
     //并不需要压缩Html
     // .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
     .pipe($.sourcemaps.write())

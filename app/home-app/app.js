@@ -165,10 +165,10 @@
 
 	}])
     .run(['$state', '$injector', function($state, $injector){
-        var isUserInfoRendered = $injector.has('UserInfo');
-        if(isUserInfoRendered===false){
-            window.location.href = '/login/auth'
-        }
+        // var isUserInfoRendered = $injector.has('UserInfo');
+        // if(isUserInfoRendered===false){
+        //     window.location.href = '/auth/login'
+        // }
     }]);
 
     //Default Configuration of App 
