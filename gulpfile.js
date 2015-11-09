@@ -40,7 +40,7 @@ gulp.task('html', ['styles'], function () {
   return gulp.src(['app/*.html', 'app/home-app/**/*.html', 'app/admin-app/**/*.html'], { base: 'app' })
     .pipe($.sourcemaps.init())
     .pipe(assets)
-    // .pipe($.if('*.js', $.uglify({ mangle: false })))
+    .pipe($.if('*.js', $.uglify({ mangle: false })))
     // .pipe($.if('*.js', $.uglify({ mangle: false }).on('error', gutil.log)))
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
