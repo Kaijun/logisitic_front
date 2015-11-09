@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('NotificationCtrl', NotificationCtrl);
 
-    NotificationCtrl.$inject = ['$scope', 'MsgService', '$timeout', '$state'];
+    NotificationCtrl.$inject = ['$scope', 'MsgService', '$timeout', '$state', 'UserInfo'];
 
     /* @ngInject */
-    function NotificationCtrl($scope, MsgService, $timeout, $state) {
+    function NotificationCtrl($scope, MsgService, $timeout, $state, UserInfo) {
 
         $scope.conversations = [];
         $scope.notifications = [];
@@ -39,10 +39,9 @@
 
         function goToDetail (con) {
             if(con.is_read_by_customer==0){
-                MsgService.markConversationAsRead(con.id).then(function (data) {
-                    if(data.success === true ) 
+                markConversationAsRead(con).then(function (data) {
                     $state.go('conversation', {id: con.id});
-                })
+                });
             }
             else{
                 $state.go('conversation', {id: con.id});
@@ -63,12 +62,14 @@
         }
 
         function markConversationAsRead(con){
-            MsgService.markConversationAsRead(con.id).then(function (data) {
+            var promise  = MsgService.markConversationAsRead(con.id).then(function (data) {
                 if(data.success === true ) 
                 $timeout(function () {
                     con.is_read_by_customer = 1;
+                    UserInfo.unread = UserInfo.unread>0 ? UserInfo.unread-1 : UserInfo.unread;
                 })
             })
+            return promise;
         }
         function deleteConversation(con){
             MsgService.deleteConversation(con.id).then(function (data) {
@@ -80,12 +81,14 @@
             })
         }
         function markNotificationAsRead(noti){
-           MsgService.markNotificationAsRead(noti.id).then(function (data) {
+           var promise = MsgService.markNotificationAsRead(noti.id).then(function (data) {
                 if(data.success === true ) 
                 $timeout(function () {
                     noti.is_read = 1;
+                    UserInfo.unread = UserInfo.unread>0 ? UserInfo.unread-1 : UserInfo.unread;
                 })
-            })
+            });
+           return promise;
         }
         function deleteNotification(noti){
             MsgService.deleteNotification(noti.id).then(function (data) {
