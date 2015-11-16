@@ -5,13 +5,18 @@
     群发消息
   </div>
   <div class="pop-up-body">
-      <div class="poo-up-section">
-            <select ng-model="roleChosen" ng-options="role.role_name for role in roles">
+    <div class="poo-up-section">
+        <div>
+          <input ng-model="select.sendByRole" type="radio" name="bulkMode" id="sendByRole" value="1" style="width: 5%"><label for="sendByRole" >根据用户组发送</label>
+          <input ng-model="select.sendByRole" type="radio" name="bulkMode" id="sendByUser" value="0" style="width: 5%"><label for="sendByUser" >选择用户发送</label>
+        </div>
+        <select ng-if="select.sendByRole==1" ng-model="roleChosen" ng-options="role.role_name for role in roles">
+        <input ng-if="select.sendByRole==0" type="text" id="user-tags">
     </div>   
-        <div class="poo-up-section">
-            <textarea ng-model="textContent" name="" rows="5"></textarea>
-        </div>      
+    <div class="poo-up-section">
+        <textarea ng-model="textContent" name="" rows="5"></textarea>
     </div>
+  </div>
   <div class="pop-up-opt pure-g">
   <div class="pure-u-2-3 left">
   <input ng-model="isNotification" type="checkbox"> 通知
