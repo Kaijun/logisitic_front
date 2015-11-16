@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="13px" height="7px" viewBox="0 0 13 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4 (15575) - http://www.bohemiancoding.com/sketch -->
+    <title>Triangle 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="图标" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="ship_status_choose" sketch:type="MSLayerGroup" transform="translate(-173.000000, -7.000000)" fill="#666666">
+            <polygon id="Triangle-1" sketch:type="MSShapeGroup" transform="translate(179.500000, 10.500000) scale(1, -1) translate(-179.500000, -10.500000) " points="179.5 7 186 14 173 14 "></polygon>
+        </g>
+    </g>
+</svg>

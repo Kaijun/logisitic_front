@@ -24,7 +24,9 @@ label.invalid-label{
 
 
 
-html,body { height:100%; position: relative; }
+html,body { height:100%; position: relative; 
+  overflow: hidden;
+}
 
 .ah-login-background{
   width: 100%;
@@ -77,6 +79,7 @@ html,body { height:100%; position: relative; }
 
 // 前缀ah admin-home
 $navbar-height: 32px;
+$siderbar-height: 90vh;
 .ah-nav{
   height: $navbar-height;
   background: #333;
@@ -112,10 +115,8 @@ $navbar-height: 32px;
 $sub-navbar-height: 40px;
 .ah-sub-nav{
   height: $sub-navbar-height;
-  // background: #3F4348;
   background: #000;
   color: #FFFFFF;
-
   .logo{
     line-height: $sub-navbar-height;
     margin-left: 32px;
@@ -135,7 +136,13 @@ $sub-navbar-height: 40px;
       li{
         height: $navbar-height;
         display: inline-block;
+        text-shadow: 1px 1px #333;
         padding: 0 1.5em;
+        &:hover{
+          cursor: pointer;
+          color: #ddd;
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -146,7 +153,9 @@ $sub-navbar-height: 40px;
   color: #FDFDFD;
   padding: 12px 0;
   text-align: center;
-  height: 100vh;
+  overflow: auto;
+  width: 100%;
+  height: $siderbar-height;
 
   .list-wrapper{
     margin-bottom: 32px;
@@ -180,12 +189,11 @@ $sub-navbar-height: 40px;
 }
 
 
-
-
-
 .ah-main{
     background:white;
-    padding: 24px;
+    padding: 20px;
+    height: $siderbar-height;
+    overflow: scroll;
 }
 
 
@@ -454,6 +462,7 @@ $sub-navbar-height: 40px;
 //底部按键区域
 .ah-action-btns{
   margin-top: 20px;
+  height: 80px;
        .left{
             float: left;
         }
@@ -553,6 +562,7 @@ $sub-navbar-height: 40px;
     }
     &.horizon{
       margin-top: 0;
+      margin-bottom: 20px; 
     }
 
 }
@@ -603,7 +613,7 @@ select{
     color: #333;
     border:1px solid #D1D1D1;
     border-radius:0;
-    background:url(../images/form-dropdown.png) right 10px center no-repeat #f6f6f6;
+    background:url(../images/dropdown.svg) right 10px center no-repeat #f6f6f6;
 }
 
 
@@ -845,6 +855,41 @@ select{
     line-height: 12px;
     height: 24px;
   }
+}
+
+.ah-pager{
+    text-align: center;
+    color: #ddd;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    margin-left: 10px; 
+    float: left;
+    font-size: 14px;
+    background:#333;
+    border-radius:5px;
+    &:hover{
+      cursor: pointer;
+      background: #000;
+    }
+    &.disabled{
+      color: #ccc;
+      background: #ddd;
+      &:hover{
+        background:#eee;
+        cursor: normal;
+      }
+    }
+
+}
+
+.ah-empty-holder{
+  width: 100%;
+  bottom:0;
+  z-index: 99;
+  height: 500px;
+  background: url("../images/empty.svg") no-repeat center;
 }
 
 .center{

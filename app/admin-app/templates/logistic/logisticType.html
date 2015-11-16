@@ -12,8 +12,12 @@
         <tr ng-repeat="lt in logisticTypes">
           <td><input type="checkbox"></td>
           <td>{{lt.type_name}}</td>
-          <!-- <td>修改｜删除</td> -->
-          <td><a ng-click="deleteLogisticType(lt)" ng-show="{{lt.is_deletable}}">删除</a></td>
+          <td>
+            <a ng-click="deleteLogisticType(lt)" ng-show="{{lt.is_deletable}}">删除</a>
+            <div ng-show="{{!lt.is_deletable}}">系统默认无法删除</div>
+
+          </td>
+
         </tr>
       </tbody>
     </table>
