@@ -28,34 +28,38 @@
         <thead>
           <tr>
             <th width="25px;"><input type="checkbox"></th>
-            <th>代刷订单号</th>
+            <th width="8%">提交时间</th>
+            <th width="10%">代刷订单号</th>
             <th>客户ID</th>
             <th>联系</th>
             <th>金额(人民币)</th>
+            <th>金额(欧元)</th>
             <th>备注</th>
-            <th>状态</th>
-            <th>操作</th>
+            <th width="8%">状态</th>
+            <th width="5%">操作</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="vorkasse in vorkasses">
           <td width="25px;"><input type="checkbox"></td>
+            <td>TODO</td>
             <td>{{vorkasse.reference_code}}</td>
             <td>{{vorkasse.handler_id}}</td>
-            <td>QQ|Email</td>
+            <td>TODO</td>
             <td>{{vorkasse.amount}}</td>
+            <td>TODO</td>
             <td>{{vorkasse.description}}</td>
             <td>{{vorkasse.statusStr}}</td>
-            <td>确认｜<a ng-click="goToDetail(vorkasse.id)">查看</a></td>
+            <td><a ng-click="goToDetail(vorkasse.id)">详情</a></td>
 
           </tr>
         </tbody>
       </table>
     </div>
   <div class="ah-action-btns"> 
-    <div class="left">
-      <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
-      <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
+    <div class="left ">
+            <div class="ah-pager"  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" ><</div>
+             <div class="ah-pager" ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >></div>
     </div>
     <div class="right">
       <a  ng-click="" class="pure-button blue horizon">批量下载附件</a>

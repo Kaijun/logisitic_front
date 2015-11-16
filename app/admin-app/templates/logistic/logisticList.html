@@ -31,9 +31,9 @@
     </table>
   </div>
   <div class="ah-action-btns">
-    <div class="left">
-      <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
-      <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
+    <div class="left ">
+            <div class="ah-pager"  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" ><</div>
+             <div class="ah-pager" ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >></div>
     </div>
     <div class="right">
       <a  ng-click="" class="pure-button red horizon">批量删除</a>

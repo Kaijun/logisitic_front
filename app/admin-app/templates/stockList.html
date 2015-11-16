@@ -49,7 +49,8 @@
             <td ng-hide="isPreStockList">{{stock.user.name}}</td>
             <td>{{stock.user.stock_number}}</td>
             <td>{{stock.user.stock_position}}</td>
-            <td>QQ:{{stock.user.QQ? stock.user.QQ: "空"}}  - 
+            <td>
+            <!-- QQ:{{stock.user.QQ? stock.user.QQ: "空"}}  -  -->
                 <a href="mailto:{{stock.user.email}}" target="_top"><img src="images/contact-email.svg"></a></td>
             <td>{{stock.description || "空"}}</td>
             <td>{{stock.message || "空"}}</td>
@@ -65,12 +66,12 @@
       </table>
   </div>
   <div class="ah-action-btns"> 
-    <div class="left">
-      <a  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" >上一页</a>
-      <a  ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >下一页</a>
+    <div class="left ">
+            <div class="ah-pager"  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" ><</div>
+             <div class="ah-pager" ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >></div>
     </div>
     <div class="right">
-      <a  ng-click="" class="pure-button red horizon">批量存档</a>
+      <!-- <a  ng-click="" class="pure-button red horizon">批量存档</a> -->
       <a  ng-click="batchDownload()" class="pure-button export horizon">批量导出</a>
     </div>
   </div>
