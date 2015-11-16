@@ -12,6 +12,9 @@
         $scope.toggleStatusFilter = toggleStatusFilter;
         $scope.toggleStatus = -1;
         $scope.searchText = "";
+        $scope.deleteTrans = deleteTrans;
+        $scope.editTrans = editTrans;
+
 
         $scope.tableParams = new ngTableParams({
             page: 1,            // show first page
@@ -67,6 +70,26 @@
 
         function goToDetail (transId) {
             $state.go('transDetail', {transId: transId});
+        }
+        function deleteTrans (trans) {
+            if(trans.id){
+                swal({
+                    title: "确认删除?",
+                    showCancelButton: true,
+                }, function () {
+                    TransService.deleteTrans(trans.id).then(function() {
+                        swal('删除成功', '', 'success');
+                        var idx = $scope.stockList.indexOf(trans);
+                        if(idx > -1){
+                            $scope.stockList.splice(idx, 1);
+                            $scope.tableParams.reload();
+                        }
+                    });
+                })
+            }
+        }
+        function editTrans (trans) {
+            $state.go('transSubmit', {transId: trans.id});
         }
 
     }]);

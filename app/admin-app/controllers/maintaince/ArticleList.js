@@ -24,6 +24,10 @@
 
         function activate() {
             ArticleService.getArticles().then(function(data){
+                data.data.forEach(function (item) {
+                    item.created_at = item.created_at.substring(0,10);
+                    item.updated_at = item.updated_at.substring(0,10);
+                })
                 $scope.articles = data.data;
                 $timeout(function () {
                     $scope.pageInfo = data;
@@ -33,6 +37,10 @@
 
         function requestPage (url) {
             $http.get(url).then(function (response) {
+                response.data.data.forEach(function (item) {
+                    item.created_at = item.created_at.substring(0,10);
+                    item.updated_at = item.updated_at.substring(0,10);
+                })
                 $scope.articles = response.data.data;
                 $timeout(function () {
                     $scope.pageInfo = response.data;
@@ -48,10 +56,6 @@
                 swal({
                     title: "确认删除?",
                     showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    cancelButtonText: "取消",
-                    confirmButtonText: "确定",
-                    closeOnConfirm: true,
                 }, function () {
                     ArticleService.deleteArticle(id).then(function(data) {
                         $scope.articles.map(function (item, index, arry) {

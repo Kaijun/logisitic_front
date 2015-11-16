@@ -42,10 +42,6 @@
                 swal({
                     title: "确认删除?",
                     showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    cancelButtonText: "取消",
-                    confirmButtonText: "确定",
-                    closeOnConfirm: true,
                 }, function () {
                     TransService.deleteVorkasse(trans.transorder_id).then(function(data) {
                         $scope.vorkasses.map(function (item, index, arry) {

@@ -113,10 +113,6 @@
                 swal({
                     title: "确认删除?",
                     showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    cancelButtonText: "取消",
-                    confirmButtonText: "确定",
-                    closeOnConfirm: true,
                 }, function () {
                     StockService.deleteStock($scope.stockId).then(function(data) {
                         $state.go('preStockList', {}, {reload: true});

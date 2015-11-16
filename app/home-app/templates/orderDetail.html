@@ -163,7 +163,7 @@
           <!-- 底部操作按钮开始 -->
           <div class="uh-main-action">
             <div ng-click="goBack()" class="btn-back left"></div>
-            <!-- <div ng-click="editOrder()" class="pure-button edit right"><a >编辑</a></div> -->
+            <div ng-show="order.order_status==1" ng-click="editOrder()" class="pure-button edit right"><a >编辑</a></div>
             <div ng-show="order.order_status==1" ng-click="deleteOrder()" class="btn-delete left"></div>
             <div ng-show="order.order_status==2" ng-click="payOrder()" class="btn-pay right"></div>
           </div>

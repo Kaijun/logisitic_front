@@ -14,6 +14,7 @@
         $scope.vorkasseList = [];
         $scope.goToDetail = goToDetail;
         $scope.toggleStatusFilter = toggleStatusFilter;
+        $scope.deleteVorkasse = deleteVorkasse;
         $scope.toggleStatus = -1;
         $scope.searchText = "";
 
@@ -35,7 +36,7 @@
                 //     return item.status==-1 || item.status==0 || item.status==1 || item.status==2 || item.status==-3 || item.status==4 || item.status==5;
                 // })
                 list.map(function (item) {
-                    item.created_at = data.created_at.substring(0, 10);
+                    item.created_at = item.created_at.substring(0, 10);
                     item.statusStr = InfoService.getVorkasseStatusMapping(parseInt(item.status));
                     return item;
                 })
@@ -62,6 +63,23 @@
 
         function goToDetail (id) {
             $state.go('vorkasseDetail', {id: id});
+        }
+        function deleteVorkasse (vk) {
+            if(vk.id){
+                swal({
+                    title: "确认删除?",
+                    showCancelButton: true,
+                }, function () {
+                    VorkasseService.deleteVorkasse(vk.id).then(function() {
+                        swal('删除成功', '', 'success');
+                        var idx = $scope.vorkasseList.indexOf(vk);
+                        if(idx > -1){
+                            $scope.vorkasseList.splice(idx, 1);
+                            $scope.tableParams.reload();
+                        }
+                    });
+                })
+            }
         }
     }
 })();

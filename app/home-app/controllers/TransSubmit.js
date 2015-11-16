@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('TransSubmitCtrl', TransSubmitCtrl);
 
-    TransSubmitCtrl.$inject = ['$scope', '$timeout', 'InfoService', 'TransService', 'OrderService', '$q', '$state'];
+    TransSubmitCtrl.$inject = ['$scope', '$timeout', 'InfoService', 'TransService', 'OrderService', '$q', '$state', '$stateParams'];
 
     /* @ngInject */
-    function TransSubmitCtrl($scope, $timeout, InfoService, TransService, OrderService, $q, $state) {
+    function TransSubmitCtrl($scope, $timeout, InfoService, TransService, OrderService, $q, $state, $stateParams) {
         $scope.isConfirmShown = false;
         var transObj = {
             to_stock_number: null,
@@ -49,12 +49,13 @@
                 $scope.trans.warehouse = $scope.warehouses[0].id.toString();
                 $scope.trans.logistic_path = $scope.logisticPaths[0].id.toString();
             }).then(function () {
-                $scope.$watch('trans.warehouse', function (newValue, oldValue) {
+
+                $scope.$on('warehouseChanged', function (event, newValue) {
                     // 4 - 已入库
-                    if(data.length===0){
-                        swal('库存中没有可发货物品', '', 'error');
-                    }
                     OrderService.getPackages(4, newValue).then(function (data) {
+                        if(data.length===0){
+                            swal('库存中没有可发货物品', '', 'error');
+                        }
                         data.forEach(function (pkg) {
                             pkg.toggle = false;
                             pkg.items.forEach(function (item) {
@@ -79,7 +80,37 @@
                             $scope.packageList = data;
                         })
                     });
+                });
+                $scope.$watch('trans.warehouse', function (newValue, oldValue) {
+                    $scope.$emit('warehouseChanged', newValue);
                 })
+            }).then(function () {
+                // IF EDIT MODE!!!
+                if($stateParams.transId){
+                    swal({
+                        title: "警告",
+                        text: "编辑移库订单将会删除旧的移库订单, 重新提交新移库订单, 是否继续?",
+                        showCancelButton: true,
+                    }, function () {
+                        var tempTrans = {};
+                        TransService.getTrans($stateParams.transId).then(function (data) {
+                            tempTrans = data;
+                        }).then(function () {
+                            TransService.deleteTrans($stateParams.transId).then(function(data) {
+                                if(data.success===true){
+                                    swal("删除成功", "请点击确认继续编辑, 原有部分数据将会保留", "success");
+                                    $timeout(function () {
+                                        $scope.trans = tempTrans;
+                                        $scope.trans.warehouse = $scope.trans.warehouse.toString();
+                                        $scope.$emit('warehouseChanged', $scope.trans.warehouse);
+                                    })
+                                }
+                            });
+                        })
+
+                        
+                    })
+                }
             });
         }
 

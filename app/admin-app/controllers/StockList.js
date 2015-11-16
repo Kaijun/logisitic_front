@@ -89,10 +89,6 @@
                 swal({
                     title: "确认删除?",
                     showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    cancelButtonText: "取消",
-                    confirmButtonText: "确定",
-                    closeOnConfirm: true,
                 }, function () {
                     StockService.deleteStock(stock.id).then(function(data) {
                         if(data.success===true){
@@ -154,6 +150,10 @@
             }
         }
         function batchDownload () {
+            if(!selectedStocks || selectedStocks.length==0){
+                swal('请选择项目', '', 'error');
+                return;
+            }
             StockService.batchDownload(selectedStocks);
         }
 

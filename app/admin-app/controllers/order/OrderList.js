@@ -134,6 +134,10 @@
             }
         }
         function batchDownload () {
+            if(!selectedOrders || selectedOrders.length==0){
+                swal('请选择项目', '', 'error');
+                return;
+            }
             var ids = [];
             selectedOrders.forEach(function (item) {
                 ids.push(item.id);

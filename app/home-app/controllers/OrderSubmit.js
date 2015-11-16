@@ -67,14 +67,16 @@
                 });
                 $scope.selectedAddr = $scope.selectedAddr.length>0 ? $scope.selectedAddr[0] : $scope.addressList[0];
             });
+
+
             $q.all([warehousePromise, pathPromise, addressListPromise]).then(function () {
                 $scope.order = angular.copy(orderObj);
                 $scope.order.warehouse = $scope.warehouses[0].id.toString();
                 $scope.order.logistic_path = $scope.logisticPaths[0].id.toString();
                 $scope.order.address = $scope.addressList[0].id.toString();
             }).then(function () {
-                $scope.$watch('order.warehouse', function (newValue, oldValue) {
-                    // 4 - 已入库
+                
+                $scope.$on('warehouseChanged', function (event, newValue) {
                     OrderService.getPackages(4, newValue).then(function (data) {
                         if(data.length===0){
                             swal('库存中没有可发货物品', '', 'error');
@@ -106,6 +108,9 @@
                             $scope.packageList = data;
                         });
                     });
+                })                
+                $scope.$watch('order.warehouse', function (newValue, oldValue) {
+                    $scope.$emit('warehouseChanged', newValue);
                 });
 
                 $scope.$watch('logisticPathChosen', function (newValue, oldValue) {
@@ -113,6 +118,39 @@
                         return (item.type==0 || item.type==3);
                     });
                 });
+            }).then(function () {
+                // IF EDIT MODE!!!
+                if($stateParams.orderId){
+                    swal({
+                        title: "警告",
+                        text: "编辑订单将会删除旧订单, 重新提交新订单, 是否继续?",
+                        showCancelButton: true,
+                    }, function () {
+                        var tempOrder = {};
+                        OrderService.getOrderById($stateParams.orderId).then(function (data) {
+                            tempOrder = data;
+                        }).then(function () {
+                            OrderService.deleteOrder($stateParams.orderId).then(function(data) {
+                                if(data.success===true){
+                                    swal("删除成功", "请点击确认继续编辑, 原有部分数据将会保留", "success");
+                                    $timeout(function () {
+                                        $scope.order = tempOrder;
+                                        $scope.order.warehouse = $scope.order.warehouse.toString();
+                                        $scope.$emit('warehouseChanged', $scope.order.warehouse);
+                                        $scope.logisticPathChosen = $scope.logisticPaths.filter(function (item) {
+                                            return parseInt($scope.order.ship_company)===parseInt(item.id)
+                                        })[0];
+                                        $scope.selectedAddr = $scope.addressList.filter(function (item) {
+                                            return parseInt($scope.order.address.id)==parseInt(item.id);
+                                        })[0];
+                                    })
+                                }
+                            });
+                        })
+
+                        
+                    })
+                }
             });
         }
 
@@ -147,9 +185,6 @@
 
             $scope.order.logistic_path = $scope.logisticPathChosen.id;
 
-            var addr = $scope.addressList.filter(function (item) {
-                return item.id === parseInt($scope.order.address);
-            });
 
             //报关单除掉整箱发货!!!
             InfoService.getTypes().then(function (lts) {
@@ -160,7 +195,6 @@
             
             
             $timeout(function () {
-                $scope.addrInfo = addr[0];
                 $scope.isConfirmShown = true;
             });
         }

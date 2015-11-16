@@ -52,7 +52,7 @@
         })
 
         .state('transSubmit', {
-            url: '/trans/submit?transId',
+            url: '/trans/submit/:transId',
             templateUrl: 'templates/transSubmit.html',
             controller: 'TransSubmitCtrl',
         })        
