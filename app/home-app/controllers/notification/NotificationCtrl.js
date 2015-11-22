@@ -9,6 +9,7 @@
 
     /* @ngInject */
     function NotificationCtrl($scope, MsgService, $timeout, $state, UserInfo) {
+        $scope.userInfo = null;
 
         $scope.conversations = [];
         $scope.notifications = [];
@@ -29,6 +30,13 @@
         ////////////////
 
         function activate() {
+
+            if(UserInfo){
+                $timeout(function() {
+                    $scope.userInfo = UserInfo;
+                })
+            }
+
             MsgService.getNotifications().then(function (data) {
                 $timeout(function () {
                     $scope.notifications = data;
@@ -66,7 +74,7 @@
                 if(data.success === true ) 
                 $timeout(function () {
                     con.is_read_by_customer = 1;
-                    UserInfo.unread = UserInfo.unread>0 ? UserInfo.unread-1 : UserInfo.unread;
+                    UserInfo.unread_conversation = UserInfo.unread_conversation>0 ? UserInfo.unread_conversation-1 : UserInfo.unread_conversation;
                 })
             })
             return promise;
@@ -85,7 +93,7 @@
                 if(data.success === true ) 
                 $timeout(function () {
                     noti.is_read = 1;
-                    UserInfo.unread = UserInfo.unread>0 ? UserInfo.unread-1 : UserInfo.unread;
+                    UserInfo.unread_noitification = UserInfo.unread_noitification>0 ? UserInfo.unread_noitification-1 : UserInfo.unread_noitification;
                 })
             });
            return promise;

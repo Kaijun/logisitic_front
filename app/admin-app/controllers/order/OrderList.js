@@ -145,6 +145,10 @@
             OrderService.batchDownload(ids);
         }
         function batchPrintPackList () {
+            if(!selectedOrders || selectedOrders.length==0){
+                swal('请选择项目', '', 'error');
+                return;
+            }
             $window.localStorage.setItem('printPrepareListData', angular.toJson(selectedOrders));
             var url = $state.href('printPrepareList');
             var newWindow = $window.open(url,'_blank');
@@ -169,7 +173,11 @@
                })     
 
         }
-        function batchPrintPostList () {
+        function batchPrintPostList () {            
+            if(!selectedOrders || selectedOrders.length==0){
+                swal('请选择项目', '', 'error');
+                return;
+            }
             $window.localStorage.setItem('printShipData', angular.toJson(selectedOrders));
             var url = $state.href('printShip');
             var newWindow = $window.open(url,'_blank');
