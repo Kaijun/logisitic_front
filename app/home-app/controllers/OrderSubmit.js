@@ -141,7 +141,7 @@
                                             return parseInt($scope.order.ship_company)===parseInt(item.id)
                                         })[0];
                                         $scope.selectedAddr = $scope.addressList.filter(function (item) {
-                                            return parseInt($scope.order.address.id)==parseInt(item.id);
+                                            return parseInt($scope.order.address.id)===parseInt(item.id);
                                         })[0];
                                     })
                                 }
@@ -184,6 +184,7 @@
 
 
             $scope.order.logistic_path = $scope.logisticPathChosen.id;
+            $scope.order.address = $scope.selectedAddr.id;
 
 
             //报关单除掉整箱发货!!!

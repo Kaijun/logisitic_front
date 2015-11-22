@@ -12,7 +12,7 @@
           <div class="pure-u-3-4">
             <select 
               ng-model="selectedAddr" 
-              ng-options="addr.addr_symbol for addr in addressList;" 
+              ng-options="addr.addr_symbol for addr in addressList" 
               ng-change="order.address=selectedAddr.id"
               class="pure-u-18-24"></select>            
 <!--             <select ng-model="order.address" ng-value="order.address" class="pure-u-18-24">
