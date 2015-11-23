@@ -1,3 +1,8 @@
+body{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
 .delivery-wapper{
     margin: 2mm;
     width: 8.5cm;

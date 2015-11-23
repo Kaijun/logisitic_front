@@ -23,7 +23,7 @@
 </div>
 <div class="ah-main-body" >
   <div class="pure-g">
-    <div class="pure-u-18-24">
+    <div class="pure-u-20-24">
       <div class="ah-section first-child">订单号 {{order.package.reference_code}} </div>
       <!-- 并列表格开始 -->
       <div class="pure-g">
@@ -120,28 +120,14 @@
 </table>
 </div><!-- 左侧主题结束 -->
 
-<!--     <div class="pure-u-6-24 right">
-  <div><a class="pure-button flag  ">标记为问题件</a></div>
-  <div><a class="pure-button blue ">打印配货单</a></div>
-  <div><a ng-if="order.status==1" ng-click="weightAndPack()" class="pure-button blue ">称重打包</a></div>
-  <div><a ng-click="printPackListconfirm()" class="pure-button blue ">打印面单</a></div>
-  <div><a ng-if="order.status==2 || order.status==3" ng-click="printPostListconfirm()" class="pure-button blue ">生成运单</a></div>
-  <div><a ng-hide="isTrackNumEditShown" ng-if="order.status==4" ng-click="confirmShip()" class="pure-button green ">确认发货</a></div>
-  <div><a class="pure-button disable ">更新运单状态</a></div>
-  <div><a ng-show="isWeightEditShown || isShipStatusEditShown || isTrackNumEditShown" ng-click="editOrder()" class="pure-button red ">确认修改</a></div>
-  <div><a ng-show="isWeightEditShown || isShipStatusEditShown || isTrackNumEditShown" ng-click="cancleEditOrder()" class="pure-button green ">取消修改</a></div>
-  <div><a class="pure-button back ">返回列表</a></div>
-</div>
--->
-<div class="pure-u-6-24 right">
+<div class="pure-u-4-24 right">
   <!-- <div><a class="pure-button flag  ">标记为问题件</a></div> -->
   <div problem-pkg-btn package-id="{{$stateParams.orderId}}" type="1" current-status="order.order_status"></div>
   <div><a ng-if="order.order_status !=-1"ng-click="deleteOrder()" class="pure-button red ">删除</a></div>
   <div><a ng-click="printPackListconfirm()" class="pure-button list blue ">打印配货单</a></div>
-  <div ng-if="order.order_status<3 || order.order_status == 7"><a ng-click="weightAndPack()" class="pure-button scale ">称重打包</a></div>
-  <!-- <div><a ng-click="printPackListconfirm()" class="pure-button blue ">打印面单</a></div> -->
   <div><a ng-click="printPostListconfirm()" class="pure-button print blue ">打印面单</a></div>
-  
+  <div ng-if="order.order_status<3 || order.order_status == 7"><a ng-click="weightAndPack()" class="pure-button scale ">称重打包</a></div>
+  <div><a ng-click="downloadEasyLog()" class="pure-button print blue ">下载Easylog</a>
   <div ng-if="(order.order_status==4) && order.order_status != -1"><a  ng-hide="isTrackNumEditShown" ng-click="confirmShip()" class="pure-button ship ">提交发货</a></div>
   <div><a ng-show="isWeightEditShown || isShipStatusEditShown || isTrackNumEditShown" ng-click="editOrder()" class="pure-button green ">确认修改</a></div>
   <div><a ng-click="goBack()" class="pure-button back ">返回列表</a></div>

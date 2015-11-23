@@ -1,13 +1,21 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: auto;
+    overflow: auto;
+    position: static;
+}
 .delivery-wapper{
     margin: 2mm;
     width: 8.5cm;
     padding: 10px;
     border-radius: 5px;
     border:1px solid black;
-    /*page-break-after: always;*/
+    page-break-after: always;
 }
 
 .perpare-wapper{
+    float: none;
     margin: 2mm;
     width: 18cm;
     padding: 10px;

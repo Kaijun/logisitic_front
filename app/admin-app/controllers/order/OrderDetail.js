@@ -160,23 +160,33 @@
             $window.localStorage.setItem('printShipData', angular.toJson([$scope.order]));
             var url = $state.href('printShip');
             var newWindow = $window.open(url,'_blank');
-            if($scope.order.order_status==3){
-                swal({
-                    title: "已打印?",
-                    text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    cancelButtonText: "取消",
-                    confirmButtonText: "确定",
-                    closeOnConfirm: true,
-                }, function () {
-                    OrderService.editOrder($stateParams.orderId, {
+            //11.24 更改为，打印后不改变状态
+            // if($scope.order.order_status==3){
+            //     swal({
+            //         title: "已打印?",
+            //         text: "若已打印, 请点击确认修改运单状态, 若未打印请点击取消",
+            //         showCancelButton: true,
+            //         confirmButtonColor: "#DD6B55",
+            //         cancelButtonText: "取消",
+            //         confirmButtonText: "确定",
+            //         closeOnConfirm: true,
+            //     }, function () {
+            //         OrderService.editOrder($stateParams.orderId, {
+            //             order_status: 4,
+            //         }).then(function() {
+            //             $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+            //         })
+            //     })
+            // }
+        }
+        //下载easylog文件后变为待发货
+        function downloadEasyLog(){
+            console.log('clicked');
+            OrderService.editOrder($stateParams.orderId, {
                         order_status: 4,
                     }).then(function() {
                         $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
-                    })
-                })
-            }
+            })
         }
         function weightAndPackCancle () {
             $scope.isWeightPopupShown = false;
