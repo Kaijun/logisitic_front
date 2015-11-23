@@ -10,7 +10,7 @@
 	</div>
 	<hr/>
 	<div class="ship-info">
-		<span><a>订单号：{{order.package.reference_code}}</a></span><span>  <a>重量：{{order.weight}}KG</a></span>
+		<span><a>订单号：{{order.package.reference_code}}</a></span>
 		<br/>
 		<img id="{{'barcode' + order.package.reference_code}}" ng-init="generateBarcode(order.package.reference_code)"/>
 	</div>
