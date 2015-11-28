@@ -33,7 +33,7 @@
               <li ui-sref="credits"><img src="images/menu-credits.svg">积分管理</li>
             </ul>
             </li>
-        <li ng-class="{selected: $state.includes('notification')}"  ui-sref="notification">消息<span ng-show="(parseInt(userInfo.unread_conversation) + parseInt(userInfo.unread_notification))>0"class="uh-no-notification">{{parseInt(userInfo.unread_conversation) + parseInt(userInfo.unread_notification)}}</span></li>
+        <li ng-class="{selected: $state.includes('notification')}"  ui-sref="notification">消息<span ng-show="(1*userInfo.unread_conversation + 1*userInfo.unread_notification)>0" class="uh-no-notification">{{1*userInfo.unread_conversation + 1*userInfo.unread_notification}}</span></li>
       </ul>
   </div>
   </div>
