@@ -6,22 +6,22 @@
     </div>
     <div class="pure-g pure-u-1">
         <div class="uh-index-btns pbm-btn">问题件｜{{digits.digit_1}}</div>
-        <div ui-sref="stockList({status:2})" class="uh-index-btns stock-btn">待入库｜{{digits.digit_2}}</div>
-        <div ui-sref="orderList({status:2})" class="uh-index-btns pay-btn">待付款｜{{digits.digit_3}}</div>
-        <div ui-sref="orderList({status:5})" class="uh-index-btns shipped-btn">已发货｜{{digits.digit_4}}</div>
+        <div ui-sref="stockList({status:1})" class="uh-index-btns stock-btn clickable">已到货｜{{digits.digit_2}}</div>
+        <div ui-sref="orderList({status:2})" class="uh-index-btns pay-btn clickable">待付款｜{{digits.digit_3}}</div>
+        <div ui-sref="orderList({status:5})" class="uh-index-btns shipped-btn clickable">已发货｜{{digits.digit_4}}</div>
     </div>
 
 </div>
 
 
 <div class="uh-index-horizon">
-        <div ng-click="toggleView(0)" ng-class="{'active': currentView===0}" class="cell active"><img src="images/uh-horizon-address.svg" alt=""> <br/> <span>仓库地址</span></div>
+        <div ng-click="toggleView(0)" ng-class="{'active': currentView===0}" class="cell active clickable"><img src="images/uh-horizon-address.svg" alt=""> <br/> <span>仓库地址</span></div>
         <div class="cell-divider"></div>
-        <div ng-click="toggleView(1)" ng-class="{'active': currentView===1}" class="cell"><img src="images/uh-horizon-stock.svg" alt=""> <br/> <span> 最近库存</span></div>
+        <div ng-click="toggleView(1)" ng-class="{'active': currentView===1}" class="cell clickable"><img src="images/uh-horizon-stock.svg" alt=""> <br/> <span> 最近库存</span></div>
         <div class="cell-divider"></div>
-        <div ng-click="toggleView(2)" ng-class="{'active': currentView===2}" class="cell"><img src="images/uh-horizon-order.svg" alt=""> <br/> <span> 最近订单</span></div>
+        <div ng-click="toggleView(2)" ng-class="{'active': currentView===2}" class="cell clickable"><img src="images/uh-horizon-order.svg" alt=""> <br/> <span> 最近订单</span></div>
         <div class="cell-divider"></div>
-        <div ng-click="toggleView(3)" ng-class="{'active': currentView===3}" class="cell"><img src="images/uh-horizon-trans.svg" alt=""> <br/> <span> 最近移库</span></div>
+        <div ng-click="toggleView(3)" ng-class="{'active': currentView===3}" class="cell clickable"><img src="images/uh-horizon-trans.svg" alt=""> <br/> <span> 最近移库</span></div>
 </div>
 
 <div class="uh-main-section index">
