@@ -182,11 +182,22 @@
         }
         //下载easylog文件后变为待发货
         function downloadEasyLog(){
-            OrderService.editOrder($stateParams.orderId, {
+            swal({
+                title: "已下载？",
+                text: "若已下载, 请点击确认修改运单状态,（目前为演示功能，具体文件请等待测试后添加）",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                cancelButtonText: "取消",
+                confirmButtonText: "确定",
+                closeOnConfirm: true,
+            }, function(){
+                OrderService.editOrder($stateParams.orderId, {
                         order_status: 4,
                     }).then(function() {
                         $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+                     })
             })
+
         }
         function weightAndPackCancle () {
             $scope.isWeightPopupShown = false;
