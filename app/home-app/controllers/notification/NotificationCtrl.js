@@ -93,7 +93,7 @@
                 if(data.success === true ) 
                 $timeout(function () {
                     noti.is_read = 1;
-                    UserInfo.unread_noitification = UserInfo.unread_noitification>0 ? UserInfo.unread_noitification-1 : UserInfo.unread_noitification;
+                    UserInfo.unread_notification = UserInfo.unread_notification>0 ? UserInfo.unread_notification-1 : UserInfo.unread_notification;
                 })
             });
            return promise;
