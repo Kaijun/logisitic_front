@@ -31,6 +31,10 @@
         $scope.packageList = [];
         $scope.addrInfo = null;
         $scope.allItems = [];
+        $scope.estimateCost = {
+            cost: 0,
+            extra_service_cost: [],
+        }
 
         $scope.getLogisticPathNameById = getLogisticPathNameById;
         $scope.getWarehouseNameById = getWarehouseNameById;
@@ -194,10 +198,24 @@
                 });
             })
             
-            
-            $timeout(function () {
-                $scope.isConfirmShown = true;
-            });
+            var estimateObj = {};
+            estimateObj.weight = (function () {
+                var weight = 0;
+                $scope.order.items.forEach(function (item) {
+                    weight = weight + parseInt(item.unit_weight)*parseInt(item.quantity);
+                })
+                return weight;
+            })();
+            estimateObj.logistic_path = $scope.order.logistic_path;
+            estimateObj.extra_services = angular.copy($scope.order.extra_services).map(function (es) {
+                return es.id;
+            })
+            OrderService.getEstimatePrice(estimateObj).then(function (data) {
+                $timeout(function () {
+                    $scope.estimateCost = data;
+                    $scope.isConfirmShown = true;
+                });
+            })
         }
         function editOrder () {
             $scope.isConfirmShown = false;

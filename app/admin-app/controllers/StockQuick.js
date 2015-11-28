@@ -25,7 +25,9 @@
         $scope.isRequested = false;
         $scope.isStockFound = false;
         $scope.warehouses = [];
-        $scope.warehouseChosen = [];
+        $scope.warehouseChosen = null;
+        $scope.transCompanies = [];
+        $scope.transCompanyChosen = null;
         $scope.roles = [];
         $scope.optionTypes = [];
         $scope.search = search;
@@ -38,6 +40,10 @@
         function activate() {
             LogisticService.getLogisticTypes().then(function (data) {
                 $scope.optionTypes = data;
+            })
+            LogisticService.getTransCompanies().then(function (data) {
+                $scope.transCompanies = data;
+                $scope.transCompanyChosen = data[0];
             })
 
 
@@ -149,6 +155,8 @@
         function regStock () {
             $scope.submitData.need_check = $scope.submitData.need_check?1:0;
             $scope.submitData.warehouse_id = $scope.warehouseChosen.id;
+            $scope.submitData.reference_code = $scope.transCompanyChosen.prefix + $scope.submitData.reference_code;
+
             StockService.submitStock($scope.submitData).then(function(data) {
                 $state.go('stockDetail', {stockId: data.package_id});
             })

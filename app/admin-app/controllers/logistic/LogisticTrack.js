@@ -32,11 +32,17 @@
             })
         }        
         function deleteLogisticTrack(lt){
-            LogisticService.deleteLogisticTrack(lt.id).then(function (data) {
-                $scope.logisticTracks.forEach(function (item, idx, arry) {
-                    if(item.id == lt.id){
-                        arry.splice(idx, 1);
-                    }
+            swal({
+                title: "确认删除?",
+                showCancelButton: true,
+            }, function () {
+
+                LogisticService.deleteLogisticTrack(lt.id).then(function (data) {
+                    $scope.logisticTracks.forEach(function (item, idx, arry) {
+                        if(item.id == lt.id){
+                            arry.splice(idx, 1);
+                        }
+                    })
                 })
             })
         }

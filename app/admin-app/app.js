@@ -187,6 +187,12 @@
             templateUrl: 'templates/logistic/logisticType.html',
             controller: 'LogisticType',
         })
+        .state('transCompany', {
+            parent: 'system',
+            url: '/transCompany',
+            templateUrl: 'templates/logistic/transCompany.html',
+            controller: 'TransCompany',
+        })
 
         .state('extraSrvList', {
             parent: 'system',

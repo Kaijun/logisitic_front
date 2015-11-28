@@ -257,7 +257,43 @@
         <td>{{order.message?order.message:"空"}}</td>
       </tr>
     </table>
-             <div class="pure-g uh-form-section">
+
+
+    <div class="entry">
+      <div class="uh-section">收费明细</div>
+      <div class = "desc">目前价格为预估价格</div>
+    </div>
+    <table class="pure-table pure-table-horizontal uh-line-table">
+      <thead>
+        <tr>
+          <th class="pure-u-1-4">项目</th>
+          <th class="pure-u-1-4">费用</th>
+          <th class="pure-u-2-4">说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- TODO: 这里请使用AS生产动态数据 -->
+        <tr ng-repeat="es in estimateCost.extra_service_cost">
+          <td>{{es.name}}</td>
+          <td>{{es.cost}}元</td>
+          <td>{{es.desc}}</td>
+        </tr>
+        <tr>
+          <td>运费</td>
+          <td>{{estimateCost.cost}}元</td>
+          <td>-</td>
+        </tr>
+<!--         <tr class="sum">
+          <td>合计</td>
+          <td>{{estimateCost.total_cost}}元</td>
+          <td>客服手动确认后付款</td>
+        </tr> -->
+      </tbody>
+    </table>
+
+
+
+    <div class="pure-g uh-form-section">
       <div class="pure-u-1">
         <input 
           name="confirmProtocol"

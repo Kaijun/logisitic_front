@@ -18,6 +18,8 @@
             getOrders: getOrders,
             getCurrentOrders: getCurrentOrders,
             payOrder: payOrder,
+            getEstimatePrice: getEstimatePrice,
+            
         };
 
         return service;
@@ -99,6 +101,17 @@
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+
+        function getEstimatePrice (data) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/estimate-price/',
+                method: 'POST',
+                data: data
+            }).then(function (response) {
                 return response.data;
             });
             return promise;

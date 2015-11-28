@@ -24,6 +24,10 @@
             deleteLogisticTrack: deleteLogisticTrack,
             submitLogisticTrack: submitLogisticTrack,
 
+            getTransCompanies: getTransCompanies,
+            deleteTransCompany: deleteTransCompany,
+            submitTransCompany: submitTransCompany,
+
         };
         return service;
 
@@ -136,6 +140,35 @@
                 url: AppConfig.apiUrl + '/ship-status/',
                 method: 'POST',
                 data: logisticTrack,
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+
+        function getTransCompanies() {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/transport-company/',
+                method: 'GET',
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function deleteTransCompany(id) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/transport-company/' + id,
+                method: 'DELETE',
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function submitTransCompany(data) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/transport-company/',
+                method: 'POST',
+                data: data,
             }).then(function (response) {
                 return response.data;
             });

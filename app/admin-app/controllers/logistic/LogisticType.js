@@ -32,11 +32,16 @@
             })
         }        
         function deleteLogisticType(lt){
-            LogisticService.deleteLogisticType(lt.id).then(function (data) {
-                $scope.logisticTypes.forEach(function (item, idx, arry) {
-                    if(item.id == lt.id){
-                        arry.splice(idx, 1);
-                    }
+            swal({
+                title: "确认删除?",
+                showCancelButton: true,
+            }, function () {
+                LogisticService.deleteLogisticType(lt.id).then(function (data) {
+                    $scope.logisticTypes.forEach(function (item, idx, arry) {
+                        if(item.id == lt.id){
+                            arry.splice(idx, 1);
+                        }
+                    })
                 })
             })
         }

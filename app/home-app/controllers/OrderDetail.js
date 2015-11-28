@@ -12,7 +12,10 @@
         
         $scope.order = null;
         $scope.warehouse = null;
-
+        $scope.estimateCost = {
+            cost: 0,
+            extra_service_cost: [],
+        }
         $scope.editOrder = editOrder;
         $scope.deleteOrder = deleteOrder;
 
@@ -26,18 +29,18 @@
 
                 if($stateParams.orderId){
                     var orderId = $stateParams.orderId;
-                    OrderService.getOrderById(orderId).then(function (data) {
-                        // data.timestampStr = data.timestamp.date.substr(0,4) + '-' + data.timestamp.date.substr(5,2) + '-' + data.timestamp.date.substr(8,2);
+                    OrderService.getOrderById(orderId).then(function (order) {
+                        // order.timestampStr = order.timestamp.date.substr(0,4) + '-' + order.timestamp.date.substr(5,2) + '-' + order.timestamp.date.substr(8,2);
 
-                        data.timestampStr = data.timestamp.date.substring(0, 10);
+                        order.timestampStr = order.timestamp.date.substring(0, 10);
                         
-                        return data;
+                        return order;
                     },
                     function(){
                         $state.go('index');
-                    }).then(function (data) {
+                    }).then(function (order) {
                         InfoService.getTypes().then(function (lts) {
-                            data.items.forEach(function (item) {
+                            order.items.forEach(function (item) {
                                 lts.some(function (i) {
                                     if(item.type == i.id){
                                         item.typeName = i.type_name;
@@ -46,21 +49,43 @@
                                 })
                             });
                             $timeout(function() {
-                                $scope.order = data;
-                                $scope.order.statusStr = InfoService.getOrderStatusMapping(data.order_status);
+                                $scope.order = order;
+                                $scope.order.statusStr = InfoService.getOrderStatusMapping(order.order_status);
                             });
                         })
 
-                        InfoService.getWarehouseById(data.warehouse).then(function (wh){
+                        InfoService.getWarehouseById(order.warehouse).then(function (wh){
                             $timeout(function() {
                                 $scope.warehouse = wh;
                             })
                         });
-                        InfoService.getLogisticPathById(data.ship_company,0).then(function (lp){
+                        InfoService.getLogisticPathById(order.ship_company,0).then(function (lp){
                             $timeout(function() {
                                 $scope.order.logisticPath = lp;
                             })
                         });
+
+                        if(order.order_status == 1 || order.order_status == 7){
+                            // estimate Cost
+                            var estimateObj = {};
+                            estimateObj.weight = (function () {
+                                var weight = 0;
+                                order.items.forEach(function (item) {
+                                    weight = weight + parseInt(item.unit_weight)*parseInt(item.quantity);
+                                })
+                                return weight;
+                            })();
+                            estimateObj.logistic_path = order.ship_company;
+                            estimateObj.extra_services = angular.copy(order.extra_services).map(function (es) {
+                                return es.id;
+                            });
+                            OrderService.getEstimatePrice(estimateObj).then(function (estimateCost) {
+                                $timeout(function () {
+                                    $scope.estimateCost = estimateCost;
+                                    $scope.isConfirmShown = true;
+                                });
+                            })
+                        }
                     })
                 }
                 else{

@@ -122,7 +122,7 @@
           <!-- section 3 收费明细开始 -->
           <div class="entry">
             <div class="uh-section">收费明细</div>
-            <div ng-show = "order.order_status < 3 || order.order_status == 7" class = "desc">目前价格为预估价格</div>
+            <div ng-if = "order.order_status ==1 || order.order_status == 7" class = "desc">目前价格为预估价格</div>
             <!-- 在未被称重时的状态 -->
           </div>
           <table class="pure-table pure-table-horizontal uh-line-table">
@@ -133,7 +133,8 @@
                 <th class="pure-u-2-4">说明</th>
               </tr>
             </thead>
-            <tbody>
+            <!-- 真实价格 -->
+            <tbody ng-if="order.order_status !=1 && order.order_status != 7"> 
               <!-- TODO: 这里请使用AS生产动态数据 -->
               <tr ng-repeat="es in order.extra_services">
                 <td>{{es.name}}</td>
@@ -145,11 +146,30 @@
                 <td>{{order.cost}}元</td>
                 <td>-</td>
               </tr>
-              <tr class="sum">
+              <tr  class="sum">
                 <td>合计</td>
                 <td>{{order.total_cost}}元</td>
                 <td>客服手动确认后付款</td>
               </tr>
+            </tbody>
+            <!-- 预估价格 -->
+            <tbody ng-if="order.order_status ==1 || order.order_status == 7"> 
+              <!-- TODO: 这里请使用AS生产动态数据 -->
+              <tr ng-repeat="es in estimateCost.extra_service_cost">
+                <td>{{es.name}}</td>
+                <td>{{es.cost}}元</td>
+                <td>{{es.desc}}</td>
+              </tr>
+              <tr>
+                <td>运费</td>
+                <td>{{estimateCost.cost}}元</td>
+                <td>-</td>
+              </tr>
+<!--               <tr  class="sum">
+                <td>合计</td>
+                <td>{{estimateCost.total_cost}}元</td>
+                <td>客服手动确认后付款</td>
+              </tr> -->
             </tbody>
           </table>
           <!-- section 4 开始 -->
@@ -158,6 +178,7 @@
             <tr>
               <td style="width:15%">发货备注</td>
               <td>{{order.message?order.message:'空'}}</td>
+            </tr>
             </table>
           </div>
           <!-- 底部操作按钮开始 -->
