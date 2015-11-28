@@ -22,6 +22,7 @@
         $scope.weightAndPackCancle = weightAndPackCancle;
         $scope.printPackListconfirm = printPackListconfirm;
         $scope.printPostListconfirm = printPostListconfirm;
+        $scope.downloadEasyLog = downloadEasyLog;
         $scope.editOrder = editOrder;
         $scope.deleteOrder = deleteOrder;
         // $scope.cancleEditOrder = cancleEditOrder;
@@ -181,7 +182,6 @@
         }
         //下载easylog文件后变为待发货
         function downloadEasyLog(){
-            console.log('clicked');
             OrderService.editOrder($stateParams.orderId, {
                         order_status: 4,
                     }).then(function() {
