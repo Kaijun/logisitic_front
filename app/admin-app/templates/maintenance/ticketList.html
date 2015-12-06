@@ -1,1 +1,36 @@
-tickleList
+<div class="ah-list">
+  <table class="pure-table pure-table-horizontal ah-list-table">
+    <thead>
+      <tr>
+        <th width="30px"><input type="checkbox"></th>
+        <th>提交时间</th>
+        <th width="20%">消息主题</th>
+        <th>相关单号</th>
+        <th width="30%">消息内容</th>
+        <th>发件人</th>
+        <th>状态</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td><input type="checkbox"></td>
+      <td>2015-04-30</td>
+      <td>包裹为收到</td>
+      <td>JDD032432432</td>
+      <td>这个消息的内容如果比较长只显示一部分？</td>
+      <td>CPJstudio</td>
+      <td>已回复</td>
+      <td><a ui-sref="ticketDetail">详情</a></td>
+      
+    </tbody>
+  </table>
+</div>
+<div class="ah-action-btns">
+  <div class="left ">
+    <div class="ah-pager"  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" ><</div>
+    <div class="ah-pager" ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >></div>
+  </div>
+  <div class="right">
+    <!-- <a  class="pure-button blue horizon">转为工单</a> -->
+  </div>
+</div>

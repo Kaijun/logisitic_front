@@ -167,21 +167,13 @@
               </select>
             </div>
 
-            <div class="pure-u-3-24 input-label">选择运输公司</div>
+            <div class="pure-u-2-24 input-label">运输公司</div>
             <div class="pure-u-4-24">
               <select ng-model="transCompanyChosen" ng-options="tc.name for tc in transCompanies">
               </select>
             </div>
 
-<!--             <div class="pure-u-2-24 input-label">入库线路</div>
-            <div class="pure-u-2-24">                  
-              <select name="">
-                <option value="">DHL</option>
-                <option value="">EMS</option>
-              </select>
-            </div>
- -->            
-          <div class="pure-u-3-24 input-label">包裹运单号({{transCompanyChosen.prefix}})</div>
+              <div class="pure-u-3-24 input-label">包裹运单号({{transCompanyChosen.prefix}})</div>
             <div class="pure-u-1-4">
               <input 
                 name="ref_code"
@@ -191,6 +183,16 @@
                 type="text" 
               >
             </div>
+            </div>
+             <div class="pure-g ah-form-line">
+
+                            <div class="pure-u-2-24 input-label">库存码</div>
+                <div class="pure-u-4-24">
+                  <input 
+                    name="stock_number"
+                    ng-model="submitData.stock_number"
+                    type="text">
+                </div>
             <div class="pure-u-2-24 input-label">入库重量</div>
             <div class="pure-u-2-24">
               <input 
@@ -202,15 +204,9 @@
             <div class="pure-u-1-24 input-label">KG</div>
           </div>
           <div class="pure-g ah-form-line">
-                <div class="pure-u-2-24 input-label">库存码</div>
-                <div class="pure-u-4-24">
-                  <input 
-                    name="stock_number"
-                    ng-model="submitData.stock_number"
-                    type="text">
-                </div>
+
                 <div class="pure-u-2-24 input-label">库位号:</div>
-                <div class="pure-u-2-24">
+                <div class="pure-u-4-24">
                   <input ng-if="userFound" ng-model="userFound.stock_position" readonly>
                   <span ng-if="!userFound" >用户未找到</span>
                 </div>

@@ -1,0 +1,86 @@
+  <div class="ah-main-body" >
+    <div class="pure-g">
+    <div class="pure-u-5-6">
+  <div class="ah-section">工单信息</div>
+        <!-- 并列表格开始 -->
+    <div class="pure-g"> 
+    <div class="pure-u-1-2">
+      <table class="pure-table pure-table-horizontal ah-small-table">
+        <tr><td style="width:20%">相关单号</td><td>TODO</td></tr>
+        <tr><td>客户ID</td><td>TODO</td></tr>
+        <tr><td>库存码</td><td>TODO</td></tr>
+        <tr><td>库位号</td><td>TODO</td></tr>
+      </table>
+    </div>
+
+    <div class="pure-u-1-2">
+      <table class="pure-table pure-table-horizontal ah-small-table" > 
+          <tr><td style="width:20%">状态</td><td>TODO</td></tr>
+          <tr><td>消息主题</td><td>TODO</td></tr>
+          <tr><td>消息内容</td><td>TODO</td></tr>
+      </table>
+    </div>
+    </div>  
+
+<div class="ah-section"> 消息记录 </div>
+<div ng-repeat="msg in problemPkg.conversation.messages" class="ah-message">
+  <div class="ah-message-avatar" ng-class="{reply: msg.from!=problemPkg.package_owner.id}">{{msg.from==problemPkg.package_owner.id?"客":"系"}}</div>
+  <div class="ah-message-text" ng-class="{reply: msg.from!=problemPkg.package_owner.id}">{{msg.content}}</div>
+  <div class="ah-message-timestamp" ng-class="{reply: msg.from!=problemPkg.package_owner.id}">{{msg.created_at}}</div>
+</div>
+
+
+
+</div>
+      <!-- 右侧功能键开始 -->
+      <div class="pure-u-1-6 right">
+           <div><a ng-click="solveProblemShow()" class="pure-button flag ">指派工单</a></div>
+           <div><a ng-click="replyShow()" class="pure-button blue">回复</a></div>
+           <div><a ng-click="replyShow()" class="pure-button red">关闭工单</a></div>
+           <div><a ui-sref="ticketList" class="pure-button back ">返回</a></div>
+      </div> <!-- 右侧功能键结束 Div -->
+    </div><!-- 中部信息栏结束 Div -->
+
+
+  </div><!-- 主体部分结束 Div  -->
+</div>
+
+
+<!-- <div ng-show="isPopupShown" class="pop-up-wapper"> -->
+<div class="pop-up-cover">
+<div class="pop-up-wapper">
+  <div class="pop-up-title">指派工单给</div>
+  <div class="pop-up-body">
+    <div class="poo-up-section">
+      <select ng-model="selectedStatus" ng-options="status for status in statusOfType" />
+
+      <!-- selete admin users -->
+    </div>      
+  </div>
+  <div class="pop-up-opt pure-g">
+    <div class="pure-u-1 right">
+      <a ng-click="cancle()" class="pure-button red horizon-small">取消</a>
+      <a ng-click="solveProblem()" class="pure-button blue horizon-small">确认</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<div ng-show="isReplyPopupShown" class=" pop-up-cover">
+<div class="pop-up-wapper">
+  <div class="pop-up-title">
+    回复
+  </div>
+  <div class="pop-up-body">
+    <div class="poo-up-section">
+      <textarea ng-model="replyContent"> </textarea> 
+    </div>      
+  </div>
+  <div class="pop-up-opt pure-g">
+    <div class="pure-u-1 right">
+      <a ng-click="cancleReply()" class="pure-button red horizon-small">取消</a>
+      <a ng-click="sendMsg()" class="pure-button blue horizon-small">确认</a>
+    </div>
+  </div>
+</div>
+</div>

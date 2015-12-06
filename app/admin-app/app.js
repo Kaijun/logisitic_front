@@ -95,7 +95,7 @@
             controller: 'TransDetail',
         })
         .state('problemList', {
-            parent: 'business',
+            parent: 'maintenance',
             url: '/problemList',
             templateUrl: 'templates/problemList.html',
             controller: 'ProblemList',
@@ -130,6 +130,12 @@
             parent: 'maintenance',
             url: '/ticketList',
             templateUrl: 'templates/maintenance/ticketList.html',
+            controller: '',
+        })
+        .state('ticketDetail', {
+            parent: 'maintenance',
+            url: '/ticketDetail',
+            templateUrl: 'templates/maintenance/ticketDetail.html',
             controller: '',
         })
 
