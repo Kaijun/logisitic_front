@@ -149,7 +149,7 @@ $sub-navbar-height: 40px;
 }
 .ah-sidebar{
   margin: 0 auto;
-  background-color: #6e6e6e;
+  background-color: #3672B7;
   color: #FDFDFD;
   padding: 12px 0;
   text-align: center;
@@ -171,13 +171,13 @@ $sub-navbar-height: 40px;
       ul{margin:0;}
       li{
         cursor: pointer;
-        padding: 5px 0;
+        padding: 10px 0;
         &.active{
-          color: #000;
-          border-radius: 5px 0 0 5px;
-          margin-left:5px;
-          box-shadow: 0 0 2px #000;
-          background:#fff;
+          // color: #000;
+          border-left:4px solid #7DCF23;
+          // margin-left:2px;
+          // box-shadow: 0 0 2px #000;
+          background:#508ACC;
         }
       }
       li:hover{
@@ -235,12 +235,11 @@ $sub-navbar-height: 40px;
     width: 100%;
     margin-top: -5px;
     // border-radius:5px;
-    border: none;
+    border: solid 1px #d1d1d1;
     thead{
-        background: #D1D1D1;
+        background: #d1d1d1;
         th{
-
-            border-top: solid 1px #D1D1D1;
+            // border-top: solid 1px #D1D1D1;
             display: table-cell !important;
             line-height: 30px;
             // padding: 8px 8px;
@@ -252,18 +251,18 @@ $sub-navbar-height: 40px;
     }
 
     tbody{
-        tr{
-            border-bottom: solid 1px #D1D1D1;
-        }
+        tr:nth-child(even) {background: #f8f8f8};
         tr:hover{
-          background:#eeeeee;
+          border-left: 1px solid #6F64FA;
+          background:#eee;
         }
         td{
+
             // padding: 16px 8px 16px 8px;
             line-height: 30px;
                 &:last-of-type{
           text-align: right;
-        }
+            }
         }
     
     }
@@ -350,29 +349,35 @@ $sub-navbar-height: 40px;
 
 // 定义button的位置
 .right{
+  margin-top: -20px; 
+  // height: 100vh;
+  // overflow: hidden;
   text-align: right;
 }
 //小段标题栏
 .ah-section{
   width: 100%;
-  // float: left;
+  border-radius: 5px;
+  background: #f8f8f8;
   height: 40px;
-  color: #666666;
+  color: #333;
+  border-bottom: 1px solid #efefef;
   font-size: 16px;
-  padding: 8px 0;
+  padding: 10px 8px;
   clear: both;
-  // border-bottom: 1px solid #333;
-  line-height: 40px;
+  line-height: 20px;
   .add{
     text-align: right;
     float: right;
   }
+  box-sizing: border-box;
 
 }
 //自定义所有无边框的小表格
 .ah-small-table{
   width: 100%;
   border:0;
+  // background: #eeefff;
   text-align: left;
   font-size: 14px;
   th{
@@ -431,7 +436,8 @@ $sub-navbar-height: 40px;
 }
 
 .ah-form-line{
-  margin-bottom: 5px;
+  padding: 8px;
+  box-sizing:border-box;
   font-size: 14px;
   line-height: 40px;
   width: 100%;
@@ -478,7 +484,7 @@ $sub-navbar-height: 40px;
     text-align: center;
     margin-top: 20px;
     padding: 10px 0;
-    border-radius: 2px;
+    border-radius: 5px;
     &.radius{
         border-radius: 20px;
     }
@@ -566,7 +572,7 @@ $sub-navbar-height: 40px;
       }
     }
     &.horizon{
-      margin-top: 0;
+      margin-top: 20px;
       margin-bottom: 20px; 
     }
 
@@ -827,7 +833,7 @@ select{
 
 .ah-filter{
   font-size: 12px;
-  // background: #D1D1D1;
+  background: linear-gradient(to bottom, #ffffff 0%,#efefef 100%); 
   border-radius: 5px 5px 0 0 ; 
   line-height: 30px;
   padding: 5px;
