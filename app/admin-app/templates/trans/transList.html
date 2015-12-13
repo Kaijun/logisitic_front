@@ -23,7 +23,7 @@
         <thead>
           <tr>
             <th width="2%"><input type="checkbox"></th>
-            <th width="8%">提交时间</th>
+            <th width="8%">更新时间</th>
             <th width="10%">移库单号</th>
             <th width="8%">客户ID</th>
             <th width="8%">库位号</th>
@@ -36,7 +36,7 @@
         <tbody>
           <tr ng-repeat="trans in transs" >
             <td><input type="checkbox"></td>
-            <td>{{trans.created_at}}</td>
+            <td>{{trans.updated_at}}</td>
             <td>{{trans.reference_code}}</td>
             <td>{{trans.from_name}}</td>
             <td>{{trans.from_stock_number}}</td>

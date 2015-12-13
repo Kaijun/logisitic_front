@@ -28,7 +28,7 @@
         <thead>
           <tr>
             <th width="25px;"><input type="checkbox"></th>
-            <th width="8%">提交时间</th>
+            <th width="8%">更新时间</th>
             <th width="10%">代刷订单号</th>
             <th>客户ID</th>
             <th>联系</th>
@@ -42,12 +42,12 @@
         <tbody>
           <tr ng-repeat="vorkasse in vorkasses">
           <td width="25px;"><input type="checkbox"></td>
-            <td>TODO</td>
+            <td>{{vorkasse.updated_at.substring(0,10)}}</td>
             <td>{{vorkasse.reference_code}}</td>
             <td>{{vorkasse.handler_id}}</td>
             <td>TODO</td>
             <td>{{vorkasse.amount}}</td>
-            <td>TODO</td>
+            <td>{{vorkasse.amount_foreign}}</td>
             <td>{{vorkasse.description}}</td>
             <td>{{vorkasse.statusStr}}</td>
             <td><a ng-click="goToDetail(vorkasse.id)">详情</a></td>

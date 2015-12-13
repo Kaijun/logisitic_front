@@ -18,25 +18,42 @@
 
 
 
- <div class="uh-main-section message last">
+<form name="contactForm">
+<div class="uh-main-section message last">
 
-<div class="pure-g uh-form-section">
-  <div class="title pure-u-3-24">主题</div>
-  <div class="pure-u-3-4"><input></div>
-</div>
-<div class="pure-g uh-form-section">
-<div class="title pure-u-3-24">相关单号</div>
-<div class="pure-u-3-4">
-<div class="pure-u-1">
-<input></div>
-<div class="pure-u-1 desc">请填写相关订单号、入库单号或其他信息，方便我们快速找到您的包裹或订单。</div>
-</div>
-</div>
+  <div class="pure-g uh-form-section">
+    <div class="title pure-u-3-24">主题</div>
+    <div class="pure-u-3-4">
+      <input 
+        name="title"
+        validator="required"
+        ng-model="msg.title"
+        type="text">
+    </div>
+  </div>
+  <div class="pure-g uh-form-section">
+    <div class="title pure-u-3-24">相关单号</div>
+    <div class="pure-u-3-4">
+      <div class="pure-u-1">
+        <input name="reference_code" ng-model="msg.reference_code">
+      </div>
+      <div class="pure-u-1 desc">请填写相关订单号、入库单号或其他信息，方便我们快速找到您的包裹或订单。</div>
+    </div>
+  </div>
 
-    <div class=""><textarea name="" rows="5"></textarea></div>
+  <div class="">
+    <textarea 
+      name="content"
+      validator="required"
+      ng-model="msg.content" 
+      name="" 
+      rows="5">
+    </textarea>
+  </div>
  </div>
-
  <div class="uh-main-action">
- <div class="btn-back left"></div>
- <div class="btn-msg-send right"></div>
- </div>
+   <div class="btn-back left"></div>
+   <div validation-submit="contactForm"  ng-click="send()" class="btn-msg-send right"></div>
+</div>
+
+</form>

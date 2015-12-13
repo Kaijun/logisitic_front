@@ -132,7 +132,7 @@
         .state('contact',{
             url: '/contact',
             templateUrl: 'templates/notification/contact.html',
-            controller: '',
+            controller: 'ContactCtrl',
         })
 
 

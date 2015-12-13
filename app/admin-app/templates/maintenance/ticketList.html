@@ -13,15 +13,16 @@
       </tr>
     </thead>
     <tbody>
-      <td><input type="checkbox"></td>
-      <td>2015-04-30</td>
-      <td>包裹为收到</td>
-      <td>JDD032432432</td>
-      <td>这个消息的内容如果比较长只显示一部分？</td>
-      <td>CPJstudio</td>
-      <td>已回复</td>
-      <td><a ui-sref="ticketDetail">详情</a></td>
-      
+      <tr ng-repeat="ticket in tickets">
+        <td><input type="checkbox"></td>
+        <td>{{ticket.updated_at}}</td>
+        <td>{{ticket.title}}</td>
+        <td>{{ticket.reference_code}}</td>
+        <td>{{ticket.content}}</td>
+        <td>{{ticket.customer_name}}</td>
+        <td>{{ticket.statusStr}}</td>
+        <td><a ui-sref="ticketDetail({id: ticket.id})">详情</a></td>
+      </tr>
     </tbody>
   </table>
 </div>

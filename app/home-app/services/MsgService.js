@@ -20,6 +20,7 @@
             deleteConversation: deleteConversation,
             sendMessage: sendMessage,
             sendMessageInConv: sendMessageInConv,
+            contactService: contactService,
         };
         return service;
 
@@ -102,6 +103,17 @@
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+
+        function contactService (data) {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/ticket/',
+                method: 'POST',
+                data: data,
             }).then(function(response){
                 return response.data;
             });

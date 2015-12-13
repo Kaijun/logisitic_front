@@ -51,7 +51,7 @@
             <thead>
               <tr>
                 <th width="2%"><input type="checkbox" ng-model="isAllSelected" ng-click="selectAllItems()"></th>
-                <th width="8%">提交时间</th>
+                <th width="8%">更新时间</th>
                 <th width="10%">订单号</th>
                 <th width="8%">客户ID</th>
                 <th width="8%">收货人</th>
@@ -64,7 +64,7 @@
             <tbody>
               <tr ng-repeat="order in orders"  >
                 <td><input ng-model="order.selected" ng-click="orderSelected(order)" type="checkbox"></td>
-                <td>{{order.dateStr}}</td>
+                <td>{{order.updated_at}}</td>
                 <td>{{order.package.reference_code}}</td>
                 <td>{{order.package.user.name}}</td>
                 <td>{{order.post_address.receiver_name}}</td>

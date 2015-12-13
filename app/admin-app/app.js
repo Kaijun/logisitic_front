@@ -130,20 +130,20 @@
             parent: 'maintenance',
             url: '/ticketList',
             templateUrl: 'templates/maintenance/ticketList.html',
-            controller: '',
+            controller: 'TicketList',
         })
         .state('ticketDetail', {
             parent: 'maintenance',
-            url: '/ticketDetail',
+            url: '/ticketDetail/:id',
             templateUrl: 'templates/maintenance/ticketDetail.html',
-            controller: '',
+            controller: 'TicketDetail',
         })
 
         .state('messageList', {
             parent: 'maintenance',
             url: '/messageList',
-            templateUrl: 'templates/maintenance/messageList.html',
-            controller: '',
+            templateUrl: 'templates/maintenance/ticketList.html',
+            controller: 'TicketList',
         })
 
         .state('articleList', {

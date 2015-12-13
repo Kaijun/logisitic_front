@@ -29,7 +29,7 @@
         <thead>
           <tr>
             <th width="2%"><input type="checkbox" ng-model="isAllSelected" ng-click="selectAllItems()"></th>
-            <th width="8%">提交时间</th>
+            <th width="8%">更新时间</th>
             <th width="10%">入库跟踪号</th>
             <th width="5%" ng-hide="isPreStockList">客户ID</th>
             <th width="5%">库存码</th>
@@ -44,7 +44,7 @@
         <tbody>
           <tr ng-repeat="stock in stocks">
             <td><input ng-model="stock.selected" ng-click="stockSelected(stock)" type="checkbox"></td>
-            <td>{{stock.created_at}}</td>
+            <td>{{stock.updated_at}}</td>
             <td>{{stock.reference_code}}</td>
             <td ng-hide="isPreStockList">{{stock.user.name}}</td>
             <td>{{stock.user.stock_number}}</td>
