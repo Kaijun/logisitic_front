@@ -7,16 +7,16 @@
         <div class="left">
           <!-- <a class="uh-header-tab">所有</a> -->
         
-          <a ng-click="toggleNotification()" ng-class="{active: isNotificationToggled}" class="uh-header-tab">通知({{userInfo.unread_notification}})</a>
-          <a ng-click="toggleConversation()" ng-class="{active: !isNotificationToggled}" class="uh-header-tab">对话({{userInfo.unread_conversation}})</a>  
+          <a ui-sref="notificationList" ng-class="{active: $state.includes('notificationList')}" class="uh-header-tab">通知({{userInfo.unread_notification}})</a>
+          <a ui-sref="conversationList"  ng-class="{active: $state.includes('conversationList')}" class="uh-header-tab">对话({{userInfo.unread_conversation}})</a>  
         </div>
         <div class="right">
-          <a class="uh-header-tab function" ui-sref="contact">联系客服</a>
+          <a class="uh-header-tab function" ui-sref="contact" ng-class="{active: $state.includes('active')}">联系客服</a>
         </div>
       </div>
 </div>
 
-<div ng-show="isNotificationToggled" >
+<div ng-show="$state.includes('notificationList')" >
   
   <div ng-show="notifications.length==0" class="uh-main-section middle">
     <div class="uh-box-empty">
@@ -45,7 +45,7 @@
 
 </div>
 
-<div ng-show="!isNotificationToggled" >
+<div ng-show="$state.includes('conversationList')" >
   
 
   <div ng-show="conversations.length==0" class="uh-main-section middle">
@@ -75,3 +75,44 @@
     
   </div>
 </div>
+
+
+<form ng-show="$state.includes('contact')" name="contactForm">
+<div class="uh-main-section message last">
+
+  <div class="pure-g uh-form-section">
+    <div class="title pure-u-3-24">主题</div>
+    <div class="pure-u-3-4">
+      <input 
+        name="title"
+        validator="required"
+        ng-model="contactMsg.title"
+        type="text">
+    </div>
+  </div>
+  <div class="pure-g uh-form-section">
+    <div class="title pure-u-3-24">相关单号</div>
+    <div class="pure-u-3-4">
+      <div class="pure-u-1">
+        <input name="reference_code" ng-model="contactMsg.reference_code">
+      </div>
+      <div class="pure-u-1 desc">请填写相关订单号、入库单号或其他信息，方便我们快速找到您的包裹或订单。</div>
+    </div>
+  </div>
+
+  <div class="">
+    <textarea 
+      name="content"
+      validator="required"
+      ng-model="contactMsg.content" 
+      name="" 
+      rows="5">
+    </textarea>
+  </div>
+ </div>
+ <div class="uh-main-action">
+   <div class="btn-back left"></div>
+   <div validation-submit="contactForm"  ng-click="sendContact()" class="btn-msg-send right"></div>
+</div>
+
+</form>

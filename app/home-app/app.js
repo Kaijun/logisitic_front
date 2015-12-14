@@ -119,8 +119,18 @@
             controller: '',
         })
 
-        .state('notification', {
-            url: '/notification',
+        .state('notificationList', {
+            url: '/message/notification',
+            templateUrl: 'templates/notification/notification.html',
+            controller: 'NotificationCtrl',
+        })
+        .state('conversationList', {
+            url: '/message/conversation',
+            templateUrl: 'templates/notification/notification.html',
+            controller: 'NotificationCtrl',
+        })
+        .state('contact',{
+            url: '/contact',
             templateUrl: 'templates/notification/notification.html',
             controller: 'NotificationCtrl',
         })
@@ -128,11 +138,6 @@
             url: '/conversation/:id',
             templateUrl: 'templates/notification/conversation.html',
             controller: 'ConversationCtrl',
-        })
-        .state('contact',{
-            url: '/contact',
-            templateUrl: 'templates/notification/contact.html',
-            controller: 'ContactCtrl',
         })
 
 

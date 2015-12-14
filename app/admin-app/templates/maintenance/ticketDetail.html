@@ -35,7 +35,7 @@
       <!-- 右侧功能键开始 -->
       <div class="pure-u-1-6 right">
            <div><a ng-click="assignShow()" class="pure-button flag ">指派工单</a></div>
-           <div><a ng-click="replyShow()" class="pure-button blue">回复</a></div>
+           <div><a ng-if="ticket.status==2" ng-click="replyShow()" class="pure-button blue">回复</a></div>
            <div><a ng-click="closeTicket()" class="pure-button red">关闭工单</a></div>
            <div><a ui-sref="ticketList" class="pure-button back ">返回</a></div>
       </div> <!-- 右侧功能键结束 Div -->

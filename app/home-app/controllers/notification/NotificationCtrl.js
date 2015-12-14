@@ -9,19 +9,28 @@
 
     /* @ngInject */
     function NotificationCtrl($scope, MsgService, $timeout, $state, UserInfo) {
+
+        $scope.$state = $state;
+
         $scope.userInfo = null;
 
         $scope.conversations = [];
         $scope.notifications = [];
         $scope.isNotificationToggled = true;
 
-        $scope.toggleNotification = toggleNotification;
-        $scope.toggleConversation = toggleConversation;
+        $scope.contactMsg = {
+            title: null,
+            content: null,
+            reference_code: null,
+        }
+
 
         $scope.markConversationAsRead = markConversationAsRead;
         $scope.deleteConversation = deleteConversation;
         $scope.markNotificationAsRead = markNotificationAsRead;
         $scope.deleteNotification = deleteNotification;
+
+        $scope.sendContact = sendContact;
 
         $scope.goToDetail = goToDetail;
 
@@ -37,11 +46,31 @@
                 })
             }
 
-            MsgService.getNotifications().then(function (data) {
-                $timeout(function () {
-                    $scope.notifications = data;
-                });
-            });
+            switch($state.current.name){
+
+                case 'notificationList':
+                    MsgService.getNotifications().then(function (data) {
+                        $timeout(function () {
+                            $scope.notifications = data;
+                        });
+                    });    
+                    break;
+
+                case 'conversationList':
+                    MsgService.getConversations().then(function (data) {
+                        $timeout(function () {
+                            $scope.isNotificationToggled = false;
+                            $scope.conversations = data;
+                        });
+                    });
+                    break;
+
+                case 'contact':
+                    break;
+
+                default:
+                    break;
+            }
         }
 
 
@@ -54,19 +83,6 @@
             else{
                 $state.go('conversation', {id: con.id});
             }
-        }
-
-        function toggleNotification () {  
-            $scope.isNotificationToggled = true;
-        }
-
-        function toggleConversation () {
-            MsgService.getConversations().then(function (data) {
-                $timeout(function () {
-                    $scope.isNotificationToggled = false;
-                    $scope.conversations = data;
-                });
-            });
         }
 
         function markConversationAsRead(con){
@@ -106,6 +122,17 @@
                     if (idx != -1) $scope.notifications.splice(idx, 1);
                 })
             })
+        }
+
+        function sendContact() {
+            if($scope.contactMsg.title && $scope.contactMsg.content){
+                MsgService.contactService($scope.contactMsg).then(function (data) {
+                    if(data.success===true){
+                        swal('发送成功', '', 'success');
+                        $state.go($state.current, {}, {reload: true})
+                    }
+                })
+            }
         }
     }
 })();

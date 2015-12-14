@@ -25,7 +25,7 @@
       <ul >                      
         <li ng-class="{selected: $state.includes('index')}"  ui-sref="index">动态</li>
         <!-- <li ng-class="{selected: $state.includes('refill')|| $state.includes('refund')}" ui-sref="refill">管理 -->
-        <li ng-class="{selected: $state.includes('personalInfo') || $state.includes('addressManage')}">管理
+        <li ng-class="{selected: $state.includes('personalInfo') || $state.includes('addressManage') || $state.includes('financialRecord') || $state.includes('credits')}">管理
             <ul>
               <li ui-sref="personalInfo"><img src="images/menu-profile.svg">个人资料</li>
               <li ui-sref="addressManage"><img src="images/menu-address.svg">地址管理</li>
@@ -33,7 +33,7 @@
               <li ui-sref="credits"><img src="images/menu-credits.svg">积分管理</li>
             </ul>
             </li>
-        <li ng-class="{selected: $state.includes('notification')}"  ui-sref="notification">消息<span ng-show="(1*userInfo.unread_conversation + 1*userInfo.unread_notification)>0" class="uh-no-notification">{{1*userInfo.unread_conversation + 1*userInfo.unread_notification}}</span></li>
+        <li ng-class="{selected: $state.includes('notificationList') || $state.includes('conversationList') || $state.includes('contact')}"  ui-sref="notificationList">消息<span ng-show="(1*userInfo.unread_conversation + 1*userInfo.unread_notification)>0" class="uh-no-notification">{{1*userInfo.unread_conversation + 1*userInfo.unread_notification}}</span></li>
       </ul>
   </div>
   </div>
