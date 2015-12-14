@@ -7,11 +7,11 @@
         <div class="left">
           <!-- <a class="uh-header-tab">所有</a> -->
         
-          <a ui-sref="notificationList" ng-class="{active: $state.includes('notificationList')}" class="uh-header-tab">通知({{userInfo.unread_notification}})</a>
-          <a ui-sref="conversationList"  ng-class="{active: $state.includes('conversationList')}" class="uh-header-tab">对话({{userInfo.unread_conversation}})</a>  
+          <a ui-sref="notificationList" ng-class="{active: $state.includes('notificationList')}" class="uh-header-tab clickable">通知({{userInfo.unread_notification}})</a>
+          <a ui-sref="conversationList"  ng-class="{active: $state.includes('conversationList')}" class="uh-header-tab clickable">对话({{userInfo.unread_conversation}})</a>  
         </div>
         <div class="right">
-          <a class="uh-header-tab function" ui-sref="contact" ng-class="{active: $state.includes('active')}">联系客服</a>
+          <a class="uh-header-tab function clickable" ui-sref="contact" ng-class="{active: $state.includes('active')}">联系客服</a>
         </div>
       </div>
 </div>
