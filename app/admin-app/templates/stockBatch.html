@@ -18,7 +18,7 @@
           <tr ng-repeat="stock in stocks">
             <td><input ng-model="stock.selected" ng-click="stockSelected(stock)" type="checkbox"></td>
             <td>{{stock.reference_code}}</td>
-            <td>{{stock.user_name}}</td>
+            <td>{{stock.user.name}}</td>
             <td>{{stock.stock_position}}</td>
             <td>{{stock.stock_number}}</td>
             <td>QQ:{{stock.user_qq? stock.user_qq: "空"}}  - Email: {{stock.user_email}}</td>

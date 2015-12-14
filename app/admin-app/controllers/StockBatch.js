@@ -10,7 +10,6 @@
     /* @ngInject */
     function StockBatch($scope, StockService, $state) {
 
-        console.log('hehe')
         $scope.fileToUpload = null;
         $scope.stockSelected = stockSelected;
         $scope.submitBatch = submitBatch;
@@ -31,11 +30,49 @@
             if($scope.fileToUpload){
                 StockService.batchUpload($scope.fileToUpload).then(function (data) {
                     data.map(function (item) {
-                        item.selected = false;
+                        item.selected = true;
                     })
-                    $scope.stocks = data;
-                    $scope.selectedStocks = [];
+
+                    $scope.stocks = reassembleStocks(data);
+                    $scope.selectedStocks = angular.copy($scope.stocks);
                 })
+            }
+        }
+
+        function reassembleStocks (stocks) {
+            var newStocks = [];
+            stocks.forEach(function (stock) {
+                if(indexInNewStocks(stock)<0){
+                    stock.items = [{
+                        item_name: stock.item_name,
+                        quantity: stock.item_quantity,
+                        type: stock.item_type,
+                        unit_price: stock.item_price,
+                        unit_weight: stock.item_weight,
+                    }];
+                    newStocks.push(stock);
+                }
+                else{
+                    var idx = indexInNewStocks(stock)
+                    newStocks[idx].items.push({
+                        item_name: stock.item_name,
+                        quantity: stock.item_quantity,
+                        type: stock.item_type,
+                        unit_price: stock.item_price,
+                        unit_weight: stock.item_weight,
+                    })
+                }
+            });
+
+            return newStocks;
+
+            function indexInNewStocks (item) {
+                var index = -1;
+                newStocks.filter(function (i, idx, arry) {
+                    if(i.reference_code == item.reference_code)
+                        index = idx;
+                });
+                return index;
             }
         }
 
@@ -53,17 +90,13 @@
         }
 
         function submitBatch(){
-            StockService.submitBatch($scope.selectedStocks).then(function () {
+            StockService.submitBatch($scope.selectedStocks).then(function (data) {
                 swal({
                     type: "success",
                     title: "批量入库成功!",
-                    showCancelButton: false,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "确定",
-                    closeOnConfirm: true,
                 }, function () {
                     $state.go($state.current, {}, {reload: true});
-                })
+                });
             })
         }
     }
