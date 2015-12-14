@@ -30,6 +30,7 @@
                 $scope.transs.map(function (item) {
                     item.statusStr = StockService.getStockStatusMapping(item.status);
                     item.created_at = item.created_time.date.substring(0, 10);
+                    item.updated_at = item.updated_time.date.substring(0, 10);
                     // item.selected = arrayExist(selectedOrders, item);
                 })
                 $timeout(function () {
