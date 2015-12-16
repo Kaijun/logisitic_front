@@ -1,19 +1,12 @@
-<div class="ah-main-header">
-  <div class="left">
-    <span class="title blue">移库详情 > 查看</span>
-  </div>
-</div>
-
 <div class="ah-main-body pure-form" >
   <div class="pure-g">
-    <div class="pure-u-18-24">
-      <div class="ah-section first-child"> 基本信息 </div>
+    <div class="pure-u-20-24">
+      <div class="ah-section first-child"> 移库 - {{trans.reference_code}} </div>
       <!-- 并列表格开始 -->
       <div class="pure-g"> 
 
         <div class="pure-u-1-2">
           <table class="pure-table pure-table-horizontal ah-small-table">
-            <tr><td style="width:30%">移库单号</td><td>{{trans.reference_code}}</td></tr>
             <tr><td style="width:30%">发送方ID</td><td>{{trans.from_name}}</td></tr>
             <tr><td>发送方库存码</td><td>{{trans.from_stock_number}}</td></tr>
             <tr><td>发送方库位号</td><td>{{trans.from_stock_position}}</td></tr>
@@ -104,7 +97,7 @@
         </tr>
       </table>
     </div><!-- 左侧主题结束 -->
-    <div class="pure-u-6-24 right">     
+    <div class="pure-u-4-24 right">     
     <div problem-pkg-btn package-id="{{$stateParams.transId}}" type="2" current-status="trans.status"></div>
      <div><a ng-click="printTrans()" class="pure-button blue divide">打印</a></div>
      <div><a ng-if="trans.status==8||trans.status==9" ng-click="submitTrans()" class="pure-button blue divide">移库</a></div>

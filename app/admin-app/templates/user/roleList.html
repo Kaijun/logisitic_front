@@ -15,7 +15,7 @@
             <th>操作</th>
           </tr>
         </thead>
-        <tbody ng-repeat="role in roles">
+        <tr ng-repeat="role in roles">
         <td><input type="checkbox"></td>
         <td>{{role.role_name}}</td>
         <td>{{role.is_vip?'有': '无'}}</td>
@@ -27,7 +27,7 @@
         <td> <a ng-click="deleteRole(role.id)" ng-show="{{role.is_deletable}}">删除</a>
             <span ng-show="{{!role.is_deletable}}">无法删除</span>
         </td>
-        </tbody>
+        </tr>
         
       </table>
   </div>
@@ -37,7 +37,7 @@
              <div class="ah-pager" ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >></div>
     </div>
     <div class="right">
-       <a  class="pure-button red horizon">批量删除</a>
+       <!-- <a  class="pure-button red horizon">批量删除</a> -->
       <a ui-sref="roleManage"  class="pure-button blue horizon" ui-sref="roleManage">添加用户组</a>
     </div>
   </div>

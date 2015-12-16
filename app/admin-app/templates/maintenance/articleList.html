@@ -11,7 +11,7 @@
             <th width="8%">操作</th>
           </tr>
         </thead>
-        <tbody ng-repeat="article in articles">
+        <tr ng-repeat="article in articles">
         <td><input type="checkbox"></td>
         <td>{{article.updated_at}}</td>
         <td>{{article.title}}</td>
@@ -25,7 +25,7 @@
         <td>{{article.unpublish?'未发布':'已发布'}}</td>
         <td><a ng-click="editArticle(article.id)">修改</a> <a ng-click="deleteArticle(article.id)">删除</a></td>
       
-        </tbody>
+        </tr>
       </table>
   </div>
   <div class="ah-action-btns"> 

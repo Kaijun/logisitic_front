@@ -32,8 +32,8 @@
           <th width="8%">操作</th>
         </tr>
       </thead>
-      <tbody ng-repeat="user in users">
-       <tr>
+
+       <tr ng-repeat="user in users">
        <td><input type="checkbox"></td>
        <td>{{user.name}}</td>
         <td>{{user.stock_number}}</td>
@@ -44,7 +44,7 @@
         <td>{{user.role.role_name}}</td>
         <td> <a ng-click="editUser(user.id)">修改</a></td>
         </tr>
-      </tbody>
+
     </table>
   </div>
   <div class="ah-action-btns">
