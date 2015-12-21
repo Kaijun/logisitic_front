@@ -5,10 +5,12 @@
         .module('home.controllers')
         .controller('AddressManageCtrl', AddressManageCtrl);
 
-    AddressManageCtrl.$inject = ['$scope', 'ProfileService', '$state', '$timeout', 'InfoService', '$compile', '$q'];
+    AddressManageCtrl.$inject = ['$scope', 'AppConfig', 'ProfileService', '$state', '$timeout', 'InfoService', '$compile', '$q'];
 
     /* @ngInject */
-    function AddressManageCtrl($scope, ProfileService, $state, $timeout, InfoService, $compile, $q) {
+    function AddressManageCtrl($scope, AppConfig, ProfileService, $state, $timeout, InfoService, $compile, $q) {
+
+        $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
 
         $scope.cancle = cancle;
         $scope.submit = submit;
@@ -36,6 +38,8 @@
 
          $scope.editAddr = editAddr;
          $scope.deleteAddr = deleteAddr;
+         $scope.frontIDSelected = frontIDSelected;
+         $scope.backIDSelected = backIDSelected;
 
         activate();
 
@@ -47,12 +51,12 @@
                 $scope.addressList = data;
             })
 
-            $scope.$on('onCitySelected', function(event, item) {
-                $scope.address.province = item.cn[0];
-                $scope.address.city = item.cn[1];
-                $scope.address.town = item.cn[2];
-                $scope.address.post_code = item.zip;
-            })
+            // $scope.$on('onCitySelected', function(event, item) {
+            //     $scope.address.province = item.cn[0];
+            //     $scope.address.city = item.cn[1];
+            //     $scope.address.town = item.cn[2];
+            //     $scope.address.post_code = item.zip;
+            // })
         }
 
         function cancle(){
@@ -64,14 +68,17 @@
         function editAddr(addr){
             $timeout(function () {
                 $scope.address = angular.copy(addr);
-                //re-render the city selector
-                $scope.item = {
-                    city: [$scope.address.province, $scope.address.city, $scope.address.town]
+                if($scope.address.ID_card_front){
+                    var $frontDom = $('.ip-pic-front');
+                    $frontDom.css('background-image', 'url(' + $scope.imageUrlPrefix + $scope.address.ID_card_front + ')')
+                    $frontDom.css('background-size', '100% 100%')
                 }
-                var citySelectorDom = angular.element(document.querySelector('#city-selector'));
-                citySelectorDom.children().remove();
-                var newElement = $compile( "<city-select ng-model='item.city'></city-select>" )( $scope );
-                citySelectorDom.append( newElement );
+                if($scope.address.ID_card_back){
+                    var $backDom = $('.ip-pic-back');
+                    $backDom.css('background-image', 'url(' + $scope.imageUrlPrefix + $scope.address.ID_card_back + ')')
+                    $backDom.css('background-size', '100% 100%')
+                }
+
 
                 isEditing = true;
             })
@@ -131,11 +138,33 @@
         }
 
         function validate () {
-            if(!$scope.address.province || !$scope.address.city || !$scope.address.town ){
+            if(!$scope.address.province || !$scope.address.city ){
                 swal('请完善城市信息! 选择您所在的省份/城市/县区', '', 'error');
                 return false;
             }
             return true;
+        }
+
+        function frontIDSelected (ctx) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var $dom = $('.ip-pic-front');
+                $dom.css('background-image', 'url(' + event.target.result + ')')
+                $dom.css('background-size', '100% 100%')
+                $scope.$apply()
+            }
+          // when the file is read it triggers the onload event above.
+          reader.readAsDataURL(ctx.files[0]);
+        }
+        function backIDSelected (ctx) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var $dom = $('.ip-pic-back');
+                $dom.css('background-image', 'url(' + event.target.result + ')')
+                $dom.css('background-size', '100% 100%')
+            }
+          // when the file is read it triggers the onload event above.
+          reader.readAsDataURL(ctx.files[0]);
         }
     }
 })();

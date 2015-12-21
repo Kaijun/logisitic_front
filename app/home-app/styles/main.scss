@@ -901,14 +901,16 @@ textarea{
 }*/
 
 .id-pic-uploader{
-        opacity: 0;
-        width: 96px;
-        height: 60px;
+    opacity: 0;
+    width: 96px;
+    height: 60px;
+    cursor: pointer;
 }
 .ip-pic-front{
     background: url(../images/id-front-pic.png) no-repeat;
     width: 96px;
     height: 60px;
+    cursor: pointer;
 }
 
 .ip-pic-back{
@@ -916,6 +918,7 @@ textarea{
     background: url(../images/id-back-pic.png) no-repeat;
     width: 96px;
     height: 60px;
+    cursor: pointer;
 }
 
 .uh-form-desc{

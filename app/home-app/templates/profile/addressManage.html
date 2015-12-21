@@ -46,16 +46,65 @@
 
   <div class="pure-g uh-form-section">
     <div class="pure-u-3-24">所在地*</div>
-    <div id="city-selector" class="pure-u-12-24">
-  	<!-- <select name="province" form="">
-  	  <option value="1">选择省|直辖市</option>
-  	  <option value="2">北京</option>
-  	  <option value="3">上海</option>
-  	  <option value="4">重庆</option>
-  	</select> -->
-      <city-select ng-model="item.city"></city-select>
+    <div id="city-selector" class="pure-u-18-24">
+    <!-- <select name="province" form="">
+      <option value="1">选择省|直辖市</option>
+      <option value="2">北京</option>
+      <option value="3">上海</option>
+      <option value="4">重庆</option>
+    </select> -->
+      <!-- <city-select ng-model="item.city"></city-select> -->
+      <select 
+        name="province"
+        ng-model="address.province"
+        ng-init="address.province='北京市'"
+        class="pure-u-8-24" 
+        validator="required"
+      >
+          <option value="北京市">北京</option>
+          <option value="上海市">上海</option>
+          <option value="天津市">天津</option>
+          <option value="重庆市">重庆</option>
+          <option value="安徽省">安徽</option>
+          <option value="澳门">澳门</option>
+          <option value="福建省">福建</option>
+          <option value="甘肃省">甘肃</option>
+          <option value="广东省">广东</option>
+          <option value="广西壮族自治区">广西</option>
+          <option value="贵州省">贵州</option>
+          <option value="海南省">海南</option>
+          <option value="河北省">河北</option>
+          <option value="黑龙江省">黑龙江</option>
+          <option value="河南省">河南</option>
+          <option value="湖北省">湖北</option>
+          <option value="湖南省">湖南</option>
+          <option value="江苏省">江苏</option>
+          <option value="江西省">江西</option>
+          <option value="吉林省">吉林</option>
+          <option value="辽宁省">辽宁</option>
+          <option value="内蒙古自治区">内蒙古</option>
+          <option value="宁夏回族自治区">宁夏</option>
+          <option value="青海省">青海</option>
+          <option value="陕西省">陕西</option>
+          <option value="山东省">山东</option>
+          <option value="山西省">山西</option>
+          <option value="四川省">四川</option>
+          <option value="台湾省">台湾</option>
+          <option value="香港">香港</option>
+          <option value="新疆维吾尔自治区">新疆</option>
+          <option value="西藏自治区">西藏</option>
+          <option value="云南省">云南</option>
+          <option value="浙江省">浙江</option>
+      </select>
+      <input 
+        type="text" 
+        name="city" 
+        ng-model="address.city" 
+        placeholder="市/区/县" 
+        validator="required"
+        class="pure-u-15-24" >
     </div>
-  </div>	
+  </div>  
 
   <div class="pure-g uh-form-section">
     <div class="pure-u-3-24">街道地址*</div>
@@ -80,7 +129,7 @@
         ng-model="address.receiver_name"
         tyep="text"
         validator="required">
-    </div>	
+    </div>  
   </div>
 
   <div class="pure-g uh-form-section">
@@ -105,24 +154,24 @@
       tyep="text"
       validator="isID"
     >
-  </div>	
+  </div>  
   </div>
 
   <div class="pure-g uh-form-section">
   <div class="pure-u-3-24">身份证照片</div>
   <div class="pure-u-21-24">
-  	<div class="pure-g">
-  	<div class="pure-u-1-4 ip-pic-front"><input file-model="imagesToUpload[0]" type="file" accept="image/*" class="id-pic-uploader"></div>
-  	<div class="pure-u-1-4 ip-pic-back"><input file-model="imagesToUpload[1]" type="file" accept="image/*" class="id-pic-uploader"></div>
-  	</div>
-  	<div class="pure-g">
-  		<div class="pure-u-16-24 uh-form-desc">
+    <div class="pure-g">
+    <div class="pure-u-1-4 ip-pic-front"><input file-model="imagesToUpload[0]" onchange="angular.element(this).scope().frontIDSelected(this)" type="file" accept="image/*" class="id-pic-uploader"></div>
+    <div class="pure-u-1-4 ip-pic-back"><input file-model="imagesToUpload[1]" onchange="angular.element(this).scope().backIDSelected(this)" type="file" accept="image/*" class="id-pic-uploader"></div>
+    </div>
+    <div class="pure-g">
+      <div class="pure-u-16-24 uh-form-desc">
       点击相应的图片上传或修改<br/>您选择的口岸在清关环节需要使用身份证。请上传身份证的正面、反面各一张，并保持身份证图像清晰、号码可识别、每张图片小于2M。
       </div>
-  	</div>
-  	
+    </div>
+    
   </div>
-  	
+    
   </div>
 
 

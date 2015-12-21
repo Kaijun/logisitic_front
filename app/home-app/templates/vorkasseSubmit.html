@@ -11,14 +11,14 @@
           <div class="title pure-u-1-4">代刷金额*</div>
           <div class="pure-u-3-4">
 
-            <div class="pure-u-1-2">
+            <div class="pure-u-1-4">
             <input 
               name="amount"
               ng-model="vorkasse.amount" 
               validator="required, number"
               type="text">
             </div>
-            <div class="pure-u-1-4 label">欧元</div>
+            <div class="pure-u-1-2 label">欧元 <span ng-if="vorkasse.amount">(人民币: {{vorkasse.amount*currentRate | number:2}} 元)</span></div>
           <div class="pure-u-1 desc">您目前的余额为{{userInfo.remain}},汇率为{{currentRate}}, 可代刷金额{{userInfo.remain/currentRate | number:2}}欧元</div>
 
           </div>
@@ -86,8 +86,8 @@
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">代刷金额*</div>
           <div class="pure-u-3-4">
-            <div class="pure-u-1-2">{{vorkasse.amount}} 欧元</div>
-            <div class="pure-u-1 desc">您目前的余额为{{userInfo.remain}},汇率为{{currentRate}}, 可代刷金额{{userInfo.remain/currentRate | number:2}}欧元</div>
+            <div class="pure-u-1-2">{{vorkasse.amount}} 欧元 <span ng-if="vorkasse.amount">(人民币: {{vorkasse.amount*currentRate | number:2}} 元)</span></div>
+<!--             <div class="pure-u-1 desc">您目前的余额为{{userInfo.remain}},汇率为{{currentRate}}, 可代刷金额{{userInfo.remain/currentRate | number:2}}欧元</div> -->
           </div>
          
           
