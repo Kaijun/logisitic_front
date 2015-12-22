@@ -13,7 +13,7 @@
             <th class="pure-u-1-8">收件人</th>
             <th class="pure-u-3-8">国内收货地址</th>
             <th class="pure-u-1-8" style="text-align: center;">邮编</th>
-            <th class="pure-u-1-8" style="text-align: center;">身份证</th>
+            <!-- <th class="pure-u-1-8" style="text-align: center;">身份证</th> -->
             <th class="pure-u-1-8">操作</th>
           </tr>
         </thead>
@@ -24,7 +24,7 @@
             <td>{{addr.receiver_name}}</td>
             <td>{{addr.province}} {{addr.city}} {{addr.town}} {{addr.street}}</td>
             <td style="text-align: center;">{{addr.post_code}}</td>
-            <td style="text-align: center;"><div class="opt-radius-btn check"></div></td>
+            <!-- <td style="text-align: center;"><div class="opt-radius-btn check"></div></td> -->
             <td>
               <div class="opt-radius-btn edit"  ng-click="editAddr(addr)"></div>
               <div class="opt-radius-btn delete" ng-click="deleteAddr(addr)"></div> 
