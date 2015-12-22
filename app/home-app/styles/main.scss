@@ -312,6 +312,9 @@ textarea{
     background:white;
     border-radius:0 0 5px 5px;
     box-shadow: 0 2px 4px #333;
+    &:last-of-type{
+        margin-bottom: 20px;
+    }
     &.first{
         border-radius: 0;
     }
@@ -779,9 +782,9 @@ textarea{
             color: #333333;
             padding: 12px 0px 12px 8px;
             border: 0;
-            &:last-of-type{
-                text-align: center;
-            }
+          &:last-of-type{
+            text-align: center;
+           }
         }
     }
 }
@@ -1068,7 +1071,9 @@ textarea{
     display: none;
 }
 .ng-table-pagination{
+    margin-top:20px;
     padding-left: 8px;
+    text-align: right;
     li{
         display: inline;
         list-style-type: none;
