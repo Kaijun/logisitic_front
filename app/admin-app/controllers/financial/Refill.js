@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('Refill', Refill);
 
-    Refill.$inject = ['$scope', '$timeout', 'FinanceService', '$window'];
+    Refill.$inject = ['$scope', '$timeout', 'FinanceService', '$window', '$state'];
 
     /* @ngInject */
-    function Refill($scope, $timeout, FinanceService, $window) {
+    function Refill($scope, $timeout, FinanceService, $window, $state) {
         $scope.userEmail = '';
         $scope.stockNum = '';
         $scope.amount = '';
@@ -43,8 +43,10 @@
                 stock_number: $scope.chargeStockNum,
                 amount: $scope.chargeAmount,
             }).then(function (data) {
-                if(data.success===true)
+                if(data.success===true){
                     swal("充值成功", "", "success");
+                    $state.go('financialRecord', {}, {reload: true});
+                }
             });
             
         }

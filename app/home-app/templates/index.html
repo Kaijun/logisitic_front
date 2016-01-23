@@ -40,12 +40,12 @@
                 <td></td>
             </tr>
             <tr>
-                <td>城市（Stadt）：Ettlingen </td>
+                <td>城市（Ort）：Ettlingen </td>
                 <td style="text-align:left">州/省（Bundesland/Kanton）：Baden-Württemberg</td>
             </tr>
             <tr>
                 <td>国家（Land）：Deutschland </td>
-                <td style="text-align:left">邮编（Zip Code）： 76275</td>
+                <td style="text-align:left">邮编（PLZ）： 76275</td>
             </tr>
             <tr>
                 <td>电话（Tel）：0049-72433619012 </td>
@@ -68,9 +68,9 @@
             </thead>
             <tbody>
                 <tr ng-repeat="stock in currentStocks" ui-sref="stockDetail({stockId:stock.id})" style="cursor: pointer;">
-                    <!-- <td>{{stock.timestampStr}}</td> -->
+                    <td>{{stock.timestampStr}}</td>
                     <td>{{stock.reference_code}}</td>
-                    <td>{{stock.description}}</td>
+                    <td>{{stock.description || '无'}}</td>
                     <!-- <td>{{stock.inStockTime}}天</td> -->
                     <td>{{stock.statusStr}}</td>
                 </tr>
@@ -79,13 +79,11 @@
 
         <div class="uh-index-tips"><a ui-sref="stockList">查看全部库存</a></div>
 
-
     </div>
   
     <div ng-show="currentStocks.length==0" >  
         <div class="uh-index-empty ">
             <div>您还没有预报库存</div>
-            <div ui-sref="stockSubmit" class="pure-button blue">添加新的库存</div>
         </div>
     </div>
 

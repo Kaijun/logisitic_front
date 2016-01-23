@@ -29,7 +29,7 @@
 
         function getStockStatusMapping (statusId) {
             statusId = statusId + 1;
-            var statusMapping = ['删除','未知','已到货','待入库','','已入库','库存问题件','移库未确认','移库已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货'];
+            var statusMapping = ['删除','未知','已登记到货','待入库','','已入库','库存问题件','移库未确认','移库已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货'];
             if(statusId<statusMapping.length){
                 return statusMapping[statusId];
             }

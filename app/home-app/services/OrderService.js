@@ -40,12 +40,7 @@
         }      
         function getCurrentOrders() {
             var promise = getOrders().then(function (data) {
-                var data = data.filter(function (item) {
-                    var currentDate = new Date();
-                    var date = new Date(item.created_at);
-                    var diff = parseInt((currentDate-date)/(24*3600*1000));
-                    return (diff<=7)?true:false;
-                });
+                var data = data.slice(0,10);
                 return data;
             });
             return promise;

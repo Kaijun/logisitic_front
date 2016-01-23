@@ -31,6 +31,9 @@
 
             $validationProvider
                 .setExpression({
+                    number: function (value) {
+                        return !isNaN(value);
+                    },
                     numAndAlphabet: /^[0-9a-zA-Z]+$/,
                     notNumber: function (value) {
                         return isNaN(value);

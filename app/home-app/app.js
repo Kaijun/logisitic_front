@@ -20,11 +20,12 @@
             templateUrl: 'templates/stockList.html',
             controller: 'StockListCtrl',
         })
-        .state('stockSubmit', {
-            url: '/stock/submit?stockId',
-            templateUrl: 'templates/stockSubmit.html',
-            controller: 'StockSubmitCtrl',
-        })
+        //deprecated
+        // .state('stockSubmit', {
+        //     url: '/stock/submit?stockId',
+        //     templateUrl: 'templates/stockSubmit.html',
+        //     controller: 'StockSubmitCtrl',
+        // })
         // .state('stockConfirm', {
         //     url: '/stock/submit/confirm',
         //     templateUrl: 'templates/stockSubmit.html',
