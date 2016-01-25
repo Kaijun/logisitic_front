@@ -38,7 +38,10 @@
         }
         function getCurrentStocks() {
             var promise = getStocks().then(function (data) {
-                var data = data.slice(0,10);
+                var data = data.filter(function (item) {
+                    var status = parseInt(item.status);
+                    return status>0 && status<=4;
+                }).slice(0,10);
                 return data;
             });
             return promise;
