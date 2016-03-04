@@ -40,6 +40,7 @@
             <li ui-sref="stockQuick" ui-sref-active="active">快速入库</li>
             <li ui-sref="stockBatch" ui-sref-active="active">批量入库</li>
             <li ui-sref="transList" ui-sref-active="active">移库列表</li>
+            <li ui-sref="claimList" ui-sref-active="active">待认领</li>
           </ul>
         </div>
         <div class="list-wrapper">
@@ -62,8 +63,8 @@
             <li ui-sref="search">搜索</li>
           </ul>
         </div> -->
-        
-        
+
+
       </div>
 
       <div ng-show="$state.includes('finance')"  class="ah-sidebar">
@@ -107,7 +108,7 @@
             <!-- <li ui-sref="problemDetail">已存档问题件</li> -->
           </ul>
         </div>
-       
+
 <!--          <div class="list-wrapper">
           <div class="title">优惠码</div>
           <ul class="list">
@@ -140,7 +141,7 @@
             <li ui-sref="extraSrvList" ui-sref-active="active">附加服务管理</li>
             </ul>
         </div>
- 
+
 
         <div class="list-wrapper">
           <div class="title">用户</div>
@@ -158,7 +159,7 @@
         </div> -->
 
       </div>
-      
+
     </div>
     <div class="pure-u-22-24">
       <div class="ah-main" ui-view></div>

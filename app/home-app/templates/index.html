@@ -33,7 +33,8 @@
         <tbody>
             <tr>
                 <td>名（Vorname）：FISE GmbH    </td>
-                <td style="text-align:left">姓（Nachname）：{{userInfo.stock_number}} / {{userInfo.stock_position}}</td>
+                <td style="text-align:left">姓（Nachname）：{{userInfo.stock_number}}</td>
+                <!-- <td style="text-align:left">姓（Nachname）：{{userInfo.stock_number}} / {{userInfo.stock_position}}</td> -->
             </tr>
             <tr>
                 <td>地址（Straße und Hausnummer）：Siemensstr.23</td>
@@ -58,7 +59,7 @@
 <div ng-show="currentView==1">
     <div ng-show="currentStocks.length>0">
         <table  class="pure-table pure-table-horizontal uh-list-table">
-            
+
             <thead>
                 <th>预报日期</th>
                 <th>包裹运单号</th>
@@ -80,8 +81,8 @@
         <div class="uh-index-tips"><a ui-sref="stockList">查看全部库存</a></div>
 
     </div>
-  
-    <div ng-show="currentStocks.length==0" >  
+
+    <div ng-show="currentStocks.length==0" >
         <div class="uh-index-empty ">
             <div>您还没有预报库存</div>
         </div>
@@ -92,7 +93,7 @@
 <div ng-show="currentView==2">
     <div ng-show="currentOrders.length>0" >
         <table class="pure-table pure-table-horizontal uh-list-table">
-            
+
             <thead>
                 <th>更新日期</th>
                 <th>包裹运单号</th>
@@ -114,8 +115,8 @@
         <div class="uh-index-tips"><a ui-sref="orderList">查看全部订单</a></div>
 
     </div>
-    
-    <div ng-show="currentOrders.length==0" >  
+
+    <div ng-show="currentOrders.length==0" >
         <div class="uh-index-empty ">
             <div>您还没有订单</div>
             <div ui-sref="orderSubmit" class="pure-button blue">添加新的订单</div>
@@ -127,7 +128,7 @@
 <div ng-show="currentView==3">
     <div  ng-show="currentTranss.length>0" >
         <table class="pure-table pure-table-horizontal uh-list-table">
-            
+
             <thead>
                 <th>更新日期</th>
                 <th>接收方</th>
@@ -150,8 +151,8 @@
 
 
     </div>
-    
-    <div ng-show="currentTranss.length==0" >  
+
+    <div ng-show="currentTranss.length==0" >
         <div class="uh-index-empty ">
             <div>您还没有移库</div>
             <div ui-sref="transSubmit" class="pure-button blue">添加新的移库</div>

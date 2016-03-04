@@ -1,0 +1,94 @@
+<div class="pure-g">
+    <div class="pure-u-5-6">
+    <div class="pure-g pure-u-1"><div class="ah-section">跟踪号码 - {{stock.reference_code}}</div></div>
+    <!-- 并列表格开始 -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <table class="pure-table pure-table-horizontal ah-small-table">
+          <tr>
+            <td style="width:80px">收件仓库</td>
+            <td>{{stock.warehouseName}}</td>
+          </tr>
+          <tr>
+            <td>包裹备注</td>
+            <td>{{stock.desc?stock.desc:"暂无"}}</td>
+          </tr>
+          <tr>
+            <td>快递信息</td>
+            <td>{{stock.reference_code}}</td>
+          </tr>
+          <tr>
+            <td>客户ID</td>
+            <td>{{stock.user.name}}</td>
+          </tr>
+          <tr>
+            <td>需验证</td>
+            <td>
+              <span>{{stock.need_check?"是":"否"}}</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="pure-u-1-2">
+        <table class="pure-table pure-table-horizontal ah-small-table" >
+          <tr>
+            <td  style="width:80px">状态</td>
+            <td>{{stock.statusStr}}</td>
+          </tr>
+          <tr>
+            <td>库位号</td>
+            <td>{{stock.user.stock_position}}</td>
+          </tr>
+          <tr>
+            <td>预报时间</td>
+            <td>{{stock.created_at}}</td>
+          </tr>
+          <tr>
+            <td>入库时间</td>
+            <td>{{stock.updated_at}}</td></tr>
+          </table>
+        </div>
+      </div>
+      <!-- 并列表格结束 -->
+      <div class="ah-section">申请认领列表</div>
+      <div class="ah-tips">选定认领人后，包裹状态将改为已登记，等待客户后续操作。</div>
+      <div>
+        <table class="pure-table pure-table-horizontal ah-line-table">
+          <thead>
+            <tr>
+              <th style="width:80px">选择</th>
+              <th class="pure-u-1-8">客户ID</th>
+              <th class="pure-u-1-8">收货人信息</th>
+              <th class="pure-u-1-8">发货人信息</th>
+              <th class="pure-u-4-8">包裹物品</th>
+            </tr>
+          </thead>
+              <tbody>
+                <tr >
+                  <td><input type="radio"></td>
+                  <td>CPJStudio</td>
+                  <td>JUNYU</td>
+                  <td>AMAZON</td>
+                  <td>无</td>
+                </tr>
+                <tr >
+                  <td><input type="radio"></td>
+                  <td>xrwr</td>
+                  <td>sunjun</td>
+                  <td>AMAZON</td>
+                  <td>无</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+
+
+    </div>
+    <!-- 右侧功能键开始 -->
+    <div class="pure-u-1-6 right">
+       <div problem-pkg-btn package-id="{{$stateParams.stockId}}" type="3" current-status="stock.status"></div>
+
+      <div><a  class="pure-button blue divide">确认认领人</a></div>
+      <div><a ng-click="goBack()" class="pure-button back divide">返回继续</a></div>
+      </div> <!-- 右侧功能键结束 Div -->
+</div>

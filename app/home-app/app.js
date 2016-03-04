@@ -6,9 +6,9 @@
 	.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', '$httpProvider',
         function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider, $httpProvider) {
         cfpLoadingBarProvider.includeSpinner = true;
-        
+
 	    $urlRouterProvider.otherwise('/');
-	    
+
 	    $stateProvider
         .state('index', {
             url: '/',
@@ -36,6 +36,13 @@
             templateUrl: 'templates/stockDetail.html',
             controller: 'StockDetailCtrl',
         })
+
+				.state('packageClaim',{
+						url:'/packageClaim',
+						templateUrl:'templates/packageClaim.html',
+						controller: '',
+				})
+
         .state('orderList', {
             url: '/orderList/:status',
             templateUrl: 'templates/orderList.html',
@@ -56,7 +63,7 @@
             url: '/trans/submit/:transId',
             templateUrl: 'templates/transSubmit.html',
             controller: 'TransSubmitCtrl',
-        })        
+        })
         .state('transList', {
             url: '/transList/:status',
             templateUrl: 'templates/transList.html',
@@ -153,11 +160,11 @@
                 return response;
             },
            'responseError': function(response) {
-                if (response.status==404) {  
+                if (response.status==404) {
                     swal(response.data.message, "", "error");
                     return null;
                 }
-                else if (response.status==500) {  
+                else if (response.status==500) {
                     swal("服务器错误", "", "error");
                     return null;
                 }else{
@@ -177,11 +184,9 @@
         // }
     }]);
 
-    //Default Configuration of App 
+    //Default Configuration of App
     angular.module('home').constant('AppConfig', {
         apiUrl: '/api',
     });
 
 })();
-
-

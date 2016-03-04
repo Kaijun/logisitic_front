@@ -2,12 +2,12 @@
 ;(function () {
 
 	angular.module('admin', ['admin.controllers','admin.services','admin.directives', 'ui.router', 'angular-loading-bar'])
-	.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', '$httpProvider', 
+	.config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', '$httpProvider',
     function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider, $httpProvider) {
         cfpLoadingBarProvider.includeSpinner = true;
 
 	    $urlRouterProvider.otherwise('/business/stockList');
-	    
+
 	    $stateProvider
 
         .state('login',{
@@ -81,7 +81,24 @@
             templateUrl: 'templates/orderList.html',
             controller: 'OrderList',
         })
-        
+
+				// TODO packageClaim
+
+        .state('claimList',{
+					parent:'business',
+					url:'/packageClaimList',
+					templateUrl:'templates/packageClaim/claimList.html',
+					controller:'',
+				})
+				.state('claimDetail',{
+					parent:'business',
+					url:'/packageClaimDetail',
+					templateUrl:'templates/packageClaim/claimDetail.html',
+					controller:'',
+				})
+
+
+
         .state('transList', {
             parent: 'business',
             url: '/transList',
@@ -170,7 +187,7 @@
             templateUrl: 'templates/maintenance/bannerManage.html',
             controller: '',
         })
-       
+
 
 
 
@@ -333,11 +350,11 @@
                 return response;
             },
            'responseError': function(response) {
-                if (response.status==404) {  
+                if (response.status==404) {
                     swal(response.data.message, "", "error");
                     return null;
                 }
-                else if (response.status==500) {  
+                else if (response.status==500) {
                     swal("服务器错误", "", "error");
                     return null;
                 }else{
@@ -357,7 +374,7 @@
         // }
     }]);
 
-    //Default Configuration of App 
+    //Default Configuration of App
     angular.module('admin').constant('AppConfig', {
         apiUrl: '/api/admin',
         apiUrlHome: '/api',

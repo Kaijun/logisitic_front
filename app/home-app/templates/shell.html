@@ -22,7 +22,7 @@
   <div class="pure-u-1-4" >
   <span><img src="images/uh-logo.png"></span><a ui-sref="index">会员中心</a></div>
   <div class="pure-u-3-4 uh-nav-list">
-      <ul >                      
+      <ul >
         <li ng-class="{selected: $state.includes('index')}"  ui-sref="index">动态</li>
         <!-- <li ng-class="{selected: $state.includes('refill')|| $state.includes('refund')}" ui-sref="refill">管理 -->
         <li ng-class="{selected: $state.includes('personalInfo') || $state.includes('addressManage') || $state.includes('financialRecord') || $state.includes('credits')}">管理
@@ -50,7 +50,7 @@
       <p>{{userInfo.name}}</p>
       <ul>
         <li>库位号:{{userInfo.stock_position}}</li>
-        <li>库存码:{{userInfo.stock_number}}</li>
+        <!-- <li>库存码:{{userInfo.stock_number}}</li> -->
         <li>积分:{{userInfo.score}}</li>
         <li>余额:{{userInfo.remain}}</li>
       </ul>

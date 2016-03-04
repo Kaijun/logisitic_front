@@ -1,0 +1,50 @@
+<div class="ah-list">
+
+
+  <div class="ah-list">
+      <table class="pure-table pure-table-horizontal ah-list-table">
+        <thead>
+          <tr>
+            <th width="2%"><input type="checkbox" ng-model="isAllSelected" ng-click="selectAllItems()"></th>
+            <th width="8%">更新时间</th>
+            <th width="10%">入库跟踪号</th>
+            <th width="5%" ng-hide="isPreStockList">客户ID</th>
+            <th width="5%">库存码</th>
+            <th width="4%">库位号</th>
+            <th width="5%">联系</th>
+            <th width="10%">包裹描述</th>
+            <th width="10%">备注</th>
+            <th width="5%">状态</th>
+            <th width="8%">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td><input type="checkbox"></td>
+              <td>2015-2-12</td>
+              <td>DHLIEEKWQWE</td>
+              <td>--</td>
+              <td>--</td>
+              <td>--</td>
+              <td>--</td>
+              <td>--</td>
+              <td>--</td>
+              <td>待认领</td>
+              <td ui-sref="claimDetail">详情</td>
+          </tr>
+
+        </tbody>
+      </table>
+  </div>
+  <div class="ah-action-btns">
+    <div class="left ">
+            <div class="ah-pager"  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" ><</div>
+             <div class="ah-pager" ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >></div>
+    </div>
+    <div class="right">
+      <!-- <a  ng-click="" class="pure-button red horizon">批量存档</a> -->
+      <a  ng-click="batchDownload()" class="pure-button export horizon">批量导出</a>
+    </div>
+  </div>
+
+</div>

@@ -10,11 +10,11 @@
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">选择收货地址</div>
           <div class="pure-u-3-4">
-            <select 
-              ng-model="selectedAddr" 
-              ng-options="addr.addr_symbol for addr in addressList" 
+            <select
+              ng-model="selectedAddr"
+              ng-options="addr.addr_symbol for addr in addressList"
               ng-change="order.address=selectedAddr.id"
-              class="pure-u-18-24"></select>            
+              class="pure-u-18-24"></select>
 <!--             <select ng-model="order.address" ng-value="order.address" class="pure-u-18-24">
               <option ng-repeat="addr in addressList" value="{{addr.id}}">
                 {{addr.addr_symbol}}
@@ -90,10 +90,10 @@
               <td style="text-align:center">{{item.unit_weight || "-"}}</td>
               <td style="text-align:center">{{item.remain}}</td>
               <td style="text-align:center">
-                <input 
+                <input
                   name="{{'quantityToSend' + item.id}}"
-                  ng-model="item.quantityToSend" 
-                  type="text" 
+                  ng-model="item.quantityToSend"
+                  type="text"
                   validator="required, number, minvalue=1, maxvalue={{item.remain}}"
                 >
               </td>
@@ -110,13 +110,13 @@
     <div class="uh-form-section pure-g">
       <div class="title pure-u-1-4">附加服务</div>
       <div class="pure-u-3-4">
-              
+
           <div class="pure-u-1" extra-service-list given-services="extraServices" selected-services="order.extra_services"></div>
           <div class="pure-u-1 desc">如有需要，请选择相应的增值服务，部分服务可能会产生费用。</div>
       </div>
 
-      
-    </div>    
+
+    </div>
     <div class="uh-form-section pure-g">
       <div class="title pure-u-1-4">支付方式</div>
       <div class="pure-u-3-4 uh-order-pay-method">
@@ -126,14 +126,14 @@
         </div>
       </div>
 
-    </div>  
+    </div>
     <div class="uh-form-section pure-g">
       <div class="title pure-u-1-4">发货备注</div>
       <div class="pure-u-3-4 ">
         <textarea ng-model="order.message"></textarea>
       </div>
 
-    </div>    
+    </div>
 </div>
 
 <div class="uh-main-action" >
@@ -161,7 +161,7 @@
     <div class="left">
       <span class="title blue">提交发货</span>
     </div>
-  </div> 
+  </div>
   <!-- 头部标题结束 -->
   <!-- 主体开始 -->
 
@@ -232,7 +232,7 @@
            <td><a ng-click="deleteDeclaration($index)" class="item-delete-icon"></a></td>
       </tbody>
     </table>
-    <div class="options"> 
+    <div class="options">
       <a ng-click="addDeclaration()" class="pure-button radius blue">新增一项</a>
       <!-- <a class="pure-button radius blue">批量上传</a> -->
     </div>
@@ -295,7 +295,7 @@
 
     <div class="pure-g uh-form-section">
       <div class="pure-u-1">
-        <input 
+        <input
           name="confirmProtocol"
           type="checkbox"
           ng-model="confirmProtocol"
