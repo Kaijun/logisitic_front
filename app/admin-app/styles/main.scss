@@ -24,7 +24,7 @@ label.invalid-label{
 
 
 
-html,body { height:100%; position: relative; 
+html,body { height:100%; position: relative;
   overflow: hidden;
 }
 
@@ -36,7 +36,7 @@ html,body { height:100%; position: relative;
   margin: 0;
 }
 .ah-login{
-  
+
   border-box:box-sizing;
   padding: 40px;
   margin: 0 auto;
@@ -49,7 +49,7 @@ html,body { height:100%; position: relative;
   font-size:14px;
   border-top: 30px #FF5A5A solid;
   border-radius:10px;
-  box-shadow: 0 0px 2px #000; 
+  box-shadow: 0 0px 2px #000;
   .title{
     font-size: 20px;
     margin: 5px;
@@ -70,7 +70,7 @@ html,body { height:100%; position: relative;
     height: 45px;
     width: 100%;
   }
-  
+
 }
 
 .ah-body-wrapper{
@@ -247,7 +247,7 @@ $sub-navbar-height: 40px;
           text-align: right;
         }
         }
-       
+
     }
 
     tbody{
@@ -264,7 +264,7 @@ $sub-navbar-height: 40px;
           text-align: right;
             }
         }
-    
+
     }
     a{
     cursor: pointer;
@@ -287,10 +287,10 @@ $sub-navbar-height: 40px;
             border: none;
         }
         .uh-custom-table tbody td {
-          padding: 5px 8px 5px 0; 
+          padding: 5px 8px 5px 0;
           border: none;
         }
-        .options{  
+        .options{
             margin-top: 12px;
             text-align: center;
         }
@@ -349,7 +349,7 @@ $sub-navbar-height: 40px;
 
 // 定义button的位置
 .right{
-  margin-top: -20px; 
+  margin-top: -20px;
   // height: 100vh;
   // overflow: hidden;
   text-align: right;
@@ -428,7 +428,7 @@ $sub-navbar-height: 40px;
             border-bottom: solid 1px #D1D1D1;
             &.sum{
                   border-top:solid 1px #D1D1D1;
-                 font-weight: bold; 
+                 font-weight: bold;
                 }
         }
     }
@@ -541,7 +541,7 @@ $sub-navbar-height: 40px;
       background: url(../images/btn-print-list.svg) no-repeat 10px center #4A90E2;
       padding: 10px 16px 10px 21px;
       background-size: 20px 20px;
-      
+
     }
     &.print{
       background: url(../images/btn-print.svg) no-repeat 10px center #4A90E2;
@@ -566,14 +566,14 @@ $sub-navbar-height: 40px;
     }
     &.horizon-small{
       width: 60px;
-      margin-right: 5px; 
+      margin-right: 5px;
       &:last-of-type{
-        margin-right:0; 
+        margin-right:0;
       }
     }
     &.horizon{
       margin-top: 20px;
-      margin-bottom: 20px; 
+      margin-bottom: 20px;
     }
 
 }
@@ -590,7 +590,7 @@ input{
     line-height: 20px;
     color: #333;
     border:1px solid #D1D1D1;
-    border-radius:0; 
+    border-radius:0;
 }
 textarea{
     box-sizing: border-box;
@@ -600,7 +600,7 @@ textarea{
     line-height: 20px;
     color: #333;
     border:1px solid #D1D1D1;
-    border-radius:0; 
+    border-radius:0;
 }
 
 input[type="search"]{
@@ -643,8 +643,8 @@ select{
 
   }
 .pop-up-wapper{
-  position: absolute; 
-  top: 30%; 
+  position: absolute;
+  top: 30%;
   left: 30%;
   z-index: 999;
   width: 500px;
@@ -685,7 +685,7 @@ select{
 .pop-up-opt{
   padding: 10px 20px;
   width: 100%;
-  // margin-bottom:10px; 
+  // margin-bottom:10px;
   // height: 40px;
   text-align: right;
   box-sizing: border-box;
@@ -711,7 +711,7 @@ select{
   width: 100%;
   height: auto;
   padding-bottom: 20px;
-  
+
 }
 .ah-message-avatar{
   margin-top: 10px;
@@ -787,9 +787,60 @@ select{
     border:0;
   }
 }
+.ah-barcode-add{
+  height: 40px;
+  margin:20px auto;
+  text-align: center;
+  input{
+    height: 40px;
+    width: 100%;
+    background:url("../images/scan.png") #ffffff no-repeat left;
+    border-radius:5px 0 0 5px;
+    padding-left: 120px;
+  }
+  button{
+    height: 40px;
+    width: 100%;
+    border-radius: 0 5px 5px 0;
+    font-size: 12px;
+    color: white;
+    background: #4A90E2;
+    border:0;
+  }
+  .s_button{
+    width: 80%;
+    margin-left: 20%;
+    background: #4A7000;
+    border-radius: 5px;
+  }
+  .label{
+    text-align: left;
+    line-height: 40px;
+    height: 40px;
+    color: #666;
+    // font-size: 14px;
+
+  }
+}
 
 
-
+.ah-feedback{
+  width: 100%;
+  height: 35px;
+  position: absolute;
+  // padding: 20px;
+  top: 0;
+  line-height: 35px;
+  left: 0;
+  text-align: center;
+  background: #ff3535;
+  color: #fff;
+  font-size: 14px;
+  // border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 5s, opacity 5s linear;
+}
 
 
 //用于空白上传
@@ -823,7 +874,7 @@ select{
     // opacity: 0;
     // background:#000;
     width: 240px;
-  } 
+  }
   button{
     margin: 0;
     border-radius: 0 5px 5px 0;
@@ -835,8 +886,8 @@ select{
 
 .ah-filter{
   font-size: 12px;
-  background: linear-gradient(to bottom, #ffffff 0%,#efefef 100%); 
-  border-radius: 5px 5px 0 0 ; 
+  background: linear-gradient(to bottom, #ffffff 0%,#efefef 100%);
+  border-radius: 5px 5px 0 0 ;
   line-height: 30px;
   padding: 5px;
   height: auto;
@@ -877,7 +928,7 @@ select{
     line-height: 40px;
     height: 40px;
     width: 40px;
-    margin-left: 10px; 
+    margin-left: 10px;
     float: left;
     font-size: 14px;
     background:#333;
@@ -909,7 +960,7 @@ select{
   text-align: center;
 }
 // 用于修改自动填充颜色
-::-webkit-input-placeholder { color:#333; }
-::-moz-placeholder { color:#333; } /* firefox 19+ */
-:-ms-input-placeholder { color:#333; } /* ie */
-input:-moz-placeholder { color:#333; }
+::-webkit-input-placeholder { color:#666; }
+::-moz-placeholder { color:#666; } /* firefox 19+ */
+:-ms-input-placeholder { color:#666; } /* ie */
+input:-moz-placeholder { color:#666; }
