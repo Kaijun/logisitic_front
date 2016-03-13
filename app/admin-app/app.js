@@ -84,18 +84,18 @@
 
 				// TODO packageClaim
 
-        .state('claimList',{
-					parent:'business',
-					url:'/packageClaimList',
-					templateUrl:'templates/packageClaim/claimList.html',
-					controller:'',
-				})
-				.state('claimDetail',{
-					parent:'business',
-					url:'/packageClaimDetail',
-					templateUrl:'templates/packageClaim/claimDetail.html',
-					controller:'',
-				})
+        .state('packageClaimList',{
+    		parent:'business',
+    		url:'/packageClaimList',
+    		templateUrl:'templates/packageClaim/packageClaimList.html',
+    		controller:'PackageClaimList',
+    	})
+    	.state('packageClaimDetail',{
+    		parent:'business',
+    		url:'/packageClaimDetail/:claimId',
+    		templateUrl:'templates/packageClaim/packageClaimDetail.html',
+    		controller:'PackageClaimDetail',
+    	})
 
 
 

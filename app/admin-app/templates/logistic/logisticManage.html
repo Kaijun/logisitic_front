@@ -123,7 +123,7 @@
         <tbody>
           <!-- TODO: 这里请使用AS生产动态数据 -->
           <tr ng-repeat="ladder in ladders">
-            <td>{{$first?"0":ladders[$index-1].lower_bound}}-{{ladder.lower_bound}}公斤</td>
+            <td>{{$first?"0":ladders[$index-1].upper_bound}}-{{ladder.upper_bound}}公斤</td>
             <td>{{ladder.unit_price}}元</td>
             <td><a ng-click="deleteLadder(ladder)">删除</a>｜<a ng-click="editLadder(ladder)">修改</a></td>
           </tr>

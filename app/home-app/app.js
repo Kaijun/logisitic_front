@@ -37,11 +37,11 @@
             controller: 'StockDetailCtrl',
         })
 
-				.state('packageClaim',{
-						url:'/packageClaim',
-						templateUrl:'templates/packageClaim.html',
-						controller: '',
-				})
+		.state('packageClaim',{
+			url:'/packageClaim',
+			templateUrl:'templates/packageClaim.html',
+			controller: 'PackageClaim',
+		})
 
         .state('orderList', {
             url: '/orderList/:status',

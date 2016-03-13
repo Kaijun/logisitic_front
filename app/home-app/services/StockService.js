@@ -16,6 +16,8 @@
             getCurrentStocks: getCurrentStocks,
             // submitStock: submitStock,
             editStock: editStock,
+            submitPackageClaim: submitPackageClaim,
+            searchPackageClaim: searchPackageClaim,
             // deleteStock: deleteStock,
         };
         return service;
@@ -67,6 +69,28 @@
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 }
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+        function submitPackageClaim(claim) {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/claim/',
+                method: 'POST',
+                data: claim,
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function(response){
+                return response.data;
+            });
+            return promise;
+        }
+        function searchPackageClaim(refCode) {
+            var promise =  $http({
+                url: AppConfig.apiUrl + '/claim-search/' + refCode,
+                method: 'GET',
             }).then(function(response){
                 return response.data;
             });

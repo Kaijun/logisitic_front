@@ -117,7 +117,7 @@
                 $scope.ladderFrom = 0;
             }
             else{
-                $scope.ladderFrom = $scope.ladders[$scope.ladders.length-1].lower_bound;
+                $scope.ladderFrom = $scope.ladders[$scope.ladders.length-1].upper_bound;
             }
         }
         function deleteLadder (ladder) {
@@ -147,9 +147,9 @@
 
         function popupConfirm () {
             if($scope.ladderTo && $scope.ladderPrice){
-                if($scope.ladders.length===0 || parseInt($scope.ladderTo) > parseInt($scope.ladders[$scope.ladders.length-1].lower_bound)){
+                if($scope.ladders.length===0 || parseInt($scope.ladderTo) > parseInt($scope.ladders[$scope.ladders.length-1].upper_bound)){
                     $scope.ladders.push({
-                        lower_bound: $scope.ladderTo,
+                        upper_bound: $scope.ladderTo,
                         unit_price: $scope.ladderPrice,
                     });
                     popupCancle();
