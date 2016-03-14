@@ -28,7 +28,6 @@
 
                 $timeout(function() {
                     $scope.claim = data;
-                    console.log($scope.claim.claims)
                 })
             })
         });
