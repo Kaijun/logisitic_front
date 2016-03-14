@@ -82,7 +82,6 @@
 
 
       <div class="ah-section"> <input  ng-model="stock.isStockCheck" type="checkbox" > 入库清点 {{isStockCheck}}</div>
-      <div class="ah-section"><input>googdd</div>
       <div ng-show="stock.isStockCheck" >
         <table class="pure-table pure-table-horizontal ah-line-table">
           <thead>
@@ -113,9 +112,9 @@
   <!-- TODO: 获取条形码后自动填入商品名称和重量，提示框样式使用 ah-feedback 相同功能在 stockQuick.html 一样 -->
         <div class="pure-g ah-barcode-add">
 
-          <div class=" pure-u-2-3"><input type="text" placeholder="扫描商品条形码自动添加"></div>
+          <div class=" pure-u-2-3"><input ng-model="$parent.eanCode" type="text" placeholder="扫描商品条形码自动添加"></div>
           <div class="pure-u-1-6 ">
-            <button class="">获取信息</button>
+            <button ng-click="autoAddEanItem()" class="">获取信息</button>
           </div>
 
           <div class="pure-u-1-6" ng-click="addItem()"><button class="s_button">手动增加</button></div>

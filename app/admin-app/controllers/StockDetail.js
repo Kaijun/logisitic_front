@@ -5,16 +5,19 @@
         .module('admin.controllers')
         .controller('StockDetailCtrl', StockDetailCtrl);
 
-    StockDetailCtrl.$inject = ['$scope', '$state', 'LogisticService', '$stateParams', '$timeout', 'StockService', 'InfoService', 'AppConfig', '$window'];
+    StockDetailCtrl.$inject = ['$scope', '$state', 'LogisticService', '$stateParams', '$timeout', 'StockService', 'InfoService', 'AppConfig', '$window', '$filter'];
 
     /* @ngInject */
-    function StockDetailCtrl($scope, $state, LogisticService, $stateParams, $timeout, StockService, InfoService, AppConfig, $window) {
+    function StockDetailCtrl($scope, $state, LogisticService, $stateParams, $timeout, StockService, InfoService, AppConfig, $window, $filter) {
         $scope.$stateParams = $stateParams;
         $scope.stock = null;
         $scope.stockId = $stateParams.stockId;
         $scope.deleteStock = deleteStock;
         $scope.enterStock = enterStock;
         $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
+
+        $scope.eanCode = null;
+        var TIMEOUT_DELAY = 500;
 
         activate();
 
@@ -48,6 +51,18 @@
                         data.isStockCheck = (data.items.length>0) && !(data.items.length===1&&data.items[0].type==$scope.optionTypes[0].id);
                         $timeout(function(){
                             $scope.stock = data;
+                        });
+
+
+                        // watch EanData 条形码扫描自动添加item
+                        var searchEanTimeout;
+                        $scope.$watch('eanCode', function (newValue, oldValue) {
+                            if(newValue === oldValue) return;
+
+                            if (searchEanTimeout) $timeout.cancel(searchEanTimeout);
+                            searchEanTimeout = $timeout(function() {
+                                autoAddEanItem($scope.eanCode);
+                            }, TIMEOUT_DELAY); 
                         });
 
                     }, function() {
@@ -119,6 +134,51 @@
                     });
                 })
             }
+        }
+
+
+        $scope.autoAddEanItem = function() {
+            if($scope.eanCode)
+                autoAddEanItem($scope.eanCode)
+        }
+
+        function autoAddEanItem(code) {
+            StockService.getEanData(code).then(function(data) {
+                if(parseInt(data.status.code)===200){
+                    var item = data.product.attributes;
+                    switch(item.weight_extra){
+                        case 'g':
+                            item.weight = $filter('number')(item.weight/1000, 1);
+                            break;
+                        case 'kg':
+                            item.weight = $filter('number')(item.weight, 1);
+                            break;
+                        case 'oz':
+                            item.weight = $filter('number')(item.weight*28.35/1000, 1);
+                            break;
+                        default:
+                            item.weight = 0;
+                            break;
+                    }
+                    $scope.stock.items.push({
+                        item_name: item.product,
+                        typeOption: $scope.optionTypes[0],
+                        type: null,
+                        typeName: null,
+                        unit_price: null,
+                        unit_weight: item.weight,
+                        quantity: null,
+                    })
+                }
+                else{
+                    swal({
+                        title: "未找到条形码对应的商品",
+                        timer: 1500,   
+                        showConfirmButton: false,
+                        type: 'error',
+                    });
+                }
+            })
         }
 
     }

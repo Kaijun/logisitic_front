@@ -357,6 +357,10 @@
                 else if (response.status==500) {
                     swal("服务器错误", "", "error");
                     return null;
+                }
+                else if (response.status==401) {
+                    swal("未登录, 请先登录", "", "error");
+                    return null;
                 }else{
                     swal("未知错误", "", "error");
                     return null;

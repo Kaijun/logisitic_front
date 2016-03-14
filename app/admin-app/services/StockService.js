@@ -20,7 +20,7 @@
             batchDownload: batchDownload,
             batchUpload: batchUpload,
             submitBatch: submitBatch,
-
+            getEanData: getEanData,
         };
         return service;
 
@@ -131,6 +131,15 @@
                 url: AppConfig.apiUrl + '/batch-saving/',
                 method: 'PUT',
                 data: stocks,
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function getEanData (code) {
+            var promise = $http({
+                url: 'http://eandata.com/feed/?v=3&keycode=503D836656E42A57&mode=json&find=' + code,
+                method: 'GET',
             }).then(function (response) {
                 return response.data;
             });

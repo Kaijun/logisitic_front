@@ -7,7 +7,7 @@
 
 
     /* @ngInject */
-    function StockQuickCtrl($scope, AppConfig, StockService, UserService, RoleService, LogisticService, $timeout, InfoService, $state) {
+    function StockQuickCtrl($scope, AppConfig, StockService, UserService, RoleService, LogisticService, $timeout, InfoService, $state, $filter) {
         
         $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
 
@@ -21,6 +21,7 @@
             need_check: null, //1-需要验证, 0-不需要验证
             weight: null,
         }
+        $scope.eanCode = null;
         $scope.userFound = null;
         $scope.isRequested = false;
         $scope.isStockFound = false;
@@ -83,6 +84,18 @@
             RoleService.getRoles().then(function (data) {
                 $scope.roles = data;
             });
+
+            // watch EanData 条形码扫描自动添加item
+            var searchEanTimeout;
+            $scope.$watch('eanCode', function (newValue, oldValue) {
+                if(newValue === oldValue) return;
+
+                if (searchEanTimeout) $timeout.cancel(searchEanTimeout);
+                searchEanTimeout = $timeout(function() {
+                    autoAddEanItem($scope.eanCode);
+                }, TIMEOUT_DELAY); 
+            });
+
         }
 
         function search() {
@@ -178,6 +191,50 @@
 
         $scope.deleteItem = function ($index) {
             $scope.stock.items.splice($index, 1);
+        }
+
+        $scope.autoAddEanItem = function() {
+            if($scope.eanCode)
+                autoAddEanItem($scope.eanCode)
+        }
+
+        function autoAddEanItem(code) {
+            StockService.getEanData(code).then(function(data) {
+                if(parseInt(data.status.code)===200){
+                    var item = data.product.attributes;
+                    switch(item.weight_extra){
+                        case 'g':
+                            item.weight = $filter('number')(item.weight/1000, 1);
+                            break;
+                        case 'kg':
+                            item.weight = $filter('number')(item.weight, 1);
+                            break;
+                        case 'oz':
+                            item.weight = $filter('number')(item.weight*28.35/1000, 1);
+                            break;
+                        default:
+                            item.weight = 0;
+                            break;
+                    }
+                    $scope.stock.items.push({
+                        item_name: item.product,
+                        typeOption: $scope.optionTypes[0],
+                        type: null,
+                        typeName: null,
+                        unit_price: null,
+                        unit_weight: item.weight,
+                        quantity: null,
+                    })
+                }
+                else{
+                    swal({
+                        title: "未找到条形码对应的商品",
+                        timer: 1500,   
+                        showConfirmButton: false,
+                        type: 'error',
+                    });
+                }
+            })
         }
         
     }
