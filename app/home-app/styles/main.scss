@@ -51,7 +51,7 @@ textarea{
 
 .uh-box{
     width:980px;
-    margin:0 auto; 
+    margin:0 auto;
 }
 // 顶部黑色导航条
 .uh-topnav{
@@ -65,7 +65,7 @@ textarea{
         text-align: right;
     ul{
         line-height: $topnavheight;
-        margin:0; 
+        margin:0;
     }
     ul li{
         list-style: none;
@@ -80,7 +80,7 @@ textarea{
 
     }
 
-   
+
 }
 
 
@@ -109,7 +109,7 @@ textarea{
         text-align: right;
     ul{
         line-height: $navheight;
-        margin:0; 
+        margin:0;
         font-size: 14px;
     }
     ul li{
@@ -118,7 +118,7 @@ textarea{
         display: inline-block;
         height: $navheight;
         &.selected{
-            background:url('/images/uh-indicator.png') no-repeat bottom center; 
+            background:url('/images/uh-indicator.png') no-repeat bottom center;
         }
     }
     ul li:hover{
@@ -143,14 +143,14 @@ textarea{
       box-shadow: none;
       display: none;
     }
-    ul ul li { 
+    ul ul li {
         text-align: center;
-      background: #555; 
-      display: block; 
+      background: #555;
+      display: block;
       color: #fff;
       text-shadow: 0 -1px 0 #000;
     }
-    ul ul li:hover { 
+    ul ul li:hover {
         cursor: pointer;
         background: #666; }
 
@@ -210,7 +210,7 @@ textarea{
             color: white;
         }
     .uh-siderbar-fastopt{
-        margin-top:20px; 
+        margin-top:20px;
         ul{
             line-height: 34px;
             margin:0;
@@ -274,9 +274,9 @@ textarea{
 .uh-main-header{
     @include clearfix;
     padding-bottom: 10px;
-    margin-top: 20px; 
+    margin-top: 20px;
     border-bottom: solid 1px #D1D1D1;
-    
+
     &:first-of-type{
 
         margin-top:0;
@@ -346,7 +346,7 @@ textarea{
     padding: 5px 0 5px 24px;
     background: url(../images/uh-help-desc.svg) no-repeat left center;
     }
-    
+
 }
 .uh-main-tab{
     width: 100%;
@@ -469,7 +469,7 @@ textarea{
         &:hover{
             background: url('../images/btn-edit.svg') #306191 no-repeat center;
         }
-     }     
+     }
      .btn-pay{
         background: url('../images/btn-pay.svg') #376191 no-repeat center;
         background-size: 18px 18px;
@@ -497,7 +497,7 @@ textarea{
 .uh-list{
     .uh-list-body{
         .tab{
-            padding: 20px 0;                
+            padding: 20px 0;
             border-bottom: solid 3px #D1D1D1;
             .pure-button{
                 &:hover{
@@ -548,7 +548,7 @@ textarea{
     .cell-divider{
         height: 50px;
         width: 1px;
-        float: left;        
+        float: left;
         background: #D1D1D1;
         margin-left: 4%;
         margin-right: 4%;
@@ -587,10 +587,10 @@ textarea{
             border: none;
         }
         .uh-custom-table tbody td {
-          padding: 5px 8px 5px 0; 
+          padding: 5px 8px 5px 0;
           border: none;
         }
-        .options{  
+        .options{
             margin-top: 12px;
             text-align: center;
         }
@@ -826,7 +826,7 @@ textarea{
             border-bottom: solid 1px #D1D1D1;
             &.sum{
                   border-top:solid 1px #D1D1D1;
-                  font-weight: bold; 
+                  font-weight: bold;
                 }
         }
     }
@@ -879,7 +879,7 @@ textarea{
     line-height: 20px;
     color: #333;
     border:1px solid #D1D1D1;
-    border-radius:2px; 
+    border-radius:2px;
 }
 
 
@@ -1026,14 +1026,14 @@ textarea{
         background: url(../images/btn-confirm.png) no-repeat 10px center #4A90E2;
     }
     &.left{
-        margin-left:10px; 
+        margin-left:10px;
     }
     &.left:first-of-type{
         margin-left: 0;
     }
     &.right{
         float:right;
-        margin-right:10px; 
+        margin-right:10px;
     }
     &.right:first-of-type{
         margin-right: 0;
@@ -1141,7 +1141,7 @@ textarea{
         text-align: left;
         background: white;
         box-shadow: 0 1px 2px #D1D1D1;
- 
+
     }
     .s-time{
         clear: both;
@@ -1316,7 +1316,7 @@ textarea{
     .city-select-drop{
          display: block;
     }
-   
+
 }
 
 dt{
@@ -1330,7 +1330,7 @@ dt{
     .col-xs-4{
         padding:5px 20px;
         color: #F8F8F8;
-    } 
+    }
 
     .mb{
         &.first-of-type{
@@ -1368,6 +1368,34 @@ dt{
 
 }
 
+.ah-addmoney{
+        // width: 150px;
+        height: 80px;
+        // padding-bottom: 10px;
+        // // background:#FF8250;
+        // line-height: 40px;
+        // padding: 20px;
+        // font-size: 14px;
+        //
+        // text-decoration: none;
+        label{
+          padding: 20px 0;
+          font-size: 18px;
+          color: #ff3535;
+        }
+        button{
+          // box-sizing: border-box;
+          width: 140px;
+          border: 0;
+          padding: 10px 0;
+          text-align: center;
+          margin:10px 0;
+          color: white;
+          background:#FF8250;
+          line-height: 20px;
+          border-radius:100px;
+        }
+}
 
 
 .input-label{
