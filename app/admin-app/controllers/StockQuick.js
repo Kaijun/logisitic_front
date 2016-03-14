@@ -166,13 +166,31 @@
         }
 
         function regStock () {
-            $scope.submitData.need_check = $scope.submitData.need_check?1:0;
-            $scope.submitData.warehouse_id = $scope.warehouseChosen.id;
-            $scope.submitData.reference_code = $scope.transCompanyChosen.prefix + $scope.submitData.reference_code;
+            if($scope.userFound){
+                doReg();
+            }
+            else{
+                swal({   
+                    title: "未填写库存码",   
+                    text: "包裹将归为待认领",   
+                    type: "warning",   
+                    showCancelButton: true,
+                    closeOnConfirm: true 
+                }, function(){  
+                    $scope.submitData.stock_number = null;
+                    doReg(); 
+                });
+            }
 
-            StockService.submitStock($scope.submitData).then(function(data) {
-                $state.go('stockDetail', {stockId: data.package_id});
-            })
+            function doReg() {
+                $scope.submitData.need_check = $scope.submitData.need_check?1:0;
+                $scope.submitData.warehouse_id = $scope.warehouseChosen.id;
+                $scope.submitData.reference_code = $scope.transCompanyChosen.prefix + $scope.submitData.reference_code;
+
+                StockService.submitStock($scope.submitData).then(function(data) {
+                    $state.go('stockDetail', {stockId: data.package_id});
+                })
+            }
         }
 
 
