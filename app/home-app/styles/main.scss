@@ -1402,6 +1402,39 @@ dt{
     padding-left:8px;
 }
 
+
+.uh-history-table{
+    font-size: 14px;
+    table-layout: fixed;
+    width: 100%;
+    border: none;
+    tbody{
+        tr{
+          padding: 10px 0;
+            // border-bottom: 10px;
+        }
+        tr:nth-child(even) {background: #f8f8f8}
+        td{
+          line-height: 20px;
+
+            text-align: left;
+            padding: 8px 0px 8px 8px;
+            border: 0;
+
+        }
+    }
+    .table-time{
+      padding:  10px 0;
+      color: #666;
+      text-align: center;
+      border-radius: 5px 0 0 5px;
+      // background: #666;
+      width: 10%;
+    }
+
+}
+
+
 // 用于修改自动填充颜色
 // ::-webkit-input-placeholder { color:#999; }
 // ::-moz-placeholder { color:#666; } firefox 19+

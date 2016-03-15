@@ -722,10 +722,10 @@ select{
   height: 30px;
   font-size: 10px;
   color: #fff;
-  border-radius:999px;
+  border-radius:5px;
   background:#D1D1D1;
   &.reply{
-    float: right;
+    float: left;
   }
 }
 .ah-message-text{
@@ -734,13 +734,13 @@ select{
   margin: 10px 0 0 10px;
   box-sizing:border-box;
   height: auto;
-  border-radius:999px;
+  border-radius:5px;
   padding: 5px 20px;
   background:#efefef;
   border: 1px solid #efefef;
   &.reply{
     margin-right: 10px;
-    float: right;
+    // float: right;
     color: #fff;
     background:#4A90E2;
   }

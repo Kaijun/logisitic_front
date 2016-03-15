@@ -1,0 +1,54 @@
+<div ng-class="{first: stock.status == 4}" class="uh-submit uh-main-section" >
+  <div class="uh-main-header">
+    <div class="left">
+      <span class="title blue">问题件 {{stock.reference_code}} 详情</span>
+    </div>
+  </div>
+  <div class="uh-section">基本信息</div>
+  <!-- section 1 表格开始 -->
+  <div class="pure-g">
+    <div class="pure-u-1-2">
+      <table class="pure-table pure-table-horizontal uh-small-table">
+        <tr><td style="width:30%">收件仓库</td><td>{{stock.warehouseStr}}</td></tr>
+        <tr><td>跟踪号</td><td>{{stock.reference_code}}</td></tr>
+        <!-- 快递信息正确：数据库项目为 packages/reference_code -->
+        <!-- <tr><td>入库重量</td><td>{{stock.weight}}KG</td></tr> -->
+      </table>
+    </div>
+    <div class="pure-u-1-2">
+      <table class="pure-table pure-table-horizontal uh-small-table">
+        <!-- <tr><td style="width:30%">状态</td><td>{{stock.statusStr}}</td></tr> -->
+        <tr><td style="width:30%">问题件分类</td><td>{{stock.statusStr}}</td></tr>
+        <!-- <tr><td>预报时间</td><td>{{stock.created_at}}</td></tr> -->
+        <tr><td>更新时间</td><td>{{stock.updated_at}}</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="uh-main-section last" >
+<div class="uh-section">问题件描述：外箱破损，这个包裹是否还需要入库操作？</div>
+</div>
+<div class="uh-main-section additon">
+ <div class="uh-section desc">历史跟踪记录</div>
+ <table class="uh-history-table">
+   <tbody>
+     <tr>
+       <td class="table-time">2016-3-3</td>
+       <td >不需要这个包裹了不需要这个包裹了不需要这个包裹了不需要这个包裹了不需要这个包裹了不需要这个包裹了不需要这个包裹了不需要这个包裹了不需要这个包裹了不需要这个包裹了不需要这个包裹了</td>
+     </tr>
+     <tr>
+       <td class="table-time">2016-3-3</td>
+       <td>不需要这个包裹了</td>
+     </tr>
+   </tbody>
+ </table>
+</div>
+<!-- 底部按钮开始 -->
+<div class="uh-main-section message last">
+<div class="uh-section">添加新的回复</div>
+<div class=""><textarea ng-model="textToSend" name="" rows="8"></textarea></div>
+</div>
+<div class="uh-main-action" >
+<div ng-click="goBack()" class="btn-back left"></div>
+<div ng-click="sendMsg()" class="btn-msg-send right"></div>
+</div>

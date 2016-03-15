@@ -36,6 +36,12 @@
             templateUrl: 'templates/stockDetail.html',
             controller: 'StockDetailCtrl',
         })
+// TODO: Home ProblemDetail
+				.state('problemDetail', {
+						url: '/problemDetail',
+						templateUrl: 'templates/problemDetail.html',
+						controller: '',
+				})
 
 		.state('packageClaim',{
 			url:'/packageClaim',
