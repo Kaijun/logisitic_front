@@ -155,7 +155,13 @@
             templateUrl: 'templates/maintenance/ticketDetail.html',
             controller: 'TicketDetail',
         })
-
+// TODO: Admin Notification
+				.state('notification', {
+						parent: 'maintenance',
+						url: '/notification',
+						templateUrl: 'templates/maintenance/notification.html',
+						controller: '',
+				})
         .state('messageList', {
             parent: 'maintenance',
             url: '/messageList',

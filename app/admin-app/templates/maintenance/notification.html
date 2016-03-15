@@ -1,0 +1,33 @@
+<div class="ah-list">
+  <table class="pure-table pure-table-horizontal ah-list-table">
+    <thead>
+      <tr>
+        <!-- <th width="30px"><input type="checkbox"></th> -->
+        <th width="10%">时间</th>
+        <th >通知内容</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2016-2-4</td>
+        <td>[***]用户已回复跟踪号为[****]的问题件</td>
+        <td>查看 标记为已读</td>
+      </tr>
+      <tr>
+        <td>2016-2-5</td>
+        <td>[***]用户已回复主题为[****]的工单</td>
+        <td>查看 标记为已读</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="ah-action-btns">
+  <div class="left ">
+    <div class="ah-pager"  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" ><</div>
+    <div class="ah-pager" ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >></div>
+  </div>
+  <div class="right">
+    <!-- <a  class="pure-button blue horizon">转为工单</a> -->
+  </div>
+</div>
