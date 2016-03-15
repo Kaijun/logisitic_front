@@ -14,7 +14,7 @@
           <td><input type="checkbox"></td>
           <td>{{lt.id}}</td>
           <td>{{lt.type_name}}</td>
-          
+
           <td>
             <a ng-click="deleteLogisticType(lt)" ng-show="{{lt.is_deletable}}">删除</a>
             <div ng-show="{{!lt.is_deletable}}">系统默认无法删除</div>
@@ -27,11 +27,11 @@
   </div>
   <div class="ah-action-btns">
     <div class="right">
-      <a  ng-click="" class="pure-button red horizon">批量删除</a>
+      <!-- <a  ng-click="" class="pure-button red horizon">批量删除</a> -->
       <a  ng-click="addLogisticType()" class="pure-button blue horizon">添加新类型</a>
     </div>
   </div>
-  
+
 </div>
 <div ng-show="isPopupShown" class="pop-up-cover">
   <div class="pop-up-wapper">

@@ -5,9 +5,9 @@
 <div class="pure-g ah-form-line">
   <div class="pure-u-4-24 input-label">用户Email</div>
   <div class="pure-u-14-24">
-    <input 
+    <input
       name="chargeEmail"
-      type="text" 
+      type="text"
       ng-model="chargeEmail"
       validator="required, email">
   </div>
@@ -17,11 +17,11 @@
 <div class="pure-g ah-form-line">
   <div class="pure-u-4-24 input-label">用户库存码</div>
   <div class="pure-u-14-24">
-    <input 
+    <input
       ng-model="chargeStockNum"
       ng-change="chargeStockNum = chargeStockNum.toUpperCase();"
       name="chargeStockNum"
-      type="text" 
+      type="text"
       validator="required">
   </div>
 </div>
@@ -30,10 +30,10 @@
 <div class="pure-g ah-form-line">
   <div class="pure-u-4-24 input-label">充值金额</div>
   <div class="pure-u-10-24">
-    <input 
+    <input
       ng-model="chargeAmount"
       name="chargeAmount"
-      type="text" 
+      type="text"
       validator="required, number">
   </div>
 </div>
@@ -49,5 +49,6 @@
     <a validation-submit="refillForm" ng-click="charge()" class="pure-button blue">确认</a>
   </div>
 </div>
-</div>
 </form>
+
+</div>
