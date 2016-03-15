@@ -5,11 +5,11 @@
         .module('admin.controllers')
         .controller('OrderDetail', OrderDetail);
 
-    OrderDetail.$inject = ['$scope', '$stateParams', 'OrderService', 'InfoService', 'LogisticService', '$timeout', '$state', '$window'];
+    OrderDetail.$inject = ['$scope', '$stateParams', 'OrderService', 'InfoService', 'LogisticService', '$timeout', '$state', '$window', '$filter'];
 
     /* @ngInject */
-    function OrderDetail($scope, $stateParams, OrderService, InfoService,LogisticService, $timeout, $state, $window) {
-  
+    function OrderDetail($scope, $stateParams, OrderService, InfoService,LogisticService, $timeout, $state, $window, $filter) {
+
         $scope.order = null;
         $scope.isWeightPopupShown = false;
         $scope.weightSum = null
@@ -191,14 +191,14 @@
 
                 // 下载easylog文件
                 var easylogData = ''
-                    + $scope.order.package.reference_code + '|' 
-                    + $scope.order.package.user.name + '|' 
-                    + $scope.order.post_address.post_code + '|' 
-                    + $scope.order.post_address.province + '|' 
-                    + $scope.order.post_address.city + $scope.order.post_address.town + $scope.order.post_address.street + '|'
+                    + $scope.order.package.reference_code + '|'
+                    + $scope.order.post_address.receiver_name + '|'
+                    + $scope.order.post_address.post_code + '|'
+                    + $scope.order.post_address.province + '|'
+                    + $scope.order.post_address.city + $scope.order.post_address.street + '|'
                     + $scope.order.post_address.phone + '|'
                     + 'CN' + '|'
-                    + $scope.order.weight.toString().replace(/\./g, ",") + '|'
+                    + $filter('number')($scope.order.weight,1).toString().replace(/\./g, ",") + '|'
                     + 1 + '|'
                     + 3;
 
@@ -266,7 +266,7 @@
             }
         }
         // function cancleEditOrder () {
-        //     $scope.isWeightEditShown = false; 
+        //     $scope.isWeightEditShown = false;
         //     $scope.isShipStatusEditShown = false;
         //     $scope.isTrackNumEditShown = false;
         // }

@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('OrderList', OrderList);
 
-    OrderList.$inject = ['$scope', 'OrderService', '$timeout', '$state', '$http', 'InfoService', '$stateParams', '$window'];
+    OrderList.$inject = ['$scope', 'OrderService', '$timeout', '$state', '$http', 'InfoService', '$stateParams', '$window', '$filter'];
 
     /* @ngInject */
-    function OrderList($scope, OrderService, $timeout, $state, $http, InfoService, $stateParams, $window) {
+    function OrderList($scope, OrderService, $timeout, $state, $http, InfoService, $stateParams, $window, $filter) {
         $scope.$stateParams = $stateParams;
         $scope.orders = [];
         $scope.goToDetail = goToDetail;
@@ -172,10 +172,10 @@
                         }
                     };
                     $state.go($state.current, {}, {reload: true});
-               })     
+               })
 
         }
-        function batchPrintPostList () {            
+        function batchPrintPostList () {
             if(!selectedOrders || selectedOrders.length==0){
                 swal('请选择项目', '', 'error');
                 return;
@@ -200,7 +200,7 @@
         //                 }
         //             };
         //             $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
-        //        })   
+        //        })
         }
 
         function batchDownloadEasylog() {
@@ -215,18 +215,18 @@
                 var easylogData = '';
                 selectedOrders.forEach(function(order, idx) {
                     easylogData = easylogData
-                        + order.package.reference_code + '|' 
-                        + order.package.user.name + '|' 
-                        + order.post_address.post_code + '|' 
-                        + order.post_address.province + '|' 
-                        + order.post_address.city + order.post_address.town + order.post_address.street + '|'
+                        + order.package.reference_code + '|'
+                        + order.post_address.receiver_name + '|'
+                        + order.post_address.post_code + '|'
+                        + order.post_address.province + '|'
+                        + order.post_address.city + order.post_address.street + '|'
                         + order.post_address.phone + '|'
                         + 'CN' + '|'
-                        + order.weight.toString().replace(/\./g, ",") + '|'
+                        + $filter('number')(order.weight,1).toString().replace(/\./g, ",") + '|'
                         + 1 + '|'
                         + 3;
                     if(idx<selectedOrders.length-1){
-                        easylogData + '\n';
+                        easylogData = easylogData + '\n';
                     }
                 })
 
