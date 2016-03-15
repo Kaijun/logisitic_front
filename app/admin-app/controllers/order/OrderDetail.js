@@ -184,7 +184,7 @@
         function downloadEasyLog(){
             swal({
                 title: "已下载？",
-                text: "若已下载, 请点击确认修改运单状态,（目前为演示功能，具体文件请等待测试后添加）",
+                text: "若已下载, 请点击确认修改运单状态",
                 showCancelButton: true,
                 closeOnConfirm: true,
             }, function(){

@@ -9,12 +9,14 @@
 
     /* @ngInject */
     function OrderList($scope, OrderService, $timeout, $state, $http, InfoService, $stateParams, $window) {
+        $scope.$stateParams = $stateParams;
         $scope.orders = [];
         $scope.goToDetail = goToDetail;
         $scope.deleteOrder = deleteOrder;
         $scope.batchDownload = batchDownload;
         $scope.batchPrintPackList = batchPrintPackList;
         $scope.batchPrintPostList = batchPrintPostList;
+        $scope.batchDownloadEasylog = batchDownloadEasylog;
         $scope.orderSelected = orderSelected;
         $scope.pageInfo = null;
 
@@ -169,7 +171,7 @@
                             })
                         }
                     };
-                    $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+                    $state.go($state.current, {}, {reload: true});
                })     
 
         }
@@ -199,6 +201,55 @@
         //             };
         //             $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
         //        })   
+        }
+
+        function batchDownloadEasylog() {
+            swal({
+                title: "已下载？",
+                text: "若已下载, 请点击确认修改运单状态",
+                showCancelButton: true,
+                closeOnConfirm: true,
+            }, function(){
+
+                // 下载easylog文件
+                var easylogData = '';
+                selectedOrders.forEach(function(order, idx) {
+                    easylogData = easylogData
+                        + order.package.reference_code + '|' 
+                        + order.package.user.name + '|' 
+                        + order.post_address.post_code + '|' 
+                        + order.post_address.province + '|' 
+                        + order.post_address.city + order.post_address.town + order.post_address.street + '|'
+                        + order.post_address.phone + '|'
+                        + 'CN' + '|'
+                        + order.weight.toString().replace(/\./g, ",") + '|'
+                        + 1 + '|'
+                        + 3;
+                    if(idx<selectedOrders.length-1){
+                        easylogData + '\n';
+                    }
+                })
+
+                downloadCSV(new Date().toISOString().substring(0,10) + '_easylog.csv', easylogData)
+                // OrderService.editOrder($stateParams.orderId, {
+                //     order_status: 4,
+                // }).then(function() {
+                //     $state.go($state.current, {orderId: $stateParams.orderId}, {reload: true});
+                //  })
+            })
+
+            function downloadCSV(filename, text) {
+              var element = document.createElement('a');
+              element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+              element.setAttribute('download', filename);
+
+              element.style.display = 'none';
+              document.body.appendChild(element);
+
+              element.click();
+
+              document.body.removeChild(element);
+            }
         }
 
 
