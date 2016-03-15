@@ -1,0 +1,47 @@
+<!-- TODO: 之后可以抽象成一个Directive 用作所有的ListView!!! -->
+<div class="uh-main-section first-list">
+  <div class="uh-main-header">
+    <div class="left">
+      <span class="title">问题件列表</span>
+      <!-- <a ui-sref="stockSubmit" class="pure-button radius lightblue">新增</a> -->
+    </div>
+    <div class="right">
+      <!-- <input placeholder="搜索" ng-model="searchText" /> -->
+    </div>
+  </div>
+
+  <div class="uh-main-tab">
+    <div class="left">
+      <a class="uh-header-tab active clickable">所有记录</a>
+      <a  class="uh-header-tab clickable">库存问题件</a>
+      <a class="uh-header-tab clickable">订单问题件</a>
+      <a class="uh-header-tab clickable">代刷问题件</a>
+      <a class="uh-header-tab clickable">移库问题件</a>
+    </div>
+    <div class="right">
+      <a ui-sref="packageClaim" class="uh-header-tab function">包裹认领</a>
+    </div>
+  </div>
+</div>
+<div class="uh-main-section middle">
+  <table class="pure-table pure-table-horizontal uh-list-table">
+    <tr>
+      <td>更新时间</td>
+      <td>跟踪号</td>
+      <td>问题件描述</td>
+      <td>问题分类</td>
+      <td>操作</td>
+    </tr>
+    <tr>
+      <td>2016-4-1</td>
+      <td>DH90123213</td>
+      <td>订单出货破损</td>
+      <td>库存</td>
+      <td ui-sref="problemDetail">查看</td>
+    </tr>
+  </table>
+  <div ng-show="filterStockList.length==0" class="uh-box-empty">
+    <img src="images/message-empty.svg" width="120px;">
+    <div>您的问题件列表为空 :(</div>
+  </div>
+</div>

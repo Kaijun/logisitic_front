@@ -42,6 +42,11 @@
 						templateUrl: 'templates/problemDetail.html',
 						controller: '',
 				})
+				.state('problemList', {
+						url: '/problemList',
+						templateUrl: 'templates/problemList.html',
+						controller: '',
+				})
 
 		.state('packageClaim',{
 			url:'/packageClaim',
