@@ -145,7 +145,7 @@
     <div class="pure-u-1-6 right">
        <div problem-pkg-btn package-id="{{$stateParams.stockId}}" type="3" current-status="stock.status"></div>
 <!-- TODO: 打印入库面单 -->
-      <div><a ng-click="printStock()" class="pure-button list blue ">打印入库面单</div>
+      <div><a ng-click="printStock()" class="pure-button list blue divide">入库面单</a></div>
       <div><a ng-click="enterStock()" ng-if="stock.status==2" class="pure-button blue divide">确认入库</a></div>
       <div><a ng-click="enterStock()" ng-if="stock.status==4" class="pure-button blue divide">修改入库</a></div>
       <div><a ng-click="goBack()" class="pure-button back divide">返回继续</a></div>
