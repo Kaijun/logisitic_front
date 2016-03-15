@@ -316,12 +316,17 @@
 
 
         .state('printPrepareList', {
-            url: '/print/prepareList/:orderId',
+            url: '/print/prepareList/',
             templateUrl: 'templates/print-format/perpare-list.html',
             controller: 'PrintPrepareList',
         })
+        .state('printStock', {
+            url: '/print/stock/',
+            templateUrl: 'templates/print-format/stock-print.html',
+            controller: 'PrintStock',
+        })
         .state('printShip', {
-            url: '/print/ship/:orderId',
+            url: '/print/ship/',
             templateUrl: 'templates/print-format/ship-print.html',
             controller: 'PrintShip',
         })
@@ -334,7 +339,7 @@
             controller: 'PrintStockBatch',
         })
         .state('printTrans', {
-            url: '/print/trans/:transId',
+            url: '/print/trans/',
             templateUrl: 'templates/print-format/trans-print.html',
             controller: 'PrintTrans',
         })

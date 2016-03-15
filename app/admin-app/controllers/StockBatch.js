@@ -5,14 +5,15 @@
         .module('admin.controllers')
         .controller('StockBatch', StockBatch);
 
-    StockBatch.$inject = ['$scope', 'StockService', '$state'];
+    StockBatch.$inject = ['$scope', 'StockService', '$state', '$window'];
 
     /* @ngInject */
-    function StockBatch($scope, StockService, $state) {
+    function StockBatch($scope, StockService, $state, $window) {
 
         $scope.fileToUpload = null;
         $scope.stockSelected = stockSelected;
         $scope.submitBatch = submitBatch;
+        $scope.printBatch = printBatch;
         $scope.stocks = [];
 
         $scope.upload = upload;
@@ -98,6 +99,12 @@
                     $state.go($state.current, {}, {reload: true});
                 });
             })
+        }
+
+        function printBatch() {
+            $window.localStorage.setItem('printStockData', angular.toJson($scope.selectedStocks));
+            var url = $state.href('printStock');
+            var newWindow = $window.open(url,'_blank');
         }
     }
 })();

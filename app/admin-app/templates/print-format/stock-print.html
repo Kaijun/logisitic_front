@@ -1,26 +1,26 @@
 
-<div class="delivery-wapper">
+<div ng-repeat="stock in stocks" class="delivery-wapper">
 	<div><img src="images/wb-logo.png" height="30px;"></div>
 			<div class="ship-info">
-		<span>入库跟踪号：DHL1023213</span>
+		<span>入库跟踪号：{{stock.reference_code}}</span>
 		<br/>
-		<img id="barcode1"/>
+    <img id="{{'barcode' + stock.reference_code}}" ng-init="generateBarcode(stock.reference_code)"/>
 	</div>
 	<table>
     <tbody>
         <tr>
 			<th>客户ID</th>
-            <th>cpjstudio</th>
+            <th>{{stock.user.name}}</th>
         </tr>
         <tr>
 			<td>库存码</td>
-            <td>NDSKDD</td>
+            <td>{{stock.user.stock_number}}</td>
         </tr>
     </tbody>
     </table>
 
 
 	<div>库位号</div>
-  <div class="font-size:48px;height:30">024</div>
+  <div class="font-size:48px;height:30">{{stock.user.stock_position}}</div>
 
 </div>

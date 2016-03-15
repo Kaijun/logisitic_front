@@ -7,7 +7,7 @@
 
 
     /* @ngInject */
-    function StockQuickCtrl($scope, AppConfig, StockService, UserService, RoleService, LogisticService, $timeout, InfoService, $state, $filter) {
+    function StockQuickCtrl($scope, AppConfig, StockService, UserService, RoleService, LogisticService, $timeout, InfoService, $state, $filter, $window) {
         
         $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
 
@@ -34,6 +34,7 @@
         $scope.search = search;
         $scope.enterStock = enterStock;
         $scope.regStock = regStock;
+        $scope.printStock = printStock;
 
         activate();
 
@@ -254,6 +255,15 @@
                 }
             })
         }
+
+
+
+        function printStock() {
+            $window.localStorage.setItem('printStockData', angular.toJson([$scope.stock]));
+            var url = $state.href('printStock');
+            var newWindow = $window.open(url,'_blank');
+        }
+
         
     }
 })();

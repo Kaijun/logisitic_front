@@ -14,6 +14,7 @@
         $scope.stockId = $stateParams.stockId;
         $scope.deleteStock = deleteStock;
         $scope.enterStock = enterStock;
+        $scope.printStock = printStock;
         $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
 
         $scope.eanCode = null;
@@ -181,5 +182,10 @@
             })
         }
 
+        function printStock() {
+            $window.localStorage.setItem('printStockData', angular.toJson([$scope.stock]));
+            var url = $state.href('printStock');
+            var newWindow = $window.open(url,'_blank');
+        }
     }
 })();
