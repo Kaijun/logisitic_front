@@ -1,0 +1,33 @@
+<div class="pure-g pure-u-1">
+
+  <table class="pure-table pure-table-horizontal ah-list-table">
+    <thead>
+      <tr>
+        <th>等级名称</th>
+        <th>积分最低值</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>初级会员</td>
+        <td>2000</td>
+        <td><a ui-sref="levelManage">修改</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="ah-action-btns">
+    <div class="left ">
+            <div class="ah-pager"  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" ><</div>
+             <div class="ah-pager" ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >></div>
+    </div>
+    <div class="right">
+       <!-- <a  class="pure-button red horizon">批量删除</a> -->
+      <a ui-sref="levelManage"  class="pure-button blue horizon" ui-sref="roleManage">添加新等级</a>
+    </div>
+  </div>
+
+
+
+</div>

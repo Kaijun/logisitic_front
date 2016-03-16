@@ -3,7 +3,7 @@
     <div class="pure-u-20-24">
       <div class="ah-section first-child"> 移库 - {{trans.reference_code}} </div>
       <!-- 并列表格开始 -->
-      <div class="pure-g"> 
+      <div class="pure-g">
 
         <div class="pure-u-1-2">
           <table class="pure-table pure-table-horizontal ah-small-table">
@@ -27,7 +27,7 @@
 
 
 
-      </div>  
+      </div>
       <!-- 并列表格结束 -->
 
       <div class="ah-section"> 包裹物品信息 </div>
@@ -97,11 +97,11 @@
         </tr>
       </table>
     </div><!-- 左侧主题结束 -->
-    <div class="pure-u-4-24 right">     
+    <div class="pure-u-4-24 right">
     <div problem-pkg-btn package-id="{{$stateParams.transId}}" type="2" current-status="trans.status"></div>
      <div><a ng-click="printTrans()" class="pure-button blue divide">打印</a></div>
      <div><a ng-if="trans.status==8||trans.status==9" ng-click="submitTrans()" class="pure-button blue divide">移库</a></div>
-     <div><a class="pure-button red divide">存档</a></div>
+     <!-- <div><a class="pure-button red divide">存档</a></div> -->
    </div> <!-- 右侧功能键结束 Div -->
 </div><!-- 中部信息栏结束 Div -->
 </div>

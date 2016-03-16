@@ -82,7 +82,7 @@
             controller: 'OrderList',
         })
 
-				// TODO packageClaim
+
 
         .state('packageClaimList',{
     		parent:'business',
@@ -313,13 +313,62 @@
             templateUrl: 'templates/user/roleList.html',
             controller: 'RoleList',
         })
+
         .state('roleManage', {
             parent: 'system',
             url: '/user/roleManage',
             templateUrl: 'templates/user/roleManage.html',
             controller: 'RoleManage',
         })
-
+				// TODO: 用户等级管理
+				.state('levelManage', {
+						parent: 'system',
+						url: '/levelManage',
+						templateUrl: 'templates/level/levelManage.html',
+						controller: '',
+				})
+				.state('levelList', {
+						parent: 'system',
+						url: '/levelList',
+						templateUrl: 'templates/level/levelList.html',
+						controller: '',
+				})
+				.state('scoreSetting', {
+						parent: 'system',
+						url: '/scoreSetting',
+						templateUrl: 'templates/score/scoreSetting.html',
+						controller: '',
+				})
+				.state('scoreSending', {
+						parent: 'system',
+						url: '/scoreSetting',
+						templateUrl: 'templates/score/scoreSending.html',
+						controller: '',
+				})
+				.state('couponManage', {
+						parent: 'system',
+						url: '/couponManage',
+						templateUrl: 'templates/coupon/couponManage.html',
+						controller: '',
+				})
+				.state('couponSending', {
+						parent: 'system',
+						url: '/couponSending',
+						templateUrl: 'templates/coupon/couponSending.html',
+						controller: '',
+				})
+					.state('couponList', {
+						parent: 'system',
+						url: '/couponList',
+						templateUrl: 'templates/coupon/couponList.html',
+						controller: '',
+				})
+				.state('couponTypeList', {
+					parent: 'system',
+					url: '/couponTypeList',
+					templateUrl: 'templates/coupon/couponTypeList.html',
+					controller: '',
+			})
 
         .state('printPrepareList', {
             url: '/print/prepareList/',

@@ -35,9 +35,9 @@
           <ul class="list" >
             <!-- <li ui-sref="stockList" ui-sref-active="active">库存列表</li> -->
             <li ui-sref="stockList({stockStatus: ''})" ng-class="{active: $state.current.name=='stockList'&&!$stateParams.stockStatus}">库存列表</li>
+            <li ui-sref="stockQuick" ui-sref-active="active">快速入库</li>
             <li ui-sref="stockList({stockStatus: 1})" ng-class="{active: $state.current.name=='stockList'&&$stateParams.stockStatus==1}">已登记</li>
             <li ui-sref="stockList({stockStatus: 2})" ng-class="{active: $state.current.name=='stockList'&&$stateParams.stockStatus==2}">待入库</li>
-            <li ui-sref="stockQuick" ui-sref-active="active">快速入库</li>
             <li ui-sref="stockBatch" ui-sref-active="active">批量入库</li>
             <li ui-sref="transList" ui-sref-active="active">移库列表</li>
             <li ui-sref="packageClaimList" ui-sref-active="active">待认领</li>
@@ -46,14 +46,17 @@
         <div class="list-wrapper">
           <div class="title">订单</div>
           <ul class="list" >
+
             <li ui-sref="orderList({orderStatus: ''})" ng-class="{active: $state.current.name=='orderList'&&!$stateParams.orderStatus}">订单列表</li>
+            <li ui-sref="orderQuick" ui-sref-active="active">快速处理</li>
             <li ui-sref="orderList({orderStatus: 1})" ng-class="{active: $state.current.name=='orderList'&&$stateParams.orderStatus==1}">未处理</li>
             <li ui-sref="orderList({orderStatus: 7})" ng-class="{active: $state.current.name=='orderList'&&$stateParams.orderStatus==7}">打包中</li>
             <li ui-sref="orderList({orderStatus: 2})" ng-class="{active: $state.current.name=='orderList'&&$stateParams.orderStatus==2}">待付款</li>
              <li ui-sref="orderList({orderStatus: 3})" ng-class="{active: $state.current.name=='orderList'&&$stateParams.orderStatus==3}">已付款</li>
             <li ui-sref="orderList({orderStatus: 4})" ng-class="{active: $state.current.name=='orderList'&&$stateParams.orderStatus==4}">待发货</li>
-            <li ui-sref="orderQuick" ui-sref-active="active">快速处理</li>
-            <li ui-sref="orderTrack" ui-sref-active="active">订单跟踪</li>
+            <li ui-sref="orderList({orderStatus: 5})" ng-class="{active: $state.current.name=='orderList'&&$stateParams.orderStatus==5}">已发货</li>
+
+            <!-- <li ui-sref="orderTrack" ui-sref-active="active">订单跟踪</li> -->
           </ul>
         </div>
 
@@ -133,32 +136,34 @@
           <ul class="list">
             <li ui-sref="logisticList" ui-sref-active="active">物流线路管理</li>
             <li ui-sref="logisticType" ui-sref-active="active">发货类型管理</li>
-            <li ui-sref="logisticTrack" ui-sref-active="active">跟踪状态管理</li>
+            <!-- <li ui-sref="logisticTrack" ui-sref-active="active">跟踪状态管理</li> -->
             <li ui-sref="transCompany" ui-sref-active="active">运输公司管理</li>
+              <li ui-sref="extraSrvList" ui-sref-active="active">附加服务管理</li>
             </ul>
         </div>
-        <div class="list-wrapper">
-          <div class="title">附加服务</div>
-          <ul class="list">
-            <li ui-sref="extraSrvList" ui-sref-active="active">附加服务管理</li>
-            </ul>
-        </div>
-
 
         <div class="list-wrapper">
           <div class="title">用户</div>
           <ul class="list">
             <li ui-sref="userList" ui-sref-active="active">用户管理</li>
-            <li ui-sref="roleList" ui-sref-active="active">用户组管理</li>
+            <li ui-sref="roleList" ui-sref-active="active">用户组权限管理</li>
             </ul>
         </div>
-<!--              <div class="list-wrapper">
-          <div class="title">数据库</div>
+        <div class="list-wrapper">
+          <div class="title">积分等级</div>
           <ul class="list">
-            <li>数据库备份</li>
-            <li>数据库导出</li>
-            </ul>
-        </div> -->
+            <li ui-sref="scoreSetting" ui-sref-active="active">积分设置</li>
+            <li ui-sref="levelList" ui-sref-active="active">等级管理</li>
+          </ul>
+        </div>
+        <div class="list-wrapper">
+          <div class="title">优惠码</div>
+          <ul class="list">
+            <li ui-sref="couponTypeList" ui-sref-active="active">优惠码管理</li>
+            <li ui-sref="couponList" ui-sref-active="active">已发优惠码</li>
+            <li ui-sref="couponSending" ui-sref-active="active">发放优惠码</li>
+          </ul>
+        </div>
 
       </div>
 

@@ -1,0 +1,100 @@
+<div class="pure-g">
+<div class="pure-u-20-24">
+  <div class=" ah-section"> 用户等级管理 </div>
+  <div class="pure-g ah-form-line">
+    <div class="pure-u-4-24 input-label">等级名称</div>
+    <div class="pure-u-10-24"><input></div>
+  </div>
+  <div class="pure-g ah-form-line">
+    <div class="pure-u-4-24 input-label">积分最低值</div>
+    <div class="pure-u-2-24"><input></div>
+  </div>
+  <div class="pure-g ah-form-line">
+    <div class="pure-u-4-24 input-label">最大可使用积分</div>
+    <div class="pure-u-4-24"><input></div>
+    <div class="pure-u-14-24">单笔交易可使用的积分最大值</div>
+  </div>
+  <div class="pure-g ah-form-line">
+    <div class="pure-u-4-24 input-label">可使用积分比例</div>
+    <div class="pure-u-4-24"><input></div>
+    <div class="pure-u-14-24">0-1 之间的值</div>
+  </div>
+  <div class=" ah-section"> 线路设置 </div>
+  <table class="pure-table pure-table-horizontal ah-list-table">
+    <thead>
+      <tr>
+        <th>线路名称</th>
+        <th>线路类型</th>
+        <th>优惠比例</th>
+        <th>是否可使用此线路</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>顺丰线路</td>
+        <td>发货</td>
+        <td><input></td>
+        <td><select>
+            <option>可使用</option>
+            <option>不可使用</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td>移库线路</td>
+        <td>移库</td>
+        <td><input></td>
+        <td><select>
+            <option>可使用</option>
+            <option>不可使用</option>
+        </select></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class=" ah-section"> 附加服务设置 </div>
+  <table class="pure-table pure-table-horizontal ah-list-table">
+    <thead>
+      <tr>
+        <th>附加服务名称</th>
+        <th>附加类型</th>
+        <th>优惠比例</th>
+        <th>是否可使用此服务</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>入库清点</td>
+        <td>入库</td>
+        <td><input></td>
+        <td><select>
+            <option>可使用</option>
+            <option>不可使用</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td>包裹加固</td>
+        <td>发货</td>
+        <td><input></td>
+        <td><select>
+            <option>可使用</option>
+            <option>不可使用</option>
+        </select></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+  </div>
+
+<!-- 左侧主题结束 -->
+
+
+<div class="pure-u-4-24 right">
+    <a validation-submit="extraSrvForm" ng-click="submit()" class="pure-button blue">确认</a>
+      <a  ng-click="" class="pure-button red">取消</a>
+        <a  ng-click="goBack()" class="pure-button back">返回列表</a>
+</div>
+</div>

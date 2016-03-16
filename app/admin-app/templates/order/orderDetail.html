@@ -44,7 +44,7 @@
             <tr><td style="width:30%">订单状态</td><td>{{order.statusStr}}</td></tr>
             <tr><td>提交时间</td><td>{{order.created_at}}</td></tr>
             <tr><td>更新时间</td><td>{{order.updated_at}}</td></tr>
-            <tr><td>发货跟踪号</td><td>
+            <tr><td>运单号</td><td>
             <span ng-init="isTrackNumEditShown=false"  ng-hide="isTrackNumEditShown">
               国际段({{order.logisticPath.ship_company_international}}): {{order.track_code || "待添加"}} <br> 国内段({{order.logisticPath.ship_company_china}}): {{order.track_code_2 || "待添加"}}
             </span>
