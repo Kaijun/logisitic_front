@@ -6,7 +6,7 @@
   </div>
   <!-- 头部标题结束 -->
   <!-- 主体开始 -->
-  
+
   <!-- section 1 基本信息 -->
   <div class="uh-section">基本信息</div>
   <!-- section 1 表格开始 -->
@@ -134,7 +134,7 @@
               </tr>
             </thead>
             <!-- 真实价格 -->
-            <tbody ng-if="order.order_status !=1 && order.order_status != 7"> 
+            <tbody ng-if="order.order_status !=1 && order.order_status != 7">
               <!-- TODO: 这里请使用AS生产动态数据 -->
               <tr ng-repeat="es in order.extra_services">
                 <td>{{es.name}}</td>
@@ -153,7 +153,7 @@
               </tr>
             </tbody>
             <!-- 预估价格 -->
-            <tbody ng-if="order.order_status ==1 || order.order_status == 7"> 
+            <tbody ng-if="order.order_status ==1 || order.order_status == 7">
               <!-- TODO: 这里请使用AS生产动态数据 -->
               <tr ng-repeat="es in estimateCost.extra_service_cost">
                 <td>{{es.name}}</td>

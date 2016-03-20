@@ -31,12 +31,12 @@
             </select>
           </div>
       </div>
-      <div class="uh-form-section pure-g">
+      <!-- <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">优惠码</div>
           <div class="pure-u-3-4">
             <input ng-model="order.coupon_code" class="pure-u-1" placeholder="仅需要时填写" type="text">
           </div>
-      </div>
+      </div> -->
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">选择所在仓库</div>
           <div class="pure-u-3-4">
@@ -128,6 +128,25 @@
 
     </div>
     <div class="uh-form-section pure-g">
+      <div class="title pure-u-1-4 uh-tooltip">使用积分 </div>
+      <div class="pure-u-2-4 "><input></div>
+
+      <div class="pure-u-6-24 uh-tooltip">
+              <label class="uh-tips">可使用的积分为xxx</label>
+              <span>
+              <div class="arrow-up"></div>
+              您总积分为XXX，本单最多可使用的积分为XXX，每XXX积分可抵扣1元
+              </span>
+      </div>
+
+    </div>
+    <div class="uh-form-section pure-g">
+      <div class="title pure-u-1-4">使用优惠码</div>
+      <div class="pure-u-2-4 "><input></div>
+    </div>
+
+
+    <div class="uh-form-section pure-g">
       <div class="title pure-u-1-4">发货备注</div>
       <div class="pure-u-3-4 ">
         <textarea ng-model="order.message"></textarea>
@@ -204,7 +223,7 @@
 </div>
 
   <!-- section 2 开始 -->
-<div class="uh-main-section addtion">
+<div class="uh-main-section addition">
   <div class="entry">
     <div class="uh-section"> 请完善报关单</div>
     <div class="desc"> 请修改或填写报关单，如果报关单信息错误，概不负责 </div>
@@ -312,7 +331,7 @@
     <!-- 底部操作按钮开始 -->
 <div class="uh-main-action">
 
-        <div ng-click="editOrder()" class="btn-edit left"></div>
+        <div ng-click="editOrder()" class="btn-back left"></div>
         <!-- <div ng-click="deleteOrder()" class="btn-delete left"></div> -->
         <div validation-submit="confirmForm" ng-click="submitOrder()" class="btn-confirm right"></div>
 
