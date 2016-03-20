@@ -5,10 +5,11 @@
         .module('admin.controllers')
         .controller('Shell', Shell);
 
-    Shell.$inject = ['$scope', '$state', '$window', '$stateParams'];
+    Shell.$inject = ['$scope', '$state', '$window', '$stateParams', 'UserInfo'];
 
     /* @ngInject */
-    function Shell($scope, $state, $window, $stateParams) {
+    function Shell($scope, $state, $window, $stateParams, UserInfo) {
+        $scope.user = UserInfo;
         $scope.$state = $state;
         $scope.$stateParams = $stateParams;
         console.log('Shell initialized');
@@ -26,7 +27,7 @@
                 confirmButtonColor: "#DD6B55",
                 closeOnConfirm: true,
             });
-        
+
         }
 
         function _setSidebarHeight(){
