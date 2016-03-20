@@ -8,15 +8,42 @@
   <div class="pure-g ah-form-line">
     <div class="pure-u-4-24 input-label">积分转化规则</div>
     <div class="pure-u-4-24"><input></div>
+    <div class="pure-u-16-24 ah-tips">多少积分为1元，如填写0.01，则100积分为1元</div>
   </div>
-  <div class="pure-u-1 ah-tips">多少积分为1元，如填写0.01，则100积分为1元</div>
+  <div class="pure-g ah-form-line">
+    <div class="pure-u-4-24 input-label">消费赠送积分比例</div>
+    <div class="pure-u-4-24"><input></div>
+    <div class="pure-u-16-24 ah-tips">消费1元赠送多少积分，如填写100，则消费1元赠送100积分</div>
+  </div>
+  <div class="pure-g ah-form-line">
+    <div class="pure-u-4-24 input-label">充值赠送积分</div>
+    <div class="pure-u-4-24"><input></div>
+    <div class="pure-u-16-24 ah-tips">充值1元赠送多少积分，如填写100，则充值1元赠送100积分</div>
+  </div>
+  <div class=" ah-section"> 经验规则 </div>
+  <div class="pure-g ah-form-line">
+    <div class="pure-u-4-24 input-label">注册赠送经验</div>
+    <div class="pure-u-2-24"><input></div>
+  </div>
+  <div class="pure-g ah-form-line">
+    <div class="pure-u-4-24 input-label">消费赠送经验</div>
+    <div class="pure-u-4-24"><input></div>
+    <div class="pure-u-16-24 ah-tips">消费1元赠送多少经验，如填写100，则消费1元赠送100经验</div>
+  </div>
+  <div class="pure-g ah-form-line">
+    <div class="pure-u-4-24 input-label">充值赠送经验比例</div>
+    <div class="pure-u-4-24"><input></div>
+    <div class="pure-u-16-24 ah-tips">消费1元赠送多少经验，如填写100，则消费1元赠送100经验</div>
+  </div>
+
+
 
   </div><!-- 左侧主题结束 -->
 
 
 <div class="pure-u-4-24 right">
     <a validation-submit="extraSrvForm" ng-click="submit()" class="pure-button blue">确认</a>
-      <a  ui-sref="scoreSending" class="pure-button blue">赠送积分</a>
-        <a  ng-click="goBack()" class="pure-button back">返回列表</a>
+    <a  ui-sref="scoreSending" class="pure-button green">赠送</a>
+    <a  ng-click="goBack()" class="pure-button back">返回</a>
 </div>
 </div>

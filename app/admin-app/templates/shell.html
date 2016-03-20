@@ -86,13 +86,6 @@
             <li ui-sref="vorkasseRate" ui-sref-active="active">代刷汇率管理</li>
           </ul>
         </div>
-<!--         <div class="list-wrapper">
-          <div class="title">积分</div>
-          <ul class="list">
-            <li>积分规则调整</li>
-            <li>积分消费记录</li>
-            </ul>
-        </div> -->
       </div>
 
       <div  ng-show="$state.includes('maintenance')"  class="ah-sidebar">
@@ -152,8 +145,10 @@
         <div class="list-wrapper">
           <div class="title">积分等级</div>
           <ul class="list">
-            <li ui-sref="scoreSetting" ui-sref-active="active">积分设置</li>
+            <li ui-sref="scoreSetting" ui-sref-active="active">积分／经验规则</li>
+            <li ui-sref="scoreSending" ui-sref-active="active">积分／经验赠送</li>
             <li ui-sref="levelList" ui-sref-active="active">等级管理</li>
+
           </ul>
         </div>
         <div class="list-wrapper">
