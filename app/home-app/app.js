@@ -180,7 +180,13 @@
                     return null;
                 }
                 else if (response.status==401) {
-                    swal("未登录, 请先登录", "", "error");
+                    // swal("未登录, 请先登录", "", "error");
+										swal({
+											title: "未登录, 请先登录",
+											type: "error",
+										}, function() {
+											location.href = '/auth/login'
+										});
                     return null;
                 }else{
                     swal("未知错误", "", "error");
