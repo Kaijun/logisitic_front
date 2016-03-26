@@ -6,14 +6,14 @@
       <!-- <a ui-sref="stockSubmit" class="pure-button radius lightblue">新增</a> -->
     </div>
 
-<!--     <div class="right">
+    <!--     <div class="right">
       <input placeholder="搜索" ng-model="searchText" />
     </div> -->
   </div>
   <div class="uh-main-tab">
     <div class="left">
       <a ng-click="toggleStatusFilter(-1)" ng-class="{active: toggleStatus===-1}" class="uh-header-tab clickable">所有记录</a>
-      <a ng-click="toggleStatusFilter(1)" ng-class="{active: toggleStatus===1}"  class="uh-header-tab clickable">发货处理中</a>
+      <a ng-click="toggleStatusFilter(1)" ng-class="{active: toggleStatus===1}" class="uh-header-tab clickable">发货处理中</a>
       <a ng-click="toggleStatusFilter(2)" ng-class="{active: toggleStatus===2}" class="uh-header-tab clickable">待付款</a>
       <a ng-click="toggleStatusFilter(4)" ng-class="{active: toggleStatus===4}" class="uh-header-tab clickable">待发货</a>
       <a ng-click="toggleStatusFilter(5)" ng-class="{active: toggleStatus===5}" class="uh-header-tab clickable">已发货</a>
@@ -21,40 +21,40 @@
     <div class="right">
       <a ui-sref="orderSubmit" class="uh-header-tab function"> 添加新的订单</a>
     </div>
-   </div> 
- </div>  
- 
+  </div>
+</div>
+
 
 <div class="uh-main-section middle">
-      <table ng-show="filterStockList.length>0" ng-table="tableParams" class="pure-table pure-table-horizontal uh-list-table">
-          <tr ng-repeat="stock in $data">
-              <td data-title="'更新日期'">
-                  {{stock.updatedTime}}
-              </td>
-              <td data-title="'包裹运单号'">
-                  {{stock.package.reference_code}}
-              </td>
-<!--               <td data-title="'包裹备注'">
+  <table ng-show="filterStockList.length>0" ng-table="tableParams" class="pure-table pure-table-horizontal uh-list-table">
+    <tr ng-repeat="stock in $data">
+      <td data-title="'更新日期'">
+        {{stock.updatedTime}}
+      </td>
+      <td data-title="'包裹运单号'">
+        {{stock.package.reference_code}}
+      </td>
+      <!--               <td data-title="'包裹备注'">
                   {{stock.package.description}}
               </td> -->
-              <td data-title="'创建时间'">
-                  {{stock.createdTime}}
-              </td>
-              <td data-title="'状态'">
-                  {{stock.statusStr}}
-              </td>
-              <td data-title="'操作'">
-                  <div ng-if="stock.order_status === 1" ng-click="editOrder(stock)" class="opt-radius-btn edit" title="编辑"></div>
-                  <div ng-if="stock.order_status === 1" ng-click="deleteOrder(stock)" class="opt-radius-btn delete" title="删除"></div>
-                  <div class="opt-radius-btn check"  ng-click="goToDetail(stock.id)" title="查看详情"></div>
-              </td>
-          </tr>
+      <td data-title="'创建时间'">
+        {{stock.createdTime}}
+      </td>
+      <td data-title="'状态'">
+        {{stock.statusStr}}
+      </td>
+      <td data-title="'操作'">
+        <div ng-if="stock.order_status === 1" ng-click="editOrder(stock)" class="opt-radius-btn edit" title="编辑"></div>
+        <div ng-if="stock.order_status === 1" ng-click="deleteOrder(stock)" class="opt-radius-btn delete" title="删除"></div>
+        <div class="opt-radius-btn check" ng-click="goToDetail(stock.id)" title="查看详情"></div>
+      </td>
+    </tr>
 
 
-      </table>
-        <!-- 为空情况 -->
-       <div ng-show="filterStockList.length==0"class="uh-box-empty">
-          <img src="images/message-empty.svg" width="120px;">
-          <div>您的订单列表为空 :(</div>
-        </div>
+  </table>
+  <!-- 为空情况 -->
+  <div ng-show="filterStockList.length==0" class="uh-box-empty">
+    <img src="images/message-empty.svg" width="120px;">
+    <div>您的订单列表为空 :(</div>
+  </div>
 </div>
