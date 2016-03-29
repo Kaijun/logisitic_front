@@ -44,8 +44,8 @@
           <td width="25px;"><input type="checkbox"></td>
             <td>{{vorkasse.updated_at.substring(0,10)}}</td>
             <td>{{vorkasse.reference_code}}</td>
-            <td>{{vorkasse.handler_id}}</td>
-            <td>TODO</td>
+            <td>{{vorkasse.customer.name}}</td>
+            <td>QQ: {{vorkasse.customer.QQ || "空"}} <br> Email: {{vorkasse.customer.email || "空"}}</td>
             <td>{{vorkasse.amount}}</td>
             <td>{{vorkasse.amount_foreign}}</td>
             <td>{{vorkasse.description}}</td>
