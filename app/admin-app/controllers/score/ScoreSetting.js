@@ -17,7 +17,7 @@
         console.log($scope.setting);
         ScoreService.editScoreSetting($scope.setting).then(function(data) {
           if(data.success){
-            swap('修改设置成功', '', 'success');
+            swal('修改设置成功', '', 'success');
           }
         })
       }
