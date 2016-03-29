@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('NotificationCtrl', NotificationCtrl);
 
-    NotificationCtrl.$inject = ['$scope', 'MsgService', '$timeout', '$state', 'UserInfo'];
+    NotificationCtrl.$inject = ['$scope', 'MsgService', '$timeout', '$state', 'UserInfo', '$location'];
 
     /* @ngInject */
-    function NotificationCtrl($scope, MsgService, $timeout, $state, UserInfo) {
+    function NotificationCtrl($scope, MsgService, $timeout, $state, UserInfo, $location) {
 
         $scope.$state = $state;
 
@@ -29,6 +29,7 @@
         $scope.deleteConversation = deleteConversation;
         $scope.markNotificationAsRead = markNotificationAsRead;
         $scope.deleteNotification = deleteNotification;
+        $scope.notificationHref = notificationHref;
 
         $scope.sendContact = sendContact;
 
@@ -132,6 +133,13 @@
                         $state.go($state.current, {}, {reload: true})
                     }
                 })
+            }
+        }
+        function notificationHref(notification) {
+            if(notification.href){
+                if(parseInt(notification['is_read']) === 0)
+                    markNotificationAsRead(notification);
+                $location.path(notification.href)
             }
         }
     }

@@ -1162,7 +1162,7 @@ textarea{
 .uh-message{
     font-size: 14px;
     padding: 20px;
-
+    cursor: pointer;
     border-bottom: 1px solid #efefef;
     &:last-of-type{
         margin-bottom: 50px;
@@ -1201,7 +1201,6 @@ textarea{
     }
     &:hover{
         background:#efefef;
-        cursor: pointer;
     }
 }
 .uh-box-empty{
