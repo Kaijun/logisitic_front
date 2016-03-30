@@ -1,4 +1,7 @@
 // 此CSS服务的页面为所有二级页面，域名空间为sp
+
+@import "utils.scss";
+
 html, body {
 height: 100%;
 }
@@ -215,7 +218,9 @@ $pager-height:30px;
       margin: 0;
       padding: 0;
       list-style: none;
+      @include clearfix;
       li{
+        height: 200px;
         float: left;
         width: 100%;
         display: block;
