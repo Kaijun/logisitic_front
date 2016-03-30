@@ -63,14 +63,14 @@
                             if (searchEanTimeout) $timeout.cancel(searchEanTimeout);
                             searchEanTimeout = $timeout(function() {
                                 autoAddEanItem($scope.eanCode);
-                            }, TIMEOUT_DELAY); 
+                            }, TIMEOUT_DELAY);
                         });
 
                     }, function() {
                         $state.go('stockList');
                     })
                 })
-                
+
             }
             else{
                 $state.go('stockList');
@@ -93,6 +93,7 @@
                         unit_price: null,
                         unit_weight: $scope.stock.weight,
                         quantity: 1,
+                        remain:1,
                     }];
                 }
                 StockService.enterStock($stateParams.stockId, {
@@ -115,6 +116,7 @@
                 unit_price: null,
                 unit_weight: null,
                 quantity: null,
+                remain: null,
             })
         }
 
@@ -174,7 +176,7 @@
                 else{
                     swal({
                         title: "未找到条形码对应的商品",
-                        timer: 1500,   
+                        timer: 1500,
                         showConfirmButton: false,
                         type: 'error',
                     });

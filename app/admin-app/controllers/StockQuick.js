@@ -8,7 +8,7 @@
 
     /* @ngInject */
     function StockQuickCtrl($scope, AppConfig, StockService, UserService, RoleService, LogisticService, $timeout, InfoService, $state, $filter, $window) {
-        
+
         $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
 
         var TIMEOUT_DELAY = 500;
@@ -56,7 +56,7 @@
                 if (searchStockTimeout) $timeout.cancel(searchStockTimeout);
                 searchStockTimeout = $timeout(function() {
                     search();
-                }, TIMEOUT_DELAY); 
+                }, TIMEOUT_DELAY);
             });
 
             var searchUserimeout;
@@ -75,7 +75,7 @@
                             $scope.userFound = null;
                         }
                     });
-                }, TIMEOUT_DELAY*2); 
+                }, TIMEOUT_DELAY*2);
             });
 
             InfoService.getWarehouses().then(function (data) {
@@ -94,7 +94,7 @@
                 if (searchEanTimeout) $timeout.cancel(searchEanTimeout);
                 searchEanTimeout = $timeout(function() {
                     autoAddEanItem($scope.eanCode);
-                }, TIMEOUT_DELAY); 
+                }, TIMEOUT_DELAY);
             });
 
         }
@@ -149,6 +149,7 @@
                         unit_price: null,
                         unit_weight: $scope.stock.weight,
                         quantity: 1,
+                        remain:1,
                     }];
                 }
                 StockService.enterStock($scope.stock.id, {
@@ -171,15 +172,15 @@
                 doReg();
             }
             else{
-                swal({   
-                    title: "未填写库存码",   
-                    text: "包裹将归为待认领",   
-                    type: "warning",   
+                swal({
+                    title: "未填写库存码",
+                    text: "包裹将归为待认领",
+                    type: "warning",
                     showCancelButton: true,
-                    closeOnConfirm: true 
-                }, function(){  
+                    closeOnConfirm: true
+                }, function(){
                     $scope.submitData.stock_number = null;
-                    doReg(); 
+                    doReg();
                 });
             }
 
@@ -248,7 +249,7 @@
                 else{
                     swal({
                         title: "未找到条形码对应的商品",
-                        timer: 1500,   
+                        timer: 1500,
                         showConfirmButton: false,
                         type: 'error',
                     });
@@ -264,6 +265,6 @@
             var newWindow = $window.open(url,'_blank');
         }
 
-        
+
     }
 })();
