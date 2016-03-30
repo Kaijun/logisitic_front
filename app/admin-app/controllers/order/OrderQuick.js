@@ -5,11 +5,11 @@
         .module('admin.controllers')
         .controller('OrderQuick', OrderQuick);
 
-    OrderQuick.$inject = ['$scope', '$stateParams', 'OrderService', 'InfoService', 'LogisticService', '$timeout', '$state', '$window'];
+    OrderQuick.$inject = ['$scope', '$stateParams', 'OrderService', 'InfoService', 'LogisticService', '$timeout', '$state', '$window', '$filter'];
 
     /* @ngInject */
-    function OrderQuick($scope, $stateParams, OrderService, InfoService,LogisticService, $timeout, $state, $window) {
-  
+    function OrderQuick($scope, $stateParams, OrderService, InfoService,LogisticService, $timeout, $state, $window, $filter) {
+
         var TIMEOUT_DELAY = 500;
         $scope.serachText = '';
         $scope.isRequested = false;
@@ -25,6 +25,7 @@
         $scope.weightAndPackCancle = weightAndPackCancle;
         $scope.printPackListconfirm = printPackListconfirm;
         $scope.printPostListconfirm = printPostListconfirm;
+        $scope.downloadEasyLog = downloadEasyLog;
         $scope.editOrder = editOrder;
         $scope.deleteOrder = deleteOrder;
         // $scope.cancleEditOrder = cancleEditOrder;
@@ -43,7 +44,7 @@
                 if (searchStockTimeout) $timeout.cancel(searchStockTimeout);
                 searchStockTimeout = $timeout(function() {
                     search();
-                }, TIMEOUT_DELAY); 
+                }, TIMEOUT_DELAY);
             });
 
             $scope.serachText = $stateParams.referenceCode || '';
@@ -110,7 +111,9 @@
             }
             else{
                 $scope.isTrackNumEditShown = true;
+                console.log(isTrackNumEditShown);
                 //这个参数貌似没有传给搜索的结果
+                //TODO: 这个bug还是有，没有传过去！！
             }
         }
 
@@ -188,6 +191,49 @@
             //     })
             // }
         }
+        function downloadEasyLog(){
+            swal({
+                title: "已下载？",
+                text: "若已下载, 请点击确认修改运单状态",
+                showCancelButton: true,
+                closeOnConfirm: true,
+            }, function(){
+
+                // 下载easylog文件
+                var easylogData = ''
+                    + $scope.order.package.reference_code + '|'
+                    + $scope.order.post_address.receiver_name + '|'
+                    + $scope.order.post_address.post_code + '|'
+                    + $scope.order.post_address.province + '|'
+                    + $scope.order.post_address.city + $scope.order.post_address.street + '|'
+                    + $scope.order.post_address.phone + '|'
+                    + 'CN' + '|'
+                    + $filter('number')($scope.order.weight,1).toString().replace(/\./g, ",") + '|'
+                    + 1 + '|'
+                    + 3;
+
+                downloadCSV($scope.order.package.reference_code+'_easylog.csv', easylogData)
+                OrderService.editOrder($scope.order.id, {
+                    order_status: 4,
+                }).then(function() {
+                    reload();
+                 })
+            })
+
+            function downloadCSV(filename, text) {
+              var element = document.createElement('a');
+              element.setAttribute('href', 'data:application/csv;charset=utf-8,' + encodeURIComponent(text));
+              element.setAttribute('download', filename);
+
+              element.style.display = 'none';
+              document.body.appendChild(element);
+
+              element.click();
+
+              document.body.removeChild(element);
+            }
+
+        }
         function weightAndPackCancle () {
             $scope.isWeightPopupShown = false;
             $scope.weight = null;
@@ -230,7 +276,7 @@
             }
         }
         // function cancleEditOrder () {
-        //     $scope.isWeightEditShown = false; 
+        //     $scope.isWeightEditShown = false;
         //     $scope.isShipStatusEditShown = false;
         //     $scope.isTrackNumEditShown = false;
         // }
