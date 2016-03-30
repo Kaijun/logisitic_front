@@ -11,12 +11,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>初级会员</td>
-        <td>2000</td>
-        <td>2000</td>
-        <td>2000</td>
-        <td><a ui-sref="levelManage">修改</a>｜<a ui-sref="levelManage">删除</a></td>
+      <tr ng-repeat="lvl in levels">
+        <td>{{lvl.level_name}}</td>
+        <td>{{lvl.lower_bound}}</td>
+        <td>{{lvl.usable_amount}}</td>
+        <td>{{lvl.usable_ratio}}</td>
+        <td><a ui-sref="levelManage({levelId: lvl.id})">修改</a>｜<a ng-click="deleteLevel(lvl)">删除</a></td>
       </tr>
     </tbody>
   </table>

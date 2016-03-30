@@ -1,23 +1,25 @@
+
+<form name="levelForm">
 <div class="pure-g">
 <div class="pure-u-20-24">
   <div class=" ah-section"> 用户等级管理 </div>
   <div class="pure-g ah-form-line">
     <div class="pure-u-4-24 input-label">等级名称</div>
-    <div class="pure-u-10-24"><input></div>
+    <div class="pure-u-10-24"><input ng-model="level.level_name" ></div>
   </div>
   <div class="pure-g ah-form-line">
     <div class="pure-u-4-24 input-label">经验最低值</div>
-    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-2-24"><input ng-model="level.lower_bound"></div>
     <div class="pure-u-16-24 ah-tips">获得此等级的最低经验值</div>
   </div>
   <div class="pure-g ah-form-line">
     <div class="pure-u-4-24 input-label">最大可使用积分</div>
-    <div class="pure-u-4-24"><input></div>
+    <div class="pure-u-4-24"><input ng-model="level.usable_amount"></div>
     <div class="pure-u-16-24 ah-tips">单笔交易可使用的积分最大值</div>
   </div>
   <div class="pure-g ah-form-line">
     <div class="pure-u-4-24 input-label">可使用积分比例</div>
-    <div class="pure-u-4-24"><input></div>
+    <div class="pure-u-4-24"><input ng-model="level.usable_ratio"></div>
     <div class="pure-u-16-24 ah-tips">0～1之间的值</div>
   </div>
   <div class=" ah-section"> 线路设置 </div>
@@ -31,23 +33,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>顺丰线路</td>
-        <td>发货</td>
-        <td><input></td>
-        <td><select>
-            <option>可使用</option>
-            <option>不可使用</option>
-        </select></td>
-      </tr>
-      <tr>
-        <td>移库线路</td>
-        <td>移库</td>
-        <td><input></td>
-        <td><select>
-            <option>可使用</option>
-            <option>不可使用</option>
-        </select></td>
+      <tr ng-repeat="path in logisticPaths">
+        <td>{{path.name}}</td>
+        <td>
+          <span ng-if="path.type==0">全部</span>
+          <span ng-if="path.type==1">入库</span>
+          <span ng-if="path.type==2">移库</span>
+          <span ng-if="path.type==3">发货</span>
+        </td>
+        <td><input ng-disabled="!path.enable" ng-model="path.discount_ratio"></td>
+        <td>
+          <select ng-model="path.enable" ng-options="o.v as o.n for o in [{ n: '不可使用', v: false }, { n: '可使用', v: true }]">
+          </select>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -63,23 +61,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>入库清点</td>
-        <td>入库</td>
-        <td><input></td>
-        <td><select>
-            <option>可使用</option>
-            <option>不可使用</option>
-        </select></td>
-      </tr>
-      <tr>
-        <td>包裹加固</td>
-        <td>发货</td>
-        <td><input></td>
-        <td><select>
-            <option>可使用</option>
-            <option>不可使用</option>
-        </select></td>
+      <tr ng-repeat="srv in extraServices">
+        <td>{{srv.service_name}}</td>
+        <td>
+          <span ng-if="srv.type==0">全部</span>
+          <span ng-if="srv.type==1">入库</span>
+          <span ng-if="srv.type==2">移库</span>
+          <span ng-if="srv.type==3">发货</span>
+        </td>
+        <td><input ng-disabled="!srv.enable" ng-model="srv.discount_ratio"></td>
+        <td>
+          <select ng-model="srv.enable" ng-options="o.v as o.n for o in [{ n: '不可使用', v: false }, { n: '可使用', v: true }]">
+          </select>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -94,8 +88,9 @@
 
 
 <div class="pure-u-4-24 right">
-    <a validation-submit="extraSrvForm" ng-click="submit()" class="pure-button blue">确认</a>
-      <a  ng-click="" class="pure-button red">取消</a>
+    <a validation-submit="levelForm" ng-click="submit()" class="pure-button blue">确认</a>
+      <!-- <a  ng-click="" class="pure-button red">取消</a> -->
         <a  ng-click="goBack()" class="pure-button back">返回列表</a>
 </div>
 </div>
+</form>

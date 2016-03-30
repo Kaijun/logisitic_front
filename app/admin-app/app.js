@@ -323,15 +323,15 @@
 				// TODO: 用户等级管理
 				.state('levelManage', {
 						parent: 'system',
-						url: '/levelManage',
+						url: '/levelManage/:levelId',
 						templateUrl: 'templates/level/levelManage.html',
-						controller: '',
+						controller: 'LevelManage',
 				})
 				.state('levelList', {
 						parent: 'system',
 						url: '/levelList',
 						templateUrl: 'templates/level/levelList.html',
-						controller: '',
+						controller: 'LevelList',
 				})
 				.state('scoreSetting', {
 						parent: 'system',

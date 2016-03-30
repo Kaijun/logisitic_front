@@ -77,7 +77,7 @@
                 return angular.isArray(wh)&&wh.length>0 ? wh[0] : null;
            });
         }
-        // 0=all, 1=入库 2=出库 3=移库
+
         function getLogisticPaths(type) {
             if(stockInfoCache.get('logisticPaths')){
                 return stockInfoCache.get('logisticPaths').then(function(data){
@@ -115,7 +115,6 @@
             return promise;
         }
 
-        // type: 0=all, 1=入库，2=出库, 3=移库
         function getLogisticPathById (id, type) {
            return getLogisticPaths(type).then(function(lps) {
                 if(angular.isArray(lps)){
@@ -127,7 +126,7 @@
            });
         }
 
-        // type: 0=全部 1=入库, 2=移库, 3=出库, 4=带刷
+        // type: 0=全部 1=入库, 2=移库, 3=发货, 4=带刷
         // user_group: 0=all, 1=vip only
         function getExtraServices(type, userGroup) {
             if(stockInfoCache.get('extraServices')){
