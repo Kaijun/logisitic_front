@@ -95,12 +95,12 @@
 
             <tr ng-hide="order.logisticPath.ship_company_international==null">
                 <td>{{order.logisticPath.ship_company_international}}运单号</td>
-                <td ng-init="isTrackNumEditShown=false"  ng-hide="isTrackNumEditShown">{{order.track_code || "暂无"}}</td>
+                <td ng-hide="isTrackNumEditShown">{{order.track_code || "暂无"}}</td>
                 <td ng-show="isTrackNumEditShown"><input ng-model="order.ship_tracknumber.International" style="width: auto;"></td>
             </tr>
             <tr ng-hide="order.logisticPath.ship_company_china==null">
                 <td>{{order.logisticPath.ship_company_china}}运单号</td>
-                <td ng-init="isTrackNumEditShown=false"  ng-hide="isTrackNumEditShown">{{order.track_code_2 || "暂无"}}</td>
+                <td ng-hide="isTrackNumEditShown">{{order.track_code_2 || "暂无"}}</td>
                 <td ng-show="isTrackNumEditShown"><input ng-model="order.ship_tracknumber.China"  style="width: auto;"></td>
             </tr>
           </table>

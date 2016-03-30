@@ -16,6 +16,7 @@
         $scope.isWeightPopupShown = false;
         $scope.order = null;
 
+        $scope.isTrackNumEditShown = false;
         $scope.weightSum = null
         $scope.weight = null;
         $scope.$stateParams = $stateParams;
@@ -111,9 +112,6 @@
             }
             else{
                 $scope.isTrackNumEditShown = true;
-                console.log(isTrackNumEditShown);
-                //这个参数貌似没有传给搜索的结果
-                //TODO: 这个bug还是有，没有传过去！！
             }
         }
 

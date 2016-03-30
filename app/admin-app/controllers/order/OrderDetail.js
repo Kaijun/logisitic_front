@@ -16,6 +16,8 @@
         $scope.weight = null;
         $scope.$stateParams = $stateParams;
 
+        $scope.isTrackNumEditShown = false;
+
 
         $scope.weightAndPack = weightAndPack;
         $scope.weightAndPackConfirm = weightAndPackConfirm;
@@ -242,7 +244,7 @@
         function editOrder () {
             //如果填写了跟踪号码 则发货!!!
             if($scope.order.order_status < 5){
-                if($scope.order.track_code || $scope.order.track_code_2){
+                if($scope.order.ship_tracknumber.International || $scope.order.ship_tracknumber.China){
                     $scope.order.order_status = 5;
                 }
             }
