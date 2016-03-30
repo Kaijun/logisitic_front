@@ -9,7 +9,7 @@
 
     /* @ngInject */
     function OrderQuick($scope, $stateParams, OrderService, InfoService,LogisticService, $timeout, $state, $window, $filter) {
-  
+
         var TIMEOUT_DELAY = 500;
         $scope.serachText = '';
         $scope.isRequested = false;
@@ -44,7 +44,7 @@
                 if (searchStockTimeout) $timeout.cancel(searchStockTimeout);
                 searchStockTimeout = $timeout(function() {
                     search();
-                }, TIMEOUT_DELAY); 
+                }, TIMEOUT_DELAY);
             });
 
             $scope.serachText = $stateParams.referenceCode || '';
@@ -111,7 +111,9 @@
             }
             else{
                 $scope.isTrackNumEditShown = true;
+                console.log(isTrackNumEditShown);
                 //这个参数貌似没有传给搜索的结果
+                //TODO: 这个bug还是有，没有传过去！！
             }
         }
 
@@ -189,7 +191,6 @@
             //     })
             // }
         }
-        //下载easylog文件后变为待发货
         function downloadEasyLog(){
             swal({
                 title: "已下载？",
@@ -275,7 +276,7 @@
             }
         }
         // function cancleEditOrder () {
-        //     $scope.isWeightEditShown = false; 
+        //     $scope.isWeightEditShown = false;
         //     $scope.isShipStatusEditShown = false;
         //     $scope.isTrackNumEditShown = false;
         // }
