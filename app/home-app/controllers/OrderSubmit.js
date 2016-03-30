@@ -114,7 +114,13 @@
                     });
                 })                
                 $scope.$watch('order.warehouse', function (newValue, oldValue) {
+                    if(newValue === oldValue){
+                        if($stateParams.orderId){
+                            return;
+                        }
+                    }
                     $scope.$emit('warehouseChanged', newValue);
+                    
                 });
 
                 $scope.$watch('logisticPathChosen', function (newValue, oldValue) {

@@ -82,6 +82,11 @@
                     });
                 });
                 $scope.$watch('trans.warehouse', function (newValue, oldValue) {
+                    if(newValue === oldValue){
+                        if($stateParams.transId){
+                            return;
+                        }
+                    }
                     $scope.$emit('warehouseChanged', newValue);
                 })
             }).then(function () {
