@@ -62,12 +62,14 @@
           <td>出库重量</td>
           <td>{{order.weight}}kg</td>
         </tr>
-        <tr>
-          <td>运单号</td>
-          <td>
-            国际段({{order.logisticPath.ship_company_international}}): {{order.ship_tracknumber || "未添加"}}
-            <br> 国内段({{order.logisticPath.ship_company_china}}): {{order.ship_tracknumber_2 || "未添加"}}
-          </td>
+        <tr ng-hide="order.logisticPath.ship_company_international==null">
+          <td>{{order.logisticPath.ship_company_international}}运单号</td>
+          <td>{{order.ship_tracknumber || "暂无"}}</td>
+          </tr>
+          <tr ng-hide="order.logisticPath.ship_company_china==null">
+            <td>{{order.logisticPath.ship_company_china}}运单号</td>
+            <td>{{order.ship_tracknumber_2 || "暂无"}}</td>
+
         </tr>
       </table>
     </div>

@@ -44,18 +44,17 @@
             <tr><td style="width:30%">订单状态</td><td>{{order.statusStr}}</td></tr>
             <tr><td>提交时间</td><td>{{order.created_at}}</td></tr>
             <tr><td>更新时间</td><td>{{order.updated_at}}</td></tr>
-            <tr><td>运单号</td><td>
-            <span ng-init="isTrackNumEditShown=false"  ng-hide="isTrackNumEditShown">
-              国际段({{order.logisticPath.ship_company_international}}): {{order.track_code || "待添加"}} <br> 国内段({{order.logisticPath.ship_company_china}}): {{order.track_code_2 || "待添加"}}
-            </span>
-            <span ng-show="isTrackNumEditShown">
-              国际段: <input ng-model="order.ship_tracknumber.International" style="width: auto;"><br> 国内段: <input ng-model="order.ship_tracknumber.China"  style="width: auto;">
-            </span>
-          </td></tr>
-          <tr><td>发货跟踪状态</td><td><span ng-init="isShipStatusEditShown=false" ng-click="isShipStatusEditShown=true" ng-hide="isShipStatusEditShown">{{ship_status_string}}(点击修改)</span>
-        <select ng-show="isShipStatusEditShown" ng-model="order.ship_status"  ng-options="convertToInt(lt.id) as lt.name for lt in logisticTracks"></select>
-      </td></tr>
-    </table>
+            <tr ng-hide="order.logisticPath.ship_company_international==null">
+                <td>{{order.logisticPath.ship_company_international}}运单号</td>
+                <td ng-init="isTrackNumEditShown=false"  ng-hide="isTrackNumEditShown">{{order.track_code || "暂无"}}</td>
+                <td ng-show="isTrackNumEditShown"><input ng-model="order.ship_tracknumber.International" style="width: auto;"></td>
+            </tr>
+            <tr ng-hide="order.logisticPath.ship_company_china==null">
+                <td>{{order.logisticPath.ship_company_china}}运单号</td>
+                <td ng-init="isTrackNumEditShown=false"  ng-hide="isTrackNumEditShown">{{order.track_code_2 || "暂无"}}</td>
+                <td ng-show="isTrackNumEditShown"><input ng-model="order.ship_tracknumber.China"  style="width: auto;"></td>
+            </tr>
+            </table>
   </div>
 </div>
 <!-- 并列表格结束 -->
@@ -94,10 +93,10 @@
   </thead>
   <tbody>
     <!-- TODO: 这里请使用AS生产动态数据 -->
-    <tr ng-repeat="es in order.extra_services">
+    <tr ng-repeat="es in order.package.extra_services">
       <td>{{es.service_name}}</td>
-      <td>{{es.service_price|number:2}}</td>
-      <td>{{es.service_description}}</td>
+      <td>{{es.pivot.price|number:2}}</td>
+      <td>{{es.description}}</td>
     </tr>
     <tr>
       <td>运费</td>
