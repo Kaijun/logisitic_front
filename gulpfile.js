@@ -37,7 +37,7 @@ gulp.task('jshint', function () {
 gulp.task('html', ['styles'], function () {
   var assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
 
-  return gulp.src(['app/*.html', 'app/home-app/**/*.html', 'app/admin-app/**/*.html'], { base: 'app' })
+  return gulp.src(['app/*.html', 'app/home-app/**/*.html', 'app/admin-app/**/*.html','app/help/**/*.html','app/price/**/*.html'], { base: 'app' })
     .pipe($.sourcemaps.init())
     .pipe(assets)
     .pipe($.if('*.js', $.uglify({ mangle: false })))
@@ -61,7 +61,7 @@ gulp.task('html', ['styles'], function () {
 });
 
 gulp.task('images', function () {
-  return gulp.src(['app/images/**/*', 'app/home-app/images/**/*', 'app/admin-app/images/**/*' ], { base: 'app' })
+  return gulp.src(['app/images/**/*', 'app/home-app/images/**/*', 'app/admin-app/images/**/*' ,'app/help/images/**/*'], { base: 'app' })
     .pipe($.sourcemaps.init())
     .pipe($.cache($.imagemin({
       progressive: true,
