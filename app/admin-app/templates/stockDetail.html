@@ -75,7 +75,7 @@
 
 
       <div class="ah-section"> <input  ng-model="stock.isStockCheck" type="checkbox" > 入库清点 {{isStockCheck}}</div>
-            <p class="ah-tips">注意：修改数量会改变用户的库存显示，如果用户还有剩余的物品在包裹里，用户既可发送包裹；重新入库的数量为：清点包裹重新入库以后数量为1，清点物品重新数量和新填写的数量相同。</p>
+          <p class="ah-tips">注意：对于剩余量为零的物品修改数量相当于重新入库，会出现在客户的库存列表中！</p>
       <div ng-if="stock.isStockCheck" >
 
         <table class="pure-table pure-table-horizontal ah-line-table">
@@ -120,8 +120,8 @@
           </div>
       </div>
       <div ng-show="!stock.isStockCheck">
-        <div ng-show="stock.items.length==0">包裹商品已被手动删除</div>
-        <div ng-show="stock.items.length>0">
+        <!-- <div ng-show="stock.items.length==0">包裹商品已被手动删除</div> -->
+        <!-- <div ng-show="stock.items.length>0"> -->
         <table class="pure-table pure-table-horizontal ah-line-table">
           <thead>
             <tr>
@@ -144,7 +144,7 @@
                 </tr>
             </tbody>
         </table>
-      </div>
+      <!-- </div> -->
       </div>
 
 
