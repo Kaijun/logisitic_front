@@ -30,7 +30,7 @@
   <div class="pure-g ah-form-line">
     <div class="pure-u-2-24 input-label">服务名称</div>
     <div class="pure-u-1-4">
-      <input 
+      <input
         ng-model="extraSrv.service_name"
         name="service_name"
         type="text"
@@ -77,14 +77,15 @@
       </select></div>
       <div class="pure-u-2-24 input-label">基准价格</div>
       <div class="pure-u-4-24">
-        <input 
+        <input
           name="base_price"
           type="text"
           validator="required, number"
           ng-model="extraSrv.base_price"></div>
     </div>
     <!-- 第四行结束 -->
-    <div ng-if="extraSrv.based_on == 1 ">
+    <div ng-if="extraSrv.based_on == 1  ">
+      <p class="ah-tips">计算公式为：基准价格＋梯度＊价格；示例：若基准价格为100元；0-1公斤，每公交为100元；1-5公斤，每公斤为20元，订单公斤数为4公斤;最终价格为：100+1*100+(4-1)*20;</p>
     <div class="ah-section" >价格梯度<span ng-click="addLadder()" class="add">+添加</span></div>
     <table class="pure-table pure-table-horizontal ah-line-table">
       <thead>
@@ -98,7 +99,28 @@
         <!-- TODO: 这里请使用AS生产动态数据 -->
         <tr ng-repeat="ladder in ladders">
           <td>{{$first?"0":ladders[$index-1].upper_bound}}-{{ladder.upper_bound}}公斤</td>
-          <td>{{ladder.unit_price}}元</td>
+          <td>{{ladder.unit_price}}元／公斤</td>
+          <td><a ng-click="deleteLadder(ladder)">删除</a>｜<a ng-click="editLadder(ladder)">修改</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div ng-if="extraSrv.based_on == 2  ">
+      <p class="ah-tips">建议保费使用价格计算，计算公式为：基准价格＋梯队＊比例；示例：若基准价格为100；0-500元比例为1.2；500-9999元比例为0.8，订单价格为800;最终价格为：100+500*1.2+(800-500)*0.8;</p>
+    <div class="ah-section" >价格梯度<span ng-click="addLadder()" class="add">+添加</span></div>
+    <table class="pure-table pure-table-horizontal ah-line-table">
+      <thead>
+        <tr>
+          <th class="pure-u-1-4">范围</th>
+          <th class="pure-u-1-4">比例</th>
+          <th class="pure-u-1-4">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- TODO: 这里请使用AS生产动态数据 -->
+        <tr ng-repeat="ladder in ladders">
+          <td>{{$first?"0":ladders[$index-1].upper_bound}}-{{ladder.upper_bound}}元</td>
+          <td>{{ladder.unit_price}}</td>
           <td><a ng-click="deleteLadder(ladder)">删除</a>｜<a ng-click="editLadder(ladder)">修改</a></td>
         </tr>
       </tbody>
@@ -113,8 +135,8 @@
     <a validation-submit="extraSrvForm" ng-click="submit()" class="pure-button blue">确认</a>
       <a  ng-click="" class="pure-button red">取消</a>
         <a  ng-click="goBack()" class="pure-button back">返回列表</a>
-        
-        
+
+
       </div>
       </form>
   </div>
