@@ -124,9 +124,15 @@
 
         function submit () {
             $scope.logisticPath.price_ladders = $scope.ladders;
-            if(!isLadderValid($scope.ladders, $scope.logisticPath.weight_upper_bound)){
-                swal('请填写正确的价格梯度, 梯度应该涵盖重量上限', '', 'error');
-                return;
+            if($scope.logisticPath.based_on==1){
+                if($scope.ladders.length==0){
+                    swal('请填写正确的价格梯度', '', 'error');
+                    return;
+                }
+                if(!isLadderValid($scope.ladders, $scope.logisticPath.weight_upper_bound)){
+                    swal('请填写正确的价格梯度, 梯度应该涵盖重量上限', '', 'error');
+                    return;
+                }
             }
             $scope.logisticPath.user_group = $scope.chosenRole.id;
             if(isEditing){

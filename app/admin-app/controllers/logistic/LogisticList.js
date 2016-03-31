@@ -28,13 +28,21 @@
         }
 
         function deletePath(path){
-            LogisticService.deleteLogistic(path.id).then(function (data) {
-                $scope.paths.forEach(function (item, idx, arry) {
-                    if(item.id == path.id){
-                        arry.splice(idx, 1);
-                    }
+
+            swal({
+                title: "确认删除?",
+                showCancelButton: true,
+            }, function () {
+                
+                LogisticService.deleteLogistic(path.id).then(function (data) {
+                    $scope.paths.forEach(function (item, idx, arry) {
+                        if(item.id == path.id){
+                            arry.splice(idx, 1);
+                        }
+                    })
                 })
             })
+                
         }
         function editPath(path){
             $state.go('logisticManage', {id: path.id}, {reload: true});
