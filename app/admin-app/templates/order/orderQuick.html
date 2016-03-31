@@ -149,7 +149,7 @@
         </thead>
         <tbody>
           <!-- TODO: 这里请使用AS生产动态数据 -->
-          <tr ng-repeat="es in order.extra_services">
+          <tr ng-repeat="es in order.package.extra_services">
             <td>{{es.service_name}}</td>
             <td>{{es.pivot.price|number:2}}</td>
             <td>{{es.description}}</td>
@@ -168,13 +168,7 @@
       </table>
 
 
-      <div class="ah-section">附加信息</div>
-      <table class="pure-table pure-table-horizontal ah-small-table">
-        <tr>
-          <td style="width:15%">发货备注</td>
-          <td>{{order.message}}</td>
-        </tr>
-      </table>
+<div class="ah-section">发货备注:{{order.package.message}}</div>
     </div>
     <!-- 左侧主题结束 -->
 
