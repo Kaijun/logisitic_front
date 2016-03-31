@@ -62,11 +62,11 @@
           <td>出库重量</td>
           <td>{{order.weight}}kg</td>
         </tr>
-        <tr ng-hide="order.logisticPath.ship_company_international==null">
+        <tr ng-hide="order.ship_tracknumber==null">
           <td>{{order.logisticPath.ship_company_international}}运单号</td>
           <td>{{order.ship_tracknumber || "暂无"}}</td>
           </tr>
-          <tr ng-hide="order.logisticPath.ship_company_china==null">
+          <tr ng-hide="order.ship_tracknumber_2==null">
             <td>{{order.logisticPath.ship_company_china}}运单号</td>
             <td>{{order.ship_tracknumber_2 || "暂无"}}</td>
 

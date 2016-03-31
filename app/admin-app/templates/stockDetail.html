@@ -57,6 +57,7 @@
           <td ng-repeat="es in stock.extra_services">{{es.service_name}}</td>
           <td ng-if="stock.extra_services.length==0&&stock.status==1">等待用户选择</td>
           <td ng-if="stock.extra_services.length==0&&stock.status==2">用户未选择</td>
+          <td ng-if="stock.extra_services.length==0&&stock.status==4">用户未选择</td>
         </tr>
         <tr>
           <td>用户留言</td>
@@ -75,7 +76,7 @@
 
 
       <div class="ah-section"> <input  ng-model="stock.isStockCheck" type="checkbox" > 入库清点 {{isStockCheck}}</div>
-          <p class="ah-tips">注意：对于剩余量为零的物品修改数量相当于重新入库，会出现在客户的库存列表中！</p>
+          <p class="ah-tips">注意：对于剩余量为零的物品修改数量相当于重新入库，会出现在客户的库存列表中！未清点的包裹重新入库剩余数量自动设置为1。</p>
       <div ng-if="stock.isStockCheck" >
 
         <table class="pure-table pure-table-horizontal ah-line-table">

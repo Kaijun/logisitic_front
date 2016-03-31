@@ -131,7 +131,7 @@
       <div class="title pure-u-1-4 uh-tooltip">使用积分 </div>
       <div class="pure-u-2-4 "><input></div>
 
-      <div class="pure-u-6-24 uh-tooltip">
+      <div class="pure-u-1-4 uh-tooltip">
               <label class="uh-tips">可使用的积分为xxx</label>
               <span>
               <div class="arrow-up"></div>
@@ -140,10 +140,11 @@
       </div>
 
     </div>
-    <div class="uh-form-section pure-g">
+ <!-- TODO: 后续添加 -->
+    <!-- <div class="uh-form-section pure-g">
       <div class="title pure-u-1-4">使用优惠码</div>
       <div class="pure-u-2-4 "><input></div>
-    </div>
+    </div> -->
 
 
     <div class="uh-form-section pure-g">
@@ -293,9 +294,9 @@
       <tbody>
         <!-- TODO: 这里请使用AS生产动态数据 -->
         <tr ng-repeat="es in estimateCost.extra_service_cost">
-          <td>{{es.name}}</td>
+          <td>{{es.extra_service.service_name}}</td>
           <td>{{es.cost}}元</td>
-          <td>{{es.desc}}</td>
+          <td>{{es.extra_service.description}}</td>
         </tr>
         <tr>
           <td>运费</td>

@@ -6,7 +6,7 @@
 </div>
 
 <!-- <div ng-if="stock" class="pure-g"> -->
-<div ng-if="isRequested&&isStockFound" class="pure-g">
+<div ng-if="isRequested&&isStockFound" class="pure-g" >
     <div class="pure-u-7-8">
     <div class="pure-g pure-u-1"><div class="ah-section">找到匹配：跟踪号码 - {{stock.reference_code}}</div></div>
     <!-- 并列表格开始 -->
@@ -82,7 +82,7 @@
 
 
       <div class="ah-section"> <input  ng-model="stock.isStockCheck" type="checkbox" > 入库清点 {{isStockCheck}}</div>
-      <p class="ah-tips">注意：修改数量会改变用户的库存显示，如果用户还有剩余的物品在包裹里，用户既可发送包裹；重新入库的数量为：清点包裹重新入库以后数量为1，清点物品重新数量和新填写的数量相同。</p>
+      <p class="ah-tips">注意：对于剩余量为零的物品修改数量相当于重新入库，会出现在客户的库存列表中！未清点的包裹重新入库剩余数量自动设置为1。</p>
       <div ng-show="stock.isStockCheck" >
         <table class="pure-table pure-table-horizontal ah-line-table">
           <thead>
@@ -103,7 +103,7 @@
                     <select ng-model="item.typeOption" ng-options="opt.type_name for opt in optionTypes" ng-init="item.type=item.typeOption.id; item.typeName=item.typeOption.type_name;" ng-change="item.type=item.typeOption.id; item.typeName=item.typeOption.type_name;">
                   </td>
                   <td><input ng-model="item.quantity" class="pure-u-1" type="text"></td>
-                  <td>{{item.remain}}<td>
+                  <td>{{item.remain}}</td>
                   <td><input ng-model="item.unit_price" class="pure-u-1" type="text"></td>
                   <td><input ng-model="item.unit_weight" class="pure-u-1" type="text"></td>
                   <td><a ng-click="deleteItem($index)" class="item-delete-icon">删除</a></td>
@@ -125,7 +125,7 @@
       </div>
       <div ng-show="!stock.isStockCheck">
         <!-- <div ng-show="stock.items.length==0">包裹商品已被手动删除</div> -->
-        <div ng-show="stock.items.length>0">
+        <!-- <div ng-show="stock.items.length>0"> -->
         <table class="pure-table pure-table-horizontal ah-line-table">
           <thead>
             <tr>
@@ -148,7 +148,7 @@
                 </tr>
             </tbody>
         </table>
-      </div>
+      <!-- </div> -->
       </div>
 
 
@@ -159,7 +159,7 @@
       <!-- <div><a ng-click="goToDetail()" class="pure-button view divide">查看详情</a></div> -->
       <div><a ng-click="printStock()" class="pure-button list blue divide">入库面单</a></div>
       <div><a ng-if="stock.status==2" ng-click="enterStock()" class="pure-button blue divide">确认入库</a></div>
-      <div><a ng-if="stock.status==4" ng-click="enterStock()" class="pure-button blue divide">修改入库</a></div>
+      <div><a ng-if="stock.status==4" ng-click="enterStock()" class="pure-button Green divide">重新入库</a></div>
       <div><a ng-click="goBack()" class="pure-button back divide">返回继续</a></div>
       </div> <!-- 右侧功能键结束 Div -->
 </div>
