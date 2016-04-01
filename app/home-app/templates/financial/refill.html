@@ -1,42 +1,40 @@
-
 <div class="uh-main-section">
-  <div class="uh-main-header">
-      <div class="left">
-        <span class="title blue">账户充值</span>
+    <div class="uh-main-header">
+        <div class="left">
+          <span class="title blue">账户充值</span>
+        </div>
+    </div>
+    <div class="uh-form-section">
+        <form action="/pay/alipay" method="POST" class="pure-g" >
+            <div class="pure-u-3-4">
+              <img height="30px;" style="vertical-align: middle" src="images/alipay.png">
+              <input style="padding:8px; margin-left:30px;width:200px" name="amount" placeholder="请输入充值金额">
+            </div>
+            <div class="pure-u-1-4"><input class="pure-button blue" type="submit" value="跳转到支付宝支付" ></input></div>
+        </form>
+      <div class="pure-u-1 uh-form-label" style="background:#f8f8f8; font-size:14px; border-radius:5px; padding: 20px; margin-top:20px">
+        请选<b>“即时到帐”</b>!并请在备注里注明您的会员账号。<br/>如果选择“担保交易”的话，系统账号不会即时充值哦！因此影响您的出货，请责任自负!
       </div>
-  </div> 
-  <div class="pure-g uh-form-section">
-      <div class="pure-u-3-24">充值金额</div>
-      <div class="pure-u-8-24"><input></div>
-  </div>
+    </div>
 </div>
 
 <div class="uh-main-section last">
-  <div class="pure-u-3-24 uh-form-label">充值方式</div>
-  <div class="pure-u-3-4">
-    <div class="pure-g uh-form-label"> 
-      <div class="pure-u-1-24 "><input name="Fruit" type="radio" value="" /></div>
-      <div class="pure-u-3-4"><img src="images/alipay.png"> <br/>
-       <p>请选“即时到帐”!并请在备注里注明您的会员账号。如果选择“担保交易”的话，系统账号不会即时充值哦！因此影响您的出货，请责任自负！</p>
-      </div>
-    </div>
-    <div class="pure-g uh-form-label"> 
-        <div class="pure-u-1-24 "><input name="Fruit" type="radio" value="" /></div>
-      <div class="pure-u-3-4">银行卡转账<br/>
+      <div class="pure-u-1" style="background:#f8f8f8; font-size:14px; border-radius:5px; padding: 20px; box-sizing: border-box">
+        <p><b>如果您没有支付宝可以使用银行卡转账的方式</b></p>
         <p>请汇款至：银行 ：华夏银行苏州新区支行<p>
         <p>账号 ：6230 2002 9004 4093</p>
         <p>收款人 ：周黎青</p>
         <p>备注请注明“大口袋充值”和您的账户名。</p>
       </div>
-    </div>
-  </div>
+
 </div>
+
+
+
+
+
 
 <div class="uh-main-action">
     <!-- <div class="pure-button back left"><a href="">返回</a></div> -->
-    <div ng-click="goBack()" class="btn-back left"></div>
-    <div class="btn-confirm right"></div>
-
+    <div ui-sref="financialRecord"class="btn-back left"></div>
 </div>
-
-
