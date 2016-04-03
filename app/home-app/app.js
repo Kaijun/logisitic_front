@@ -210,4 +210,12 @@
         apiUrl: '/api',
     });
 
+    
+    // var user  = {"id":2,"name":"xrwr","email":"xrwr@qq.com","updated_at":"2016-04-03 11:28:32","created_at":"2015-10-23 13:44:09","stock_number":"IHYBTL","stock_position":10001,"role_id":1,"remain":100000.0078125,"score":0,"exp":0,"QQ":57826867,"wechat":"weqweqwe","phone_number":"13505876544","ID_card_number":"321321312321344","ID_card_scan_1":"","ID_card_scan_2":"","real_name":"pjy","is_deletable":0,"is_assured":0,"role":{"id":1,"role_name":"\u5ba2\u6237","is_backend":0,"accountancy":0,"stock_manage":0,"ship_manage":0,"is_adminstrator":0,"is_vip":0,"updated_at":"-0001-11-30 00:00:00","created_at":"-0001-11-30 00:00:00","is_deletable":0}};
+    // user.level = {"id":11,"level_name":"\u666e\u901a\u7528\u6237","lower_bound":0,"usable_amount":0,"usable_ratio":"0.000"};
+    // user.unread_conversation = 0;
+    // user.unread_notification = 1;
+    // angular.module('home').constant('UserInfo', user);
+    
+
 })();
