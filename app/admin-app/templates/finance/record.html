@@ -3,14 +3,14 @@
   <div class="pure-g ah-filter">
     <div class="pure-u-1-24 label">客户ID</div>
     <div class="pure-u-2-24"><input></div>
-    <div class="pure-u-1-24 label">最近</div>
-    <div class="pure-u-2-24">
-        <select>
-          <option value="1">1个月</option>
-          <option value="1">3个月</option>
-        </select>
-    </div>
-    <div class="pure-u-18-24 button"><a>筛选</a></div>
+    <div class="pure-u-1-24 label">金额</div>
+    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-1-24 label">时间</div>
+    <div class="pure-u-3-24"><input placeholder="yyyy-mm-dd"></div>
+    <div class="pure-u-1-24 label">-</div>
+    <div class="pure-u-3-24"><input placeholder="yyyy-mm-dd"></div>
+    <div class="pure-u-9-24 button"><a style="background:#ff3535">清除</a></div>
+    <div class="pure-u-1-24 button"><a>筛选</a></div>
   </div>
 
 
@@ -45,7 +45,7 @@
         </tbody>
       </table>
     </div>
-  <div class="ah-action-btns"> 
+  <div class="ah-action-btns">
     <div class="left ">
             <div class="ah-pager"  ng-if="pageInfo.prev_page_url" ng-click="requestPage(pageInfo.prev_page_url)" ><</div>
              <div class="ah-pager" ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >></div>
@@ -54,5 +54,5 @@
       <a  ng-click="" class="pure-button blue horizon export">批量导出</a>
     </div>
   </div>
-  
+
 </div>

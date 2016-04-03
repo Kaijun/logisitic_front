@@ -14,20 +14,20 @@
         <input ng-model="filterOptions.owner_name">
       </div>
       <div class="pure-u-1-24 label">时间</div>
-      <div class="pure-u-2-24">
+      <div class="pure-u-3-24">
         <input type='date' ng-model="filterOptions.start">
       </div>
       <div class="pure-u-1-24 label">-</div>
-      <div class="pure-u-2-24">
+      <div class="pure-u-3-24">
         <input type='date' ng-model="filterOptions.end">
       </div>
       <div class="pure-u-1-24 label">最近</div>
-      <div class="pure-u-3-24">
+      <div class="pure-u-2-24">
           <select ng-model="filterOptions.date_type" ng-options="o.v as o.n for o in [{ n: '一个月', v: 1 }, { n: '三个月', v: 3 }]">
           </select>
       </div>
-      <div class="pure-u-3-24 button"><a ng-click="filter()">筛选</a></div>
-      <div class="pure-u-3-24 button"><a ng-click="clearFilter()">清除筛选</a></div>
+      <div class="pure-u-2-24 button" ><a ng-click="clearFilter() " style="background:#ff3535;">清除</a></div>
+
     </div>
     <div class="pure-g">
       <div class="pure-u-1-24 label">运单号</div>
@@ -42,6 +42,8 @@
       <div class="pure-u-4-24">
         <select ng-model="filterOptions.logistic_path" ng-options="lp.id as lp.name for lp in allLogisticPaths"> </select>
       </div>
+
+      <div class="pure-u-8-24 button"><a ng-click="filter()">筛选</a></div>
 
     </div>
   </div>

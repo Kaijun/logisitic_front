@@ -9,7 +9,7 @@
   <div class="pure-g ah-filter">
   <!-- <div class="pure-u-1-24 label">搜索</div> -->
     <div class="pure-u-2-24 label">入库跟踪号</div>
-    <div class="pure-u-4-24"><input ng-model="filterOptions.reference_code"></div>
+    <div class="pure-u-3-24"><input ng-model="filterOptions.reference_code"></div>
 
     <div class="pure-u-1-24 label">库存码</div>
     <div class="pure-u-2-24"><input ng-model="filterOptions.stock_number"></div>
@@ -18,11 +18,12 @@
     <div class="pure-u-1-24 label">客户ID</div>
     <div class="pure-u-2-24"><input ng-model="filterOptions.owner_name"></div>
     <div class="pure-u-1-24 label">时间</div>
-    <div class="pure-u-2-24"><input type="date" ng-model="filterOptions.start"></div>
+    <div class="pure-u-3-24"><input type="date" ng-model="filterOptions.start"></div>
     <div class="pure-u-1-24 label">至</div>
-    <div class="pure-u-2-24"><input type="date" ng-model="filterOptions.end"></div>
-    <div class="pure-u-3-24 button"><a ng-click="filter()">筛选</a></div>
-    <div class="pure-u-3-24 button"><a ng-click="clearFilter()">清除筛选</a></div>
+    <div class="pure-u-3-24"><input type="date" ng-model="filterOptions.end"></div>
+
+    <div class="pure-u-1-24 button"><a ng-click="clearFilter()" style="background:#ff3535">清除</a></div>
+    <div class="pure-u-1-24 button"><a ng-click="filter()">筛选</a></div>
   </div>
 
 
