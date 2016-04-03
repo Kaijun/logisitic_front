@@ -21,8 +21,22 @@
                 else{
                     FinancialService.refill({amount: parseFloat($scope.amount)}).then(function(data) {
                         if(data['pay_url']){
-                            swal({title: "跳转到支付宝, 请等待...", type: "info",  timer: 60000,   showConfirmButton: false });
-                            $window.location.href = data['pay_url']
+                            $window.open(data['pay_url']);
+                            swal({
+                                title: "是否支付成功?", 
+                                text: "",
+                                type: "info",  
+                                cancelButtonText: "支付失败",
+                                confirmButtonText: "支付成功",
+                                showCancelButton: true,
+                            }, function(isConfirm) {
+                                if(isConfirm){
+                                    $state.go('financialRecord', {}, {reload: true})
+                                }
+                                else{
+                                    swal.close();
+                                }
+                            });
                         }
                     })
                 }

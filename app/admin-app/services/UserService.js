@@ -69,7 +69,7 @@
         }
         function resetPassword(email) {
             var promise = $http({
-                url: '/password/email',
+                url: '/password/',
                 method: 'POST',
                 data: 'email='+email,
             }).then(function (response) {
