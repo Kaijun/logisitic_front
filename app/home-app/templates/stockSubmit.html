@@ -1,7 +1,7 @@
 <div ng-hide="isConfirmShown" class="uh-submit">
 <div>
 
-<div class="uh-main-section first"> 
+<div class="uh-main-section first">
   <div class="uh-main-header">
       <div class="left">
         <span class="title blue">入库预报</span>
@@ -42,7 +42,7 @@
       </div>
 
 </div><!-- 头部背景结束 -->
-<div class="uh-main-section addtion">
+<div class="uh-main-section addition">
     <div class="entry">
       <div class="uh-section">添加物品进包裹*</div>
       <div class="desc">必须有一件物品；如需批量上传，请阅读帮助或下载模板</div>
@@ -72,7 +72,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="options"> 
+      <div class="options">
         <a ng-click="addItem()" class="pure-button radius blue">新增一项</a>
         <!-- <a class="pure-button radius blue">批量上传</a> -->
       </div>
@@ -96,7 +96,7 @@
        <div class="title pure-u-1-4">购物网站订单号</div>
           <div class="pure-u-3-4"><input  ng-model="stock.website_reference" type="text" ></div>
    </div>
-      
+
     <div class="pure-g uh-form-section">
       <div class="title pure-u-1-4">上传购物凭证截图</div>
       <div class="pure-u-3-4">
@@ -105,7 +105,7 @@
         <div class="pure-u-1-4"><input file-model="imagesToUpload[2]" type="file" accept="image/*"/></div>
         <div class="desc">请根据需要上传相应购物凭证，最多3张，支持 jpg, gif, png 小于500 KB</div>
       </div>
-    </div>    
+    </div>
 </div>
 
 <div class="uh-main-section last">
@@ -117,18 +117,18 @@
           <div  class="pure-u-1" extra-service-list given-services="extraServices" user-group="0" selected-services="stock.extra_services"></div>
            <div class="pure-u-1 desc">如有需要，请选择相应的增值服务，部分服务可能会产生费用。</div>
           </div>
-     
+
       </div>
 
     <div class="pure-g uh-form-section">
       <div class="title pure-u-1-4">留言</div>
       <div class="pure-u-3-4"><textarea ng-model="stock.message" class="pure-u-1" ></textarea></div>
     </div>
-    
+
     </div>
 </div>
-      
- 
+
+
     <div class="uh-main-action" >
 
         <a  ng-click="confirm()" >下一步</a>
@@ -143,7 +143,7 @@
 
 <div ng-show="isConfirmShown" class="uh-submit">
 <!-- <div class="uh-submit"> -->
- <div class="uh-main-section first"> 
+ <div class="uh-main-section first">
   <div class="uh-main-header">
       <div class="left">
         <span class="title blue">入库预报</span>
@@ -230,7 +230,7 @@
 </div>
 
 <div class="uh-main-section last">
-    
+
     <div class="uh-section">附加信息</div>
 
 
@@ -246,7 +246,7 @@
         </tr>
 </table>
 </div>
-    
+
 <div class="uh-main-action" >
       <div class="btn-edit left" ng-click="editSubmit()"></div>
       <div  ng-click="deleteSubmit()" class="btn-delete left"></div>
@@ -255,10 +255,3 @@
 </div>
 
 </div>
-
-
-
-
-
-
-

@@ -287,8 +287,9 @@
       <thead>
         <tr>
           <th class="pure-u-1-4">项目</th>
-          <th class="pure-u-1-4">费用</th>
-          <th class="pure-u-2-4">说明</th>
+          <th class="pure-u-1-4">价格</th>
+          <th class="pure-u-1-4">实收</th>
+          <th class="pure-u-1-4">说明</th>
         </tr>
       </thead>
       <tbody>
@@ -296,11 +297,13 @@
         <tr ng-repeat="es in estimateCost.extra_service_cost">
           <td>{{es.extra_service.service_name}}</td>
           <td>{{es.cost}}元</td>
+          <td>es.cost_discounted元</td>
           <td>{{es.extra_service.description}}</td>
         </tr>
         <tr>
           <td>运费</td>
           <td>{{estimateCost.cost}}元</td>
+          <td>es.cost_discounted元</td>
           <td>-</td>
         </tr>
 <!--         <tr class="sum">

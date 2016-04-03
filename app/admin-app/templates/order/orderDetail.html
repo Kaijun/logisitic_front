@@ -87,8 +87,9 @@
   <thead>
     <tr>
       <th class="pure-u-1-4">项目</th>
-      <th class="pure-u-1-4">费用</th>
-      <th class="pure-u-2-4">说明</th>
+      <th class="pure-u-1-4">价格</th>
+      <th class="pure-u-1-4">实收</th>
+      <th class="pure-u-1-4">说明</th>
     </tr>
   </thead>
   <tbody>
@@ -96,16 +97,19 @@
     <tr ng-repeat="es in order.package.extra_services">
       <td>{{es.service_name}}</td>
       <td>{{es.pivot.price|number:2}}</td>
+      <td>cost_discount</td>
       <td>{{es.description}}</td>
     </tr>
     <tr>
       <td>运费</td>
       <td>{{order.cost|number:2}}元</td>
+      <td>cost_discount</td>
       <td>-</td>
     </tr>
     <tr class="sum">
       <td>合计</td>
       <td>{{order.total_cost|number:2}}元</td>
+      <td>cost_discount</td>
       <td>{{order.auto_charge==0? "客服手动确认后支付" : "称重后自动结算（需有足够余额)"}}</td>
     </tr>
   </tbody>
