@@ -16,6 +16,7 @@
             items: [],
             declarations: [],
             extra_services: [],
+            used_score: null,
             message: null,
             pay_method: null,
             warehouse: null, 

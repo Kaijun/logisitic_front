@@ -22,16 +22,19 @@
 
         function activate() {
             VorkasseService.getVorkasses().then(function(data){
-                $scope.vorkasses = data.data;
-                $scope.vorkasses.map(function (item) {
-                    item.statusStr = InfoService.getVorkasseStatusMapping(item.status);
-                })
-                $scope.vorkasses = $scope.vorkasses.filter(function (item) {
-                    return item.id;
-                });
-                $timeout(function () {
-                    $scope.pageInfo = data;
-                })
+                if(data.success===true){
+                    data = data.data
+                    $scope.vorkasses = data.data;
+                    $scope.vorkasses.map(function (item) {
+                        item.statusStr = InfoService.getVorkasseStatusMapping(item.status);
+                    })
+                    $scope.vorkasses = $scope.vorkasses.filter(function (item) {
+                        return item.id;
+                    });
+                    $timeout(function () {
+                        $scope.pageInfo = data;
+                    })
+                }
             })
         }
         function goToDetail (vorkasseId) {
@@ -55,16 +58,20 @@
         }
         function requestPage (url) {
             $http.get(url).then(function (response) {
-                $scope.vorkasses = response.data.data;      
-                $scope.vorkasses.map(function (item) {
-                    item.statusStr = InfoService.getVorkasseStatusMapping(item.status);
-                })          
-                $scope.vorkasses = $scope.vorkasses.filter(function (item) {
-                    return item.id;
-                });
-                $timeout(function () {
-                    $scope.pageInfo = response.data;
-                })
+                response = response.data;
+                if(response.success===true){
+                   
+                    $scope.vorkasses = response.data.data;      
+                    $scope.vorkasses.map(function (item) {
+                        item.statusStr = InfoService.getVorkasseStatusMapping(item.status);
+                    })          
+                    $scope.vorkasses = $scope.vorkasses.filter(function (item) {
+                        return item.id;
+                    });
+                    $timeout(function () {
+                        $scope.pageInfo = response.data;
+                    }) 
+                }
             })
         }
     }

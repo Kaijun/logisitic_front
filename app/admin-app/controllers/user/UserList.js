@@ -23,10 +23,13 @@
 
         function activate() {
             UserService.getUsers().then(function(data){
-                $scope.users = data.data;
-                $timeout(function () {
-                    $scope.pageInfo = data;
-                })
+                if(data.success===true){
+                    data = data.data
+                    $scope.users = data.data;
+                    $timeout(function () {
+                        $scope.pageInfo = data;
+                    })
+                }
             })
         }
         function editUser (userId) {
@@ -34,13 +37,16 @@
         }
         function requestPage (url) {
             $http.get(url).then(function (response) {
-                $scope.stocks = response.data.data;
-                $scope.stocks.map(function (item) {
-                    item.selected = arrayExist(selectedStocks, item.package_id);
-                });
-                $timeout(function () {
-                    $scope.pageInfo = response.data;
-                })
+                response = response.data
+                if(response.success===true){
+                    $scope.stocks = response.data.data;
+                    $scope.stocks.map(function (item) {
+                        item.selected = arrayExist(selectedStocks, item.package_id);
+                    });
+                    $timeout(function () {
+                        $scope.pageInfo = response.data;
+                    })
+                }
             })
         }
     }
