@@ -29,10 +29,7 @@
         // })
         .state('stockList', {
             parent: 'business',
-            url: '/stockList',
-            params: {
-                stockStatus: '',
-            },
+            url: '/stockList/:stockStatus',
             templateUrl: 'templates/stockList.html',
             controller: 'StockListCtrl',
         })
@@ -56,10 +53,7 @@
         })
         .state('orderList', {
             parent: 'business',
-            url: '/orderList',
-            params: {
-                orderStatus: '',
-            },
+            url: '/orderList/:orderStatus',
             templateUrl: 'templates/order/orderList.html',
             controller: 'OrderList',
         })

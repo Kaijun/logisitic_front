@@ -9,19 +9,20 @@
   <div class="pure-g ah-filter">
   <!-- <div class="pure-u-1-24 label">搜索</div> -->
     <div class="pure-u-2-24 label">入库跟踪号</div>
-    <div class="pure-u-4-24"><input></div>
+    <div class="pure-u-4-24"><input ng-model="filterOptions.reference_code"></div>
 
     <div class="pure-u-1-24 label">库存码</div>
-    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-2-24"><input ng-model="filterOptions.stock_number"></div>
     <div class="pure-u-1-24 label">库位号</div>
     <div class="pure-u-2-24"><input></div>
     <div class="pure-u-1-24 label">客户ID</div>
-    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-2-24"><input ng-model="filterOptions.owner_name"></div>
     <div class="pure-u-1-24 label">时间</div>
-    <div class="pure-u-2-24"><input placeholder="yyyy-mm-dd"></div>
+    <div class="pure-u-2-24"><input type="date" ng-model="filterOptions.start"></div>
     <div class="pure-u-1-24 label">至</div>
-    <div class="pure-u-2-24"><input placeholder="yyyy-mm-dd"></div>
-    <div class="pure-u-3-24 button"><a>筛选</a></div>
+    <div class="pure-u-2-24"><input type="date" ng-model="filterOptions.end"></div>
+    <div class="pure-u-3-24 button"><a ng-click="filter()">筛选</a></div>
+    <div class="pure-u-3-24 button"><a ng-click="clearFilter()">清除筛选</a></div>
   </div>
 
 
@@ -56,7 +57,7 @@
                 <a href="mailto:{{stock.user.email}}" target="_top"><img src="images/contact-email.svg"></a></td>
             <td>{{stock.description || "空"}}</td>
             <td>{{stock.message || "空"}}</td>
-            <td>{{StockService.getStockStatusMapping(stock.status)}}</td>
+            <td>{{InfoService.getStockStatusMapping(stock.status)}}</td>
             <td>
               <!-- <a ng-if="stock.status === 1 || stock.status === 2" ng-click="goToDetail(stock.id)"  title="编辑"></a> -->
               <!-- <a ng-if="stock.status === 2" ng-click="enterStock(stock)" >入库</a> -->

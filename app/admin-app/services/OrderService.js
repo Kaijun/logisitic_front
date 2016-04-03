@@ -11,6 +11,7 @@
     function OrderService($http, AppConfig) {
         var service = {
             getOrders: getOrders,
+            queryOrders: queryOrders,
             getOrderById: getOrderById,
             searchOrderByRef: searchOrderByRef,
             editOrder: editOrder,
@@ -32,6 +33,18 @@
             });
             return promise;
         }
+
+        function queryOrders(opt) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/ship-order',
+                method: 'GET',
+                params: opt,
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        
         function getOrderById(orderId) {
             var promise = $http.get(AppConfig.apiUrl + '/ship-order/' + orderId).then(function (response) {
                 return response.data;

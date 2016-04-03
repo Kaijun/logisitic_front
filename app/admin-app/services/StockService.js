@@ -10,8 +10,8 @@
     /* @ngInject */
     function StockService(AppConfig, $http, $httpParamSerializer) {
         var service = {
-            getStockStatusMapping: getStockStatusMapping,
             getStocks: getStocks,
+            queryStocks: queryStocks,
             getStock: getStock,
             enterStock: enterStock,
             deleteStock: deleteStock,
@@ -26,21 +26,22 @@
 
         ////////////////
         ////////////////
-        function getStockStatusMapping (statusId) {
-            statusId = Number(statusId) + 1;
-                // 需要改statusId的类型
-            var statusMapping = ['删除','未知','已登记','待入库','预报问题件','已入库','库存问题件','移库未确认','移库已确认','移库处理中','移库问题件','移库完成','申请发货','发货处理中','已发货']
-            if(statusId < statusMapping.length){
-                return statusMapping[statusId];
-            }
-            return statusMapping[0];
-        }
         function getStocks(status) {
             var url = '';
             if(status){
                 url = '?status=' + status;
             }
             var promise = $http.get(AppConfig.apiUrl + '/stocks' + url).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function queryStocks(opt) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/stocks',
+                method: 'GET',
+                params: opt,
+            }).then(function (response) {
                 return response.data;
             });
             return promise;

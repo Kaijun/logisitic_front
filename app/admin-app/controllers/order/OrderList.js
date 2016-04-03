@@ -5,12 +5,24 @@
         .module('admin.controllers')
         .controller('OrderList', OrderList);
 
-    OrderList.$inject = ['$scope', 'OrderService', '$timeout', '$state', '$http', 'InfoService', '$stateParams', '$window', '$filter'];
+    OrderList.$inject = ['$scope', 'OrderService', '$timeout', '$state', '$http', 'InfoService', '$stateParams', '$window', '$filter', 'LogisticService'];
 
     /* @ngInject */
-    function OrderList($scope, OrderService, $timeout, $state, $http, InfoService, $stateParams, $window, $filter) {
+    function OrderList($scope, OrderService, $timeout, $state, $http, InfoService, $stateParams, $window, $filter, LogisticService) {
         $scope.$stateParams = $stateParams;
         $scope.orders = [];
+        $scope.allLogisticPaths = [];
+        $scope.filterOptions = {
+            status: $stateParams.orderStatus || null,
+            reference_code: null,
+            stock_number: null,
+            owner_name: null,
+            logistic_path: null,
+            track_code: null,
+            date_type: null,
+            start: null,
+            end: null,
+        };
         $scope.goToDetail = goToDetail;
         $scope.deleteOrder = deleteOrder;
         $scope.batchDownload = batchDownload;
@@ -23,6 +35,9 @@
         $scope.requestPage = requestPage;
         $scope.selectAllItems = selectAllItems;
 
+        $scope.filter = filter;
+        $scope.clearFilter = clearFilter;
+
         var selectedOrders = [];
 
         activate();
@@ -31,19 +46,27 @@
 
         function activate() {
 
+            LogisticService.getLogistics().then(function (data) {
+                $scope.allLogisticPaths = data;
+            });
+
+
             var status = $stateParams.orderStatus || '';
             OrderService.getOrders(status).then(function(data){
-                $scope.orders = data.data.filter(function (item) {
-                    return item.id;
-                });
-                $scope.orders.map(function (item) {
-                    item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
-                    item.dateStr = item.created_at.substring(0, 10);
-                    item.selected = arrayExist(selectedOrders, item);
-                })
-                $timeout(function () {
-                    $scope.pageInfo = data;
-                })
+                if(data.success===true){
+                    data = data.data
+                    $scope.orders = data.data.filter(function (item) {
+                        return item.id;
+                    });
+                    $scope.orders.map(function (item) {
+                        item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
+                        item.dateStr = item.created_at.substring(0, 10);
+                        item.selected = arrayExist(selectedOrders, item);
+                    })
+                    $timeout(function () {
+                        $scope.pageInfo = data;
+                    })
+                }
             })
         }
         function goToDetail (orderId) {
@@ -51,18 +74,21 @@
         }
         function requestPage (url) {
             $http.get(url).then(function (response) {
-                $scope.orders = response.data.data.filter(function (item) {
-                    return item.id;
-                    // return item.ship_status !== null;
-                });
-                $scope.orders.map(function (item) {
-                    item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
-                    item.dateStr = item.created_at.substring(0, 10);
-                    item.selected = arrayExist(selectedOrders, item);
-                })
-                $timeout(function () {
-                    $scope.pageInfo = response.data;
-                })
+                var data = response.data
+                if(data.success === true ){
+                    $scope.orders = data.data.data.filter(function (item) {
+                        return item.id;
+                        // return item.ship_status !== null;
+                    });
+                    $scope.orders.map(function (item) {
+                        item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
+                        item.dateStr = item.created_at.substring(0, 10);
+                        item.selected = arrayExist(selectedOrders, item);
+                    })
+                    $timeout(function () {
+                        $scope.pageInfo = response.data;
+                    })
+                }
             })
         }
 
@@ -252,6 +278,34 @@
             }
         }
 
+        function filter() {
+            var opt = angular.copy($scope.filterOptions);
+            if(opt.start instanceof Date && opt.end instanceof Date && opt.start>opt.end){
+                swal('起始时间不能晚于截至时间', '', 'error')
+                return 
+            }
+            if(opt.start instanceof Date) opt.start = opt.start.toISOString().substr(0,10);
+            if(opt.end instanceof Date) opt.end = opt.end.toISOString().substr(0,10);
+            OrderService.queryOrders(opt).then(function(data) {
+                if(data.success===true){
+                    data = data.data
+                    $scope.orders = data.data.filter(function (item) {
+                        return item.id;
+                    });
+                    $scope.orders.map(function (item) {
+                        item.statusStr = InfoService.getOrderStatusMapping(parseInt(item.order_status));
+                        item.dateStr = item.created_at.substring(0, 10);
+                        item.selected = arrayExist(selectedOrders, item);
+                    })
+                    $timeout(function () {
+                        $scope.pageInfo = data;
+                    })
+                }
+            })
+        }
+        function clearFilter() {
+            $state.go($state.current, {stockStatus: $stateParams.stockStatus}, {reload: true})
+        }
 
     }
 })();

@@ -5,14 +5,23 @@
         .module('admin.controllers')
         .controller('StockListCtrl', StockListCtrl);
 
-    StockListCtrl.$inject = ['$scope', '$state', '$http', '$timeout', 'StockService', '$stateParams', '$window'];
+    StockListCtrl.$inject = ['$scope', '$state', '$http', '$timeout', 'StockService', '$stateParams', '$window', 'InfoService'];
 
     /* @ngInject */
-    function StockListCtrl($scope, $state, $http, $timeout, StockService, $stateParams, $window) {
-        $scope.StockService = StockService;
+    function StockListCtrl($scope, $state, $http, $timeout, StockService, $stateParams, $window, InfoService) {
+        $scope.InfoService = InfoService;
         // $scope.isPreStockList = false;
 
         $scope.stocks = [];
+        $scope.filterOptions = {
+            status: $stateParams.stockStatus || null,
+            reference_code: null,
+            warehouse_id: null,
+            stock_number: null,
+            owner_name: null,
+            start: null,
+            end: null,
+        };
         $scope.goToDetail = goToDetail;
         $scope.enterStock = enterStock;
         $scope.deleteStock = deleteStock;
@@ -22,6 +31,8 @@
         $scope.pageInfo = null;
         $scope.requestPage = requestPage;
         $scope.selectAllItems = selectAllItems;
+        $scope.filter = filter;
+        $scope.clearFilter = clearFilter;
 
         $scope.$state = $state;
 
@@ -36,15 +47,18 @@
 
             var status = $stateParams.stockStatus || '';
             StockService.getStocks(status).then(function(data){
-                $scope.stocks = data.data;
-                $scope.stocks.map(function (item) {
-                    item.created_at = item.created_at.substr(0,10);
-                    item.updated_at = item.updated_at.substr(0,10);
-                    item.selected = arrayExist(selectedStockIds, item.id);
-                });
-                $timeout(function () {
-                    $scope.pageInfo = data;
-                })
+                if(data.success===true){
+                    data = data.data
+                    $scope.stocks = data.data;
+                    $scope.stocks.map(function (item) {
+                        item.created_at = item.created_at.substr(0,10);
+                        item.updated_at = item.updated_at.substr(0,10);
+                        item.selected = arrayExist(selectedStockIds, item.id);
+                    });
+                    $timeout(function () {
+                        $scope.pageInfo = data;
+                    })
+                }
             })
         }
         function goToDetail (stock) {
@@ -52,15 +66,18 @@
         }
         function requestPage (url) {
             $http.get(url).then(function (response) {
-                $scope.stocks = response.data.data;
-                $scope.stocks.map(function (item) {
-                    item.created_at = item.created_at.substr(0,10);
-                    item.updated_at = item.updated_at.substr(0,10);
-                    item.selected = arrayExist(selectedStockIds, item.id);
-                });
-                $timeout(function () {
-                    $scope.pageInfo = response.data;
-                })
+                var data = response.data
+                if(data.success===true){
+                    $scope.stocks = data.data.data;
+                    $scope.stocks.map(function (item) {
+                        item.created_at = item.created_at.substr(0,10);
+                        item.updated_at = item.updated_at.substr(0,10);
+                        item.selected = arrayExist(selectedStockIds, item.id);
+                    });
+                    $timeout(function () {
+                        $scope.pageInfo = data.data;
+                    })
+                }
             })
         }
 
@@ -180,6 +197,33 @@
             var url = $state.href('printStock');
             var newWindow = $window.open(url,'_blank');
         
+        }
+
+        function filter() {
+            var opt = angular.copy($scope.filterOptions);
+            if(opt.start instanceof Date && opt.end instanceof Date && opt.start>opt.end){
+                swal('起始时间不能晚于截至时间', '', 'error')
+                return 
+            }
+            if(opt.start instanceof Date) opt.start = opt.start.toISOString().substr(0,10)
+            if(opt.end instanceof Date) opt.end = opt.end.toISOString().substr(0,10)
+            StockService.queryStocks(opt).then(function(data) {
+                if(data.success===true){
+                    data = data.data
+                    $scope.stocks = data.data;
+                    $scope.stocks.map(function (item) {
+                        item.created_at = item.created_at.substr(0,10);
+                        item.updated_at = item.updated_at.substr(0,10);
+                        item.selected = arrayExist(selectedStockIds, item.id);
+                    });
+                    $timeout(function () {
+                        $scope.pageInfo = data;
+                    })
+                }
+            })
+        }
+        function clearFilter() {
+            $state.go($state.current, {stockStatus: $stateParams.stockStatus}, {reload: true})
         }
 
 

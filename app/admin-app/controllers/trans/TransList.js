@@ -5,10 +5,10 @@
         .module('admin.controllers')
         .controller('TransList', TransList);
 
-    TransList.$inject = ['$scope', 'TransService', '$timeout', '$state', '$http', 'StockService'];
+    TransList.$inject = ['$scope', 'TransService', '$timeout', '$state', '$http', 'StockService', 'InfoService'];
 
     /* @ngInject */
-    function TransList($scope, TransService, $timeout, $state, $http, StockService) {
+    function TransList($scope, TransService, $timeout, $state, $http, StockService, InfoService) {
         $scope.StockService = StockService;
         $scope.transs = [];
         $scope.goToDetail = goToDetail;
@@ -28,7 +28,7 @@
                     return item.transorder_id;
                 });
                 $scope.transs.map(function (item) {
-                    item.statusStr = StockService.getStockStatusMapping(item.status);
+                    item.statusStr = InfoService.getStockStatusMapping(item.status);
                     item.created_at = item.created_time.date.substring(0, 10);
                     item.updated_at = item.updated_time.date.substring(0, 10);
                     // item.selected = arrayExist(selectedOrders, item);
@@ -67,7 +67,7 @@
                     return item.transorder_id;
                 });                
                 $scope.transs.map(function (item) {
-                    item.statusStr = StockService.getStockStatusMapping(item.status);
+                    item.statusStr = InfoService.getStockStatusMapping(item.status);
                     item.created_at = item.created_time.date.substring(0, 10);
                     // item.selected = arrayExist(selectedOrders, item);
                 })
