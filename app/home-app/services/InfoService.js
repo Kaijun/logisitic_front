@@ -5,10 +5,10 @@
         .module('home.services')
         .service('InfoService', InfoService);
 
-    InfoService.$inject = ['AppConfig', '$http', '$cacheFactory', '$q'];
+    InfoService.$inject = ['AppConfig', '$http', '$cacheFactory', '$q', 'UserInfo'];
 
     /* @ngInject */
-    function InfoService(AppConfig, $http, $cacheFactory, $q) {
+    function InfoService(AppConfig, $http, $cacheFactory, $q, UserInfo) {
         var stockInfoCache = $cacheFactory('stockInfo');
 
         var service = {
@@ -72,25 +72,7 @@
         }
         // type: 0=all, 1=入库，2=移库, 3=出库
         function getLogisticPaths(type) {
-            if(stockInfoCache.get('logisticPaths')){
-                return stockInfoCache.get('logisticPaths').then(function(data){
-                    if(angular.isArray(data)){
-                        if(parseInt(type)===0){
-                            return data;
-                        }
-                        else{
-                            var data = data.filter(function(value){
-                                return parseInt(value.type) === type;
-                            });
-                        }
-                    }
-                    return data;
-                });
-            }
-            var promise = $http.get(AppConfig.apiUrl + '/info/logistic-paths').then(function (response) {
-                return response.data;
-            });
-            stockInfoCache.put('logisticPaths', promise);
+            var promise =  $q.when(UserInfo.level.logistic_paths);
 
             promise = promise.then(function(data) {
                 if(angular.isArray(data)){
@@ -123,20 +105,8 @@
         // type: 0=all, 1=入库，2=移库, 3=出库
         // user_group: 0=all, 1=vip only
         function getExtraServices(type) {
-            if(stockInfoCache.get('extraServices')){
-                return stockInfoCache.get('extraServices').then(function(data){
-                    if(angular.isArray(data)){
-                        var data = data.filter(function(value){
-                            return parseInt(value.type) === parseInt(type);
-                        });
-                    }
-                    return data;
-                });
-            }
-            var promise = $http.get(AppConfig.apiUrl + '/info/extra-services').then(function (response) {
-                return response.data;
-            });
-            stockInfoCache.put('extraServices', promise);
+
+            var promise =  $q.when(UserInfo.level.extra_services);
 
             promise = promise.then(function(data) {
                 if(angular.isArray(data)){

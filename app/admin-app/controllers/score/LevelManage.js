@@ -84,6 +84,13 @@
 
           }
           else{
+            $scope.logisticPaths.forEach(function(item) {
+              item.enable = true;
+            })
+            $scope.extraServices.forEach(function(item) {
+              item.enable = true;
+            })
+
             $scope.level = {
               'level_name': '',
               'lower_bound': 0,
