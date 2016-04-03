@@ -129,13 +129,13 @@
     </div>
     <div class="uh-form-section pure-g">
       <div class="title pure-u-1-4 uh-tooltip">使用积分 </div>
-      <div class="pure-u-2-4 "><input ng-model="order.used_score"></div>
+      <div class="pure-u-2-4 "><input ng-model="order.used_score" type="number"></div>
 
       <div class="pure-u-1-4 uh-tooltip">
-              <label class="uh-tips">可使用的积分为xxx</label>
+              <label class="uh-tips">可使用的积分为{{UserInfo.usable_score}}</label>
               <span>
               <div class="arrow-up"></div>
-              您总积分为XXX，本单最多可使用的积分为XXX，每XXX积分可抵扣1元
+              您总积分为{{UserInfo.score}}，本单最多可使用的积分为{{UserInfo.usable_score}}，每{{UserInfo.config.score_money_ratio}}积分可抵扣1元
               </span>
       </div>
 

@@ -5,10 +5,10 @@
         .module('home.controllers')
         .controller('OrderSubmitCtrl', OrderSubmitCtrl);
 
-    OrderSubmitCtrl.$inject = ['$scope', 'OrderService', 'ProfileService', 'InfoService', '$q', '$timeout', '$state', '$stateParams'];
+    OrderSubmitCtrl.$inject = ['$scope', 'OrderService', 'ProfileService', 'InfoService', '$q', '$timeout', '$state', '$stateParams', 'UserInfo', '$window'];
 
     /* @ngInject */
-    function OrderSubmitCtrl($scope, OrderService, ProfileService, InfoService, $q, $timeout, $state, $stateParams) {
+    function OrderSubmitCtrl($scope, OrderService, ProfileService, InfoService, $q, $timeout, $state, $stateParams, UserInfo, $window) {
         var orderObj = {
             address: null,
             logistic_path: null,
@@ -16,12 +16,13 @@
             items: [],
             declarations: [],
             extra_services: [],
-            used_score: null,
+            used_score: 0,
             message: null,
             pay_method: null,
             warehouse: null, 
             auto_charge: 1
         }
+        $scope.UserInfo = UserInfo;
         $scope.isConfirmShown = false;
         $scope.warehouses = [];
         $scope.logisticPaths = [];
@@ -192,6 +193,11 @@
                 swal('请至少勾选一项发货物品', '', 'error');
                 return;
             }
+            //validate items if empty
+            if(parseInt($scope.order.used_score)>parseInt(UserInfo.usable_score)){
+                swal('最多可用积分'+UserInfo.usable_score+', 请修改!', '', 'error');
+                return;
+            }
 
 
             $scope.order.logistic_path = $scope.logisticPathChosen.id;
@@ -233,6 +239,7 @@
                 if(data.package_id && data.success==true){
                     swal('提交发货订单成功', '', 'success');
                     $state.go('orderDetail', {orderId: data.ship_order_id});
+                    $window.location.reload();
                 }
             })
         }
