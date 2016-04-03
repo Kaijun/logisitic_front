@@ -208,7 +208,7 @@
             estimateObj.weight = (function () {
                 var weight = 0;
                 $scope.order.items.forEach(function (item) {
-                    weight = weight + parseInt(item.unit_weight)*parseInt(item.quantity);
+                    weight = weight + parseFloat(item.unit_weight)*parseInt(item.quantity);
                 })
                 return weight;
             })();

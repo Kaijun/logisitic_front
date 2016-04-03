@@ -137,7 +137,7 @@
       <tr>
         <th class="pure-u-1-4">项目</th>
         <th class="pure-u-1-4">价格</th>
-        <th class="pure-u-1-4">实收</th>
+        <th ng-if="order.order_status ==1 || order.order_status == 7"  class="pure-u-1-4">实收</th>
         <th class="pure-u-1-4">说明</th>
       </tr>
     </thead>
@@ -147,19 +147,16 @@
       <tr ng-repeat="es in order.extra_services">
         <td>{{es.name}}</td>
         <td>{{es.cost}}元</td>
-        <td>es.cost_discount</td>
         <td>{{es.desc}}</td>
       </tr>
       <tr>
         <td>运费</td>
         <td>{{order.cost}}元</td>
-        <td>es.cost_discount</td>
         <td>-</td>
       </tr>
       <tr class="sum">
         <td>合计</td>
         <td>{{order.total_cost}}元</td>
-        <td>order.cost_discount</td>
         <td>客服手动确认后付款</td>
       </tr>
     </tbody>
@@ -169,11 +166,13 @@
       <tr ng-repeat="es in estimateCost.extra_service_cost">
         <td>{{es.name}}</td>
         <td>{{es.cost}}元</td>
+        <td>{{es.discounted_service_cost}}元</td>
         <td>{{es.desc}}</td>
       </tr>
       <tr>
         <td>运费</td>
         <td>{{estimateCost.cost}}元</td>
+        <td>{{estimateCost.discounted_cost}}元</td>
         <td>-</td>
       </tr>
       <!--               <tr  class="sum">
