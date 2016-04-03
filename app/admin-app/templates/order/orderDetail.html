@@ -88,7 +88,6 @@
     <tr>
       <th class="pure-u-1-4">项目</th>
       <th class="pure-u-1-4">价格</th>
-      <th class="pure-u-1-4">实收</th>
       <th class="pure-u-1-4">说明</th>
     </tr>
   </thead>
@@ -97,7 +96,6 @@
     <tr ng-repeat="es in order.package.extra_services">
       <td>{{es.service_name}}</td>
       <td>{{es.pivot.price|number:2}}</td>
-      <td>cost_discount</td>
       <td>{{es.description}}</td>
     </tr>
     <tr>
