@@ -5,12 +5,12 @@
         </div>
     </div>
     <div class="uh-form-section">
-        <form action="/pay/alipay" method="POST" class="pure-g" >
+        <form name="refillForm" class="pure-g" >
             <div class="pure-u-3-4">
               <img height="30px;" style="vertical-align: middle" src="images/alipay.png">
-              <input style="padding:8px; margin-left:30px;width:200px" name="amount" placeholder="请输入充值金额">
+              <input style="padding:8px; margin-left:30px;width:200px" ng-model="amount" name="amount" type="text" validator="required, number" placeholder="请输入充值金额">
             </div>
-            <div class="pure-u-1-4"><input class="pure-button blue" type="submit" value="跳转到支付宝支付" ></input></div>
+            <div class="pure-u-1-4"><input validation-submit="refillForm" ng-click="refill()" class="pure-button blue" value="跳转到支付宝支付" ></input></div>
         </form>
       <div class="pure-u-1 uh-form-label" style="background:#f8f8f8; font-size:14px; border-radius:5px; padding: 20px; margin-top:20px">
         请选<b>“即时到帐”</b>!并请在备注里注明您的会员账号。<br/>如果选择“担保交易”的话，系统账号不会即时充值哦！因此影响您的出货，请责任自负!

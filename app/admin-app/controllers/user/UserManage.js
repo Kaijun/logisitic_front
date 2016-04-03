@@ -14,6 +14,7 @@
         $scope.roles = [];
         $scope.saveEdit = saveEdit;
         $scope.deleteUser = deleteUser;
+        $scope.resetPassword = resetPassword;
         $scope.goBack = goBack;
 
         activate();
@@ -55,17 +56,34 @@
 
                         swal({
                             type: "success",
-                            title: "删除!",
+                            title: "删除成功!",
                             showCancelButton: false,
-                            confirmButtonColor: "#DD6B55",
-                            confirmButtonText: "确定",
-                            closeOnConfirm: true,
                         }, function () {
-                            alert('fu')
                             $state.go('userList', {}, {reload: true})
                         })
                     })
                 })
+
+        }
+        function resetPassword (email) {
+            if(email){
+
+                swal({
+                    title: "确认重置用户密码?",
+                    showCancelButton: true,
+                }, function () {
+
+                    UserService.resetPassword(email).then(function (data) {
+
+                        swal({
+                            type: "success",
+                            title: "重置成功!",
+                            text: "用户将收到重置密码邮件",
+                            showCancelButton: false,
+                        })
+                    })
+                })
+            }
 
         }
 

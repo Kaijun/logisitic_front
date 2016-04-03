@@ -120,7 +120,7 @@
         .state('refill', {
             url: '/financial/refill',
             templateUrl: 'templates/financial/refill.html',
-            controller: '',
+            controller: 'Refill',
         })
         .state('refund', {
             url: '/financial/refund',

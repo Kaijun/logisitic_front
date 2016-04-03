@@ -37,6 +37,9 @@
                     notNumber: function (value) {
                         return isNaN(value);
                     },
+                    number: function(value) {
+                      return !isNaN(parseFloat(value)) && isFinite(value);
+                    },
                     isID: function (value) {
                         if(!value || value.length===0 || value.toString().trim().length===0){
                             return true;

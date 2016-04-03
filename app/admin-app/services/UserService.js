@@ -16,6 +16,7 @@
             getUserByStockNumber: getUserByStockNumber,
             editUser: editUser,
             deleteUser: deleteUser,
+            resetPassword: resetPassword,
         }
 
         ////////////////
@@ -61,6 +62,16 @@
             var promise = $http({
                 url: AppConfig.apiUrl + '/user/'+id,
                 method: 'DELETE',
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function resetPassword(email) {
+            var promise = $http({
+                url: '/password/email',
+                method: 'POST',
+                data: 'email='+email,
             }).then(function (response) {
                 return response.data;
             });
