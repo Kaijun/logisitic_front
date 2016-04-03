@@ -16,7 +16,7 @@
             getUserByStockNumber: getUserByStockNumber,
             editUser: editUser,
             deleteUser: deleteUser,
-            resetPassword: resetPassword,
+            // resetPassword: resetPassword,
         }
 
         ////////////////
@@ -67,15 +67,15 @@
             });
             return promise;
         }
-        function resetPassword(email) {
-            var promise = $http({
-                url: '/password/',
-                method: 'POST',
-                data: 'email='+email,
-            }).then(function (response) {
-                return response.data;
-            });
-            return promise;
-        }
+        // function resetPassword(email) {
+        //     var promise = $http({
+        //         url: '/password/',
+        //         method: 'POST',
+        //         data: 'email='+email,
+        //     }).then(function (response) {
+        //         return response.data;
+        //     });
+        //     return promise;
+        // }
     }
 })();

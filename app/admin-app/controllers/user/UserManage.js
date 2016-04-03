@@ -14,7 +14,7 @@
         $scope.roles = [];
         $scope.saveEdit = saveEdit;
         $scope.deleteUser = deleteUser;
-        $scope.resetPassword = resetPassword;
+        // $scope.resetPassword = resetPassword;
         $scope.goBack = goBack;
 
         activate();
@@ -65,27 +65,27 @@
                 })
 
         }
-        function resetPassword (email) {
-            if(email){
+        // function resetPassword (email) {
+        //     if(email){
 
-                swal({
-                    title: "确认重置用户密码?",
-                    showCancelButton: true,
-                }, function () {
+        //         swal({
+        //             title: "确认重置用户密码?",
+        //             showCancelButton: true,
+        //         }, function () {
 
-                    UserService.resetPassword(email).then(function (data) {
+        //             UserService.resetPassword(email).then(function (data) {
 
-                        swal({
-                            type: "success",
-                            title: "重置成功!",
-                            text: "用户将收到重置密码邮件",
-                            showCancelButton: false,
-                        })
-                    })
-                })
-            }
+        //                 swal({
+        //                     type: "success",
+        //                     title: "重置成功!",
+        //                     text: "用户将收到重置密码邮件",
+        //                     showCancelButton: false,
+        //                 })
+        //             })
+        //         })
+        //     }
 
-        }
+        // }
 
         function goBack () {
             $window.history.back();
