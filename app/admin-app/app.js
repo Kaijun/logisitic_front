@@ -6,7 +6,7 @@
     function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider, $httpProvider) {
         cfpLoadingBarProvider.includeSpinner = true;
 
-	    $urlRouterProvider.otherwise('/business/stockList');
+	    $urlRouterProvider.otherwise('/business/stockList/');
 
 	    $stateProvider
 
