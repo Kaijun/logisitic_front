@@ -21,7 +21,7 @@
                 else{
                     FinancialService.refill({amount: parseFloat($scope.amount)}).then(function(data) {
                         if(data['pay_url']){
-                            swal({title: "跳转到支付宝中...", type: "info",  timer: 60000,   showConfirmButton: false });
+                            swal({title: "跳转到支付宝, 请等待...", type: "info",  timer: 60000,   showConfirmButton: false });
                             $window.location.href = data['pay_url']
                         }
                     })
