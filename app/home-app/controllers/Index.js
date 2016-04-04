@@ -43,6 +43,12 @@
             }
             else if(viewNum === 2){
                 OrderService.getCurrentOrders().then(function (list) {
+                    
+                    list = list.filter(function (item) {
+                        var order_status = item.order_status;
+                        return order_status!=null;
+                    });
+
                     list.map(function (item) {
                       item.createdTime = item.created_at.substring(0, 10);
                         item.updatedTime = item.updated_at.substring(0, 10);
