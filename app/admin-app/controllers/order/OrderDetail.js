@@ -47,24 +47,14 @@
                     })
                     return data;
                 }).then(function (data) {
-                    InfoService.getWarehouseById(data.package.warehouse_id).then(function (wh){
-                        $timeout(function() {
-                            $scope.warehouse = wh;
-                        })
-                    });
-                    InfoService.getLogisticPathById(data.logistic_path_id,0).then(function (lp){
-                        $timeout(function() {
-                            data.logisticPath = lp;
-                        })
-                    });
-                    LogisticService.getLogisticTracks().then(function (lts) {
-                        $timeout(function () {
-                            $scope.logisticTracks = lts;
-                            $scope.ship_status_string = $scope.logisticTracks.filter(function (item) {
-                                return item.id == $scope.order.ship_status;
-                            })[0].name;
-                        })
-                    })
+                    // LogisticService.getLogisticTracks().then(function (lts) {
+                    //     $timeout(function () {
+                    //         $scope.logisticTracks = lts;
+                    //         $scope.ship_status_string = $scope.logisticTracks.filter(function (item) {
+                    //             return item.id == $scope.order.ship_status;
+                    //         })[0].name;
+                    //     })
+                    // })
                     LogisticService.getLogisticTypes().then(function (lts) {
                         $timeout(function () {
                             $scope.order.package.items.forEach(function (item) {

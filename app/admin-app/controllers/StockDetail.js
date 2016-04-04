@@ -29,17 +29,10 @@
                 LogisticService.getLogisticTypes().then(function (data) {
                     $scope.optionTypes = data;
                 }).then(function() {
-                    return InfoService.getWarehouses().then(function (data) {
-                        $scope.warehouses = data;
-                    });
-                }).then(function() {
                     StockService.getStock($scope.stockId).then(function (data) {
                         $scope.isRequested = true;
 
                         $scope.imageUrlPrefix = data.user ? $scope.imageUrlPrefix + data.user.id + '/' : $scope.imageUrlPrefix ;
-                        data.warehouseName = $scope.warehouses.filter(function(item){
-                            return parseInt(item.id)===parseInt(data.warehouse_id)
-                        })[0].name
                         data.created_at = data.created_at.substring(0, 10);
                         data.updated_at = data.updated_at.substring(0, 10);
                         data.statusStr = InfoService.getStockStatusMapping(data.status);

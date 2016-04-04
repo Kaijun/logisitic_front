@@ -11,7 +11,6 @@
     function OrderDetailCtrl($scope, OrderService, InfoService, $q, $stateParams, $state, $timeout, UserInfo, $window) {
         
         $scope.order = null;
-        $scope.warehouse = null;
         $scope.estimateCost = {
             cost: 0,
             extra_service_cost: [],
@@ -54,17 +53,6 @@
                             });
                         })
 
-                        InfoService.getWarehouseById(order.warehouse).then(function (wh){
-                            $timeout(function() {
-                                $scope.warehouse = wh;
-                            })
-                        });
-                        InfoService.getLogisticPathById(order.ship_company,0).then(function (lp){
-                            $timeout(function() {
-                                $scope.order.logisticPath = lp;
-                            })
-                        });
-
                         if(order.order_status == 1 || order.order_status == 7){
                             // estimate Cost
                             var estimateObj = {};
@@ -75,7 +63,7 @@
                                 })
                                 return weight;
                             })();
-                            estimateObj.logistic_path = order.ship_company;
+                            estimateObj.logistic_path = order.logistic_path.id;
                             estimateObj.extra_services = angular.copy(order.extra_services).map(function (es) {
                                 return es.id;
                             });

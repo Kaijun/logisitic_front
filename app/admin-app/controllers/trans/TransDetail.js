@@ -27,13 +27,7 @@
                         $scope.trans.statusStr = InfoService.getStockStatusMapping(data.status);
                     })
                     return data;
-                }).then(function(data){
-                    InfoService.getWarehouseById(data.warehouse).then(function (wh){
-                        $timeout(function() {
-                            $scope.warehouse = wh;
-                        })
-                    });
-                });
+                })
             }
         }
 

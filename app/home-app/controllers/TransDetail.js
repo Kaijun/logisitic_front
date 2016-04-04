@@ -10,7 +10,6 @@
     /* @ngInject */
     function TransDetailCtrl($scope, TransService, InfoService, UserInfo, $stateParams, $timeout, $state, $window) {
         $scope.trans = null;
-        $scope.warehouse = null;
         $scope.isConfirmShown = false;
 
         $scope.confirmTrans = confirmTrans;
@@ -49,11 +48,6 @@
 
 
                     })
-                    InfoService.getWarehouseById(data.warehouse).then(function (wh){
-                        $timeout(function() {
-                            $scope.warehouse = wh;
-                        })
-                    });
 
                 })
             }
