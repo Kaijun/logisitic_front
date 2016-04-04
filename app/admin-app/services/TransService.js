@@ -12,6 +12,7 @@
         var service = {
             getTrans: getTrans,
             getTranss: getTranss,
+            queryTranss: queryTranss,
             editTrans: editTrans,
             deleteTrans: deleteTrans,
         };
@@ -27,6 +28,16 @@
         }
         function getTranss() {
             var promise = $http.get(AppConfig.apiUrl + '/trans-order/').then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function queryTranss(opt) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/trans-order',
+                method: 'GET',
+                params: opt,
+            }).then(function (response) {
                 return response.data;
             });
             return promise;

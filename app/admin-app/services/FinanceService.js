@@ -14,6 +14,7 @@
             getAmountByEmail: getAmountByEmail,
             getAmountByStockNum: getAmountByStockNum,
             getRecords: getRecords,
+            queryRecords: queryRecords,
         };
         return service;
 
@@ -46,6 +47,16 @@
             return $http.get(AppConfig.apiUrl + url).then(function (response) {
                 return response.data;
             })
+        }
+        function queryRecords(opt) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/transaction-list',
+                method: 'GET',
+                params: opt,
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
         }
     }
 })();

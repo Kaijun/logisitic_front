@@ -12,6 +12,7 @@
         return{
 
             getUsers: getUsers,
+            queryUsers: queryUsers,
             getUser: getUser,
             getUserByStockNumber: getUserByStockNumber,
             editUser: editUser,
@@ -25,6 +26,16 @@
             var promise = $http({
                 url: AppConfig.apiUrl + '/user',
                 method: 'GET',
+            }).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function queryUsers(opt) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/user',
+                method: 'GET',
+                params: opt,
             }).then(function (response) {
                 return response.data;
             });

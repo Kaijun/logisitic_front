@@ -18,7 +18,7 @@
             reference_code: null,
             warehouse_id: null,
             stock_number: null,
-            owner_name: null,
+            user_name: null,
             start: null,
             end: null,
         };

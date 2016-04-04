@@ -15,8 +15,9 @@
         $scope.filterOptions = {
             status: $stateParams.orderStatus || null,
             reference_code: null,
+            source_ref: null,
             stock_number: null,
-            owner_name: null,
+            user_name: null,
             logistic_path: null,
             track_code: null,
             date_type: null,

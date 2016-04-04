@@ -2,15 +2,21 @@
 <div class="ah-list">
   <div class="pure-g ah-filter">
     <div class="pure-u-1-24 label">客户ID</div>
-    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-2-24"><input ng-model="filterOptions.user_name"></div>
     <div class="pure-u-1-24 label">金额</div>
-    <div class="pure-u-2-24"><input></div>
+    <div class="pure-u-2-24"><input ng-model="filterOptions.amount"></div>
     <div class="pure-u-1-24 label">时间</div>
-    <div class="pure-u-3-24"><input placeholder="yyyy-mm-dd"></div>
+    <div class="pure-u-3-24">
+
+        <input type='date' ng-model="filterOptions.start">
+    </div>
     <div class="pure-u-1-24 label">-</div>
-    <div class="pure-u-3-24"><input placeholder="yyyy-mm-dd"></div>
-    <div class="pure-u-9-24 button"><a style="background:#ff3535">清除</a></div>
-    <div class="pure-u-1-24 button"><a>筛选</a></div>
+    <div class="pure-u-3-24">
+
+        <input type='date' ng-model="filterOptions.end">
+    </div>
+    <div class="pure-u-9-24 button"><a ng-click="clearFilter()" style="background:#ff3535">清除</a></div>
+    <div class="pure-u-1-24 button"><a ng-click="filter()">筛选</a></div>
   </div>
 
 

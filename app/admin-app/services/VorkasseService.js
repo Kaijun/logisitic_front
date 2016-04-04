@@ -12,6 +12,7 @@
         var service = {
             getVorkasse: getVorkasse,
             getVorkasses: getVorkasses,
+            queryVorkasses: queryVorkasses,
             editVorkasse: editVorkasse,
             deleteVorkasse: deleteVorkasse,
             getVorkasseRate: getVorkasseRate,
@@ -29,6 +30,16 @@
         }
         function getVorkasses() {
             var promise = $http.get(AppConfig.apiUrl + '/purchase-agent/').then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+        function queryVorkasses(opt) {
+            var promise = $http({
+                url: AppConfig.apiUrl + '/purchase-agent',
+                method: 'GET',
+                params: opt,
+            }).then(function (response) {
                 return response.data;
             });
             return promise;
