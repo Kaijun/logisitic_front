@@ -20,7 +20,7 @@
 		complete: function() {},  //  A function that gets called after every slide animation
 		keys: true,               //  Enable keyboard (left, right) arrow shortcuts
 		dots: true,               //  Display dot navigation
-		// fluid: true              //  Support responsive design. May break non-responsive designs
+		fluid: true              //  Support responsive design. May break non-responsive designs
 	});
 
 })(window, jQuery);

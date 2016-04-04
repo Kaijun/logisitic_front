@@ -22,9 +22,9 @@ $main-button-color: #5579B9;
       display: inline-block;
       line-height: 32px;
       padding-left: 50px;
-      margin: 9px 0 9px 30px; 
+      margin: 9px 0 9px 30px;
       background: url(/images/logo.png) no-repeat left center;
-      background-size: contain; 
+      background-size: contain;
       color: rgba(255, 0, 0, 0);
       font-size: 22px;
 
@@ -35,7 +35,7 @@ $main-button-color: #5579B9;
     display: inline-block;
     text-align: right;
     @include phone {
-      background-color: #3F3F3F; 
+      background-color: #3F3F3F;
       text-align: center;
     }
     ul{
@@ -155,7 +155,7 @@ $main-button-color: #5579B9;
         border-radius:20px;
       }
     }
-   
+
 
   }
 }
@@ -164,8 +164,11 @@ $main-button-color: #5579B9;
 .lp-banner{
   $banner-height: 670px;
   height: $banner-height !important;
-  position: relative; 
+  position: relative;
   overflow: auto;
+  h3{
+    line-height: 2em;
+  }
   ul{
     margin: 0;
     padding: 0;
@@ -178,13 +181,13 @@ $main-button-color: #5579B9;
       overflow: hidden; /* hide the cropped portion */
 
       //avoid 4px inline-block's space
-      font-size: 0; 
+      font-size: 0;
       img {
         height: $banner-height;
         display: inline-block;
         //center if box is smaller than img
-        position: relative; 
-        left: 100%; 
+        position: relative;
+        left: 100%;
         margin-left: -200%;
       }
 
@@ -246,7 +249,7 @@ $main-button-color: #5579B9;
   padding: 4.5em 0 0 0;
   &.bg1{
     background: #037286;
-    background: linear-gradient(to bottom, #037286 0%,#57ec96 100%); 
+    background: linear-gradient(to bottom, #037286 0%,#57ec96 100%);
   }
   &.bg2{
     background: #4784c9; /* Old browsers */
@@ -267,13 +270,13 @@ $main-button-color: #5579B9;
   .lp-section-grid{
     padding-top: 2em;
     box-sizing: border-box;
-    border-right: solid 1px #CCCCCC; 
+    border-right: solid 1px #CCCCCC;
     &:last-child{
-      border-right: 0; 
+      border-right: 0;
     }
     &.reverse{
       color: white;
-      border-right: solid 1px white; 
+      border-right: solid 1px white;
     }
     img{
       max-height: 3em;
@@ -316,8 +319,8 @@ $main-button-color: #5579B9;
 }
 .lp-news-list{
   width: 100%;
-  line-height: 30px;
-  font-size: 14px;
+  line-height: 35px;
+  font-size: 1em;
   margin-bottom: 5px;
   .right{
     text-align: right;
@@ -335,10 +338,13 @@ $main-button-color: #5579B9;
     color: #505050;
     cursor: pointer;
   }
+  &.last-of-type{
+    margin-bottom: 10px 0;
+  }
 }
 
 .lp-news-span{
-  font-size: 28px;
+  font-size: 2em;
   margin: 5px 0;
   &:first-of-type{
     margin-top: 0;
