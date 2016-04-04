@@ -24,7 +24,7 @@
       <table class="pure-table pure-table-horizontal ah-list-table">
         <thead>
           <tr>
-            <th width="2%"><input type="checkbox"></th>
+            <th width="2%"><input ng-model="isAllSelected"  ng-click="selectAllItems()" type="checkbox"></th>
             <!-- <th width="10%">交易流水号</th> -->
             <th  width="10%">交易时间</th>
             <!-- <th  width="8%">分类</th> -->
@@ -38,7 +38,7 @@
         <tbody>
           <!-- <tr ng-repeat=""> -->
           <tr ng-repeat="record in records" >
-          <td width="25px;"><input type="checkbox"></td>
+          <td width="25px;"><input ng-model="record.selected" ng-click="recordSelected(record)" type="checkbox"></td>
             <!-- <td>TS01921321</td> -->
             <td>{{record.updated_at}}</td>
             <!-- <td >代刷</td> -->
@@ -57,7 +57,7 @@
              <div class="ah-pager" ng-if="pageInfo.next_page_url" ng-click="requestPage(pageInfo.next_page_url)" >></div>
     </div>
     <div class="right">
-      <a  ng-click="" class="pure-button blue horizon export">批量导出</a>
+      <a   ng-click="exportRecord()" class="pure-button blue horizon export">批量导出</a>
     </div>
   </div>
 

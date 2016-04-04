@@ -5,10 +5,10 @@
         .module('admin.services')
         .factory('StockService', StockService);
 
-    StockService.$inject = ['AppConfig', '$http', '$httpParamSerializer'];
+    StockService.$inject = ['AppConfig', '$http', '$httpParamSerializer', '$window'];
 
     /* @ngInject */
-    function StockService(AppConfig, $http, $httpParamSerializer) {
+    function StockService(AppConfig, $http, $httpParamSerializer, $window) {
         var service = {
             getStocks: getStocks,
             queryStocks: queryStocks,
@@ -107,12 +107,8 @@
             return promise;
         }
         function batchDownload(stocks) {
-                 var anchor = angular.element('<a/>');
-                 anchor.attr({
-                     href: AppConfig.apiUrl + '/batchdownload?packages=' + stocks,
-                     target: '_blank',
-                     download: '库存导出.xlsx'
-                 })[0].click();
+             var href = AppConfig.apiUrl + '/batchdownload?packages=' + stocks;
+             $window.open(href, "_blank");
         }
 
         function batchUpload (excel) {

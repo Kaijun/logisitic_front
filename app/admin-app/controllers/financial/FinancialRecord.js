@@ -20,7 +20,13 @@
         };
         $scope.filter = filter;
         $scope.clearFilter = clearFilter;
+        $scope.selectAllItems = selectAllItems;
+        $scope.recordSelected = recordSelected;
+        $scope.exportRecord = exportRecord;
         activate();
+
+
+        var selectedRecordIds = [];
 
         ////////////////
 
@@ -29,7 +35,9 @@
                 if(data.success===true){
                     data = data.data
                     $scope.records = data.data;
-
+                    $scope.records.map(function(item) {
+                        item.selected = arrayExist(selectedRecordIds, item.id);
+                    })
                     $timeout(function () {
                         $scope.pageInfo = data;
                     })
@@ -42,12 +50,61 @@
                 response = response.data;
                 if(response.success===true){
                     $scope.records = response.data.data;
+                    $scope.records.map(function(item) {
+                        item.selected = arrayExist(selectedRecordIds, item.id);
+                    })
                     $timeout(function () {
                         $scope.pageInfo = response.data;
                     }) 
                 }
             })
         }
+        function arrayExist (array, item) {
+            if(angular.isArray(array)){
+                return array.indexOf(item) > -1;
+            }
+        }
+        function selectAllItems () {
+            var shouldSelectAll = $scope.records.some(function (item) {
+                return item.selected === false;
+            });
+            if(shouldSelectAll){
+                $scope.records.filter(function (r) {
+                    return r.selected === false;
+                }).forEach(function (r) {
+                    r.selected = true;
+                    selectedRecordIds.push(r.id);
+                });
+                $scope.isAllSelected = true;
+            }
+            else{
+                $scope.records.forEach(function (r) {
+                    r.selected = false;
+                    selectedRecordIds.map(function (item, idx, arry) {
+                        if(item === r.id){
+                            arry.splice(idx, 1);
+                        }
+                    });
+
+                })
+                $scope.isAllSelected = false;
+            }
+
+        }
+
+        function recordSelected (record) {
+            if(record.selected===true){
+                selectedRecordIds.push(record.id);
+            }
+            else{
+                selectedrecordIds.map(function (item, idx, arry) {
+                    if(item === record.id){
+                        arry.splice(idx, 1);
+                    }
+                })
+            }
+        }
+
         function filter() {
             var opt = angular.copy($scope.filterOptions);
             if(opt.start instanceof Date && opt.end instanceof Date && opt.start>opt.end){
@@ -69,6 +126,13 @@
         }
         function clearFilter() {
             $state.go($state.current, {}, {reload: true})
+        }
+        function exportRecord() {
+            if(!selectedRecordIds || selectedRecordIds.length==0){
+                swal('请选择项目', '', 'error');
+                return;
+            }
+            FinanceService.exportRecords(selectedRecordIds);
         }
     }
 })();

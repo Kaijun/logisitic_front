@@ -5,16 +5,17 @@
         .module('admin.services')
         .factory('FinanceService', FinanceService);
 
-    FinanceService.$inject = ['$http', 'AppConfig', '$httpParamSerializer'];
+    FinanceService.$inject = ['$http', 'AppConfig', '$httpParamSerializer', '$window'];
 
     /* @ngInject */
-    function FinanceService($http, AppConfig, $httpParamSerializer) {
+    function FinanceService($http, AppConfig, $httpParamSerializer, $window) {
         var service = {
             chargeAmount: chargeAmount,
             getAmountByEmail: getAmountByEmail,
             getAmountByStockNum: getAmountByStockNum,
             getRecords: getRecords,
             queryRecords: queryRecords,
+            exportRecords: exportRecords,
         };
         return service;
 
@@ -57,6 +58,10 @@
                 return response.data;
             });
             return promise;
+        }
+        function exportRecords(array) {
+             var href = AppConfig.apiUrl + '/transaction-list-export?transactions=' + array.join(',')
+             $window.open(href, "_blank")
         }
     }
 })();
