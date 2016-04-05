@@ -81,7 +81,9 @@
                 })
             }
             else{
+                console.log($scope.isTrackNumEditShown)
                 $scope.isTrackNumEditShown = true;
+                console.log($scope.isTrackNumEditShown)
             }
         }
 

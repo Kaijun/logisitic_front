@@ -11,7 +11,7 @@
 
         $scope.imageUrlPrefix = AppConfig.apiUrl+ '/image/';
 
-        var TIMEOUT_DELAY = 500;
+        var TIMEOUT_DELAY = 1000;
         $scope.stock = null;
         $scope.serachText = null;
         $scope.submitData = {
@@ -26,11 +26,11 @@
         $scope.isRequested = false;
         $scope.isStockFound = false;
         $scope.warehouses = [];
-        $scope.warehouseChosen = null;
-        $scope.transCompany = {
-            all: [],
-            chosen: null
-        };
+            /*Deprecated*/
+        // $scope.transCompany = {
+        //     all: [],
+        //     chosen: null
+        // };
         $scope.roles = [];
         $scope.optionTypes = [];
         $scope.search = search;
@@ -45,10 +45,11 @@
             LogisticService.getLogisticTypes().then(function (data) {
                 $scope.optionTypes = data;
             })
-            LogisticService.getTransCompanies().then(function (data) {
-                $scope.transCompany.all = data;
-                $scope.transCompany.chosen = data[0];
-            })
+            /*Deprecated*/
+            // LogisticService.getTransCompanies().then(function (data) {
+            //     $scope.transCompany.all = data;
+            //     $scope.transCompany.chosen = data[0];
+            // })
 
 
             var searchStockTimeout;
@@ -82,7 +83,7 @@
 
             InfoService.getWarehouses().then(function (data) {
                 $scope.warehouses = data;
-                $scope.warehouseChosen = data[0];
+                $scope.submitData.warehouse_id = data[0].id;
             });
             RoleService.getRoles().then(function (data) {
                 $scope.roles = data;
@@ -193,8 +194,7 @@
 
             function doReg() {
                 $scope.submitData.need_check = $scope.submitData.need_check?1:0;
-                $scope.submitData.warehouse_id = $scope.warehouseChosen.id;
-                $scope.submitData.reference_code = $scope.transCompany.chosen.prefix + $scope.submitData.reference_code;
+                // $scope.submitData.reference_code = $scope.transCompany.chosen.prefix + $scope.submitData.reference_code;
 
                 StockService.submitStock($scope.submitData).then(function(data) {
                     $state.go('stockDetail', {stockId: data.package_id});

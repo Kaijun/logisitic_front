@@ -179,17 +179,19 @@
 
             <div class="pure-u-2-24 input-label">选择仓库</div>
             <div class="pure-u-4-24">
-              <select ng-model="warehouseChosen" ng-options="wh.name for wh in warehouses">
+              <select ng-model="submitData.warehouse_id" ng-options="wh.id as wh.name for wh in warehouses">
               </select>
             </div>
-
+            <!-- Deprecated -->
+<!-- 
             <div class="pure-u-2-24 input-label">运输公司</div>
             <div class="pure-u-4-24">
               <select ng-model="transCompany.chosen" ng-options="tc.name for tc in transCompany.all">
               </select>
             </div>
 
-              <div class="pure-u-3-24 input-label">包裹运单号({{transCompany.chosen.prefix}})</div>
+              <div class="pure-u-3-24 input-label">包裹运单号({{transCompany.chosen.prefix}})</div> -->
+              <div class="pure-u-3-24 input-label">包裹运单号</div>
             <div class="pure-u-1-4">
               <input
                 name="ref_code"

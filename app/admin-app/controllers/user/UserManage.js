@@ -27,9 +27,12 @@
 
 
                         UserService.getUser($stateParams.userId).then(function (data) {
-                            $timeout(function () {
-                                $scope.user = data;
-                            })
+                            if(data.success===true){
+                                data = data.data
+                                $timeout(function () {
+                                    $scope.user = data;
+                                })
+                            }
                         }, function () {
                             $state.go('userList', {}, {reload: true})
                         })

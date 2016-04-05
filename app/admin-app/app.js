@@ -210,12 +210,13 @@
             templateUrl: 'templates/logistic/logisticType.html',
             controller: 'LogisticType',
         })
-        .state('transCompany', {
-            parent: 'system',
-            url: '/transCompany',
-            templateUrl: 'templates/logistic/transCompany.html',
-            controller: 'TransCompany',
-        })
+        /* Deprecated */
+        // .state('transCompany', {
+        //     parent: 'system',
+        //     url: '/transCompany',
+        //     templateUrl: 'templates/logistic/transCompany.html',
+        //     controller: 'TransCompany',
+        // })
 
         .state('extraSrvList', {
             parent: 'system',
@@ -229,13 +230,13 @@
             templateUrl: 'templates/extraSrv/extraSrvManage.html',
             controller: 'ExtraSrvManage',
         })
-
-          .state('logisticTrack', {
-            parent: 'system',
-            url: '/logisticTrack',
-            templateUrl: 'templates/logistic/logisticTrack.html',
-            controller: 'LogisticTrack',
-        })
+        /* Deprecated */
+        // .state('logisticTrack', {
+        //     parent: 'system',
+        //     url: '/logisticTrack',
+        //     templateUrl: 'templates/logistic/logisticTrack.html',
+        //     controller: 'LogisticTrack',
+        // })
 
 
 
