@@ -103,21 +103,26 @@
 
         function search() {
             if($scope.serachText){
-                StockService.getStockByTrackNr($scope.serachText).then(function (data) {
+                StockService.getStockByRef($scope.serachText).then(function (data) {
+                    if(data.success!=true){
+                        swal('搜索错误', '', 'error');
+                        return;
+                    }
+
                     $scope.isRequested = true;
 
-                    $scope.imageUrlPrefix = data.package ? $scope.imageUrlPrefix + data.package.user.id + '/' : $scope.imageUrlPrefix ;
+                    data = data.data.data;
+                    data = data[0];
 
-                    if(data.package==null){
+                    $scope.imageUrlPrefix = data ? $scope.imageUrlPrefix + data.user.id + '/' : $scope.imageUrlPrefix ;
+                    console.log(data)
+                    if(!data){
                         $scope.isStockFound = false;
                         $scope.submitData.reference_code = $scope.serachText;
                     }
                     else{
+
                         $scope.isStockFound = true;
-                        data = data.package;
-                        data.warehouseName = $scope.warehouses.filter(function(item){
-                            return parseInt(item.id)===parseInt(data.warehouse_id)
-                        })[0].name
                         data.created_at = data.created_at.substring(0, 10);
                         data.updated_at = data.updated_at.substring(0, 10);
                         data.statusStr = InfoService.getStockStatusMapping(data.status);

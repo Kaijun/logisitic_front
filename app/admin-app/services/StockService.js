@@ -16,7 +16,7 @@
             enterStock: enterStock,
             deleteStock: deleteStock,
             submitStock: submitStock,
-            getStockByTrackNr: getStockByTrackNr,
+            getStockByRef: getStockByRef,
             batchDownload: batchDownload,
             batchUpload: batchUpload,
             submitBatch: submitBatch,
@@ -52,8 +52,8 @@
             });
             return promise;
         }
-        function getStockByTrackNr(tn) {
-            var promise = $http.get(AppConfig.apiUrl + '/stocks?tracknumber=' + tn).then(function (response) {
+        function getStockByRef(ref) {
+            var promise = $http.get(AppConfig.apiUrl + '/stocks?reference_code=' + ref).then(function (response) {
                 return response.data;
             });
             return promise;
