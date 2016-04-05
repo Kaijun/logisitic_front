@@ -40,11 +40,6 @@
                                 $scope.warehouse = wh;
                             })
                         });
-                        InfoService.getLogisticPathById(data.ship_company,1).then(function (lp){
-                            $timeout(function() {
-                                $scope.logisticPath = lp;
-                            })
-                        });
                     })
                 }
                 else{
