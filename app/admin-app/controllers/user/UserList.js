@@ -20,7 +20,7 @@
         $scope.filterOptions = {
             user_name: null,
             email: null,
-            stock_name: null,
+            stock_number: null,
             stock_position: null,
             role: null,
         };
