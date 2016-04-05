@@ -58,10 +58,6 @@
                 $scope.logisticPathChosen = $scope.logisticPaths[0];
                 
             });
-            // TODO: add user Group!!! from UserInfo
-            // var extraSrvPromise = InfoService.getExtraServices(1, 3).then(function (data){
-            //      $scope.extraServices = data;
-            // });
             var addressListPromise = ProfileService.getAddressList().then(function (data) {
                 if(data.length === 0){
                     alert('请先添加地址!');
@@ -77,7 +73,7 @@
 
             $q.all([warehousePromise, pathPromise, addressListPromise]).then(function () {
                 $scope.order = angular.copy(orderObj);
-                $scope.order.warehouse = $scope.warehouses[0].id.toString();
+                $scope.order.warehouse = $scope.warehouses[0].id;
                 $scope.order.logistic_path = $scope.logisticPaths[0].id.toString();
                 $scope.order.address = $scope.addressList[0].id.toString();
             }).then(function () {
@@ -126,6 +122,7 @@
                 });
 
                 $scope.$watch('logisticPathChosen', function (newValue, oldValue) {
+                    console.log($scope.logisticPathChosen)
                     $scope.extraServices = $scope.logisticPathChosen.extra_services.filter(function (item) {
                         return (item.type==0 || item.type==3);
                     });
@@ -147,7 +144,7 @@
                                     swal("删除成功", "请点击确认继续编辑, 原有部分数据将会保留", "success");
                                     $timeout(function () {
                                         $scope.order = tempOrder;
-                                        $scope.order.warehouse = $scope.order.warehouse.toString();
+                                        $scope.order.warehouse = $scope.order.warehouse;
                                         $scope.$emit('warehouseChanged', $scope.order.warehouse);
                                         $scope.logisticPathChosen = $scope.logisticPaths.filter(function (item) {
                                             return parseInt($scope.order.ship_company)===parseInt(item.id)

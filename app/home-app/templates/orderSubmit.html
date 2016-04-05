@@ -40,11 +40,7 @@
       <div class="uh-form-section pure-g">
           <div class="title pure-u-1-4">选择所在仓库</div>
           <div class="pure-u-3-4">
-            <select ng-model="order.warehouse" class="pure-u-1">
-              <option ng-repeat="warehouse in warehouses" value="{{warehouse.id}}">
-                {{warehouse.name}}
-              </option>
-            </select>
+          <select ng-model="order.warehouse" ng-options="wh.id as wh.name for wh in warehouses"></select>
           </div>
       </div>
 
