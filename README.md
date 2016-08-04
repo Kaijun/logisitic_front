@@ -1,8 +1,10 @@
-# Frontend #
+# Logisitc Frontend #
 
-Test for slack message!
+This project only contains the front-end source code for review. 
+Back-end source code is not avaiable at this moment.
 
 ### Prerequisite ###
+
 * NodeJs
 
 ### Deploy ###
